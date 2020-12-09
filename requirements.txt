@@ -1,3 +1,11 @@
 jupyter-book
 matplotlib
 numpy
+xarray
+eurec4a
+intake
+intake-xarray
+fsspec
+ipfsspec
+requests
+aiohttp
