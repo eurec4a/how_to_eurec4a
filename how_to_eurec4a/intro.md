@@ -1,7 +1,8 @@
-Welcome to your Jupyter Book
-============================
+# Welcome to the world of EUREC4A data
 
-This is a small sample book to give you a feel for how book content is
-structured.
+This is a collection of code examples to get you started with the data.
+In principe, we anticipate to have at minimum one example script per
+instrument and also show the combination of datasets and their subsetting
+using flight segment information.
 
-Check out the content pages bundled with this sample book to get started.
+Check out the content pages for available files.

@@ -3,6 +3,4 @@
 - file: intro
 - file: content
   sections:
-    - file: markdown
     - file: dropsondes
-    - file: notebooks
