@@ -5,3 +5,6 @@
   sections:
     - file: dropsondes
     - file: specmacs
+- file: toolbox
+  sections:
+    - file: flight-phase-operations
