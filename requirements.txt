@@ -9,3 +9,4 @@ fsspec
 ipfsspec
 requests
 aiohttp
+pydap
