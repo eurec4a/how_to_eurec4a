@@ -9,3 +9,4 @@
 - file: toolbox
   sections:
     - file: flight-phase-operations
+- file: stats
