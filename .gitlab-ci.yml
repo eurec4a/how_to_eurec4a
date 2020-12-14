@@ -22,8 +22,6 @@ before_script:
   - source venv/bin/activate
 
 pages:
-  tags:
-    - GWDG-Runner-2
   script:
     - pip install -r requirements.txt
     - jupyter-book build how_to_eurec4a
@@ -35,8 +33,6 @@ pages:
     - master
 
 testbuild:
-  tags:
-    - GWDG-Runner-2
   script:
     - pip install -r requirements.txt
     - jupyter-book build how_to_eurec4a
