@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-## How to work with flight phase segmentation files
+# How to work with flight phase segmentation files
 
 ```{code-cell} ipython3
 import datetime
@@ -23,7 +23,7 @@ meta = eurec4a.get_flight_segments()
 meta.keys()
 ```
 
-### 1. map `segment_id`s to `segment`s
+## 1. map `segment_id`s to `segment`s
 This can be useful for further queries based on specific segment properties.
 In addition to the original properties in each `segment`, the `platform_id` and `flight_id` are also stored.
 
@@ -42,7 +42,7 @@ segments = [{**s,
 segments_by_segment_id = {s["segment_id"]: s for s in segments}
 ```
 
-### 2. list `flight_id`s
+## 2. list `flight_id`s
 
 ```{code-cell} ipython3
 flight_ids = [flight_id
@@ -63,7 +63,7 @@ flight_id = [flight_id
 flight_id
 ```
 
-### 3. list flight segmentation `kinds`
+## 3. list flight segmentation `kinds`
 A segment is an object which includes at minimum a `segment_id`, `name`, `start` and `end` time.
 
 ```{code-cell} ipython3
@@ -71,7 +71,7 @@ kinds = set(k for s in segments for k in s["kinds"])
 kinds
 ```
 
-### 4. List of common properties in all `segments`
+## 4. List of common properties in all `segments`
 
 ```{code-cell} ipython3
 set.intersection(*(set(s.keys()) for s in segments))
@@ -85,7 +85,7 @@ segment_ids_by_kind = {kind: [segment["segment_id"]
 }
 ```
 
-### 4. Further random examples: 
+## 5. Further random examples:
 * total number of all circles flown during EUREC4A / ATOMIC
 
 ```{code-cell} ipython3
