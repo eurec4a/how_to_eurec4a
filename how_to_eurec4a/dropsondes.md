@@ -4,7 +4,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.12
-    jupytext_version: 1.7.1
+    jupytext_version: 1.8.0
 kernelspec:
   display_name: Python 3
   language: python
@@ -121,7 +121,7 @@ The temperature profiles are colored according to their launch time, while relat
 
 ```{code-cell} ipython3
 def dt64_to_dt(dt64):
-    return datetime.datetime.utcfromtimestamp((dt64 - np.datetime64('1970-01-01T00:00:00Z'))
+    return datetime.datetime.utcfromtimestamp((dt64 - np.datetime64('1970-01-01T00:00:00'))
                                               / np.timedelta64(1, 's'))
 ```
 
