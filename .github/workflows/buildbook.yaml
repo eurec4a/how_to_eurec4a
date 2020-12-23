@@ -23,3 +23,9 @@ jobs:
     - name: build book
       run: |
           jupyter-book build -W -n --keep-going  how_to_eurec4a
+    - name: Archive build artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: build
+        path: |
+          how_to_eurec4a/_build
