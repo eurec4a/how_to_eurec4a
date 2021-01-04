@@ -73,27 +73,32 @@ ds_bahamas_selection = ds_bahamas.sel(time=slice(seg["start"], seg["end"]))
 
 +++
 
-We plot reflectivity from the HAMP Radar and brightness temperatures from the low-frequency channels along the 22 GHz water vapor line (K band) from the HAMP radiometer.
+We plot reflectivity from the HAMP Radar, the flight altitude of HALO and brightness temperatures from the low-frequency channels along the 22 GHz water vapor line (K band) from the HAMP radiometer.
 
 ```{code-cell} ipython3
 mpl.rcParams['font.size'] = 12
-```
 
-```{code-cell} ipython3
-fig, (ax1, ax2, ax3, ax4) = plt.subplots(4,1,sharex=True, figsize=(10,6), constrained_layout=True, gridspec_kw={'height_ratios':(3,2, 1, 1)})
-## Radar dBZ
+fig, (ax1, ax2) = plt.subplots(2,1,sharex=True, figsize=(10,5), constrained_layout=True, gridspec_kw={'height_ratios':(2, 1.2)})
+
+# 1st plot: Radar dBZ and flight altitude
+ds_bahamas_selection.altitude.plot(ax=ax1, x='time', color = 'black', label = 'flight altitude')
+ax1.legend(loc ='upper left')
 ds_radar_selection.dBZ.plot(ax= ax1, x='time', cmap ='cubehelix' )
-## Radiometer TB from the low frequency channels along the 22 GHz water vapor line
-ax2.set_prop_cycle(color=plt.get_cmap("cividis")(np.linspace(0, 0.8, 7)))
-for f in range (7): 
-    data_radiometer = ds_radiometer_selection.tb.isel(frequency=f)
-    data_radiometer.plot(ax= ax2, x='time',label = '{} GHz'.format(np.round(data_radiometer.frequency.item(),2)))
+
+# 2nd plot: Radiometer TB
+## select low frequency channels along the 22 GHz water vapor line
+low_freq = ds_radiometer_selection.frequency < 32
+ds_radiometer_low_freq = ds_radiometer_selection.isel(frequency=low_freq)
+## set line colors for 2nd plot
+colors2 = plt.get_cmap("cividis")(np.linspace(0, 0.8, low_freq.values.sum()))
+ax2.set_prop_cycle(color=colors2)
+for frequency, data_radiometer in ds_radiometer_low_freq.groupby("frequency"):
+    data_radiometer.tb.plot(ax=ax2, x='time', label=f'{frequency:.2f} GHz')
 ax2.set_title('')
 ax2.legend(bbox_to_anchor=(1,1.1))
-ds_bahamas_selection.lon.plot(ax=ax3, x= 'time', color = 'black')
-ds_bahamas_selection.lat.plot(ax=ax4, x= 'time', color = 'black')
-ax1.set_xlabel(''); ax2.set_xlabel(''); ax3.set_xlabel('')
-for ax in [ax1, ax2, ax3, ax4]:
+
+ax1.set_xlabel('')
+for ax in [ax1, ax2]:
     ax.spines['right'].set_visible(False)
     ax.spines['top'].set_visible(False)
 ```
