@@ -101,4 +101,4 @@ ax1.set_xlabel('')
 for ax in [ax1, ax2]:
     ax.spines['right'].set_visible(False)
     ax.spines['top'].set_visible(False)
-
+```
