@@ -1,4 +1,5 @@
 jupyter-book
+jupytext
 matplotlib
 numpy
 xarray
@@ -6,7 +7,7 @@ eurec4a
 intake
 intake-xarray
 fsspec
-ipfsspec
+ipfsspec>=0.0.2
 requests
 aiohttp
 pydap
