@@ -2,6 +2,8 @@
 
 Code examples to get you started with EUREC4A data.
 
+-> [current version of the book](https://eurec4a_staging.pages.gwdg.de/how_to_eurec4a/)
+
 ## Usage
 
 ### Building the book
