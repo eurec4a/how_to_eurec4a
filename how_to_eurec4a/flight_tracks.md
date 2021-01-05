@@ -73,7 +73,7 @@ ax.coastlines()
 ax.gridlines(draw_labels=True, dms=True, x_inline=False, y_inline=False)
 
 for flight_id, ds in list(cat.HALO.BAHAMAS.QL.items())[:3]:
-    ds = fix_halo_ql(ds.to_dask())
+    ds = fix_halo_ql(ds.get().to_dask())
     plt.plot(ds.lon, ds.lat, transform=ccrs.Geodetic(), label=flight_id)
 plt.legend()
 plt.show()
@@ -92,7 +92,7 @@ def hours_since_first_midnight(time_variable):
 ```{code-cell} ipython3
 fig = plt.figure(figsize=(15,5))
 for flight_id, ds in cat.HALO.BAHAMAS.QL.items():
-    ds = fix_halo_ql(ds.to_dask())
+    ds = fix_halo_ql(ds.get().to_dask())
     ds.time.load()
     ds.alt.load()
     ds.coords["hours_since_midnight"] = hours_since_first_midnight(ds.time)
