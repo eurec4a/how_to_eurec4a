@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# Show flight tracks of the HALO aircraft interactively
+# interactive HALO tracks
 
 This notebook shows how to plot the flight tracks of the HALO aircraft. First, we'll have only a quick look and later on we do some more work in order to get the data onto an interactive map.
 
