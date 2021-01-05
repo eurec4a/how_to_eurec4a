@@ -12,3 +12,5 @@ requests
 aiohttp
 pydap
 sphinxcontrib-bibtex<2.0.0
+ipyleaflet
+simplification
