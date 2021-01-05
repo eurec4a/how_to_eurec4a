@@ -3,6 +3,7 @@
 - file: intro
 - file: content
   sections:
+    - file: flight_tracks
     - file: dropsondes
     - file: specmacs
     - file: unified
