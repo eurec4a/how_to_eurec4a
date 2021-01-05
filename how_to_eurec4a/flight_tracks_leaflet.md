@@ -66,62 +66,16 @@ plt.show()
 
 Later on, we want to plot all flights on an interactive map. Currently the dataset is rather large as the aircraft location has been recorded continuously at a high data rate. While this is good for quantitative analysis, this leads to poor interactive performance. So before going further, it is a good idea to reduce the amount of data while keeping the visual impression.
 
-A possible idea to reduce the amount of required data is that plotting a line already does linear interpolation between two coordinate points. So if we would remove those points which are close to the linear interpolation between its neighboring points, the visual impression will stay almost the same. This idea has already been stated by Ramer Douglas and Peucker and is illustrated at [Wikipedia](https://en.wikipedia.org/wiki/Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm). Below is a simple implementation of that algorithm which also takes time into account.
+A possible idea to reduce the amount of required data is that plotting a line already does linear interpolation between two coordinate points. So if we would remove those points which are close to the linear interpolation between its neighboring points, the visual impression will stay almost the same. This idea has already been stated by Ramer Douglas and Peucker and is illustrated at [Wikipedia](https://en.wikipedia.org/wiki/Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm). While the algorithm is not hard to write, it is difficult to do it efficiently in python. Thus, I've skipped it and use the [`simplification`](https://pypi.org/project/simplification/) library in stead.
 
 ```{note}
-Many algorithms for shape processing are contained in the beautiful [shapely](https://shapely.readthedocs.io/en/stable/manual.html) library. If you are looking for a performant code, this or other shape processing libraries are a better choice. Nonetheless, having a quick look into some basic algorithms never hurts.
+Many algorithms for shape processing are contained in the beautiful [shapely](https://shapely.readthedocs.io/en/stable/manual.html) library. In general, I'd recommend using that library, but it requies the GEOS library which is a bit tricky to install.
 ```
 
 ```{code-cell} ipython3
-def _drp_argreduce_timeline(time, coords, start, end):
-    if end < start + 2:
-        return
-
-    t1, t2 = time[[start, end]]
-    c1, c2 = coords[[start, end]]
-
-    t_intermediate = time[start + 1: end]
-    c_true = coords[start + 1: end]
-
-    f1 = ((t2 - t_intermediate) / (t2 - t1))[:, np.newaxis]
-    c_interp = c1 * f1 + c2 * (1 - f1)
-
-    diff = np.sum((c_true - c_interp) ** 2, axis=-1)
-    max_idx = np.argmax(diff)
-    if diff[max_idx] >= 1:
-        splitpoint = max_idx + start + 1
-        yield from _drp_argreduce_timeline(time, coords, start, splitpoint)
-        yield splitpoint
-        yield from _drp_argreduce_timeline(time, coords, splitpoint, end)
-
-
-def drp_argreduce_timeline(time, coords, norm=1):
-    """
-    Computes important time points within a trajectory.
-    
-    Here, important is defined such that if in stead of taking the i-th coordinate
-    from the input trajectory, that coordinate is interpolated from the output
-    trajectory, the distance betwen the original and the interpolated point multiplied
-    by `norm` is less than 1:
-    
-    $$
-    distance(input_coord, interpolated outpu_coord) * norm <= 1
-    $$
-    
-    That way, trajectory coordinates can be substantially compressed with configurable
-    impact on data quality.
-    """
-    start = 0
-    end = len(time)
-    yield start
-    yield from _drp_argreduce_timeline(time, coords * norm, start, end - 1)
-    yield end - 1
-
+from simplification.cutil import simplify_coords_idx
 def simplify_dataset(ds, tolerance):
-    ds = ds.load()  # load dataset fully such that no single time points will be fetched
-    indices_to_take = list(drp_argreduce_timeline(ds.time.values,
-                                                  np.stack([ds.lat.values, ds.lon.values], axis=1),
-                                                  1/tolerance))
+    indices_to_take = simplify_coords_idx(np.stack([ds.lat.values, ds.lon.values], axis=1), tolerance)
     return ds.isel(time=indices_to_take)
 ```
 
