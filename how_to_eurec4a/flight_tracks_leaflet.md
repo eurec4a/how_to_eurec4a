@@ -133,13 +133,24 @@ display(testmap)
 ```
 
 ## All in one
-Let's see if we can add all the flights and provide a layer switcher so that we can have a look at all flights individually. We'll start by loading and simplifying all out track data into a local dictionary:
+Let's see if we can add all the flights and provide a layer switcher so that we can have a look at all flights individually. We'll start by loading and simplifying all out track data into a local dictionary. Requesting the datasets from the server is IO bound and thus can simply be accellerated using a ThreadPool:
 
 ```{code-cell} ipython3
-tracks = {
-    flight_id: simplify_dataset(fix_halo_ql(ds.get().to_dask()), 1e-5)
-    for flight_id, ds in cat.HALO.BAHAMAS.QL.items()
-}
+from multiprocessing.pool import ThreadPool
+pool = ThreadPool(20)
+
+def get_dataset(flight_id):
+    ds = cat.HALO.BAHAMAS.QL[flight_id].to_dask()
+    return flight_id, fix_halo_ql(ds).load()
+
+full_tracks = dict(pool.map(get_dataset, cat.HALO.BAHAMAS.QL))
+```
+
+We still have to simplify the dataset, which is done here:
+
+```{code-cell} ipython3
+tracks = {flight_id: simplify_dataset(ds, 1e-5)
+          for flight_id, ds in full_tracks.items()}
 ```
 
 Let's also quickly grab some colors from a matplotlib colorbar, such that we can show all tracks in individual colors:
