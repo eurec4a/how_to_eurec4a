@@ -183,7 +183,7 @@ Let's see if we can add all the flights and provide a layer switcher so that we 
 
 ```{code-cell} ipython3
 tracks = {
-    flight_id: simplify_dataset(fix_halo_ql(ds.to_dask()), 1e-5)
+    flight_id: simplify_dataset(fix_halo_ql(ds.get().to_dask()), 1e-5)
     for flight_id, ds in cat.HALO.BAHAMAS.QL.items()
 }
 ```
