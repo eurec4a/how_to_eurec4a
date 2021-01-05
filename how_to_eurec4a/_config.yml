@@ -21,3 +21,5 @@ html:
   use_issues_button         : true
   use_edit_page_button      : true
 execute_notebooks: force
+execute:
+  timeout: 100
