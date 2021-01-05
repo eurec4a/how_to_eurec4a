@@ -180,7 +180,9 @@ and add a scale, a legend, layer controls and a full screen button to the map an
 
 ```{code-cell} ipython3
 m.add_control(ipyleaflet.ScaleControl(position='bottomleft'))
-m.add_control(ipyleaflet.LegendControl(dict(zip(tracks, colors)), name="Flights", position="bottomright"))
+m.add_control(ipyleaflet.LegendControl(dict(zip(tracks, colors)),
+                                       name="Flights",
+                                       position="bottomright"))
 m.add_control(ipyleaflet.LayersControl(position='topright'))
 m.add_control(ipyleaflet.FullScreenControl())
 display(m)
