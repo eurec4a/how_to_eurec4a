@@ -7,6 +7,7 @@
     - file: specmacs
     - file: unified
     - file: flight_tracks_leaflet
+    - file: smart
 - file: toolbox
   sections:
     - file: flight-phase-operations
