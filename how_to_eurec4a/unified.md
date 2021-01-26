@@ -78,7 +78,6 @@ ds_dropsondes_selection = ds_dropsondes.sel(time=slice(seg["start"], seg["end"])
 We plot reflectivity from the HAMP Radar, the flight altitude of HALO, relative humdity measurements from the dropsondes and brightness temperatures from the low-frequency channels along the 22 GHz water vapor line (K band) from the HAMP radiometer.
 
 ```{code-cell} ipython3
-import typhon
 mpl.rcParams['font.size'] = 12
 
 fig, (ax1, ax2) = plt.subplots(2,1,sharex=True, figsize=(10,5), constrained_layout=True, gridspec_kw={'height_ratios':(2, 1.2)})
@@ -87,7 +86,7 @@ fig, (ax1, ax2) = plt.subplots(2,1,sharex=True, figsize=(10,5), constrained_layo
 ds_bahamas_selection.altitude.plot(ax=ax1, x='time', color = 'black', label = 'flight altitude')
 ax1.legend(loc ='upper left')
 ds_radar_selection.dBZ.plot(ax= ax1, x='time', cmap ='cubehelix')
-im= ds_dropsondes_selection.rh_mat.plot(ax=ax1,x='time', cmap = 'density', add_colorbar=False )
+im= ds_dropsondes_selection.rh_mat.plot(ax=ax1,x='time', cmap = 'bone_r', add_colorbar=False )
 ## we add a separate axis for the second colobar
 cax = fig.add_axes([1, 0.52, 0.02, 0.48])
 cbar = fig.colorbar(im, cax=cax, label='rh [%]')
