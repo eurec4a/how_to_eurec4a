@@ -13,9 +13,9 @@ kernelspec:
 
 # SMART dataset
 
-The following script exemplifies the access and usage of SMART data measured during EUREC4A.
+The following script exemplifies the access and usage of SMART data measured during EUREC4A. The Spectral Modular Airborne Radiation measurement sysTem (SMART) measures downward irradiances in the solar spectral range between 300 nm and 2200 nm.
 
-More information on the dataset can be found at `?`. If you have questions or if you would like to use the data for a publication, please don't hesitate to get in contact with the dataset authors as stated in the dataset attributes `contact` or `author`.
+More information on the dataset can be found in [Wendisch et al. (2001)](https://doi.org/10.1175/1520-0426(2001)018%3C1856:AASAWA%3E2.0.CO;2). If you have questions or if you would like to use the data for a publication, please don't hesitate to get in contact with the dataset authors as stated in the dataset attributes `contact` or `author`.
 
 ```{code-cell} ipython3
 %pylab inline
@@ -30,8 +30,6 @@ import eurec4a
 
 ```{code-cell} ipython3
 cat = eurec4a.get_intake_catalog()
-#import intake
-#cat =intake.open_catalog('/Users/u237022/Documents/WorkEUREC4A/HALO_Paper/eurec4a-intake/catalog.yml')
 list(cat.HALO.SMART)
 ```
 
@@ -41,8 +39,14 @@ list(cat.HALO.SMART)
 
 ```{code-cell} ipython3
 ds_smart = cat.HALO.SMART.spectral_irradiances['HALO-0205'].to_dask()
-ds_smart.coords['time']=(ds_smart.Time.values - np.timedelta64(1,'D')) ### correct time and set as coordinate  
 ds_smart
+```
+
+The available dataset includes irradiances for six selected wavelengths (422nm, 532nm, 648nm, 858nm, 1238nm, 1638nm). 
+We specify the variable `time` to be a coordinate of the dataset and correct for an erroneous time shift of one day. Assigning the time to be a coordinate makes it more comfortable to plot variables with a time dimension.
+
+```{code-cell} ipython3
+ds_smart.coords['time']=(ds_smart.Time.values - np.timedelta64(1,'D'))
 ```
 
 First Quickplot of whole flight (one wavelength)
