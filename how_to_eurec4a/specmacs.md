@@ -118,7 +118,7 @@ def ellipsoidal_to_ecef(lat, lon, height):
     see: https://gssc.esa.int/navipedia/index.php/Ellipsoidal_and_Cartesian_Coordinates_Conversion
     '''
     
-    WGS_84_dict = {"axes": (6378137.0, 6356752.314245)} #m
+    WGS_84_dict = {"axes": (6378137.0, 6356752.314245)} #m semi-minor and semi-major axis of WGS-84 geoid
     a, b = WGS_84_dict["axes"]
     
     e_squared = e2(a, b)
@@ -252,25 +252,21 @@ ds_selection.coords["cloudlat"] = (("time", "angle"), cloudlat, {'units': 'degre
 ```{code-cell} ipython3
 import cartopy.crs as ccrs
 from matplotlib import pyplot as plt
-
-fig = plt.figure(figsize=(12, 6))
-ax = plt.axes(projection=ccrs.PlateCarree())
-img = ax.contourf(ds_selection["cloudlon"], ds_selection["cloudlat"], 
-                  ds_selection["cloud_mask"], 
-                  levels = [-1.5, -0.5, 0.5, 1.5, 2.5])
-gl = ax.gridlines(crs=ccrs.PlateCarree(), draw_labels=True,
-                  linewidth=2, color='gray', alpha=0.5, linestyle='--')
-cbar_ax = fig.add_axes([0.4, 0.4, 0.05, 0.15])
-cbar = fig.colorbar(img, cax = cbar_ax, ticks=ds_selection.cloud_mask.flag_values)
-cbar.ax.set_yticklabels(ds_selection.cloud_mask.flag_meanings.split(" "))
 ```
 
 ```{code-cell} ipython3
-#works also
 plt.figure(figsize=(14,6))
 ax = plt.axes(projection=ccrs.PlateCarree())
-ds_selection.cloud_mask.plot.contourf(ax=ax, transform=ccrs.PlateCarree(), 
-                                        x='cloudlon', y='cloudlat', add_colorbar=True)
+fig_img = ds_selection.cloud_mask.plot.contourf(ax=ax, transform=ccrs.PlateCarree(),
+                                      x='cloudlon', y='cloudlat',
+                                      levels = [-1.5, -0.5, 0.5, 1.5, 2.5],
+                                      add_colorbar=True,
+                                      cbar_kwargs={"ticks": ds_selection.cloud_mask.flag_values, })
+fig_img.colorbar.set_ticklabels(ds_selection.cloud_mask.flag_meanings.split(" "))
 gl = ax.gridlines(crs=ccrs.PlateCarree(), draw_labels=True,
                       linewidth=2, color='gray', alpha=0.5, linestyle='--')
+```
+
+```{code-cell} ipython3
+
 ```
