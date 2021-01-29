@@ -34,7 +34,7 @@ cat = eurec4a.get_intake_catalog()
 list(cat)
 ```
 
-* We can funrther specify the platform, instrument, if applicable dataset level or variable name, and pass it on to dask.
+* We can further specify the platform, instrument, if applicable dataset level or variable name, and pass it on to dask.
 
 *Note: have a look at the attributes of the xarray dataset `ds` for all relevant information on the dataset, such as author, contact, or citation infromation.*
 
@@ -81,6 +81,7 @@ ds_selection.cloud_mask.T.plot(ax=ax, cmap="gray")
 ## Conversion from camera view angles to latitude and longitude
 
 ```{code-cell} ipython3
+#This will be removed if the final version of the cloudmask is uploaded.
 import intake
 cat_experimental = intake.open_catalog("https://raw.githubusercontent.com/d70-t/eurec4a-intake/cloudmaskSWIRv2/catalog.yml")
 ds = cat_experimental.HALO.specMACS.cloudmaskSWIR["HALO-0202"].to_dask()
@@ -97,14 +98,12 @@ Let's have a look a these variables
 
 ```{code-cell} ipython3
 for key in ["lat", "lon", "height", "vza", "vaa"]:
-    print(key, ds_selection[key].units)
-    if "comment" in ds_selection[key].attrs:
-        print(key, ds_selection[key].comment)
-    print("\n")
+    print(key, ds_selection[key].attrs)
 ```
 
 * The position of the HALO is saved in ellipsoidal coordinates. It is defined by the lat/lon/height coordinates with respect to the WGS-84 ellipsoid.
 * On the other hand the viewing zenith and azimuth angles are given with respect to the local horizon (lh) coordinate system at the position of the HALO. This system has its center at the lat/lon/height position of the HALO and the x/y/z axis point into North, East and down directions.
+
 A convenient way to work with such kind of data is to transform it into the Earth-Centered, Earth-Fixed (ECEF) coordinate system. The origin of this coordinate system is the center of the Earth. The z-axis passes through true north, the x-axis through the Equator and the 0° longitude and the y-axis is orthogonal to x and z. This cartesian system makes computations of distances and angles very easy. 
 
 In a first step we want to transform the position of the HALO into the ECEF coordinate system. We use the method presented here: https://gssc.esa.int/navipedia/index.php/Ellipsoidal_and_Cartesian_Coordinates_Conversion
@@ -181,19 +180,35 @@ ds_selection.load()
 ```
 
 ```{code-cell} ipython3
+import xarray as xr
+
 def vector_lh(ds):
     down = np.array([0,0,1]) #
     view_lh = np.einsum("ijlm,jlm->iml", Rz(np.deg2rad(-ds["vaa"]))[...], np.einsum("ijlm, j->ilm", Ry(-np.deg2rad(ds["vza"])), down)) #last step: -> iml then this is transposed by (0,2,1)  
     return view_lh/np.linalg.norm(view_lh, axis = 0)
 
 view_lh = vector_lh(ds_selection)
+view_lh.shape
+view_lh = xr.Dataset({"time": ds_selection.time.drop(labels=("lon", "lat")),
+                      "angle": ds_selection.angle,
+                      "view_lh": xr.DataArray(view_lh, dims = ["direction", "angle", "time"])
+                     })
 ```
 
-Now we want to calculate the length of the vector which connects the HALO and the cloud. We need an approximation of the cloud top height and will use 1000 m as a first guess.
+We need an approximation of the cloud top height and will use 1000 m as a first guess. First create an array of the cloudheight which has the same dimensions as the cloud mask. If you have better cloudheight data just put in your data.
 
 ```{code-cell} ipython3
-cth = 1000 #m cloud top height
-viewpath_lh = view_lh * np.abs(ds_selection["height"].values - cth/view_lh[2])
+cth = xr.Dataset({"time": ds_selection.time.drop(labels=("lon", "lat")),
+                  "angle": ds_selection.angle, 
+                  "cloudheight": xr.DataArray(np.ones_like(ds_selection.cloud_mask.values)*1000, dims=("time", "angle"))})
+print(cth)
+```
+
+Now let's calculate the length of the vector connecting HALO and the cloud. We need the height of the HALO, the cloudheight and the viewing direction for this.
+
+```{code-cell} ipython3
+viewpath_lh = (view_lh * np.abs(ds_selection["height"].values - cth.cloudheight.T)/view_lh.isel(direction=2)).rename({"view_lh": "viewpath_lh"})
+viewpath_lh = viewpath_lh.transpose("direction", "angle", "time")
 ```
 
 Now we would like to transform this viewpath also into the ECEF coordinate system. We will stick to the method described here: https://gssc.esa.int/navipedia/index.php/Transformations_between_ECEF_and_ENU_coordinates
@@ -207,7 +222,7 @@ def lh_to_ecef(enu_vector, lat, lon):
     ecef_vector = np.einsum('mn...,nd...->md...',rot_matrix_inv, enu_vector)
     return ecef_vector
 
-viewpath_ecef = lh_to_ecef(viewpath_lh, ds_selection["lat"], 
+viewpath_ecef = lh_to_ecef(viewpath_lh.viewpath_lh, ds_selection["lat"], 
                            ds_selection["lon"])
 ```
 
