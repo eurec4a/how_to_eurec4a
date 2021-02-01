@@ -85,7 +85,7 @@ ds_selection.cloud_mask.T.plot(ax=ax, cmap="gray")
 import intake
 cat_experimental = intake.open_catalog("https://raw.githubusercontent.com/d70-t/eurec4a-intake/cloudmaskSWIRv2/catalog.yml")
 ds = cat_experimental.HALO.specMACS.cloudmaskSWIR["HALO-0202"].to_dask()
-seg = segments["HALO-0202_c1"]
+seg = segments["HALO-0202_cl1"]
 ds_selection = ds.sel(time=slice(seg["start"], seg["end"]))
 ```
 
@@ -151,9 +151,15 @@ def e2(a, b):
 With these functions it is very easy to transform the lat/lon/height position of the HALO into the ECEF-coordinate system:
 
 ```{code-cell} ipython3
+import xarray as xr
+
 HALO_ecef = ellipsoidal_to_ecef(np.deg2rad(ds_selection["lat"]), 
                                 np.deg2rad(ds_selection["lon"]), 
                                 ds_selection["height"])
+
+HALO_ecef = xr.Dataset({"time": ds_selection.time.drop(labels=("lon", "lat")),
+                        "HALO_ecef": xr.DataArray(HALO_ecef, dims = ["direction", "time"])
+                       })
 ```
 
 As a next step we want to set up the vector of the viewing direction. We will need the rotation matrices Rx, Ry and Rz for this.
@@ -176,38 +182,44 @@ def Rz(alpha):
 Now we can calculate the viewing direction relative to the local horizon coordinate system.
 
 ```{code-cell} ipython3
-ds_selection.load()
-```
-
-```{code-cell} ipython3
-import xarray as xr
-
 def vector_lh(ds):
-    down = np.array([0,0,1]) #
-    view_lh = np.einsum("ijlm,jlm->iml", Rz(np.deg2rad(-ds["vaa"]))[...], np.einsum("ijlm, j->ilm", Ry(-np.deg2rad(ds["vza"])), down)) #last step: -> iml then this is transposed by (0,2,1)  
+    '''
+    Calculate the viewing direction relative to the local horizon coordinate system.
+    The viewing direction is defined by the viewing zenith and azimuth angles which 
+    are part of the dataset. Two rotations are carried out to rotate the vector 
+    pointing into the downward direction into the viewing direction:
+    1. Rotation around the y-axis with the viewing zenith angle
+    2. Rotation around the z-axis with the viewinzg azimuth angle.
+    '''
+    down = xr.DataArray(np.array([0,0,1]), dims = ["direction"])
+    rot_view_lh = xr.Dataset({"time": ds.time.drop(labels=("lon", "lat")),
+                              "angle": ds.angle,
+                              "rot_vza": xr.DataArray(Ry(np.deg2rad(-ds["vza"])), dims = ["i", "direction", "time", "angle"]),
+                              "rot_vaa": xr.DataArray(Rz(np.deg2rad(-ds["vaa"])), dims = ["i", "direction", "time", "angle"])})
+
+    view_lh = xr.dot(rot_view_lh.rot_vza, down, dims="direction")
+    view_lh = xr.dot(rot_view_lh.rot_vaa.rename({"direction": "i", "i": "direction"}),view_lh, dims="i").transpose("direction", "angle", "time")
     return view_lh/np.linalg.norm(view_lh, axis = 0)
 
 view_lh = vector_lh(ds_selection)
-view_lh.shape
-view_lh = xr.Dataset({"time": ds_selection.time.drop(labels=("lon", "lat")),
-                      "angle": ds_selection.angle,
-                      "view_lh": xr.DataArray(view_lh, dims = ["direction", "angle", "time"])
-                     })
 ```
 
 We need an approximation of the cloud top height and will use 1000 m as a first guess. First create an array of the cloudheight which has the same dimensions as the cloud mask. If you have better cloudheight data just put in your data.
 
 ```{code-cell} ipython3
+import dask.array as da
+
+height_guess = 1000 #m
 cth = xr.Dataset({"time": ds_selection.time.drop(labels=("lon", "lat")),
                   "angle": ds_selection.angle, 
-                  "cloudheight": xr.DataArray(np.ones_like(ds_selection.cloud_mask.values)*1000, dims=("time", "angle"))})
+                  "cloudheight": xr.DataArray(da.ones_like(ds_selection.cloud_mask)*height_guess, dims=("time", "angle"))})
 print(cth)
 ```
 
 Now let's calculate the length of the vector connecting HALO and the cloud. We need the height of the HALO, the cloudheight and the viewing direction for this.
 
 ```{code-cell} ipython3
-viewpath_lh = (view_lh * np.abs(ds_selection["height"].values - cth.cloudheight.T)/view_lh.isel(direction=2)).rename({"view_lh": "viewpath_lh"})
+viewpath_lh = (view_lh * np.abs(ds_selection["height"] - cth.cloudheight)/view_lh.isel(direction=2))
 viewpath_lh = viewpath_lh.transpose("direction", "angle", "time")
 ```
 
@@ -217,19 +229,22 @@ Now we would like to transform this viewpath also into the ECEF coordinate syste
 def lh_to_ecef(enu_vector, lat, lon):
     #lh: local horizon
     #following: https://gssc.esa.int/navipedia/index.php/Transformations_between_ECEF_and_ENU_coordinates adjusted to NED coordinate system.
-    rot_matrix_inv = np.einsum('mn...,nd...->md...',Ry(np.deg2rad(np.ones(lon.shape)*90)), 
-                               np.einsum('mn...,nd...->md...',Rx(-np.deg2rad(lon)),Ry(np.deg2rad(lat))))
+    rot_matrix_inv =  np.einsum('lm...,mn...,nd...->ld...', Ry(np.deg2rad(np.ones(lon.shape)*90)), Rx(-np.deg2rad(lon)),Ry(np.deg2rad(lat)))
     ecef_vector = np.einsum('mn...,nd...->md...',rot_matrix_inv, enu_vector)
     return ecef_vector
 
-viewpath_ecef = lh_to_ecef(viewpath_lh.viewpath_lh, ds_selection["lat"], 
-                           ds_selection["lon"])
+viewpath_ecef = lh_to_ecef(viewpath_lh, ds_selection["lat"].values, 
+                           ds_selection["lon"].values)
+viewpath_ecef = xr.Dataset({"time": ds_selection.time.drop(labels=("lon", "lat")),
+                            "angle": ds_selection.angle,
+                            "viewpath_ecef": xr.DataArray(viewpath_ecef, dims = ["direction","angle", "time"])
+                           })
 ```
 
 If we add the viewpath to the position of the HALO the resulting point gives us the ECEF coordinates of the point on the cloud.
 
 ```{code-cell} ipython3
-cloudpoint_ecef = HALO_ecef[..., np.newaxis] + viewpath_ecef.transpose(0,2,1)
+cloudpoint_ecef = HALO_ecef.HALO_ecef + viewpath_ecef.viewpath_ecef
 x_cloud, y_cloud, z_cloud = cloudpoint_ecef
 ```
 
@@ -255,7 +270,6 @@ def ecef_to_ellipsoidal(x, y, z, iterations=10):
         height = p / np.cos(lat) - N
         lat = np.arctan2(z, (1-e_squared * (N/(N+height)))*p)
     return [np.rad2deg(lat), np.rad2deg(lon), height]
-
 
 cloudlat, cloudlon, cloudheight = ecef_to_ellipsoidal(x_cloud, y_cloud, z_cloud, iterations=10)
 ds_selection.coords["cloudlon"] = (("time", "angle"), cloudlon, {'units': 'degree east'})
@@ -283,5 +297,6 @@ gl = ax.gridlines(crs=ccrs.PlateCarree(), draw_labels=True,
 ```
 
 ```{code-cell} ipython3
-
+#del ds_selection.attrs['_NCProperties']
+#ds_selection.to_netcdf("/project/meteo/work/Veronika.Poertge/PhD/data/eurec4a/eurec4a_book/new_ds.nc", "w")
 ```
