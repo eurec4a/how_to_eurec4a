@@ -28,7 +28,12 @@ def tree(cat, level=0):
     prefix = " " * (3*level)
     try:
         for child in list(cat):
-            print(prefix + str(child))
+            parameters = [p["name"] for p in cat[child].describe().get("user_parameters", [])]
+            if len(parameters) > 0:
+                parameter_str = " (" + ", ".join(parameters) + ")"
+            else:
+                parameter_str = ""
+            print(prefix + str(child) + parameter_str)
             tree(cat[child], level+1)
     except:
         pass
