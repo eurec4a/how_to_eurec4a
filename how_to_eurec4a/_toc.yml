@@ -8,6 +8,7 @@
     - file: unified
     - file: flight_tracks_leaflet
     - file: smart
+    - file: bacardi
 - file: toolbox
   sections:
     - file: flight-phase-operations
