@@ -56,17 +56,38 @@ We plot the upward and downward irradiances in two panels.
 mpl.rcParams['font.size'] = 12
 
 fig, (ax1, ax2) = plt.subplots(1,2, figsize=(16,6))
+ax1.set_prop_cycle(color=['darkblue', 'red'])
 for var in ['F_up_solar', 'F_up_terrestrial']:
     ds[var].plot(ax=ax1,label= var)
 ax1.legend()
-ax1.set_ylabel('Upward solar and terrestrial irradiance')
+ax1.set_ylabel('upward solar and terrestrial irradiance')
 
+ax2.set_prop_cycle(color=['grey', 'darkblue', 'skyblue'])
 for var in ['F_down_solar_sim', 'F_down_solar', 'F_down_solar_diff']:
     ds[var].plot(ax=ax2, label= var)
 ax2.legend()
-ax2.set_ylabel('Downward solar irradiance')
+ax2.set_ylabel('downward solar irradiance')
 
 for ax in [ax1, ax2]:
     ax.spines['right'].set_visible(False)
     ax.spines['top'].set_visible(False)
+```
+
+The right plot shows in blue the downward solar irradiance for two different assumptions about conditions above HALO: a 100% diffuse radiation field due to clouds or cloud-free conditions. Whenever the sensor is tilted which is almost always the case within the circles, the measurement is translated to a horizontal plane and within the hemispheric integral of radiance reaching the sensor a small part has to be added based on the assumption of the sky aloft. 
+
++++
+
+Striking are some spikes. These correspond to the sharp turns of HALO with large roll angles. The stabilizing platform can only correct for a few degrees and if the sensor is tilted towards (away from) the sun, we see a high (low) peak. 
+
++++
+
+The wiggles originate from the about 200km change in location  and therewith solar zenith angle within one circle / hour as can be seen in a plot.
+
+```{code-cell} ipython3
+fig, ax = plt.subplots()
+ds.F_down_solar.plot(ax=ax, color = 'darkblue')
+ax.set_ylabel('downward solar irradiance \n corrected for cloud-free conditions', color = 'darkblue')
+ax2=ax.twinx()
+ds.sza.plot(ax=ax2, color = 'black')
+ax2.set_ylim(110,28)
 ```
