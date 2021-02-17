@@ -12,4 +12,5 @@
 - file: toolbox
   sections:
     - file: flight-phase-operations
+    - file: show_intake_catalog
 - file: stats
