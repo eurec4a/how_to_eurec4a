@@ -103,10 +103,7 @@ Some comments:
 
 * The `cloud_flag` values have the meaning 0 - clear and 1 - cloudy. A backscatter threshold of 10 was used to distinguish between clear and cloudy.
 
-* The cloud optical thickness `cloud_ot` is derived from the HSRL channel following a standard [HSRL method](http://lidar.ssec.wisc.edu/syst/hsrl/node2.htm) that relates the Lidar signal *S* depending on the distance to the aircraft *r* to the optical thickness *OT* by:
-$$
-OT = -1/2 * ln(S(r)/S(0))
-$$
+* The cloud optical thickness `cloud_ot` is derived from the HSRL channel following a standard [HSRL method](http://lidar.ssec.wisc.edu/syst/hsrl/node2.htm) that relates the Lidar signal *S* depending on the distance to the aircraft *r* to the optical thickness *OT* by $OT = -1/2 * ln(S(r)/S(0))$.
 In clouds with OT greater than about 3.5 the signal to noise ratio is too small meaning that the clouds are intransparent to the Lidar beam, which results in an OT of about 12 in the WALES dataset.
 
 * the cloud or boundary layer top height above sea level `cloud_top` defines a sharp gradient in the backscatter signal. The cloud flag can be used to distinguish between cloud and boundary layer top height.
