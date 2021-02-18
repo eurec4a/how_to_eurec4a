@@ -4,7 +4,7 @@ matplotlib
 numpy
 xarray
 eurec4a
-intake
+intake[dataframe] # since intake 0.6.1 to_dask() doesn't work anymore without the [dataframe] specification due to a missing msgpack dependency
 intake-xarray
 fsspec
 ipfsspec>=0.0.2
