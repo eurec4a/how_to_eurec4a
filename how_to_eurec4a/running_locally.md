@@ -35,7 +35,8 @@ git clone git@github.com:tmieslinger/how_to_eurec4a.git
 This will create a local copy of the entire book repository in a newly created local folder `how_to_eurec4a`.
 Please change into this directory.
 
-````{note}
+````{admonition} Maybe use a virtual environment
+:class: dropdown, tip
 You might want to use a virtual environment for the book if you like to keep the required libraries in a confined place, but it is entirely optional and up to your preferences.
 There are many options to do so and [virtualenv](https://virtualenv.pypa.io/) is one of them.
 Using virtualenv, you could create and aktivate an environment like:
@@ -50,21 +51,11 @@ You'll have to install the dependencies as above, but as you already have all th
 ```bash
 pip install -r requirements.txt
 ```
-`jupyter` itself is not installed by the requirements file. You might want to install it as well:
 
-```bash
-pip install jupyter
-```
+Depending on your needs, you can continue using [interactive notebooks](#interactive) or [compile the entire book](#compile-the-book).
 
-Once everything is set up, you can either start your notebook server (either `jupyter notebook` or `jupyter lab`) and run and modify the chapter locally.
-You can also execute `jupyter-book` directly via:
-```bash
-jb build how_to_eurec4a
-```
-which itself will run all code cells and output the results as HTML pages in a newly created folder.
-This variant is especially useful if you like to work directly on the MyST files (see note below) using a text editor and should be done every time before you submit new changes to the book.
-
-```{note}
+```{admonition} About MyST notebooks.
+:class: dropdown
 Internally, the book does not use the `.ipynb` file format as it is not well-suited for version control.
 Instead, we use [Markedly Structured Text](https://myst-parser.readthedocs.io/) or MyST which is a variant of Markdown, optimized to contain executable code cells as in notebooks.
 The extension of MyST files is `.md`.
@@ -74,3 +65,31 @@ In contrast to notebooks, these files **do not** contain generated cell outputs,
 It is installed through the `requirements.txt` and should register itself with `jupyter`, so that you can open the files as if they where `ipynb` files.
 If that does not work, please have a look at the [installation instructions](https://jupytext.readthedocs.io/en/latest/install.html) of `jupytext`.
 ```
+
+### interactive
+`jupyter` itself is not installed by the requirements file. You might want to install it as well:
+
+```bash
+pip install jupyter
+```
+
+Once everything is set up, you can either start your notebook server:
+````{panels}
+... either using classical notebooks
+```bash
+jupyter notebook
+```
+---
+... or using jupyter lab
+```bash
+jupyter lab
+```
+````
+
+### compile the book
+You can also execute `jupyter-book` directly via:
+```bash
+jb build how_to_eurec4a
+```
+which itself will run all code cells and output the results as HTML pages in a newly created folder.
+This variant is especially useful if you like to work directly on the MyST files (see note below) using a text editor and should be done every time before you submit new changes to the book.
