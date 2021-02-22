@@ -1,6 +1,6 @@
 # Introduction
 
-Welcome to the world of EUREC4A data!  
+Welcome to the world of EUREC4A data!
 This is a collection of python code examples to get you started with the data.
 
 ## Idea
@@ -10,7 +10,7 @@ The scripts typically contain at minimum how to get a specific dataset and some 
 ## How can you run the code?
 In the chapters you will find different options in the top bar to the right. Two interactive ways are provided by `LiveCode` and `Binder` integration. In both cases a virtual environment is created for you in the background if you click on the respective link and you don't have to take care of any requirements locally on your machine. Of course, you can also download the ipython notebook `ipynb`, download the [requirements](https://github.com/tmieslinger/how_to_eurec4a/blob/master/requirements.txt), install them `pip install -r requirements.txt`, and start playing with the notebook locally.
 
-In principe, we anticipate to have at minimum one example script per instrument and we are very happy about contributions by you :) 
+In principle, we anticipate to have at minimum one example script per instrument and we are very happy about contributions by you :)
 If you miss some information that could be valuable, feel free to check the link on [how to contribute](https://github.com/tmieslinger/how_to_eurec4a/blob/master/CONTRIBUTING.md) to this book and make a pull request or open an issue on github if you are short on time. Thanks!
 
 ## Useful links

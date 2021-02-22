@@ -1,7 +1,7 @@
 # How to EUREC4A
 
-EUREC4A offers a wealth of data! 
-This book shall provide some help in finding and working with different datasets. Example scripts mainly show the access and basic plots of dataset variables. 
+EUREC4A offers a wealth of data!
+This book shall provide some help in finding and working with different datasets. Example scripts mainly show the access and basic plots of dataset variables.
 
 **The most recent version of the book is linked [here](https://eurec4a_staging.pages.gwdg.de/how_to_eurec4a/).**
 
