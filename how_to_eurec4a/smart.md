@@ -43,11 +43,6 @@ ds_smart
 ```
 
 The available dataset includes irradiances for six selected wavelengths (422nm, 532nm, 648nm, 858nm, 1238nm, 1638nm). 
-We specify the variable `time` to be a coordinate of the dataset and correct for an erroneous time shift of one day. Assigning the time to be a coordinate makes it more comfortable to plot variables with a time dimension.
-
-```{code-cell} ipython3
-ds_smart.coords['time']=(ds_smart.Time.values - np.timedelta64(1,'D'))
-```
 
 First Quickplot of whole flight (one wavelength)
 
