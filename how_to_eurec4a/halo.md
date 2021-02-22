@@ -6,9 +6,8 @@ The German High Altitude and Long-Range Research Aircraft (HALO) operated by the
 During EUREC4A HALO flew most of the time at about 9 km altitude circular patterns with 200 km diameter centered at 57.72W, 13.30N.
 On typical flight days an excursion to the NTAS buoy or a satellite underpass separated the first three from the remaining three circles. Typically, the aircraft stayed up in the air for 8-9 hours per day starting at varying times in the morning to capture the diurnal cycle.
 
-```{image} halo.jpg
-:alt: halo
-:class: bg-primary mb-1
+```{figure} halo.jpg
+:alt: HALO
 :width: 400px
 :align: center
 ```
