@@ -1,6 +1,6 @@
 # HALO
 
-The German High Altitude and Long-Range Research Aircraft (HALO) operated by the Deutsches Zentrum für Luft- and Raumfahrt (DLR) was equiped with remote sensing instruments and a facility to launch dropsondes. All instruments and PIs are listen on the official [eurec4a](http://eurec4a.eu/platforms/halo) webpage.
+The German High Altitude and Long-Range Research Aircraft (HALO) operated by the Deutsches Zentrum für Luft- and Raumfahrt (DLR) was equiped with remote sensing instruments and a facility to launch dropsondes. All instruments and PIs are listed on the official [eurec4a](http://eurec4a.eu/platforms/halo) webpage.
 
 
 During EUREC4A HALO flew most of the time at about 9 km altitude circular patterns with 200 km diameter centered at 57.72W, 13.30N. 
