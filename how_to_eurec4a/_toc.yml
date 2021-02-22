@@ -1,7 +1,7 @@
 # Table of contents
 # Learn more at https://jupyterbook.org/customize/toc.html
 - file: intro
-- file: content
+- file: halo
   sections:
     - file: dropsondes
     - file: specmacs
@@ -12,4 +12,5 @@
   sections:
     - file: flight-phase-operations
     - file: show_intake_catalog
+    - file: running_locally
 - file: stats
