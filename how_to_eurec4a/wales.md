@@ -96,7 +96,7 @@ for ax in [ax1, ax2, ax3]:
     ax.spines['top'].set_visible(False)
 ```
 
-### Cloud fraction
+## Cloud fraction
 
 ```{code-cell} ipython3
 cf = (((ds_cloud.cloud_mask==1) | (ds_cloud.cloud_mask==2)).sum()
@@ -120,7 +120,9 @@ fig, ax = plt.subplots(figsize=(10, 4))
 
 ax.set_prop_cycle(color=plt.get_cmap("magma")(np.linspace(0, 1, 4)))
 for ind, t in enumerate([1, 5, 10]):
-    ds_cloud.cloud_mask_binary.resample(time=f"{t}min").mean().plot(lw=ind + 1, label=f"{t} min")
+    ds_cloud.cloud_mask_binary.resample(time=f"{t}min",
+                                        loffset=f"{t/2}min").mean().plot(lw=ind + 1,
+                                                                         label=f"{t} min")
 
 ax.set_ylim(0, 1)
 ax.set_ylabel("Cloud fraction")
@@ -128,8 +130,4 @@ ax.set_xlabel("date: MM-DD HH")
 ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)
 ax.legend(title="averaging period", bbox_to_anchor=(1,1), loc="upper left")
-```
-
-```{code-cell} ipython3
-
 ```
