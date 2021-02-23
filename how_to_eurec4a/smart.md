@@ -15,7 +15,7 @@ kernelspec:
 
 The following script exemplifies the access and usage of SMART data measured during EUREC4A. The Spectral Modular Airborne Radiation measurement sysTem (SMART) measures downward irradiances in the solar spectral range between 300 nm and 2200 nm.
 
-More information on the dataset can be found in [Wendisch et al. (2001)](https://doi.org/10.1175/1520-0426(2001)018%3C1856:AASAWA%3E2.0.CO;2). If you have questions or if you would like to use the data for a publication, please don't hesitate to get in contact with the dataset authors as stated in the dataset attributes `contact` or `author`.
+More information on the dataset can be found in [Stevens et al. (2019)](https://doi.org/10.1175/BAMS-D-18-0198.1) and [Wendisch et al. (2001)](https://doi.org/10.1175/1520-0426(2001)018%3C1856:AASAWA%3E2.0.CO;2). If you have questions or if you would like to use the data for a publication, please don't hesitate to get in contact with the dataset authors as stated in the dataset attributes `contact` or `author`.
 
 ```{code-cell} ipython3
 %pylab inline
@@ -42,7 +42,7 @@ ds_smart = cat.HALO.SMART.spectral_irradiances['HALO-0205'].to_dask()
 ds_smart
 ```
 
-The available dataset includes irradiances for six selected wavelengths (422nm, 532nm, 648nm, 858nm, 1238nm, 1638nm). 
+The available dataset includes irradiances for six selected wavelengths (422nm, 532nm, 648nm, 858nm, 1238nm, 1638nm). The full dataset is available on demand. Contact the dataset authors as stated in the dataset attributes `contact`.
 
 First Quickplot of whole flight (one wavelength)
 
@@ -91,8 +91,4 @@ ax.legend()
 ax.set_ylabel('Spectral downward irradiance / Wm$^{-2}$nm$^{-1}$')
 ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)
-```
-
-```{code-cell} ipython3
-
 ```
