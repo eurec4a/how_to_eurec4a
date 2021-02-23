@@ -15,7 +15,7 @@ If you just like to run the code of a single notebook and don't care to much abo
 If you would just run the downloaded code, the chance is high that some required libraries are not yet installed on your system. You can either do try and error to find out which libraries are required for the chapter you downloaded, or you can simply installed all requirements for the entire book by running the following command on your command line:
 ```bash
 pip install jupyter
-pip install -r https://raw.githubusercontent.com/tmieslinger/how_to_eurec4a/master/requirements.txt
+pip install -r https://raw.githubusercontent.com/eurec4a/how_to_eurec4a/master/requirements.txt
 ```
 
 Afterwards, you can start a local notebook server (either `jupyter notebook` or `jupyter lab`) and run and modify the chapter locally.
@@ -29,7 +29,7 @@ Handling requirements in this project is not entirely straightforward, as the re
 If you like to do it more properly, you can also clone the repository via git:
 
 ```bash
-git clone git@github.com:tmieslinger/how_to_eurec4a.git
+git clone git@github.com:eurec4a/how_to_eurec4a.git
 ```
 
 This will create a local copy of the entire book repository in a newly created local folder `how_to_eurec4a`.

@@ -10,7 +10,7 @@ author                      : EUREC4A community  # The author of the book
 copyright                   : "2020"  # Copyright year to be placed in the footer
 logo                        : logo_eurec4a.png  # A path to the book logo
 repository:
-  url                       : https://github.com/tmieslinger/how_to_eurec4a
+  url                       : https://github.com/eurec4a/how_to_eurec4a
   path_to_book              : how_to_eurec4a
 launch_buttons:
   binderhub_url             : https://mybinder.org

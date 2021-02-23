@@ -11,7 +11,7 @@ The scripts typically contain at minimum how to get a specific dataset and some 
 In the chapters you will find a rocket icon (<i class="fas fa-rocket"></i>) in the top bar to the right. It provides two interactive ways to run the code: `Binder` and `LiveCode`. In both cases a virtual environment is created for you in the background by a click on the respective link and you don't have to take care of any requirements locally on your machine. Of course you can also run all the code locally as described in {doc}`running_locally`.
 
 In principle, we anticipate to have at minimum one example script per instrument and we are very happy about contributions by you :)
-If you miss some information that could be valuable, feel free to check the link on [how to contribute](https://github.com/tmieslinger/how_to_eurec4a/blob/master/CONTRIBUTING.md) to this book and make a pull request or open an issue on github if you are short on time. Thanks!
+If you miss some information that could be valuable, feel free to check the link on [how to contribute](https://github.com/eurec4a/how_to_eurec4a/blob/master/CONTRIBUTING.md) to this book and make a pull request or open an issue on github if you are short on time. Thanks!
 
 ## Useful links
 A list of links to general information about EUREC4A:
