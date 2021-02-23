@@ -9,6 +9,7 @@
     - file: flight_tracks_leaflet
     - file: smart
     - file: wales
+    - file: hamp_comparison
 - file: toolbox
   sections:
     - file: flight-phase-operations
