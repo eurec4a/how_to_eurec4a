@@ -10,6 +10,9 @@
     - file: smart
     - file: bacardi
     - file: wales
+- file: meteor
+  sections:
+    - file: meteor_cloudradar
 - file: toolbox
   sections:
     - file: flight-phase-operations
