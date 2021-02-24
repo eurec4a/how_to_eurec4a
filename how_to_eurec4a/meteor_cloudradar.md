@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-# reading cloud radar data
+# Reading cloud radar data
 The high resolution data has about 500 MB per file, which when read in over a remote source can lead to long wait times.
 To reduce the wait times the data can be read in lazily using dask.
 Intake will this do this by default.
@@ -22,9 +22,9 @@ import eurec4a
 cat = eurec4a.get_intake_catalog()
 ```
 
-## available products
-The the `LIMRAD94` cloud radar offers multiple products which can be accessed using names and additional parameters.
-Let's see which products and parameters available for the cloud radar.
+## Available products
+The `LIMRAD94` cloud radar offers multiple products which can be accessed using names and additional parameters.
+Let's see which products and parameters are available for the cloud radar.
 For the parameters, we are also interested in their valid range:
 
 ```{code-cell} ipython3
@@ -41,7 +41,7 @@ for key, source in cat.Meteor.LIMRAD94.items():
     print()
 ```
 
-## radar reflectivity
+## Radar reflectivity
 We'll have a look at the `high_res` data in version 1.1. We'll keep the default date for simplicity:
 
 ```{code-cell} ipython3
