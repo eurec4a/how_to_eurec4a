@@ -141,10 +141,10 @@ We want to look at data from several sensors within a spacific timeframe on flig
 flight_id = 'HALO-0205'
 timeslice = slice('2020-02-05T13:07', '2020-02-05T13:11')
 
-radiometer_cm = cat.HALO.UNIFIED.HAMP_MWR_cloud_mask[flight_id].to_dask().sel(time=timeslice)
-radar_cm = cat.HALO.UNIFIED.HAMP_Radar_cloud_mask[flight_id].to_dask().sel(time=timeslice)
+radiometer_cm = cat.HALO.UNIFIED.HAMPradiometer_cloudmask[flight_id].to_dask().sel(time=timeslice)
+radar_cm = cat.HALO.UNIFIED.HAMPradar_cloudmask[flight_id].to_dask().sel(time=timeslice)
 
-retrieval =  cat.HALO.UNIFIED.HAMP_MWR_retrievals[flight_id].to_dask().sel(time=timeslice)
+retrieval =  cat.HALO.UNIFIED.HAMPradiometer_retrievals[flight_id].to_dask().sel(time=timeslice)
 
 radar = cat.HALO.UNIFIED.HAMPradar[flight_id].to_dask().sel(time=timeslice)
 wales = cat.HALO.WALES.cloudparameter[flight_id].to_dask().sel(time=timeslice)
@@ -168,7 +168,7 @@ def wgs84_height(lon, lat):
     #TODO: find wgs84_height(lon, lat) function that works with the licence
     # this is a good average number for the EUREC4A circle area.
     return np.zeros_like(lon+lat) - 47.5
-    
+
 radar_dBZ = radar.dBZ.transpose('height', 'time').values
 radar_x = center_to_edge(radar.time)
 radar_y = center_to_edge(radar.height)
