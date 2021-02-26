@@ -8,7 +8,7 @@ In particular, **dont't** use single byte integers, any unsigned integer and no 
 
 The data format netCDF which is used in many places throughout our community has evolved over time.
 During this evolution, the internally representable data types have also changed.
-Currently we are at netCDF version 4 with HDF5 as a storage backend, which offers a lot more flexibility as compared to previous versions of netCDF including many more [data types](https://www.unidata.ucar.edu/software/netcdf/docs/data_type.html).
+Currently we are at netCDF version 4 with HDF5 as a storage backend, which offers a lot more flexibility compared to previous versions of netCDF including many more [data types](https://www.unidata.ucar.edu/software/netcdf/docs/data_type.html).
 One **could** assume that this is all fine and we can use these data types freely, but here we are unlucky and there is more to keep in mind.
 
 In order to paint the full picture, we'll have to take a little detour and think about what [netCDF actually is](#what-is-netcdf) or even more what we think (or probably should think) about when talking about netCDF.
@@ -21,7 +21,7 @@ This is not only a bold statement, but is actually asked and discussed by the ne
 This chapter is not exactly about the same topic in the referenced issue, but still has similar roots.
 The relevant part for this discussion is that there is at least netCDF, the **data model** and netCDF, the **persistence format**.
 It is also recognized that there are multiple persistence formats (netCDF3, netCDF4/HDF5, zarr) for the same data model and there are translation layers such as OPeNDAP which can be used as a transport mechanism between the computer on which data is stored and the computer on which data is analyzed.
-In order to see how this might be relevant for out datasets, we have to look into these things separately.
+We further look at the relevance of the netCDF data model and netCDF persistence format for the EUREC4A datasets.
 
 ### The data model(s)
 There are actually a few different ideas of data models around, which share some general ideas.
@@ -35,12 +35,12 @@ Dataset diagram (From the [xarray documentation](http://xarray.pydata.org/en/sta
 ```
 A dataset is a collection of _variables_ and _dimensions_.
 Variables are multi-dimensional arrays and they can share dimensions (i.e. to express that `temperature` and `precipitation` are defined at the same locations, the three axes of the corresponding arrays should be identified with the same dimension label, that is `x`, `y` and `z`).
-Some variables may be promoted into a _coordinate_, which does not require to store it differently, but it changed how one would interpret the data.
+Some variables may be promoted into a _coordinate_, which does not require to store it differently, but it changes the interpretation of the data.
 In the example above, `latitude` and `longitude` would likely be identified as coordinates.
 One would typically use _coordinate_ values to index into some data or to label the ticks on a plot axis, while a normal _variable_ would usually be used to define a line or a color within a plot.
 There may be _variables_ which should be _coordinates_ only for a specific use case and vice versa.
 It is useful to distinguish between _variables_ and _coordinates_ within the metadata of a dataset, but the representation of the actual data may be the same for both, _variables_ and _coordinates_.
-In addition the existence of _coordinates_, there are more pieces of valuable additional information (think of units, coordinate reference systems, author information etc...).
+In addition to the existence of _coordinates_, there are more pieces of valuable additional information (think of units, coordinate reference systems, author information etc...).
 Thus we usually want those extra bits to datasets and variables, which can be done by the use of _attributes_.
 
 It turns out that many datasets in the EUREC4A context can be represented very well in this model.
@@ -52,7 +52,7 @@ I assume that in many cases when we talk about that a dataset being available in
 ````{margin}
 ```{note}
 NetCDF defines two internal "data models", thus they could go into the section above.
-However those models are also tied loosely to their backend storage formats and thus for this discussion, they might fit better in this place.
+However, those models are also loosely tied to their backend storage formats and thus, they might fit better in the current paragraph.
 ```
 ````
 
@@ -91,7 +91,7 @@ Thus, if a dataset should be accessed efficiently from a remote location, someth
 
 ````{margin}
 ```{note}
-Datacenters used by EUREC4A and the How to EUREC4A book which provida data via OPeNDAP include Aeris, NOAA PSL, NOAA NCEI, MPIM RAMADDA and the specMACS macsServer.
+Datacenters used by EUREC4A provide data via OPeNDAP include Aeris, NOAA PSL, NOAA NCEI, MPIM RAMADDA and the specMACS macsServer. The How to EUREC4A book makes use of this service to access the various datasets.
 ```
 ````
 
@@ -148,9 +148,9 @@ Thus, if we want to have datasets which can be used locally as well as remotely 
 
 Currently, the main use case for the Aeris data server is to publish netCDF files and retrieve them back, either via direct download or via OPeNDAP.
 This experiment is designed to test under which circumstances data which has been created as netCDF can be retrieved correctly via OPeNDAP.
-In order to minimize additional problems due to the mix of incompatible libraries, all dataset decoding is done using the same netCDF-c library (independent of if the dataset is accessed directly or via OPeNDAP).
+In order to minimize additional problems due to the mix of incompatible libraries, all dataset decoding is done using the same netCDF-c library (independent of the access to the dataset, directly or via OPeNDAP).
 
-The individual test cases differ between data types, the use of negative numbers and if the values used as numeric values or are to be interpreted as flags.
+The individual test cases show differences between data types, the use of negative numbers, the use of values used as numeric values, and the use of values interpreted as flags.
 For each datatype, there is a drop down menu which shows the individual sub cases.
 If any one of the sub cases failed, the datatype is marked as erroneous.
 
@@ -1475,12 +1475,12 @@ data:
 
 The result of this experiment is underwhelming but shows a clear picture.
 A large set of data types can not be used reliably in a combination of netCDF and OPeNDAP.
-The failure modes however are very much different between the various types:
+The failure modes however differ significantly between the various types:
 
 * 64 bit integers simply can not be encoded in XDR which is the binary encoding of OPeNDAP. Thus the server just fails and the user receives an error.
 * unsigned short and unsigned int could be represented by OPeNDAP in principle, however the Server introduces spurious `_FillValue`s which additionally are of the wrong (signed) integral type such that the netCDF client library refuses to read the data. This is most likely a Bug in the specific server.
-* unsigned bytes could also be represented by OPeNDAP, but the values received by the client are wrong. This might be an attempt by the client to handle the erroneously delivered `valid_range` though. The big problem here is that this can result in an **error without a message**.
-* signed byes can work sometimes even if they are **not representable** by OPeNDAP. This is due to a [**hack**](https://github.com/Unidata/netcdf-c/pull/1317) which has been introduces into netCDF-c which is based on the use of the additional `_Unsigned` attribute which is created automatically by the server. The hack however only applies to the data values and not to the attributes. As a consequence, the data type of the attributes may be changed **depending on the values** stored in the attributes. In particular, **signed** bytes seem to work **only if they are positive**. The behaviour is however really weird, so maybe one should not count on it.
+* unsigned bytes could in principle be represented by OPeNDAP, but the values received by the client are wrong. This might be an attempt by the client to somehow handle the erroneously delivered `valid_range`. The big problem here is that this can result in an **error without a message**.
+* signed bytes can work sometimes even if they are **not representable** by OPeNDAP. This is due to a [**hack**](https://github.com/Unidata/netcdf-c/pull/1317) which has been introduces into netCDF-c which is based on the use of the additional `_Unsigned` attribute which is created automatically by the server. The hack however only applies to the data values and not to the attributes. As a consequence, the data type of the attributes may be changed **depending on the values** stored in the attributes. In particular, **signed** bytes seem to work **only if they are positive**. The behaviour is however really weird, so maybe one should not count on it.
 
 As a **consequence**, the only numeric data types which should be used in any dataset are `SHORT`, `INT`, `FLOAT` and `DOUBLE`.
 `STRING` and `CHAR` (when used as text) seem to be ok, but they have not been investigated in this setting yet.
@@ -1488,7 +1488,7 @@ As a **consequence**, the only numeric data types which should be used in any da
 ## Did we learn something?
 Well, it depends.
 In principle, these results are also present, but well hidden inside the [NetCDF Users Guide](https://www.unidata.ucar.edu/software/netcdf/documentation/NUG/index.html):
-within the [Best Practices](https://www.unidata.ucar.edu/software/netcdf/documentation/NUG/_best_practices.html) there's the following:
+The [Best Practices](https://www.unidata.ucar.edu/software/netcdf/documentation/NUG/_best_practices.html) state:
 > * Do not use char type variables for numeric data, use byte type variables instead.
 >
 > [...]
