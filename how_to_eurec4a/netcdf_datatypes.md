@@ -1499,7 +1499,7 @@ The [Best Practices](https://www.unidata.ucar.edu/software/netcdf/documentation/
 This excludes the use of `CHAR` for numeric applications and effectively also `BYTE`, `UBYTE`.
 
 And in the [data model section](https://www.unidata.ucar.edu/software/netcdf/docs/netcdf_data_model.html) we can find:
-> For maximum interoperability with existing code, new data should be created with the The Classic Model.
+> For maximum interoparability with existing code, new data should be created with the The Classic Model.
 
 This excludes the use of 64 bit integers and unsigned types.
 
