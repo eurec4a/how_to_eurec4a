@@ -7,7 +7,7 @@ In particular, **dont't** use single byte integers, any unsigned integer and no 
 ```
 
 The data format netCDF which is used in many places throughout our community has evolved over time.
-During this evolution, the internally representable data types have also changed.
+During this evolution, the basic data types representable within the netCDF data format have been expanded.
 Currently we are at netCDF version 4 with HDF5 as a storage backend, which offers a lot more flexibility compared to previous versions of netCDF including many more [data types](https://www.unidata.ucar.edu/software/netcdf/docs/data_type.html).
 One **could** assume that this is all fine and we can use these data types freely, but here we are unlucky and there is more to keep in mind.
 
