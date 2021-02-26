@@ -181,7 +181,7 @@ data:
 }
 ```
 
-data attribute structude via OPeNDAP:
+data attribute structure via OPeNDAP:
 ```
 $ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_BYTE.nc.das
 Attributes {
@@ -231,7 +231,7 @@ data:
 }
 ```
 
-data attribute structude via OPeNDAP:
+data attribute structure via OPeNDAP:
 ```
 $ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_BYTE_neg.nc.das
 Attributes {
@@ -282,7 +282,7 @@ data:
 }
 ```
 
-data attribute structude via OPeNDAP:
+data attribute structure via OPeNDAP:
 ```
 $ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_BYTE_flag.nc.das
 Attributes {
@@ -332,7 +332,7 @@ data:
 }
 ```
 
-data attribute structude via OPeNDAP:
+data attribute structure via OPeNDAP:
 ```
 $ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_BYTE_flag_neg.nc.das
 Attributes {
@@ -386,7 +386,7 @@ data:
 }
 ```
 
-data attribute structude via OPeNDAP:
+data attribute structure via OPeNDAP:
 ```
 $ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UBYTE.nc.das
 Attributes {
@@ -437,7 +437,7 @@ data:
 }
 ```
 
-data attribute structude via OPeNDAP:
+data attribute structure via OPeNDAP:
 ```
 $ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UBYTE_flag.nc.das
 Attributes {
@@ -483,7 +483,7 @@ data:
 }
 ```
 
-data attribute structude via OPeNDAP:
+data attribute structure via OPeNDAP:
 ```
 $ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_SHORT.nc.das
 Attributes {
@@ -531,7 +531,7 @@ data:
 }
 ```
 
-data attribute structude via OPeNDAP:
+data attribute structure via OPeNDAP:
 ```
 $ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_SHORT_neg.nc.das
 Attributes {
@@ -579,7 +579,7 @@ data:
 }
 ```
 
-data attribute structude via OPeNDAP:
+data attribute structure via OPeNDAP:
 ```
 $ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_SHORT_flag.nc.das
 Attributes {
@@ -627,7 +627,7 @@ data:
 }
 ```
 
-data attribute structude via OPeNDAP:
+data attribute structure via OPeNDAP:
 ```
 $ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_SHORT_flag_neg.nc.das
 Attributes {
@@ -678,7 +678,7 @@ data:
 }
 ```
 
-data attribute structude via OPeNDAP:
+data attribute structure via OPeNDAP:
 ```
 $ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_USHORT.nc.das
 Attributes {
@@ -720,7 +720,7 @@ data:
 }
 ```
 
-data attribute structude via OPeNDAP:
+data attribute structure via OPeNDAP:
 ```
 $ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_USHORT_flag.nc.das
 Attributes {
@@ -766,7 +766,7 @@ data:
 }
 ```
 
-data attribute structude via OPeNDAP:
+data attribute structure via OPeNDAP:
 ```
 $ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT.nc.das
 Attributes {
@@ -814,7 +814,7 @@ data:
 }
 ```
 
-data attribute structude via OPeNDAP:
+data attribute structure via OPeNDAP:
 ```
 $ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT_neg.nc.das
 Attributes {
@@ -862,7 +862,7 @@ data:
 }
 ```
 
-data attribute structude via OPeNDAP:
+data attribute structure via OPeNDAP:
 ```
 $ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT_flag.nc.das
 Attributes {
@@ -910,7 +910,7 @@ data:
 }
 ```
 
-data attribute structude via OPeNDAP:
+data attribute structure via OPeNDAP:
 ```
 $ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT_flag_neg.nc.das
 Attributes {
@@ -961,7 +961,7 @@ data:
 }
 ```
 
-data attribute structude via OPeNDAP:
+data attribute structure via OPeNDAP:
 ```
 $ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT.nc.das
 Attributes {
@@ -1003,7 +1003,7 @@ data:
 }
 ```
 
-data attribute structude via OPeNDAP:
+data attribute structure via OPeNDAP:
 ```
 $ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT_flag.nc.das
 Attributes {
@@ -1049,7 +1049,7 @@ data:
 }
 ```
 
-data attribute structude via OPeNDAP:
+data attribute structure via OPeNDAP:
 ```
 $ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64.nc.das
 Error {
@@ -1088,7 +1088,7 @@ data:
 }
 ```
 
-data attribute structude via OPeNDAP:
+data attribute structure via OPeNDAP:
 ```
 $ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_neg.nc.das
 Error {
@@ -1127,7 +1127,7 @@ data:
 }
 ```
 
-data attribute structude via OPeNDAP:
+data attribute structure via OPeNDAP:
 ```
 $ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_flag.nc.das
 Error {
@@ -1166,7 +1166,7 @@ data:
 }
 ```
 
-data attribute structude via OPeNDAP:
+data attribute structure via OPeNDAP:
 ```
 $ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_flag_neg.nc.das
 Error {
@@ -1208,7 +1208,7 @@ data:
 }
 ```
 
-data attribute structude via OPeNDAP:
+data attribute structure via OPeNDAP:
 ```
 $ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT64.nc.das
 Error {
@@ -1247,7 +1247,7 @@ data:
 }
 ```
 
-data attribute structude via OPeNDAP:
+data attribute structure via OPeNDAP:
 ```
 $ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT64_flag.nc.das
 Error {
@@ -1289,7 +1289,7 @@ data:
 }
 ```
 
-data attribute structude via OPeNDAP:
+data attribute structure via OPeNDAP:
 ```
 $ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_FLOAT.nc.das
 Attributes {
@@ -1337,7 +1337,7 @@ data:
 }
 ```
 
-data attribute structude via OPeNDAP:
+data attribute structure via OPeNDAP:
 ```
 $ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_FLOAT_neg.nc.das
 Attributes {
@@ -1388,7 +1388,7 @@ data:
 }
 ```
 
-data attribute structude via OPeNDAP:
+data attribute structure via OPeNDAP:
 ```
 $ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_DOUBLE.nc.das
 Attributes {
@@ -1437,7 +1437,7 @@ data:
 }
 ```
 
-data attribute structude via OPeNDAP:
+data attribute structure via OPeNDAP:
 ```
 $ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_DOUBLE_neg.nc.das
 Attributes {
