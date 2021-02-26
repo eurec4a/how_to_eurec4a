@@ -21,6 +21,6 @@ html:
   use_repository_button     : true
   use_issues_button         : true
   use_edit_page_button      : true
-execute_notebooks: force
 execute:
+  execute_notebooks         : force
   timeout: 100
