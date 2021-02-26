@@ -12,7 +12,7 @@ Currently we are at netCDF version 4 with HDF5 as a storage backend, which offer
 One **could** assume that this is all fine and we can use these data types freely, but here we are unlucky and there is more to keep in mind.
 
 In order to paint the full picture, we'll have to take a little detour and think about what [netCDF actually is](#what-is-netcdf) or even more what we think (or probably should think) about when talking about netCDF.
-As we'll see, this is not somethin which can be answered in a straight forward manner, so it is fair to ask [if we shoud care at all](#why-should-we-care).
+As we'll see, this is not something which can be answered in a straight forward manner, so it is fair to ask [if we should care at all](#why-should-we-care).
 Finally we'll have a look at [an experiment](#an-experiment) which shows plenty of ways in which different data types may fail around netCDF and which types seem to be fine.
 
 ## What is netCDF?
@@ -44,7 +44,7 @@ In addition to the existence of _coordinates_, there are more pieces of valuable
 Thus we usually want those extra bits to datasets and variables, which can be done by the use of _attributes_.
 
 It turns out that many datasets in the EUREC4A context can be represented very well in this model.
-I assume that in many cases when we talk about that a dataset being available in netCDF, what we really care about is that the dataset is organized along this general structure and thus can be accesses _as if it where netCDF_.
+I assume that in many cases when we talk about that a dataset being available in netCDF, what we really care about is that the dataset is organized along this general structure and thus can be accesses _as if it were netCDF_.
 
 ### The storage and transport formats
 
@@ -96,7 +96,7 @@ Datacenters used by EUREC4A provide data via OPeNDAP include Aeris, NOAA PSL, NO
 ````
 
 [OPeNDAP](https://www.opendap.org) is a network protocol to access scientific data via network.
-In particular, it uses HTTP as a transport mechanism and defines a way to request subsets of a dataset which is formed alogn the data model as described above.
+In particular, it uses HTTP as a transport mechanism and defines a way to request subsets of a dataset which is formed along the data model as described above.
 OPeNDAP is thus the go-to method if an existing netCDF dataset should be made available remotely.
 In the context of EUREC4A, most datacenters provide access to uploaded datasets via OPeNDAP.
 
@@ -106,9 +106,9 @@ However, DAP4 is still a draft since 2004 and the only widely supported version 
 The data model of OPeNDAP v2 is slightly different from the data model in netCDF.
 Regarding data types, OPeNDAP v2 defines `Byte`, `Int16`, `UInt16`, `Int32`, `UInt32`, `Float32`, `Float64`, `String`, `URL`.
 
-As oposed to the `BYTE` in netCDF Classic, the `Byte` in OPeNDAP is **unsigned**.
+As opposed to the `BYTE` in netCDF Classic, the `Byte` in OPeNDAP is **unsigned**.
 This makes byte types of netCDF Classic and OPeNDAP incompatible, but as noted in the [summary](#summary), there exists a hack which tries to circumvent that.
-One could assume that `UBYTE` of netCDF Enhanced would fit to this `Byte`, there are issues as well which are confirmed in [the experiment](#an-experiment).
+One could assume that `UBYTE` of netCDF Enhanced would fit to this `Byte`, but there are issues as well which are confirmed in [the experiment](#an-experiment).
 
 Furthermore, there is no `CHAR`, so whenever a netCDF dataset containing text as a sequence of `CHAR` is encountered by an OPeNDAP server, this will be converted to an OPeNDAP `String`.
 A consequence of this is that `CHAR`s and `STRING`s can not be distinguished when transferred over OPeNDAP and thus may be converted into each other after one cycle through netCDF → OPeNDAP → netCDF.
@@ -135,11 +135,11 @@ zarr can be used as a single file by using a zip file as its directory structure
 
 So, depending on the use case, different formats are optimal and none of them supports everything:
 
-| format  | for storage | sending around | for remote access      | widely supported              |
-| ------- | ----------- | -------------- | ---------------------- | ----------------------------- |
-| netCDF  | ✅          | ✅             | ❌, works via OPeNDAP  | ✅                            |
-| OPeNDAP | ❌          | ❌             | ✅, can share netCDF   | ✅                            |
-| zarr    | ✅          | moderate       | ✅, very performant    | ❌, netCDF-c is working on it |
+| format  | for storage | sending around | for remote access        | widely supported              |
+| ------- | ----------- | -------------- | -------------------------| ----------------------------- |
+| netCDF  | ✅          | ✅             | ❌, works via OPeNDAP    | ✅                            |
+| OPeNDAP | ❌          | ❌             | ✅, can share netCDF     | ✅                            |
+| zarr    | ✅          | moderate       | ✅, very high performance| ❌, netCDF-c is working on it |
 
 Thus, if we want to have datasets which can be used locally as well as remotely (some might call it "in the cloud"), we should take care that our datasets are convertible between those formats so that we can adapt to the specific use case.
 
@@ -151,10 +151,10 @@ This experiment is designed to test under which circumstances data which has bee
 In order to minimize additional problems due to the mix of incompatible libraries, all dataset decoding is done using the same netCDF-c library (independent of the access to the dataset, directly or via OPeNDAP).
 
 The individual test cases show differences between data types, the use of negative numbers, the use of values used as numeric values, and the use of values interpreted as flags.
-For each datatype, there is a drop down menu which shows the individual sub cases.
-If any one of the sub cases failed, the datatype is marked as erroneous.
+For each data type, there is a drop down menu which shows the individual sub cases.
+If any one of the sub cases failed, the data type is marked as erroneous.
 
-In each test case follows the same steps:
+In each case the test follows the same steps:
 * The original dataset is dumped via `ncdump`
 * The OPeNDAP dataset attribute structure (`.das`) is retrieved via `curl` to look at the raw response of the server
 * The dataset as received via OPeNDAP is dumped via `ncdump`
@@ -1480,7 +1480,7 @@ The failure modes however differ significantly between the various types:
 * 64 bit integers simply can not be encoded in XDR which is the binary encoding of OPeNDAP. Thus the server just fails and the user receives an error.
 * unsigned short and unsigned int could be represented by OPeNDAP in principle, however the Server introduces spurious `_FillValue`s which additionally are of the wrong (signed) integral type such that the netCDF client library refuses to read the data. This is most likely a Bug in the specific server.
 * unsigned bytes could in principle be represented by OPeNDAP, but the values received by the client are wrong. This might be an attempt by the client to somehow handle the erroneously delivered `valid_range`. The big problem here is that this can result in an **error without a message**.
-* signed bytes can work sometimes even if they are **not representable** by OPeNDAP. This is due to a [**hack**](https://github.com/Unidata/netcdf-c/pull/1317) which has been introduces into netCDF-c which is based on the use of the additional `_Unsigned` attribute which is created automatically by the server. The hack however only applies to the data values and not to the attributes. As a consequence, the data type of the attributes may be changed **depending on the values** stored in the attributes. In particular, **signed** bytes seem to work **only if they are positive**. The behaviour is however really weird, so maybe one should not count on it.
+* signed bytes can work sometimes even if they are **not representable** by OPeNDAP. This is due to a [**hack**](https://github.com/Unidata/netcdf-c/pull/1317) which has been introduced into netCDF-c which is based on the use of the additional `_Unsigned` attribute which is created automatically by the server. The hack however only applies to the data values and not to the attributes. As a consequence, the data type of the attributes may be changed **depending on the values** stored in the attributes. In particular, **signed** bytes seem to work **only if they are positive**. The behaviour is however really weird, so maybe one should not count on it.
 
 As a **consequence**, the only numeric data types which should be used in any dataset are `SHORT`, `INT`, `FLOAT` and `DOUBLE`.
 `STRING` and `CHAR` (when used as text) seem to be ok, but they have not been investigated in this setting yet.
@@ -1499,7 +1499,7 @@ The [Best Practices](https://www.unidata.ucar.edu/software/netcdf/documentation/
 This excludes the use of `CHAR` for numeric applications and effectively also `BYTE`, `UBYTE`.
 
 And in the [data model section](https://www.unidata.ucar.edu/software/netcdf/docs/netcdf_data_model.html) we can find:
-> For maximum interoparability with existing code, new data should be created with the The Classic Model.
+> For maximum interoperability with existing code, new data should be created with the The Classic Model.
 
 This excludes the use of 64 bit integers and unsigned types.
 
