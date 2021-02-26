@@ -44,7 +44,7 @@ In addition to the existence of _coordinates_, there are more pieces of valuable
 Thus we usually want those extra bits to datasets and variables, which can be done by the use of _attributes_.
 
 It turns out that many datasets in the EUREC4A context can be represented very well in this model.
-I assume that in many cases when we talk about that a dataset being available in netCDF, what we really care about is that the dataset is organized along this general structure and thus can be accesses _as if it where netCDF_.
+I assume that in many cases when we talk about that a dataset being available in netCDF, what we really care about is that the dataset is organized along this general structure and thus can be accesses _as if it were netCDF_.
 
 ### The storage and transport formats
 
@@ -108,7 +108,7 @@ Regarding data types, OPeNDAP v2 defines `Byte`, `Int16`, `UInt16`, `Int32`, `UI
 
 As opposed to the `BYTE` in netCDF Classic, the `Byte` in OPeNDAP is **unsigned**.
 This makes byte types of netCDF Classic and OPeNDAP incompatible, but as noted in the [summary](#summary), there exists a hack which tries to circumvent that.
-One could assume that `UBYTE` of netCDF Enhanced would fit to this `Byte`, there are issues as well which are confirmed in [the experiment](#an-experiment).
+One could assume that `UBYTE` of netCDF Enhanced would fit to this `Byte`, but there are issues as well which are confirmed in [the experiment](#an-experiment).
 
 Furthermore, there is no `CHAR`, so whenever a netCDF dataset containing text as a sequence of `CHAR` is encountered by an OPeNDAP server, this will be converted to an OPeNDAP `String`.
 A consequence of this is that `CHAR`s and `STRING`s can not be distinguished when transferred over OPeNDAP and thus may be converted into each other after one cycle through netCDF → OPeNDAP → netCDF.
@@ -151,10 +151,10 @@ This experiment is designed to test under which circumstances data which has bee
 In order to minimize additional problems due to the mix of incompatible libraries, all dataset decoding is done using the same netCDF-c library (independent of the access to the dataset, directly or via OPeNDAP).
 
 The individual test cases show differences between data types, the use of negative numbers, the use of values used as numeric values, and the use of values interpreted as flags.
-For each datatype, there is a drop down menu which shows the individual sub cases.
-If any one of the sub cases failed, the datatype is marked as erroneous.
+For each data type, there is a drop down menu which shows the individual sub cases.
+If any one of the sub cases failed, the data type is marked as erroneous.
 
-In each test case follows the same steps:
+In each case the test follows the same steps:
 * The original dataset is dumped via `ncdump`
 * The OPeNDAP dataset attribute structure (`.das`) is retrieved via `curl` to look at the raw response of the server
 * The dataset as received via OPeNDAP is dumped via `ncdump`
@@ -1480,7 +1480,7 @@ The failure modes however differ significantly between the various types:
 * 64 bit integers simply can not be encoded in XDR which is the binary encoding of OPeNDAP. Thus the server just fails and the user receives an error.
 * unsigned short and unsigned int could be represented by OPeNDAP in principle, however the Server introduces spurious `_FillValue`s which additionally are of the wrong (signed) integral type such that the netCDF client library refuses to read the data. This is most likely a Bug in the specific server.
 * unsigned bytes could in principle be represented by OPeNDAP, but the values received by the client are wrong. This might be an attempt by the client to somehow handle the erroneously delivered `valid_range`. The big problem here is that this can result in an **error without a message**.
-* signed bytes can work sometimes even if they are **not representable** by OPeNDAP. This is due to a [**hack**](https://github.com/Unidata/netcdf-c/pull/1317) which has been introduces into netCDF-c which is based on the use of the additional `_Unsigned` attribute which is created automatically by the server. The hack however only applies to the data values and not to the attributes. As a consequence, the data type of the attributes may be changed **depending on the values** stored in the attributes. In particular, **signed** bytes seem to work **only if they are positive**. The behaviour is however really weird, so maybe one should not count on it.
+* signed bytes can work sometimes even if they are **not representable** by OPeNDAP. This is due to a [**hack**](https://github.com/Unidata/netcdf-c/pull/1317) which has been introduced into netCDF-c which is based on the use of the additional `_Unsigned` attribute which is created automatically by the server. The hack however only applies to the data values and not to the attributes. As a consequence, the data type of the attributes may be changed **depending on the values** stored in the attributes. In particular, **signed** bytes seem to work **only if they are positive**. The behaviour is however really weird, so maybe one should not count on it.
 
 As a **consequence**, the only numeric data types which should be used in any dataset are `SHORT`, `INT`, `FLOAT` and `DOUBLE`.
 `STRING` and `CHAR` (when used as text) seem to be ok, but they have not been investigated in this setting yet.
