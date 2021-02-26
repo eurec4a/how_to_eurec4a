@@ -3,7 +3,7 @@
 ```{admonition} TL; DR
 :class: tip
 If you want to be on the safe side, use only `SHORT`, `INT`, `FLOAT`, `DOUBLE`, `STRING` or array of `CHAR` as data types.
-In particular, **dont't** use single byte integers, any unsigned integer and no 64 bit integer.
+In particular, **don't** use single byte integers, any unsigned integer and no 64 bit integer.
 ```
 
 The data format netCDF which is used in many places throughout our community has evolved over time.
@@ -34,7 +34,7 @@ Maybe the most illustrative way to show this general idea is an extended version
 Dataset diagram (From the [xarray documentation](http://xarray.pydata.org/en/stable/data-structures.html))
 ```
 A dataset is a collection of _variables_ and _dimensions_.
-Variables are multi-dimensional arrays and they can share dimensions (i.e. to express that `temperature` and `precipitation` are defined at the same locations, the three axes of the corresponding arrays should be identified with the same dimension label, that is `x`, `y` and `z`).
+Variables are multi-dimensional arrays and they can share dimensions (i.e. to express that `temperature` and `precipitation` are defined at the same locations, the three axes of the corresponding arrays should be identified with the same dimension label, that is e.g. `x`, `y` and `z`).
 Some variables may be promoted into a _coordinate_, which does not require to store it differently, but it changes the interpretation of the data.
 In the example above, `latitude` and `longitude` would likely be identified as coordinates.
 One would typically use _coordinate_ values to index into some data or to label the ticks on a plot axis, while a normal _variable_ would usually be used to define a line or a color within a plot.
@@ -135,11 +135,11 @@ zarr can be used as a single file by using a zip file as its directory structure
 
 So, depending on the use case, different formats are optimal and none of them supports everything:
 
-| format  | for storage | sending around | for remote access        | widely supported              |
-| ------- | ----------- | -------------- | -------------------------| ----------------------------- |
-| netCDF  | ✅          | ✅             | ❌, works via OPeNDAP    | ✅                            |
-| OPeNDAP | ❌          | ❌             | ✅, can share netCDF     | ✅                            |
-| zarr    | ✅          | moderate       | ✅, very high performance| ❌, netCDF-c is working on it |
+| format  | for storage | sending around | for remote access          | widely supported              |
+| ------- | ----------- | -------------- | -------------------------- | ----------------------------- |
+| netCDF  | ✅          | ✅             | ❌, works via OPeNDAP      | ✅                            |
+| OPeNDAP | ❌          | ❌             | ✅, can share netCDF       | ✅                            |
+| zarr    | ✅          | moderate       | ✅, with high performance  | ❌, netCDF-c is working on it |
 
 Thus, if we want to have datasets which can be used locally as well as remotely (some might call it "in the cloud"), we should take care that our datasets are convertible between those formats so that we can adapt to the specific use case.
 
@@ -1499,7 +1499,7 @@ The [Best Practices](https://www.unidata.ucar.edu/software/netcdf/documentation/
 This excludes the use of `CHAR` for numeric applications and effectively also `BYTE`, `UBYTE`.
 
 And in the [data model section](https://www.unidata.ucar.edu/software/netcdf/docs/netcdf_data_model.html) we can find:
-> For maximum interoperability with existing code, new data should be created with the The Classic Model.
+> For maximum interoparability with existing code, new data should be created with the The Classic Model.
 
 This excludes the use of 64 bit integers and unsigned types.
 
