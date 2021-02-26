@@ -3,7 +3,7 @@
 ```{admonition} TL; DR
 :class: tip
 If you want to be on the safe side, use only `SHORT`, `INT`, `FLOAT`, `DOUBLE`, `STRING` or array of `CHAR` as data types.
-In particular, **dont't** use single byte integers, any unsigned integer and no 64 bit integer.
+In particular, **don't** use single byte integers, any unsigned integer and no 64 bit integer.
 ```
 
 The data format netCDF which is used in many places throughout our community has evolved over time.
@@ -12,7 +12,7 @@ Currently we are at netCDF version 4 with HDF5 as a storage backend, which offer
 One **could** assume that this is all fine and we can use these data types freely, but here we are unlucky and there is more to keep in mind.
 
 In order to paint the full picture, we'll have to take a little detour and think about what [netCDF actually is](#what-is-netcdf) or even more what we think (or probably should think) about when talking about netCDF.
-As we'll see, this is not somethin which can be answered in a straight forward manner, so it is fair to ask [if we shoud care at all](#why-should-we-care).
+As we'll see, this is not something which can be answered in a straight forward manner, so it is fair to ask [if we should care at all](#why-should-we-care).
 Finally we'll have a look at [an experiment](#an-experiment) which shows plenty of ways in which different data types may fail around netCDF and which types seem to be fine.
 
 ## What is netCDF?
@@ -34,7 +34,7 @@ Maybe the most illustrative way to show this general idea is an extended version
 Dataset diagram (From the [xarray documentation](http://xarray.pydata.org/en/stable/data-structures.html))
 ```
 A dataset is a collection of _variables_ and _dimensions_.
-Variables are multi-dimensional arrays and they can share dimensions (i.e. to express that `temperature` and `precipitation` are defined at the same locations, the three axes of the corresponding arrays should be identified with the same dimension label, that is `x`, `y` and `z`).
+Variables are multi-dimensional arrays and they can share dimensions (i.e. to express that `temperature` and `precipitation` are defined at the same locations, the three axes of the corresponding arrays should be identified with the same dimension label, that is e.g. `x`, `y` and `z`).
 Some variables may be promoted into a _coordinate_, which does not require to store it differently, but it changes the interpretation of the data.
 In the example above, `latitude` and `longitude` would likely be identified as coordinates.
 One would typically use _coordinate_ values to index into some data or to label the ticks on a plot axis, while a normal _variable_ would usually be used to define a line or a color within a plot.
@@ -96,7 +96,7 @@ Datacenters used by EUREC4A provide data via OPeNDAP include Aeris, NOAA PSL, NO
 ````
 
 [OPeNDAP](https://www.opendap.org) is a network protocol to access scientific data via network.
-In particular, it uses HTTP as a transport mechanism and defines a way to request subsets of a dataset which is formed alogn the data model as described above.
+In particular, it uses HTTP as a transport mechanism and defines a way to request subsets of a dataset which is formed along the data model as described above.
 OPeNDAP is thus the go-to method if an existing netCDF dataset should be made available remotely.
 In the context of EUREC4A, most datacenters provide access to uploaded datasets via OPeNDAP.
 
@@ -106,7 +106,7 @@ However, DAP4 is still a draft since 2004 and the only widely supported version 
 The data model of OPeNDAP v2 is slightly different from the data model in netCDF.
 Regarding data types, OPeNDAP v2 defines `Byte`, `Int16`, `UInt16`, `Int32`, `UInt32`, `Float32`, `Float64`, `String`, `URL`.
 
-As oposed to the `BYTE` in netCDF Classic, the `Byte` in OPeNDAP is **unsigned**.
+As opposed to the `BYTE` in netCDF Classic, the `Byte` in OPeNDAP is **unsigned**.
 This makes byte types of netCDF Classic and OPeNDAP incompatible, but as noted in the [summary](#summary), there exists a hack which tries to circumvent that.
 One could assume that `UBYTE` of netCDF Enhanced would fit to this `Byte`, there are issues as well which are confirmed in [the experiment](#an-experiment).
 
@@ -135,11 +135,11 @@ zarr can be used as a single file by using a zip file as its directory structure
 
 So, depending on the use case, different formats are optimal and none of them supports everything:
 
-| format  | for storage | sending around | for remote access      | widely supported              |
-| ------- | ----------- | -------------- | ---------------------- | ----------------------------- |
-| netCDF  | ✅          | ✅             | ❌, works via OPeNDAP  | ✅                            |
-| OPeNDAP | ❌          | ❌             | ✅, can share netCDF   | ✅                            |
-| zarr    | ✅          | moderate       | ✅, very performant    | ❌, netCDF-c is working on it |
+| format  | for storage | sending around | for remote access          | widely supported              |
+| ------- | ----------- | -------------- | -------------------------- | ----------------------------- |
+| netCDF  | ✅          | ✅             | ❌, works via OPeNDAP      | ✅                            |
+| OPeNDAP | ❌          | ❌             | ✅, can share netCDF       | ✅                            |
+| zarr    | ✅          | moderate       | ✅, with high performance  | ❌, netCDF-c is working on it |
 
 Thus, if we want to have datasets which can be used locally as well as remotely (some might call it "in the cloud"), we should take care that our datasets are convertible between those formats so that we can adapt to the specific use case.
 
