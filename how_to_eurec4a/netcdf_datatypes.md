@@ -10,7 +10,10 @@ The data format netCDF which is used in many places throughout our community has
 During this evolution, the internally representable data types have also changed.
 Currently we are at netCDF version 4 with HDF5 as a storage backend, which offers a lot more flexibility as compared to previous versions of netCDF including many more [data types](https://www.unidata.ucar.edu/software/netcdf/docs/data_type.html).
 One **could** assume that this is all fine and we can use these data types freely, but here we are unlucky and there is more to keep in mind.
-In order to paint the full picture, we'll have to take a little detour and think about what netCDF actually is.
+
+In order to paint the full picture, we'll have to take a little detour and think about what [netCDF actually is](#what-is-netcdf) or even more what we think (or probably should think) about when talking about netCDF.
+As we'll see, this is not somethin which can be answered in a straight forward manner, so it is fair to ask [if we shoud care at all](#why-should-we-care).
+Finally we'll have a look at [an experiment](#an-experiment) which shows plenty of ways in which different data types may fail around netCDF and which types seem to be fine.
 
 ## What is netCDF?
 NetCDF is more than only the "netCDF4 on HDF5" storage format.
@@ -21,8 +24,8 @@ It is also recognized that there are multiple persistence formats (netCDF3, netC
 In order to see how this might be relevant for out datasets, we have to look into these things separately.
 
 ### The data model(s)
-There are actually a few different data models around, which share some general ideas.
-Maybe the most illustrative way to show this model is an extended version of [xarray](http://xarray.pydata.org/)'s logo, but the underlying ideas are of course applicable independently of xarray or even Python.
+There are actually a few different ideas of data models around, which share some general ideas.
+Maybe the most illustrative way to show this general idea is an extended version of [xarray](http://xarray.pydata.org/)'s logo, but the underlying ideas are of course applicable independently of xarray or even Python.
 ```{figure} dataset-diagram.png
 :alt: dataset diagram
 :align: center
@@ -37,27 +40,98 @@ In the example above, `latitude` and `longitude` would likely be identified as c
 One would typically use _coordinate_ values to index into some data or to label the ticks on a plot axis, while a normal _variable_ would usually be used to define a line or a color within a plot.
 There may be _variables_ which should be _coordinates_ only for a specific use case and vice versa.
 It is useful to distinguish between _variables_ and _coordinates_ within the metadata of a dataset, but the representation of the actual data may be the same for both, _variables_ and _coordinates_.
-This high level formulation of a data model is very useful as many datasets fit very well into this general concept.
+In addition the existence of _coordinates_, there are more pieces of valuable additional information (think of units, coordinate reference systems, author information etc...).
+Thus we usually want those extra bits to datasets and variables, which can be done by the use of _attributes_.
 
-In order to be of practical use, this high level data model must be translated into a low level data model which can actually be used to store and process data.
-NetCDF defines the [Classic](https://www.unidata.ucar.edu/software/netcdf/docs/netcdf_data_model.html#classic_model) and the [Enhanced](https://www.unidata.ucar.edu/software/netcdf/docs/netcdf_data_model.html#enhanced_model) model for this purpose.
-Both models care about _variables_ and _dimensions_ as introduced above and add _attributes_ which may be attached to _variables_ and entire _datasets_ to carry additional metadata (e.g. to declare _coordinates_).
-The classical model knows about `CHAR`, `BYTE`, `SHORT`, `INT`, `FLOAT` and `DOUBLE` data types which are all **signed**.
-The enhanced model adds `INT64` and `STRING` to the mix as well as **unsigned** variants of all integral types.
+It turns out that many datasets in the EUREC4A context can be represented very well in this model.
+I assume that in many cases when we talk about that a dataset being available in netCDF, what we really care about is that the dataset is organized along this general structure and thus can be accesses _as if it where netCDF_.
+
+### The storage and transport formats
+
+#### netCDF
+````{margin}
+```{note}
+NetCDF defines two internal "data models", thus they could go into the section above.
+However those models are also tied loosely to their backend storage formats and thus for this discussion, they might fit better in this place.
+```
+````
+
+In order to put the high level idea from above into a data structure which can be stored on disk, netCDF defines two low level data models where the [Classic](https://www.unidata.ucar.edu/software/netcdf/docs/netcdf_data_model.html#classic_model) data model came first and the [Enhanced](https://www.unidata.ucar.edu/software/netcdf/docs/netcdf_data_model.html#enhanced_model) data model evolved from it.
+Both models care about _variables_, _dimensions_ and _attributes_ as introduced above.
+```{panels}
+The **classic** model knows about `CHAR`, `BYTE`, `SHORT`, `INT`, `FLOAT` and `DOUBLE` data types which are all **signed**.
+There may be at most one unlimited (i.e. resizeable) dimension per variable.
+---
+The **enhanced** model is based on the classic model and adds `INT64` and `STRING` to the mix as well as **unsigned** variants of all integral types.
 Further additions of the enhanced model are groups (which are like a dataset within a dataset) and user defined types.
+There may be any number of unlimited dimensions per variable.
+```
 
-### The storage formats
-* netCDF3
-* netCDF4 / HDF5
-* OPeNDAP
-* zarr
+Those two data models are closely tied to the netCDF3 and netCDF4 storage formats.
+* netCDF3 is based on the _classic_ data model and defines a storage format which is custom to netCDF.
+* netCDF4 is based on the _enhanced_ data model and uses HDF5 as its backend storage format. HDF5 enables further enhancements like internal data compression.
+
+````{margin}
+```{note}
+HDF5 features `external` and `virtual` datasets which [can be](https://github.com/Unidata/netcdf-c/pull/1828) compatible to netCDF4 but can not be written using netCDF4 API.
+```
+````
+Both storage formats store all data in a single file, chunking of the dataset is done internally.
+If the dataset should be accessed from a remote location, usually the entire dataset must be fetched before accessing the data.
+
+In Jan 2019 [HTTP byte-range](https://github.com/Unidata/netcdf-c/pull/1267) enabled partial reads from remote datasets have been added to netCDF-c, but as stated in the pull request, it is not meant for production use:
+> Note that this is not intended as a true production
+capability because, as is known, this kind of access to
+can be quite slow. In addition, the byte-range IO drivers
+do not currently do any sort of optimization or caching.
+
+Thus, if a dataset should be accessed efficiently from a remote location, something different must be added, which is what OPeNDAP is for.
+
+#### OPeNDAP
+
+````{margin}
+```{note}
+Datacenters used by EUREC4A and the How to EUREC4A book which provida data via OPeNDAP include Aeris, NOAA PSL, NOAA NCEI, MPIM RAMADDA and the specMACS macsServer.
+```
+````
+
+[OPeNDAP](https://www.opendap.org) is a network protocol to access scientific data via network.
+In particular, it uses HTTP as a transport mechanism and defines a way to request subsets of a dataset which is formed alogn the data model as described above.
+OPeNDAP is thus the go-to method if an existing netCDF dataset should be made available remotely.
+In the context of EUREC4A, most datacenters provide access to uploaded datasets via OPeNDAP.
+
+OPeNDAP is specified in two versions, namely [version 2](https://www.opendap.org/pdf/ESE-RFC-004v1.2.pdf) and [version 4](https://www.opendap.org/pdf/dap_objects.pdf). 
+However, DAP4 is still a draft since 2004 and the only widely supported version of OPeNDAP is version 2.
+
+The data model of OPeNDAP v2 is slightly different from the data model in netCDF.
+Regarding data types, OPeNDAP v2 defines `Byte`, `Int16`, `UInt16`, `Int32`, `UInt32`, `Float32`, `Float64`, `String`, `URL`.
+
+As oposed to the `BYTE` in netCDF Classic, the `Byte` in OPeNDAP is **unsigned**.
+This makes byte types of netCDF Classic and OPeNDAP incompatible, but as noted in the [summary](#summary), there exists a hack which tries to circumvent that.
+One could assume that `UBYTE` of netCDF Enhanced would fit to this `Byte`, there are issues as well which are confirmed in [the experiment](#an-experiment).
+
+Furthermore, there is no `CHAR`, so whenever a netCDF dataset containing text as a sequence of `CHAR` is encountered by an OPeNDAP server, this will be converted to an OPeNDAP `String`.
+A consequence of this is that `CHAR`s and `STRING`s can not be distinguished when transferred over OPeNDAP and thus may be converted into each other after one cycle through netCDF → OPeNDAP → netCDF.
+This behaviour is not (yet) studied in this text.
+
+#### zarr
+
+```{admonition} to do
+:class: caution
+[zarr](https://zarr.readthedocs.io/) should be discussed in this place.
+```
 
 ## Why should we care?
 Each of the formats has distinct advantages and disadvantages:
 
 * **netCDF** is a compact format, the whole dataset can be stored in a single file which can be transferred from one place to another and everything is contained. This is great for storing data and to send around smaller datasets, but retrieving only a subset of a dataset from a remote server is not possible. Libraries which can open netCDF files usually do not handle HTTP, so the dataset needs to be stored in a local directory to use it.
 * **OPeNDAP** is a network protocol based on HTTP which has been made exactly for the purpose of requesting subsets of a dataset from a remote server. As it is only a network protocol, it can not be used to store the data, so every dataset which should be provided via OPeNDAP must be stored in another format (like netCDF) or computed on the fly. Support for reading OPeNDAP is build into netCDF-c.
-* **zarr** is a storage format which is spread out into several files in a defined directory structure [^zipfile_zarr]. This makes it a little harder to pass around, but this chunked structure makes remote access exceptionally simple and fast. Chelle Gentemann has prepared an [impressive demonstration](https://nbviewer.jupyter.org/github/oceanhackweek/ohw20-tutorials/blob/master/10-satellite-data-access/goes-cmp-netcdf-zarr.ipynb) on this topic.
+* **zarr** is a storage format which is spread out into several files in a defined directory structure. This makes it a little harder to pass around, but this chunked structure makes remote access exceptionally simple and fast. Chelle Gentemann has prepared an [impressive demonstration](https://nbviewer.jupyter.org/github/oceanhackweek/ohw20-tutorials/blob/master/10-satellite-data-access/goes-cmp-netcdf-zarr.ipynb) on this topic.
+````{margin}
+```{note}
+zarr can be used as a single file by using a zip file as its directory structure.
+```
+````
 
 So, depending on the use case, different formats are optimal and none of them supports everything:
 
@@ -69,7 +143,6 @@ So, depending on the use case, different formats are optimal and none of them su
 
 Thus, if we want to have datasets which can be used locally as well as remotely (some might call it "in the cloud"), we should take care that our datasets are convertible between those formats so that we can adapt to the specific use case.
 
-[^zipfile_zarr]: zarr can be used as a single file by using a zip file as its directory structure.
 
 ## An experiment
 
@@ -1410,4 +1483,26 @@ The failure modes however are very much different between the various types:
 * signed byes can work sometimes even if they are **not representable** by OPeNDAP. This is due to a [**hack**](https://github.com/Unidata/netcdf-c/pull/1317) which has been introduces into netCDF-c which is based on the use of the additional `_Unsigned` attribute which is created automatically by the server. The hack however only applies to the data values and not to the attributes. As a consequence, the data type of the attributes may be changed **depending on the values** stored in the attributes. In particular, **signed** bytes seem to work **only if they are positive**. The behaviour is however really weird, so maybe one should not count on it.
 
 As a **consequence**, the only numeric data types which should be used in any dataset are `SHORT`, `INT`, `FLOAT` and `DOUBLE`.
-`STRING` and `CHAR` (when used as text) seem to be fine, but they have not been investigated in this setting yet.
+`STRING` and `CHAR` (when used as text) seem to be ok, but they have not been investigated in this setting yet.
+
+## Did we learn something?
+Well, it depends.
+In principle, these results are also present, but well hidden inside the [NetCDF Users Guide](https://www.unidata.ucar.edu/software/netcdf/documentation/NUG/index.html):
+within the [Best Practices](https://www.unidata.ucar.edu/software/netcdf/documentation/NUG/_best_practices.html) there's the following:
+> * Do not use char type variables for numeric data, use byte type variables instead.
+>
+> [...]
+>
+> NetCDF-3 does not have unsigned integer primitive types.
+> * To be completely safe with unknown readers, widen the data type, or use floating point.
+
+This excludes the use of `CHAR` for numeric applications and effectively also `BYTE`, `UBYTE`.
+
+And in the [data model section](https://www.unidata.ucar.edu/software/netcdf/docs/netcdf_data_model.html) we can find:
+> For maximum interoparability with existing code, new data should be created with the The Classic Model.
+
+This excludes the use of 64 bit integers and unsigned types.
+
+Thus, the take-home message of this article is not new, everything could have been found in the NetCDF Users Guide.
+However at least I was not fully aware of all of these implications and did only find the references into the Users Guide while preparing this article.
+I think if we want to provide datasets which are usable by everyone, the insights of this article are important to share.
