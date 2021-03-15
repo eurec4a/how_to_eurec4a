@@ -1,14 +1,23 @@
 # Table of contents
 # Learn more at https://jupyterbook.org/customize/toc.html
 - file: intro
-- file: content
+- file: halo
   sections:
     - file: dropsondes
     - file: specmacs
     - file: unified
     - file: flight_tracks_leaflet
     - file: smart
+    - file: bacardi
+    - file: wales
+    - file: hamp_comparison
+- file: meteor
+  sections:
+    - file: meteor_cloudradar
 - file: toolbox
   sections:
     - file: flight-phase-operations
+    - file: show_intake_catalog
+    - file: running_locally
+    - file: netcdf_datatypes
 - file: stats
