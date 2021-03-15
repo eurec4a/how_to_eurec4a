@@ -15,7 +15,15 @@ kernelspec:
 
 Video airbornE Longwave Observations within siX channels
 
-VELOX is a thermal infrared spectral imager (VELOX327k veL, 640 pixel by 512 pixels) with a synchronized filter wheel (at 100 Hz) covering six spectral channels in the thermal infrared wavelength range from 7.7 μm to 12.0 μm. The instrument measures the brightness temperature of upward radiance in a field-of-view of 35.49° by 28.71°. The PI during EUREC4A was Michael Schäfer (University Leipzig). 
+```{code-cell} ipython3
+import eurec4a
+from IPython.display import Markdown
+
+meta = eurec4a.get_meta()
+Markdown(meta["VELOX"]["description"])
+```
+
+The PI during EUREC4A was Michael Schäfer (University Leipzig). 
 
 If you have questions or if you would like to use the data for a publication, please don't hesitate to get in contact with the dataset authors as stated in the dataset attributes `contact` or `author`.
 
