@@ -135,9 +135,13 @@ cbar.ax.set_yticklabels(ds.cloud_mask.flag_meanings.split(" "));
 ax.set_title(f"VELOX cloud mask at {sonde_dt}");
 ```
 
+What are the image cloud fraction lower and upper bounds?
+
 ```{code-cell} ipython3
-print(f"Image minimum cloud fraction (most likely cloudy): {(ds_sel==2).sum().values / ds_sel.size:.2f}")
-print(f"Image maximum cloud fraction (most likely and probably cloudy) :{((ds_sel==1) | (ds_sel==2)).sum().values / ds_sel.size:.2f}")
+cfmin = ds.CF_min.sel(time=sonde_dt, method="nearest").values
+cfmax = ds.CF_max.sel(time=sonde_dt, method="nearest").values
+print(f"Image minimum cloud fraction (most likely cloudy): {cfmin:.2f}")
+print(f"Image maximum cloud fraction (most likely and probably cloudy) :{cfmax:.2f}")
 ```
 
 ## Cloud fraction time series from the second circle on February 5
