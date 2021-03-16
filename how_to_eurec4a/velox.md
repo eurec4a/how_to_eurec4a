@@ -56,7 +56,7 @@ ds = cat.HALO.VELOX.cloudmask["HALO-0205"].to_dask()
 ds
 ```
 
-## What does the VELOX image look like at a specifig dropsonde launch?  
+## What does the VELOX image look like at a specific dropsonde launch?  
 We can use the [flight segmentation](https://github.com/eurec4a/flight-phase-separation#segmentation-of-flights-during-eurec4a) information to select a dropsonde and further extract the corresponding VELOX image taken at the time of the dropsonde launch.  
 In particular, we select the first dropsonde with the quality flag `GOOD` from the second `circle` on February 5.  
 
@@ -101,7 +101,7 @@ first_dropsonde
 ```
 
 ### What is the corresponding launch time of the selected sonde?
-So far, we only made use of the flight segmentation meta data. The launch time to a given sonde is stated in the [JOANNE](https://github.com/Geet-George/JOANNE/tree/master/joanne/Level_3#level%E2%80%943) dataset (see also book chapter on JOANNE).  
+So far, we only made use of the flight segmentation meta data. The launch time to a given sonde is stated in the [JOANNE](https://github.com/Geet-George/JOANNE/tree/master/joanne/Level_3#level%E2%80%943) dataset (see also book chapter {doc}`dropsondes`). 
 We use again the intake catalog to load the JOANNE dataset and extract the launch time to the selected dropsonde by it's sonde ID.
 
 ```{code-cell} ipython3
@@ -152,7 +152,7 @@ seg = {s["segment_id"]: {**s, "flight_id": flight["flight_id"]}
             }[second_circle_Feb05]
 ```
 
-The dataset variable `CF_min` provides a lower blound to cloud fraction estimates based on the cloud mask flag `most_likely_cloudy`, while `CF_max` provides an upper bound by including the uncertain pixels labeled `probably cloudy`.
+The dataset variable `CF_min` provides a lower bound to cloud fraction estimates based on the cloud mask flag `most_likely_cloudy`, while `CF_max` provides an upper bound by including the uncertain pixels labeled `probably cloudy`.
 
 ```{code-cell} ipython3
 fig, ax = plt.subplots(figsize=(10, 4))
