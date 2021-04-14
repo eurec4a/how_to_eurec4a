@@ -40,7 +40,7 @@ import warnings
 warnings.filterwarnings("ignore")
 ```
 
-### Cloud fraction functions
+## Cloud fraction functions
 We define some utility functions to extract (circle) cloud cover estimates from different datasets assuming that the datasets follow a certain flag meaning convention.  
 
 In particular, we define a **minimum cloud fraction** based on the cloud mask flag `most_likely_cloudy` and a **maximum cloud fraction** combining the flags `most_likely_cloudy` and `probably_cloudy`. The cloud mask datasets slightly vary in their flag definition for cloud free conditions and their handling of unvalid measurements which is taken care of by the following functions.
@@ -382,7 +382,7 @@ ax.legend(title="Instruments", bbox_to_anchor=(1,1), loc="upper left")
 fig.savefig("Cloud_masks_distribution.png", bbox_inches="tight")
 ```
 
-## Time series of circle cloud fraction
+### Time series of circle cloud fraction
 We display the daily mean of all circle cloud fraction *(marker)* and the range from minimum to maximum circle cloud fraction *(vertical line)*.
 
 ```{code-cell} ipython3
