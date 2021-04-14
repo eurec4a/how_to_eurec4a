@@ -12,6 +12,7 @@
     - file: bacardi
     - file: wales
     - file: hamp_comparison
+    - file: cloudmasks
 - file: meteor
   sections:
     - file: meteor_cloudradar
