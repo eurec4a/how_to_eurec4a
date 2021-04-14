@@ -79,21 +79,6 @@ def ensure_cfminmax(ds):
         ds = ds.assign(CF_max=cfmax)
     return correct_VELOX(ds)
 
-def midpoint(a, b):
-    return a + (b - a) / 2
-
-def cf_circles(ds):
-    return xr.concat(
-        [
-            xr.Dataset({
-                "CF_max": ds.sel(time=slice(i["start"], i["end"])).CF_max.mean(dim="time"),
-                "CF_min": ds.sel(time=slice(i["start"], i["end"])).CF_min.mean(dim="time"),
-                "time": xr.DataArray(midpoint(i["start"], i["end"]), dims=()),
-                "segment_id": xr.DataArray(i["segment_id"], dims=())
-            })
-            for i in segments.values()
-        ], dim="time")
-
 def load_cloudmask_dataset(cat_item):
     return ensure_cfminmax(xr.concat([v.get().to_dask().chunk()
                                       for _, v in cat_item.items()], dim="time"))
@@ -124,14 +109,10 @@ cat_cloudmask = {
 data = {k: load_cloudmask_dataset(v) for k, v in cat_cloudmask.items()}
 ```
 
-```{code-cell} ipython3
-data0205 = {k: ensure_cfminmax(v["HALO-0205"].to_dask()) for k, v in cat_cloudmask.items()}
-```
-
 ## Case study on February 5
 We show the cloud masks from the various instruments for an 5 minute time interval around noon on February 5.
 
-We add 2D vertical lidar and radar data, as well as 2D horizontal imager data for a better visialization of the cloud information content provided by the instruments.
+We add 2D vertical lidar and radar data, as well as 2D horizontal imager data for a better visualization of the cloud information content provided by the instruments.
 
 +++
 
@@ -223,6 +204,11 @@ cloudmask_selectors = {
 ```
 
 ```{code-cell} ipython3
+data0205 = {k: ensure_cfminmax(v["HALO-0205"].to_dask()) for k, v in cat_cloudmask.items()}
+```
+
+```{code-cell} ipython3
+%%time
 data_feb5 = {k: cloudmask_selectors[k](v.sel(time=s)) for k, v in data0205.items()}
 ```
 
@@ -312,16 +298,33 @@ for ax in [axV, axVb, axH, axP, axL1, axL2, axL3, axL4, axL5, axL6]:
 ```
 
 ```{raw-cell}
-fig.savefig("Cloud_masks_example_scene.png")
+fig.savefig("Cloud_masks_example_scene.png", bbox_inches="tight")
 ```
 
 ## Statistical comparison
 
-we will further compare cloud mask information from all HALO flights during EUREC4A on the basis of circle flight segments. Most of the time, the HALO aircraft sampled the airmass in circles east of Barbados. We use the meta data on flight segments, extract the information on start and end time of individual circles, and derive circle-average cloud fractions.  
+We will further compare cloud mask information from all HALO flights during EUREC4A on the basis of circle flight segments. Most of the time, the HALO aircraft sampled the airmass in circles east of Barbados. We use the meta data on flight segments, extract the information on start and end time of individual circles, and derive circle-average cloud fractions.
+
+For the 2D imagers VELOX and speMACS we use the full swath. In the case study above we had selected the central measurements for a better comparison with the other instruments. However, in the following we investigate the broad statistics and therefore include as much information on the cloud field as we can get from the full footprints of each instrument.
 
 The following statistics are based on the **maximum cloud fraction** with cloud mask flags $\in$ {`most_likely_cloudy`, `probably_cloudy`}.
 
-+++
+```{code-cell} ipython3
+def midpoint(a, b):
+    return a + (b - a) / 2
+
+def cf_circles(ds):
+    return xr.concat(
+        [
+            xr.Dataset({
+                "CF_max": ds.sel(time=slice(i["start"], i["end"])).CF_max.mean(dim="time", skipna=True),
+                "CF_min": ds.sel(time=slice(i["start"], i["end"])).CF_min.mean(dim="time", skipna=True),
+                "time": xr.DataArray(midpoint(i["start"], i["end"]), dims=()),
+                "segment_id": xr.DataArray(i["segment_id"], dims=())
+            })
+            for i in segments.values()
+        ], dim="time")
+```
 
 ### Get meta data
 
@@ -366,6 +369,7 @@ for k, v in data.items():
             ls="-", lw=2, marker=".", color=colors[k], label=k)
 
 ax.set_xlim(0, 1)
+ax.set_ylim(0, 48)
 ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)
 
@@ -374,7 +378,7 @@ ax.set_ylabel("Frequency")
 ax.legend(title="Instruments", bbox_to_anchor=(1,1), loc="upper left")
 ```
 
-```{code-cell} ipython3
+```{raw-cell}
 fig.savefig("Cloud_masks_distribution.png", bbox_inches="tight")
 ```
 
@@ -406,7 +410,7 @@ ax.set_ylabel("Cloud fraction")
 ax.legend(title="Instruments", bbox_to_anchor=(1,1), loc="upper left")
 ```
 
-```{code-cell} ipython3
+```{raw-cell}
 fig.savefig("Cloud_masks_timeseries.png", bbox_inches="tight")
 ```
 
