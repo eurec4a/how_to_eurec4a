@@ -164,9 +164,9 @@ Let's have a look a these variables
 ```{code-cell} ipython3
 :tags: [hide-cell]
 
-def attr_table(variables: list[xr.DataArray]):
+def attr_table(variables):
     """
-    Create a table of variable attributes from a list of variables.
+    Create a table of variable attributes from a list of variables (xr.DataArrays).
 
     The result is a HTML object, displayable by jupyter notebooks.
     """
