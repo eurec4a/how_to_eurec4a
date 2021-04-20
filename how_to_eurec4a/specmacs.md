@@ -156,7 +156,7 @@ Due to the curvature of the earth, we'll have to do a few coordinate transformat
 ### What we know
 
 We start out with five variables:
-* position of the airplane: latitude, longitude and altitude (`ds.lat, ds.lon, ds.alt`)
+* position of the airplane: latitude, longitude and height above WGS84 (`ds.lat, ds.lon, ds.alt`)
 * viewing directions of the camera pixels: viewing zenith angle and viewing azimuth angle (`ds.vza, ds.vaa`)
 
 Let's have a look a these variables
@@ -191,10 +191,16 @@ def attr_table(variables):
 attr_table([ds_selection[key] for key in ["lat", "lon", "alt", "vza", "vaa"]])
 ```
 
-* The position of the HALO is saved in ellipsoidal coordinates. It is defined by the lat/lon/alt coordinates with respect to the WGS-84 ellipsoid.
-* The viewing zenith and azimuth angles are given with respect to the local horizon (`lh`) coordinate system at the position of the HALO. This system has its center at the lat/lon/alt position of the HALO and the x/y/z axis point into North, East and down directions.
+* The position of the HALO is saved in ellipsoidal coordinates. It is defined by the latitude (`lat`), longitude (`lon`) and height (`alt`) coordinates with respect to the WGS-84 ellipsoid.
+* The viewing zenith (`vza`) and azimuth (`vaa`) angles are given with respect to the local horizon (`lh`) coordinate system at the position of the HALO. This system has its center at the `lat`/`lon`/`alt` position of the HALO and the x/y/z axis point into North, East and down directions.
 
 As the frame of reference rotates with the motion of HALO, a convenient way to work with such kind of data is to transform it into the Earth-Centered, Earth-Fixed (ECEF) coordinate system. The origin of this coordinate system is the center of the Earth. The z-axis passes through true north, the x-axis through the Equator and the prime meridian at 0° longitude. The y-axis is orthogonal to x and z. This cartesian system makes computations of distances and angles very easy.
+
+```{note}
+The use of "altitude" and "height" can be confusing and is sometimes handled inconsistently. Usually, "altitude" describes the vertical distance above the geoid and "height" describes the vertical distance above the surface.
+
+In this notebook, we only use the vertical distance above the WGS84 reference ellipsoid. Neither "altitude" nor "height" as defined above matches this distance exactly, but both are commonly used. We try to use the term "height" as it seems to be more commonly used in coordinate computations and fall back to the term `alt` when talking about the variable in HALO datasets. Keep in mind that we actually mean vertical distance above WGS84 in both cases.
+```
 
 ### Transformation to ECEF
 
@@ -263,7 +269,7 @@ def ellipsoidal_to_ecef_ds(ds: xr.Dataset) -> xr.DataArray:
                           output_core_dims=[("xyz_ecef",)])
 ```
 
-With these functions it is easy to transform the lat/lon/height position of the HALO into the ECEF-coordinate system.
+With these functions it is easy to transform the `lat`/`lon`/`alt` position of the HALO into the ECEF-coordinate system.
 
 ```{code-cell} ipython3
 HALO_ecef = ellipsoidal_to_ecef_ds(ds_selection)
