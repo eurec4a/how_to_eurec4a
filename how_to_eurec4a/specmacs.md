@@ -17,7 +17,7 @@ The following script exemplifies the access and usage of specMACS data measured
 during EUREC4A.
 
 The specMACS sensor consists of hyperspectral image sensors as well as polarization resolving image sensors.
-The hyperspectral image sensors operate in the visible and near infra read (VNIR) and the short-wave infra red (SWIR) range.
+The hyperspectral image sensors operate in the visible and near infrared (VNIR) and the short-wave infrared (SWIR) range.
 The dataset investigated in this notebook is a cloud mask dataset based on data from the SWIR sensor.
 More information on the dataset can be found on the [macsServer](https://macsserver.physik.uni-muenchen.de/campaigns/EUREC4A/products/cloudmask/). If you have questions or if you would like to use the data for a publication, please don't hesitate to get in contact with the dataset authors as stated in the dataset attributes `contact` and `author` list.
 
