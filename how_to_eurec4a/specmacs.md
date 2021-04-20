@@ -22,7 +22,7 @@ Our plan is to analyze a section of the specMACS cloud mask dataset around the f
 
 +++
 
-## Obtaning data
+## Obtaining data
 In order to work with EUREC4A datasets, we'll use the `eurec4a` library to access the datasets and also use `numpy` and `xarray` as our common tools to handle datasets.
 
 ```{code-cell} ipython3
@@ -61,7 +61,7 @@ first_dropsonde = segment["dropsondes"]["GOOD"][0]
 first_dropsonde
 ```
 
-Now we would like to know when this sonde was launched. The [JOANNE dataset](https://github.com/Geet-George/JOANNE#joanne---the-eurec4a-dropsonde-dataset) contains this information. We use level 3 data which contains quality checked data on a common grid and load it using the intake catalog. We then select the correct dropsonde by its sonde_id to find out the launch time of the dropsonde.
+Now we would like to know when this sonde was launched. The [JOANNE dataset](https://github.com/Geet-George/JOANNE#joanne---the-eurec4a-dropsonde-dataset) contains this information. We use level 3 data which contains quality checked data on a common grid and load it using the intake catalog. We then select the correct dropsonde by its `sonde_id` to find out the launch time of the dropsonde.
 
 More information on the data catalog can be found [here](https://github.com/eurec4a/eurec4a-intake#eurec4a-intake-catalogue).
 
@@ -107,7 +107,7 @@ def flagbar(fig, mappable, variable):
     cbar.ax.set_yticklabels(labels);
 ```
 
-Figure 1: shows the SWIR camera cloud mask product along the flight track (x axis) for all observations in accross track directions (y axis).
+Figure 1: shows the SWIR camera cloud mask product along the flight track (x axis) for all observations in across track directions (y axis).
 
 ```{note}
 fetching the data and displaying it might take a few seconds
