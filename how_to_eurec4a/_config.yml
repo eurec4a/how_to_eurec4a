@@ -1,6 +1,6 @@
 #######################################################################################
 # A default configuration that will be loaded for all jupyter books
-# See the documentation for help and more options: 
+# See the documentation for help and more options:
 # https://jupyterbook.org/customize/config.html
 
 #######################################################################################
@@ -8,18 +8,19 @@
 title                       : How to EUREC4A  # The title of the book. Will be placed in the left navbar.
 author                      : EUREC4A community  # The author of the book
 copyright                   : "2020"  # Copyright year to be placed in the footer
-logo                        : logo_eurec4a.png  # A path to the book logo
+logo                        : logo_pyeurec4a.png  # A path to the book logo
 repository:
-  url                       : https://github.com/tmieslinger/how_to_eurec4a
+  url                       : https://github.com/eurec4a/how_to_eurec4a
   path_to_book              : how_to_eurec4a
 launch_buttons:
   binderhub_url             : https://mybinder.org
   thebe                     : true
   colab_url                 : https://colab.research.google.com
 html:
+  favicon                   : "logo_pyeurec4a.png" # A path to the favicon
   use_repository_button     : true
   use_issues_button         : true
   use_edit_page_button      : true
-execute_notebooks: force
 execute:
+  execute_notebooks         : force
   timeout: 100
