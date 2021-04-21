@@ -155,10 +155,10 @@ Ideally, we'd be handling the cloud flag meanings properly, but for now, let's j
 
 ```{code-cell} ipython3
 assert np.all(radar_cm.cloud_mask.flag_values == radiometer_cm.cloud_mask.flag_values)
-assert np.all(radar_cm.cloud_mask.flag_values == wales.cloud_mask.flag_values)
+assert np.all(radar_cm.cloud_mask.flag_values[1:] == wales.cloud_mask.flag_values)
 assert radar_cm.cloud_mask.flag_meanings == 'unknown no_cloud_detectable probably_cloudy most_likely_cloudy'
 assert radiometer_cm.cloud_mask.flag_meanings == 'unknown no_cloud_detectable probably_cloudy most_likely_cloudy'
-assert wales.cloud_mask.flag_meanings == 'unknown cloud_free probably_cloudy most_likely_cloudy'
+assert wales.cloud_mask.flag_meanings == 'cloud_free probably_cloudy most_likely_cloudy'
 ```
 
 Let's prepare the radar reflectivity (dBZ) time-height plot. Get the dBZ in right shape and adjust the x and y axis according to the requirements of pcolormesh, this means x and y define the pixel edges in the respective direction. Also we convert the height coordinate from the WGS84 ellipsoid height to height above the Geoid. For this, we need y (and x) as 2D fields, as we have to correct the height in every time step as function of lat and lon. The Radar and Lidar cloud top heigh products are already defined above the Geoid or sea surface.
