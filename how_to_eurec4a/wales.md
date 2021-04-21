@@ -155,7 +155,7 @@ Yet, this missing value story was a bit complicated, so let's check if we would 
 
 ```{code-cell} ipython3
 cf_wrong = (ds_cloud.cloud_mask == cloudy_flags).any("flags").mean().values
-print("wrong cloud fraction: {:.2f}%".format(cf_wrong * 100))
+print(f"wrong cloud fraction: {cf_wrong * 100:.2f} %")
 ```
 
 Indeed, this is different... Good that we have thought about it.
@@ -175,5 +175,6 @@ ax.set_ylabel("Cloud fraction")
 ax.set_xlabel("date: MM-DD HH")
 ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)
-ax.legend(title="averaging period", bbox_to_anchor=(1,1), loc="upper left");
+ax.legend(title="averaging period", bbox_to_anchor=(1,1), loc="upper left")
+None
 ```
