@@ -40,6 +40,10 @@ import matplotlib.pyplot as plt
 plt.style.use("./mplstyle/book")
 
 plt.plot(ds.lon, ds.lat)
+center_lat = float(ds.lat.mean())
+plt.gca().set_aspect(1./np.cos(np.deg2rad(center_lat)))
+plt.xlabel("longitude / °")
+plt.ylabel("latitude / °")
 plt.show()
 ```
 
@@ -75,6 +79,14 @@ ax1.plot(ds.lon, ds.lat)
 ax1.set_title(f"{len(ds.time)} data points")
 ax2.plot(dssimplified.lon, dssimplified.lat)
 ax2.set_title(f"{len(dssimplified.time)} data points")
+
+for ax in (ax1, ax2):
+    ax.set_aspect(1./np.cos(np.deg2rad(center_lat)))
+    ax.set_xlabel("longitude / °")
+    ax.set_ylabel("latitude / °")
+    ax.label_outer()
+
+
 plt.show()
 
 ratio = len(dssimplified.time) / len(ds.time)
