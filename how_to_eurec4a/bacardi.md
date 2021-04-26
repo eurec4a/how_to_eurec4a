@@ -62,8 +62,8 @@ for var in ['F_up_solar', 'F_up_terrestrial']:
 ax1.legend()
 ax1.set_ylabel('upward solar and terrestrial irradiance / Wm$^{-2}$')
 
-ax2.set_prop_cycle(color=['grey', 'darkblue', 'skyblue'])
-for var in ['F_down_solar_sim', 'F_down_solar', 'F_down_solar_diff']:
+ax2.set_prop_cycle(color=['grey', 'skyblue', 'darkblue'])
+for var in ['F_down_solar_sim', 'F_down_solar_diff', 'F_down_solar']:
     ds[var].plot(ax=ax2, label= var)
 ax2.legend()
 ax2.set_ylabel('downward solar irradiance / Wm$^{-2}$')
