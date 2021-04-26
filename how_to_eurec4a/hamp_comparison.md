@@ -12,7 +12,7 @@ kernelspec:
 ---
 
 # HAMP comparison
-
+This notebook shows a comparison of cloud features as detected by different parts of the Halo Microwave Package (HAMP) and includes data from WALES and specMACS for additional context.
 
 ```{code-cell} ipython3
 import numpy as np
