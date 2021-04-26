@@ -111,7 +111,7 @@ import matplotlib.pyplot as plt
 plt.style.use("./mplstyle/book")
 ```
 
-* Figure 1: Temperature and relative humidity as stored in the xarray dataset
+### Temperature and relative humidity as stored in the xarray dataset
 
 ```{code-cell} ipython3
 fig, (ax0, ax1) = plt.subplots(1, 2)
@@ -119,7 +119,7 @@ ds_sondes_first_circle_Feb05.ta.T.plot(ax=ax0, cmap="magma")
 ds_sondes_first_circle_Feb05.rh.T.plot(ax=ax1, cmap="BrBG")
 ```
 
-* Figure 2: Temperature and relative humidity profiles.  
+### Temperature and relative humidity profiles.
 The temperature profiles are colored according to their launch time, while relative humidity profiles are colored according to their integrated water vapour in the measured column, i.e. precipitable water.
 
 ```{code-cell} ipython3
@@ -155,7 +155,7 @@ ax1.legend(ds_sondes_first_circle_Feb05.PW.values,
 fig.suptitle('Dropsondes from 1st circle an February 5', fontsize=18)
 ```
 
-* Figure 3: wind speed variations throughout February 5
+### wind speed variations throughout February 5
 
 ```{code-cell} ipython3
 mask_sondes_Feb05 = [dt64_to_dt(t).date() == datetime.date(2020,2,5)
