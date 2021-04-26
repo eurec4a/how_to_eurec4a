@@ -19,19 +19,13 @@ during EUREC4A - ATOMIC.
 More information on the dataset can be found at https://github.com/Geet-George/JOANNE/tree/master/joanne/Level_3#level---3.
 If you have questions or if you would like to use the data for a publication, please don't hesitate to get in contact with the dataset authors as stated in the dataset attributes `contact` and `author`.
 
-```{code-cell} ipython3
-import logging
-from functools import reduce
-
-import eurec4a
-```
-
 ## Get data
 * To load the data we first load the EUREC4A meta data catalogue. More information on the catalog can be found [here](https://github.com/eurec4a/eurec4a-intake#eurec4a-intake-catalogue).
 
 ```{code-cell} ipython3
 import datetime
 import numpy as np
+import eurec4a
 cat = eurec4a.get_intake_catalog()
 list(cat)
 ```
@@ -93,6 +87,7 @@ dropsonde_ids
 We transfer the information from our flight segment selection to the dropsondes data in the xarray dataset.
 
 ```{code-cell} ipython3
+from functools import reduce
 mask_sondes_first_circle_Feb05 = reduce(lambda a, b: a | b, [ds.sonde_id==d
                                                              for d in dropsonde_ids])
 ds_sondes_first_circle_Feb05 = ds.isel(sounding=mask_sondes_first_circle_Feb05)

@@ -31,11 +31,6 @@ If you have questions or if you would like to use the data for a publication, pl
 No data available for the transfer flights (first and last) and the first local research flight.
 ```
 
-```{code-cell} ipython3
-import eurec4a
-import intake
-import xarray as xr
-```
 ## Get data
 To load the data we first load the [EUREC4A intake catalog](https://github.com/eurec4a/eurec4a-intake#eurec4a-intake-catalogue) and list the available datasets from VELOX.  
 Currently, there is a cloud mask product available.

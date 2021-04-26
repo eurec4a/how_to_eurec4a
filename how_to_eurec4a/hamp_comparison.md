@@ -15,12 +15,7 @@ kernelspec:
 
 
 ```{code-cell} ipython3
-import xarray
 import numpy as np
-import matplotlib.pyplot as plt
-from mpl_toolkits.axes_grid1.inset_locator import inset_axes, mark_inset
-import glob
-
 import eurec4a
 cat = eurec4a.get_intake_catalog()
 ```
