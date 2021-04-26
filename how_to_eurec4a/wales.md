@@ -43,15 +43,19 @@ print(cat.HALO.WALES.cloudparameter.description)
 ## Cloud parameter
 
 ```{code-cell} ipython3
-ds_cloud = cat.HALO.WALES.cloudparameter["HALO-0205"].to_dask().load()
+ds_cloud = cat.HALO.WALES.cloudparameter["HALO-0205"].to_dask()
 ds_cloud
 ```
 
 We select 1min of flight `time`. You can freely change the times or put `None` instead of the slice start and/or end to get up to the full flight data.
+We explicitly `load()` the dataset at this stage as want to use this subset multiple times in the following.
+
+```{note}
+`load()` should always be called late and in particular after subsetting the data to prevent loading more than necessary.
+```
 
 ```{code-cell} ipython3
-ds_cloud_sel = ds_cloud.sel(time=slice(datetime.datetime(2020, 2, 5, 13, 6, 30),
-                                       datetime.datetime(2020, 2, 5, 13, 7, 30)))
+                                       datetime.datetime(2020, 2, 5, 13, 7, 30))).load()
 ```
 
 In order to work with the different cloud mask flags, we extract the meanings into a dictionary, which we can later use to select relevant data:

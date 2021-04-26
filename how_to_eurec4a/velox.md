@@ -96,7 +96,7 @@ So far, we only made use of the flight segmentation meta data. The launch time t
 We use again the intake catalog to load the JOANNE dataset and extract the launch time to the selected dropsonde by it's sonde ID.
 
 ```{code-cell} ipython3
-dropsondes = cat.dropsondes.JOANNE.level3.to_dask().load()
+dropsondes = cat.dropsondes.JOANNE.level3.to_dask()
 ```
 
 ```{code-cell} ipython3

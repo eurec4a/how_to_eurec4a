@@ -73,7 +73,7 @@ cat = eurec4a.get_intake_catalog()
 ```
 
 ```{code-cell} ipython3
-dropsondes = cat.dropsondes.JOANNE.level3.to_dask().load()
+dropsondes = cat.dropsondes.JOANNE.level3.to_dask()
 # this following line should go away in the soon to be released new version of JOANNE
 sonde_dt = dropsondes.swap_dims({"sounding": "sonde_id"}).sel(sonde_id=first_dropsonde).launch_time.values
 str(sonde_dt)
