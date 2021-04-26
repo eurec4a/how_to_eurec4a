@@ -27,7 +27,6 @@ import datetime
 import numpy as np
 import eurec4a
 cat = eurec4a.get_intake_catalog()
-list(cat)
 ```
 
 * We can funrther specify the platform, instrument, if applicable dataset level or variable name, and pass it on to dask.
