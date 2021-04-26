@@ -40,7 +40,9 @@ list(cat)
 
 * We can funrther specify the platform, instrument, if applicable dataset level or variable name, and pass it on to dask.
 
-*Note: have a look at the attributes of the xarray dataset `ds` for all relevant information on the dataset, such as author, contact, or citation infromation.*
+```{note}
+Have a look at the attributes of the xarray dataset `ds` for all relevant information on the dataset, such as author, contact, or citation infromation.
+```
 
 ```{code-cell} ipython3
 ds = cat.dropsondes.JOANNE.level3.to_dask()
@@ -100,7 +102,10 @@ ds_sondes_first_circle_Feb05 = ds.isel(sounding=mask_sondes_first_circle_Feb05)
 
 ## Plots
 You can get a list of available variables in the dataset from `ds.variables.keys()`  
-*Note: fetching the data and displaying it might take a few seconds*
+
+```{note}
+fetching the data and displaying it might take a few seconds
+```
 
 ```{code-cell} ipython3
 import matplotlib as mpl

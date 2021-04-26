@@ -21,7 +21,9 @@ At typical flight speeds of 200 m/s the backscatter product from the HSRL has a 
 
 More information on the instrument can be found in [Wirth et al., 2009](https://elib.dlr.de/58175/). If you have questions or if you would like to use the data for a publication, please don't hesitate to get in contact with the dataset authors as stated in the dataset attributes `contact` or `author`.
 
-*Note: due to safety regulations the Lidar can only be operated above 6 km which leads to data gaps in about the first and last 30 minutes of each flight.*
+```{note}
+Due to safety regulations the Lidar can only be operated above 6 km which leads to data gaps in about the first and last 30 minutes of each flight.
+```
 
 ```{code-cell} ipython3
 %pylab inline

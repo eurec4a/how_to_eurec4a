@@ -35,7 +35,9 @@ list(cat.HALO.SMART)
 
 * We can further specify the platform, instrument, if applicable dataset level or variable name, and pass it on to dask.
 
-*Note: have a look at the attributes of the xarray dataset `ds` for all relevant information on the dataset, such as author, contact, or citation infromation.*
+```{note}
+Have a look at the attributes of the xarray dataset `ds_smart` for all relevant information on the dataset, such as author, contact, or citation infromation.
+```
 
 ```{code-cell} ipython3
 ds_smart = cat.HALO.SMART.spectral_irradiances['HALO-0205'].to_dask()

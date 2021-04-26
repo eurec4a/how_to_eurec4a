@@ -27,7 +27,9 @@ The PI during EUREC4A was Michael Schäfer (University Leipzig).
 
 If you have questions or if you would like to use the data for a publication, please don't hesitate to get in contact with the dataset authors as stated in the dataset attributes `contact` or `author`.
 
-*Note: no data available for the transfer flights (first and last) and the first local research flight.*
+```{note}
+No data available for the transfer flights (first and last) and the first local research flight.
+```
 
 ```{code-cell} ipython3
 %pylab inline
