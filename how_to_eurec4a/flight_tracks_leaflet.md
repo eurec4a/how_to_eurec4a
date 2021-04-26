@@ -20,7 +20,6 @@ This notebook shows how to plot the flight tracks of the HALO aircraft. First, w
 First, we'll import pylab and the EUREC4A data catalog.
 
 ```{code-cell} ipython3
-%pylab inline
 import eurec4a
 cat = eurec4a.get_intake_catalog()
 ```
@@ -58,6 +57,11 @@ dsfixed
 Just to have a better visual impression, we can create a quick overview plot of the data:
 
 ```{code-cell} ipython3
+%matplotlib inline
+import numpy as np
+import matplotlib.pyplot as plt
+plt.style.use("./mplstyle/book")
+
 plt.plot(dsfixed.lon, dsfixed.lat)
 plt.show()
 ```
@@ -89,7 +93,7 @@ dssimplified
 We can now compare those two tracks side by side while keeping a look at the number of data points required.
 
 ```{code-cell} ipython3
-fig, (ax1, ax2) = subplots(1, 2, figsize=(15,4))
+fig, (ax1, ax2) = plt.subplots(1, 2)
 ax1.plot(dsfixed.lon, dsfixed.lat)
 ax1.set_title(f"{len(dsfixed.time)} data points")
 ax2.plot(dssimplified.lon, dssimplified.lat)
@@ -156,6 +160,7 @@ tracks = {flight_id: simplify_dataset(ds, 1e-5)
 Let's also quickly grab some colors from a matplotlib colorbar, such that we can show all tracks in individual colors:
 
 ```{code-cell} ipython3
+import matplotlib
 colors = [matplotlib.colors.to_hex(c)
           for c in plt.cm.inferno(np.linspace(0, 1, len(tracks)))]
 ```

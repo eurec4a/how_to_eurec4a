@@ -22,10 +22,6 @@ from mpl_toolkits.axes_grid1.inset_locator import inset_axes, mark_inset
 import glob
 
 import eurec4a
-
-%pylab inline
-
-
 cat = eurec4a.get_intake_catalog()
 ```
 
@@ -179,10 +175,13 @@ radar_y = radar_y - wgs_correction
 
 ## Plot timeseries
 ```{code-cell} ipython3
+%matplotlib inline
+import matplotlib.pyplot as plt
+plt.style.use("./mplstyle/book")
+
 fig, (ax3, ax2, ax1, ax,) = plt.subplots(
-    nrows=4, figsize=(10, 8), sharex=True,
+    nrows=4, sharex=True,
     gridspec_kw=dict(height_ratios=[1, 1, .75, 0.5]),
-    constrained_layout=True
 )
 
 ax.plot(wales.time, wales.cloud_mask + 0.2, '.', label='WALES', markersize=3)

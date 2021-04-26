@@ -17,10 +17,6 @@ The following script exemplifies the access and usage of the Broadband AirCrAft 
 
 The dataset is published under [Ehrlich et al. (2021)](https://doi.org/10.25326/160). If you have questions or if you would like to use the data for a publication, please don't hesitate to get in contact with the dataset authors as stated in the dataset attributes `contact` or `author`.
 
-```{code-cell} ipython3
-%pylab inline
-```
-
 ## Get data
 * To load the data we first load the EUREC4A meta data catalogue. More information on the catalog can be found [here](https://github.com/eurec4a/eurec4a-intake#eurec4a-intake-catalogue).
 
@@ -55,9 +51,11 @@ The data from EUREC4A is of 10 Hz measurement frequency and corrected for dynami
 We plot the upward and downward irradiances in two panels.
 
 ```{code-cell} ipython3
-mpl.rcParams['font.size'] = 12
+%matplotlib inline
+import matplotlib.pyplot as plt
+plt.style.use(["./mplstyle/book", "./mplstyle/wide"])
 
-fig, (ax1, ax2) = plt.subplots(1,2, figsize=(16,6))
+fig, (ax1, ax2) = plt.subplots(1, 2)
 ax1.set_prop_cycle(color=['darkblue', 'red'])
 for var in ['F_up_solar', 'F_up_terrestrial']:
     ds[var].plot(ax=ax1,label= var)
@@ -69,10 +67,6 @@ for var in ['F_down_solar_sim', 'F_down_solar', 'F_down_solar_diff']:
     ds[var].plot(ax=ax2, label= var)
 ax2.legend()
 ax2.set_ylabel('downward solar irradiance / Wm$^{-2}$')
-
-for ax in [ax1, ax2]:
-    ax.spines['right'].set_visible(False)
-    ax.spines['top'].set_visible(False)
 ```
 
 The attitude correction of downward solar irradiance does not account for the present cloud situation above HALO. Instead, two data sets, one assuming cloud-free and one assuming overcast (diffuse illumination) conditions, are provided. Depending on the application, the user needs to choose between both data sets. For the downward solar irradiance assuming cloud-free conditions, the data are filtered for turns of HALO, high roll and pitch angles. This filter is not applied for the data assuming overcast/diffuse conditions to provide the full data. However, data during turns of HALO need to be analysed with care. As shown in the example some artifical spikes due to turns are present in the data.

@@ -17,10 +17,6 @@ The following script exemplifies the access and usage of SMART data measured dur
 
 More information on the dataset can be found in [Stevens et al. (2019)](https://doi.org/10.1175/BAMS-D-18-0198.1) and [Wendisch et al. (2001)](https://doi.org/10.1175/1520-0426(2001)018%3C1856:AASAWA%3E2.0.CO;2). If you have questions or if you would like to use the data for a publication, please don't hesitate to get in contact with the dataset authors as stated in the dataset attributes `contact` or `author`.
 
-```{code-cell} ipython3
-%pylab inline
-```
-
 ## Get data
 * To load the data we first load the EUREC4A meta data catalogue. More information on the catalog can be found [here](https://github.com/eurec4a/eurec4a-intake#eurec4a-intake-catalogue).
 
@@ -49,6 +45,10 @@ The available dataset includes irradiances for six selected wavelengths (422nm, 
 First Quickplot of whole flight (one wavelength)
 
 ```{code-cell} ipython3
+%matplotlib inline
+import matplotlib.pyplot as plt
+plt.style.use("./mplstyle/book")
+
 ds_smart.F_down_solar_wl_422.plot()
 ```
 
@@ -83,14 +83,10 @@ ds_smart_selection = ds_smart.sel(time=slice(seg["start"], seg["end"]))
 We plot the spectral irradiances from different wavelengths measured with SMART during the selected flight segment.
 
 ```{code-cell} ipython3
-mpl.rcParams['font.size'] = 12
-
 fig, ax = plt.subplots()
 wl_list=[422,532,648,858,1238,1638]
 for i in wl_list:
     ds_smart_selection[f'F_down_solar_wl_{i}'].plot(label =f'{i} nm')
 ax.legend()
 ax.set_ylabel('Spectral downward irradiance / Wm$^{-2}$nm$^{-1}$')
-ax.spines['right'].set_visible(False)
-ax.spines['top'].set_visible(False)
 ```

@@ -32,18 +32,10 @@ No data available for the transfer flights (first and last) and the first local 
 ```
 
 ```{code-cell} ipython3
-%pylab inline
-```
-
-```{code-cell} ipython3
 import eurec4a
 import intake
 import xarray as xr
-
-import matplotlib as mpl
-mpl.rcParams['font.size'] = 12
 ```
-
 ## Get data
 To load the data we first load the [EUREC4A intake catalog](https://github.com/eurec4a/eurec4a-intake#eurec4a-intake-catalogue) and list the available datasets from VELOX.  
 Currently, there is a cloud mask product available.
@@ -83,6 +75,8 @@ segments = [{**s,
 (1) we extract the segment ID of the second `circle`
 
 ```{code-cell} ipython3
+import datetime
+
 segments_ordered_by_start_time = list(sorted(segments, key=lambda s: s["start"]))
 circles_Feb05 = [s["segment_id"]
                  for s in segments_ordered_by_start_time
@@ -124,6 +118,10 @@ ds_sel = ds.cloud_mask.sel(time=sonde_dt, method="nearest")
 ```
 
 ```{code-cell} ipython3
+%matplotlib inline
+import matplotlib.pyplot as plt
+plt.style.use("./mplstyle/book")
+
 fig, ax = plt.subplots()
 
 cax = ds_sel.plot(ax=ax,
@@ -161,16 +159,15 @@ seg = {s["segment_id"]: {**s, "flight_id": flight["flight_id"]}
 The dataset variable `CF_min` provides a lower bound to cloud fraction estimates based on the cloud mask flag `most_likely_cloudy`, while `CF_max` provides an upper bound by including the uncertain pixels labeled `probably cloudy`.
 
 ```{code-cell} ipython3
-fig, ax = plt.subplots(figsize=(10, 4))
-ds.CF_min.sel(time=slice(seg["start"], seg["end"])).plot(color="k",
-                                                         label="most_likely_cloudy")
-ds.CF_max.sel(time=slice(seg["start"], seg["end"])).plot(color="grey",
-                                                         label="most_likely_cloudy\nand probably_cloudy")
-ax.axvline(sonde_dt, color="C3", label="sonde launch time")
-ax.set_ylim(0, 1)
-ax.set_ylabel("Cloud fraction")
-ax.spines['right'].set_visible(False)
-ax.spines['top'].set_visible(False)
-ax.set_title("Second circle on February 5")
-ax.legend(title="Cloud mask flags", bbox_to_anchor=(1,1), loc="upper left")
+selection = ds.sel(time=slice(seg["start"], seg["end"]))
+
+with plt.style.context("mplstyle/wide"):
+    fig, ax = plt.subplots()
+    selection.CF_min.plot(color="k", label="most_likely_cloudy")
+    selection.CF_max.plot(color="grey", label="most_likely_cloudy\nand probably_cloudy")
+    ax.axvline(sonde_dt, color="C3", label="sonde launch time")
+    ax.set_ylim(0, 1)
+    ax.set_ylabel("Cloud fraction")
+    ax.set_title("Second circle on February 5")
+    ax.legend(title="Cloud mask flags", bbox_to_anchor=(1,1), loc="upper left");
 ```

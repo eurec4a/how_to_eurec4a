@@ -17,10 +17,6 @@ The HALO UNIFEID dataset is a combination of [HAMP](https://amt.copernicus.org/a
 
 More information on the dataset can be found at `?`. If you have questions or if you would like to use the data for a publication, please don't hesitate to get in contact with the dataset authors as stated in the dataset attributes `contact` or `author`.
 
-```{code-cell} ipython3
-%pylab inline
-```
-
 ## Get data
 * To load the data we first load the EUREC4A meta data catalogue. More information on the catalog can be found [here](https://github.com/eurec4a/eurec4a-intake#eurec4a-intake-catalogue).
 
@@ -78,9 +74,12 @@ ds_bahamas_selection = ds_bahamas.sel(time=slice(seg["start"], seg["end"]))
 We plot reflectivity from the HAMP Radar, the flight altitude of HALO and brightness temperatures from the low-frequency channels along the 22 GHz water vapor line (K band) from the HAMP radiometer.
 
 ```{code-cell} ipython3
-mpl.rcParams['font.size'] = 12
+%matplotlib inline
+import numpy as np
+import matplotlib.pyplot as plt
+plt.style.use("./mplstyle/book")
 
-fig, (ax1, ax2) = plt.subplots(2,1,sharex=True, figsize=(10,5), constrained_layout=True, gridspec_kw={'height_ratios':(2, 1.2)})
+fig, (ax1, ax2) = plt.subplots(2,1,sharex=True, gridspec_kw={'height_ratios':(2, 1.2)})
 
 # 1st plot: Radar dBZ and flight altitude
 ds_bahamas_selection.altitude.plot(ax=ax1, x='time', color = 'black', label = 'flight altitude')
@@ -100,7 +99,4 @@ ax2.set_title('')
 ax2.legend(bbox_to_anchor=(1,1.1))
 
 ax1.set_xlabel('')
-for ax in [ax1, ax2]:
-    ax.spines['right'].set_visible(False)
-    ax.spines['top'].set_visible(False)
 ```

@@ -20,10 +20,6 @@ More information on the dataset can be found at https://github.com/Geet-George/J
 If you have questions or if you would like to use the data for a publication, please don't hesitate to get in contact with the dataset authors as stated in the dataset attributes `contact` and `author`.
 
 ```{code-cell} ipython3
-%pylab inline
-```
-
-```{code-cell} ipython3
 import logging
 from functools import reduce
 
@@ -34,6 +30,8 @@ import eurec4a
 * To load the data we first load the EUREC4A meta data catalogue. More information on the catalog can be found [here](https://github.com/eurec4a/eurec4a-intake#eurec4a-intake-catalogue).
 
 ```{code-cell} ipython3
+import datetime
+import numpy as np
 cat = eurec4a.get_intake_catalog()
 list(cat)
 ```
@@ -108,15 +106,15 @@ fetching the data and displaying it might take a few seconds
 ```
 
 ```{code-cell} ipython3
-import matplotlib as mpl
+%matplotlib inline
 import matplotlib.pyplot as plt
-mpl.rcParams['font.size'] = 14
+plt.style.use("./mplstyle/book")
 ```
 
 * Figure 1: Temperature and relative humidity as stored in the xarray dataset
 
 ```{code-cell} ipython3
-fig, (ax0, ax1) = plt.subplots(1, 2, figsize=(12,7))
+fig, (ax0, ax1) = plt.subplots(1, 2)
 ds_sondes_first_circle_Feb05.ta.T.plot(ax=ax0, cmap="magma")
 ds_sondes_first_circle_Feb05.rh.T.plot(ax=ax1, cmap="BrBG")
 ```
@@ -131,7 +129,8 @@ def dt64_to_dt(dt64):
 ```
 
 ```{code-cell} ipython3
-fig, (ax0, ax1) = plt.subplots(1, 2, figsize=(12,7))
+fig, (ax0, ax1) = plt.subplots(1, 2)
+
 y = ds_sondes_first_circle_Feb05.alt
 x0 = ds_sondes_first_circle_Feb05.ta
 ax0.set_prop_cycle(color=plt.get_cmap("viridis")(np.linspace(0, 1, len(dropsonde_ids))))
@@ -145,16 +144,14 @@ ax0.legend([dt64_to_dt(d).strftime("%H:%M:%S")
 x1 = ds_sondes_first_circle_Feb05.rh
 c = ds_sondes_first_circle_Feb05.PW
 
-ax1.set_prop_cycle(color=mpl.cm.BrBG([int(i) for i in (c - c.min())#cividis_r
+ax1.set_prop_cycle(color=plt.cm.BrBG([int(i) for i in (c - c.min())#cividis_r
                                            / (c - c.min()).max() * 255]))
 p = ax1.plot(x1.T, y.data[:, np.newaxis])
 ax1.set_xlabel(f"{x1.long_name} / {x1.units}")
 ax1.set_ylabel(f"{y.name} / m")
 ax1.legend(ds_sondes_first_circle_Feb05.PW.values,
            title=ds_sondes_first_circle_Feb05.PW.standard_name)
-for ax in [ax0, ax1]:
-    ax.spines['right'].set_visible(False)
-    ax.spines['top'].set_visible(False)
+
 fig.suptitle('Dropsondes from 1st circle an February 5', fontsize=18)
 ```
 
@@ -167,15 +164,16 @@ ds_sondes_Feb05 = ds.isel(sounding=mask_sondes_Feb05)
 ```
 
 ```{code-cell} ipython3
-fig, ax = plt.subplots(figsize=(12,4))
-p = ax.pcolormesh(ds_sondes_Feb05.wspd.T, vmin=0, vmax=20)#var.T
-plt.colorbar(p, ax=ax, label=f"{ds_sondes_Feb05.wspd.long_name} / {ds_sondes_Feb05.wspd.units}")
-xticks = np.arange(0, ds_sondes_Feb05.sounding.size, int(ds_sondes_Feb05.sounding.size/10))
-ax.set_xticks(xticks)
-ax.set_xticklabels([dt64_to_dt(t).strftime("%H:%M") for t in ds.launch_time.values[xticks]])
-ax.set_xlabel(f"{ds_sondes_Feb05.launch_time.long_name}")
-yticks = np.arange(0, ds_sondes_Feb05.alt.size, int(ds_sondes_Feb05.alt.size/5))
-ax.set_yticks(yticks)
-ax.set_yticklabels(ds_sondes_Feb05.alt.values[yticks])
-ax.set_ylabel(f"{ds_sondes_Feb05.alt.name} / m")
+with plt.style.context("mplstyle/wide"):
+    fig, ax = plt.subplots()
+    p = ax.pcolormesh(ds_sondes_Feb05.wspd.T, vmin=0, vmax=20)#var.T
+    plt.colorbar(p, ax=ax, label=f"{ds_sondes_Feb05.wspd.long_name} / {ds_sondes_Feb05.wspd.units}")
+    xticks = np.arange(0, ds_sondes_Feb05.sounding.size, int(ds_sondes_Feb05.sounding.size/10))
+    ax.set_xticks(xticks)
+    ax.set_xticklabels([dt64_to_dt(t).strftime("%H:%M") for t in ds.launch_time.values[xticks]])
+    ax.set_xlabel(f"{ds_sondes_Feb05.launch_time.long_name}")
+    yticks = np.arange(0, ds_sondes_Feb05.alt.size, int(ds_sondes_Feb05.alt.size/5))
+    ax.set_yticks(yticks)
+    ax.set_yticklabels(ds_sondes_Feb05.alt.values[yticks])
+    ax.set_ylabel(f"{ds_sondes_Feb05.alt.name} / m")
 ```
