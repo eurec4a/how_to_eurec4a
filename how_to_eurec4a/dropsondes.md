@@ -109,8 +109,8 @@ plt.style.use("./mplstyle/book")
 
 ```{code-cell} ipython3
 fig, (ax0, ax1) = plt.subplots(1, 2)
-ds_sondes_first_circle_Feb05.ta.T.plot(ax=ax0, cmap="magma")
-ds_sondes_first_circle_Feb05.rh.T.plot(ax=ax1, cmap="BrBG")
+ds_sondes_first_circle_Feb05.ta.transpose("alt", "sounding").plot(ax=ax0, cmap="magma")
+ds_sondes_first_circle_Feb05.rh.transpose("alt", "sounding").plot(ax=ax1, cmap="BrBG")
 None
 ```
 
@@ -129,21 +129,21 @@ fig, (ax0, ax1) = plt.subplots(1, 2)
 
 y = ds_sondes_first_circle_Feb05.alt
 
-x0 = ds_sondes_first_circle_Feb05.ta
+x0 = ds_sondes_first_circle_Feb05.ta.transpose("alt", "sounding")
 ax0.set_prop_cycle(color=plt.cm.viridis(np.linspace(0, 1, len(dropsonde_ids))))
-ax0.plot(x0.T, y.data[:, np.newaxis])
+ax0.plot(x0, y.data[:, np.newaxis])
 ax0.set_xlabel(f"{x0.long_name} / {x0.units}")
 ax0.set_ylabel(f"{y.name} / m")
 ax0.legend([dt64_to_dt(d).strftime("%H:%M:%S")
             for d in ds_sondes_first_circle_Feb05.launch_time],
            title=x0.launch_time.name)
 
-x1 = ds_sondes_first_circle_Feb05.rh
+x1 = ds_sondes_first_circle_Feb05.rh.transpose("alt", "sounding")
 c = ds_sondes_first_circle_Feb05.PW
 
 ax1.set_prop_cycle(color=plt.cm.BrBG([int(i) for i in (c - c.min())#cividis_r
                                            / (c - c.min()).max() * 255]))
-p = ax1.plot(x1.T, y.data[:, np.newaxis])
+p = ax1.plot(x1, y.data[:, np.newaxis])
 ax1.set_xlabel(f"{x1.long_name} / {x1.units}")
 ax1.set_ylabel(f"{y.name} / m")
 ax1.legend(ds_sondes_first_circle_Feb05.PW.values,
@@ -163,7 +163,7 @@ ds_sondes_Feb05 = ds.isel(sounding=mask_sondes_Feb05)
 ```{code-cell} ipython3
 with plt.style.context("mplstyle/wide"):
     fig, ax = plt.subplots()
-    p = ax.pcolormesh(ds_sondes_Feb05.wspd.T, vmin=0, vmax=20)#var.T
+    p = ax.pcolormesh(ds_sondes_Feb05.wspd.transpose("alt", "sounding"), vmin=0, vmax=20)
     plt.colorbar(p, ax=ax, label=f"{ds_sondes_Feb05.wspd.long_name} / {ds_sondes_Feb05.wspd.units}")
     xticks = np.arange(0, ds_sondes_Feb05.sounding.size, int(ds_sondes_Feb05.sounding.size/10))
     ax.set_xticks(xticks)
