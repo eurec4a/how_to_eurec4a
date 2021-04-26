@@ -119,16 +119,18 @@ The temperature profiles are colored according to their launch time, while relat
 
 ```{code-cell} ipython3
 def dt64_to_dt(dt64):
-    return datetime.datetime.utcfromtimestamp((dt64 - np.datetime64('1970-01-01T00:00:00'))
-                                              / np.timedelta64(1, 's'))
+    epoch = np.datetime64('1970-01-01T00:00:00')
+    second = np.timedelta64(1, 's')
+    return datetime.datetime.utcfromtimestamp(int((dt64 - epoch) / second))
 ```
 
 ```{code-cell} ipython3
 fig, (ax0, ax1) = plt.subplots(1, 2)
 
 y = ds_sondes_first_circle_Feb05.alt
+
 x0 = ds_sondes_first_circle_Feb05.ta
-ax0.set_prop_cycle(color=plt.get_cmap("viridis")(np.linspace(0, 1, len(dropsonde_ids))))
+ax0.set_prop_cycle(color=plt.cm.viridis(np.linspace(0, 1, len(dropsonde_ids))))
 ax0.plot(x0.T, y.data[:, np.newaxis])
 ax0.set_xlabel(f"{x0.long_name} / {x0.units}")
 ax0.set_ylabel(f"{y.name} / m")
@@ -154,8 +156,7 @@ None
 ### wind speed variations throughout February 5
 
 ```{code-cell} ipython3
-mask_sondes_Feb05 = [dt64_to_dt(t).date() == datetime.date(2020,2,5)
-                     for t in ds.launch_time.values]
+mask_sondes_Feb05 = ds.launch_time.astype("<M8[D]") == np.datetime64("2020-02-05")
 ds_sondes_Feb05 = ds.isel(sounding=mask_sondes_Feb05)
 ```
 

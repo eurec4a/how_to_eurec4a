@@ -79,12 +79,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 plt.style.use("./mplstyle/book")
 
-fig, (ax1, ax2) = plt.subplots(2,1,sharex=True, gridspec_kw={'height_ratios':(2, 1.2)})
+fig, (ax1, ax2) = plt.subplots(2, 1, sharex=True, gridspec_kw={'height_ratios':(2, 1.2)})
 
 # 1st plot: Radar dBZ and flight altitude
-ds_bahamas_selection.altitude.plot(ax=ax1, x='time', color = 'black', label = 'flight altitude')
+ds_bahamas_selection.altitude.plot(ax=ax1, x='time', color='black', label='flight altitude')
+ax1.set_xlabel('')
 ax1.legend(loc ='upper left')
-ds_radar_selection.dBZ.plot(ax= ax1, x='time', cmap ='cubehelix' )
+ds_radar_selection.dBZ.plot(ax=ax1, x='time', cmap='cubehelix' )
 
 # 2nd plot: Radiometer TB
 ## select low frequency channels along the 22 GHz water vapor line
@@ -97,7 +98,5 @@ for frequency, data_radiometer in ds_radiometer_low_freq.groupby("frequency"):
     data_radiometer.tb.plot(ax=ax2, x='time', label=f'{frequency:.2f} GHz')
 ax2.set_title('')
 ax2.legend(bbox_to_anchor=(1,1.1))
-
-ax1.set_xlabel('')
 None
 ```

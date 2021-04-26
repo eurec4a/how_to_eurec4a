@@ -55,12 +55,13 @@ We explicitly `load()` the dataset at this stage as want to use this subset mult
 ```
 
 ```{code-cell} ipython3
-                                       datetime.datetime(2020, 2, 5, 13, 7, 30))).load()
+ds_cloud_sel = ds_cloud.sel(time=slice("2020-02-05T13:06:30", "2020-02-05T13:07:030")).load()
 ```
 
 In order to work with the different cloud mask flags, we extract the meanings into a dictionary, which we can later use to select relevant data:
 ```{code-cell} ipython3
-cm_meanings = dict(zip(ds_cloud_sel.cloud_mask.flag_meanings.split(" "), ds_cloud_sel.cloud_mask.flag_values))
+cm_meanings = dict(zip(ds_cloud_sel.cloud_mask.flag_meanings.split(" "),
+                       ds_cloud_sel.cloud_mask.flag_values))
 cm_meanings
 ```
 

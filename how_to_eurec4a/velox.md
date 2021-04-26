@@ -144,11 +144,7 @@ print(f"Image maximum cloud fraction (most likely and probably cloudy) :{cfmax:.
 We also want to show a time series of cloud fraction and use the segment ID from the second circle to extract and save the segment information to the variable `seg`. We can later use the segments start and end times to select the data in time.
 
 ```{code-cell} ipython3
-seg = {s["segment_id"]: {**s, "flight_id": flight["flight_id"]}
-             for platform in meta.values()
-             for flight in platform.values()
-             for s in flight["segments"]
-            }[second_circle_Feb05]
+seg = segments_by_segment_id[second_circle_Feb05]
 ```
 
 The dataset variable `CF_min` provides a lower bound to cloud fraction estimates based on the cloud mask flag `most_likely_cloudy`, while `CF_max` provides an upper bound by including the uncertain pixels labeled `probably cloudy`.

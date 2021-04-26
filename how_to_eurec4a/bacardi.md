@@ -77,9 +77,10 @@ The wiggles originate from the about 200km change in location  and therewith sol
 
 ```{code-cell} ipython3
 fig, ax = plt.subplots()
-ds.F_down_solar.plot(ax=ax, color = 'darkblue')
-ax.set_ylabel('downward solar irradiance \n corrected for cloud-free conditions / Wm$^{-2}$', color = 'darkblue')
-ax2=ax.twinx()
-ds.sza.plot(ax=ax2, color = 'black')
-ax2.set_ylim(110,28);
+ds.F_down_solar.plot(ax=ax, color='darkblue')
+ax.set_ylabel('downward solar irradiance \n corrected for cloud-free conditions / Wm$^{-2}$',
+              color='darkblue')
+ax2 = ax.twinx()
+ds.sza.plot(ax=ax2, color='black')
+ax2.set_ylim(110, 28);
 ```
