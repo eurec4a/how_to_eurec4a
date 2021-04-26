@@ -456,6 +456,8 @@ cmplot = ds_selection.cloud_mask.plot(ax=ax,
                                       cmap=plt.get_cmap('Greys_r', lut=3),
                                       vmin=-0.5, vmax=2.5,
                                       add_colorbar=False)
+# approximate aspect ratio of latitude and longitude length scales
+ax.set_aspect(1./np.cos(np.deg2rad(float(ds_selection.cloudlat.mean()))))
 flagbar(fig, cmplot, ds_selection.cloud_mask);
 ```
 
