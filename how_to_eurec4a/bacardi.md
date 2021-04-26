@@ -66,7 +66,7 @@ ax2.set_prop_cycle(color=['grey', 'skyblue', 'darkblue'])
 for var in ['F_down_solar_sim', 'F_down_solar_diff', 'F_down_solar']:
     ds[var].plot(ax=ax2, label= var)
 ax2.legend()
-ax2.set_ylabel('downward solar irradiance / Wm$^{-2}$')
+ax2.set_ylabel('downward solar irradiance / Wm$^{-2}$');
 ```
 
 The attitude correction of downward solar irradiance does not account for the present cloud situation above HALO. Instead, two data sets, one assuming cloud-free and one assuming overcast (diffuse illumination) conditions, are provided. Depending on the application, the user needs to choose between both data sets. For the downward solar irradiance assuming cloud-free conditions, the data are filtered for turns of HALO, high roll and pitch angles. This filter is not applied for the data assuming overcast/diffuse conditions to provide the full data. However, data during turns of HALO need to be analysed with care. As shown in the example some artifical spikes due to turns are present in the data.
@@ -81,5 +81,5 @@ ds.F_down_solar.plot(ax=ax, color = 'darkblue')
 ax.set_ylabel('downward solar irradiance \n corrected for cloud-free conditions / Wm$^{-2}$', color = 'darkblue')
 ax2=ax.twinx()
 ds.sza.plot(ax=ax2, color = 'black')
-ax2.set_ylim(110,28)
+ax2.set_ylim(110,28);
 ```

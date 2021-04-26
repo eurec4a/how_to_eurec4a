@@ -112,6 +112,7 @@ plt.style.use("./mplstyle/book")
 fig, (ax0, ax1) = plt.subplots(1, 2)
 ds_sondes_first_circle_Feb05.ta.T.plot(ax=ax0, cmap="magma")
 ds_sondes_first_circle_Feb05.rh.T.plot(ax=ax1, cmap="BrBG")
+None
 ```
 
 ### Temperature and relative humidity profiles.
@@ -148,6 +149,7 @@ ax1.legend(ds_sondes_first_circle_Feb05.PW.values,
            title=ds_sondes_first_circle_Feb05.PW.standard_name)
 
 fig.suptitle('Dropsondes from 1st circle an February 5', fontsize=18)
+None
 ```
 
 ### wind speed variations throughout February 5
@@ -171,4 +173,5 @@ with plt.style.context("mplstyle/wide"):
     ax.set_yticks(yticks)
     ax.set_yticklabels(ds_sondes_Feb05.alt.values[yticks])
     ax.set_ylabel(f"{ds_sondes_Feb05.alt.name} / m")
+    None
 ```

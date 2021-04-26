@@ -99,4 +99,5 @@ ax2.set_title('')
 ax2.legend(bbox_to_anchor=(1,1.1))
 
 ax1.set_xlabel('')
+None
 ```

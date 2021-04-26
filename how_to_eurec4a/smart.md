@@ -49,7 +49,7 @@ First Quickplot of whole flight (one wavelength)
 import matplotlib.pyplot as plt
 plt.style.use("./mplstyle/book")
 
-ds_smart.F_down_solar_wl_422.plot()
+ds_smart.F_down_solar_wl_422.plot();
 ```
 
 ## Load HALO flight phase information
@@ -89,4 +89,5 @@ for i in wl_list:
     ds_smart_selection[f'F_down_solar_wl_{i}'].plot(label =f'{i} nm')
 ax.legend()
 ax.set_ylabel('Spectral downward irradiance / Wm$^{-2}$nm$^{-1}$')
+None
 ```
