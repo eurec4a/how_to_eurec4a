@@ -13,7 +13,12 @@ kernelspec:
 
 # Humidity comparison: Hygrometer and isotope analyzer on the P3
 
-There are
+During EUREC4A and ATOMIC the P3 made two _in situ_ measurements of humidity, one  
+with the normal chilled-mirror hygrometer, and one with a cavity ring down spectrometer.
+The spectrometer's main purpose was to measure isotopes of water vapor but it's
+good for the total humidty as well.
+
+For this example we need to plot some `xarray` datasets from the catalog.
 
 ```{code-cell} ipython3
 import xarray as xr
@@ -24,8 +29,9 @@ import eurec4a
 cat = eurec4a.get_intake_catalog()
 ```
 
-Create a combined data with relative humidity from the aircraft hygrometer ("fl" means "flight level") and
-the water vapor isotope analyzer ("iso"). Drop times when the aircraft is on the ground
+We'll create a combined data with relative humidity from the aircraft hygrometer
+("fl" means "flight level") and the water vapor isotope analyzer ("iso")
+from a single flight. Drop (remove) times when the aircraft is on the ground.
 
 ```{code-cell} ipython3
 fl = cat.P3.flight_level["P3-0119"].to_dask()
@@ -37,11 +43,19 @@ rhs = xr.Dataset({"press" :fl["press"],
 rhs = rhs.where(rhs.alt > 80., drop = True)
 ```
 
-Adriana Bailey from NCAR, who was responsible for the isotope analyzer, finds that while the two instruments agree most of the time,
-the hygrometer is subject to both overshooting  
-(e.g. when the measured signal surpasses the expected value following a rapid rise in environmental water vapor concentration) and
-ringing (i.e. rapid oscillations around the expected value) during rapid and large changes in water vapor concentration. This figure
-illustrates the problem and shows why you'd want to use the water vapor measurements from the isotope analyzer then they're available.
+Adriana Bailey from NCAR, who was responsible for the isotope analyzer, finds
+that while the two instruments agree most of the time, the hygrometer is subject
+to both overshooting (e.g. when the measured signal surpasses the expected value
+following a rapid rise in environmental water vapor concentration) and ringing
+(i.e. rapid oscillations around the expected value) during rapid and large changes in
+water vapor concentration.
+
+Here are two figures to illustrate the problem and shows why you'd want to use the
+water vapor measurements from the isotope analyzer then they're available. The top
+panel combines data from two profiles and shows large excursions in the water vapor
+measured by the hygrometer. The lower panel shows that most measurements agree
+well but it's clear that it's better to use the the isotope analyzer measurements of
+humidity during the experiment. 
 
 ```{code-cell} ipython3
 fig, (ax1, ax2) = plt.subplots(nrows=2, sharex = True, figsize = (8.3, 16.6))
