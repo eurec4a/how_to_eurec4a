@@ -26,11 +26,19 @@ Handling requirements in this project is not entirely straightforward, as the re
 
 ## via git
 
-If you like to do it more properly, you can also clone the repository via git:
+If you like to do it more properly, you can also clone the repository via git. Depending on if you have SSH public key authentication set up or not, you can do this via SSH or HTTPS:
 
+````{tabbed} SSH
 ```bash
 git clone git@github.com:eurec4a/how_to_eurec4a.git
 ```
+````
+
+````{tabbed} HTTPS
+```bash
+git clone https://github.com/eurec4a/how_to_eurec4a
+```
+````
 
 This will create a local copy of the entire book repository in a newly created local folder `how_to_eurec4a`.
 Please change into this directory.
