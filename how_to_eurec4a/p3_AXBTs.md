@@ -38,6 +38,9 @@ cat = eurec4a.get_intake_catalog()
 Mapping takes quite some setup. Maybe this should become part of the `eurec4a` Python module.
 
 ```{code-cell} ipython3
+---
+tags: [hide-cell]
+---
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
@@ -86,6 +89,9 @@ Here we'll choose from a continuous set that spans the experiment so days that a
 close in time are also close in color.
 
 ```{code-cell} ipython3
+---
+tags: [hide-cell]
+---
 # On what days did the P-3 fly? These are UTC.
 flight_dates = [datetime.date(2020, 1, 17),
                 datetime.date(2020, 1, 19),

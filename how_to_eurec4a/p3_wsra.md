@@ -42,6 +42,9 @@ cat = eurec4a.get_intake_catalog()
 Mapping takes quite some setup. Maybe this should become part of the `eurec4a` Python module.
 
 ```{code-cell} ipython3
+---
+tags: [hide-cell]
+---
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
