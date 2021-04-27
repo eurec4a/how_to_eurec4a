@@ -101,3 +101,23 @@ jb build how_to_eurec4a
 ```
 which itself will run all code cells and output the results as HTML pages in a newly created folder.
 This variant is especially useful if you like to work directly on the MyST files (see note below) using a text editor and should be done every time before you submit new changes to the book.
+
+### adding new articles
+Articles are generated from markdown files within the `how_to_eurec4a` folder of the git repository.
+The following instructions assume that you are working in that directory.
+
+#### text articles
+Text articles can be created by adding standard markdown files using your favourite text editor.
+
+#### executable notebook
+If you want to add a new notebook, you can either start out from an existing **MyST** Markdown file by copying and modifying it, or you can create a new one from the jupyter notebook menu using `File` > `New Text Notebook` > `MyST Markdown`.
+If you already have an existing ipython notebook and want to convert it to **MyST**, you can do this by running
+```bash
+jupytext --to myst your_notebook.ipynb
+```
+This will create a new markdown file named `your_notebook.md`.
+After conversion, the `ipynb` file is not needed anymore and it should not be committed into the repository.
+
+#### include in the table of contents
+After preparing your article or notebook, you'll have to add it into the table of contents, such that it will actually show up in the compiled book.
+You can do this by modifying `_toc.yml`, where you can add the articles file name without suffix.
