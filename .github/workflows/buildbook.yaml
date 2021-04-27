@@ -8,6 +8,9 @@ jobs:
     strategy:
       matrix:
         python-version: [3.8]
+    defaults:
+      run:
+        shell: bash -l {0}
 
     steps:
     - uses: actions/checkout@v2
@@ -24,7 +27,6 @@ jobs:
         auto-activate-base: false
     - name: build book
       run: |
-        source activate how_to_eurec4a
         conda info
         jupyter-book build -W -n --keep-going  how_to_eurec4a
     - name: Archive build artifacts
