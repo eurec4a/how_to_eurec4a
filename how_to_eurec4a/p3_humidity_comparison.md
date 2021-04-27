@@ -23,6 +23,8 @@ For this example we need to plot some `xarray` datasets from the catalog.
 ```{code-cell} ipython3
 import xarray as xr
 import matplotlib.pyplot as plt
+import seaborn as sns
+import colorcet as cc
 %pylab inline
 
 import eurec4a
@@ -55,7 +57,7 @@ water vapor measurements from the isotope analyzer then they're available. The t
 panel combines data from two profiles and shows large excursions in the water vapor
 measured by the hygrometer. The lower panel shows that most measurements agree
 well but it's clear that it's better to use the the isotope analyzer measurements of
-humidity during the experiment. 
+humidity during the experiment.
 
 ```{code-cell} ipython3
 fig, (ax1, ax2) = plt.subplots(nrows=2, sharex = True, figsize = (8.3, 16.6))
@@ -96,5 +98,6 @@ ax2.set_xlim(0, 102)
 ax2.set_xlabel("Hygrometer relative humidity (%)")
 ax2.set_ylabel("Picarro relative humidity (%)")
 
+sns.despine()
 plt.tight_layout()
 ```
