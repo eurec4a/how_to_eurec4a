@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-# Humidity comparison: Hygrometer and isotope analyzer on the P3
+# Humidity comparison: Hygrometer and isotope analyzer
 
 During EUREC4A and ATOMIC the P3 made two _in situ_ measurements of humidity, one  
 with the normal chilled-mirror hygrometer, and one with a cavity ring down spectrometer.
