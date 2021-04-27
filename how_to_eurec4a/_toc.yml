@@ -12,6 +12,9 @@
     - file: bacardi
     - file: wales
     - file: hamp_comparison
+- file: pthree
+  sections:
+    - file: p3_humidity_comparison
 - file: meteor
   sections:
     - file: meteor_cloudradar
