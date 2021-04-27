@@ -13,7 +13,15 @@ kernelspec:
 
 # Ocean temperatures: AXBTs and SWIFT buoys
 
-During EUREC4A we measured ocean temperatures
+During EUREC4A/ATOMIC the P-3 deployed 165 Airborne eXpendable BathyThermographs (AXBTs)
+to measure profiles of ocean temperature. (These are kind of the oceanic equivalent of
+dropsondes but they don't measure salinity.) Often these were dropped around
+other ocean temperature measurements - for example the autonomous
+Surface Wave Instrument Floats with Tracking (SWIFT) buoys deployed from the
+Ron Brown by Elizabeth Thompson of NOAA and her colleagues.
+
+Let's take a look at some of the AXBT measurements and how they compare to the
+SWIFTs.
 
 ```{code-cell} ipython3
 import xarray as xr
@@ -46,7 +54,6 @@ from   mpl_toolkits.axes_grid1 import make_axes_locatable
 def set_up_map(plt, lon_w = -60.5, lon_e = -49, lat_s = 10, lat_n = 16.5):
     ax  = plt.axes(projection=ccrs.PlateCarree())
     # Defining boundaries of the plot
-
     ax.set_extent([lon_w,lon_e,lat_s,lat_n]) # lon west, lon east, lat south, lat north
     ax.coastlines(resolution='10m',linewidth=1.5,zorder=1);
     ax.add_feature(LAND,facecolor='0.9')
@@ -106,7 +113,7 @@ on a subset of those dates.
 axbts = cat.P3.AXBT.Level_3.to_dask()
 axbt_dates = [d for d in flight_dates if d.strftime("%Y-%m-%d") in np.datetime_as_string(axbts.time, unit="D")]
 
-swifts = [cat.swifts[s].to_dask() for s in list(cat.swifts)]
+swifts = [cat[s].all.to_dask() for s in list(cat) if "SWIFT" in s]
 #
 # Dates with potential SWIFT/P-3 overlap
 #
@@ -154,6 +161,7 @@ plt.tight_layout()
 On 19 Jan and 3 Feb the AXBTs bracket the SWIFTs; on 23 Jan the SWIFTs are at
 the southern end of the AXBT pattern.
 
+The next plot will focus on 19 Jan.
 Let's look at the profile of ocean temperature in the first 150 m from the AXBTs
 and compare the near-surface temperatures to the SWIFTs they are surrounding.
 
