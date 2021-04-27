@@ -24,7 +24,8 @@ jobs:
         auto-activate-base: false
     - name: build book
       run: |
-          jupyter-book build -W -n --keep-going  how_to_eurec4a
+        conda info
+        jupyter-book build -W -n --keep-going  how_to_eurec4a
     - name: Archive build artifacts
       if: always()
       uses: actions/upload-artifact@v2
