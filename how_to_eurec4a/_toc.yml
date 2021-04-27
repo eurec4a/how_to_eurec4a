@@ -15,6 +15,9 @@
 - file: meteor
   sections:
     - file: meteor_cloudradar
+- file: merian
+  sections:
+    - file: merian_cloudradar
 - file: toolbox
   sections:
     - file: flight-phase-operations
