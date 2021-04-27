@@ -16,3 +16,4 @@ ipyleaflet
 simplification
 colorcet
 seaborn
+cartopy
