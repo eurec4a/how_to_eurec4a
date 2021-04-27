@@ -29,7 +29,7 @@ cat = eurec4a.get_intake_catalog()
 list(cat.HALO.UNIFIED)
 ```
 
-* We can funrther specify the platform, instrument, if applicable dataset level or variable name, and pass it on to dask.
+* We can further specify the platform, instrument, if applicable dataset level or variable name, and pass it on to dask.
 
 ```{note}
 Have a look at the attributes of the xarray dataset `ds` for all relevant information on the dataset, such as author, contact, or citation infromation.
