@@ -16,6 +16,7 @@
   sections:
     - file: p3_humidity_comparison
     - file: p3_wband_radar
+    - file: p3_AXBTs
 - file: meteor
   sections:
     - file: meteor_cloudradar
