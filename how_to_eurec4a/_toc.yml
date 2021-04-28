@@ -14,6 +14,7 @@
     - file: hamp_comparison
 - file: pthree
   sections:
+    - file: p3_flight_tracks
     - file: p3_humidity_comparison
     - file: p3_wband_radar
     - file: p3_AXBTs
