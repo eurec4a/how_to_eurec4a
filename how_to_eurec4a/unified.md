@@ -15,7 +15,7 @@ kernelspec:
 
 The HALO UNIFEID dataset is a combination of [HAMP](https://amt.copernicus.org/articles/7/4539/2014/) radar and radiometer measurements, [BAHAMAS](http://www.halo.dlr.de/instrumentation/basis.html) aircraft position data and [dropsonde](https://github.com/Geet-George/JOANNE#joanne---the-eurec4a-dropsonde-dataset) measurements, all on a unified temporal and spatial grid. 
 
-More information on the dataset can be found at `?`. If you have questions or if you would like to use the data for a publication, please don't hesitate to get in contact with the dataset authors as stated in the dataset attributes `contact` or `author`.
+More information on the dataset can be found in [Konow et al. (2019)](https://doi.org/10.5194/essd-11-921-2019). If you have questions or if you would like to use the data for a publication, please don't hesitate to get in contact with the dataset authors as stated in the dataset attributes `contact` or `author`.
 
 ```{code-cell} ipython3
 %pylab inline
@@ -41,6 +41,7 @@ list(cat.HALO.UNIFIED)
 ds_radar = cat.HALO.UNIFIED.HAMPradar["HALO-0205"].to_dask()
 ds_radiometer = cat.HALO.UNIFIED.HAMPradiometer["HALO-0205"].to_dask()
 ds_bahamas = cat.HALO.UNIFIED.BAHAMAS["HALO-0205"].to_dask()
+ds_dropsondes = cat.HALO.UNIFIED.dropsondes["HALO-0205"].to_dask()
 ```
 
 ## Load HALO flight phase information
@@ -67,23 +68,29 @@ We transfer the information from our flight segment selection to our radar and r
 ds_radar_selection = ds_radar.sel(time=slice(seg["start"], seg["end"]))
 ds_radiometer_selection = ds_radiometer.sel(time=slice(seg["start"], seg["end"]))
 ds_bahamas_selection = ds_bahamas.sel(time=slice(seg["start"], seg["end"]))
+ds_dropsondes_selection = ds_dropsondes.sel(time=slice(seg["start"], seg["end"]))
 ```
 
 ## Plots
 
 +++
 
-We plot reflectivity from the HAMP Radar, the flight altitude of HALO and brightness temperatures from the low-frequency channels along the 22 GHz water vapor line (K band) from the HAMP radiometer.
+We plot reflectivity from the HAMP Radar, the flight altitude of HALO, relative humdity measurements from the dropsondes and brightness temperatures from the low-frequency channels along the 22 GHz water vapor line (K band) from the HAMP radiometer.
 
 ```{code-cell} ipython3
 mpl.rcParams['font.size'] = 12
 
 fig, (ax1, ax2) = plt.subplots(2,1,sharex=True, figsize=(10,5), constrained_layout=True, gridspec_kw={'height_ratios':(2, 1.2)})
 
-# 1st plot: Radar dBZ and flight altitude
+# 1st plot: Radar dBZ, flight altitude and relative humidity from the dropsondes
 ds_bahamas_selection.altitude.plot(ax=ax1, x='time', color = 'black', label = 'flight altitude')
 ax1.legend(loc ='upper left')
-ds_radar_selection.dBZ.plot(ax= ax1, x='time', cmap ='cubehelix' )
+ds_radar_selection.dBZ.plot(ax= ax1, x='time', cmap ='cubehelix')
+im= ds_dropsondes_selection.rh_mat.plot(ax=ax1,x='time', cmap = 'bone_r', add_colorbar=False )
+## we add a separate axis for the second colobar
+cax = fig.add_axes([1, 0.52, 0.02, 0.48])
+cbar = fig.colorbar(im, cax=cax, label='rh [%]')
+
 
 # 2nd plot: Radiometer TB
 ## select low frequency channels along the 22 GHz water vapor line
