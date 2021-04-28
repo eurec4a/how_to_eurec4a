@@ -13,7 +13,7 @@ P-3 flights included excursions to the location of the RHB and sampling of
 atmospheric and oceanic conditions around the ship and other ocean vehicles. Because
 of its large size and long endurance (most flights were 8-9 hours long) the P-3
 was tasked with obtaining a wide array of observations including remote sensing
-of clouds and the ocean surface, {\it in situ} measurements within clouds and of
+of clouds and the ocean surface, _in situ_ measurements within clouds and of
 isotopic composition throughout the lower troposphere, and the deployment of
 expendable profiling instruments in the atmosphere and ocean.
 

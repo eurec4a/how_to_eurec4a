@@ -25,7 +25,7 @@ import xarray as xr
 import matplotlib.pyplot as plt
 import seaborn as sns
 import colorcet as cc
-%pylab inline
+%matplotlib inline
 
 import eurec4a
 cat = eurec4a.get_intake_catalog()
