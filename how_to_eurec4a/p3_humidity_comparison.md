@@ -22,6 +22,7 @@ For this example we need to plot some `xarray` datasets from the catalog.
 
 ```{code-cell} ipython3
 import xarray as xr
+import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import colorcet as cc
