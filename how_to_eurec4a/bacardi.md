@@ -42,7 +42,7 @@ ds = cat.HALO.BACARDI.irradiances['HALO-0205'].to_dask()
 ds
 ```
 
-The data from EUREC4A is of 10 Hz measurement frequency and corrected for dynamic temperature effects. For the downward solar irradiance, data are provided with and without aircraft attitude correction corresponding to cloud-free and cloudy conditions above HALO.
+The data from EUREC4A is of 10 Hz measurement frequency and corrected for dynamic temperature effects. For the downward solar irradiance, data are provided with and without aircraft attitude correction corresponding to cloud-free and cloudy conditions, respectively, above HALO.
 
 +++
 
@@ -60,24 +60,20 @@ ax1.set_prop_cycle(color=['darkblue', 'red'])
 for var in ['F_up_solar', 'F_up_terrestrial']:
     ds[var].plot(ax=ax1,label= var)
 ax1.legend()
-ax1.set_ylabel('upward solar and terrestrial irradiance')
+ax1.set_ylabel('upward solar and terrestrial irradiance / Wm$^{-2}$')
 
 ax2.set_prop_cycle(color=['grey', 'darkblue', 'skyblue'])
 for var in ['F_down_solar_sim', 'F_down_solar', 'F_down_solar_diff']:
     ds[var].plot(ax=ax2, label= var)
 ax2.legend()
-ax2.set_ylabel('downward solar irradiance')
+ax2.set_ylabel('downward solar irradiance / Wm$^{-2}$')
 
 for ax in [ax1, ax2]:
     ax.spines['right'].set_visible(False)
     ax.spines['top'].set_visible(False)
 ```
 
-The right plot shows in blue the downward solar irradiance for two different assumptions about conditions above HALO: a 100% diffuse radiation field due to clouds or cloud-free conditions. Whenever the sensor is tilted which is almost always the case within the circles, the measurement is translated to a horizontal plane and within the hemispheric integral of radiance reaching the sensor a small part has to be added based on the assumption of the sky aloft. 
-
-+++
-
-Striking are some spikes. These correspond to the sharp turns of HALO with large roll angles. The stabilizing platform can only correct for a few degrees and if the sensor is tilted towards (away from) the sun, we see a high (low) peak. 
+The attitude correction of downward solar irradiance does not account for the present cloud situation above HALO. Instead, two data sets, one assuming cloud-free and one assuming overcast (diffuse illumination) conditions, are provided. Depending on the application, the user needs to choose between both data sets. For the downward solar irradiance assuming cloud-free conditions, the data are filtered for turns of HALO, high roll and pitch angles. This filter is not applied for the data assuming overcast/diffuse conditions to provide the full data. However, data during turns of HALO need to be analysed with care. As shown in the example some artifical spikes due to turns are present in the data.
 
 +++
 
@@ -86,7 +82,7 @@ The wiggles originate from the about 200km change in location  and therewith sol
 ```{code-cell} ipython3
 fig, ax = plt.subplots()
 ds.F_down_solar.plot(ax=ax, color = 'darkblue')
-ax.set_ylabel('downward solar irradiance \n corrected for cloud-free conditions', color = 'darkblue')
+ax.set_ylabel('downward solar irradiance \n corrected for cloud-free conditions / Wm$^{-2}$', color = 'darkblue')
 ax2=ax.twinx()
 ds.sza.plot(ax=ax2, color = 'black')
 ax2.set_ylim(110,28)
