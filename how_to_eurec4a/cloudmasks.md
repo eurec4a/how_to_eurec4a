@@ -175,13 +175,16 @@ For the 2D horizontal imagers we select a region in the center, derive a represe
 * SpecMACS: we select the central 0.6 degrees, i.e. angle = 0 ∓ 0.3
 
 ```{code-cell} ipython3
-def most_frequent(da):
-    flag, n = np.unique(da.values, return_counts=True)
-    return xr.DataArray(int(flag[np.argmax(n)]), dims=())
+def most_frequent_flag(var, dims):
+    flags = xr.DataArray(var.flag_values, dims=("__internal__flags__"))
+    flag_indices = (var == flags).sum(dims).argmax("__internal__flags__")
+    return xr.DataArray(var.flag_values[flag_indices.data],
+                        dims=flag_indices.dims,
+                        attrs=var.attrs)
 
 def select_specmacs_cloudmask(ds):
     specmacs = ds.sel(angle=slice(.3, -.3))
-    return ds.assign({"cloud_mask": specmacs.cloud_mask.groupby("time").map(most_frequent),
+    return ds.assign({"cloud_mask": most_frequent_flag(specmacs.cloud_mask, "angle"),
                       "CF_min": cfmin(specmacs),
                       "CF_max": cfmax(specmacs)})
 
@@ -189,7 +192,7 @@ def select_velox_cloudmask(ds):
     xmid = ds.x.size // 2
     ymid = ds.y.size // 2
     velox = ds.isel(x=slice(xmid - 5, xmid + 5), y=slice(ymid - 5, ymid + 5))
-    return ds.assign({"cloud_mask": velox.cloud_mask.groupby("time").map(most_frequent),
+    return ds.assign({"cloud_mask": most_frequent_flag(velox.cloud_mask, ("x", "y")),
                       "CF_min": cfmin(velox),
                       "CF_max": cfmax(velox)})
 
