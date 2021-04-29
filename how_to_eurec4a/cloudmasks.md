@@ -79,9 +79,13 @@ def ensure_cfminmax(ds):
         ds = ds.assign(CF_max=cfmax)
     return correct_VELOX(ds)
 
+from multiprocessing.pool import ThreadPool
+
 def load_cloudmask_dataset(cat_item):
-    return ensure_cfminmax(xr.concat([v.get().to_dask().chunk()
-                                      for _, v in cat_item.items()], dim="time"))
+    # load in parallel as this function is mainly limited by the network roundtrip time
+    p = ThreadPool(20)
+    return ensure_cfminmax(xr.concat(list(p.map(lambda v: v.get().to_dask().chunk(), cat_item.values())),
+                                     dim="time"))
 ```
 
 ## Get data
