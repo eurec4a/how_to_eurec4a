@@ -370,19 +370,23 @@ binmids = (binedges[1:] + binedges[:-1]) / 2
 ```
 
 ```{code-cell} ipython3
-fig, ax = plt.subplots(figsize=(7, 5), )
+fig, (ax, ax1) = plt.subplots(1, 2, figsize=(12, 5), sharey=True)
 for k, v in data.items():
-    ax.plot(binmids, np.histogram(cf_circles(v).CF_max.values, bins=binedges)[0],
+    ax.plot(binmids, np.histogram(cf_circles(v).CF_min.values, bins=binedges)[0],
+            ls="-", lw=2, marker=".", color=colors[k], label=k)
+    ax1.plot(binmids, np.histogram(cf_circles(v).CF_max.values, bins=binedges)[0],
             ls="-", lw=2, marker=".", color=colors[k], label=k)
 
-ax.set_xlim(0, 1)
-ax.set_ylim(0, 48)
-ax.spines['right'].set_visible(False)
-ax.spines['top'].set_visible(False)
 
-ax.set_xlabel("Cloud fraction")
+for a in [ax, ax1]:
+    a.set_xlim(0, 1)
+    a.set_ylim(0, 48)
+    a.spines['right'].set_visible(False)
+    a.spines['top'].set_visible(False)
+
+    a.set_xlabel("Cloud fraction")
 ax.set_ylabel("Frequency")
-ax.legend(title="Instruments", bbox_to_anchor=(1,1), loc="upper left")
+ax1.legend(title="Instruments", bbox_to_anchor=(1,1), loc="upper left")
 ```
 
 ```{raw-cell}
@@ -400,9 +404,9 @@ for k, v in data.items():
     ds["date"] = ds.time.astype('<M8[D]')
     date = np.unique(ds.date) + ts
     ax.errorbar(x=np.unique(ds.date) + ts,
-                y=ds.groupby("date").mean().CF_max.values,
-                yerr=[ds.groupby("date").min().CF_max.values,
-                      ds.groupby("date").max().CF_max.values],
+                y=ds.groupby("date").mean().CF_min.values,
+                yerr=[ds.groupby("date").min().CF_min.values,
+                      ds.groupby("date").max().CF_min.values],
                 fmt='o', color=colors[k], label=k)
     ts += np.timedelta64(4, 'h')
 ax.set_ylim(0, 1)
