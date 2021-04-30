@@ -137,7 +137,7 @@ def get_dataset(flight_id):
     ds = cat.HALO.BAHAMAS.PositionAttitude[flight_id].to_dask()
     return flight_id, ds.load()
 
-full_tracks = dict(pool.map(get_dataset, cat.HALO.BAHAMAS.QL))
+full_tracks = dict(pool.map(get_dataset, cat.HALO.BAHAMAS.PositionAttitude))
 ```
 
 We still have to simplify the dataset, which is done here:
