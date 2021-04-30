@@ -118,6 +118,6 @@ jupytext --to myst your_notebook.ipynb
 This will create a new markdown file named `your_notebook.md`.
 After conversion, the `ipynb` file is not needed anymore and it should not be committed into the repository.
 
-#### include in the table of contents
+#### entry in the table of contents
 After preparing your article or notebook, you'll have to add it into the table of contents, such that it will actually show up in the compiled book.
 You can do this by modifying `_toc.yml`, where you can add the articles file name without suffix.
