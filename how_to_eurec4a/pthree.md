@@ -21,7 +21,7 @@ Most observations obtained from the P-3 are described in
 [Pincus et al. (2021)](https://doi.org/10.5194/essd-2021-11).
 
 ```{figure} Miss-Piggy.jpeg
-:alt: HALO
+:alt: NOAA WP-3D "Miss Piggy"
 :width: 600px
 :align: center
 ```

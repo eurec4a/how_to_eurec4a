@@ -22,7 +22,6 @@ The data are available through the EUREC4A intake catalog.
 
 ```{code-cell} ipython3
 import datetime
-import xarray as xr
 
 import matplotlib.pyplot as plt
 import seaborn as sns

@@ -43,31 +43,21 @@ Mapping takes quite some setup. Maybe this should become part of the `eurec4a` P
 tags: [hide-cell]
 ---
 import matplotlib as mpl
-import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
-from   matplotlib.offsetbox import AnchoredText
 
-import cartopy as cp
 import cartopy.crs as ccrs
-import cartopy.feature as cfeature
 from   cartopy.feature import LAND
 from   cartopy.mpl.gridliner import LONGITUDE_FORMATTER, LATITUDE_FORMATTER
-
-from   mpl_toolkits.axes_grid1.inset_locator import inset_axes
-from   mpl_toolkits.axes_grid1 import make_axes_locatable
-def set_up_map(plt, lon_w = -60.5, lon_e = -49, lat_s = 10, lat_n = 16.5):
-    ax  = plt.axes(projection=ccrs.PlateCarree())
-    # Defining boundaries of the plot
-    ax.set_extent([lon_w,lon_e,lat_s,lat_n]) # lon west, lon east, lat south, lat north
-    ax.coastlines(resolution='10m',linewidth=1.5,zorder=1);
-    ax.add_feature(LAND,facecolor='0.9')
-    return(ax)
-
 def ax_to_map(ax, lon_w = -60.5, lon_e = -49, lat_s = 10, lat_n = 16.5):
     # Defining boundaries of the plot
     ax.set_extent([lon_w,lon_e,lat_s,lat_n]) # lon west, lon east, lat south, lat north
     ax.coastlines(resolution='10m',linewidth=1.5,zorder=1);
     ax.add_feature(LAND,facecolor='0.9')
+
+def set_up_map(plt, lon_w = -60.5, lon_e = -49, lat_s = 10, lat_n = 16.5):
+    ax = plt.axes(projection=ccrs.PlateCarree())
+    ax_to_map(ax, lon_w, lon_e, lat_s, lat_n)
+    return(ax)
 
 def add_gridlines(ax):
     # Assigning axes ticks

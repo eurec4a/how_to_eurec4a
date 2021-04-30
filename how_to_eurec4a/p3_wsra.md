@@ -29,7 +29,6 @@ we won't look at those here.
 The data are available through the EUREC4A intake catalog.
 
 ```{code-cell} ipython3
-import xarray as xr
 import matplotlib.pyplot as plt
 import seaborn as sns
 import colorcet as cc
@@ -45,19 +44,12 @@ Mapping takes quite some setup. Maybe this should become part of the `eurec4a` P
 ---
 tags: [hide-cell]
 ---
-import matplotlib as mpl
-import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
-from   matplotlib.offsetbox import AnchoredText
 
-import cartopy as cp
 import cartopy.crs as ccrs
-import cartopy.feature as cfeature
 from   cartopy.feature import LAND
 from   cartopy.mpl.gridliner import LONGITUDE_FORMATTER, LATITUDE_FORMATTER
 
-from   mpl_toolkits.axes_grid1.inset_locator import inset_axes
-from   mpl_toolkits.axes_grid1 import make_axes_locatable
 def set_up_map(plt, lon_w = -60.5, lon_e = -49, lat_s = 10, lat_n = 16.5):
     ax  = plt.axes(projection=ccrs.PlateCarree())
     # Defining boundaries of the plot
