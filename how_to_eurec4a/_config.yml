@@ -24,3 +24,8 @@ html:
 execute:
   execute_notebooks         : force
   timeout: 150
+sphinx:
+  extra_extensions:
+    -  sphinxcontrib.bibtex
+bibtex_reference_style      : author_year
+bibtex_bibfile              : references.bib
