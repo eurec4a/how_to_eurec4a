@@ -83,9 +83,9 @@ fig, (ax1, ax2) = plt.subplots(2, 1, sharex=True, gridspec_kw={'height_ratios':(
 
 # 1st plot: Radar dBZ and flight altitude
 ds_bahamas_selection.altitude.plot(ax=ax1, x='time', color='black', label='flight altitude')
-ax1.set_xlabel('')
 ax1.legend(loc ='upper left')
 ds_radar_selection.dBZ.plot(ax=ax1, x='time', cmap='cubehelix' )
+ax1.set_xlabel('')
 
 # 2nd plot: Radiometer TB
 ## select low frequency channels along the 22 GHz water vapor line
