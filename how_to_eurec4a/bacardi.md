@@ -54,7 +54,9 @@ We plot the upward and downward irradiances in two panels.
 %matplotlib inline
 import matplotlib.pyplot as plt
 plt.style.use(["./mplstyle/book", "./mplstyle/wide"])
+```
 
+```{code-cell} ipython3
 fig, (ax1, ax2) = plt.subplots(1, 2)
 ax1.set_prop_cycle(color=['darkblue', 'red'])
 for var in ['F_up_solar', 'F_up_terrestrial']:
