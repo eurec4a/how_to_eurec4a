@@ -13,6 +13,7 @@ kernelspec:
 
 # HAMP comparison
 This notebook shows a comparison of cloud features as detected by different parts of the Halo Microwave Package (HAMP) and includes data from WALES and specMACS for additional context.
+Another application of the HAMP data is included in the chapter {doc}`unified`.
 
 ```{code-cell} ipython3
 import numpy as np
