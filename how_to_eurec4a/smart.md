@@ -92,9 +92,3 @@ ax.set_ylabel('Spectral downward irradiance / Wm$^{-2}$nm$^{-1}$')
 ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)
 ```
-
-## References
-```{bibliography} references.bib
-:filter: docname in docnames
-:style: alpha
-```
