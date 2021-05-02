@@ -23,4 +23,5 @@
     - file: show_intake_catalog
     - file: running_locally
     - file: netcdf_datatypes
+- file: references
 - file: stats
