@@ -1,0 +1,1881 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>specMACS cloudmask &#8212; How to EUREC4A</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="shortcut icon" href="_static/logo_pyeurec4a.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="HALO UNIFIED dataset" href="unified.html" />
+    <link rel="prev" title="HALO" href="halo.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      <img src="_static/logo_pyeurec4a.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">How to EUREC4A</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="halo.html">
+   HALO
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     specMACS cloudmask
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="unified.html">
+     HALO UNIFIED dataset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="flight_tracks_leaflet.html">
+     interactive HALO tracks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="smart.html">
+     SMART dataset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="velox.html">
+     VELOX
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bacardi.html">
+     BACARDI dataset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="wales.html">
+     WALES Lidar
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="hamp_comparison.html">
+     HAMP comparison
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="meteor.html">
+   Meteor
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="meteor_cloudradar.html">
+     Reading cloud radar data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="multi_platform_data.html">
+   Multi-platform datasets
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="dropsondes.html">
+     Dropsondes dataset JOANNE
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="toolbox.html">
+   Toolbox
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="flight-phase-operations.html">
+     How to work with flight phase segmentation files
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="show_intake_catalog.html">
+     Show the intake catalog
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="running_locally.html">
+     running How to EUREC4A locally
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="netcdf_datatypes.html">
+     The issue with netCDF data types
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="references.html">
+   References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stats.html">
+   Script execution statistics
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="_sources/specmacs.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/specmacs.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/eurec4a/how_to_eurec4a"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/eurec4a/how_to_eurec4a/issues/new?title=Issue%20on%20page%20%2Fspecmacs.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/eurec4a/how_to_eurec4a/edit/master/how_to_eurec4a/specmacs.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/eurec4a/how_to_eurec4a/master?urlpath=tree/how_to_eurec4a/specmacs.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#obtaining-data">
+   Obtaining data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#finding-the-right-sonde">
+     Finding the right sonde
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#finding-the-corresponding-specmacs-dataset">
+     Finding the corresponding specMACS dataset
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#first-plots">
+   First plots
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#camera-view-angles-to-latitude-and-longitude">
+   Camera view angles to latitude and longitude
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-we-know">
+     What we know
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#transformation-to-ecef">
+     Transformation to ECEF
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#computing-viewing-lines">
+     Computing viewing lines
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cloud-locations-in-3d-space">
+     Cloud locations in 3D space
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#back-to-ellipsoidal-coordinates">
+     Back to ellipsoidal coordinates
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#display-on-a-map">
+   Display on a map
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#swath-width">
+   Swath width
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="specmacs-cloudmask">
+<h1>specMACS cloudmask<a class="headerlink" href="#specmacs-cloudmask" title="Permalink to this headline">¶</a></h1>
+<p>The following script exemplifies the access and usage of specMACS data measured
+during EUREC4A.</p>
+<p>The specMACS sensor consists of hyperspectral image sensors as well as polarization resolving image sensors.
+The hyperspectral image sensors operate in the visible and near infrared (VNIR) and the short-wave infrared (SWIR) range.
+The dataset investigated in this notebook is a cloud mask dataset based on data from the SWIR sensor.
+More information on the dataset can be found on the <a class="reference external" href="https://macsserver.physik.uni-muenchen.de/campaigns/EUREC4A/products/cloudmask/">macsServer</a>. If you have questions or if you would like to use the data for a publication, please don’t hesitate to get in contact with the dataset authors as stated in the dataset attributes <code class="docutils literal notranslate"><span class="pre">contact</span></code> and <code class="docutils literal notranslate"><span class="pre">author</span></code> list.</p>
+<p>Our plan is to analyze a section of the specMACS cloud mask dataset around the first <code class="docutils literal notranslate"><span class="pre">GOOD</span></code> dropsonde on the second HALO circle on the 5th of February (<code class="docutils literal notranslate"><span class="pre">HALO-0205_c2</span></code>). We’ll first look at the cloudiness just along the flight track and later on create a map projection of the dataset. This notebook will guide you through the required steps.</p>
+<div class="section" id="obtaining-data">
+<h2>Obtaining data<a class="headerlink" href="#obtaining-data" title="Permalink to this headline">¶</a></h2>
+<p>In order to work with EUREC4A datasets, we’ll use the <code class="docutils literal notranslate"><span class="pre">eurec4a</span></code> library to access the datasets and also use <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">xarray</span></code> as our common tools to handle datasets.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">eurec4a</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="finding-the-right-sonde">
+<h3>Finding the right sonde<a class="headerlink" href="#finding-the-right-sonde" title="Permalink to this headline">¶</a></h3>
+<p>All HALO flights were split up into flight phases or segments to allow for a precise selection in time and space of a circle or calibration pattern. For more information have a look at the respective <a class="reference external" href="https://github.com/eurec4a/halo-flight-phase-separation">github repository</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_flight_segments</span> <span class="o">=</span> <span class="n">eurec4a</span><span class="o">.</span><span class="n">get_flight_segments</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The flight segmentation data is organized by platform and flight, but as we want to look up a segment by its <code class="docutils literal notranslate"><span class="pre">segment_id</span></code>, we’ll have to flatten the data and reorganize it by the <code class="docutils literal notranslate"><span class="pre">segment_id</span></code>. Additionally, we want to be able to extract the <code class="docutils literal notranslate"><span class="pre">flight_id</span></code> and <code class="docutils literal notranslate"><span class="pre">platform_id</span></code> back from a selected segment, so we add this information to each individual segment:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">segments_by_segment_id</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">s</span><span class="p">[</span><span class="s2">&quot;segment_id&quot;</span><span class="p">]:</span> <span class="p">{</span>
+        <span class="o">**</span><span class="n">s</span><span class="p">,</span>
+        <span class="s2">&quot;platform_id&quot;</span><span class="p">:</span> <span class="n">platform_id</span><span class="p">,</span>
+        <span class="s2">&quot;flight_id&quot;</span><span class="p">:</span> <span class="n">flight_id</span>
+    <span class="p">}</span>
+    <span class="k">for</span> <span class="n">platform_id</span><span class="p">,</span> <span class="n">flights</span> <span class="ow">in</span> <span class="n">all_flight_segments</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">flight_id</span><span class="p">,</span> <span class="n">flight</span> <span class="ow">in</span> <span class="n">flights</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">flight</span><span class="p">[</span><span class="s2">&quot;segments&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We want to extract the id of the first dropsonde of the second HALO circle on February 5 (<code class="docutils literal notranslate"><span class="pre">HALO-0205_c2</span></code>). By the way: In the <a class="reference internal" href="velox.html"><span class="doc">VELOX</span></a> example the measurement of this time is shown as well.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">segment</span> <span class="o">=</span> <span class="n">segments_by_segment_id</span><span class="p">[</span><span class="s2">&quot;HALO-0205_c2&quot;</span><span class="p">]</span>
+<span class="n">first_dropsonde</span> <span class="o">=</span> <span class="n">segment</span><span class="p">[</span><span class="s2">&quot;dropsondes&quot;</span><span class="p">][</span><span class="s2">&quot;GOOD&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">first_dropsonde</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;HALO-0205_s13&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we would like to know when this sonde was launched. The <a class="reference external" href="https://github.com/Geet-George/JOANNE#joanne---the-eurec4a-dropsonde-dataset">JOANNE dataset</a> contains this information. We use level 3 data which contains quality checked data on a common grid and load it using the intake catalog. We then select the correct dropsonde by its <code class="docutils literal notranslate"><span class="pre">sonde_id</span></code> to find out the launch time of the dropsonde.</p>
+<p>More information on the data catalog can be found <a class="reference external" href="https://github.com/eurec4a/eurec4a-intake#eurec4a-intake-catalogue">here</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">=</span> <span class="n">eurec4a</span><span class="o">.</span><span class="n">get_intake_catalog</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dropsondes</span> <span class="o">=</span> <span class="n">cat</span><span class="o">.</span><span class="n">dropsondes</span><span class="o">.</span><span class="n">JOANNE</span><span class="o">.</span><span class="n">level3</span><span class="o">.</span><span class="n">to_dask</span><span class="p">()</span>
+<span class="c1"># this following line should go away in the soon to be released new version of JOANNE</span>
+<span class="n">sonde_dt</span> <span class="o">=</span> <span class="n">dropsondes</span><span class="o">.</span><span class="n">swap_dims</span><span class="p">({</span><span class="s2">&quot;sounding&quot;</span><span class="p">:</span> <span class="s2">&quot;sonde_id&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">sonde_id</span><span class="o">=</span><span class="n">first_dropsonde</span><span class="p">)</span><span class="o">.</span><span class="n">launch_time</span><span class="o">.</span><span class="n">values</span>
+<span class="nb">str</span><span class="p">(</span><span class="n">sonde_dt</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;2020-02-05T10:48:32.000000000&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="finding-the-corresponding-specmacs-dataset">
+<h3>Finding the corresponding specMACS dataset<a class="headerlink" href="#finding-the-corresponding-specmacs-dataset" title="Permalink to this headline">¶</a></h3>
+<p>As specMACS data is organized as one dataset per flight, we have to obtain the <code class="docutils literal notranslate"><span class="pre">flight_id</span></code> from our selected segment to obtain the corresponding dataset. From this dataset, we select a two minute long measurement sequence of specMACS data around the dropsonde launch and have a look at the obtained dataset:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">offset_time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">timedelta64</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="s2">&quot;s&quot;</span><span class="p">)</span>
+
+<span class="n">ds</span> <span class="o">=</span> <span class="n">cat</span><span class="o">.</span><span class="n">HALO</span><span class="o">.</span><span class="n">specMACS</span><span class="o">.</span><span class="n">cloudmaskSWIR</span><span class="p">[</span><span class="n">segment</span><span class="p">[</span><span class="s2">&quot;flight_id&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">to_dask</span><span class="p">()</span>
+<span class="n">ds_selection</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="n">sonde_dt</span><span class="o">-</span><span class="n">offset_time</span><span class="p">,</span> <span class="n">sonde_dt</span><span class="o">+</span><span class="n">offset_time</span><span class="p">))</span>
+<span class="n">ds_selection</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme=dark],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1F1F1F;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 20px 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: none;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: '►';
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: '▼';
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: '(';
+}
+
+.xr-dim-list:after {
+  content: ')';
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ',';
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2 {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt;
+Dimensions:     (angle: 318, time: 3564)
+Coordinates:
+  * time        (time) datetime64[ns] 2020-02-05T10:47:32.015175168 ... 2020-...
+  * angle       (angle) float64 18.0 17.9 17.8 17.69 ... -17.07 -17.17 -17.27
+    lat         (time) float64 14.3 14.3 14.3 14.3 ... 14.26 14.26 14.26 14.26
+    lon         (time) float64 -57.67 -57.67 -57.67 ... -57.42 -57.42 -57.42
+    alt         (time) float32 1.026e+04 1.026e+04 ... 1.026e+04 1.026e+04
+Data variables:
+    CF_min      (time) float64 0.0 0.0 0.0 0.0 ... 0.03774 0.03774 0.04088
+    CF_max      (time) float64 0.0 0.0 0.0 0.0 ... 0.3396 0.3491 0.3302 0.2736
+    cloud_mask  (time, angle) float32 ...
+    vza         (time, angle) float32 ...
+    vaa         (time, angle) float32 ...
+Attributes: (12/16)
+    title:                           cloud mask derived from specMACS SWIR ca...
+    version:                         2.1
+    variable:                        cloud_mask
+    comment:                         The additional information about the vie...
+    contact:                         veronika.poertge@physik.uni-muenchen.de
+    platform:                        HALO
+    ...                              ...
+    author:                          Veronika Pörtge, Felix Gödde, Tobias Köl...
+    history:                         The original version of the cloud mask w...
+    created_on:                      2021-03-12
+    Conventions:                     CF-1.8
+    references:                      more information about the product can b...
+    DODS_EXTRA.Unlimited_Dimension:  time</pre><div class='xr-wrap' hidden><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-f0a5e028-230c-4daf-ae18-3d7c4bf3c2ef' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-f0a5e028-230c-4daf-ae18-3d7c4bf3c2ef' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>angle</span>: 318</li><li><span class='xr-has-index'>time</span>: 3564</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-1b55eb6a-98ce-4944-9003-772ebf499538' class='xr-section-summary-in' type='checkbox'  checked><label for='section-1b55eb6a-98ce-4944-9003-772ebf499538' class='xr-section-summary' >Coordinates: <span>(5)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2020-02-05T10:47:32.015175168 .....</div><input id='attrs-92542b62-6e96-4a84-bf59-b252a53cab7b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-92542b62-6e96-4a84-bf59-b252a53cab7b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-14208681-29d5-4a57-9cf8-7629fd65c360' class='xr-var-data-in' type='checkbox'><label for='data-14208681-29d5-4a57-9cf8-7629fd65c360' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>time</dd><dt><span>standard_name :</span></dt><dd>time</dd><dt><span>_ChunkSizes :</span></dt><dd>512</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;2020-02-05T10:47:32.015175168&#x27;, &#x27;2020-02-05T10:47:32.048459008&#x27;,
+       &#x27;2020-02-05T10:47:32.081824000&#x27;, ..., &#x27;2020-02-05T10:49:31.912615936&#x27;,
+       &#x27;2020-02-05T10:49:31.945957888&#x27;, &#x27;2020-02-05T10:49:31.979329024&#x27;],
+      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>angle</span></div><div class='xr-var-dims'>(angle)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>18.0 17.9 17.8 ... -17.17 -17.27</div><input id='attrs-f1decf69-277d-4aa0-b074-b6650c50e157' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-f1decf69-277d-4aa0-b074-b6650c50e157' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-5e7c77a8-3866-4681-bcd9-08b883ed034d' class='xr-var-data-in' type='checkbox'><label for='data-5e7c77a8-3866-4681-bcd9-08b883ed034d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degree</dd><dt><span>long_name :</span></dt><dd>across track angle</dd><dt><span>_ChunkSizes :</span></dt><dd>318</dd></dl></div><div class='xr-var-data'><pre>array([ 18.004318,  17.900232,  17.796053, ..., -17.065975, -17.169756,
+       -17.273108])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lat</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-98742f78-da91-4945-b1bb-1f500f84239c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-98742f78-da91-4945-b1bb-1f500f84239c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-256e3076-e44f-44fa-bac8-f642f0d07816' class='xr-var-data-in' type='checkbox'><label for='data-256e3076-e44f-44fa-bac8-f642f0d07816' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>description :</span></dt><dd>Platform latitude coordinate</dd><dt><span>_ChunkSizes :</span></dt><dd>512</dd></dl></div><div class='xr-var-data'><pre>array([14.298211, 14.298208, 14.298205, ..., 14.257021, 14.256997, 14.25698 ])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lon</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-ee8462f8-1775-440a-8d31-c164bc775ebd' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ee8462f8-1775-440a-8d31-c164bc775ebd' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b9905702-3d41-4688-86bf-887400fdeba0' class='xr-var-data-in' type='checkbox'><label for='data-b9905702-3d41-4688-86bf-887400fdeba0' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>long_name :</span></dt><dd>longitude</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>description :</span></dt><dd>Platform longitude coordinate</dd><dt><span>_ChunkSizes :</span></dt><dd>512</dd></dl></div><div class='xr-var-data'><pre>array([-57.665231, -57.665169, -57.665108, ..., -57.419632, -57.419551,
+       -57.419491])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>alt</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-d16b66f2-7ec4-488e-9f3c-001813d164e4' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-d16b66f2-7ec4-488e-9f3c-001813d164e4' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-75b0c320-0ee4-4251-855c-9add3c0da962' class='xr-var-data-in' type='checkbox'><label for='data-75b0c320-0ee4-4251-855c-9add3c0da962' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>m</dd><dt><span>long_name :</span></dt><dd>altitude</dd><dt><span>description :</span></dt><dd>Platform height above WGS 84 ellipsoid</dd><dt><span>_ChunkSizes :</span></dt><dd>1024</dd></dl></div><div class='xr-var-data'><pre>array([10256.269, 10256.261, 10256.253, ..., 10255.364, 10255.367, 10255.37 ],
+      dtype=float32)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-17a89ff6-2bbd-43f8-b6ea-3c8117a31ded' class='xr-section-summary-in' type='checkbox'  checked><label for='section-17a89ff6-2bbd-43f8-b6ea-3c8117a31ded' class='xr-section-summary' >Data variables: <span>(5)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>CF_min</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-1d5e45f7-6700-4f88-9037-494e20982400' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-1d5e45f7-6700-4f88-9037-494e20982400' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-fbc9ec24-dd04-4677-9928-afa635358ee4' class='xr-var-data-in' type='checkbox'><label for='data-fbc9ec24-dd04-4677-9928-afa635358ee4' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Minimal possible cloud fraction derived from the ratio between the number of pixels classified as &quot;most likely cloudy&quot; and the total number of pixels in one measurement. Measurements in which at least one pixel is classified as unknown/NaN are excluded from the calculation of the cloud fraction and set to NaN.</dd><dt><span>long_name :</span></dt><dd>minimal cloud fraction</dd><dt><span>valid_range :</span></dt><dd>[0. 1.]</dd><dt><span>units :</span></dt><dd>1</dd><dt><span>_ChunkSizes :</span></dt><dd>512</dd></dl></div><div class='xr-var-data'><pre>array([0.      , 0.      , 0.      , ..., 0.037736, 0.037736, 0.040881])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>CF_max</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-7301c2ce-f92f-4496-9333-5859b784ed4c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-7301c2ce-f92f-4496-9333-5859b784ed4c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c10ee790-9b5c-411a-884d-778577a03814' class='xr-var-data-in' type='checkbox'><label for='data-c10ee790-9b5c-411a-884d-778577a03814' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>maximal cloud fraction</dd><dt><span>valid_range :</span></dt><dd>[0. 1.]</dd><dt><span>description :</span></dt><dd>Maximal possible cloud fraction derived from the ratio between the number of pixels classified as &quot;most likely cloudy&quot; plus the number of pixels classified as &quot;probably cloudy&quot; and the total number of pixels in one measurement. Measurements in which at least one pixel is classified as unknown/NaN are excluded from the calculation of the cloud fraction and set to NaN.</dd><dt><span>units :</span></dt><dd>1</dd><dt><span>_ChunkSizes :</span></dt><dd>512</dd></dl></div><div class='xr-var-data'><pre>array([0.      , 0.      , 0.      , ..., 0.349057, 0.330189, 0.273585])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>cloud_mask</span></div><div class='xr-var-dims'>(time, angle)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-fe0c3225-437f-480d-b578-2ab3d6715d22' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-fe0c3225-437f-480d-b578-2ab3d6715d22' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-db826b45-34c9-443e-bab2-853e17b47278' class='xr-var-data-in' type='checkbox'><label for='data-db826b45-34c9-443e-bab2-853e17b47278' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>cloud mask</dd><dt><span>valid_range :</span></dt><dd>[0 2]</dd><dt><span>flag_values :</span></dt><dd>[0 1 2]</dd><dt><span>flag_meanings :</span></dt><dd>cloud_free probably_cloudy most_likely_cloudy</dd><dt><span>description :</span></dt><dd>For this cloud mask the observations of the SWIR camera of specMACS are used. The mask is created by the combination of a mask based on the brightness of the measurements and another based on the measured water vapor absorption which is used to identify clouds in front of a bright background such as the sunglint. Two different brightness thresholds were used to distinguish between the classes most_likely_cloudy and probably_cloudy.</dd><dt><span>_ChunkSizes :</span></dt><dd>[  1 318]</dd></dl></div><div class='xr-var-data'><pre>[1133352 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>vza</span></div><div class='xr-var-dims'>(time, angle)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-08ee2293-f36f-4f21-8e6a-3751f4d76249' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-08ee2293-f36f-4f21-8e6a-3751f4d76249' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-722e4287-7c3e-4f15-a0d4-07e5cac59fa3' class='xr-var-data-in' type='checkbox'><label for='data-722e4287-7c3e-4f15-a0d4-07e5cac59fa3' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>viewing sensor zenith angle</dd><dt><span>units :</span></dt><dd>degree</dd><dt><span>description :</span></dt><dd>angle between the line of sight to each pixel of the sensor and the local vertical at HALO position with respect to the WGS 84 ellipsoid</dd><dt><span>_ChunkSizes :</span></dt><dd>[  1 318]</dd></dl></div><div class='xr-var-data'><pre>[1133352 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>vaa</span></div><div class='xr-var-dims'>(time, angle)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-15b1afb6-139b-4545-98a4-650a055d2296' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-15b1afb6-139b-4545-98a4-650a055d2296' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d29ac29b-a8d5-465c-aabe-1a953f4e5cd4' class='xr-var-data-in' type='checkbox'><label for='data-d29ac29b-a8d5-465c-aabe-1a953f4e5cd4' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>horizontal angle between the line of sight to each pixel of the sensor and due north (measured clockwise from north)</dd><dt><span>long_name :</span></dt><dd>viewing sensor azimuth angle</dd><dt><span>units :</span></dt><dd>degree</dd><dt><span>_ChunkSizes :</span></dt><dd>[  1 318]</dd></dl></div><div class='xr-var-data'><pre>[1133352 values with dtype=float32]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-470331b7-0b4c-4933-b77f-6e74899ac89d' class='xr-section-summary-in' type='checkbox'  ><label for='section-470331b7-0b4c-4933-b77f-6e74899ac89d' class='xr-section-summary' >Attributes: <span>(16)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>title :</span></dt><dd>cloud mask derived from specMACS SWIR camera data captured during EUREC4A campaign</dd><dt><span>version :</span></dt><dd>2.1</dd><dt><span>variable :</span></dt><dd>cloud_mask</dd><dt><span>comment :</span></dt><dd>The additional information about the viewing geometry and the position of the airplane is needed to project the cloud mask on a latitude/longitude grid. The data of the flights on 2020-01-19 and 2020-02-18 is affected by window icing of the instruments housing, which potentially influences the quality of the cloud mask. Furthermore, on the 30th of January 2020, the dark current measurements are missing for the first hour of the flight (until about 12:35 UTC). The derived cloudmask of this sequence is only based on the brightness of a single spectral channel and should be handled with care.</dd><dt><span>contact :</span></dt><dd>veronika.poertge@physik.uni-muenchen.de</dd><dt><span>platform :</span></dt><dd>HALO</dd><dt><span>campaign :</span></dt><dd>EUREC4A</dd><dt><span>instrument :</span></dt><dd>specMACS SWIR</dd><dt><span>source :</span></dt><dd>airborne hyperspectral imaging with specMACS camera system</dd><dt><span>institution :</span></dt><dd>LMU Munich, Meteorological Institute</dd><dt><span>author :</span></dt><dd>Veronika Pörtge, Felix Gödde, Tobias Kölling, Linda Forster, Tobias Zinner, Bernhard Mayer</dd><dt><span>history :</span></dt><dd>The original version of the cloud mask was audited and filtered by visual inspection.
+2020-07-14: V1.0 uploaded.
+2020-07-22: V1.1 uploaded. Changes: renaming variable &#x27;water_vapor_cloud_mask&#x27; to &#x27;combined_brightness_watervapor_mask&#x27;; Bug fix of binary opening operation -&gt; now the single pixels which were identified as clouds are correctly removed.
+2021-02-15 18:15:11 V2.0 uploaded. Changes: Cloudmask product for HALO ESSD paper. Removed &#x27;combined_brightness_watervapor_mask&#x27;,&#x27;brightness_cloud_mask&#x27;, &#x27;valid, &#x27;sza&#x27;, &#x27;saa&#x27;. Added cloud fraction, reprocessed flight days 2020-01-19, 2020-01-30, 2020-02-18 and changed metadata according to CF convention.
+2021-03-12 21:42:58 V2.1 uploaded. Changes: Changed datatype of cloud_mask variable to short and replaced flag_value=-1 (with flag_meaning: unknown) by _FillValue=-1. The values of the variables &#x27;vza&#x27; and &#x27;vaa&#x27; are rounded using the formula: value = rint(value*128)/128. This is consistent with a decimal precision of 2. &#x27;vza&#x27; and &#x27;vaa&#x27; are stored as &#x27;floats&#x27;. 
+</dd><dt><span>created_on :</span></dt><dd>2021-03-12</dd><dt><span>Conventions :</span></dt><dd>CF-1.8</dd><dt><span>references :</span></dt><dd>more information about the product can be found here: https://macsserver.physik.uni-muenchen.de/campaigns/EUREC4A/products/cloudmask/</dd><dt><span>DODS_EXTRA.Unlimited_Dimension :</span></dt><dd>time</dd></dl></div></li></ul></div></div></div></div>
+</div>
+<p>You can get a list of available variables in the dataset from <code class="docutils literal notranslate"><span class="pre">ds_selection.variables.keys()</span></code> or by looking them up in the table above.</p>
+</div>
+</div>
+<div class="section" id="first-plots">
+<h2>First plots<a class="headerlink" href="#first-plots" title="Permalink to this headline">¶</a></h2>
+<p>After selecting our datasets, we want to see what’s inside, so here are some first plots.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">([</span><span class="s2">&quot;./mplstyle/book&quot;</span><span class="p">,</span> <span class="s2">&quot;./mplstyle/wide&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>First, we create a little helper to properly display a colorbar for categorical (in CF-Convention terms “flag”) variables:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">flagbar</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">mappable</span><span class="p">,</span> <span class="n">variable</span><span class="p">):</span>
+    <span class="n">ticks</span> <span class="o">=</span> <span class="n">variable</span><span class="o">.</span><span class="n">flag_values</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="n">variable</span><span class="o">.</span><span class="n">flag_meanings</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+    <span class="n">cbar</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">mappable</span><span class="p">,</span> <span class="n">ticks</span><span class="o">=</span><span class="n">ticks</span><span class="p">)</span>
+    <span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">labels</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Figure 1: shows the SWIR camera cloud mask product along the flight track (x axis) for all observations in across track directions (y axis).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>fetching the data and displaying it might take a few seconds</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">cmplot</span> <span class="o">=</span> <span class="n">ds_selection</span><span class="o">.</span><span class="n">cloud_mask</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+                                        <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;Greys_r&#39;</span><span class="p">,</span> <span class="n">lut</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span>
+                                        <span class="n">vmin</span><span class="o">=-</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span>
+                                        <span class="n">add_colorbar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">flagbar</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">cmplot</span><span class="p">,</span> <span class="n">ds_selection</span><span class="o">.</span><span class="n">cloud_mask</span><span class="p">)</span>
+<span class="n">start_time_rounded</span><span class="p">,</span> <span class="n">end_time_rounded</span> <span class="o">=</span> <span class="n">ds_selection</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;datetime64[s]&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;specMACS cloud mask (</span><span class="si">{</span><span class="n">start_time_rounded</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">end_time_rounded</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/specmacs_19_0.png" src="_images/specmacs_19_0.png" />
+</div>
+</div>
+<p>The dataset also contains the minimal and maximal cloud fractions which are calculated for each temporal measurement. The minimal cloud fraction is derived from the ratio between the number of pixels classified as “most likely cloudy” and the total number of pixels in one measurement (times with unknown measurements are excluded). The maximal cloud fraction additionally includes the number of pixels classified as “probably cloudy”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ds_selection</span><span class="o">.</span><span class="n">CF_max</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;lightgrey&quot;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;maximal cloud_fraction:</span><span class="se">\n</span><span class="s2">most likely cloudy and probably cloudy&quot;</span><span class="p">)</span>
+<span class="n">ds_selection</span><span class="o">.</span><span class="n">CF_min</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;minimal cloud fraction:</span><span class="se">\n</span><span class="s2">most_likely_cloudy&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">sonde_dt</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C3&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;sonde launch time&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Cloud fraction&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;cloud fraction around sonde </span><span class="si">{</span><span class="n">first_dropsonde</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/specmacs_21_0.png" src="_images/specmacs_21_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="camera-view-angles-to-latitude-and-longitude">
+<h2>Camera view angles to latitude and longitude<a class="headerlink" href="#camera-view-angles-to-latitude-and-longitude" title="Permalink to this headline">¶</a></h2>
+<p>The cloud mask is given on a <code class="docutils literal notranslate"><span class="pre">time</span></code> <span class="math notranslate nohighlight">\(\times\)</span> <code class="docutils literal notranslate"><span class="pre">angle</span></code> grid where <code class="docutils literal notranslate"><span class="pre">angle</span></code>s are the internal camera angles. Sometimes it could be helpful to project the data onto a map. This means that we would like to know the corresponding <strong>latitude</strong> and <strong>longitude</strong> coordinates of each pixel of the cloud mask.</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="_images/specmacs_lat_lon.jpg"><img alt="schematic drawing" src="_images/specmacs_lat_lon.jpg" style="width: 50%;" /></a>
+</div>
+<p>The computation involves quite a few steps, so let’s take a second to lay out a strategy.
+We know already the position of the aircraft and the individual viewing directions of each sensor pixel at each point in time.
+If we would start from the position of the aircraft and continue along each line of sight, until we hit something which we see in our dataset, we should end up at the location we are interested in.
+Due to the curvature of the earth, we’ll have to do a few coordinate transformations in the process, but no worries, we’ll walk you through.</p>
+<div class="section" id="what-we-know">
+<h3>What we know<a class="headerlink" href="#what-we-know" title="Permalink to this headline">¶</a></h3>
+<p>We start out with five variables:</p>
+<ul class="simple">
+<li><p>position of the airplane: latitude, longitude and height above WGS84 (<code class="docutils literal notranslate"><span class="pre">ds.lat,</span> <span class="pre">ds.lon,</span> <span class="pre">ds.alt</span></code>)</p></li>
+<li><p>viewing directions of the camera pixels: viewing zenith angle and viewing azimuth angle (<code class="docutils literal notranslate"><span class="pre">ds.vza,</span> <span class="pre">ds.vaa</span></code>)</p></li>
+</ul>
+<p>Let’s have a look a these variables</p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">attr_table</span><span class="p">(</span><span class="n">variables</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create a table of variable attributes from a list of variables (xr.DataArrays).</span>
+
+<span class="sd">    The result is a HTML object, displayable by jupyter notebooks.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+    <span class="n">key_prio</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;standard_name&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+    <span class="n">keys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span>
+        <span class="nb">set</span><span class="p">(</span><span class="n">k</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">variables</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">v</span><span class="o">.</span><span class="n">attrs</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">k</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)),</span>
+        <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">key_prio</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">))</span>
+    <span class="n">table</span> <span class="o">=</span> <span class="s2">&quot;&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&quot;</span>
+    <span class="n">table</span> <span class="o">+=</span> <span class="s2">&quot;&lt;th style=</span><span class="se">\&quot;</span><span class="s2">text-align: left</span><span class="se">\&quot;</span><span class="s2">&gt;name&lt;/th&gt;&quot;</span> <span class="o">+</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&lt;th style=</span><span class="se">\&quot;</span><span class="s2">text-align: left</span><span class="se">\&quot;</span><span class="s2">&gt;</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">&lt;/th&gt;&quot;</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">)</span>
+    <span class="n">table</span> <span class="o">+=</span> <span class="s2">&quot;&lt;/tr&gt;&lt;/thead&gt;&quot;</span>
+    <span class="n">table</span> <span class="o">+=</span> <span class="s2">&quot;&lt;tbody&gt;&quot;</span>
+    <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">variables</span><span class="p">:</span>
+        <span class="n">table</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;&lt;tr&gt;&lt;td style=</span><span class="se">\&quot;</span><span class="s2">text-align: left</span><span class="se">\&quot;</span><span class="s2">&gt;</span><span class="si">{</span><span class="n">var</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&lt;/td&gt;&quot;</span>
+        <span class="n">table</span> <span class="o">+=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&lt;td style=</span><span class="se">\&quot;</span><span class="s2">text-align: left</span><span class="se">\&quot;</span><span class="s2">&gt;</span><span class="si">{</span><span class="n">var</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&lt;/td&gt;&quot;</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;&lt;/tr&gt;&quot;</span>
+    <span class="n">table</span> <span class="o">+=</span> <span class="s2">&quot;&lt;/tbody&gt;&lt;/table&gt;&quot;</span>
+    <span class="k">return</span> <span class="n">HTML</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">attr_table</span><span class="p">([</span><span class="n">ds_selection</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;lat&quot;</span><span class="p">,</span> <span class="s2">&quot;lon&quot;</span><span class="p">,</span> <span class="s2">&quot;alt&quot;</span><span class="p">,</span> <span class="s2">&quot;vza&quot;</span><span class="p">,</span> <span class="s2">&quot;vaa&quot;</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table><thead><tr><th style="text-align: left">name</th><th style="text-align: left">standard_name</th><th style="text-align: left">units</th><th style="text-align: left">long_name</th><th style="text-align: left">description</th></tr></thead><tbody><tr><td style="text-align: left">lat</td><td style="text-align: left">latitude</td><td style="text-align: left">degrees_north</td><td style="text-align: left">latitude</td><td style="text-align: left">Platform latitude coordinate</td></tr><tr><td style="text-align: left">lon</td><td style="text-align: left">longitude</td><td style="text-align: left">degrees_east</td><td style="text-align: left">longitude</td><td style="text-align: left">Platform longitude coordinate</td></tr><tr><td style="text-align: left">alt</td><td style="text-align: left">-</td><td style="text-align: left">m</td><td style="text-align: left">altitude</td><td style="text-align: left">Platform height above WGS 84 ellipsoid</td></tr><tr><td style="text-align: left">vza</td><td style="text-align: left">-</td><td style="text-align: left">degree</td><td style="text-align: left">viewing sensor zenith angle</td><td style="text-align: left">angle between the line of sight to each pixel of the sensor and the local vertical at HALO position with respect to the WGS 84 ellipsoid</td></tr><tr><td style="text-align: left">vaa</td><td style="text-align: left">-</td><td style="text-align: left">degree</td><td style="text-align: left">viewing sensor azimuth angle</td><td style="text-align: left">horizontal angle between the line of sight to each pixel of the sensor and due north (measured clockwise from north)</td></tr></tbody></table></div></div>
+</div>
+<ul class="simple">
+<li><p>The position of the HALO is saved in ellipsoidal coordinates. It is defined by the latitude (<code class="docutils literal notranslate"><span class="pre">lat</span></code>), longitude (<code class="docutils literal notranslate"><span class="pre">lon</span></code>) and height (<code class="docutils literal notranslate"><span class="pre">alt</span></code>) coordinates with respect to the WGS-84 ellipsoid.</p></li>
+<li><p>The viewing zenith (<code class="docutils literal notranslate"><span class="pre">vza</span></code>) and azimuth (<code class="docutils literal notranslate"><span class="pre">vaa</span></code>) angles are given with respect to the local horizon (<code class="docutils literal notranslate"><span class="pre">lh</span></code>) coordinate system at the position of the HALO. This system has its center at the <code class="docutils literal notranslate"><span class="pre">lat</span></code>/<code class="docutils literal notranslate"><span class="pre">lon</span></code>/<code class="docutils literal notranslate"><span class="pre">alt</span></code> position of the HALO and the x/y/z axis point into North, East and down directions.</p></li>
+</ul>
+<p>As the frame of reference rotates with the motion of HALO, a convenient way to work with such kind of data is to transform it into the Earth-Centered, Earth-Fixed (ECEF) coordinate system. The origin of this coordinate system is the center of the Earth. The z-axis passes through true north, the x-axis through the Equator and the prime meridian at 0° longitude. The y-axis is orthogonal to x and z. This cartesian system makes computations of distances and angles very easy.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The use of “altitude” and “height” can be confusing and is sometimes handled inconsistently. Usually, “altitude” describes the vertical distance above the geoid and “height” describes the vertical distance above the surface.</p>
+<p>In this notebook, we only use the vertical distance above the WGS84 reference ellipsoid. Neither “altitude” nor “height” as defined above matches this distance exactly, but both are commonly used. We try to use the term “height” as it seems to be more commonly used in coordinate computations and fall back to the term <code class="docutils literal notranslate"><span class="pre">alt</span></code> when talking about the variable in HALO datasets. Keep in mind that we actually mean vertical distance above WGS84 in both cases.</p>
+</div>
+</div>
+<div class="section" id="transformation-to-ecef">
+<h3>Transformation to ECEF<a class="headerlink" href="#transformation-to-ecef" title="Permalink to this headline">¶</a></h3>
+<p>In a first step we want to transform the position of the HALO into the ECEF coordinate system. We use the method <a class="reference external" href="https://gssc.esa.int/navipedia/index.php/Ellipsoidal_and_Cartesian_Coordinates_Conversion">from ESA navipedia</a>:</p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ellipsoidal_to_ecef</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Transform ellipsoidal coordinates into the ECEF coordinate system according to:</span>
+<span class="sd">    https://gssc.esa.int/navipedia/index.php/Ellipsoidal_and_Cartesian_Coordinates_Conversion</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">    lat: latitude of ellipsoid [rad]</span>
+<span class="sd">    lon: longitude of ellipsoid [rad]</span>
+<span class="sd">    height: height above ellipsoid [m]</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">    coordinates in ECEF coordinate system.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    
+    <span class="n">WGS_84_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;axes&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mf">6378137.0</span><span class="p">,</span> <span class="mf">6356752.314245</span><span class="p">)}</span> <span class="c1">#m semi-minor and semi-major axis of WGS-84 geoid</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">WGS_84_dict</span><span class="p">[</span><span class="s2">&quot;axes&quot;</span><span class="p">]</span> <span class="c1">#values come from: https://en.wikipedia.org/wiki/World_Geodetic_System#WGS84</span>
+    
+    <span class="n">e_squared</span> <span class="o">=</span> <span class="n">e2</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="n">calc_N</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">e_squared</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span>
+
+    <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">N</span> <span class="o">+</span> <span class="n">height</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">lat</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">lon</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">N</span> <span class="o">+</span> <span class="n">height</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">lat</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">lon</span><span class="p">)</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">e_squared</span><span class="p">)</span><span class="o">*</span><span class="n">N</span> <span class="o">+</span> <span class="n">height</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">lat</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">],</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">calc_N</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">e_squared</span><span class="p">,</span> <span class="n">lat</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Calculate the radius of curvature (N) in the prime vertical.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters:</span>
+<span class="sd">    e_squared: eccentricity</span>
+<span class="sd">    lat: latitude [rad]</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">    Radius of curvature in prime vertical.</span>
+<span class="sd">    </span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="n">a</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">e_squared</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">lat</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">e2</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;This function calculates the squared eccentricity.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters:</span>
+<span class="sd">    a: semi-major axis</span>
+<span class="sd">    b: the semi-minor axis b </span>
+<span class="sd">    f: flattening factor f=1−ba</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">    Squared eccentricity.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">b</span><span class="o">/</span><span class="n">a</span><span class="p">)</span>
+    <span class="n">e_squared</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">f</span> <span class="o">-</span> <span class="n">f</span><span class="o">**</span><span class="mi">2</span>
+    <span class="k">return</span> <span class="n">e_squared</span>
+
+<span class="k">def</span> <span class="nf">ellipsoidal_to_ecef_ds</span><span class="p">(</span><span class="n">ds</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">:</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This function applies the conversion from above directly to an xarray dataset.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="n">xr</span><span class="o">.</span><span class="n">apply_ufunc</span><span class="p">(</span><span class="n">ellipsoidal_to_ecef</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">lat</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">lon</span><span class="p">),</span> <span class="n">ds</span><span class="o">.</span><span class="n">alt</span><span class="p">,</span>
+                          <span class="n">output_core_dims</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;xyz_ecef&quot;</span><span class="p">,)])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>With these functions it is easy to transform the <code class="docutils literal notranslate"><span class="pre">lat</span></code>/<code class="docutils literal notranslate"><span class="pre">lon</span></code>/<code class="docutils literal notranslate"><span class="pre">alt</span></code> position of the HALO into the ECEF-coordinate system.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">HALO_ecef</span> <span class="o">=</span> <span class="n">ellipsoidal_to_ecef_ds</span><span class="p">(</span><span class="n">ds_selection</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="computing-viewing-lines">
+<h3>Computing viewing lines<a class="headerlink" href="#computing-viewing-lines" title="Permalink to this headline">¶</a></h3>
+<p>As a next step we want to set up the vector of the viewing direction. We will need the rotation matrices <code class="docutils literal notranslate"><span class="pre">Rx</span></code>, <code class="docutils literal notranslate"><span class="pre">Ry</span></code> and <code class="docutils literal notranslate"><span class="pre">Rz</span></code> for this.
+Using these fundamental rotation matrices, we can compute vectors along the instruments viewing direction in the local horizon (NED) coordinate system.</p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">R</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">dim_a</span><span class="o">=</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="n">dim_b</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">):</span>
+    <span class="n">dims</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">alpha</span><span class="o">.</span><span class="n">dims</span><span class="p">,</span> <span class="n">alpha</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="p">())</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="n">dims</span><span class="p">)</span>
+    <span class="n">o</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="p">())</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="n">dims</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">xr</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span>
+        <span class="n">xr</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">o</span><span class="p">,</span>  <span class="n">z</span><span class="p">,</span> <span class="n">z</span><span class="p">],</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim_b</span><span class="p">),</span>
+        <span class="n">xr</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">z</span><span class="p">,</span>  <span class="n">c</span><span class="p">,</span> <span class="n">s</span><span class="p">],</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim_b</span><span class="p">),</span>
+        <span class="n">xr</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">z</span><span class="p">,</span> <span class="o">-</span><span class="n">s</span><span class="p">,</span> <span class="n">c</span><span class="p">],</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim_b</span><span class="p">),</span>
+    <span class="p">],</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim_a</span><span class="p">)</span> \
+    <span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">shifts</span><span class="o">=</span><span class="p">{</span><span class="n">dim_a</span><span class="p">:</span> <span class="n">axis</span><span class="p">,</span> <span class="n">dim_b</span><span class="p">:</span> <span class="n">axis</span><span class="p">},</span> <span class="n">roll_coords</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">Rx</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">dim_a</span><span class="o">=</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="n">dim_b</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">R</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">dim_a</span><span class="p">,</span> <span class="n">dim_b</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">Ry</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">dim_a</span><span class="o">=</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="n">dim_b</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">R</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dim_a</span><span class="p">,</span> <span class="n">dim_b</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">Rz</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">dim_a</span><span class="o">=</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="n">dim_b</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">R</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">dim_a</span><span class="p">,</span> <span class="n">dim_b</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">vector_norm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="nb">ord</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">xr</span><span class="o">.</span><span class="n">apply_ufunc</span><span class="p">(</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">input_core_dims</span><span class="o">=</span><span class="p">[[</span><span class="n">dim</span><span class="p">]],</span> <span class="n">kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;ord&quot;</span><span class="p">:</span> <span class="nb">ord</span><span class="p">,</span> <span class="s2">&quot;axis&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">}</span>
+    <span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">normalize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="nb">ord</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">/</span> <span class="n">vector_norm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="nb">ord</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">vector_lh</span><span class="p">(</span><span class="n">ds</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Calculate the viewing direction relative to the local horizon (NED) coordinate system.</span>
+<span class="sd">    The viewing direction is defined by the viewing zenith and azimuth angles which </span>
+<span class="sd">    are part of the dataset. If one thinks of a single pixel having its own coordinate system</span>
+<span class="sd">    with +z being the central viewing direction of this pixel, the computation of the</span>
+<span class="sd">    viewing direction can be carried out using two rotations:</span>
+<span class="sd">    1. Rotation around the y-axis with the viewing zenith angle (pixel -&gt; intermediate)</span>
+<span class="sd">    2. Rotation around the z-axis with the viewinzg azimuth angle (intermediate -&gt; NED)</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">down</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span> <span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;pixel&quot;</span><span class="p">,))</span>
+    <span class="n">rot_vza</span> <span class="o">=</span> <span class="n">Ry</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="o">-</span><span class="n">ds</span><span class="p">[</span><span class="s2">&quot;vza&quot;</span><span class="p">]),</span> <span class="s2">&quot;intermediate&quot;</span><span class="p">,</span> <span class="s2">&quot;pixel&quot;</span><span class="p">)</span>
+    <span class="n">rot_vaa</span> <span class="o">=</span> <span class="n">Rz</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="o">-</span><span class="n">ds</span><span class="p">[</span><span class="s2">&quot;vaa&quot;</span><span class="p">]),</span> <span class="s2">&quot;NED&quot;</span><span class="p">,</span> <span class="s2">&quot;intermediate&quot;</span><span class="p">)</span>
+    <span class="c1"># to simplify things later on, we attach coordinate labels to this system</span>
+    <span class="n">rot_vaa</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="s2">&quot;NED&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">([</span><span class="s2">&quot;N&quot;</span><span class="p">,</span> <span class="s2">&quot;E&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">],</span> <span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;NED&quot;</span><span class="p">,))</span>
+
+    <span class="k">return</span> <span class="n">normalize</span><span class="p">(</span>
+        <span class="n">xr</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">rot_vaa</span><span class="p">,</span> <span class="n">rot_vza</span><span class="p">,</span> <span class="n">down</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;pixel&quot;</span><span class="p">,</span> <span class="s2">&quot;intermediate&quot;</span><span class="p">)),</span>
+        <span class="s2">&quot;NED&quot;</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">view_lh</span> <span class="o">=</span> <span class="n">vector_lh</span><span class="p">(</span><span class="n">ds_selection</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We need an approximation of the cloud top height and will use 1000 m as a first guess. If you have better cloud height data just put in your data. You can also use different values along <code class="docutils literal notranslate"><span class="pre">time</span></code> and <code class="docutils literal notranslate"><span class="pre">angle</span></code> dimensions, xarray will take care of this.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">height_guess</span> <span class="o">=</span> <span class="mf">1000.</span> <span class="c1">#m</span>
+<span class="n">cth</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">height_guess</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s calculate the length of the vector connecting HALO and the cloud. We need the height of the HALO, the cloudheight and the viewing direction for this. <code class="docutils literal notranslate"><span class="pre">view_lh</span></code> provides the viewing direction while the distance between HALO and cloud normalized by the down-component of the viewing direction provides the distance along the view path.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">viewpath_lh</span> <span class="o">=</span> <span class="n">view_lh</span> <span class="o">*</span> <span class="p">(</span><span class="n">ds_selection</span><span class="o">.</span><span class="n">alt</span> <span class="o">-</span> <span class="n">cth</span><span class="p">)</span> <span class="o">/</span> <span class="n">view_lh</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">NED</span><span class="o">=</span><span class="s2">&quot;D&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we would like to transform this viewpath also into the ECEF coordinate system. We will stick to the method described <a class="reference external" href="https://gssc.esa.int/navipedia/index.php/Transformations_between_ECEF_and_ENU_coordinates">in navipedia</a>:</p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">lh_to_ecef</span><span class="p">(</span><span class="n">ned_vector</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Transform vector of coordinates/directions with respect to the local horizon coordinate system</span>
+<span class="sd">    into the ECEF system. While the reference uses ENU coordinates, we use NED in this example.</span>
+
+<span class="sd">    see: https://gssc.esa.int/navipedia/index.php/Transformations_between_ECEF_and_ENU_coordinates</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters:</span>
+<span class="sd">    ned_vector: coordinates as expressed in local horizon coordinates/NED coordinates</span>
+<span class="sd">    lat: latitude of HALO position [degree]</span>
+<span class="sd">    lon: longitude of HALO position [degree]</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">    Vector expressed in ECEF coordinates.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">rot_matrix_inv</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span>
+        <span class="n">Ry</span><span class="p">(</span><span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="mi">90</span><span class="p">),</span> <span class="n">dims</span><span class="o">=</span><span class="p">()),</span> <span class="s2">&quot;xyz_ecef&quot;</span><span class="p">,</span> <span class="s2">&quot;m&quot;</span><span class="p">),</span>
+        <span class="n">Rx</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">lon</span><span class="p">),</span> <span class="s2">&quot;m&quot;</span><span class="p">,</span> <span class="s2">&quot;n&quot;</span><span class="p">),</span>
+        <span class="n">Ry</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">lat</span><span class="p">),</span> <span class="s2">&quot;n&quot;</span><span class="p">,</span> <span class="s2">&quot;NED&quot;</span><span class="p">),</span>
+        <span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;m&quot;</span><span class="p">,</span> <span class="s2">&quot;n&quot;</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">xr</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">rot_matrix_inv</span><span class="p">,</span> <span class="n">ned_vector</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="s2">&quot;NED&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">viewpath_ecef</span> <span class="o">=</span> <span class="n">lh_to_ecef</span><span class="p">(</span><span class="n">viewpath_lh</span><span class="p">,</span>
+                           <span class="n">ds_selection</span><span class="p">[</span><span class="s2">&quot;lat&quot;</span><span class="p">],</span>
+                           <span class="n">ds_selection</span><span class="p">[</span><span class="s2">&quot;lon&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="cloud-locations-in-3d-space">
+<h3>Cloud locations in 3D space<a class="headerlink" href="#cloud-locations-in-3d-space" title="Permalink to this headline">¶</a></h3>
+<p>If we add the viewpath to the position of the HALO the resulting point gives us the ECEF coordinates of the point on the cloud.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cloudpoint_ecef</span> <span class="o">=</span> <span class="n">HALO_ecef</span> <span class="o">+</span> <span class="n">viewpath_ecef</span>
+<span class="n">x_cloud</span><span class="p">,</span> <span class="n">y_cloud</span><span class="p">,</span> <span class="n">z_cloud</span> <span class="o">=</span> <span class="n">cloudpoint_ecef</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="s2">&quot;xyz_ecef&quot;</span><span class="p">,</span> <span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="s2">&quot;angle&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="back-to-ellipsoidal-coordinates">
+<h3>Back to ellipsoidal coordinates<a class="headerlink" href="#back-to-ellipsoidal-coordinates" title="Permalink to this headline">¶</a></h3>
+<p>The last step is to transform these coordinates into ellipsoidal coordinates. Again we stick to the description <a class="reference external" href="https://gssc.esa.int/navipedia/index.php/Ellipsoidal_and_Cartesian_Coordinates_Conversion">at navipedia</a>:</p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ecef_to_ellipsoidal</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Transformation from ECEF coordinates to ellipsoidal coordinates according to:</span>
+<span class="sd">    https://gssc.esa.int/navipedia/index.php/Ellipsoidal_and_Cartesian_Coordinates_Conversion</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">    x, y, z: cartesian coordinates (ECEF)</span>
+<span class="sd">    iterations: increase this value if the change between two successive values </span>
+<span class="sd">                of latitude is larger than the precision required.</span>
+<span class="sd">    Returns:</span>
+<span class="sd">    Vector expressed in ellipsoidal coordinates.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">WGS_84_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;axes&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mf">6378137.0</span><span class="p">,</span> <span class="mf">6356752.314245</span><span class="p">)}</span> <span class="c1">#m</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">WGS_84_dict</span><span class="p">[</span><span class="s2">&quot;axes&quot;</span><span class="p">]</span> <span class="c1">#semi-major and semi-minor axis a and b of the WGS-84 ellipsoid</span>
+        
+    <span class="n">lon</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">)</span> <span class="c1">#radians    </span>
+    <span class="n">e_squared</span> <span class="o">=</span> <span class="n">e2</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>    
+    <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>     
+    <span class="n">lat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">e_squared</span><span class="p">)</span><span class="o">*</span><span class="n">p</span><span class="p">)</span>    
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">iterations</span><span class="p">):</span>
+        <span class="n">N</span> <span class="o">=</span> <span class="n">calc_N</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">e_squared</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span>
+        <span class="n">height</span> <span class="o">=</span> <span class="n">p</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">lat</span><span class="p">)</span> <span class="o">-</span> <span class="n">N</span>
+        <span class="n">lat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">e_squared</span> <span class="o">*</span> <span class="p">(</span><span class="n">N</span><span class="o">/</span><span class="p">(</span><span class="n">N</span><span class="o">+</span><span class="n">height</span><span class="p">)))</span><span class="o">*</span><span class="n">p</span><span class="p">)</span>
+
+    <span class="n">lat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">rad2deg</span><span class="p">(</span><span class="n">lat</span><span class="p">)</span>
+    <span class="n">lat</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;units&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;degree_north&quot;</span>
+    <span class="n">lon</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">rad2deg</span><span class="p">(</span><span class="n">lon</span><span class="p">)</span>
+    <span class="n">lon</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;units&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;degree_east&quot;</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;lat&quot;</span><span class="p">:</span> <span class="n">lat</span><span class="p">,</span>
+            <span class="s2">&quot;lon&quot;</span><span class="p">:</span> <span class="n">lon</span><span class="p">,</span>
+            <span class="s2">&quot;height&quot;</span><span class="p">:</span> <span class="n">height</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds_selection</span> <span class="o">=</span> <span class="n">ds_selection</span><span class="o">.</span><span class="n">assign_coords</span><span class="p">(</span>
+    <span class="p">{</span><span class="s2">&quot;cloud&quot;</span> <span class="o">+</span> <span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">ecef_to_ellipsoidal</span><span class="p">(</span><span class="n">x_cloud</span><span class="p">,</span> <span class="n">y_cloud</span><span class="p">,</span> <span class="n">z_cloud</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+<span class="p">)</span>
+<span class="n">ds_selection</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme=dark],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1F1F1F;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 20px 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: none;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: '►';
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: '▼';
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: '(';
+}
+
+.xr-dim-list:after {
+  content: ')';
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ',';
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2 {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt;
+Dimensions:      (angle: 318, time: 3564)
+Coordinates:
+  * time         (time) datetime64[ns] 2020-02-05T10:47:32.015175168 ... 2020...
+  * angle        (angle) float64 18.0 17.9 17.8 17.69 ... -17.07 -17.17 -17.27
+    lat          (time) float64 14.3 14.3 14.3 14.3 ... 14.26 14.26 14.26 14.26
+    lon          (time) float64 -57.67 -57.67 -57.67 ... -57.42 -57.42 -57.42
+    alt          (time) float32 1.026e+04 1.026e+04 ... 1.026e+04 1.026e+04
+    cloudlat     (time, angle) float64 14.28 14.28 14.28 ... 14.28 14.28 14.28
+    cloudlon     (time, angle) float64 -57.66 -57.66 -57.66 ... -57.4 -57.4
+    cloudheight  (time, angle) float64 1.001e+03 1.001e+03 ... 1.001e+03
+Data variables:
+    CF_min       (time) float64 0.0 0.0 0.0 0.0 ... 0.03774 0.03774 0.04088
+    CF_max       (time) float64 0.0 0.0 0.0 0.0 ... 0.3396 0.3491 0.3302 0.2736
+    cloud_mask   (time, angle) float32 ...
+    vza          (time, angle) float32 16.09 15.98 15.89 ... 20.47 20.57 20.67
+    vaa          (time, angle) float32 159.0 158.9 158.8 ... 28.77 28.69 28.61
+Attributes: (12/16)
+    title:                           cloud mask derived from specMACS SWIR ca...
+    version:                         2.1
+    variable:                        cloud_mask
+    comment:                         The additional information about the vie...
+    contact:                         veronika.poertge@physik.uni-muenchen.de
+    platform:                        HALO
+    ...                              ...
+    author:                          Veronika Pörtge, Felix Gödde, Tobias Köl...
+    history:                         The original version of the cloud mask w...
+    created_on:                      2021-03-12
+    Conventions:                     CF-1.8
+    references:                      more information about the product can b...
+    DODS_EXTRA.Unlimited_Dimension:  time</pre><div class='xr-wrap' hidden><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-afab0776-8a01-4e1f-abc8-068a4332a3ce' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-afab0776-8a01-4e1f-abc8-068a4332a3ce' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>angle</span>: 318</li><li><span class='xr-has-index'>time</span>: 3564</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-e63581de-6d7b-4723-970b-b0969e88174d' class='xr-section-summary-in' type='checkbox'  checked><label for='section-e63581de-6d7b-4723-970b-b0969e88174d' class='xr-section-summary' >Coordinates: <span>(8)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2020-02-05T10:47:32.015175168 .....</div><input id='attrs-ca54b3f3-2020-4558-acd6-86c9815cd871' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ca54b3f3-2020-4558-acd6-86c9815cd871' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0a2df61e-8a9d-4afc-bb48-f64f9f21e282' class='xr-var-data-in' type='checkbox'><label for='data-0a2df61e-8a9d-4afc-bb48-f64f9f21e282' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>time</dd><dt><span>standard_name :</span></dt><dd>time</dd><dt><span>_ChunkSizes :</span></dt><dd>512</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;2020-02-05T10:47:32.015175168&#x27;, &#x27;2020-02-05T10:47:32.048459008&#x27;,
+       &#x27;2020-02-05T10:47:32.081824000&#x27;, ..., &#x27;2020-02-05T10:49:31.912615936&#x27;,
+       &#x27;2020-02-05T10:49:31.945957888&#x27;, &#x27;2020-02-05T10:49:31.979329024&#x27;],
+      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>angle</span></div><div class='xr-var-dims'>(angle)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>18.0 17.9 17.8 ... -17.17 -17.27</div><input id='attrs-ae76d831-6fa5-4ae0-994a-732d74f517c7' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-ae76d831-6fa5-4ae0-994a-732d74f517c7' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a5a5ba38-e680-4303-8a08-f60c45cbd3e7' class='xr-var-data-in' type='checkbox'><label for='data-a5a5ba38-e680-4303-8a08-f60c45cbd3e7' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([ 18.004318,  17.900232,  17.796053, ..., -17.065975, -17.169756,
+       -17.273108])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lat</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>14.3 14.3 14.3 ... 14.26 14.26</div><input id='attrs-670973c5-c3fd-46b5-89b4-38bfed0f4635' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-670973c5-c3fd-46b5-89b4-38bfed0f4635' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8751f051-78a3-48e2-ba55-ebd4b5c01286' class='xr-var-data-in' type='checkbox'><label for='data-8751f051-78a3-48e2-ba55-ebd4b5c01286' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>description :</span></dt><dd>Platform latitude coordinate</dd><dt><span>_ChunkSizes :</span></dt><dd>512</dd></dl></div><div class='xr-var-data'><pre>array([14.298211, 14.298208, 14.298205, ..., 14.257021, 14.256997,
+       14.25698 ])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lon</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-57.67 -57.67 ... -57.42 -57.42</div><input id='attrs-154f8a6f-9677-4c19-b2b1-4007e9f37f16' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-154f8a6f-9677-4c19-b2b1-4007e9f37f16' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-6cad2a11-8244-44f5-8063-76941098555e' class='xr-var-data-in' type='checkbox'><label for='data-6cad2a11-8244-44f5-8063-76941098555e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>long_name :</span></dt><dd>longitude</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>description :</span></dt><dd>Platform longitude coordinate</dd><dt><span>_ChunkSizes :</span></dt><dd>512</dd></dl></div><div class='xr-var-data'><pre>array([-57.665231, -57.665169, -57.665108, ..., -57.419632, -57.419551,
+       -57.419491])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>alt</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>1.026e+04 1.026e+04 ... 1.026e+04</div><input id='attrs-e6357106-3634-4183-b38d-3bd9bedb9dc5' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e6357106-3634-4183-b38d-3bd9bedb9dc5' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-848d8889-8b9a-425d-86f3-c8eb2827f68b' class='xr-var-data-in' type='checkbox'><label for='data-848d8889-8b9a-425d-86f3-c8eb2827f68b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>m</dd><dt><span>long_name :</span></dt><dd>altitude</dd><dt><span>description :</span></dt><dd>Platform height above WGS 84 ellipsoid</dd><dt><span>_ChunkSizes :</span></dt><dd>1024</dd></dl></div><div class='xr-var-data'><pre>array([10256.269, 10256.261, 10256.253, ..., 10255.364, 10255.367,
+       10255.37 ], dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>cloudlat</span></div><div class='xr-var-dims'>(time, angle)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>14.28 14.28 14.28 ... 14.28 14.28</div><input id='attrs-0b9db1d2-a6e7-453a-8800-04dc25b6c33c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-0b9db1d2-a6e7-453a-8800-04dc25b6c33c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-360d9516-fe73-4397-a444-7c6fa888d757' class='xr-var-data-in' type='checkbox'><label for='data-360d9516-fe73-4397-a444-7c6fa888d757' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degree_north</dd></dl></div><div class='xr-var-data'><pre>array([[14.27568833, 14.27585816, 14.27601619, ..., 14.3288976 ,
+        14.32907245, 14.32924758],
+       [14.27567146, 14.27584131, 14.27599937, ..., 14.3288799 ,
+        14.32905573, 14.32923084],
+       [14.27565577, 14.27582446, 14.27598254, ..., 14.32886321,
+        14.32903802, 14.32921311],
+       ...,
+       [14.2326442 , 14.23280989, 14.23296353, ..., 14.28438706,
+        14.28455785, 14.28471552],
+       [14.2326325 , 14.23278624, 14.23295181, ..., 14.28436307,
+        14.2845318 , 14.28470297],
+       [14.2326155 , 14.23276887, 14.2329348 , ..., 14.28434403,
+        14.28451481, 14.28468391]])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>cloudlon</span></div><div class='xr-var-dims'>(time, angle)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-57.66 -57.66 ... -57.4 -57.4</div><input id='attrs-376270b3-a33c-4224-9782-8e8d098db5ac' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-376270b3-a33c-4224-9782-8e8d098db5ac' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c5772d79-4e01-43bf-9819-de46d529b641' class='xr-var-data-in' type='checkbox'><label for='data-c5772d79-4e01-43bf-9819-de46d529b641' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degree_east</dd></dl></div><div class='xr-var-data'><pre>array([[-57.65637688, -57.65638264, -57.65638452, ..., -57.65772494,
+        -57.65772777, -57.65773101],
+       [-57.65631665, -57.65632234, -57.65632416, ..., -57.65765747,
+        -57.65766454, -57.65766775],
+       [-57.65625428, -57.65626306, -57.6562648 , ..., -57.65759529,
+        -57.65759801, -57.65760116],
+       ...,
+       [-57.41697093, -57.41693424, -57.4168935 , ..., -57.40422669,
+        -57.4041856 , -57.40414742],
+       [-57.41689128, -57.41684985, -57.4168139 , ..., -57.40414568,
+        -57.40410075, -57.40406002],
+       [-57.41683128, -57.41679324, -57.4167539 , ..., -57.40408185,
+        -57.40404075, -57.40399615]])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>cloudheight</span></div><div class='xr-var-dims'>(time, angle)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>1.001e+03 1.001e+03 ... 1.001e+03</div><input id='attrs-283e2837-9406-45cd-9d26-abbd9bbdad8e' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-283e2837-9406-45cd-9d26-abbd9bbdad8e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-40a6d4c7-1174-40b6-bf76-ad1d0495ce9a' class='xr-var-data-in' type='checkbox'><label for='data-40a6d4c7-1174-40b6-bf76-ad1d0495ce9a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([[1000.56140829, 1000.55395559, 1000.54712673, ..., 1000.96076202,
+        1000.97111602, 1000.98153976],
+       [1000.56198322, 1000.5545263 , 1000.5476932 , ..., 1000.95996621,
+        1000.97031536, 1000.98073371],
+       [1000.56255826, 1000.55509709, 1000.5482601 , ..., 1000.95917139,
+        1000.96951496, 1000.97992762],
+       ...,
+       [1000.58030043, 1000.5727056 , 1000.5657462 , ..., 1000.93981864,
+        1000.95003023, 1000.9595178 ],
+       [1000.57971464, 1000.57270589, 1000.56516903, ..., 1000.93981924,
+        1000.95003015, 1000.96031092],
+       [1000.579715  , 1000.57270633, 1000.56516938, ..., 1000.93981916,
+        1000.95003075, 1000.96031083]])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-d008798a-4f6a-40ad-a251-2ae8c24a2519' class='xr-section-summary-in' type='checkbox'  checked><label for='section-d008798a-4f6a-40ad-a251-2ae8c24a2519' class='xr-section-summary' >Data variables: <span>(5)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>CF_min</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.0 0.0 0.0 ... 0.03774 0.04088</div><input id='attrs-8c3e5617-7520-4da3-9b9b-973471a5e0f0' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-8c3e5617-7520-4da3-9b9b-973471a5e0f0' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d25f1e28-8bea-46ac-b22c-379f9180235f' class='xr-var-data-in' type='checkbox'><label for='data-d25f1e28-8bea-46ac-b22c-379f9180235f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Minimal possible cloud fraction derived from the ratio between the number of pixels classified as &quot;most likely cloudy&quot; and the total number of pixels in one measurement. Measurements in which at least one pixel is classified as unknown/NaN are excluded from the calculation of the cloud fraction and set to NaN.</dd><dt><span>long_name :</span></dt><dd>minimal cloud fraction</dd><dt><span>valid_range :</span></dt><dd>[0. 1.]</dd><dt><span>units :</span></dt><dd>1</dd><dt><span>_ChunkSizes :</span></dt><dd>512</dd></dl></div><div class='xr-var-data'><pre>array([0.      , 0.      , 0.      , ..., 0.037736, 0.037736, 0.040881])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>CF_max</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.0 0.0 0.0 ... 0.3302 0.2736</div><input id='attrs-d0303915-a503-4e04-9674-0fa77f23bede' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-d0303915-a503-4e04-9674-0fa77f23bede' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e642ab8a-f2b3-474d-94f1-226d35844ce0' class='xr-var-data-in' type='checkbox'><label for='data-e642ab8a-f2b3-474d-94f1-226d35844ce0' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>maximal cloud fraction</dd><dt><span>valid_range :</span></dt><dd>[0. 1.]</dd><dt><span>description :</span></dt><dd>Maximal possible cloud fraction derived from the ratio between the number of pixels classified as &quot;most likely cloudy&quot; plus the number of pixels classified as &quot;probably cloudy&quot; and the total number of pixels in one measurement. Measurements in which at least one pixel is classified as unknown/NaN are excluded from the calculation of the cloud fraction and set to NaN.</dd><dt><span>units :</span></dt><dd>1</dd><dt><span>_ChunkSizes :</span></dt><dd>512</dd></dl></div><div class='xr-var-data'><pre>array([0.      , 0.      , 0.      , ..., 0.349057, 0.330189, 0.273585])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>cloud_mask</span></div><div class='xr-var-dims'>(time, angle)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-eb8dbf15-a9d5-4a1b-960c-9cfcbb583313' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-eb8dbf15-a9d5-4a1b-960c-9cfcbb583313' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-dc3ed081-7e59-4f7d-b713-e501cde35000' class='xr-var-data-in' type='checkbox'><label for='data-dc3ed081-7e59-4f7d-b713-e501cde35000' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>cloud mask</dd><dt><span>valid_range :</span></dt><dd>[0 2]</dd><dt><span>flag_values :</span></dt><dd>[0 1 2]</dd><dt><span>flag_meanings :</span></dt><dd>cloud_free probably_cloudy most_likely_cloudy</dd><dt><span>description :</span></dt><dd>For this cloud mask the observations of the SWIR camera of specMACS are used. The mask is created by the combination of a mask based on the brightness of the measurements and another based on the measured water vapor absorption which is used to identify clouds in front of a bright background such as the sunglint. Two different brightness thresholds were used to distinguish between the classes most_likely_cloudy and probably_cloudy.</dd><dt><span>_ChunkSizes :</span></dt><dd>[  1 318]</dd></dl></div><div class='xr-var-data'><pre>[1133352 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>vza</span></div><div class='xr-var-dims'>(time, angle)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>16.09 15.98 15.89 ... 20.57 20.67</div><input id='attrs-326f34bf-0c96-4e02-b771-958c330634ee' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-326f34bf-0c96-4e02-b771-958c330634ee' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-27681a82-f797-4ee5-b35b-d1203a7457b2' class='xr-var-data-in' type='checkbox'><label for='data-27681a82-f797-4ee5-b35b-d1203a7457b2' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>viewing sensor zenith angle</dd><dt><span>units :</span></dt><dd>degree</dd><dt><span>description :</span></dt><dd>angle between the line of sight to each pixel of the sensor and the local vertical at HALO position with respect to the WGS 84 ellipsoid</dd><dt><span>_ChunkSizes :</span></dt><dd>[  1 318]</dd></dl></div><div class='xr-var-data'><pre>array([[16.085938, 15.984375, 15.890625, ..., 20.664062, 20.765625, 20.867188],
+       [16.09375 , 15.992188, 15.898438, ..., 20.65625 , 20.757812, 20.859375],
+       [16.101562, 16.      , 15.90625 , ..., 20.648438, 20.75    , 20.851562],
+       ...,
+       [16.335938, 16.234375, 16.140625, ..., 20.46875 , 20.570312, 20.664062],
+       [16.328125, 16.234375, 16.132812, ..., 20.46875 , 20.570312, 20.671875],
+       [16.328125, 16.234375, 16.132812, ..., 20.46875 , 20.570312, 20.671875]],
+      dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>vaa</span></div><div class='xr-var-dims'>(time, angle)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>159.0 158.9 158.8 ... 28.69 28.61</div><input id='attrs-df462824-fd77-4a63-b468-8e56cab0ecf3' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-df462824-fd77-4a63-b468-8e56cab0ecf3' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-6e7960d9-8316-4640-9afe-0af5c8b9ba63' class='xr-var-data-in' type='checkbox'><label for='data-6e7960d9-8316-4640-9afe-0af5c8b9ba63' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>horizontal angle between the line of sight to each pixel of the sensor and due north (measured clockwise from north)</dd><dt><span>long_name :</span></dt><dd>viewing sensor azimuth angle</dd><dt><span>units :</span></dt><dd>degree</dd><dt><span>_ChunkSizes :</span></dt><dd>[  1 318]</dd></dl></div><div class='xr-var-data'><pre>array([[159.02344 , 158.89062 , 158.75781 , ...,  13.414062,  13.335938,
+         13.257812],
+       [159.03906 , 158.90625 , 158.77344 , ...,  13.429688,  13.34375 ,
+         13.265625],
+       [159.04688 , 158.92188 , 158.78906 , ...,  13.4375  ,  13.359375,
+         13.28125 ],
+       ...,
+       [173.92188 , 173.79688 , 173.66406 , ...,  28.765625,  28.679688,
+         28.601562],
+       [173.92188 , 173.78906 , 173.66406 , ...,  28.765625,  28.6875  ,
+         28.601562],
+       [173.92188 , 173.79688 , 173.66406 , ...,  28.773438,  28.6875  ,
+         28.609375]], dtype=float32)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-664a2727-d36a-4d42-a027-af91ef5b4553' class='xr-section-summary-in' type='checkbox'  ><label for='section-664a2727-d36a-4d42-a027-af91ef5b4553' class='xr-section-summary' >Attributes: <span>(16)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>title :</span></dt><dd>cloud mask derived from specMACS SWIR camera data captured during EUREC4A campaign</dd><dt><span>version :</span></dt><dd>2.1</dd><dt><span>variable :</span></dt><dd>cloud_mask</dd><dt><span>comment :</span></dt><dd>The additional information about the viewing geometry and the position of the airplane is needed to project the cloud mask on a latitude/longitude grid. The data of the flights on 2020-01-19 and 2020-02-18 is affected by window icing of the instruments housing, which potentially influences the quality of the cloud mask. Furthermore, on the 30th of January 2020, the dark current measurements are missing for the first hour of the flight (until about 12:35 UTC). The derived cloudmask of this sequence is only based on the brightness of a single spectral channel and should be handled with care.</dd><dt><span>contact :</span></dt><dd>veronika.poertge@physik.uni-muenchen.de</dd><dt><span>platform :</span></dt><dd>HALO</dd><dt><span>campaign :</span></dt><dd>EUREC4A</dd><dt><span>instrument :</span></dt><dd>specMACS SWIR</dd><dt><span>source :</span></dt><dd>airborne hyperspectral imaging with specMACS camera system</dd><dt><span>institution :</span></dt><dd>LMU Munich, Meteorological Institute</dd><dt><span>author :</span></dt><dd>Veronika Pörtge, Felix Gödde, Tobias Kölling, Linda Forster, Tobias Zinner, Bernhard Mayer</dd><dt><span>history :</span></dt><dd>The original version of the cloud mask was audited and filtered by visual inspection.
+2020-07-14: V1.0 uploaded.
+2020-07-22: V1.1 uploaded. Changes: renaming variable &#x27;water_vapor_cloud_mask&#x27; to &#x27;combined_brightness_watervapor_mask&#x27;; Bug fix of binary opening operation -&gt; now the single pixels which were identified as clouds are correctly removed.
+2021-02-15 18:15:11 V2.0 uploaded. Changes: Cloudmask product for HALO ESSD paper. Removed &#x27;combined_brightness_watervapor_mask&#x27;,&#x27;brightness_cloud_mask&#x27;, &#x27;valid, &#x27;sza&#x27;, &#x27;saa&#x27;. Added cloud fraction, reprocessed flight days 2020-01-19, 2020-01-30, 2020-02-18 and changed metadata according to CF convention.
+2021-03-12 21:42:58 V2.1 uploaded. Changes: Changed datatype of cloud_mask variable to short and replaced flag_value=-1 (with flag_meaning: unknown) by _FillValue=-1. The values of the variables &#x27;vza&#x27; and &#x27;vaa&#x27; are rounded using the formula: value = rint(value*128)/128. This is consistent with a decimal precision of 2. &#x27;vza&#x27; and &#x27;vaa&#x27; are stored as &#x27;floats&#x27;. 
+</dd><dt><span>created_on :</span></dt><dd>2021-03-12</dd><dt><span>Conventions :</span></dt><dd>CF-1.8</dd><dt><span>references :</span></dt><dd>more information about the product can be found here: https://macsserver.physik.uni-muenchen.de/campaigns/EUREC4A/products/cloudmask/</dd><dt><span>DODS_EXTRA.Unlimited_Dimension :</span></dt><dd>time</dd></dl></div></li></ul></div></div></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="display-on-a-map">
+<h2>Display on a map<a class="headerlink" href="#display-on-a-map" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">ds.cloudlon</span></code> and <code class="docutils literal notranslate"><span class="pre">ds.cloudlat</span></code> are the projected longitude and latitude coordinates of the cloud. Now it is possible to plot the cloudmask on a map!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">cmplot</span> <span class="o">=</span> <span class="n">ds_selection</span><span class="o">.</span><span class="n">cloud_mask</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+                                      <span class="n">x</span><span class="o">=</span><span class="s1">&#39;cloudlon&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;cloudlat&#39;</span><span class="p">,</span>
+                                      <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;Greys_r&#39;</span><span class="p">,</span> <span class="n">lut</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span>
+                                      <span class="n">vmin</span><span class="o">=-</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span>
+                                      <span class="n">add_colorbar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="c1"># approximate aspect ratio of latitude and longitude length scales</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">ds_selection</span><span class="o">.</span><span class="n">cloudlat</span><span class="o">.</span><span class="n">mean</span><span class="p">()))))</span>
+<span class="n">flagbar</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">cmplot</span><span class="p">,</span> <span class="n">ds_selection</span><span class="o">.</span><span class="n">cloud_mask</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/specmacs_45_0.png" src="_images/specmacs_45_0.png" />
+</div>
+</div>
+<p>In this two-minute long sequence we can see the curvature of the HALO circle. By the way: you could also calculate the swath width of the measurements projected onto the cloud height that you specified.</p>
+</div>
+<div class="section" id="swath-width">
+<h2>Swath width<a class="headerlink" href="#swath-width" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Haversine_formula">haversine formula</a> is such an approximation. It calculates the great-circle distance between two points on a sphere. We just need the respective latitudes and longitudes of the points. We will use the coordinates of the two edge pixels of the first measurement.</p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">haversine_distance</span><span class="p">(</span><span class="n">lat1</span><span class="p">,</span> <span class="n">lat2</span><span class="p">,</span> <span class="n">lon1</span><span class="p">,</span> <span class="n">lon2</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="mi">6371</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;This formula calculates the great-circle distance between two points on a sphere with radius R in km.</span>
+<span class="sd">    (https://en.wikipedia.org/wiki/Haversine_formula)</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters:</span>
+<span class="sd">    lat1: latitude of first point in radians</span>
+<span class="sd">    lat2: latitude of second point in radians</span>
+<span class="sd">    lon1: longitude of first point in radians</span>
+<span class="sd">    lon2: longitude of second point in radians</span>
+<span class="sd">    R   : Radius of sphere in km</span>
+<span class="sd">    </span>
+<span class="sd">    Returns: </span>
+<span class="sd">    Great-circle distance in km.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">dlon</span> <span class="o">=</span> <span class="n">lon2</span><span class="o">-</span><span class="n">lon1</span>
+    <span class="n">dlat</span> <span class="o">=</span> <span class="n">lat2</span><span class="o">-</span><span class="n">lat1</span>
+    
+    <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">dlat</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">lat1</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">lat2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">dlon</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">distance_haversine_formula</span> <span class="o">=</span> <span class="n">R</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">distance_haversine_formula</span>
+
+
+<span class="n">lat1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">ds_selection</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">angle</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">cloudlat</span><span class="p">)</span>
+<span class="n">lat2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">ds_selection</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">angle</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">cloudlat</span><span class="p">)</span>
+
+<span class="n">lon1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">ds_selection</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">angle</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">cloudlon</span><span class="p">)</span>
+<span class="n">lon2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">ds_selection</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">angle</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">cloudlon</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">distance_haversine_formula</span> <span class="o">=</span> <span class="n">haversine_distance</span><span class="p">(</span><span class="n">lat1</span><span class="p">,</span> <span class="n">lat2</span><span class="p">,</span> <span class="n">lon1</span><span class="p">,</span> <span class="n">lon2</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="mi">6371</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The across track swath width of the measurements is about </span><span class="si">{}</span><span class="s1"> km&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">distance_haversine_formula</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="mi">2</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The across track swath width of the measurements is about 5.96 km
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "eurec4a/how_to_eurec4a",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="halo.html" title="previous page">HALO</a>
+    <a class='right-next' id="next-link" href="unified.html" title="next page">HALO UNIFIED dataset</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By EUREC4A community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

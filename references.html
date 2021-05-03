@@ -1,0 +1,391 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>References &#8212; How to EUREC4A</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="_static/logo_pyeurec4a.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Script execution statistics" href="stats.html" />
+    <link rel="prev" title="The issue with netCDF data types" href="netcdf_datatypes.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      <img src="_static/logo_pyeurec4a.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">How to EUREC4A</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="halo.html">
+   HALO
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="specmacs.html">
+     specMACS cloudmask
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="unified.html">
+     HALO UNIFIED dataset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="flight_tracks_leaflet.html">
+     interactive HALO tracks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="smart.html">
+     SMART dataset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="velox.html">
+     VELOX
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bacardi.html">
+     BACARDI dataset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="wales.html">
+     WALES Lidar
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="hamp_comparison.html">
+     HAMP comparison
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="meteor.html">
+   Meteor
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="meteor_cloudradar.html">
+     Reading cloud radar data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="multi_platform_data.html">
+   Multi-platform datasets
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="dropsondes.html">
+     Dropsondes dataset JOANNE
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="toolbox.html">
+   Toolbox
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="flight-phase-operations.html">
+     How to work with flight phase segmentation files
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="show_intake_catalog.html">
+     Show the intake catalog
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="running_locally.html">
+     running How to EUREC4A locally
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="netcdf_datatypes.html">
+     The issue with netCDF data types
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stats.html">
+   Script execution statistics
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/references.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/eurec4a/how_to_eurec4a"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/eurec4a/how_to_eurec4a/issues/new?title=Issue%20on%20page%20%2Freferences.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/eurec4a/how_to_eurec4a/edit/master/how_to_eurec4a/references.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="references">
+<h1>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h1>
+<p id="id1"><dl class="citation">
+<dt class="label" id="id2"><span class="brackets">BSA+17</span></dt>
+<dd><p>Sandrine Bony, Bjorn Stevens, Felix Ament, Sebastien Bigorre, Patrick Chazette, Susanne Crewell, Julien Delanoë, Kerry Emanuel, David Farrell, Cyrille Flamant, Silke Gross, Lutz Hirsch, Johannes Karstensen, Bernhard Mayer, Louise Nuijens, James H Ruppert, Irina Sandu, Pier Siebesma, Sabrina Speich, Frédéric Szczap, Julien Totems, Raphaela Vogel, Manfred Wendisch, and Martin Wirth. EUREC4A: A Field Campaign to Elucidate the Couplings Between Clouds, Convection and Circulation. <em>Surv. Geophys.</em>, 38(6):1529–1568, 2017. <a class="reference external" href="https://doi.org/10.1007/s10712-017-9428-0">doi:10.1007/s10712-017-9428-0</a>.</p>
+</dd>
+<dt class="label" id="id8"><span class="brackets">Kon21</span></dt>
+<dd><p>Heike Konow. Eurec4a's HALO. <em>tbd</em>, 2021.</p>
+</dd>
+<dt class="label" id="id3"><span class="brackets">SBF+21</span></dt>
+<dd><p>B. Stevens, S. Bony, D. Farrell, F. Ament, A. Blyth, C. Fairall, J. Karstensen, P. K. Quinn, S. Speich, C. Acquistapace, F. Aemisegger, A. L. Albright, H. Bellenger, E. Bodenschatz, K.-A. Caesar, R. Chewitt-Lucas, G. de Boer, J. Delanoë, L. Denby, F. Ewald, B. Fildier, M. Forde, G. George, S. Gross, M. Hagen, A. Hausold, K. J. Heywood, L. Hirsch, M. Jacob, F. Jansen, S. Kinne, D. Klocke, T. Kölling, H. Konow, M. Lothon, W. Mohr, A. K. Naumann, L. Nuijens, L. Olivier, R. Pincus, M. Pöhlker, G. Reverdin, G. Roberts, S. Schnitt, H. Schulz, A. P. Siebesma, C. C. Stephan, P. Sullivan, L. Touzé-Peiffer, J. Vial, R. Vogel, P. Zuidema, N. Alexander, L. Alves, S. Arixi, H. Asmath, G. Bagheri, K. Baier, A. Bailey, D. Baranowski, A. Baron, S. Barrau, P. A. Barrett, F. Batier, A. Behrendt, A. Bendinger, F. Beucher, S. Bigorre, E. Blades, P. Blossey, O. Bock, S. Böing, P. Bosser, D. Bourras, P. Bouruet-Aubertot, K. Bower, P. Branellec, H. Branger, M. Brennek, A. Brewer, P.-E. Brilouet, B. Brügmann, S. A. Buehler, E. Burke, R. Burton, R. Calmer, J.-C. Canonici, X. Carton, G. Cato Jr., J. A. Charles, P. Chazette, Y. Chen, M. T. Chilinski, T. Choularton, P. Chuang, S. Clarke, H. Coe, C. Cornet, P. Coutris, F. Couvreux, S. Crewell, T. Cronin, Z. Cui, Y. Cuypers, A. Daley, G. M. Damerell, T. Dauhut, H. Deneke, J.-P. Desbios, S. Dörner, S. Donner, V. Douet, K. Drushka, M. Dütsch, A. Ehrlich, K. Emanuel, A. Emmanouilidis, J.-C. Etienne, S. Etienne-Leblanc, G. Faure, G. Feingold, L. Ferrero, A. Fix, C. Flamant, P. J. Flatau, G. R. Foltz, L. Forster, I. Furtuna, A. Gadian, J. Galewsky, M. Gallagher, P. Gallimore, C. Gaston, C. Gentemann, N. Geyskens, A. Giez, J. Gollop, I. Gouirand, C. Gourbeyre, D. de Graaf, G. E. de Groot, R. Grosz, J. Güttler, M. Gutleben, K. Hall, G. Harris, K. C. Helfer, D. Henze, C. Herbert, B. Holanda, A. Ibanez-Landeta, J. Intrieri, S. Iyer, F. Julien, H. Kalesse, J. Kazil, A. Kellman, A. T. Kidane, U. Kirchner, M. Klingebiel, M. Körner, L. A. Kremper, J. Kretzschmar, O. Krüger, W. Kumala, A. Kurz, P. L'Hégaret, M. Labaste, T. Lachlan-Cope, A. Laing, P. Landschützer, T. Lang, D. Lange, I. Lange, C. Laplace, G. Lavik, R. Laxenaire, C. Le Bihan, M. Leandro, N. Lefevre, M. Lena, D. Lenschow, Q. Li, G. Lloyd, S. Los, N. Losi, O. Lovell, C. Luneau, P. Makuch, S. Malinowski, G. Manta, E. Marinou, N. Marsden, S. Masson, N. Maury, B. Mayer, M. Mayers-Als, C. Mazel, W. McGeary, J. C. McWilliams, M. Mech, M. Mehlmann, A. N. Meroni, T. Mieslinger, A. Minikin, P. Minnett, G. Möller, Y. Morfa Avalos, C. Muller, I. Musat, A. Napoli, A. Neuberger, C. Noisel, D. Noone, F. Nordsiek, J. L. Nowak, L. Oswald, D. J. Parker, C. Peck, R. Person, M. Philippi, A. Plueddemann, C. Pöhlker, V. Pörtge, U. Pöschl, L. Pologne, M. Posyniak, M. Prange, E. Quiñones Meléndez, J. Radtke, K. Ramage, J. Reimann, L. Renault, K. Reus, A. Reyes, J. Ribbe, M. Ringel, M. Ritschel, C. B. Rocha, N. Rochetin, J. Röttenbacher, C. Rollo, H. Royer, P. Sadoulet, L. Saffin, S. Sandiford, I. Sandu, M. Schäfer, V. Schemann, I. Schirmacher, O. Schlenczek, J. Schmidt, M. Schröder, A. Schwarzenboeck, A. Sealy, C. J. Senff, I. Serikov, S. Shohan, E. Siddle, A. Smirnov, F. Späth, B. Spooner, M. K. Stolla, W. Szkółka, S. P. de Szoeke, S. Tarot, E. Tetoni, E. Thompson, J. Thomson, L. Tomassini, J. Totems, A. A. Ubele, L. Villiger, J. von Arx, T. Wagner, A. Walther, B. Webber, M. Wendisch, S. Whitehall, A. Wiltshire, A. A. Wing, M. Wirth, J. Wiskandt, K. Wolf, L. Worbes, E. Wright, V. Wulfmeyer, S. Young, C. Zhang, D. Zhang, F. Ziemen, T. Zinner, and M. Zöger. EUREC4A. <em>Earth Syst. Sci. Data Discuss.</em>, 2021:1–78, January 2021. <a class="reference external" href="https://doi.org/10.5194/essd-2021-18">doi:10.5194/essd-2021-18</a>.</p>
+</dd>
+<dt class="label" id="id4"><span class="brackets">SAB+19</span></dt>
+<dd><p>Bjorn Stevens, Felix Ament, Sandrine Bony, Susanne Crewell, Florian Ewald, Silke Gross, Akio Hansen, Lutz Hirsch, Marek Jacob, Tobias Kölling, Heike Konow, Bernhard Mayer, Manfred Wendisch, Martin Wirth, Kevin Wolf, Stephan Bakan, Matthias Bauer-Pfundstein, Matthias Brueck, Julien Delanoë, André Ehrlich, David Farrell, Marvin Forde, Felix Gödde, Hans Grob, Martin Hagen, Evelyn Jäkel, Friedhelm Jansen, Christian Klepp, Marcus Klingebiel, Mario Mech, Gerhard Peters, Markus Rapp, Allison A. Wing, and Tobias Zinner. A high-altitude long-range aircraft configured as a cloud observatory: the narval expeditions. <em>Bull Amer. Met. Soc.</em>, 100(6):1061–1077, 2019. <a class="reference external" href="https://doi.org/10.1175/BAMS-D-18-0198.1">doi:10.1175/BAMS-D-18-0198.1</a>.</p>
+</dd>
+<dt class="label" id="id5"><span class="brackets">WMSH01</span></dt>
+<dd><p>Manfred Wendisch, Dörthe Müller, Dieter Schell, and Jost Heintzenberg. An airborne spectral albedometer with active horizontal stabilization. <em>J. Atmos. Ocean Technol.</em>, 18(11):1856–1866, 2001. <a class="reference external" href="https://doi.org/10.1175/1520-0426(2001)018&lt;1856:AASAWA&gt;2.0.CO;2">doi:10.1175/1520-0426(2001)018&lt;1856:AASAWA&gt;2.0.CO;2</a>.</p>
+</dd>
+</dl>
+</p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "eurec4a/how_to_eurec4a",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="netcdf_datatypes.html" title="previous page">The issue with netCDF data types</a>
+    <a class='right-next' id="next-link" href="stats.html" title="next page">Script execution statistics</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By EUREC4A community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

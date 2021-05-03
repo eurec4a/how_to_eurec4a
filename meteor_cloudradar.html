@@ -1,0 +1,1898 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reading cloud radar data &#8212; How to EUREC4A</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="_static/logo_pyeurec4a.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Multi-platform datasets" href="multi_platform_data.html" />
+    <link rel="prev" title="Meteor" href="meteor.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      <img src="_static/logo_pyeurec4a.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">How to EUREC4A</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="halo.html">
+   HALO
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="specmacs.html">
+     specMACS cloudmask
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="unified.html">
+     HALO UNIFIED dataset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="flight_tracks_leaflet.html">
+     interactive HALO tracks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="smart.html">
+     SMART dataset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="velox.html">
+     VELOX
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bacardi.html">
+     BACARDI dataset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="wales.html">
+     WALES Lidar
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="hamp_comparison.html">
+     HAMP comparison
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="meteor.html">
+   Meteor
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Reading cloud radar data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="multi_platform_data.html">
+   Multi-platform datasets
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="dropsondes.html">
+     Dropsondes dataset JOANNE
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="toolbox.html">
+   Toolbox
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="flight-phase-operations.html">
+     How to work with flight phase segmentation files
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="show_intake_catalog.html">
+     Show the intake catalog
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="running_locally.html">
+     running How to EUREC4A locally
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="netcdf_datatypes.html">
+     The issue with netCDF data types
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="references.html">
+   References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stats.html">
+   Script execution statistics
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="_sources/meteor_cloudradar.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/meteor_cloudradar.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/eurec4a/how_to_eurec4a"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/eurec4a/how_to_eurec4a/issues/new?title=Issue%20on%20page%20%2Fmeteor_cloudradar.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/eurec4a/how_to_eurec4a/edit/master/how_to_eurec4a/meteor_cloudradar.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/eurec4a/how_to_eurec4a/master?urlpath=tree/how_to_eurec4a/meteor_cloudradar.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#available-products">
+   Available products
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#radar-reflectivity">
+   Radar reflectivity
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="reading-cloud-radar-data">
+<h1>Reading cloud radar data<a class="headerlink" href="#reading-cloud-radar-data" title="Permalink to this headline">¶</a></h1>
+<p>The high resolution data has about 500 MB per file, which when read in over a remote source can lead to long wait times.
+To reduce the wait times the data can be read in lazily using dask.
+Intake will this do this by default.
+Let’s obtain the EUREC4A intake catalog:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">eurec4a</span>
+<span class="n">cat</span> <span class="o">=</span> <span class="n">eurec4a</span><span class="o">.</span><span class="n">get_intake_catalog</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="available-products">
+<h2>Available products<a class="headerlink" href="#available-products" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">LIMRAD94</span></code> cloud radar offers multiple products which can be accessed using names and additional parameters.
+Let’s see which products and parameters are available for the cloud radar.
+For the parameters, we are also interested in their valid range:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">source</span> <span class="ow">in</span> <span class="n">cat</span><span class="o">.</span><span class="n">Meteor</span><span class="o">.</span><span class="n">LIMRAD94</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">desc</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+    <span class="n">user_parameters</span> <span class="o">=</span> <span class="n">desc</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;user_parameters&quot;</span><span class="p">,</span> <span class="p">[])</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">user_parameters</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="s2">&quot; (&quot;</span> <span class="o">+</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">user_parameters</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;)&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">key</span><span class="si">}{</span><span class="n">params</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">desc</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">parameter</span> <span class="ow">in</span> <span class="n">user_parameters</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;    </span><span class="si">{</span><span class="n">parameter</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">parameter</span><span class="p">[</span><span class="s1">&#39;min&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> ... </span><span class="si">{</span><span class="n">parameter</span><span class="p">[</span><span class="s1">&#39;max&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> default: </span><span class="si">{</span><span class="n">parameter</span><span class="p">[</span><span class="s1">&#39;default&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>low_res (date): daily 30m 30s averaged radar reflectivity
+    date: 2020-01-17 00:00:00 ... 2020-02-29 00:00:00 default: 2020-02-01 00:00:00
+
+high_res (date, version): daily heave corrected original resolution cloudradar data
+    date: 2020-01-17 00:00:00 ... 2020-02-29 00:00:00 default: 2020-02-01 00:00:00
+    version: 1.0 ... 1.1 default: 1.1
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="radar-reflectivity">
+<h2>Radar reflectivity<a class="headerlink" href="#radar-reflectivity" title="Permalink to this headline">¶</a></h2>
+<p>We’ll have a look at the <code class="docutils literal notranslate"><span class="pre">high_res</span></code> data in version 1.1. We’ll keep the default date for simplicity:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">cat</span><span class="o">.</span><span class="n">Meteor</span><span class="o">.</span><span class="n">LIMRAD94</span><span class="o">.</span><span class="n">high_res</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="mf">1.1</span><span class="p">)</span><span class="o">.</span><span class="n">to_dask</span><span class="p">()</span>
+<span class="n">ds</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme=dark],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1F1F1F;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 20px 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: none;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: '►';
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: '▼';
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: '(';
+}
+
+.xr-dim-list:after {
+  content: ')';
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ',';
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2 {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt;
+Dimensions:                    (chirp: 3, range: 367, time: 44447)
+Coordinates:
+  * time                       (time) datetime64[ns] 2020-02-01T00:00:06.7000...
+  * range                      (range) float32 313.0 335.4 ... 1.296e+04
+Dimensions without coordinates: chirp
+Data variables: (12/23)
+    frequency                  float32 ...
+    Numfft                     float32 ...
+    altitude                   float32 ...
+    NumSpectraAveraged         (chirp) float32 dask.array&lt;chunksize=(3,), meta=np.ndarray&gt;
+    latitude                   (time) float32 dask.array&lt;chunksize=(1000,), meta=np.ndarray&gt;
+    longitude                  (time) float32 dask.array&lt;chunksize=(1000,), meta=np.ndarray&gt;
+    ...                         ...
+    width                      (time, range) float32 dask.array&lt;chunksize=(1000, 367), meta=np.ndarray&gt;
+    ldr                        (time, range) float32 dask.array&lt;chunksize=(1000, 367), meta=np.ndarray&gt;
+    kurt                       (time, range) float32 dask.array&lt;chunksize=(1000, 367), meta=np.ndarray&gt;
+    Skew                       (time, range) float32 dask.array&lt;chunksize=(1000, 367), meta=np.ndarray&gt;
+    heave_cor                  (time, range) float32 dask.array&lt;chunksize=(1000, 367), meta=np.ndarray&gt;
+    heave_cor_bins             (time, range) float64 dask.array&lt;chunksize=(1000, 367), meta=np.ndarray&gt;
+Attributes: (12/20)
+    Conventions:    CF-1.8
+    title:          LIMRAD94 (SLDR) Doppler Cloud Radar, calibrated file
+    campaign_id:    EUREC4A
+    platform_id:    Meteor
+    instrument_id:  LIMRAD94
+    version_id:     v1.1
+    ...             ...
+    description:    Concatenated data files of LIMRAD 94GHz - FMCW Radar, fil...
+    history:        Created Thu Feb 18 23:16:55 2021
+    _FillValue:     -999.0
+    day:            1
+    month:          2
+    year:           2020</pre><div class='xr-wrap' hidden><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-82058281-7848-486b-83d1-be1dac71bce2' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-82058281-7848-486b-83d1-be1dac71bce2' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span>chirp</span>: 3</li><li><span class='xr-has-index'>range</span>: 367</li><li><span class='xr-has-index'>time</span>: 44447</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-62825b02-8454-466e-b073-1204ddd58eec' class='xr-section-summary-in' type='checkbox'  checked><label for='section-62825b02-8454-466e-b073-1204ddd58eec' class='xr-section-summary' >Coordinates: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2020-02-01T00:00:06.700000047 .....</div><input id='attrs-b112b445-cf81-4505-a5ba-d42f62f00872' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-b112b445-cf81-4505-a5ba-d42f62f00872' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-79a56ddc-b1d9-4928-b624-c064784a2545' class='xr-var-data-in' type='checkbox'><label for='data-79a56ddc-b1d9-4928-b624-c064784a2545' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>seconds since 2020-01-01 00:00:00 UTC</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;2020-02-01T00:00:06.700000047&#x27;, &#x27;2020-02-01T00:00:08.570000171&#x27;,
+       &#x27;2020-02-01T00:00:10.450000047&#x27;, ..., &#x27;2020-02-01T23:59:50.815000057&#x27;,
+       &#x27;2020-02-01T23:59:52.684999943&#x27;, &#x27;2020-02-01T23:59:54.545000076&#x27;],
+      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>range</span></div><div class='xr-var-dims'>(range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>313.0 335.4 ... 1.292e+04 1.296e+04</div><input id='attrs-51a72a23-7da5-4856-86e5-936ef751f1e1' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-51a72a23-7da5-4856-86e5-936ef751f1e1' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-efbb83ac-03a8-4d51-95cc-5af46b94944e' class='xr-var-data-in' type='checkbox'><label for='data-efbb83ac-03a8-4d51-95cc-5af46b94944e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>m</dd><dt><span>long_name :</span></dt><dd>Range from antenna to the centre of each range gate</dd></dl></div><div class='xr-var-data'><pre>array([  313.0271 ,   335.3862 ,   357.74527, ..., 12878.56   , 12920.646  ,
+       12962.733  ], dtype=float32)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-cf3587f5-758b-4e2a-a948-a3fe600b0a13' class='xr-section-summary-in' type='checkbox'  ><label for='section-cf3587f5-758b-4e2a-a948-a3fe600b0a13' class='xr-section-summary' >Data variables: <span>(23)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>frequency</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-f749be42-357a-46f6-acb5-4f56b570016e' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-f749be42-357a-46f6-acb5-4f56b570016e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0b6e549c-ad17-4eff-9813-3769ccb563cf' class='xr-var-data-in' type='checkbox'><label for='data-0b6e549c-ad17-4eff-9813-3769ccb563cf' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Radar frequency</dd><dt><span>units :</span></dt><dd>GHz</dd></dl></div><div class='xr-var-data'><pre>array(94., dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>Numfft</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-3bb7a0c3-a883-4c55-8f3c-5ff9022bd46f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-3bb7a0c3-a883-4c55-8f3c-5ff9022bd46f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-cc6205da-f43f-4cdb-9520-5509fa2b58cf' class='xr-var-data-in' type='checkbox'><label for='data-cc6205da-f43f-4cdb-9520-5509fa2b58cf' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Number of points in FFT</dd><dt><span>units :</span></dt><dd>1</dd></dl></div><div class='xr-var-data'><pre>array(256., dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>altitude</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-47c54826-826b-4903-92e2-f7630b18f8c6' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-47c54826-826b-4903-92e2-f7630b18f8c6' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d89b3771-2cdd-44bb-a5d0-1c91a0ad574c' class='xr-var-data-in' type='checkbox'><label for='data-d89b3771-2cdd-44bb-a5d0-1c91a0ad574c' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Height of instrument above mean sea level</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><pre>array(16., dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>NumSpectraAveraged</span></div><div class='xr-var-dims'>(chirp)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(3,), meta=np.ndarray&gt;</div><input id='attrs-d8929ceb-0723-4afe-bf30-de9656ab36ef' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-d8929ceb-0723-4afe-bf30-de9656ab36ef' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-385295df-80da-4a38-a7b6-fee200228ed1' class='xr-var-data-in' type='checkbox'><label for='data-385295df-80da-4a38-a7b6-fee200228ed1' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Number of spectral averages</dd><dt><span>units :</span></dt><dd>1</dd></dl></div><div class='xr-var-data'><table>
+<tr>
+<td>
+<table>
+  <thead>
+    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
+  </thead>
+  <tbody>
+    <tr><th> Bytes </th><td> 12 B </td> <td> 12 B </td></tr>
+    <tr><th> Shape </th><td> (3,) </td> <td> (3,) </td></tr>
+    <tr><th> Count </th><td> 2 Tasks </td><td> 1 Chunks </td></tr>
+    <tr><th> Type </th><td> float32 </td><td> numpy.ndarray </td></tr>
+  </tbody>
+</table>
+</td>
+<td>
+<svg width="170" height="93" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="43" x2="120" y2="43" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="43" style="stroke-width:2" />
+  <line x1="120" y1="0" x2="120" y2="43" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,43.88583450710766 0.0,43.88583450710766" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="63.885835" font-size="1.0rem" font-weight="100" text-anchor="middle" >3</text>
+  <text x="140.000000" y="21.942917" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,21.942917)">1</text>
+</svg>
+</td>
+</tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>latitude</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1000,), meta=np.ndarray&gt;</div><input id='attrs-d9c738b3-c2ca-40eb-83f2-7e263f489e7a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-d9c738b3-c2ca-40eb-83f2-7e263f489e7a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c6b63b52-c230-493d-a29f-eca21987197d' class='xr-var-data-in' type='checkbox'><label for='data-c6b63b52-c230-493d-a29f-eca21987197d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd></dl></div><div class='xr-var-data'><table>
+<tr>
+<td>
+<table>
+  <thead>
+    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
+  </thead>
+  <tbody>
+    <tr><th> Bytes </th><td> 173.62 kiB </td> <td> 3.91 kiB </td></tr>
+    <tr><th> Shape </th><td> (44447,) </td> <td> (1000,) </td></tr>
+    <tr><th> Count </th><td> 46 Tasks </td><td> 45 Chunks </td></tr>
+    <tr><th> Type </th><td> float32 </td><td> numpy.ndarray </td></tr>
+  </tbody>
+</table>
+</td>
+<td>
+<svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
+  <line x1="5" y1="0" x2="5" y2="25" />
+  <line x1="10" y1="0" x2="10" y2="25" />
+  <line x1="18" y1="0" x2="18" y2="25" />
+  <line x1="24" y1="0" x2="24" y2="25" />
+  <line x1="29" y1="0" x2="29" y2="25" />
+  <line x1="37" y1="0" x2="37" y2="25" />
+  <line x1="43" y1="0" x2="43" y2="25" />
+  <line x1="48" y1="0" x2="48" y2="25" />
+  <line x1="56" y1="0" x2="56" y2="25" />
+  <line x1="62" y1="0" x2="62" y2="25" />
+  <line x1="70" y1="0" x2="70" y2="25" />
+  <line x1="75" y1="0" x2="75" y2="25" />
+  <line x1="80" y1="0" x2="80" y2="25" />
+  <line x1="89" y1="0" x2="89" y2="25" />
+  <line x1="94" y1="0" x2="94" y2="25" />
+  <line x1="99" y1="0" x2="99" y2="25" />
+  <line x1="107" y1="0" x2="107" y2="25" />
+  <line x1="113" y1="0" x2="113" y2="25" />
+  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >44447</text>
+  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
+</svg>
+</td>
+</tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>longitude</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1000,), meta=np.ndarray&gt;</div><input id='attrs-11ea8bc3-8a5b-4564-a4f9-430f0996a6fc' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-11ea8bc3-8a5b-4564-a4f9-430f0996a6fc' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-37e6f18d-11c5-4c85-ac83-87fe8387aeb5' class='xr-var-data-in' type='checkbox'><label for='data-37e6f18d-11c5-4c85-ac83-87fe8387aeb5' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd></dl></div><div class='xr-var-data'><table>
+<tr>
+<td>
+<table>
+  <thead>
+    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
+  </thead>
+  <tbody>
+    <tr><th> Bytes </th><td> 173.62 kiB </td> <td> 3.91 kiB </td></tr>
+    <tr><th> Shape </th><td> (44447,) </td> <td> (1000,) </td></tr>
+    <tr><th> Count </th><td> 46 Tasks </td><td> 45 Chunks </td></tr>
+    <tr><th> Type </th><td> float32 </td><td> numpy.ndarray </td></tr>
+  </tbody>
+</table>
+</td>
+<td>
+<svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
+  <line x1="5" y1="0" x2="5" y2="25" />
+  <line x1="10" y1="0" x2="10" y2="25" />
+  <line x1="18" y1="0" x2="18" y2="25" />
+  <line x1="24" y1="0" x2="24" y2="25" />
+  <line x1="29" y1="0" x2="29" y2="25" />
+  <line x1="37" y1="0" x2="37" y2="25" />
+  <line x1="43" y1="0" x2="43" y2="25" />
+  <line x1="48" y1="0" x2="48" y2="25" />
+  <line x1="56" y1="0" x2="56" y2="25" />
+  <line x1="62" y1="0" x2="62" y2="25" />
+  <line x1="70" y1="0" x2="70" y2="25" />
+  <line x1="75" y1="0" x2="75" y2="25" />
+  <line x1="80" y1="0" x2="80" y2="25" />
+  <line x1="89" y1="0" x2="89" y2="25" />
+  <line x1="94" y1="0" x2="94" y2="25" />
+  <line x1="99" y1="0" x2="99" y2="25" />
+  <line x1="107" y1="0" x2="107" y2="25" />
+  <line x1="113" y1="0" x2="113" y2="25" />
+  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >44447</text>
+  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
+</svg>
+</td>
+</tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>Nyquist_velocity</span></div><div class='xr-var-dims'>(chirp)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(3,), meta=np.ndarray&gt;</div><input id='attrs-579b119a-bf3c-49f2-892a-fd2558b32e14' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-579b119a-bf3c-49f2-892a-fd2558b32e14' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e7d23dff-4ef2-4d83-abf3-c1298a12a60a' class='xr-var-data-in' type='checkbox'><label for='data-e7d23dff-4ef2-4d83-abf3-c1298a12a60a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Unambiguous Doppler velocity (+/-)</dd><dt><span>units :</span></dt><dd>m s-1</dd></dl></div><div class='xr-var-data'><table>
+<tr>
+<td>
+<table>
+  <thead>
+    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
+  </thead>
+  <tbody>
+    <tr><th> Bytes </th><td> 12 B </td> <td> 12 B </td></tr>
+    <tr><th> Shape </th><td> (3,) </td> <td> (3,) </td></tr>
+    <tr><th> Count </th><td> 2 Tasks </td><td> 1 Chunks </td></tr>
+    <tr><th> Type </th><td> float32 </td><td> numpy.ndarray </td></tr>
+  </tbody>
+</table>
+</td>
+<td>
+<svg width="170" height="93" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="43" x2="120" y2="43" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="43" style="stroke-width:2" />
+  <line x1="120" y1="0" x2="120" y2="43" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,43.88583450710766 0.0,43.88583450710766" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="63.885835" font-size="1.0rem" font-weight="100" text-anchor="middle" >3</text>
+  <text x="140.000000" y="21.942917" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,21.942917)">1</text>
+</svg>
+</td>
+</tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>range_offsets</span></div><div class='xr-var-dims'>(chirp)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(3,), meta=np.ndarray&gt;</div><input id='attrs-453bfd2b-0e25-4cbf-a73b-6079fef7592d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-453bfd2b-0e25-4cbf-a73b-6079fef7592d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4fdcabe7-c91d-4039-84a7-c3c29ac543e0' class='xr-var-data-in' type='checkbox'><label for='data-4fdcabe7-c91d-4039-84a7-c3c29ac543e0' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>chirp sequences start index array in altitude layer array</dd><dt><span>units :</span></dt><dd>1</dd></dl></div><div class='xr-var-data'><table>
+<tr>
+<td>
+<table>
+  <thead>
+    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
+  </thead>
+  <tbody>
+    <tr><th> Bytes </th><td> 24 B </td> <td> 24 B </td></tr>
+    <tr><th> Shape </th><td> (3,) </td> <td> (3,) </td></tr>
+    <tr><th> Count </th><td> 2 Tasks </td><td> 1 Chunks </td></tr>
+    <tr><th> Type </th><td> float64 </td><td> numpy.ndarray </td></tr>
+  </tbody>
+</table>
+</td>
+<td>
+<svg width="170" height="93" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="43" x2="120" y2="43" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="43" style="stroke-width:2" />
+  <line x1="120" y1="0" x2="120" y2="43" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,43.88583450710766 0.0,43.88583450710766" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="63.885835" font-size="1.0rem" font-weight="100" text-anchor="middle" >3</text>
+  <text x="140.000000" y="21.942917" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,21.942917)">1</text>
+</svg>
+</td>
+</tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>time_shift</span></div><div class='xr-var-dims'>(time, chirp)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1000, 3), meta=np.ndarray&gt;</div><input id='attrs-12fef333-0413-4be0-8f86-1b972f095655' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-12fef333-0413-4be0-8f86-1b972f095655' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-9f01f84e-c237-403f-9999-70b8f7367438' class='xr-var-data-in' type='checkbox'><label for='data-9f01f84e-c237-403f-9999-70b8f7367438' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Time shift between radar and ship calculated for each hour and chirp</dd><dt><span>units :</span></dt><dd>s</dd></dl></div><div class='xr-var-data'><table>
+<tr>
+<td>
+<table>
+  <thead>
+    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
+  </thead>
+  <tbody>
+    <tr><th> Bytes </th><td> 520.86 kiB </td> <td> 11.72 kiB </td></tr>
+    <tr><th> Shape </th><td> (44447, 3) </td> <td> (1000, 3) </td></tr>
+    <tr><th> Count </th><td> 46 Tasks </td><td> 45 Chunks </td></tr>
+    <tr><th> Type </th><td> float32 </td><td> numpy.ndarray </td></tr>
+  </tbody>
+</table>
+</td>
+<td>
+<svg width="75" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="25" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="5" x2="25" y2="5" />
+  <line x1="0" y1="10" x2="25" y2="10" />
+  <line x1="0" y1="18" x2="25" y2="18" />
+  <line x1="0" y1="24" x2="25" y2="24" />
+  <line x1="0" y1="29" x2="25" y2="29" />
+  <line x1="0" y1="37" x2="25" y2="37" />
+  <line x1="0" y1="43" x2="25" y2="43" />
+  <line x1="0" y1="48" x2="25" y2="48" />
+  <line x1="0" y1="56" x2="25" y2="56" />
+  <line x1="0" y1="62" x2="25" y2="62" />
+  <line x1="0" y1="70" x2="25" y2="70" />
+  <line x1="0" y1="75" x2="25" y2="75" />
+  <line x1="0" y1="80" x2="25" y2="80" />
+  <line x1="0" y1="89" x2="25" y2="89" />
+  <line x1="0" y1="94" x2="25" y2="94" />
+  <line x1="0" y1="99" x2="25" y2="99" />
+  <line x1="0" y1="107" x2="25" y2="107" />
+  <line x1="0" y1="113" x2="25" y2="113" />
+  <line x1="0" y1="120" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
+  <line x1="25" y1="0" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 25.412616514582485,0.0 25.412616514582485,120.0 0.0,120.0" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="12.706308" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >3</text>
+  <text x="45.412617" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,45.412617,60.000000)">44447</text>
+</svg>
+</td>
+</tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>bt</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1000,), meta=np.ndarray&gt;</div><input id='attrs-2a75baa8-ab3c-40b9-8acb-e295da0c0f80' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-2a75baa8-ab3c-40b9-8acb-e295da0c0f80' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-de04f386-c565-4440-914b-ff86f1855028' class='xr-var-data-in' type='checkbox'><label for='data-de04f386-c565-4440-914b-ff86f1855028' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Direct detection brightness temperature at 89 GHz</dd><dt><span>units :</span></dt><dd>K</dd></dl></div><div class='xr-var-data'><table>
+<tr>
+<td>
+<table>
+  <thead>
+    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
+  </thead>
+  <tbody>
+    <tr><th> Bytes </th><td> 173.62 kiB </td> <td> 3.91 kiB </td></tr>
+    <tr><th> Shape </th><td> (44447,) </td> <td> (1000,) </td></tr>
+    <tr><th> Count </th><td> 46 Tasks </td><td> 45 Chunks </td></tr>
+    <tr><th> Type </th><td> float32 </td><td> numpy.ndarray </td></tr>
+  </tbody>
+</table>
+</td>
+<td>
+<svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
+  <line x1="5" y1="0" x2="5" y2="25" />
+  <line x1="10" y1="0" x2="10" y2="25" />
+  <line x1="18" y1="0" x2="18" y2="25" />
+  <line x1="24" y1="0" x2="24" y2="25" />
+  <line x1="29" y1="0" x2="29" y2="25" />
+  <line x1="37" y1="0" x2="37" y2="25" />
+  <line x1="43" y1="0" x2="43" y2="25" />
+  <line x1="48" y1="0" x2="48" y2="25" />
+  <line x1="56" y1="0" x2="56" y2="25" />
+  <line x1="62" y1="0" x2="62" y2="25" />
+  <line x1="70" y1="0" x2="70" y2="25" />
+  <line x1="75" y1="0" x2="75" y2="25" />
+  <line x1="80" y1="0" x2="80" y2="25" />
+  <line x1="89" y1="0" x2="89" y2="25" />
+  <line x1="94" y1="0" x2="94" y2="25" />
+  <line x1="99" y1="0" x2="99" y2="25" />
+  <line x1="107" y1="0" x2="107" y2="25" />
+  <line x1="113" y1="0" x2="113" y2="25" />
+  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >44447</text>
+  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
+</svg>
+</td>
+</tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lwp</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1000,), meta=np.ndarray&gt;</div><input id='attrs-c3d923ad-54a0-44bc-9cb9-e94fce79787d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c3d923ad-54a0-44bc-9cb9-e94fce79787d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-9b8fe2fa-f7d3-40dc-ae5b-1e29a2503c27' class='xr-var-data-in' type='checkbox'><label for='data-9b8fe2fa-f7d3-40dc-ae5b-1e29a2503c27' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Liquid water path</dd><dt><span>units :</span></dt><dd>g m-2</dd></dl></div><div class='xr-var-data'><table>
+<tr>
+<td>
+<table>
+  <thead>
+    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
+  </thead>
+  <tbody>
+    <tr><th> Bytes </th><td> 173.62 kiB </td> <td> 3.91 kiB </td></tr>
+    <tr><th> Shape </th><td> (44447,) </td> <td> (1000,) </td></tr>
+    <tr><th> Count </th><td> 46 Tasks </td><td> 45 Chunks </td></tr>
+    <tr><th> Type </th><td> float32 </td><td> numpy.ndarray </td></tr>
+  </tbody>
+</table>
+</td>
+<td>
+<svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
+  <line x1="5" y1="0" x2="5" y2="25" />
+  <line x1="10" y1="0" x2="10" y2="25" />
+  <line x1="18" y1="0" x2="18" y2="25" />
+  <line x1="24" y1="0" x2="24" y2="25" />
+  <line x1="29" y1="0" x2="29" y2="25" />
+  <line x1="37" y1="0" x2="37" y2="25" />
+  <line x1="43" y1="0" x2="43" y2="25" />
+  <line x1="48" y1="0" x2="48" y2="25" />
+  <line x1="56" y1="0" x2="56" y2="25" />
+  <line x1="62" y1="0" x2="62" y2="25" />
+  <line x1="70" y1="0" x2="70" y2="25" />
+  <line x1="75" y1="0" x2="75" y2="25" />
+  <line x1="80" y1="0" x2="80" y2="25" />
+  <line x1="89" y1="0" x2="89" y2="25" />
+  <line x1="94" y1="0" x2="94" y2="25" />
+  <line x1="99" y1="0" x2="99" y2="25" />
+  <line x1="107" y1="0" x2="107" y2="25" />
+  <line x1="113" y1="0" x2="113" y2="25" />
+  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >44447</text>
+  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
+</svg>
+</td>
+</tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>rain</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1000,), meta=np.ndarray&gt;</div><input id='attrs-00433a5e-bf93-40f3-8982-848a04b37ef2' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-00433a5e-bf93-40f3-8982-848a04b37ef2' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0da273e2-09e0-4a67-b4dd-a62c49a5acc7' class='xr-var-data-in' type='checkbox'><label for='data-0da273e2-09e0-4a67-b4dd-a62c49a5acc7' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Rain rate from weather station</dd><dt><span>units :</span></dt><dd>mm h-1</dd></dl></div><div class='xr-var-data'><table>
+<tr>
+<td>
+<table>
+  <thead>
+    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
+  </thead>
+  <tbody>
+    <tr><th> Bytes </th><td> 173.62 kiB </td> <td> 3.91 kiB </td></tr>
+    <tr><th> Shape </th><td> (44447,) </td> <td> (1000,) </td></tr>
+    <tr><th> Count </th><td> 46 Tasks </td><td> 45 Chunks </td></tr>
+    <tr><th> Type </th><td> float32 </td><td> numpy.ndarray </td></tr>
+  </tbody>
+</table>
+</td>
+<td>
+<svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
+  <line x1="5" y1="0" x2="5" y2="25" />
+  <line x1="10" y1="0" x2="10" y2="25" />
+  <line x1="18" y1="0" x2="18" y2="25" />
+  <line x1="24" y1="0" x2="24" y2="25" />
+  <line x1="29" y1="0" x2="29" y2="25" />
+  <line x1="37" y1="0" x2="37" y2="25" />
+  <line x1="43" y1="0" x2="43" y2="25" />
+  <line x1="48" y1="0" x2="48" y2="25" />
+  <line x1="56" y1="0" x2="56" y2="25" />
+  <line x1="62" y1="0" x2="62" y2="25" />
+  <line x1="70" y1="0" x2="70" y2="25" />
+  <line x1="75" y1="0" x2="75" y2="25" />
+  <line x1="80" y1="0" x2="80" y2="25" />
+  <line x1="89" y1="0" x2="89" y2="25" />
+  <line x1="94" y1="0" x2="94" y2="25" />
+  <line x1="99" y1="0" x2="99" y2="25" />
+  <line x1="107" y1="0" x2="107" y2="25" />
+  <line x1="113" y1="0" x2="113" y2="25" />
+  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >44447</text>
+  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
+</svg>
+</td>
+</tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>SurfRelHum</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1000,), meta=np.ndarray&gt;</div><input id='attrs-12c05d9f-8a58-4005-b55e-50548b854c40' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-12c05d9f-8a58-4005-b55e-50548b854c40' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-fd037cb5-3286-4c0f-826c-2b464543cafb' class='xr-var-data-in' type='checkbox'><label for='data-fd037cb5-3286-4c0f-826c-2b464543cafb' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>%</dd><dt><span>long_name :</span></dt><dd>Relative humidity from weather station</dd></dl></div><div class='xr-var-data'><table>
+<tr>
+<td>
+<table>
+  <thead>
+    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
+  </thead>
+  <tbody>
+    <tr><th> Bytes </th><td> 173.62 kiB </td> <td> 3.91 kiB </td></tr>
+    <tr><th> Shape </th><td> (44447,) </td> <td> (1000,) </td></tr>
+    <tr><th> Count </th><td> 46 Tasks </td><td> 45 Chunks </td></tr>
+    <tr><th> Type </th><td> float32 </td><td> numpy.ndarray </td></tr>
+  </tbody>
+</table>
+</td>
+<td>
+<svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
+  <line x1="5" y1="0" x2="5" y2="25" />
+  <line x1="10" y1="0" x2="10" y2="25" />
+  <line x1="18" y1="0" x2="18" y2="25" />
+  <line x1="24" y1="0" x2="24" y2="25" />
+  <line x1="29" y1="0" x2="29" y2="25" />
+  <line x1="37" y1="0" x2="37" y2="25" />
+  <line x1="43" y1="0" x2="43" y2="25" />
+  <line x1="48" y1="0" x2="48" y2="25" />
+  <line x1="56" y1="0" x2="56" y2="25" />
+  <line x1="62" y1="0" x2="62" y2="25" />
+  <line x1="70" y1="0" x2="70" y2="25" />
+  <line x1="75" y1="0" x2="75" y2="25" />
+  <line x1="80" y1="0" x2="80" y2="25" />
+  <line x1="89" y1="0" x2="89" y2="25" />
+  <line x1="94" y1="0" x2="94" y2="25" />
+  <line x1="99" y1="0" x2="99" y2="25" />
+  <line x1="107" y1="0" x2="107" y2="25" />
+  <line x1="113" y1="0" x2="113" y2="25" />
+  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >44447</text>
+  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
+</svg>
+</td>
+</tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>Zh</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1000, 367), meta=np.ndarray&gt;</div><input id='attrs-bb90966b-2143-46cd-8072-9cd3ed6bc678' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-bb90966b-2143-46cd-8072-9cd3ed6bc678' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-6489e6f9-d2e8-4ffe-9981-006a8740b63b' class='xr-var-data-in' type='checkbox'><label for='data-6489e6f9-d2e8-4ffe-9981-006a8740b63b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Radar reflectivity factor</dd><dt><span>plot_range :</span></dt><dd>[-60, 20]</dd><dt><span>plot_scale :</span></dt><dd>linear</dd><dt><span>comment :</span></dt><dd>Calibrated reflectivity. Calibration convention: in the absence of attenuation, a cloud at 273 K containing one million 100-micron droplets per cubic metre will have a reflectivity of 0 dBZ at all frequencies.</dd><dt><span>units :</span></dt><dd>dBZ</dd></dl></div><div class='xr-var-data'><table>
+<tr>
+<td>
+<table>
+  <thead>
+    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
+  </thead>
+  <tbody>
+    <tr><th> Bytes </th><td> 62.23 MiB </td> <td> 1.40 MiB </td></tr>
+    <tr><th> Shape </th><td> (44447, 367) </td> <td> (1000, 367) </td></tr>
+    <tr><th> Count </th><td> 46 Tasks </td><td> 45 Chunks </td></tr>
+    <tr><th> Type </th><td> float32 </td><td> numpy.ndarray </td></tr>
+  </tbody>
+</table>
+</td>
+<td>
+<svg width="75" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="25" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="5" x2="25" y2="5" />
+  <line x1="0" y1="10" x2="25" y2="10" />
+  <line x1="0" y1="18" x2="25" y2="18" />
+  <line x1="0" y1="24" x2="25" y2="24" />
+  <line x1="0" y1="29" x2="25" y2="29" />
+  <line x1="0" y1="37" x2="25" y2="37" />
+  <line x1="0" y1="43" x2="25" y2="43" />
+  <line x1="0" y1="48" x2="25" y2="48" />
+  <line x1="0" y1="56" x2="25" y2="56" />
+  <line x1="0" y1="62" x2="25" y2="62" />
+  <line x1="0" y1="70" x2="25" y2="70" />
+  <line x1="0" y1="75" x2="25" y2="75" />
+  <line x1="0" y1="80" x2="25" y2="80" />
+  <line x1="0" y1="89" x2="25" y2="89" />
+  <line x1="0" y1="94" x2="25" y2="94" />
+  <line x1="0" y1="99" x2="25" y2="99" />
+  <line x1="0" y1="107" x2="25" y2="107" />
+  <line x1="0" y1="113" x2="25" y2="113" />
+  <line x1="0" y1="120" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
+  <line x1="25" y1="0" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 25.412616514582485,0.0 25.412616514582485,120.0 0.0,120.0" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="12.706308" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >367</text>
+  <text x="45.412617" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,45.412617,60.000000)">44447</text>
+</svg>
+</td>
+</tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>v</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1000, 367), meta=np.ndarray&gt;</div><input id='attrs-3d236d17-e9ef-4606-91cb-7688375d9f0d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-3d236d17-e9ef-4606-91cb-7688375d9f0d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a76ddf52-08a0-48f0-afb1-3770e88688ed' class='xr-var-data-in' type='checkbox'><label for='data-a76ddf52-08a0-48f0-afb1-3770e88688ed' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Best estimate of averaged mean Doppler velocity</dd><dt><span>units :</span></dt><dd>m s-1</dd><dt><span>plot_range :</span></dt><dd>[-7, 7]</dd><dt><span>folding_velocity :</span></dt><dd>7.2616487</dd><dt><span>plot_scale :</span></dt><dd>linear</dd><dt><span>comment :</span></dt><dd>This parameter is the radial component of the velocity, with positive velocities are away from the radar (i.e. up) and negative velocities moving towards the radar (i.e. down). It was corrected for the ships heave motion. A rolling average over 3 time steps has been applied to it.</dd><dt><span>unit_html :</span></dt><dd>m s&lt;sup&gt;-1&lt;/sup&gt;</dd></dl></div><div class='xr-var-data'><table>
+<tr>
+<td>
+<table>
+  <thead>
+    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
+  </thead>
+  <tbody>
+    <tr><th> Bytes </th><td> 62.23 MiB </td> <td> 1.40 MiB </td></tr>
+    <tr><th> Shape </th><td> (44447, 367) </td> <td> (1000, 367) </td></tr>
+    <tr><th> Count </th><td> 46 Tasks </td><td> 45 Chunks </td></tr>
+    <tr><th> Type </th><td> float32 </td><td> numpy.ndarray </td></tr>
+  </tbody>
+</table>
+</td>
+<td>
+<svg width="75" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="25" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="5" x2="25" y2="5" />
+  <line x1="0" y1="10" x2="25" y2="10" />
+  <line x1="0" y1="18" x2="25" y2="18" />
+  <line x1="0" y1="24" x2="25" y2="24" />
+  <line x1="0" y1="29" x2="25" y2="29" />
+  <line x1="0" y1="37" x2="25" y2="37" />
+  <line x1="0" y1="43" x2="25" y2="43" />
+  <line x1="0" y1="48" x2="25" y2="48" />
+  <line x1="0" y1="56" x2="25" y2="56" />
+  <line x1="0" y1="62" x2="25" y2="62" />
+  <line x1="0" y1="70" x2="25" y2="70" />
+  <line x1="0" y1="75" x2="25" y2="75" />
+  <line x1="0" y1="80" x2="25" y2="80" />
+  <line x1="0" y1="89" x2="25" y2="89" />
+  <line x1="0" y1="94" x2="25" y2="94" />
+  <line x1="0" y1="99" x2="25" y2="99" />
+  <line x1="0" y1="107" x2="25" y2="107" />
+  <line x1="0" y1="113" x2="25" y2="113" />
+  <line x1="0" y1="120" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
+  <line x1="25" y1="0" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 25.412616514582485,0.0 25.412616514582485,120.0 0.0,120.0" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="12.706308" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >367</text>
+  <text x="45.412617" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,45.412617,60.000000)">44447</text>
+</svg>
+</td>
+</tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>v_no_rolling_mean_applied</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1000, 367), meta=np.ndarray&gt;</div><input id='attrs-cb69440d-6c42-4eff-b53d-3e17ac4e4cf6' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-cb69440d-6c42-4eff-b53d-3e17ac4e4cf6' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b24df1dd-2c6c-4f17-841a-91f263c235b9' class='xr-var-data-in' type='checkbox'><label for='data-b24df1dd-2c6c-4f17-841a-91f263c235b9' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Heave corrected mean Doppler velocity</dd><dt><span>units :</span></dt><dd>m s-1</dd><dt><span>plot_range :</span></dt><dd>[-7, 7]</dd><dt><span>folding_velocity :</span></dt><dd>7.2616487</dd><dt><span>plot_scale :</span></dt><dd>linear</dd><dt><span>comment :</span></dt><dd>This parameter is the radial component of the velocity, with positive velocities are away from the radar (i.e. up) and negative velocities moving towards the radar (i.e. down). It was corrected for the ships heave motion but no rolling mean was applied.</dd><dt><span>unit_html :</span></dt><dd>m s&lt;sup&gt;-1&lt;/sup&gt;</dd></dl></div><div class='xr-var-data'><table>
+<tr>
+<td>
+<table>
+  <thead>
+    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
+  </thead>
+  <tbody>
+    <tr><th> Bytes </th><td> 62.23 MiB </td> <td> 1.40 MiB </td></tr>
+    <tr><th> Shape </th><td> (44447, 367) </td> <td> (1000, 367) </td></tr>
+    <tr><th> Count </th><td> 46 Tasks </td><td> 45 Chunks </td></tr>
+    <tr><th> Type </th><td> float32 </td><td> numpy.ndarray </td></tr>
+  </tbody>
+</table>
+</td>
+<td>
+<svg width="75" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="25" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="5" x2="25" y2="5" />
+  <line x1="0" y1="10" x2="25" y2="10" />
+  <line x1="0" y1="18" x2="25" y2="18" />
+  <line x1="0" y1="24" x2="25" y2="24" />
+  <line x1="0" y1="29" x2="25" y2="29" />
+  <line x1="0" y1="37" x2="25" y2="37" />
+  <line x1="0" y1="43" x2="25" y2="43" />
+  <line x1="0" y1="48" x2="25" y2="48" />
+  <line x1="0" y1="56" x2="25" y2="56" />
+  <line x1="0" y1="62" x2="25" y2="62" />
+  <line x1="0" y1="70" x2="25" y2="70" />
+  <line x1="0" y1="75" x2="25" y2="75" />
+  <line x1="0" y1="80" x2="25" y2="80" />
+  <line x1="0" y1="89" x2="25" y2="89" />
+  <line x1="0" y1="94" x2="25" y2="94" />
+  <line x1="0" y1="99" x2="25" y2="99" />
+  <line x1="0" y1="107" x2="25" y2="107" />
+  <line x1="0" y1="113" x2="25" y2="113" />
+  <line x1="0" y1="120" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
+  <line x1="25" y1="0" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 25.412616514582485,0.0 25.412616514582485,120.0 0.0,120.0" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="12.706308" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >367</text>
+  <text x="45.412617" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,45.412617,60.000000)">44447</text>
+</svg>
+</td>
+</tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>v_uncor</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1000, 367), meta=np.ndarray&gt;</div><input id='attrs-d3389450-ccca-461d-b042-ef9fe08c1a6b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-d3389450-ccca-461d-b042-ef9fe08c1a6b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-bd74a994-1eda-48ac-bd04-23e757c8bcbd' class='xr-var-data-in' type='checkbox'><label for='data-bd74a994-1eda-48ac-bd04-23e757c8bcbd' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Uncorrected Mean Doppler velocity</dd><dt><span>units :</span></dt><dd>m s-1</dd><dt><span>plot_range :</span></dt><dd>[-7.0, 7.0]</dd><dt><span>folding_velocity :</span></dt><dd>7.2616487</dd><dt><span>plot_scale :</span></dt><dd>linear</dd><dt><span>comment :</span></dt><dd>This parameter is the uncorrected radial component of the velocity, with positive velocities are away from the radar (i.e. up) and negative velocities moving towards the radar (i.e. down).</dd><dt><span>unit_html :</span></dt><dd>m s&lt;sup&gt;-1&lt;/sup&gt;</dd></dl></div><div class='xr-var-data'><table>
+<tr>
+<td>
+<table>
+  <thead>
+    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
+  </thead>
+  <tbody>
+    <tr><th> Bytes </th><td> 62.23 MiB </td> <td> 1.40 MiB </td></tr>
+    <tr><th> Shape </th><td> (44447, 367) </td> <td> (1000, 367) </td></tr>
+    <tr><th> Count </th><td> 46 Tasks </td><td> 45 Chunks </td></tr>
+    <tr><th> Type </th><td> float32 </td><td> numpy.ndarray </td></tr>
+  </tbody>
+</table>
+</td>
+<td>
+<svg width="75" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="25" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="5" x2="25" y2="5" />
+  <line x1="0" y1="10" x2="25" y2="10" />
+  <line x1="0" y1="18" x2="25" y2="18" />
+  <line x1="0" y1="24" x2="25" y2="24" />
+  <line x1="0" y1="29" x2="25" y2="29" />
+  <line x1="0" y1="37" x2="25" y2="37" />
+  <line x1="0" y1="43" x2="25" y2="43" />
+  <line x1="0" y1="48" x2="25" y2="48" />
+  <line x1="0" y1="56" x2="25" y2="56" />
+  <line x1="0" y1="62" x2="25" y2="62" />
+  <line x1="0" y1="70" x2="25" y2="70" />
+  <line x1="0" y1="75" x2="25" y2="75" />
+  <line x1="0" y1="80" x2="25" y2="80" />
+  <line x1="0" y1="89" x2="25" y2="89" />
+  <line x1="0" y1="94" x2="25" y2="94" />
+  <line x1="0" y1="99" x2="25" y2="99" />
+  <line x1="0" y1="107" x2="25" y2="107" />
+  <line x1="0" y1="113" x2="25" y2="113" />
+  <line x1="0" y1="120" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
+  <line x1="25" y1="0" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 25.412616514582485,0.0 25.412616514582485,120.0 0.0,120.0" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="12.706308" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >367</text>
+  <text x="45.412617" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,45.412617,60.000000)">44447</text>
+</svg>
+</td>
+</tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>width</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1000, 367), meta=np.ndarray&gt;</div><input id='attrs-72b0c9bd-c9d9-4140-a46e-bd75e1a95d6e' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-72b0c9bd-c9d9-4140-a46e-bd75e1a95d6e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0eea8146-d98b-4fda-b601-8e31d82f4ab6' class='xr-var-data-in' type='checkbox'><label for='data-0eea8146-d98b-4fda-b601-8e31d82f4ab6' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Spectral width</dd><dt><span>units :</span></dt><dd>m s-1</dd><dt><span>plot_range :</span></dt><dd>[0.01, 3.0]</dd><dt><span>plot_scale :</span></dt><dd>logarithmic</dd><dt><span>comment :</span></dt><dd>This parameter is the standard deviation of the reflectivity-weighted velocities in the radar pulse volume.</dd><dt><span>unit_html :</span></dt><dd>m s&lt;sup&gt;-1&lt;/sup&gt;</dd></dl></div><div class='xr-var-data'><table>
+<tr>
+<td>
+<table>
+  <thead>
+    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
+  </thead>
+  <tbody>
+    <tr><th> Bytes </th><td> 62.23 MiB </td> <td> 1.40 MiB </td></tr>
+    <tr><th> Shape </th><td> (44447, 367) </td> <td> (1000, 367) </td></tr>
+    <tr><th> Count </th><td> 46 Tasks </td><td> 45 Chunks </td></tr>
+    <tr><th> Type </th><td> float32 </td><td> numpy.ndarray </td></tr>
+  </tbody>
+</table>
+</td>
+<td>
+<svg width="75" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="25" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="5" x2="25" y2="5" />
+  <line x1="0" y1="10" x2="25" y2="10" />
+  <line x1="0" y1="18" x2="25" y2="18" />
+  <line x1="0" y1="24" x2="25" y2="24" />
+  <line x1="0" y1="29" x2="25" y2="29" />
+  <line x1="0" y1="37" x2="25" y2="37" />
+  <line x1="0" y1="43" x2="25" y2="43" />
+  <line x1="0" y1="48" x2="25" y2="48" />
+  <line x1="0" y1="56" x2="25" y2="56" />
+  <line x1="0" y1="62" x2="25" y2="62" />
+  <line x1="0" y1="70" x2="25" y2="70" />
+  <line x1="0" y1="75" x2="25" y2="75" />
+  <line x1="0" y1="80" x2="25" y2="80" />
+  <line x1="0" y1="89" x2="25" y2="89" />
+  <line x1="0" y1="94" x2="25" y2="94" />
+  <line x1="0" y1="99" x2="25" y2="99" />
+  <line x1="0" y1="107" x2="25" y2="107" />
+  <line x1="0" y1="113" x2="25" y2="113" />
+  <line x1="0" y1="120" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
+  <line x1="25" y1="0" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 25.412616514582485,0.0 25.412616514582485,120.0 0.0,120.0" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="12.706308" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >367</text>
+  <text x="45.412617" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,45.412617,60.000000)">44447</text>
+</svg>
+</td>
+</tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>ldr</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1000, 367), meta=np.ndarray&gt;</div><input id='attrs-3625059f-34b6-40f3-bcf7-ee135e6dde8d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-3625059f-34b6-40f3-bcf7-ee135e6dde8d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ea07dae6-4480-4708-af4f-fdfa51fe26ef' class='xr-var-data-in' type='checkbox'><label for='data-ea07dae6-4480-4708-af4f-fdfa51fe26ef' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment :</span></dt><dd>This parameter is the ratio of cross-polar to co-polar reflectivity.</dd><dt><span>plot_range :</span></dt><dd>[-30.0, 0.0]</dd><dt><span>long_name :</span></dt><dd>Linear depolarisation ratio</dd><dt><span>units :</span></dt><dd>dB</dd></dl></div><div class='xr-var-data'><table>
+<tr>
+<td>
+<table>
+  <thead>
+    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
+  </thead>
+  <tbody>
+    <tr><th> Bytes </th><td> 62.23 MiB </td> <td> 1.40 MiB </td></tr>
+    <tr><th> Shape </th><td> (44447, 367) </td> <td> (1000, 367) </td></tr>
+    <tr><th> Count </th><td> 46 Tasks </td><td> 45 Chunks </td></tr>
+    <tr><th> Type </th><td> float32 </td><td> numpy.ndarray </td></tr>
+  </tbody>
+</table>
+</td>
+<td>
+<svg width="75" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="25" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="5" x2="25" y2="5" />
+  <line x1="0" y1="10" x2="25" y2="10" />
+  <line x1="0" y1="18" x2="25" y2="18" />
+  <line x1="0" y1="24" x2="25" y2="24" />
+  <line x1="0" y1="29" x2="25" y2="29" />
+  <line x1="0" y1="37" x2="25" y2="37" />
+  <line x1="0" y1="43" x2="25" y2="43" />
+  <line x1="0" y1="48" x2="25" y2="48" />
+  <line x1="0" y1="56" x2="25" y2="56" />
+  <line x1="0" y1="62" x2="25" y2="62" />
+  <line x1="0" y1="70" x2="25" y2="70" />
+  <line x1="0" y1="75" x2="25" y2="75" />
+  <line x1="0" y1="80" x2="25" y2="80" />
+  <line x1="0" y1="89" x2="25" y2="89" />
+  <line x1="0" y1="94" x2="25" y2="94" />
+  <line x1="0" y1="99" x2="25" y2="99" />
+  <line x1="0" y1="107" x2="25" y2="107" />
+  <line x1="0" y1="113" x2="25" y2="113" />
+  <line x1="0" y1="120" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
+  <line x1="25" y1="0" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 25.412616514582485,0.0 25.412616514582485,120.0 0.0,120.0" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="12.706308" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >367</text>
+  <text x="45.412617" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,45.412617,60.000000)">44447</text>
+</svg>
+</td>
+</tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>kurt</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1000, 367), meta=np.ndarray&gt;</div><input id='attrs-22db36e2-9489-419d-a1cf-bd61cf51932b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-22db36e2-9489-419d-a1cf-bd61cf51932b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4ea4a928-0761-4df2-a664-befa96acffe6' class='xr-var-data-in' type='checkbox'><label for='data-4ea4a928-0761-4df2-a664-befa96acffe6' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>plot_range :</span></dt><dd>[0, 3]</dd><dt><span>units :</span></dt><dd>1</dd><dt><span>long_name :</span></dt><dd>Kurtosis</dd></dl></div><div class='xr-var-data'><table>
+<tr>
+<td>
+<table>
+  <thead>
+    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
+  </thead>
+  <tbody>
+    <tr><th> Bytes </th><td> 62.23 MiB </td> <td> 1.40 MiB </td></tr>
+    <tr><th> Shape </th><td> (44447, 367) </td> <td> (1000, 367) </td></tr>
+    <tr><th> Count </th><td> 46 Tasks </td><td> 45 Chunks </td></tr>
+    <tr><th> Type </th><td> float32 </td><td> numpy.ndarray </td></tr>
+  </tbody>
+</table>
+</td>
+<td>
+<svg width="75" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="25" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="5" x2="25" y2="5" />
+  <line x1="0" y1="10" x2="25" y2="10" />
+  <line x1="0" y1="18" x2="25" y2="18" />
+  <line x1="0" y1="24" x2="25" y2="24" />
+  <line x1="0" y1="29" x2="25" y2="29" />
+  <line x1="0" y1="37" x2="25" y2="37" />
+  <line x1="0" y1="43" x2="25" y2="43" />
+  <line x1="0" y1="48" x2="25" y2="48" />
+  <line x1="0" y1="56" x2="25" y2="56" />
+  <line x1="0" y1="62" x2="25" y2="62" />
+  <line x1="0" y1="70" x2="25" y2="70" />
+  <line x1="0" y1="75" x2="25" y2="75" />
+  <line x1="0" y1="80" x2="25" y2="80" />
+  <line x1="0" y1="89" x2="25" y2="89" />
+  <line x1="0" y1="94" x2="25" y2="94" />
+  <line x1="0" y1="99" x2="25" y2="99" />
+  <line x1="0" y1="107" x2="25" y2="107" />
+  <line x1="0" y1="113" x2="25" y2="113" />
+  <line x1="0" y1="120" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
+  <line x1="25" y1="0" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 25.412616514582485,0.0 25.412616514582485,120.0 0.0,120.0" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="12.706308" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >367</text>
+  <text x="45.412617" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,45.412617,60.000000)">44447</text>
+</svg>
+</td>
+</tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>Skew</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1000, 367), meta=np.ndarray&gt;</div><input id='attrs-52093510-78fa-4578-bee1-4f0f0223e43d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-52093510-78fa-4578-bee1-4f0f0223e43d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b95c543b-0329-4f5b-b025-ffc6ba8db23a' class='xr-var-data-in' type='checkbox'><label for='data-b95c543b-0329-4f5b-b025-ffc6ba8db23a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>1</dd><dt><span>plot_range :</span></dt><dd>[-1, 1]</dd><dt><span>long_name :</span></dt><dd>Skewness</dd></dl></div><div class='xr-var-data'><table>
+<tr>
+<td>
+<table>
+  <thead>
+    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
+  </thead>
+  <tbody>
+    <tr><th> Bytes </th><td> 62.23 MiB </td> <td> 1.40 MiB </td></tr>
+    <tr><th> Shape </th><td> (44447, 367) </td> <td> (1000, 367) </td></tr>
+    <tr><th> Count </th><td> 46 Tasks </td><td> 45 Chunks </td></tr>
+    <tr><th> Type </th><td> float32 </td><td> numpy.ndarray </td></tr>
+  </tbody>
+</table>
+</td>
+<td>
+<svg width="75" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="25" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="5" x2="25" y2="5" />
+  <line x1="0" y1="10" x2="25" y2="10" />
+  <line x1="0" y1="18" x2="25" y2="18" />
+  <line x1="0" y1="24" x2="25" y2="24" />
+  <line x1="0" y1="29" x2="25" y2="29" />
+  <line x1="0" y1="37" x2="25" y2="37" />
+  <line x1="0" y1="43" x2="25" y2="43" />
+  <line x1="0" y1="48" x2="25" y2="48" />
+  <line x1="0" y1="56" x2="25" y2="56" />
+  <line x1="0" y1="62" x2="25" y2="62" />
+  <line x1="0" y1="70" x2="25" y2="70" />
+  <line x1="0" y1="75" x2="25" y2="75" />
+  <line x1="0" y1="80" x2="25" y2="80" />
+  <line x1="0" y1="89" x2="25" y2="89" />
+  <line x1="0" y1="94" x2="25" y2="94" />
+  <line x1="0" y1="99" x2="25" y2="99" />
+  <line x1="0" y1="107" x2="25" y2="107" />
+  <line x1="0" y1="113" x2="25" y2="113" />
+  <line x1="0" y1="120" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
+  <line x1="25" y1="0" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 25.412616514582485,0.0 25.412616514582485,120.0 0.0,120.0" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="12.706308" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >367</text>
+  <text x="45.412617" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,45.412617,60.000000)">44447</text>
+</svg>
+</td>
+</tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>heave_cor</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1000, 367), meta=np.ndarray&gt;</div><input id='attrs-4621466f-2fc8-49ff-8775-642f9f222b23' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-4621466f-2fc8-49ff-8775-642f9f222b23' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-88fca6f1-d773-4b3f-b312-0af990484385' class='xr-var-data-in' type='checkbox'><label for='data-88fca6f1-d773-4b3f-b312-0af990484385' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Heave rate correction</dd><dt><span>units :</span></dt><dd>m s-1</dd><dt><span>plot_range :</span></dt><dd>[-7, 7]</dd><dt><span>plot_scale :</span></dt><dd>linear</dd><dt><span>comment :</span></dt><dd>This is the velocity by which the original Doppler spectrum was corrected by. The heave rate is subtracted from the Doppler velocity, meaning the spectra is shifted to the left for positive heave rates and to the right for negative heave rates.</dd><dt><span>unit_html :</span></dt><dd>m s&lt;sup&gt;-1&lt;/sup&gt;</dd></dl></div><div class='xr-var-data'><table>
+<tr>
+<td>
+<table>
+  <thead>
+    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
+  </thead>
+  <tbody>
+    <tr><th> Bytes </th><td> 62.23 MiB </td> <td> 1.40 MiB </td></tr>
+    <tr><th> Shape </th><td> (44447, 367) </td> <td> (1000, 367) </td></tr>
+    <tr><th> Count </th><td> 46 Tasks </td><td> 45 Chunks </td></tr>
+    <tr><th> Type </th><td> float32 </td><td> numpy.ndarray </td></tr>
+  </tbody>
+</table>
+</td>
+<td>
+<svg width="75" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="25" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="5" x2="25" y2="5" />
+  <line x1="0" y1="10" x2="25" y2="10" />
+  <line x1="0" y1="18" x2="25" y2="18" />
+  <line x1="0" y1="24" x2="25" y2="24" />
+  <line x1="0" y1="29" x2="25" y2="29" />
+  <line x1="0" y1="37" x2="25" y2="37" />
+  <line x1="0" y1="43" x2="25" y2="43" />
+  <line x1="0" y1="48" x2="25" y2="48" />
+  <line x1="0" y1="56" x2="25" y2="56" />
+  <line x1="0" y1="62" x2="25" y2="62" />
+  <line x1="0" y1="70" x2="25" y2="70" />
+  <line x1="0" y1="75" x2="25" y2="75" />
+  <line x1="0" y1="80" x2="25" y2="80" />
+  <line x1="0" y1="89" x2="25" y2="89" />
+  <line x1="0" y1="94" x2="25" y2="94" />
+  <line x1="0" y1="99" x2="25" y2="99" />
+  <line x1="0" y1="107" x2="25" y2="107" />
+  <line x1="0" y1="113" x2="25" y2="113" />
+  <line x1="0" y1="120" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
+  <line x1="25" y1="0" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 25.412616514582485,0.0 25.412616514582485,120.0 0.0,120.0" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="12.706308" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >367</text>
+  <text x="45.412617" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,45.412617,60.000000)">44447</text>
+</svg>
+</td>
+</tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>heave_cor_bins</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1000, 367), meta=np.ndarray&gt;</div><input id='attrs-684c8531-57c6-4b21-99ee-d898abb6a27c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-684c8531-57c6-4b21-99ee-d898abb6a27c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-290c1630-949d-475e-8e50-a9cb27747d0b' class='xr-var-data-in' type='checkbox'><label for='data-290c1630-949d-475e-8e50-a9cb27747d0b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Heave rate correction in Doppler spectra bins</dd><dt><span>plot_scale :</span></dt><dd>linear</dd><dt><span>comment :</span></dt><dd>This is the number of bins by which the original Doppler spectrum was shifted by. Positive values shift the spectrum to the left, while negative values shift the spectrum to the right.</dd><dt><span>units :</span></dt><dd>1</dd></dl></div><div class='xr-var-data'><table>
+<tr>
+<td>
+<table>
+  <thead>
+    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
+  </thead>
+  <tbody>
+    <tr><th> Bytes </th><td> 124.45 MiB </td> <td> 2.80 MiB </td></tr>
+    <tr><th> Shape </th><td> (44447, 367) </td> <td> (1000, 367) </td></tr>
+    <tr><th> Count </th><td> 46 Tasks </td><td> 45 Chunks </td></tr>
+    <tr><th> Type </th><td> float64 </td><td> numpy.ndarray </td></tr>
+  </tbody>
+</table>
+</td>
+<td>
+<svg width="75" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="25" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="5" x2="25" y2="5" />
+  <line x1="0" y1="10" x2="25" y2="10" />
+  <line x1="0" y1="18" x2="25" y2="18" />
+  <line x1="0" y1="24" x2="25" y2="24" />
+  <line x1="0" y1="29" x2="25" y2="29" />
+  <line x1="0" y1="37" x2="25" y2="37" />
+  <line x1="0" y1="43" x2="25" y2="43" />
+  <line x1="0" y1="48" x2="25" y2="48" />
+  <line x1="0" y1="56" x2="25" y2="56" />
+  <line x1="0" y1="62" x2="25" y2="62" />
+  <line x1="0" y1="70" x2="25" y2="70" />
+  <line x1="0" y1="75" x2="25" y2="75" />
+  <line x1="0" y1="80" x2="25" y2="80" />
+  <line x1="0" y1="89" x2="25" y2="89" />
+  <line x1="0" y1="94" x2="25" y2="94" />
+  <line x1="0" y1="99" x2="25" y2="99" />
+  <line x1="0" y1="107" x2="25" y2="107" />
+  <line x1="0" y1="113" x2="25" y2="113" />
+  <line x1="0" y1="120" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
+  <line x1="25" y1="0" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 25.412616514582485,0.0 25.412616514582485,120.0 0.0,120.0" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="12.706308" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >367</text>
+  <text x="45.412617" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,45.412617,60.000000)">44447</text>
+</svg>
+</td>
+</tr>
+</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-3350906c-2586-4f24-9cda-310781457259' class='xr-section-summary-in' type='checkbox'  ><label for='section-3350906c-2586-4f24-9cda-310781457259' class='xr-section-summary' >Attributes: <span>(20)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>Conventions :</span></dt><dd>CF-1.8</dd><dt><span>title :</span></dt><dd>LIMRAD94 (SLDR) Doppler Cloud Radar, calibrated file</dd><dt><span>campaign_id :</span></dt><dd>EUREC4A</dd><dt><span>platform_id :</span></dt><dd>Meteor</dd><dt><span>instrument_id :</span></dt><dd>LIMRAD94</dd><dt><span>version_id :</span></dt><dd>v1.1</dd><dt><span>location :</span></dt><dd>RV-Meteor</dd><dt><span>system :</span></dt><dd>LIMRAD94</dd><dt><span>version :</span></dt><dd>Variable names and dimensions prepared for upload to Aeris data center. 1.1: updated metadata</dd><dt><span>institution :</span></dt><dd>Leipzig Institute for Meteorology (LIM), Leipzig, Germany</dd><dt><span>contact :</span></dt><dd>heike.kalesse@uni-leipzig.de</dd><dt><span>source :</span></dt><dd>94 GHz Cloud Radar LIMRAD94
+Radar type: Frequency Modulated Continuous Wave,
+Transmitter power 1.5 W typical (solid state amplifier)
+Antenna Type: Bi-static Cassegrain with 500 mm aperture
+Beam width: 0.48deg FWHM</dd><dt><span>reference :</span></dt><dd>W Band Cloud Radar LIMRAD94
+Documentation and User Manual provided by manufacturer RPG Radiometer Physics GmbH
+Information about system also available at https://www.radiometer-physics.de/</dd><dt><span>calibrations :</span></dt><dd>remove Precip. ghost: False
+, remove curtain ghost: True
+despeckle: True
+, number of standard deviations above noise: 6.0
+spectra heave corrected: True
+spectra heave corrected with version: ca
+spectra dealiased: True</dd><dt><span>description :</span></dt><dd>Concatenated data files of LIMRAD 94GHz - FMCW Radar, filters applied: ghost-echo, despeckle, use only main peak,
+spectra corrected for heave motion of ship and then dealiased</dd><dt><span>history :</span></dt><dd>Created Thu Feb 18 23:16:55 2021</dd><dt><span>_FillValue :</span></dt><dd>-999.0</dd><dt><span>day :</span></dt><dd>1</dd><dt><span>month :</span></dt><dd>2</dd><dt><span>year :</span></dt><dd>2020</dd></dl></div></li></ul></div></div></div></div>
+</div>
+<p>Explore the dataset and choose the variable you want to work with.
+The variables are loaded lazily, i.e. only when their content is really required to complete the operation.
+An example which forces the data to load is plotting, in this case only the radar reflectivity will be loaded.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;./mplstyle/book&quot;</span><span class="p">)</span>
+
+<span class="n">ds</span><span class="o">.</span><span class="n">Zh</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Spectral_r&quot;</span><span class="p">)</span>  <span class="c1"># plot the variable with time as the x axis</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3000</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/meteor_cloudradar_7_0.png" src="_images/meteor_cloudradar_7_0.png" />
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "eurec4a/how_to_eurec4a",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="meteor.html" title="previous page">Meteor</a>
+    <a class='right-next' id="next-link" href="multi_platform_data.html" title="next page">Multi-platform datasets</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By EUREC4A community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

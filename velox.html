@@ -1,0 +1,1049 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VELOX &#8212; How to EUREC4A</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="_static/logo_pyeurec4a.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="BACARDI dataset" href="bacardi.html" />
+    <link rel="prev" title="SMART dataset" href="smart.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      <img src="_static/logo_pyeurec4a.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">How to EUREC4A</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="halo.html">
+   HALO
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="specmacs.html">
+     specMACS cloudmask
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="unified.html">
+     HALO UNIFIED dataset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="flight_tracks_leaflet.html">
+     interactive HALO tracks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="smart.html">
+     SMART dataset
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     VELOX
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bacardi.html">
+     BACARDI dataset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="wales.html">
+     WALES Lidar
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="hamp_comparison.html">
+     HAMP comparison
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="meteor.html">
+   Meteor
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="meteor_cloudradar.html">
+     Reading cloud radar data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="multi_platform_data.html">
+   Multi-platform datasets
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="dropsondes.html">
+     Dropsondes dataset JOANNE
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="toolbox.html">
+   Toolbox
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="flight-phase-operations.html">
+     How to work with flight phase segmentation files
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="show_intake_catalog.html">
+     Show the intake catalog
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="running_locally.html">
+     running How to EUREC4A locally
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="netcdf_datatypes.html">
+     The issue with netCDF data types
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="references.html">
+   References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stats.html">
+   Script execution statistics
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="_sources/velox.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/velox.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/eurec4a/how_to_eurec4a"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/eurec4a/how_to_eurec4a/issues/new?title=Issue%20on%20page%20%2Fvelox.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/eurec4a/how_to_eurec4a/edit/master/how_to_eurec4a/velox.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/eurec4a/how_to_eurec4a/master?urlpath=tree/how_to_eurec4a/velox.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#get-data">
+   Get data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-does-the-velox-image-look-like-at-a-specific-dropsonde-launch">
+   What does the VELOX image look like at a specific dropsonde launch?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#get-dropsonde-id">
+     Get dropsonde ID
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-the-corresponding-launch-time-of-the-selected-sonde">
+     What is the corresponding launch time of the selected sonde?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cloud-mask-plot">
+     Cloud mask plot
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cloud-fraction-time-series-from-the-second-circle-on-february-5">
+   Cloud fraction time series from the second circle on February 5
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="velox">
+<h1>VELOX<a class="headerlink" href="#velox" title="Permalink to this headline">¶</a></h1>
+<p>Video airbornE Longwave Observations within siX channels</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">eurec4a</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Markdown</span>
+
+<span class="n">meta</span> <span class="o">=</span> <span class="n">eurec4a</span><span class="o">.</span><span class="n">get_meta</span><span class="p">()</span>
+<span class="n">Markdown</span><span class="p">(</span><span class="n">meta</span><span class="p">[</span><span class="s2">&quot;VELOX&quot;</span><span class="p">][</span><span class="s2">&quot;description&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<p>VELOX is a thermal infrared spectral imager (VELOX327k veL, 640 pixel by 512 pixels) with a synchronized filter wheel (at 100 Hz) covering six spectral channels in the thermal infrared wavelength range from 7.7 to 12.0 micrometer. The instrument measures the brightness temperature of upward radiance in a field-of-view of 35.49° by 28.71°.</p>
+</div>
+</div>
+<p>The PI during EUREC4A was Michael Schäfer (University Leipzig).</p>
+<p>If you have questions or if you would like to use the data for a publication, please don’t hesitate to get in contact with the dataset authors as stated in the dataset attributes <code class="docutils literal notranslate"><span class="pre">contact</span></code> or <code class="docutils literal notranslate"><span class="pre">author</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>No data available for the transfer flights (first and last) and the first local research flight.</p>
+</div>
+<div class="section" id="get-data">
+<h2>Get data<a class="headerlink" href="#get-data" title="Permalink to this headline">¶</a></h2>
+<p>To load the data we first load the <a class="reference external" href="https://github.com/eurec4a/eurec4a-intake#eurec4a-intake-catalogue">EUREC4A intake catalog</a> and list the available datasets from VELOX.<br />
+Currently, there is a cloud mask product available.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">=</span> <span class="n">eurec4a</span><span class="o">.</span><span class="n">get_intake_catalog</span><span class="p">()</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">cat</span><span class="o">.</span><span class="n">HALO</span><span class="o">.</span><span class="n">VELOX</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;cloudmask&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">cat</span><span class="o">.</span><span class="n">HALO</span><span class="o">.</span><span class="n">VELOX</span><span class="o">.</span><span class="n">cloudmask</span><span class="p">[</span><span class="s2">&quot;HALO-0205&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_dask</span><span class="p">()</span>
+<span class="n">ds</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme=dark],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1F1F1F;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 20px 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: none;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: '►';
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: '▼';
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: '(';
+}
+
+.xr-dim-list:after {
+  content: ')';
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ',';
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2 {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt;
+Dimensions:     (time: 29894, x: 640, y: 512)
+Coordinates:
+  * time        (time) datetime64[ns] 2020-02-05T09:21:46 ... 2020-02-05T18:0...
+    lat         (time) float32 13.12 13.12 13.12 13.12 ... 12.92 12.92 12.92
+    lon         (time) float32 -59.11 -59.11 -59.1 ... -59.21 -59.21 -59.21
+    alt         (time) float32 4.293e+03 4.303e+03 ... 4.057e+03 4.046e+03
+Dimensions without coordinates: x, y
+Data variables:
+    vza         (y, x) float32 ...
+    vaa         (y, x) float32 ...
+    cloud_mask  (y, x, time) int8 ...
+    CF_min      (time) float32 0.2208 0.3052 0.3982 ... 0.02369 0.0296 0.03152
+    CF_max      (time) float32 0.5016 0.581 0.6464 0.6987 ... 0.1081 0.115 0.108
+Attributes: (12/22)
+    title:                Two-dimensional cloud mask and cloud fraction with ...
+    research_flight_day:  20200205
+    version:              Version 3 from 2021-02-12
+    comment_1:            The cloud mask is derived with 1 Hz temporal resolu...
+    comment_2:            Four different thresholds (0.5 K, 1.0 K, 1.5 K, and...
+    comment_3:            The final cloud mask logically combines the differe...
+    ...                   ...
+    source:               Airborne imaging with the VELOX system
+    institution:          University of Leipzig, Leipzig Institute for Meteor...
+    author:               Michael Schäfer, André Ehrlich, Anna Luebke, Jakob ...
+    history:              2021-02-06 flag_values, flag_meanings, and comments...
+    created_on:           2021-02-12
+    Conventions:          &quot;CF-1.8&quot;</pre><div class='xr-wrap' hidden><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-7195004a-604d-43ff-9425-231d6fc58755' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-7195004a-604d-43ff-9425-231d6fc58755' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 29894</li><li><span>x</span>: 640</li><li><span>y</span>: 512</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-555d8318-9d53-4344-8228-0aebf840634e' class='xr-section-summary-in' type='checkbox'  checked><label for='section-555d8318-9d53-4344-8228-0aebf840634e' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2020-02-05T09:21:46 ... 2020-02-...</div><input id='attrs-0870980e-463b-4abc-b9fd-c8e9e09c69de' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-0870980e-463b-4abc-b9fd-c8e9e09c69de' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-7785dad8-128b-4a78-a073-b1d8fc01d537' class='xr-var-data-in' type='checkbox'><label for='data-7785dad8-128b-4a78-a073-b1d8fc01d537' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>time</dd><dt><span>_ChunkSizes :</span></dt><dd>29894</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;2020-02-05T09:21:46.000000000&#x27;, &#x27;2020-02-05T09:21:47.000000000&#x27;,
+       &#x27;2020-02-05T09:21:48.000000000&#x27;, ..., &#x27;2020-02-05T18:08:26.000000000&#x27;,
+       &#x27;2020-02-05T18:08:27.000000000&#x27;, &#x27;2020-02-05T18:08:28.000000000&#x27;],
+      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lat</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-3262b673-d4e2-4306-9cc0-ec49deeb1686' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-3262b673-d4e2-4306-9cc0-ec49deeb1686' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-cc596b48-27a8-403b-91a2-c9d12a79fa05' class='xr-var-data-in' type='checkbox'><label for='data-cc596b48-27a8-403b-91a2-c9d12a79fa05' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>description :</span></dt><dd>Platform latitude coordinate</dd><dt><span>_ChunkSizes :</span></dt><dd>29894</dd></dl></div><div class='xr-var-data'><pre>array([13.124009, 13.124204, 13.124382, ..., 12.918505, 12.918467, 12.918427],
+      dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lon</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-4b82f978-6804-44a3-81c3-025c9e0501dd' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-4b82f978-6804-44a3-81c3-025c9e0501dd' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-2c980ab2-be2c-4386-b3e3-930dad51b42d' class='xr-var-data-in' type='checkbox'><label for='data-2c980ab2-be2c-4386-b3e3-930dad51b42d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>description :</span></dt><dd>Platform longitude coordinate</dd><dt><span>_ChunkSizes :</span></dt><dd>29894</dd></dl></div><div class='xr-var-data'><pre>array([-59.107395, -59.10592 , -59.10457 , ..., -59.212208, -59.21346 ,
+       -59.21478 ], dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>alt</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-0d52f7d0-d7f5-432f-879a-66f478b83ff3' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-0d52f7d0-d7f5-432f-879a-66f478b83ff3' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f68dc1ae-b0bd-4b42-9d11-20075cbf8084' class='xr-var-data-in' type='checkbox'><label for='data-f68dc1ae-b0bd-4b42-9d11-20075cbf8084' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>altitude</dd><dt><span>units :</span></dt><dd>m</dd><dt><span>description :</span></dt><dd>Platform altitude coordinate</dd><dt><span>_ChunkSizes :</span></dt><dd>29894</dd></dl></div><div class='xr-var-data'><pre>array([4293.22  , 4302.553 , 4310.9165, ..., 4067.645 , 4057.247 , 4046.3904],
+      dtype=float32)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-a98a56b5-6d7d-41db-b1ec-e4f73070971a' class='xr-section-summary-in' type='checkbox'  checked><label for='section-a98a56b5-6d7d-41db-b1ec-e4f73070971a' class='xr-section-summary' >Data variables: <span>(5)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>vza</span></div><div class='xr-var-dims'>(y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-194ca89e-12bb-4d7b-bc49-2f77ef580cb1' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-194ca89e-12bb-4d7b-bc49-2f77ef580cb1' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8ae4c243-3e1b-4719-ac9f-4eddc1553add' class='xr-var-data-in' type='checkbox'><label for='data-8ae4c243-3e1b-4719-ac9f-4eddc1553add' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Viewing sensor zenith angle</dd><dt><span>units :</span></dt><dd>degree</dd><dt><span>description :</span></dt><dd>Angle between the line of sight and the viewing direction of each spatial pixel of the sensor.</dd><dt><span>_ChunkSizes :</span></dt><dd>[512 640]</dd></dl></div><div class='xr-var-data'><pre>[327680 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>vaa</span></div><div class='xr-var-dims'>(y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-e5cfb4ce-9ac2-49ed-8609-f36abba24df8' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e5cfb4ce-9ac2-49ed-8609-f36abba24df8' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f85abf75-1727-4896-bb8f-9b7247f347e2' class='xr-var-data-in' type='checkbox'><label for='data-f85abf75-1727-4896-bb8f-9b7247f347e2' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Viewing sensor azimuth angle</dd><dt><span>units :</span></dt><dd>degree</dd><dt><span>description :</span></dt><dd>Camera viewing azimuth angle of each spatial pixel, mathematic negative system with 0° into flight direction, clockwise.</dd><dt><span>_ChunkSizes :</span></dt><dd>[512 640]</dd></dl></div><div class='xr-var-data'><pre>[327680 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>cloud_mask</span></div><div class='xr-var-dims'>(y, x, time)</div><div class='xr-var-dtype'>int8</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-5072f26b-ca81-4543-8bc5-0461929ce307' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-5072f26b-ca81-4543-8bc5-0461929ce307' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-dffc58b6-e320-478d-8b30-5c9df5695018' class='xr-var-data-in' type='checkbox'><label for='data-dffc58b6-e320-478d-8b30-5c9df5695018' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>flag_values :</span></dt><dd>[-1  0  1  2]</dd><dt><span>flag_meanings :</span></dt><dd>unknown cloud_free probably_cloudy most_likely_cloudy</dd><dt><span>description :</span></dt><dd>Cloud mask derived by comparing the measured brightness temperature with the brightness temperature in a clear-sky assumption using the four thresholds of 0.5 K, 1.0 K, 1.5 K, and 2.0 K. If all thresholds are exceeded, the measurement is denoted as &quot;most_likely_cloudy&quot;, if only one of the thresholds is exceeded, the measurement is denoted as &quot;probably_cloudy&quot;. &quot;cloud_free&quot; is classified when no threshold is reached. &quot;unknown&quot; is classified when no estimation of the cloud mask was possible, e.g. due to condensation on the window.</dd><dt><span>long_name :</span></dt><dd>cloud flag</dd><dt><span>_ChunkSizes :</span></dt><dd>[  37   46 2136]</dd></dl></div><div class='xr-var-data'><pre>[9795665920 values with dtype=int8]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>CF_min</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-c5b86076-e0ee-4497-a8da-343db872f467' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c5b86076-e0ee-4497-a8da-343db872f467' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-46a245f9-e4ba-47e0-befb-3201dfdbe795' class='xr-var-data-in' type='checkbox'><label for='data-46a245f9-e4ba-47e0-befb-3201dfdbe795' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Minimal cloud fraction</dd><dt><span>description :</span></dt><dd>Minimal possible cloud fraction derived from the ratio between the number of pixels classified with a cloud mask value of &quot;2b&quot; and the total number of usable pixels in the image.</dd><dt><span>_ChunkSizes :</span></dt><dd>29894</dd></dl></div><div class='xr-var-data'><pre>array([0.220755, 0.305246, 0.398218, ..., 0.023688, 0.029602, 0.031522],
+      dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>CF_max</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-b61413e6-a609-4ef0-99a2-72ed353c54dd' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-b61413e6-a609-4ef0-99a2-72ed353c54dd' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f8096b3b-0634-4248-885b-fe098ad8ae57' class='xr-var-data-in' type='checkbox'><label for='data-f8096b3b-0634-4248-885b-fe098ad8ae57' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Maximal cloud fraction</dd><dt><span>description :</span></dt><dd>Maximal possible cloud fraction derived from the ratio between the number of pixels classified with cloud mask values of &quot;1b&quot; and &quot;2b&quot; and the total number of usable pixels in the image.</dd><dt><span>_ChunkSizes :</span></dt><dd>29894</dd></dl></div><div class='xr-var-data'><pre>array([0.501639, 0.581049, 0.646381, ..., 0.108105, 0.114993, 0.107956],
+      dtype=float32)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-308cfbf8-a7a2-45f4-bad9-a223ec675bae' class='xr-section-summary-in' type='checkbox'  ><label for='section-308cfbf8-a7a2-45f4-bad9-a223ec675bae' class='xr-section-summary' >Attributes: <span>(22)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>title :</span></dt><dd>Two-dimensional cloud mask and cloud fraction with 1 Hz temporal resolution derived from VELOX during the EUREC4A field campaign.</dd><dt><span>research_flight_day :</span></dt><dd>20200205</dd><dt><span>version :</span></dt><dd>Version 3 from 2021-02-12</dd><dt><span>comment_1 :</span></dt><dd>The cloud mask is derived with 1 Hz temporal resolution from the broadband channel of VELOX by comparing the measured brightness temperature with simulations assuming cloud-free conditions.</dd><dt><span>comment_2 :</span></dt><dd>Four different thresholds (0.5 K, 1.0 K, 1.5 K, and 2.0 K) for the difference between measurements and simulations are applied.</dd><dt><span>comment_3 :</span></dt><dd>The final cloud mask logically combines the different thresholds for each spatial pixel and each time step.</dd><dt><span>comment_4 :</span></dt><dd>If all thresholds are exceeded, the measurement is denoted as &quot;most_likely_cloudy&quot;, if only one of the thresholds is exceeded, the measurement is denoted as &quot;probably_cloudy&quot;. &quot;cloud_free&quot; is classified when no threshold is reached. &quot;unknown&quot; is classified when no estimation of the cloud mask was possible, e.g. due to condensation on the window.</dd><dt><span>comment_5 :</span></dt><dd>Due to possible condensation at the instrument window during the ascent, some data in the beginning of the flight might be not usable. Such data points are classified as &quot;-1b, unknown&quot;.</dd><dt><span>comment_6 :</span></dt><dd>Flight direction is towards positive y-direction of the image</dd><dt><span>comment_7 :</span></dt><dd>Thermal infrared imager information: focal length: 15 mm, image size: 640 x 512 pixels, detector size: 9.60 mm x 7.68 mm, FOV: 35.49° x 28.71°</dd><dt><span>contact_1 :</span></dt><dd>Michael Schäfer, University Leipzig, michael.schaefer@uni-leipzig.de</dd><dt><span>contact_2 :</span></dt><dd>André Ehrlich, University Leipzig, a.ehrlich@uni-leipzig.de</dd><dt><span>platform :</span></dt><dd>HALO</dd><dt><span>campaign :</span></dt><dd>EUREC4A</dd><dt><span>variable :</span></dt><dd>cloud_mask, CF_min, CF_max</dd><dt><span>instrument :</span></dt><dd>VELOX</dd><dt><span>source :</span></dt><dd>Airborne imaging with the VELOX system</dd><dt><span>institution :</span></dt><dd>University of Leipzig, Leipzig Institute for Meteorology</dd><dt><span>author :</span></dt><dd>Michael Schäfer, André Ehrlich, Anna Luebke, Jakob Thoböll, Kevin Wolf, Manfred Wendisch</dd><dt><span>history :</span></dt><dd>2021-02-06 flag_values, flag_meanings, and comments adapted to unified EUREC4A convention, 2021-02-12 vaa and vza included, descriptions updated, cloud_fraction as byte, alt lon lat source changed from SMART INS to BAHAMAS INS, minor changes</dd><dt><span>created_on :</span></dt><dd>2021-02-12</dd><dt><span>Conventions :</span></dt><dd>&quot;CF-1.8&quot;</dd></dl></div></li></ul></div></div></div></div>
+</div>
+</div>
+<div class="section" id="what-does-the-velox-image-look-like-at-a-specific-dropsonde-launch">
+<h2>What does the VELOX image look like at a specific dropsonde launch?<a class="headerlink" href="#what-does-the-velox-image-look-like-at-a-specific-dropsonde-launch" title="Permalink to this headline">¶</a></h2>
+<p>We can use the <a class="reference external" href="https://github.com/eurec4a/flight-phase-separation#segmentation-of-flights-during-eurec4a">flight segmentation</a> information to select a dropsonde and further extract the corresponding VELOX image taken at the time of the dropsonde launch.<br />
+In particular, we select the first dropsonde with the quality flag <code class="docutils literal notranslate"><span class="pre">GOOD</span></code> from the second <code class="docutils literal notranslate"><span class="pre">circle</span></code> on February 5.</p>
+<div class="section" id="get-dropsonde-id">
+<h3>Get dropsonde ID<a class="headerlink" href="#get-dropsonde-id" title="Permalink to this headline">¶</a></h3>
+<p>(0) we read the meta data and extract the segment IDs</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">meta</span> <span class="o">=</span> <span class="n">eurec4a</span><span class="o">.</span><span class="n">get_flight_segments</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">segments</span> <span class="o">=</span> <span class="p">[{</span><span class="o">**</span><span class="n">s</span><span class="p">,</span>
+             <span class="s2">&quot;platform_id&quot;</span><span class="p">:</span> <span class="n">platform_id</span><span class="p">,</span>
+             <span class="s2">&quot;flight_id&quot;</span><span class="p">:</span> <span class="n">flight_id</span>
+            <span class="p">}</span>
+            <span class="k">for</span> <span class="n">platform_id</span><span class="p">,</span> <span class="n">flights</span> <span class="ow">in</span> <span class="n">meta</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">flight_id</span><span class="p">,</span> <span class="n">flight</span> <span class="ow">in</span> <span class="n">flights</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">flight</span><span class="p">[</span><span class="s2">&quot;segments&quot;</span><span class="p">]</span>
+           <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>(1) we extract the segment ID of the second <code class="docutils literal notranslate"><span class="pre">circle</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datetime</span>
+
+<span class="n">segments_ordered_by_start_time</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">segments</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="p">[</span><span class="s2">&quot;start&quot;</span><span class="p">]))</span>
+<span class="n">circles_Feb05</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="s2">&quot;segment_id&quot;</span><span class="p">]</span>
+                 <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">segments_ordered_by_start_time</span>
+                 <span class="k">if</span> <span class="s2">&quot;circle&quot;</span> <span class="ow">in</span> <span class="n">s</span><span class="p">[</span><span class="s2">&quot;kinds&quot;</span><span class="p">]</span>
+                 <span class="ow">and</span> <span class="n">s</span><span class="p">[</span><span class="s2">&quot;start&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">date</span><span class="p">()</span> <span class="o">==</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+                 <span class="ow">and</span> <span class="n">s</span><span class="p">[</span><span class="s2">&quot;platform_id&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;HALO&quot;</span>
+                <span class="p">]</span>
+<span class="n">second_circle_Feb05</span> <span class="o">=</span> <span class="n">circles_Feb05</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">second_circle_Feb05</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;HALO-0205_c2&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>(2) we extract the ID of the first dropsonde with flag <code class="docutils literal notranslate"><span class="pre">GOOD</span></code> in this circle</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">segments_by_segment_id</span> <span class="o">=</span> <span class="p">{</span><span class="n">s</span><span class="p">[</span><span class="s2">&quot;segment_id&quot;</span><span class="p">]:</span> <span class="n">s</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">segments</span><span class="p">}</span>
+<span class="n">first_dropsonde</span> <span class="o">=</span> <span class="n">segments_by_segment_id</span><span class="p">[</span><span class="n">second_circle_Feb05</span><span class="p">][</span><span class="s2">&quot;dropsondes&quot;</span><span class="p">][</span><span class="s2">&quot;GOOD&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">first_dropsonde</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;HALO-0205_s13&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="what-is-the-corresponding-launch-time-of-the-selected-sonde">
+<h3>What is the corresponding launch time of the selected sonde?<a class="headerlink" href="#what-is-the-corresponding-launch-time-of-the-selected-sonde" title="Permalink to this headline">¶</a></h3>
+<p>So far, we only made use of the flight segmentation meta data. The launch time to a given sonde is stated in the <a class="reference external" href="https://github.com/Geet-George/JOANNE/tree/master/joanne/Level_3#level%E2%80%943">JOANNE</a> dataset (see also book chapter <a class="reference internal" href="dropsondes.html"><span class="doc">Dropsondes dataset JOANNE</span></a>).
+We use again the intake catalog to load the JOANNE dataset and extract the launch time to the selected dropsonde by it’s sonde ID.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dropsondes</span> <span class="o">=</span> <span class="n">cat</span><span class="o">.</span><span class="n">dropsondes</span><span class="o">.</span><span class="n">JOANNE</span><span class="o">.</span><span class="n">level3</span><span class="o">.</span><span class="n">to_dask</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sonde_dt</span> <span class="o">=</span> <span class="n">dropsondes</span><span class="o">.</span><span class="n">swap_dims</span><span class="p">({</span><span class="s2">&quot;sounding&quot;</span><span class="p">:</span> <span class="s2">&quot;sonde_id&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">sonde_id</span><span class="o">=</span><span class="n">first_dropsonde</span><span class="p">)</span><span class="o">.</span><span class="n">launch_time</span><span class="o">.</span><span class="n">values</span>
+<span class="n">sonde_dt</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>numpy.datetime64(&#39;2020-02-05T10:48:32.000000000&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="cloud-mask-plot">
+<h3>Cloud mask plot<a class="headerlink" href="#cloud-mask-plot" title="Permalink to this headline">¶</a></h3>
+<p>Finally, we plot the VELOX image closest in time to the dropsonde launch.<br />
+The y-axis is in flight direction and the image consists of 640 pixel by 512 pixels. The corresponding pixel viewing sensor zenith and azimuth angles are given by the dataset variables <code class="docutils literal notranslate"><span class="pre">vza</span></code> and <code class="docutils literal notranslate"><span class="pre">vaa</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds_sel</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">cloud_mask</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">sonde_dt</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;nearest&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;./mplstyle/book&quot;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">cax</span> <span class="o">=</span> <span class="n">ds_sel</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+                  <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;Greys&#39;</span><span class="p">,</span> <span class="n">lut</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span>
+                  <span class="n">vmin</span><span class="o">=-</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span>
+                  <span class="n">add_colorbar</span><span class="o">=</span><span class="kc">False</span>
+                  <span class="p">)</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cax</span><span class="p">,</span> <span class="n">ticks</span><span class="o">=</span><span class="n">ds</span><span class="o">.</span><span class="n">cloud_mask</span><span class="o">.</span><span class="n">flag_values</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">cloud_mask</span><span class="o">.</span><span class="n">flag_meanings</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">));</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;VELOX cloud mask at </span><span class="si">{</span><span class="n">sonde_dt</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/velox_17_0.png" src="_images/velox_17_0.png" />
+</div>
+</div>
+<p>What are the image cloud fraction lower and upper bounds?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cfmin</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">CF_min</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">sonde_dt</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;nearest&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+<span class="n">cfmax</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">CF_max</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">sonde_dt</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;nearest&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Image minimum cloud fraction (most likely cloudy): </span><span class="si">{</span><span class="n">cfmin</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Image maximum cloud fraction (most likely and probably cloudy) :</span><span class="si">{</span><span class="n">cfmax</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Image minimum cloud fraction (most likely cloudy): 0.24
+Image maximum cloud fraction (most likely and probably cloudy) :0.47
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="cloud-fraction-time-series-from-the-second-circle-on-february-5">
+<h2>Cloud fraction time series from the second circle on February 5<a class="headerlink" href="#cloud-fraction-time-series-from-the-second-circle-on-february-5" title="Permalink to this headline">¶</a></h2>
+<p>We also want to show a time series of cloud fraction and use the segment ID from the second circle to extract and save the segment information to the variable <code class="docutils literal notranslate"><span class="pre">seg</span></code>. We can later use the segments start and end times to select the data in time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seg</span> <span class="o">=</span> <span class="n">segments_by_segment_id</span><span class="p">[</span><span class="n">second_circle_Feb05</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The dataset variable <code class="docutils literal notranslate"><span class="pre">CF_min</span></code> provides a lower bound to cloud fraction estimates based on the cloud mask flag <code class="docutils literal notranslate"><span class="pre">most_likely_cloudy</span></code>, while <code class="docutils literal notranslate"><span class="pre">CF_max</span></code> provides an upper bound by including the uncertain pixels labeled <code class="docutils literal notranslate"><span class="pre">probably</span> <span class="pre">cloudy</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">selection</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="n">seg</span><span class="p">[</span><span class="s2">&quot;start&quot;</span><span class="p">],</span> <span class="n">seg</span><span class="p">[</span><span class="s2">&quot;end&quot;</span><span class="p">]))</span>
+
+<span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="s2">&quot;mplstyle/wide&quot;</span><span class="p">):</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+    <span class="n">selection</span><span class="o">.</span><span class="n">CF_min</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;most_likely_cloudy&quot;</span><span class="p">)</span>
+    <span class="n">selection</span><span class="o">.</span><span class="n">CF_max</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;most_likely_cloudy</span><span class="se">\n</span><span class="s2">and probably_cloudy&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">sonde_dt</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C3&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;sonde launch time&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Cloud fraction&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Second circle on February 5&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Cloud mask flags&quot;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/velox_23_0.png" src="_images/velox_23_0.png" />
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "eurec4a/how_to_eurec4a",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="smart.html" title="previous page">SMART dataset</a>
+    <a class='right-next' id="next-link" href="bacardi.html" title="next page">BACARDI dataset</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By EUREC4A community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
