@@ -33,7 +33,7 @@ jobs:
 
   publish:
     needs: build
-    if: "github.event_name == 'push' && github.ref == 'refs/heads/github_publish'"
+    if: "github.event_name == 'push' && github.ref == 'refs/heads/master'"
     runs-on: ubuntu-latest
     steps:
       - name: Download compiled book
