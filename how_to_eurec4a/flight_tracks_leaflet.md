@@ -20,45 +20,30 @@ This notebook shows how to plot the flight tracks of the HALO aircraft. First, w
 First, we'll import pylab and the EUREC4A data catalog.
 
 ```{code-cell} ipython3
-%pylab inline
 import eurec4a
 cat = eurec4a.get_intake_catalog()
 ```
 
-### Restructuring the dataset
-When inspecting the contents of the currently available BAHAMAS quicklook dataset, we see that it does not handle coordinates according to the ideas of [CF conventions](http://cfconventions.org/Data/cf-conventions/cf-conventions-1.8/cf-conventions.html), which makes using the data a lot more difficult.
+### Inspecting the dataset
 
 ```{code-cell} ipython3
-ds = cat.HALO.BAHAMAS.QL['HALO-0122'].to_dask()
+ds = cat.HALO.BAHAMAS.PositionAttitude['HALO-0122'].to_dask()
 ds
-```
-
-In order to fix that a bit, we could come up with a little function which transforms the dataset we get into a dataset we would like to have. Of course the proper way of handling this would be to actually fix the dataset, but this way of doing it may still be illustrative.
-Another advantage of this preparatory step is that amount of data in the dataset can be reduced, such that when we later load the datasets early, less data will be fetched.
-
-```{code-cell} ipython3
-def fix_halo_ql(ds):
-    import xarray as xr
-    ds = ds.rename({"tid":"time"})
-    return xr.Dataset({
-        "time": ds.TIME,
-        "lat": ds.IRS_LAT,
-        "lon": ds.IRS_LON,
-        "alt": ds.IRS_ALT,
-    })
-```
-
-This at least has a `time` coordinate.
-
-```{code-cell} ipython3
-dsfixed = fix_halo_ql(ds)
-dsfixed
 ```
 
 Just to have a better visual impression, we can create a quick overview plot of the data:
 
 ```{code-cell} ipython3
-plt.plot(dsfixed.lon, dsfixed.lat)
+%matplotlib inline
+import numpy as np
+import matplotlib.pyplot as plt
+plt.style.use("./mplstyle/book")
+
+plt.plot(ds.lon, ds.lat)
+center_lat = float(ds.lat.mean())
+plt.gca().set_aspect(1./np.cos(np.deg2rad(center_lat)))
+plt.xlabel("longitude / °")
+plt.ylabel("latitude / °")
 plt.show()
 ```
 
@@ -82,20 +67,29 @@ def simplify_dataset(ds, tolerance):
 We can now use that algorithm to generate a simplified version of the dataset with a tolerance of $10^{-5}$ degrees, which otherwise looks the same to the previous version.
 
 ```{code-cell} ipython3
-dssimplified = simplify_dataset(dsfixed, 1e-5)
+dssimplified = simplify_dataset(ds, 1e-5)
 dssimplified
 ```
 
 We can now compare those two tracks side by side while keeping a look at the number of data points required.
 
 ```{code-cell} ipython3
-fig, (ax1, ax2) = subplots(1, 2, figsize=(15,4))
-ax1.plot(dsfixed.lon, dsfixed.lat)
-ax1.set_title(f"{len(dsfixed.time)} data points")
+fig, (ax1, ax2) = plt.subplots(1, 2)
+ax1.plot(ds.lon, ds.lat)
+ax1.set_title(f"{len(ds.time)} data points")
 ax2.plot(dssimplified.lon, dssimplified.lat)
 ax2.set_title(f"{len(dssimplified.time)} data points")
+
+for ax in (ax1, ax2):
+    ax.set_aspect(1./np.cos(np.deg2rad(center_lat)))
+    ax.set_xlabel("longitude / °")
+    ax.set_ylabel("latitude / °")
+    ax.label_outer()
+
+
 plt.show()
-ratio = len(dssimplified.time) / len(dsfixed.time)
+
+ratio = len(dssimplified.time) / len(ds.time)
 print(f"compression ratio: {ratio*100:.2f} %")
 ```
 
@@ -140,10 +134,10 @@ from multiprocessing.pool import ThreadPool
 pool = ThreadPool(20)
 
 def get_dataset(flight_id):
-    ds = cat.HALO.BAHAMAS.QL[flight_id].to_dask()
-    return flight_id, fix_halo_ql(ds).load()
+    ds = cat.HALO.BAHAMAS.PositionAttitude[flight_id].to_dask()
+    return flight_id, ds.load()
 
-full_tracks = dict(pool.map(get_dataset, cat.HALO.BAHAMAS.QL))
+full_tracks = dict(pool.map(get_dataset, cat.HALO.BAHAMAS.PositionAttitude))
 ```
 
 We still have to simplify the dataset, which is done here:
@@ -156,6 +150,7 @@ tracks = {flight_id: simplify_dataset(ds, 1e-5)
 Let's also quickly grab some colors from a matplotlib colorbar, such that we can show all tracks in individual colors:
 
 ```{code-cell} ipython3
+import matplotlib
 colors = [matplotlib.colors.to_hex(c)
           for c in plt.cm.inferno(np.linspace(0, 1, len(tracks)))]
 ```
