@@ -18,7 +18,8 @@ to measure profiles of ocean temperature. (These are kind of the oceanic equival
 dropsondes but they don't measure salinity.) Often these were dropped around
 other ocean temperature measurements - for example the autonomous
 Surface Wave Instrument Floats with Tracking (SWIFT) buoys deployed from the
-Ron Brown by Elizabeth Thompson of NOAA and her colleagues.
+Ron Brown by Elizabeth Thompson of NOAA and her colleagues. The SWIFT deployment
+is described in {cite}`Quinn:2021`.
 
 Let's take a look at some of the AXBT measurements and how they compare to the
 SWIFTs.
