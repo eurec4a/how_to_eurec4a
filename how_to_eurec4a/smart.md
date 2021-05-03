@@ -17,10 +17,6 @@ The following script exemplifies the access and usage of SMART data measured dur
 
 More information on the dataset can be found in {cite}`Stevens:2019` and {cite}`Wendisch:2001`. If you have questions or if you would like to use the data for a publication, please don't hesitate to get in contact with the dataset authors as stated in the dataset attributes `contact` or `author`.
 
-```{code-cell} ipython3
-%pylab inline
-```
-
 ## Get data
 * To load the data we first load the EUREC4A meta data catalogue. More information on the catalog can be found [here](https://github.com/eurec4a/eurec4a-intake#eurec4a-intake-catalogue).
 
@@ -33,9 +29,11 @@ cat = eurec4a.get_intake_catalog()
 list(cat.HALO.SMART)
 ```
 
-* We can further specify the platform, instrument, if applicable dataset level or variable name, and pass it on to dask.
+* We can further specify a product and a flight and obtain the dataset using `to_dask`.
 
-*Note: have a look at the attributes of the xarray dataset `ds` for all relevant information on the dataset, such as author, contact, or citation infromation.*
+```{note}
+Have a look at the attributes of the xarray dataset `ds_smart` for all relevant information on the dataset, such as author, contact, or citation infromation.
+```
 
 ```{code-cell} ipython3
 ds_smart = cat.HALO.SMART.spectral_irradiances['HALO-0205'].to_dask()
@@ -47,7 +45,11 @@ The available dataset includes irradiances for six selected wavelengths (422nm, 
 First Quickplot of whole flight (one wavelength)
 
 ```{code-cell} ipython3
-ds_smart.F_down_solar_wl_422.plot()
+%matplotlib inline
+import matplotlib.pyplot as plt
+plt.style.use("./mplstyle/book")
+
+ds_smart.F_down_solar_wl_422.plot();
 ```
 
 ## Load HALO flight phase information
@@ -81,14 +83,11 @@ ds_smart_selection = ds_smart.sel(time=slice(seg["start"], seg["end"]))
 We plot the spectral irradiances from different wavelengths measured with SMART during the selected flight segment.
 
 ```{code-cell} ipython3
-mpl.rcParams['font.size'] = 12
-
 fig, ax = plt.subplots()
 wl_list=[422,532,648,858,1238,1638]
 for i in wl_list:
     ds_smart_selection[f'F_down_solar_wl_{i}'].plot(label =f'{i} nm')
 ax.legend()
 ax.set_ylabel('Spectral downward irradiance / Wm$^{-2}$nm$^{-1}$')
-ax.spines['right'].set_visible(False)
-ax.spines['top'].set_visible(False)
+None
 ```

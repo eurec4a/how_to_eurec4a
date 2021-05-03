@@ -27,19 +27,8 @@ The PI during EUREC4A was Michael Schäfer (University Leipzig).
 
 If you have questions or if you would like to use the data for a publication, please don't hesitate to get in contact with the dataset authors as stated in the dataset attributes `contact` or `author`.
 
-*Note: no data available for the transfer flights (first and last) and the first local research flight.*
-
-```{code-cell} ipython3
-%pylab inline
-```
-
-```{code-cell} ipython3
-import eurec4a
-import intake
-import xarray as xr
-
-import matplotlib as mpl
-mpl.rcParams['font.size'] = 12
+```{note}
+No data available for the transfer flights (first and last) and the first local research flight.
 ```
 
 ## Get data
@@ -81,6 +70,8 @@ segments = [{**s,
 (1) we extract the segment ID of the second `circle`
 
 ```{code-cell} ipython3
+import datetime
+
 segments_ordered_by_start_time = list(sorted(segments, key=lambda s: s["start"]))
 circles_Feb05 = [s["segment_id"]
                  for s in segments_ordered_by_start_time
@@ -105,7 +96,7 @@ So far, we only made use of the flight segmentation meta data. The launch time t
 We use again the intake catalog to load the JOANNE dataset and extract the launch time to the selected dropsonde by it's sonde ID.
 
 ```{code-cell} ipython3
-dropsondes = cat.dropsondes.JOANNE.level3.to_dask().load()
+dropsondes = cat.dropsondes.JOANNE.level3.to_dask()
 ```
 
 ```{code-cell} ipython3
@@ -122,6 +113,10 @@ ds_sel = ds.cloud_mask.sel(time=sonde_dt, method="nearest")
 ```
 
 ```{code-cell} ipython3
+%matplotlib inline
+import matplotlib.pyplot as plt
+plt.style.use("./mplstyle/book")
+
 fig, ax = plt.subplots()
 
 cax = ds_sel.plot(ax=ax,
@@ -149,26 +144,21 @@ print(f"Image maximum cloud fraction (most likely and probably cloudy) :{cfmax:.
 We also want to show a time series of cloud fraction and use the segment ID from the second circle to extract and save the segment information to the variable `seg`. We can later use the segments start and end times to select the data in time.
 
 ```{code-cell} ipython3
-seg = {s["segment_id"]: {**s, "flight_id": flight["flight_id"]}
-             for platform in meta.values()
-             for flight in platform.values()
-             for s in flight["segments"]
-            }[second_circle_Feb05]
+seg = segments_by_segment_id[second_circle_Feb05]
 ```
 
 The dataset variable `CF_min` provides a lower bound to cloud fraction estimates based on the cloud mask flag `most_likely_cloudy`, while `CF_max` provides an upper bound by including the uncertain pixels labeled `probably cloudy`.
 
 ```{code-cell} ipython3
-fig, ax = plt.subplots(figsize=(10, 4))
-ds.CF_min.sel(time=slice(seg["start"], seg["end"])).plot(color="k",
-                                                         label="most_likely_cloudy")
-ds.CF_max.sel(time=slice(seg["start"], seg["end"])).plot(color="grey",
-                                                         label="most_likely_cloudy\nand probably_cloudy")
-ax.axvline(sonde_dt, color="C3", label="sonde launch time")
-ax.set_ylim(0, 1)
-ax.set_ylabel("Cloud fraction")
-ax.spines['right'].set_visible(False)
-ax.spines['top'].set_visible(False)
-ax.set_title("Second circle on February 5")
-ax.legend(title="Cloud mask flags", bbox_to_anchor=(1,1), loc="upper left")
+selection = ds.sel(time=slice(seg["start"], seg["end"]))
+
+with plt.style.context("mplstyle/wide"):
+    fig, ax = plt.subplots()
+    selection.CF_min.plot(color="k", label="most_likely_cloudy")
+    selection.CF_max.plot(color="grey", label="most_likely_cloudy\nand probably_cloudy")
+    ax.axvline(sonde_dt, color="C3", label="sonde launch time")
+    ax.set_ylim(0, 1)
+    ax.set_ylabel("Cloud fraction")
+    ax.set_title("Second circle on February 5")
+    ax.legend(title="Cloud mask flags", bbox_to_anchor=(1,1), loc="upper left");
 ```
