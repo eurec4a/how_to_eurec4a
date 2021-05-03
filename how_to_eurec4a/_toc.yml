@@ -3,7 +3,6 @@
 - file: intro
 - file: halo
   sections:
-    - file: dropsondes
     - file: specmacs
     - file: unified
     - file: flight_tracks_leaflet
@@ -22,10 +21,14 @@
 - file: meteor
   sections:
     - file: meteor_cloudradar
+- file: multi_platform_data
+  sections:
+    - file: dropsondes
 - file: toolbox
   sections:
     - file: flight-phase-operations
     - file: show_intake_catalog
     - file: running_locally
     - file: netcdf_datatypes
+- file: references
 - file: stats
