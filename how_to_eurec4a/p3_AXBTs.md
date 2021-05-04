@@ -63,7 +63,8 @@ def add_gridlines(ax):
     # Assigning axes ticks
     xticks = np.arange(-65,0,2.5)
     yticks = np.arange(0,25,2.5)
-    gl = ax.gridlines(crs=ccrs.PlateCarree(), draw_labels=True,linewidth=1, color='black', alpha=0.5, linestyle='dotted')
+    gl = ax.gridlines(crs=ccrs.PlateCarree(), draw_labels=True, linewidth=1,
+                      color='black', alpha=0.5, linestyle='dotted')
     gl.xlocator = mticker.FixedLocator(xticks)
     gl.ylocator = mticker.FixedLocator(yticks)
     gl.xformatter = LONGITUDE_FORMATTER
@@ -108,7 +109,8 @@ on a subset of those dates.
 
 ```{code-cell} ipython3
 axbts = cat.P3.AXBT.Level_3.to_dask()
-axbt_dates = [d for d in flight_dates if d.strftime("%Y-%m-%d") in np.datetime_as_string(axbts.time, unit="D")]
+axbt_dates = [d for d in flight_dates if d.strftime("%Y-%m-%d") in \
+              np.datetime_as_string(axbts.time, unit="D")]
 
 swifts = [cat[s].all.to_dask() for s in list(cat) if "SWIFT" in s]
 #
@@ -153,7 +155,8 @@ for d in swift_dates:
                    alpha=1,color=flight_cols[flight_dates.index(d)],
                    transform=ccrs.PlateCarree(),zorder=7, marker = "p")
 
-plt.legend(ncol=2,loc=(0.0,0.0),fontsize=12,framealpha=0.8,markerscale=1, title="Flight date (MM-DD-2020)")
+plt.legend(ncol=2,loc=(0.0,0.0),fontsize=12,framealpha=0.8,markerscale=1,
+           title="Flight date (MM-DD-2020)")
 ```
 
 On 19 Jan and 3 Feb the AXBTs bracket the SWIFTs; on 23 Jan the SWIFTs are at
@@ -185,12 +188,9 @@ axin.scatter([s.sea_water_temperature.values + 273.15 for s in swifts_1day],
              color="0.25",
              s = 1.5 * plt.rcParams['lines.markersize'] ** 2)
 axbt_1day.temperature.where(axbt_1day.depth < 3).plot.line(y="depth",
-                                                           add_legend=False, yincrease=False, ax = axin)
+                                                           add_legend=False,
+                                                           yincrease=False, ax = axin)
 axin.set_xlabel("Sea water temperature (K)")
 axin.set_ylabel("Depth (m)")
 ax.indicate_inset_zoom(axin)
-```
-
-```{code-cell} ipython3
-
 ```

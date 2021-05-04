@@ -66,7 +66,8 @@ fig, (ax1, ax2) = plt.subplots(nrows=2, sharex = True, figsize = (8.3, 16.6))
 #
 # One time window
 #
-profiles = rhs.sel(time = slice(np.datetime64("2020-01-19T15:36:00"),np.datetime64("2020-01-19T16:07:40")))
+profiles = rhs.sel(time = slice(np.datetime64("2020-01-19T15:36:00"),
+                                np.datetime64("2020-01-19T16:07:40")))
 marker = "."
 ax1.scatter(profiles["rh_p3" ], profiles["press"],
            color=cc.glasbey[3], marker = marker, label = "Hygrometer")
@@ -75,7 +76,8 @@ ax1.scatter(profiles["rh_iso"], profiles["press"],
 #
 # A second time window, shown as squares of roughly the same size
 #
-profiles = rhs.sel(time = slice(np.datetime64("2020-01-19T20:31:12"),np.datetime64("2020-01-19T20:41:16")))
+profiles = rhs.sel(time = slice(np.datetime64("2020-01-19T20:31:12"),
+                                np.datetime64("2020-01-19T20:41:16")))
 marker = "s"
 ax1.scatter(profiles["rh_p3" ], profiles["press"],
            color=cc.glasbey[3], marker = marker, s = .2 * plt.rcParams['lines.markersize']**2)

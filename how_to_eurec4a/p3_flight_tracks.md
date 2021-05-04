@@ -73,7 +73,8 @@ def add_gridlines(ax):
     # Assigning axes ticks
     xticks = np.arange(-65,0,2.5)
     yticks = np.arange(0,25,2.5)
-    gl = ax.gridlines(crs=ccrs.PlateCarree(), draw_labels=True,linewidth=1, color='black', alpha=0.5, linestyle='dotted')
+    gl = ax.gridlines(crs=ccrs.PlateCarree(), draw_labels=True, linewidth=1,
+                      color='black', alpha=0.5, linestyle='dotted')
     gl.xlocator = mticker.FixedLocator(xticks)
     gl.ylocator = mticker.FixedLocator(yticks)
     gl.xformatter = LONGITUDE_FORMATTER
@@ -123,7 +124,8 @@ we'll use the `flight-level` data instead. We'll extract just the position data 
 a separate dataset.
 
 ```{code-cell} ipython3
-flight_level_data = xr.concat([cat.P3.flight_level[d].to_dask() for d in list(cat.P3.flight_level)], dim = "time")
+flight_level_data = xr.concat([cat.P3.flight_level[d].to_dask() for d in list(cat.P3.flight_level)],
+                              dim = "time")
 nav_data = xr.Dataset({
     "time":flight_level_data.time,
     "lat" :flight_level_data.lat,
@@ -146,7 +148,8 @@ for d in flight_dates:
             transform=ccrs.PlateCarree(),zorder=7,
             label="{:02d}-{:02d}".format(d.month, d.day))
 
-plt.legend(ncol=3,loc=(0.0,0.0),fontsize=14,framealpha=0.8,markerscale=5, title="Flight date (MM-DD-2020)")
+plt.legend(ncol=3, loc=(0.0,0.0), fontsize=14, framealpha=0.8, markerscale=5,
+           title="Flight date (MM-DD-2020)")
 ```
 
 Most dropsondes were deployed from regular dodecagons during the first part of the

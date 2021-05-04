@@ -70,7 +70,8 @@ def add_gridlines(ax):
     # Assigning axes ticks
     xticks = np.arange(-65,0,2.5)
     yticks = np.arange(0,25,2.5)
-    gl = ax.gridlines(crs=ccrs.PlateCarree(), draw_labels=True,linewidth=1, color='black', alpha=0.5, linestyle='dotted')
+    gl = ax.gridlines(crs=ccrs.PlateCarree(), draw_labels=True, linewidth=1,
+                      color='black', alpha=0.5, linestyle='dotted')
     gl.xlocator = mticker.FixedLocator(xticks)
     gl.ylocator = mticker.FixedLocator(yticks)
     gl.xformatter = LONGITUDE_FORMATTER
