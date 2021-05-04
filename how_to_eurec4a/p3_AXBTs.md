@@ -76,6 +76,15 @@ def add_gridlines(ax):
     gl.xlabel = {'Latitude'}
 ```
 
+What days did the P-3 fly on? We can find out via the flight segmentation files.
+
+```{code-cell} ipython3
+# On what days did the P-3 fly? These are UTC date
+all_flight_segments = eurec4a.get_flight_segments()
+flight_dates = np.unique([np.datetime64(flight["takeoff"]).astype("datetime64[D]")
+                          for flight in all_flight_segments["P3"].values()])
+```
+
 Now set up colors to code each flight date during the experiment. One could choose
 a categorical palette so the colors were as different from each other as possible.
 Here we'll choose from a continuous set that spans the experiment so days that are
@@ -84,24 +93,18 @@ close in time are also close in color.
 ```{code-cell} ipython3
 :tags: [hide-cell]
 
-# On what days did the P-3 fly? These are UTC.
-flight_dates = [datetime.date(2020, 1, 17),
-                datetime.date(2020, 1, 19),
-                datetime.date(2020, 1, 23),
-                datetime.date(2020, 1, 24),
-                datetime.date(2020, 1, 31),
-                datetime.date(2020, 2,  3),
-                datetime.date(2020, 2,  4),
-                datetime.date(2020, 2,  5),
-                datetime.date(2020, 2,  9),
-                datetime.date(2020, 2, 10),
-                datetime.date(2020, 2, 11)]
+# Like mpl.colors.Normalize but works also with datetime64 objects
+def mk_norm(vmin, vmax):
+    def norm(values):
+        return (values - vmin) / (vmax - vmin)
+    return norm
+norm = mk_norm(np.datetime64("2020-01-15"),
+               np.datetime64("2020-02-15"))
 
 # color map for things coded by flight date
 #   Sample from a 255 color map running from start to end of experiment
-norm = mpl.colors.Normalize(vmin=datetime.date(2020, 1, 15).toordinal(),
-                            vmax=datetime.date(2020, 2, 15).toordinal())
-flight_cols = [mpl.cm.viridis(norm(d.toordinal()), alpha=0.9) for d in flight_dates]  
+def color_of_day(day):
+    return plt.cm.viridis(norm(day), alpha=0.9)
 ```
 
 The P-3 only deployed AXBTs on some flights, and the SWIFT buoys were only deployed
@@ -109,22 +112,25 @@ on a subset of those dates.
 
 ```{code-cell} ipython3
 axbts = cat.P3.AXBT.Level_3.to_dask()
-axbt_dates = [d for d in flight_dates if d.strftime("%Y-%m-%d") in \
-              np.datetime_as_string(axbts.time, unit="D")]
-
 swifts = [cat[s].all.to_dask() for s in list(cat) if "SWIFT" in s]
-#
+axbt_dates = np.intersect1d(np.unique(axbts.time.astype("datetime64[D]").values), 
+                            flight_dates)
+
+swift_candidates = np.unique(np.concatenate([swift.time.astype('datetime64[D]').values 
+                                             for swift in swifts]))
 # Dates with potential SWIFT/P-3 overlap
-#
-swift_dates = [d for d in
-               [datetime.date(2020, 1, 19),
-               datetime.date(2020, 1, 31),
-               datetime.date(2020, 2,  3),
-               datetime.date(2020, 2,  4),
-               datetime.date(2020, 2,  5),
-               datetime.date(2020, 2,  9),
-               datetime.date(2020, 2, 10)]
-               if d in axbt_dates]
+swift_dates = np.intersect1d(swift_candidates, axbt_dates)
+```
+
+For plotting purposes it'll be handy to define a one-day time window and to convert between date/time formats
+
+```{code-cell} ipython3
+one_day = np.timedelta64(1, "D")
+
+def to_datetime(dt64):
+    epoch = np.datetime64("1970-01-01")
+    second = np.timedelta64(1, "s")
+    return datetime.datetime.utcfromtimestamp((dt64 - epoch) / second)
 ```
 
 Now we can make a map that shows where the AXBTs were deployed and where the SWIFTs
@@ -139,21 +145,22 @@ add_gridlines(ax)
 # AXBT locations
 #
 for d in axbt_dates:
-    flight = axbts.sel(time=d.strftime("%Y-%m-%d"))
-    ax.scatter(flight.lon,flight.lat,
-               alpha=0.5,color=flight_cols[flight_dates.index(d)],
-               transform=ccrs.PlateCarree(),zorder=7,
-               label="{:02d}-{:02d}".format(d.month, d.day))
+    flight = axbts.sel(time=slice(d, d + one_day))
+    ax.scatter(flight.lon, flight.lat,
+               lw=2, alpha=0.5, color=color_of_day(d),
+               transform=ccrs.PlateCarree(), zorder=7,
+               label=f"{to_datetime(d):%m-%d}")
+
 #
 # SWIFT locations on selected dates (where there's overlap)
 #
 for d in swift_dates:
-    flight = axbts.sel(time=d.strftime("%Y-%m-%d"))
+    flight = axbts.sel(time=slice(d, d + one_day))
     for swift in swifts:
         drift = swift.sel(time = flight.time.mean(), method = "nearest")
-        ax.scatter(drift.lon,drift.lat,
-                   alpha=1,color=flight_cols[flight_dates.index(d)],
-                   transform=ccrs.PlateCarree(),zorder=7, marker = "p")
+        ax.scatter(drift.lon, drift.lat,
+                   alpha=1, color=color_of_day(d),
+                   transform=ccrs.PlateCarree(), zorder=7, marker = "p")
 
 plt.legend(ncol=2,loc=(0.0,0.0),fontsize=12,framealpha=0.8,markerscale=1,
            title="Flight date (MM-DD-2020)")
@@ -168,7 +175,8 @@ and compare the near-surface temperatures to the SWIFTs they are surrounding.
 
 ```{code-cell} ipython3
 fig, ax = plt.subplots(figsize=[8.3, 9.4])
-axbt_1day   = axbts.sel(time="2020-01-19")
+d = np.datetime64("2020-01-19")
+axbt_1day   = axbts.sel(time=slice(d, d + one_day))
 # Swift data at mean of AXBT times
 swifts_1day = [s.sel(time = axbt_1day.time.mean(), method = "nearest") for s in swifts]
 

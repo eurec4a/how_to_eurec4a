@@ -86,6 +86,14 @@ def add_gridlines(ax):
     gl.xlabel = {'Latitude'}
 ```
 
+What days did the P-3 fly on? We can find out via the flight segmentation files.
+
+```{code-cell} ipython3
+# On what days did the P-3 fly? These are UTC date
+all_flight_segments = eurec4a.get_flight_segments()
+flight_dates = np.unique([np.datetime64(flight["takeoff"]).astype("datetime64[D]")
+                          for flight in all_flight_segments["P3"].values()])
+```
 Now set up colors to code each flight date during the experiment. One could choose
 a categorical palette so the colors were as different from each other as possible.
 Here we'll choose from a continuous set that spans the experiment so days that are
@@ -93,30 +101,29 @@ close in time are also close in color.
 
 ```{code-cell} ipython3
 :tags: [hide-cell]
+# Like mpl.colors.Normalize but works also with datetime64 objects
+def mk_norm(vmin, vmax):
+    def norm(values):
+        return (values - vmin) / (vmax - vmin)
+    return norm
+norm = mk_norm(np.datetime64("2020-01-15"),
+               np.datetime64("2020-02-15"))
+
+# color map for things coded by flight date
+#   Sample from a 255 color map running from start to end of experiment
+def color_of_day(day):
+    return plt.cm.viridis(norm(day), alpha=0.9)
+```
+
+For plotting purposes it'll be handy to define a one-day time window and to convert between date/time formats
+
+```{code-cell} ipython3
+one_day = np.timedelta64(1, "D")
 
 def to_datetime(dt64):
     epoch = np.datetime64("1970-01-01")
     second = np.timedelta64(1, "s")
     return datetime.datetime.utcfromtimestamp((dt64 - epoch) / second)
-
-# On what days did the P-3 fly? These are UTC.
-flight_dates = [datetime.date(2020, 1, 17),
-                datetime.date(2020, 1, 19),
-                datetime.date(2020, 1, 23),
-                datetime.date(2020, 1, 24),
-                datetime.date(2020, 1, 31),
-                datetime.date(2020, 2,  3),
-                datetime.date(2020, 2,  4),
-                datetime.date(2020, 2,  5),
-                datetime.date(2020, 2,  9),
-                datetime.date(2020, 2, 10),
-                datetime.date(2020, 2, 11)]
-
-# color map for things coded by flight date
-#   Sample from a 255 color map running from start to end of experiment
-norm = mpl.colors.Normalize(vmin=datetime.date(2020, 1, 15).toordinal(),
-                            vmax=datetime.date(2020, 2, 15).toordinal())
-flight_cols = [mpl.cm.viridis(norm(d.toordinal()), alpha=0.9) for d in flight_dates]  
 ```
 
 Most platforms available from the EUREC4A `intake` catalog have a `tracks` element but
@@ -137,16 +144,15 @@ A map showing each of the eleven flight tracks:
 
 ```{code-cell} ipython3
 fig = plt.figure(figsize = (12,13.6))
-
 ax  = set_up_map(plt)
 add_gridlines(ax)
 
 for d in flight_dates:
-    flight = nav_data.sel(time=d.strftime("%Y-%m-%d"))
-    ax.plot(flight.lon,flight.lat,
-            lw=2,alpha=0.5,c=flight_cols[flight_dates.index(d)],
-            transform=ccrs.PlateCarree(),zorder=7,
-            label="{:02d}-{:02d}".format(d.month, d.day))
+    flight = nav_data.sel(time=slice(d, d + one_day))
+    ax.plot(flight.lon, flight.lat,
+            lw=2, alpha=0.5, c=color_of_day(d),
+            transform=ccrs.PlateCarree(), zorder=7,
+            label=f"{to_datetime(d):%m-%d}")
 
 plt.legend(ncol=3, loc=(0.0,0.0), fontsize=14, framealpha=0.8, markerscale=5,
            title="Flight date (MM-DD-2020)")
@@ -169,12 +175,11 @@ fig = plt.figure(figsize = (8.3,5))
 ax = plt.axes()
 
 for d in flight_dates:
-    flight = nav_data.sel(time=d.strftime("%Y-%m-%d"))
+    flight = nav_data.sel(time=slice(d, d + one_day))
     flight = flight.where(flight.alt > 80, drop=True) # Proxy for take-off time
-    plt.plot((flight.time - flight.time.min()).astype('timedelta64[s]'), flight.alt/1000.,
-             lw=2,alpha=0.5,c=flight_cols[flight_dates.index(d)],
-             label="{:02d}-{:02d}".format(d.month, d.day))
-
+    plt.plot(flight.time - flight.time.min(), flight.alt/1000.,
+             lw=2, alpha=0.5, c=color_of_day(d),
+             label=f"{to_datetime(d):%m-%d}")
 
 plt.xticks(np.arange(10) * 3600 * 1e9, labels = np.arange(10))
 ax.set_xlabel("Time after flight start (h)")
