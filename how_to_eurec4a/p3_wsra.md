@@ -3,8 +3,8 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
-    format_version: 0.12
-    jupytext_version: 1.7.1
+    format_version: 0.13
+    jupytext_version: 1.11.2
 kernelspec:
   display_name: Python 3
   language: python
@@ -29,10 +29,13 @@ we won't look at those here.
 The data are available through the EUREC4A intake catalog.
 
 ```{code-cell} ipython3
+import xarray as xr
+import numpy as np
+
 import matplotlib.pyplot as plt
-import seaborn as sns
+plt.style.use(["./mplstyle/book"])
 import colorcet as cc
-%pylab inline
+%matplotlib inline
 
 import eurec4a
 cat = eurec4a.get_intake_catalog()
@@ -41,9 +44,8 @@ cat = eurec4a.get_intake_catalog()
 Mapping takes quite some setup. Maybe this should become part of the `eurec4a` Python module.
 
 ```{code-cell} ipython3
----
-tags: [hide-cell]
----
+:tags: [hide-cell]
+
 import matplotlib.ticker as mticker
 
 import cartopy.crs as ccrs
@@ -87,6 +89,7 @@ observations.
 ```{code-cell} ipython3
 wsra_example = cat.P3.wsra["P3-0119"].to_dask().sel(trajectory=slice(0,293))
 ```
+
 Now it's interesting to see how the wave slope (top panel) and the wave height (bottom)
 vary spatially on a given day.
 
@@ -117,6 +120,4 @@ pts = ax2.scatter(wsra_example.longitude,wsra_example.latitude,
            alpha=0.5,
            transform=ccrs.PlateCarree(),zorder=7)
 fig.colorbar(pts, ax=ax2, shrink=0.75, aspect=10, label="Significant Wave Height (m)")
-
-plt.tight_layout()
 ```

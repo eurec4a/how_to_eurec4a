@@ -3,8 +3,8 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
-    format_version: 0.12
-    jupytext_version: 1.7.1
+    format_version: 0.13
+    jupytext_version: 1.11.2
 kernelspec:
   display_name: Python 3
   language: python
@@ -23,10 +23,11 @@ and thermodynamic state of the boundary layer; and offset straight flight legs f
 observing clouds and the ocean surface with remote sensing instruments and the
 thermal structure of the ocean with _in situ_ sensors dropped from the plane.
 
-As a result of this varied sampling the flight tracks are much more variable
+As a result of this diverse sampling the flight tracks are much more variable
 then for most of the other aircraft.
 
 General setup:
+
 ```{code-cell} ipython3
 import xarray as xr
 import numpy as np
@@ -35,10 +36,10 @@ import datetime
 # Related to plotting
 #
 import matplotlib.pyplot as plt
-import seaborn as sns
-import colorcet as cc
+plt.style.use(["./mplstyle/book"])
 %matplotlib inline
 ```
+
 Now access the flight track data.
 
 ```{code-cell} ipython3
@@ -49,9 +50,8 @@ cat = eurec4a.get_intake_catalog()
 Mapping takes quite some setup. Maybe this should become part of the `eurec4a` Python module.
 
 ```{code-cell} ipython3
----
-tags: [hide-cell]
----
+:tags: [hide-cell]
+
 import matplotlib as mpl
 import matplotlib.ticker as mticker
 
@@ -84,15 +84,15 @@ def add_gridlines(ax):
     gl.bottom_labels = False
     gl.xlabel = {'Latitude'}
 ```
+
 Now set up colors to code each flight date during the experiment. One could choose
 a categorical palette so the colors were as different from each other as possible.
 Here we'll choose from a continuous set that spans the experiment so days that are
 close in time are also close in color.
 
 ```{code-cell} ipython3
----
-tags: [hide-cell]
----
+:tags: [hide-cell]
+
 def to_datetime(dt64):
     epoch = np.datetime64("1970-01-01")
     second = np.timedelta64(1, "s")
@@ -115,9 +115,9 @@ flight_dates = [datetime.date(2020, 1, 17),
 #   Sample from a 255 color map running from start to end of experiment
 norm = mpl.colors.Normalize(vmin=datetime.date(2020, 1, 15).toordinal(),
                             vmax=datetime.date(2020, 2, 15).toordinal())
-flight_cols = [cc.m_bmy(norm(d.toordinal()), alpha=0.9) for d in flight_dates]  
 flight_cols = [mpl.cm.viridis(norm(d.toordinal()), alpha=0.9) for d in flight_dates]  
 ```
+
 Most platforms available from the EUREC4A `intake` catalog have a `tracks` element but
 we'll use the `flight-level` data instead. We'll extract just the position data in
 a separate dataset.
@@ -130,6 +130,7 @@ nav_data = xr.Dataset({
     "lon" :flight_level_data.lon,
     "alt" :flight_level_data.alt})
 ```
+
 A map showing each of the eleven flight tracks:
 
 ```{code-cell} ipython3
@@ -146,7 +147,6 @@ for d in flight_dates:
             label="{:02d}-{:02d}".format(d.month, d.day))
 
 plt.legend(ncol=3,loc=(0.0,0.0),fontsize=14,framealpha=0.8,markerscale=5, title="Flight date (MM-DD-2020)")
-fig.tight_layout()    
 ```
 
 Most dropsondes were deployed from regular dodecagons during the first part of the
@@ -176,9 +176,8 @@ for d in flight_dates:
 plt.xticks(np.arange(10) * 3600 * 1e9, labels = np.arange(10))
 ax.set_xlabel("Time after flight start (h)")
 ax.set_ylabel("Aircraft altitude (km)")
-sns.despine()
-plt.tight_layout()
 ```
+
 Sondes were dropped from the P-3 at about 7.5 km, with each circle taking roughly an hour;
 transits were frequently performed at this level  to conserve fuel. Long intervals
 near 3 km altitude were used to deploy AXBTs and/or characterize the ocean surface

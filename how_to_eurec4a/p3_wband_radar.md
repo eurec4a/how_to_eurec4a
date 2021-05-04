@@ -3,8 +3,8 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
-    format_version: 0.12
-    jupytext_version: 1.7.1
+    format_version: 0.13
+    jupytext_version: 1.11.2
 kernelspec:
   display_name: Python 3
   language: python
@@ -14,7 +14,7 @@ kernelspec:
 # W-band radar example
 
  During EUREC4A and ATOMIC NOAA deployed W-band (94 GHz) radars on both the P-3 aircraft
- and the ship Ron Brown. The airborne radar was operated with 220 30 meter range gates
+ and the ship Ron Brown. The airborne radar was operated with 220 30-meter range gates
  with a dwell time of 0.5 seconds. The minimum detectable reflectivity of -36 dBZ at a range of
  1 km although accurate estimates of Doppler properties require about -30 dBZ at 1 km.
 
@@ -24,13 +24,13 @@ The data are available through the EUREC4A intake catalog.
 import datetime
 
 import matplotlib.pyplot as plt
-import seaborn as sns
 import colorcet as cc
 %matplotlib inline
 
 import eurec4a
 cat = eurec4a.get_intake_catalog()
 ```
+
 We'll select an hour's worth of observations from a single flight day, and mask
 out any observations with signal-to-noise ratio less than -10 dB.
 
@@ -43,6 +43,7 @@ cloud_params = cat.P3.remote_sensing['P3-0119'].to_dask().sel(time=time_slice)
 w_band         = cat.P3.w_band_radar['P3-0119'].to_dask().sel(time=time_slice, height=slice(0,3))
 w_band         = w_band.where(w_band.snr > -10)
 ```
+
 The three main quantities measured by the radar are the reflectivity, the Doppler
 velocity, and the spectral width.
 
@@ -74,5 +75,4 @@ for ax in axes[0:2]:
     ax.xaxis.set_visible(False)
 
 fig.subplots_adjust(bottom = 0)
-
 ```

@@ -3,8 +3,8 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
-    format_version: 0.12
-    jupytext_version: 1.7.1
+    format_version: 0.13
+    jupytext_version: 1.11.2
 kernelspec:
   display_name: Python 3
   language: python
@@ -25,7 +25,7 @@ import xarray as xr
 import numpy as np
 
 import matplotlib.pyplot as plt
-import seaborn as sns
+plt.style.use(["./mplstyle/book"])
 import colorcet as cc
 %matplotlib inline
 
@@ -99,7 +99,4 @@ ax2.plot([0,102], [0,102], 'k-', color = 'black')
 ax2.set_xlim(0, 102)
 ax2.set_xlabel("Hygrometer relative humidity (%)")
 ax2.set_ylabel("Picarro relative humidity (%)")
-
-sns.despine()
-plt.tight_layout()
 ```

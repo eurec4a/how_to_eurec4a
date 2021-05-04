@@ -3,8 +3,8 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
-    format_version: 0.12
-    jupytext_version: 1.7.1
+    format_version: 0.13
+    jupytext_version: 1.11.2
 kernelspec:
   display_name: Python 3
   language: python
@@ -30,19 +30,18 @@ import numpy as np
 import datetime
 
 import matplotlib.pyplot as plt
-import seaborn as sns
-import colorcet as cc
+plt.style.use(["./mplstyle/book"])
 %matplotlib inline
 
 import eurec4a
 cat = eurec4a.get_intake_catalog()
 ```
+
 Mapping takes quite some setup. Maybe this should become part of the `eurec4a` Python module.
 
 ```{code-cell} ipython3
----
-tags: [hide-cell]
----
+:tags: [hide-cell]
+
 import matplotlib as mpl
 import matplotlib.ticker as mticker
 
@@ -75,15 +74,15 @@ def add_gridlines(ax):
     gl.bottom_labels = False
     gl.xlabel = {'Latitude'}
 ```
+
 Now set up colors to code each flight date during the experiment. One could choose
 a categorical palette so the colors were as different from each other as possible.
 Here we'll choose from a continuous set that spans the experiment so days that are
 close in time are also close in color.
 
 ```{code-cell} ipython3
----
-tags: [hide-cell]
----
+:tags: [hide-cell]
+
 # On what days did the P-3 fly? These are UTC.
 flight_dates = [datetime.date(2020, 1, 17),
                 datetime.date(2020, 1, 19),
@@ -101,9 +100,9 @@ flight_dates = [datetime.date(2020, 1, 17),
 #   Sample from a 255 color map running from start to end of experiment
 norm = mpl.colors.Normalize(vmin=datetime.date(2020, 1, 15).toordinal(),
                             vmax=datetime.date(2020, 2, 15).toordinal())
-flight_cols = [cc.m_bmy(norm(d.toordinal()), alpha=0.9) for d in flight_dates]  
 flight_cols = [mpl.cm.viridis(norm(d.toordinal()), alpha=0.9) for d in flight_dates]  
 ```
+
 The P-3 only deployed AXBTs on some flights, and the SWIFT buoys were only deployed
 on a subset of those dates.
 
@@ -125,6 +124,7 @@ swift_dates = [d for d in
                datetime.date(2020, 2, 10)]
                if d in axbt_dates]
 ```
+
 Now we can make a map that shows where the AXBTs were deployed and where the SWIFTs
 were on days there the two platforms overlapped
 
@@ -154,8 +154,8 @@ for d in swift_dates:
                    transform=ccrs.PlateCarree(),zorder=7, marker = "p")
 
 plt.legend(ncol=2,loc=(0.0,0.0),fontsize=12,framealpha=0.8,markerscale=1, title="Flight date (MM-DD-2020)")
-plt.tight_layout()
 ```
+
 On 19 Jan and 3 Feb the AXBTs bracket the SWIFTs; on 23 Jan the SWIFTs are at
 the southern end of the AXBT pattern.
 
@@ -173,7 +173,6 @@ axbt_1day.temperature.where(axbt_1day.depth < 150).plot.line(y="depth",
                                                              add_legend=False, yincrease=False)
 ax.set_xlabel("Sea water temperature (K)")
 ax.set_ylabel("Depth (m)")
-sns.despine()
 
 #
 # Inset plot! https://matplotlib.org/3.1.1/gallery/subplots_axes_and_figures/zoom_inset_axes.html
@@ -189,8 +188,9 @@ axbt_1day.temperature.where(axbt_1day.depth < 3).plot.line(y="depth",
                                                            add_legend=False, yincrease=False, ax = axin)
 axin.set_xlabel("Sea water temperature (K)")
 axin.set_ylabel("Depth (m)")
-sns.despine(ax=axin)
 ax.indicate_inset_zoom(axin)
+```
 
-plt.tight_layout()
+```{code-cell} ipython3
+
 ```
