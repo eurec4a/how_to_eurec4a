@@ -55,7 +55,7 @@ following a rapid rise in environmental water vapor concentration) and ringing
 water vapor concentration.
 
 Here are two figures to illustrate the problem and shows why you'd want to use the
-water vapor measurements from the isotope analyzer then they're available. The top
+water vapor measurements from the isotope analyzer when they're available. The top
 panel combines data from two profiles and shows large excursions in the water vapor
 measured by the hygrometer. The lower panel shows that most measurements agree
 well but it's clear that it's better to use the the isotope analyzer measurements of

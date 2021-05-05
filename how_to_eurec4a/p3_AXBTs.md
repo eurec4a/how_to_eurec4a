@@ -37,7 +37,8 @@ import eurec4a
 cat = eurec4a.get_intake_catalog()
 ```
 
-Mapping takes quite some setup. Maybe this should become part of the `eurec4a` Python module.
+Mapping takes quite some setup. Maybe we'll encapsulate this later but for now we repeat code
+in each notebook.
 
 ```{code-cell} ipython3
 :tags: [hide-cell]
@@ -102,7 +103,7 @@ norm = mk_norm(np.datetime64("2020-01-15"),
                np.datetime64("2020-02-15"))
 
 # color map for things coded by flight date
-#   Sample from a 255 color map running from start to end of experiment
+#   Sample from a continuous color map running from start to end of experiment
 def color_of_day(day):
     return plt.cm.viridis(norm(day), alpha=0.9)
 ```
@@ -113,10 +114,10 @@ on a subset of those dates.
 ```{code-cell} ipython3
 axbts = cat.P3.AXBT.Level_3.to_dask()
 swifts = [cat[s].all.to_dask() for s in list(cat) if "SWIFT" in s]
-axbt_dates = np.intersect1d(np.unique(axbts.time.astype("datetime64[D]").values), 
+axbt_dates = np.intersect1d(np.unique(axbts.time.astype("datetime64[D]").values),
                             flight_dates)
 
-swift_candidates = np.unique(np.concatenate([swift.time.astype('datetime64[D]').values 
+swift_candidates = np.unique(np.concatenate([swift.time.astype('datetime64[D]').values
                                              for swift in swifts]))
 # Dates with potential SWIFT/P-3 overlap
 swift_dates = np.intersect1d(swift_candidates, axbt_dates)

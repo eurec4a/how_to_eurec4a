@@ -47,7 +47,8 @@ import eurec4a
 cat = eurec4a.get_intake_catalog()
 ```
 
-Mapping takes quite some setup. Maybe this should become part of the `eurec4a` Python module.
+Mapping takes quite some setup. Maybe we'll encapsulate this later but for now we repeat code
+in each notebook.
 
 ```{code-cell} ipython3
 :tags: [hide-cell]
@@ -94,6 +95,7 @@ all_flight_segments = eurec4a.get_flight_segments()
 flight_dates = np.unique([np.datetime64(flight["takeoff"]).astype("datetime64[D]")
                           for flight in all_flight_segments["P3"].values()])
 ```
+
 Now set up colors to code each flight date during the experiment. One could choose
 a categorical palette so the colors were as different from each other as possible.
 Here we'll choose from a continuous set that spans the experiment so days that are
@@ -101,6 +103,7 @@ close in time are also close in color.
 
 ```{code-cell} ipython3
 :tags: [hide-cell]
+
 # Like mpl.colors.Normalize but works also with datetime64 objects
 def mk_norm(vmin, vmax):
     def norm(values):
@@ -110,7 +113,7 @@ norm = mk_norm(np.datetime64("2020-01-15"),
                np.datetime64("2020-02-15"))
 
 # color map for things coded by flight date
-#   Sample from a 255 color map running from start to end of experiment
+#   Sample from a continuous color map running from start to end of experiment
 def color_of_day(day):
     return plt.cm.viridis(norm(day), alpha=0.9)
 ```
@@ -127,17 +130,12 @@ def to_datetime(dt64):
 ```
 
 Most platforms available from the EUREC4A `intake` catalog have a `tracks` element but
-we'll use the `flight-level` data instead. We'll extract just the position data in
-a separate dataset.
+we'll use the `flight-level` data instead. We're using `xr.concat()` with one `dask` array per day
+to avoid loading the whole dataset into memory at once.
 
 ```{code-cell} ipython3
-flight_level_data = xr.concat([cat.P3.flight_level[d].to_dask() for d in list(cat.P3.flight_level)],
-                              dim = "time")
-nav_data = xr.Dataset({
-    "time":flight_level_data.time,
-    "lat" :flight_level_data.lat,
-    "lon" :flight_level_data.lon,
-    "alt" :flight_level_data.alt})
+nav_data = xr.concat([entry.to_dask().chunk() for entry in cat.P3.flight_level.values()],
+                     dim = "time")
 ```
 
 A map showing each of the eleven flight tracks:

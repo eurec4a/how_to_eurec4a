@@ -41,7 +41,8 @@ import eurec4a
 cat = eurec4a.get_intake_catalog()
 ```
 
-Mapping takes quite some setup. Maybe this should become part of the `eurec4a` Python module.
+Mapping takes quite some setup. Maybe we'll encapsulate this later but for now we repeat code
+in each notebook.
 
 ```{code-cell} ipython3
 :tags: [hide-cell]
@@ -52,19 +53,16 @@ import cartopy.crs as ccrs
 from   cartopy.feature import LAND
 from   cartopy.mpl.gridliner import LONGITUDE_FORMATTER, LATITUDE_FORMATTER
 
-def set_up_map(plt, lon_w = -60.5, lon_e = -49, lat_s = 10, lat_n = 16.5):
-    ax  = plt.axes(projection=ccrs.PlateCarree())
-    # Defining boundaries of the plot
-    ax.set_extent([lon_w,lon_e,lat_s,lat_n]) # lon west, lon east, lat south, lat north
-    ax.coastlines(resolution='10m',linewidth=1.5,zorder=1);
-    ax.add_feature(LAND,facecolor='0.9')
-    return(ax)
-
 def ax_to_map(ax, lon_w = -60.5, lon_e = -49, lat_s = 10, lat_n = 16.5):
     # Defining boundaries of the plot
     ax.set_extent([lon_w,lon_e,lat_s,lat_n]) # lon west, lon east, lat south, lat north
     ax.coastlines(resolution='10m',linewidth=1.5,zorder=1);
     ax.add_feature(LAND,facecolor='0.9')
+
+def set_up_map(plt, lon_w = -60.5, lon_e = -49, lat_s = 10, lat_n = 16.5):
+    ax = plt.axes(projection=ccrs.PlateCarree())
+    ax_to_map(ax, lon_w, lon_e, lat_s, lat_n)
+    return(ax)
 
 def add_gridlines(ax):
     # Assigning axes ticks
@@ -95,7 +93,8 @@ Now it's interesting to see how the wave slope (top panel) and the wave height (
 vary spatially on a given day.
 
 ```{code-cell} ipython3
-fig, (ax1, ax2) = plt.subplots(nrows=2, sharex = True, figsize = (12,8), subplot_kw={'projection': ccrs.PlateCarree()})
+fig, (ax1, ax2) = plt.subplots(nrows=2, sharex = True, figsize = (12,8), 
+                               subplot_kw={'projection': ccrs.PlateCarree()})
 
 #
 # Mean square slope
