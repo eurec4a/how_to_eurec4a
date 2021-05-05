@@ -23,6 +23,6 @@ html:
   use_edit_page_button      : true
 execute:
   execute_notebooks         : force
-  timeout: 150
+  timeout: 300
 bibtex_reference_style      : author_year
 bibtex_bibfiles             : references.bib
