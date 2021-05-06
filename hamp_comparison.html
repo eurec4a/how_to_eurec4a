@@ -55,7 +55,7 @@
     <link rel="shortcut icon" href="_static/logo_pyeurec4a.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Meteor" href="meteor.html" />
+    <link rel="next" title="Cloud masks" href="cloudmasks.html" />
     <link rel="prev" title="WALES Lidar" href="wales.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -142,6 +142,11 @@
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      HAMP comparison
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cloudmasks.html">
+     Cloud masks
     </a>
    </li>
   </ul>
@@ -503,9 +508,9 @@ Another application of the HAMP data is included in the chapter <a class="refere
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">radar_cm</span><span class="o">.</span><span class="n">cloud_mask</span><span class="o">.</span><span class="n">flag_values</span> <span class="o">==</span> <span class="n">radiometer_cm</span><span class="o">.</span><span class="n">cloud_mask</span><span class="o">.</span><span class="n">flag_values</span><span class="p">)</span>
-<span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">radar_cm</span><span class="o">.</span><span class="n">cloud_mask</span><span class="o">.</span><span class="n">flag_values</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">==</span> <span class="n">wales</span><span class="o">.</span><span class="n">cloud_mask</span><span class="o">.</span><span class="n">flag_values</span><span class="p">)</span>
-<span class="k">assert</span> <span class="n">radar_cm</span><span class="o">.</span><span class="n">cloud_mask</span><span class="o">.</span><span class="n">flag_meanings</span> <span class="o">==</span> <span class="s1">&#39;unknown no_cloud_detectable probably_cloudy most_likely_cloudy&#39;</span>
-<span class="k">assert</span> <span class="n">radiometer_cm</span><span class="o">.</span><span class="n">cloud_mask</span><span class="o">.</span><span class="n">flag_meanings</span> <span class="o">==</span> <span class="s1">&#39;unknown no_cloud_detectable probably_cloudy most_likely_cloudy&#39;</span>
+<span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">radar_cm</span><span class="o">.</span><span class="n">cloud_mask</span><span class="o">.</span><span class="n">flag_values</span> <span class="o">==</span> <span class="n">wales</span><span class="o">.</span><span class="n">cloud_mask</span><span class="o">.</span><span class="n">flag_values</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">radar_cm</span><span class="o">.</span><span class="n">cloud_mask</span><span class="o">.</span><span class="n">flag_meanings</span> <span class="o">==</span> <span class="s1">&#39;no_cloud_detectable probably_cloudy most_likely_cloudy&#39;</span>
+<span class="k">assert</span> <span class="n">radiometer_cm</span><span class="o">.</span><span class="n">cloud_mask</span><span class="o">.</span><span class="n">flag_meanings</span> <span class="o">==</span> <span class="s1">&#39;no_cloud_detectable probably_cloudy most_likely_cloudy&#39;</span>
 <span class="k">assert</span> <span class="n">wales</span><span class="o">.</span><span class="n">cloud_mask</span><span class="o">.</span><span class="n">flag_meanings</span> <span class="o">==</span> <span class="s1">&#39;cloud_free probably_cloudy most_likely_cloudy&#39;</span>
 </pre></div>
 </div>
@@ -540,7 +545,7 @@ Another application of the HAMP data is included in the chapter <a class="refere
 
 <span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax3</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax1</span><span class="p">,</span> <span class="n">ax</span><span class="p">,)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span>
     <span class="n">nrows</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">gridspec_kw</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">height_ratios</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">.</span><span class="mi">75</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]),</span>
+    <span class="n">gridspec_kw</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">height_ratios</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">.75</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]),</span>
 <span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wales</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">wales</span><span class="o">.</span><span class="n">cloud_mask</span> <span class="o">+</span> <span class="mf">0.2</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;WALES&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
@@ -627,7 +632,7 @@ Another application of the HAMP data is included in the chapter <a class="refere
         <div class='prev-next-bottom'>
             
     <a class='left-prev' id="prev-link" href="wales.html" title="previous page">WALES Lidar</a>
-    <a class='right-next' id="next-link" href="meteor.html" title="next page">Meteor</a>
+    <a class='right-next' id="next-link" href="cloudmasks.html" title="next page">Cloud masks</a>
 
         </div>
         

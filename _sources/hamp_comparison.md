@@ -147,9 +147,9 @@ Ideally, we'd be handling the cloud flag meanings properly, but for now, let's j
 
 ```{code-cell} ipython3
 assert np.all(radar_cm.cloud_mask.flag_values == radiometer_cm.cloud_mask.flag_values)
-assert np.all(radar_cm.cloud_mask.flag_values[1:] == wales.cloud_mask.flag_values)
-assert radar_cm.cloud_mask.flag_meanings == 'unknown no_cloud_detectable probably_cloudy most_likely_cloudy'
-assert radiometer_cm.cloud_mask.flag_meanings == 'unknown no_cloud_detectable probably_cloudy most_likely_cloudy'
+assert np.all(radar_cm.cloud_mask.flag_values == wales.cloud_mask.flag_values)
+assert radar_cm.cloud_mask.flag_meanings == 'no_cloud_detectable probably_cloudy most_likely_cloudy'
+assert radiometer_cm.cloud_mask.flag_meanings == 'no_cloud_detectable probably_cloudy most_likely_cloudy'
 assert wales.cloud_mask.flag_meanings == 'cloud_free probably_cloudy most_likely_cloudy'
 ```
 
