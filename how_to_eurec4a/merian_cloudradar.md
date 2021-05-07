@@ -69,7 +69,7 @@ To work on a specific day, please provide the date as input in the form "yyyy-mm
 print('select the date and read the dataset')
 date = '2020-01-27 13:00' # <--- provide the date here 
 ds = cat['MS-Merian']['FMCW94_RPG'].motion_corrected(date=date).to_dask()
-print(ds)
+ds
 ```
 
 ### Plot some radar quantities
