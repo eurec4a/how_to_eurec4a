@@ -96,11 +96,11 @@ ds_sliced = ds.sel(time=slice(time_min, time_max))
 fig, ax = plt.subplots(figsize=(12, 6))
 # set here the variable from ds to plot, its color map and its min and max values
 ds_sliced.mean_doppler_velocity.plot(x='time', y='height', cmap="seismic", vmin=-10., vmax=10.)
-plt.ylim(0, 4500)
 ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)
 ax.set_title("Mean doppler velocity for : "+date)
 ax.set_xlim(time_min, time_max)
+ax.set_ylim(0, 4500)
 #plt.xlim('2020-01-19 20:00', '2020-01-19 21:00')
 ```
 
