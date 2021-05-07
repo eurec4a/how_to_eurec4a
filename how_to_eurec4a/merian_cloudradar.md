@@ -28,13 +28,11 @@ A [**quicklook browser**](https://bit.ly/2QpsAzh) is helping you to pick the cas
 The python code below allows you to browse through the days avaiable
 
 ```{code-cell} ipython3
-import intake
 from datetime import datetime
 import matplotlib.pyplot as plt
 import numpy as np
-
-path_to_catalog = 'https://raw.githubusercontent.com/eurec4a/eurec4a-intake/master/catalog.yml'
-cat = intake.open_catalog(path_to_catalog)
+import eurec4a
+cat = eurec4a.get_intake_catalog()
 ```
 
 ### Getting the data from the MS-Merian ship
