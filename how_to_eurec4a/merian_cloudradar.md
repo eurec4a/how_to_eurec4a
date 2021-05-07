@@ -101,7 +101,6 @@ ax.spines['top'].set_visible(False)
 ax.set_title("Mean doppler velocity for : "+date)
 ax.set_xlim(time_min, time_max)
 ax.set_ylim(0, 4500)
-#plt.xlim('2020-01-19 20:00', '2020-01-19 21:00')
 ```
 
 ### Check corresponding merian position in the selected hour
