@@ -11,6 +11,7 @@
     - file: bacardi
     - file: wales
     - file: hamp_comparison
+    - file: cloudmasks
 - file: pthree
   sections:
     - file: p3_flight_tracks
