@@ -105,7 +105,7 @@ ax.set_ylim(0, 4500)
 ```
 
 ### Check corresponding merian position in the selected hour
-We use the function track2layer defined in the Interactive HALO tracks chapter, and we provide as input the data for the time interval selected during the day
+We use the function `track2layer` defined in the {doc}`flight_tracks_leaflet` chapter, and we provide as input the data for the time interval selected during the day
 
 ```{code-cell} ipython3
 import ipyleaflet
