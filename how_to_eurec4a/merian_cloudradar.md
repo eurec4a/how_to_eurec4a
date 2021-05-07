@@ -130,7 +130,3 @@ m.add_control(ipyleaflet.LayersControl(position='topright'))
 m.add_control(ipyleaflet.FullScreenControl())
 display(m)
 ```
-
-```{code-cell} ipython3
-
-```
