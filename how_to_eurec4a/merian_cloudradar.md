@@ -30,6 +30,7 @@ The python code below allows you to browse through the days avaiable
 ```{code-cell} ipython3
 from datetime import datetime
 import matplotlib.pyplot as plt
+plt.style.use(["./mplstyle/book", "./mplstyle/wide"])
 import numpy as np
 import eurec4a
 cat = eurec4a.get_intake_catalog()
@@ -46,7 +47,6 @@ list(cat['MS-Merian'])
 To check which days are available from the Wband radar dataset, type:
 
 ```{code-cell} ipython3
-print('W band dataset:')
 for key, source in cat['MS-Merian']['FMCW94_RPG'].items():
     desc = source.describe()
     user_parameters = desc.get("user_parameters", [])
@@ -60,10 +60,12 @@ for key, source in cat['MS-Merian']['FMCW94_RPG'].items():
 ```
 
 ### Selecting one day for plot/visualization
-To work on a specific day, please provide the date as input in the form "yyyy-mm-dd hh:mm" as a field to date in the code below. Note: the datetime type accepts multiple values: Python datetime, ISO8601 string, Unix timestamp int, “now” and “today”.
+To work on a specific day, please provide the date as input in the form "yyyy-mm-dd hh:mm" as a field to date in the code below.
+```{note}
+The datetime type accepts multiple values: Python datetime, ISO8601 string, Unix timestamp int, “now” and “today”.
+```
 
 ```{code-cell} ipython3
-print('select the date and read the dataset')
 date = '2020-01-27 13:00' # <--- provide the date here 
 ds = cat['MS-Merian']['FMCW94_RPG'].motion_corrected(date=date).to_dask()
 ds
@@ -96,14 +98,12 @@ ds_sliced = ds.sel(time=slice(time_min, time_max))
 ```
 
 ```{code-cell} ipython3
-fig, ax = plt.subplots(figsize=(12, 6))
+fig, ax = plt.subplots()
 # set here the variable from ds to plot, its color map and its min and max values
 ds_sliced.mean_doppler_velocity.plot(x='time', y='height', cmap="seismic", vmin=-10., vmax=10.)
-ax.spines['right'].set_visible(False)
-ax.spines['top'].set_visible(False)
 ax.set_title("Mean doppler velocity for : "+date)
 ax.set_xlim(time_min, time_max)
-ax.set_ylim(0, 4500)
+ax.set_ylim(0, 4500);
 ```
 
 ### Check corresponding merian position in the selected hour
