@@ -22,6 +22,9 @@
 - file: meteor
   sections:
     - file: meteor_cloudradar
+- file: merian
+  sections:
+    - file: merian_cloudradar
 - file: multi_platform_data
   sections:
     - file: dropsondes
