@@ -39,7 +39,7 @@ cat = eurec4a.get_intake_catalog()
 To visualize which datasets are available for the MS-Merian ship, type:
 
 ```{code-cell} ipython3
-print(list(cat['MS-Merian']))
+list(cat['MS-Merian'])
 ```
 
 ### Check available days of Wband radar data
@@ -70,15 +70,21 @@ ds
 ```
 
 ### Plot some radar quantities
-To create time/height plots for radar moments, pick a variable name having dimension (time, height) from the list of data variables and type the name in the code below. The example here is for mean Doppler velocity (corrected for ship motions). You can decide to either select the entire day or a given hour by providing time_min and time_max.
+To create time/height plots for radar moments, pick a variable name having dimension `(time, height)` from the list of data variables and type the name in the code below. The example here is for mean Doppler velocity (corrected for ship motions). You can decide to either select the entire day or a given hour by providing `time_min` and `time_max`.
 To provide time_min and time_max, modify the string 'yyyy-mm-ddThh:mm:ss' in red. <br> 
 Example: <br>
 to select the entire day :<br>
-    - time_min = np.datetime64('2020-01-27T00:00:00') <br>
-    - time_max = np.datetime64('2020-01-27T23:59:59')<br>
-to select between 13:00 and 15:00 UTC:<br>
-    - time_min = np.datetime64('2020-01-27T13:00:00') <br>
-    - time_max = np.datetime64('2020-01-27T15:00:00')<br>
+```python
+time_min = np.datetime64('2020-01-27T00:00:00')
+time_max = np.datetime64('2020-01-27T23:59:59')
+```
+
+to select between 13:00 and 15:00 UTC:
+
+```python
+time_min = np.datetime64('2020-01-27T13:00:00')
+time_max = np.datetime64('2020-01-27T15:00:00')
+```
 
 ```{code-cell} ipython3
 # set min and max time values for plotting along the x-axis
