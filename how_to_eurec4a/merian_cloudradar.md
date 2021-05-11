@@ -39,7 +39,6 @@ cat = eurec4a.get_intake_catalog()
 To visualize which datasets are available for the MS-Merian ship, type:
 
 ```{code-cell} ipython3
-print('List of data/instruments available from Merian:')
 print(list(cat['MS-Merian']))
 ```
 
