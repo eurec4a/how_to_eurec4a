@@ -152,11 +152,48 @@
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="meteor.html">
-   Meteor
+  <a class="reference internal" href="pthree.html">
+   NOAA P3 “Miss Piggy”
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="p3_flight_tracks.html">
+     Flight tracks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="p3_humidity_comparison.html">
+     Humidity comparison: Hygrometer and isotope analyzer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="p3_wband_radar.html">
+     W-band radar example
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="p3_AXBTs.html">
+     Ocean temperatures: AXBTs and SWIFT buoys
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="p3_wsra.html">
+     WSRA example: surface wave state
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="meteor.html">
+   Meteor
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -172,8 +209,8 @@
   <a class="reference internal" href="multi_platform_data.html">
    Multi-platform datasets
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -189,8 +226,8 @@
   <a class="reference internal" href="toolbox.html">
    Toolbox
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -364,9 +401,44 @@ In any case, it will involve the following steps:</p>
 <h2>quick and dirty<a class="headerlink" href="#quick-and-dirty" title="Permalink to this headline">¶</a></h2>
 <p>If you just like to run the code of a single notebook and don’t care to much about the details, the quickest option might be to download the chapter you are viewing as an ipython notebook (<code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>) via the download button (<i class="fas fa-download"></i>) on the top right of the page. If you don’t see the <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> option here, that’s because the source of the page can not be interpreted as a notebook and thus is not available for direct execution.</p>
 <p>If you would just run the downloaded code, the chance is high that some required libraries are not yet installed on your system. You can either do try and error to find out which libraries are required for the chapter you downloaded, or you can simply installed all requirements for the entire book by running the following command on your command line:</p>
+<div class="sphinx-bs container pb-4 docutils">
+<div class="row docutils">
+<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-header docutils">
+<p class="card-text">Using pip</p>
+</div>
+<div class="card-body docutils">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install jupyter
 pip install -r https://raw.githubusercontent.com/eurec4a/how_to_eurec4a/master/requirements.txt
 </pre></div>
+</div>
+</div>
+<div class="card-footer docutils">
+<p class="card-text">This won’t work with any notebooks that use <code class="docutils literal notranslate"><span class="pre">cartopy</span></code> to make maps,  <code class="docutils literal notranslate"><span class="pre">pip</span></code> does not manage
+their dependencies well.</p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-header docutils">
+<p class="card-text">Using conda</p>
+</div>
+<div class="card-body docutils">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget https://raw.githubusercontent.com/eurec4a/how_to_eurec4a/master/requirements.txt
+conda create -f requirements.txt
+conda activate how_to_eurec4a
+</pre></div>
+</div>
+</div>
+<div class="card-footer docutils">
+<p class="card-text">This creates a conda environment called <code class="docutils literal notranslate"><span class="pre">how_to_eurec4a</span></code> which contains all dependencies including
+<code class="docutils literal notranslate"><span class="pre">cartopy</span></code></p>
+</div>
+</div>
+</div>
+</div>
 </div>
 <p>Afterwards, you can start a local notebook server (either <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">notebook</span></code> or <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">lab</span></code>) and run and modify the chapter locally.</p>
 <div class="admonition note">
@@ -384,9 +456,9 @@ pip install -r https://raw.githubusercontent.com/eurec4a/how_to_eurec4a/master/r
 Please change into this directory.</p>
 <div class="dropdown tip admonition">
 <p class="admonition-title">Maybe use a virtual environment</p>
-<p>You might want to use a virtual environment for the book if you like to keep the required libraries in a confined place, but it is entirely optional and up to your preferences.
+<p>If you use pip you might want to use a virtual environment for the book if you like to keep the required libraries in a confined place, but it is entirely optional and up to your preferences.
 There are many options to do so and <a class="reference external" href="https://virtualenv.pypa.io/">virtualenv</a> is one of them.
-Using virtualenv, you could create and aktivate an environment like:</p>
+Using virtualenv, you could create and activate an environment like:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>virtualenv venv
 . venv/bin/activate
 </pre></div>
@@ -394,8 +466,43 @@ Using virtualenv, you could create and aktivate an environment like:</p>
 <p>and the continue normally.</p>
 </div>
 <p>You’ll have to install the dependencies as above, but as you already have all the files on your machine, you can also install it directly via:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install -r requirements.txt
+<div class="sphinx-bs container pb-4 docutils">
+<div class="row docutils">
+<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-header docutils">
+<p class="card-text">Using pip</p>
+</div>
+<div class="card-body docutils">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install jupyter
+pip install -r requirements.txt
 </pre></div>
+</div>
+</div>
+<div class="card-footer docutils">
+<p class="card-text">This won’t work with any notebooks that use <code class="docutils literal notranslate"><span class="pre">cartopy</span></code> to make maps,  <code class="docutils literal notranslate"><span class="pre">pip</span></code> does not manage
+their dependencies well.</p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-header docutils">
+<p class="card-text">Using conda</p>
+</div>
+<div class="card-body docutils">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda create -f requirements.txt
+conda activate how_to_eurec4a
+</pre></div>
+</div>
+</div>
+<div class="card-footer docutils">
+<p class="card-text">This creates a conda environment called <code class="docutils literal notranslate"><span class="pre">how_to_eurec4a</span></code> which contains all dependencies including
+<code class="docutils literal notranslate"><span class="pre">cartopy</span></code></p>
+</div>
+</div>
+</div>
+</div>
 </div>
 <p>Depending on your needs, you can continue using <a class="reference external" href="#interactive">interactive notebooks</a> or <a class="reference external" href="#compile-the-book">compile the entire book</a>.</p>
 <div class="dropdown admonition">
@@ -410,7 +517,7 @@ If that does not work, please have a look at the <a class="reference external" h
 </div>
 <div class="section" id="interactive">
 <h3>interactive<a class="headerlink" href="#interactive" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">jupyter</span></code> itself is not installed by the requirements file. You might want to install it as well:</p>
+<p><code class="docutils literal notranslate"><span class="pre">jupyter</span></code> itself is not installed by the requirements file. If you’re using <code class="docutils literal notranslate"><span class="pre">pip</span></code> you might want to install it as well:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install jupyter
 </pre></div>
 </div>
@@ -490,7 +597,7 @@ This variant is especially useful if you like to work directly on the MyST files
         
           By EUREC4A community<br/>
         
-            &copy; Copyright 2020.<br/>
+            &copy; Copyright 2021.<br/>
       </p>
     </div>
   </footer>

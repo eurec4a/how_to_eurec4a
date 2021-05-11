@@ -13,10 +13,28 @@ You can decide between the [quick an dirty](#quick-and-dirty) method and the met
 If you just like to run the code of a single notebook and don't care to much about the details, the quickest option might be to download the chapter you are viewing as an ipython notebook (`.ipynb`) via the download button (<i class="fas fa-download"></i>) on the top right of the page. If you don't see the `.ipynb` option here, that's because the source of the page can not be interpreted as a notebook and thus is not available for direct execution.
 
 If you would just run the downloaded code, the chance is high that some required libraries are not yet installed on your system. You can either do try and error to find out which libraries are required for the chapter you downloaded, or you can simply installed all requirements for the entire book by running the following command on your command line:
+````{panels}
+Using pip
+^^^
 ```bash
 pip install jupyter
 pip install -r https://raw.githubusercontent.com/eurec4a/how_to_eurec4a/master/requirements.txt
 ```
++++
+This won't work with any notebooks that use `cartopy` to make maps,  `pip` does not manage
+their dependencies well.
+---
+Using conda
+^^^
+```bash
+wget https://raw.githubusercontent.com/eurec4a/how_to_eurec4a/master/requirements.txt
+conda create -f requirements.txt
+conda activate how_to_eurec4a
+```
++++
+This creates a conda environment called `how_to_eurec4a` which contains all dependencies including
+`cartopy`
+````
 
 Afterwards, you can start a local notebook server (either `jupyter notebook` or `jupyter lab`) and run and modify the chapter locally.
 
@@ -37,9 +55,9 @@ Please change into this directory.
 
 ````{admonition} Maybe use a virtual environment
 :class: dropdown, tip
-You might want to use a virtual environment for the book if you like to keep the required libraries in a confined place, but it is entirely optional and up to your preferences.
+If you use pip you might want to use a virtual environment for the book if you like to keep the required libraries in a confined place, but it is entirely optional and up to your preferences.
 There are many options to do so and [virtualenv](https://virtualenv.pypa.io/) is one of them.
-Using virtualenv, you could create and aktivate an environment like:
+Using virtualenv, you could create and activate an environment like:
 ```bash
 virtualenv venv
 . venv/bin/activate
@@ -48,9 +66,27 @@ and the continue normally.
 ````
 You'll have to install the dependencies as above, but as you already have all the files on your machine, you can also install it directly via:
 
+````{panels}
+Using pip
+^^^
 ```bash
+pip install jupyter
 pip install -r requirements.txt
 ```
++++
+This won't work with any notebooks that use `cartopy` to make maps,  `pip` does not manage
+their dependencies well.
+---
+Using conda
+^^^
+```bash
+conda create -f requirements.txt
+conda activate how_to_eurec4a
+```
++++
+This creates a conda environment called `how_to_eurec4a` which contains all dependencies including
+`cartopy`
+````
 
 Depending on your needs, you can continue using [interactive notebooks](#interactive) or [compile the entire book](#compile-the-book).
 
@@ -67,7 +103,7 @@ If that does not work, please have a look at the [installation instructions](htt
 ```
 
 ### interactive
-`jupyter` itself is not installed by the requirements file. You might want to install it as well:
+`jupyter` itself is not installed by the requirements file. If you're using `pip` you might want to install it as well:
 
 ```bash
 pip install jupyter

@@ -57,7 +57,7 @@
     <link rel="shortcut icon" href="_static/logo_pyeurec4a.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Meteor" href="meteor.html" />
+    <link rel="next" title="NOAA P3 “Miss Piggy”" href="pthree.html" />
     <link rel="prev" title="HAMP comparison" href="hamp_comparison.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -154,11 +154,48 @@
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="meteor.html">
-   Meteor
+  <a class="reference internal" href="pthree.html">
+   NOAA P3 “Miss Piggy”
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="p3_flight_tracks.html">
+     Flight tracks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="p3_humidity_comparison.html">
+     Humidity comparison: Hygrometer and isotope analyzer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="p3_wband_radar.html">
+     W-band radar example
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="p3_AXBTs.html">
+     Ocean temperatures: AXBTs and SWIFT buoys
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="p3_wsra.html">
+     WSRA example: surface wave state
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="meteor.html">
+   Meteor
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -174,8 +211,8 @@
   <a class="reference internal" href="multi_platform_data.html">
    Multi-platform datasets
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -191,8 +228,8 @@
   <a class="reference internal" href="toolbox.html">
    Toolbox
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -663,7 +700,7 @@ height = height_above_sea_level[0] - range
                         <span class="n">attrs</span><span class="o">=</span><span class="n">var</span><span class="o">.</span><span class="n">attrs</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">select_specmacs_cloudmask</span><span class="p">(</span><span class="n">ds</span><span class="p">):</span>
-    <span class="n">specmacs</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">angle</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mf">.3</span><span class="p">,</span> <span class="o">-</span><span class="mf">.3</span><span class="p">))</span>
+    <span class="n">specmacs</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">angle</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="o">.</span><span class="mi">3</span><span class="p">,</span> <span class="o">-.</span><span class="mi">3</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">ds</span><span class="o">.</span><span class="n">assign</span><span class="p">({</span><span class="s2">&quot;cloud_mask&quot;</span><span class="p">:</span> <span class="n">most_frequent_flag</span><span class="p">(</span><span class="n">specmacs</span><span class="o">.</span><span class="n">cloud_mask</span><span class="p">,</span> <span class="s2">&quot;angle&quot;</span><span class="p">),</span>
                       <span class="s2">&quot;CF_min&quot;</span><span class="p">:</span> <span class="n">cfmin</span><span class="p">(</span><span class="n">specmacs</span><span class="p">),</span>
                       <span class="s2">&quot;CF_max&quot;</span><span class="p">:</span> <span class="n">cfmax</span><span class="p">(</span><span class="n">specmacs</span><span class="p">)})</span>
@@ -703,8 +740,8 @@ height = height_above_sea_level[0] - range
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 263 ms, sys: 1.83 ms, total: 264 ms
-Wall time: 3.1 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 226 ms, sys: 5.29 ms, total: 232 ms
+Wall time: 1.85 s
 </pre></div>
 </div>
 </div>
@@ -878,7 +915,7 @@ Wall time: 3.1 s
 <h3>Histogram of circle mean cloud fraction<a class="headerlink" href="#histogram-of-circle-mean-cloud-fraction" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">binedges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">.2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">binedges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="o">.</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">binmids</span> <span class="o">=</span> <span class="p">(</span><span class="n">binedges</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">+</span> <span class="n">binedges</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span>
 </pre></div>
 </div>
@@ -907,7 +944,7 @@ Wall time: 3.1 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f605b138fa0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f834c5620d0&gt;
 </pre></div>
 </div>
 <img alt="_images/cloudmasks_43_1.png" src="_images/cloudmasks_43_1.png" />
@@ -945,7 +982,7 @@ Wall time: 3.1 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f6049f5b520&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f834e75ce80&gt;
 </pre></div>
 </div>
 <img alt="_images/cloudmasks_46_1.png" src="_images/cloudmasks_46_1.png" />
@@ -1012,7 +1049,7 @@ Wall time: 3.1 s
         <div class='prev-next-bottom'>
             
     <a class='left-prev' id="prev-link" href="hamp_comparison.html" title="previous page">HAMP comparison</a>
-    <a class='right-next' id="next-link" href="meteor.html" title="next page">Meteor</a>
+    <a class='right-next' id="next-link" href="pthree.html" title="next page">NOAA P3 “Miss Piggy”</a>
 
         </div>
         
@@ -1024,7 +1061,7 @@ Wall time: 3.1 s
         
           By EUREC4A community<br/>
         
-            &copy; Copyright 2020.<br/>
+            &copy; Copyright 2021.<br/>
       </p>
     </div>
   </footer>
