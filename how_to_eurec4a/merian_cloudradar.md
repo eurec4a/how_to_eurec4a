@@ -61,7 +61,7 @@ for key, source in cat['MS-Merian']['FMCW94_RPG'].items():
 ```
 
 ### Selecting one day for plot/visualization
-To work on a specific day, please provide the date as input in the form "yyyy-mm-dd hh:mm" as a field to date in the code below
+To work on a specific day, please provide the date as input in the form "yyyy-mm-dd hh:mm" as a field to date in the code below. Note: the datetime type accepts multiple values: Python datetime, ISO8601 string, Unix timestamp int, “now” and “today”.
 
 ```{code-cell} ipython3
 print('select the date and read the dataset')
