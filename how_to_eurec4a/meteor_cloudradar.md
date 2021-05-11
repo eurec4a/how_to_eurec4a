@@ -56,6 +56,8 @@ An example which forces the data to load is plotting, in this case only the rada
 ```{code-cell} ipython3
 %matplotlib inline
 import matplotlib.pyplot as plt
+plt.style.use("./mplstyle/book")
+
 ds.Zh.plot(x='time', cmap="Spectral_r")  # plot the variable with time as the x axis
-plt.ylim(0, 3000)
+plt.ylim(0, 3000);
 ```

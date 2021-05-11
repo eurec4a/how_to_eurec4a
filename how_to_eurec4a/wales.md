@@ -21,18 +21,13 @@ At typical flight speeds of 200 m/s the backscatter product from the HSRL has a 
 
 More information on the instrument can be found in [Wirth et al., 2009](https://elib.dlr.de/58175/). If you have questions or if you would like to use the data for a publication, please don't hesitate to get in contact with the dataset authors as stated in the dataset attributes `contact` or `author`.
 
-*Note: due to safety regulations the Lidar can only be operated above 6 km which leads to data gaps in about the first and last 30 minutes of each flight.*
-
-```{code-cell} ipython3
-%pylab inline
+```{note}
+Due to safety regulations the Lidar can only be operated above 6 km which leads to data gaps in about the first and last 30 minutes of each flight.
 ```
 
 ```{code-cell} ipython3
 import eurec4a
-
 import xarray as xr
-import matplotlib as mpl
-mpl.rcParams['font.size'] = 12
 ```
 
 ## Get data
@@ -48,27 +43,36 @@ print(cat.HALO.WALES.cloudparameter.description)
 ## Cloud parameter
 
 ```{code-cell} ipython3
-ds_cloud = cat.HALO.WALES.cloudparameter["HALO-0205"].to_dask().load()
+ds_cloud = cat.HALO.WALES.cloudparameter["HALO-0205"].to_dask()
 ds_cloud
 ```
 
 We select 1min of flight `time`. You can freely change the times or put `None` instead of the slice start and/or end to get up to the full flight data.
+We explicitly `load()` the dataset at this stage as want to use this subset multiple times in the following.
+
+```{note}
+`load()` should always be called late and in particular after subsetting the data to prevent loading more than necessary.
+```
 
 ```{code-cell} ipython3
-ds_cloud_sel = ds_cloud.sel(time=slice(datetime.datetime(2020, 2, 5, 13, 6, 30),
-                                       datetime.datetime(2020, 2, 5, 13, 7, 30)))
+ds_cloud_sel = ds_cloud.sel(time=slice("2020-02-05T13:06:30", "2020-02-05T13:07:030")).load()
 ```
 
 In order to work with the different cloud mask flags, we extract the meanings into a dictionary, which we can later use to select relevant data:
 ```{code-cell} ipython3
-cm_meanings = dict(zip(ds_cloud_sel.cloud_mask.flag_meanings.split(" "), ds_cloud_sel.cloud_mask.flag_values))
+cm_meanings = dict(zip(ds_cloud_sel.cloud_mask.flag_meanings.split(" "),
+                       ds_cloud_sel.cloud_mask.flag_values))
 cm_meanings
 ```
 
 
 ```{code-cell} ipython3
-fig, axes = plt.subplots(3, 1, figsize=(10, 8), sharex=True,
-                                    constrained_layout=True)
+%matplotlib inline
+import numpy as np
+import matplotlib.pyplot as plt
+plt.style.use("./mplstyle/book")
+
+fig, axes = plt.subplots(3, 1, sharex=True)
 ax1, ax2, ax3 = axes
 
 cloud_free = ds_cloud_sel.cloud_mask[ds_cloud_sel.cloud_mask == cm_meanings["cloud_free"]]
@@ -102,12 +106,10 @@ thick_cloud_top = ds_cloud_sel.cloud_top[ds_cloud_sel.cloud_ot>3]
 thick_cloud_top.plot(ax=ax3, x="time", ls="", marker=".", color="k", label="cloud top (OT > 3)")
 
 ax3.set_ylim(0, 2000)
-ax3.set_ylabel("height above sea level [m]")
+ax3.set_ylabel("height above sea [m]")
 ax3.set_xlabel('time in UTC')
 
 for ax in axes:
-    ax.spines['right'].set_visible(False)
-    ax.spines['top'].set_visible(False)
     ax.label_outer()
     ax.legend()
 
@@ -163,18 +165,17 @@ Indeed, this is different... Good that we have thought about it.
 We can now use a time averaging window to derive a time dependent cloud fraction from the `cloud_mask` variable and see how it varies over the course of the flight.
 
 ```{code-cell} ipython3
-fig, ax = plt.subplots(figsize=(10, 4))
+with plt.style.context("mplstyle/wide"):
+    fig, ax = plt.subplots()
 
-ax.set_prop_cycle(color=plt.get_cmap("magma")(np.linspace(0, 1, 4)))
-for ind, t in enumerate([1, 5, 10]):
-    averaged_cloud_fraction = min_cloud_binary_mask.resample(time=f"{t}min", loffset=f"{t/2}min").mean()
-    averaged_cloud_fraction.plot(lw=ind + 1, label=f"{t} min")
+    ax.set_prop_cycle(color=plt.get_cmap("magma")(np.linspace(0, 1, 4)))
+    for ind, t in enumerate([1, 5, 10]):
+        averaged_cloud_fraction = min_cloud_binary_mask.resample(time=f"{t}min", loffset=f"{t/2}min").mean()
+        averaged_cloud_fraction.plot(lw=ind + 1, label=f"{t} min")
 
-ax.set_ylim(0, 1)
-ax.set_ylabel("Cloud fraction")
-ax.set_xlabel("date: MM-DD HH")
-ax.spines['right'].set_visible(False)
-ax.spines['top'].set_visible(False)
-ax.legend(title="averaging period", bbox_to_anchor=(1,1), loc="upper left")
-None
+    ax.set_ylim(0, 1)
+    ax.set_ylabel("Cloud fraction")
+    ax.set_xlabel("date: MM-DD HH")
+    ax.legend(title="averaging period", bbox_to_anchor=(1,1), loc="upper left")
+    None
 ```

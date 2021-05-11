@@ -73,7 +73,7 @@ cat = eurec4a.get_intake_catalog()
 ```
 
 ```{code-cell} ipython3
-dropsondes = cat.dropsondes.JOANNE.level3.to_dask().load()
+dropsondes = cat.dropsondes.JOANNE.level3.to_dask()
 # this following line should go away in the soon to be released new version of JOANNE
 sonde_dt = dropsondes.swap_dims({"sounding": "sonde_id"}).sel(sonde_id=first_dropsonde).launch_time.values
 str(sonde_dt)
@@ -98,6 +98,7 @@ After selecting our datasets, we want to see what's inside, so here are some fir
 ```{code-cell} ipython3
 %matplotlib inline
 import matplotlib.pyplot as plt
+plt.style.use(["./mplstyle/book", "./mplstyle/wide"])
 ```
 
 First, we create a little helper to properly display a colorbar for categorical (in CF-Convention terms "flag") variables:
@@ -117,7 +118,7 @@ fetching the data and displaying it might take a few seconds
 ```
 
 ```{code-cell} ipython3
-fig, ax = plt.subplots(figsize=(16,4))
+fig, ax = plt.subplots()
 cmplot = ds_selection.cloud_mask.T.plot(ax=ax,
                                         cmap=plt.get_cmap('Greys_r', lut=3),
                                         vmin=-0.5, vmax=2.5,
@@ -130,14 +131,12 @@ ax.set_title(f"specMACS cloud mask ({start_time_rounded} - {end_time_rounded})")
 The dataset also contains the minimal and maximal cloud fractions which are calculated for each temporal measurement. The minimal cloud fraction is derived from the ratio between the number of pixels classified as "most likely cloudy" and the total number of pixels in one measurement (times with unknown measurements are excluded). The maximal cloud fraction additionally includes the number of pixels classified as "probably cloudy".
 
 ```{code-cell} ipython3
-fig, ax = plt.subplots(figsize=(10, 4))
+fig, ax = plt.subplots()
 ds_selection.CF_max.plot(color="lightgrey",label="maximal cloud_fraction:\nmost likely cloudy and probably cloudy")
 ds_selection.CF_min.plot(color="grey", label="minimal cloud fraction:\nmost_likely_cloudy")
 ax.axvline(sonde_dt, color="C3", label="sonde launch time")
 ax.set_ylim(0, 1)
 ax.set_ylabel("Cloud fraction")
-ax.spines['right'].set_visible(False)
-ax.spines['top'].set_visible(False)
 ax.set_title(f"cloud fraction around sonde {first_dropsonde}")
 ax.legend(bbox_to_anchor=(1,1), loc="upper left");
 ```
@@ -451,12 +450,14 @@ ds_selection
 `ds.cloudlon` and `ds.cloudlat` are the projected longitude and latitude coordinates of the cloud. Now it is possible to plot the cloudmask on a map!
 
 ```{code-cell} ipython3
-fig, ax = plt.subplots(figsize=(14,6))
+fig, ax = plt.subplots()
 cmplot = ds_selection.cloud_mask.plot(ax=ax,
                                       x='cloudlon', y='cloudlat',
                                       cmap=plt.get_cmap('Greys_r', lut=3),
                                       vmin=-0.5, vmax=2.5,
                                       add_colorbar=False)
+# approximate aspect ratio of latitude and longitude length scales
+ax.set_aspect(1./np.cos(np.deg2rad(float(ds_selection.cloudlat.mean()))))
 flagbar(fig, cmplot, ds_selection.cloud_mask);
 ```
 

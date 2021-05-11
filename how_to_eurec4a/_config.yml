@@ -5,9 +5,9 @@
 
 #######################################################################################
 # Book settings
-title                       : How to EUREC4A  # The title of the book. Will be placed in the left navbar.
-author                      : EUREC4A community  # The author of the book
-copyright                   : "2020"  # Copyright year to be placed in the footer
+title                       : How to EUREC4A      # The title of the book. Will be placed in the left navbar.
+author                      : EUREC4A community   # The author of the book
+copyright                   : "2021"              # Copyright year to be placed in the footer
 logo                        : logo_pyeurec4a.png  # A path to the book logo
 repository:
   url                       : https://github.com/eurec4a/how_to_eurec4a
@@ -23,4 +23,6 @@ html:
   use_edit_page_button      : true
 execute:
   execute_notebooks         : force
-  timeout: 150
+  timeout: 300
+bibtex_reference_style      : author_year
+bibtex_bibfiles             : references.bib
