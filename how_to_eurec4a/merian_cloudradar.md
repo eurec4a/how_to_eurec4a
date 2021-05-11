@@ -71,9 +71,9 @@ ds
 
 ### Plot some radar quantities
 To create time/height plots for radar moments, pick a variable name having dimension `(time, height)` from the list of data variables and type the name in the code below. The example here is for mean Doppler velocity (corrected for ship motions). You can decide to either select the entire day or a given hour by providing `time_min` and `time_max`.
-To provide time_min and time_max, modify the string 'yyyy-mm-ddThh:mm:ss' in red. <br> 
-Example: <br>
-to select the entire day :<br>
+To provide time_min and time_max, modify the string 'yyyy-mm-ddThh:mm:ss'
+Example:
+to select the entire day :
 ```python
 time_min = np.datetime64('2020-01-27T00:00:00')
 time_max = np.datetime64('2020-01-27T23:59:59')
@@ -88,8 +88,8 @@ time_max = np.datetime64('2020-01-27T15:00:00')
 
 ```{code-cell} ipython3
 # set min and max time values for plotting along the x-axis
-time_min = np.datetime64('2020-01-27T13:00:01') # insert the string value corresponding to t_min
-time_max = np.datetime64('2020-01-27T15:00:01') # insert the string value corresponding to t_max
+time_min = np.datetime64('2020-01-27T13:00:00') # insert the string value corresponding to t_min
+time_max = np.datetime64('2020-01-27T15:00:00') # insert the string value corresponding to t_max
 
 # selecting subset of data
 ds_sliced = ds.sel(time=slice(time_min, time_max))
