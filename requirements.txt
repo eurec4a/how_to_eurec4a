@@ -13,3 +13,4 @@ aiohttp
 pydap
 ipyleaflet
 simplification
+colorcet
