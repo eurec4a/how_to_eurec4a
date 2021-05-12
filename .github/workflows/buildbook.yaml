@@ -39,7 +39,7 @@ jobs:
 
   publish:
     needs: build
-    if: "github.event_name == 'push' && github.ref == 'refs/heads/master'"
+    if: "github.event_name == 'push' && github.ref == 'refs/heads/master' && github.repository_owner == 'eurec4a'"
     runs-on: ubuntu-latest
     steps:
       - name: Download compiled book
@@ -47,6 +47,9 @@ jobs:
         with:
           name: build
           path: _build
+      - name: set CNAME
+        run: |
+          printf "howto.eurec4a.eu" > _build/html/CNAME
       - name: Publish book on github pages
         uses: peaceiris/actions-gh-pages@v3
         with:
