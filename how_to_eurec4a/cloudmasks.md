@@ -4,7 +4,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.12
-    jupytext_version: 1.8.0
+    jupytext_version: 1.7.1
 kernelspec:
   display_name: Python 3
   language: python
@@ -159,13 +159,30 @@ da_cth = cat.HALO.WALES.cloudparameter["HALO-0205"].to_dask().cloud_top.sel(time
 ```
 
 #### SpecMACS imager radiance
-From specMACS we include the radiances at 1.6 micron in the short-wave infrared (SWIR). Note: this sepcMACS radiance dataset is only available for the following application on February 5, not for the whole campaign.
+From specMACS we include the radiances at 1.6 micron in the short-wave infrared (SWIR).  
+
+```{note}
+this dataset is only available for the following application on February 5, not for the whole campaign.
+```
 
 ```{code-cell} ipython3
 url = ("https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/SPECMACS-CLOUDMASK/"
        + "EUREC4A_HALO_specMACS_cloud_mask_20200205T100000-20200205T182359_v1.1.nc")
 ds_swir = xr.open_dataset(url, engine="netcdf4")
 da_swir = ds_swir.sel(time=s).isel(radiation_wavelength=0).swir_radiance
+```
+
+#### VELOX broadband IR brightness temperature
+Next to the SpecMACS SWIR radiance, we include broadband brightness temperatures from VELOX (7.7 - 12 μm).
+
+```{note}
+this dataset is only available for the following application on February 5, not for the whole campaign.
+```
+
+```{code-cell} ipython3
+ds_bt = xr.open_zarr("ipfs://QmQEwkhhHdJkiThf4hnj9G3wgqVreBnWGrX2A5kT6CrtY7",
+                     consolidated=True, storage_options={'normalize_keys': False}
+                    ).assign_coords(va=lambda x: x.va)
 ```
 
 #### Preprocess cloud mask data
@@ -233,9 +250,9 @@ colors={
 ```
 
 ```{code-cell} ipython3
-fig, (axV, axVb, axH, axP, axL1, axL2, axL3, axL4, axL5, axL6) = plt.subplots(
-    10, 1, sharex=True, figsize=(18, 10),
-    gridspec_kw={"height_ratios": [3, 3, 3, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]}
+fig, (axV, axVb, axH, ax3, axP, axL1, axL2, axL3, axL4, axL5, axL6) = plt.subplots(
+    11, 1, sharex=True, figsize=(16, 12),
+    gridspec_kw={"height_ratios": [3, 3, 3, 3, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]}
 )
 
 ## 2D vertical
@@ -267,6 +284,13 @@ cax2 = make_axes_locatable(axH).append_axes("right", size="1%", pad=-0.05)
 fig.colorbar(im2, cax=cax2, label="SWIR radiance", extend='max')
 axH.set_ylabel("view angle / deg")
 
+# VELOX brightness temperature
+im3 = (ds_bt.Brightness_temperature - 273.15).plot.pcolormesh(ax=ax3, x="time", y="va", cmap="RdYlBu_r",
+                       rasterized=True, add_colorbar=False)
+cax3 = make_axes_locatable(ax3).append_axes("right", size="1%", pad=-0.05)
+fig.colorbar(im3, cax=cax3, label="Brightness\ntemperature / °C")
+ax3.set_ylabel("view angle / deg")
+
 ## We leave an empty axis to put the legend here
 [s.set_visible(False) for s in axP.spines.values()]
 axP.xaxis.set_visible(False)
@@ -296,7 +320,7 @@ labels = [l.get_label() for l in lines]
 axL1.legend(lines, labels, ncol=7, bbox_to_anchor=(0.15, 1.1))
 axL3.set_ylabel("cloud flag")
 
-for ax in [axV, axVb, axH, axP, axL1, axL2, axL3, axL4, axL5, axL6]:
+for ax in [axV, axVb, axH, ax3, axP, axL1, axL2, axL3, axL4, axL5, axL6]:
     if ax!=axL6:
         ax.set_xlabel("")
     ax.set_title("")
