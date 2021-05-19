@@ -9,6 +9,8 @@ kernelspec:
   display_name: Python 3
   language: python
   name: python3
+execution:
+  timeout: 300
 ---
 
 # Cloud masks
@@ -274,7 +276,7 @@ axP.yaxis.set_visible(False)
 
 ## 1D
 # We plot 1D cloud masks
-# Each we annotate with a total min and max cloud fraction for the scene shown and 
+# Each we annotate with a total min and max cloud fraction for the scene shown and
 # remove disturbing spines
 lines = []
 plot_order = ['WALES', 'HAMP Radar', 'specMACS', 'HAMP Radiometer', 'KT19', 'VELOX']
