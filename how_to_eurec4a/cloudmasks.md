@@ -9,8 +9,6 @@ kernelspec:
   display_name: Python 3
   language: python
   name: python3
-execution:
-  timeout: 300
 ---
 
 # Cloud masks
@@ -186,7 +184,7 @@ this dataset is only available for the following application on February 5, not 
 import ipfsspec
 
 ds_bt = xr.open_zarr("ipfs://QmQEwkhhHdJkiThf4hnj9G3wgqVreBnWGrX2A5kT6CrtY7",
-                     consolidated=True, storage_options={'normalize_keys': False}
+                     consolidated=True,
                     ).assign_coords(va=lambda x: x.va)
 ```
 
