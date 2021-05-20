@@ -81,7 +81,8 @@ from multiprocessing.pool import ThreadPool
 def load_cloudmask_dataset(cat_item):
     # load in parallel as this function is mainly limited by the network roundtrip time
     p = ThreadPool(20)
-    return ensure_cfminmax(xr.concat(list(p.map(lambda v: v.get().to_dask().chunk(), cat_item.values())),
+    return ensure_cfminmax(xr.concat(list(p.map(lambda v: v.get().to_dask().chunk(),
+                                                cat_item.values())),
                                      dim="time"))
 ```
 
@@ -299,8 +300,8 @@ with plt.style.context("mplstyle/square"):
     ax2.set_ylabel("view angle / deg")
 
     # VELOX brightness temperature
-    im3 = (ds_bt.Brightness_temperature - 273.15).plot.pcolormesh(ax=ax3, x="time", y="va", cmap="RdYlBu_r",
-                           rasterized=True, add_colorbar=False)
+    im3 = (ds_bt.Brightness_temperature - 273.15).plot.pcolormesh(ax=ax3, x="time", y="va",
+            cmap="RdYlBu_r", rasterized=True, add_colorbar=False)
     cax3 = make_axes_locatable(ax3).append_axes("right", size="1%", pad=-0.05)
     fig.colorbar(im3, cax=cax3, label="Brightness\ntemperature / °C")
     ax3.set_ylabel("view angle / deg")
@@ -340,7 +341,8 @@ with plt.style.context("mplstyle/square"):
         ax.set_title("")
 
     axL6.set_xlabel("UTC time")
-    axL6.set_xticks(np.arange(np.datetime64('2020-02-05T11:22:00'), np.datetime64('2020-02-05T11:28:00'), np.timedelta64(1, 'm')))
+    axL6.set_xticks(np.arange(np.datetime64('2020-02-05T11:22:00'),
+                    np.datetime64('2020-02-05T11:28:00'), np.timedelta64(1, 'm')))
     ax0.xaxis.set_major_formatter(mpl.dates.DateFormatter('%H:%M'))
     fig.autofmt_xdate()
 
@@ -368,8 +370,8 @@ def cf_circles(ds):
     return xr.concat(
         [
             xr.Dataset({
-                "CF_max": ds.sel(time=slice(i["start"], i["end"])).CF_max.mean(dim="time", skipna=True),
-                "CF_min": ds.sel(time=slice(i["start"], i["end"])).CF_min.mean(dim="time", skipna=True),
+                "CF_max": ds.sel(time=slice(i["start"], i["end"])).CF_max.mean(dim="time"),
+                "CF_min": ds.sel(time=slice(i["start"], i["end"])).CF_min.mean(dim="time"),
                 "time": xr.DataArray(midpoint(i["start"], i["end"]), dims=()),
                 "segment_id": xr.DataArray(i["segment_id"], dims=())
             })
