@@ -252,39 +252,39 @@ plt.style.use(["./mplstyle/book"])
 
 ```{code-cell} ipython3
 with plt.style.context("mplstyle/square"):
-    fig, (axV, axVb, axH, ax3, axP, axL1, axL2, axL3, axL4, axL5, axL6) = plt.subplots(
-        11, 1, sharex=True,# figsize=(10, 10),
-        gridspec_kw={"height_ratios": [3, 3, 3, 3, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]}
+    fig, (ax0, ax1, ax2, ax3, axLegend, axL1, axL2, axL3, axL4, axL5, axL6) = plt.subplots(
+        11, 1, sharex=True, gridspec_kw={"height_ratios": [3, 3, 3, 3, 0.5, 0.5, 0.5,
+                                                           0.5, 0.5, 0.5, 0.5]}
     )
 
     ## 2D vertical
     # Wales backscatter ratio
     im0 = da_bsri.plot.pcolormesh(
-        ax=axV, x="time", y="height", norm=LogNorm(vmin=1, vmax=100),
+        ax=ax0, x="time", y="height", norm=LogNorm(vmin=1, vmax=100),
         cmap="Spectral_r", rasterized=True, add_colorbar=False
     )
-    cax0 = make_axes_locatable(axV).append_axes("right", size="1%", pad=-0.05)
+    cax0 = make_axes_locatable(ax0).append_axes("right", size="1%", pad=-0.05)
     fig.colorbar(im0, cax=cax0, label="backscatter ratio", extend='both')
     # cloud top height
-    da_cth.plot(ax=axV, x="time", ls="", marker=".", color="k", label="Cloud top")
-    axV.legend()
+    da_cth.plot(ax=ax0, x="time", ls="", marker=".", color="k", label="Cloud top")
+    ax0.legend()
 
     # Radar reflectivity
-    im1 = da_radar.plot(ax=axVb, x="time", add_colorbar=False)
-    cax1 = make_axes_locatable(axVb).append_axes("right", size="1%", pad=-0.05)
+    im1 = da_radar.plot(ax=ax1, x="time", rasterized=True, add_colorbar=False)
+    cax1 = make_axes_locatable(ax1).append_axes("right", size="1%", pad=-0.05)
     fig.colorbar(im1, cax=cax1, label="reflectivity / dBZ")
 
-    for ax in [axV, axVb]:
+    for ax in [ax0, ax1]:
         ax.set_yticks([0, 1000, 2000, 3000])
         ax.set_ylabel("height / m")
 
     ## 2D horizontal
     # SpecMACS radiance
-    im2 = da_swir.plot.pcolormesh(ax=axH, x="time", y="angle", cmap="Greys_r",
+    im2 = da_swir.plot.pcolormesh(ax=ax2, x="time", y="angle", cmap="Greys_r",
                                   vmin=0, vmax=20, rasterized=True, add_colorbar=False)
-    cax2 = make_axes_locatable(axH).append_axes("right", size="1%", pad=-0.05)
+    cax2 = make_axes_locatable(ax2).append_axes("right", size="1%", pad=-0.05)
     fig.colorbar(im2, cax=cax2, label="SWIR radiance", extend='max')
-    axH.set_ylabel("view angle / deg")
+    ax2.set_ylabel("view angle / deg")
 
     # VELOX brightness temperature
     im3 = (ds_bt.Brightness_temperature - 273.15).plot.pcolormesh(ax=ax3, x="time", y="va", cmap="RdYlBu_r",
@@ -293,17 +293,18 @@ with plt.style.context("mplstyle/square"):
     fig.colorbar(im3, cax=cax3, label="Brightness\ntemperature / °C")
     ax3.set_ylabel("view angle / deg")
 
+
     ## We leave an empty axis to put the legend here
-    [s.set_visible(False) for s in axP.spines.values()]
-    axP.xaxis.set_visible(False)
-    axP.yaxis.set_visible(False)
+    [s.set_visible(False) for s in axLegend.spines.values()]
+    axLegend.xaxis.set_visible(False)
+    axLegend.yaxis.set_visible(False)
 
     ## 1D
     # We plot 1D cloud masks
     # Each we annotate with a total min and max cloud fraction for the scene shown and 
     # remove disturbing spines
     lines = []
-    plot_order = ['WALES', 'HAMP Radar', 'specMACS', 'HAMP Radiometer', 'KT19', 'VELOX']
+    plot_order = ['WALES', 'HAMP Radar', 'specMACS', 'VELOX', 'KT19', 'HAMP Radiometer']
     axes = dict(zip(plot_order, [axL1, axL2, axL3, axL4, axL5, axL6]))
 
     for k in plot_order:
@@ -322,14 +323,21 @@ with plt.style.context("mplstyle/square"):
     axL1.legend(lines, labels, ncol=7, bbox_to_anchor=(0.01, 1.5))
     axL3.set_ylabel("cloud flag")
 
-    for ax in [axV, axVb, axH, ax3, axP, axL1, axL2, axL3, axL4, axL5, axL6]:
-        if ax!=axL6:
-            ax.set_xlabel("")
+    for ax in [ax0, ax1, ax2, ax3, axLegend, axL1, axL2, axL3, axL4, axL5, axL6]:
+        ax.set_xlabel("")
         ax.set_title("")
-```
 
-```{raw-cell}
-fig.savefig("Cloud_masks_example_scene.png", bbox_inches="tight")
+    axL6.set_xlabel("UTC time")
+    axL6.set_xticks(np.arange(np.datetime64('2020-02-05T11:22:00'), np.datetime64('2020-02-05T11:28:00'), np.timedelta64(1, 'm')))
+    ax0.xaxis.set_major_formatter(mpl.dates.DateFormatter('%H:%M'))
+    fig.autofmt_xdate()
+
+    fig.align_ylabels(axs=[ax0, ax1, ax2, ax3, axL3])
+    #fig.align_ylabels(axs=[cax0, cax1, cax2])
+
+    label_pos_x = np.datetime64('2020-02-05T11:21:35')
+    for ax, label in zip([ax0, ax1, ax2, ax3, axL1], ["(a)", "(b)", "(c)", "(d)", "(e)"]):
+        ax.text(label_pos_x, ax.get_ylim()[1], label, verticalalignment='bottom')
 ```
 
 ## Statistical comparison
