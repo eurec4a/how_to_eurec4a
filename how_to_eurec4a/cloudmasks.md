@@ -128,8 +128,7 @@ We add 2D vertical lidar and radar data, as well as 2D horizontal imager data fo
 #### Time interval
 
 ```{code-cell} ipython3
-s = slice(datetime.datetime(2020, 2, 5, 11, 22, 0),
-          datetime.datetime(2020, 2, 5, 11, 27, 0))
+s = slice("2020-02-05T11:22:00", "2020-02-05T11:27:00")
 ```
 
 #### HAMP radar reflectivities
@@ -487,8 +486,7 @@ for k, v in data.items():
 * only from local research flights
 
 ```{code-cell} ipython3
-rf = slice(datetime.datetime(2020, 1, 22, 0, 0, 0),
-           datetime.datetime(2020, 2, 15, 23, 59, 59))
+localRF = slice("2020-01-22T00:00:00", "2020-02-15T23:59:59")
 ```
 
 ```{code-cell} ipython3
