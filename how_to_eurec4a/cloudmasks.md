@@ -403,24 +403,25 @@ binmids = (binedges[1:] + binedges[:-1]) / 2
 
 ```{code-cell} ipython3
 with plt.style.context("mplstyle/wide"):
-    fig, (ax, ax1) = plt.subplots(1, 2, sharey=True)
+    fig, (ax0, ax1) = plt.subplots(1, 2, sharey=True)
     for k, v in data.items():
-        ax.plot(binmids, np.histogram(cf_circles(v).CF_min.values, bins=binedges)[0],
+        ds = cf_circles(v)
+        ax0.plot(binmids, np.histogram(ds.CF_min.values, bins=binedges)[0],
                 ls="-", lw=2, marker=".", color=colors[k], label=k)
-        ax1.plot(binmids, np.histogram(cf_circles(v).CF_max.values, bins=binedges)[0],
+        ax1.plot(binmids, np.histogram(ds.CF_max.values, bins=binedges)[0],
                 ls="-", lw=2, marker=".", color=colors[k], label=k)
 
 
-    for a in [ax, ax1]:
-        a.set_xlim(0, 1)
-        a.set_ylim(0, 48)
-        a.set_xlabel("Cloud fraction")
-    ax.set_ylabel("Frequency")
-    ax.legend(title="Instruments")#, bbox_to_anchor=(1,1), loc="upper left")
-```
+    for ax in [ax0, ax1]:
+        ax.set_xlim(0, 1)
+        ax.set_ylim(0, max(ax0.get_ylim()[1], ax1.get_ylim()[1]))
+    ax0.set_xlabel("Minimum circle-mean cloud cover")
+    ax1.set_xlabel("Maximum circle-mean cloud cover")
+    ax0.set_ylabel("Number of circles")
+    ax0.legend(title="Instruments", bbox_to_anchor=(.55,1), loc="upper left")
 
-```{raw-cell}
-fig.savefig("Cloud_masks_distribution.png", bbox_inches="tight")
+    ax0.text(-0.12, ax.get_ylim()[1], "(a)", verticalalignment='top')
+    ax1.text(-0.1, ax.get_ylim()[1], "(b)", verticalalignment='top')
 ```
 
 ### Time series of circle cloud fraction
