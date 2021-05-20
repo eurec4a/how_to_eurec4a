@@ -239,10 +239,6 @@ cloudmask_selectors = {
 
 ```{code-cell} ipython3
 data0205 = {k: ensure_cfminmax(v["HALO-0205"].to_dask()) for k, v in cat_cloudmask.items()}
-```
-
-```{code-cell} ipython3
-%%time
 data_feb5 = {k: cloudmask_selectors[k](v.sel(time=s)) for k, v in data0205.items()}
 ```
 
