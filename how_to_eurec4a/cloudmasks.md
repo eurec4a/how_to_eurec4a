@@ -190,6 +190,12 @@ ds_bt = xr.open_zarr("ipfs://QmQEwkhhHdJkiThf4hnj9G3wgqVreBnWGrX2A5kT6CrtY7",
                     ).assign_coords(va=lambda x: x.va)
 ```
 
+#### Preprocess cloud mask data
+
+We copy the data dictionary and apply the time selection.
+
++++
+
 What is the angle of the 11 central pixel in accross track direction?
 
 ```{code-cell} ipython3
@@ -197,12 +203,6 @@ xmid = ds_bt.x.size // 2
 va_central = ds_bt.isel(time=0, x=slice(xmid - 5, xmid + 6)).va
 (va_central.max() - va_central.min()).values
 ```
-
-#### Preprocess cloud mask data
-
-We copy the data dictionary and apply the time selection.
-
-+++
 
 For the 2D horizontal imagers we select a region in the center, derive a representative (most frequent) `cloud_mask` flag value and use that in the following intercomparison plot.
 * VELOX: we select only the cetral 11 x 11 pixels, i.e. view angle = 0 ∓ 0.2865
@@ -495,5 +495,6 @@ localRF = slice("2020-01-22T00:00:00", "2020-02-15T23:59:59")
 print("Instrument: min - max")
 print("")
 for k, v in data.items():
-    print(f"{k}: {v.sel(time=rf).CF_min.mean().values:.2f} - {v.sel(time=rf).CF_max.mean().values:.2f} ")
+    print(f"{k}: {v.sel(time=localRF).CF_min.mean().values:.2f} - "
+          + f"{v.sel(time=localRF).CF_max.mean().values:.2f} ")
 ```
