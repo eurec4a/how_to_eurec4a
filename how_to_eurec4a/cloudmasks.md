@@ -108,6 +108,13 @@ cat_cloudmask = {
 data = {k: load_cloudmask_dataset(v) for k, v in cat_cloudmask.items()}
 ```
 
+We have a look at the time periods spanned by the individual datasets: The datasets `HAMP Radar`, `HAMP Radiometer`, and `specMACS` include measurements from the transfer flights on 19 January to Barbados and on 18 February back over the Atlantic to Europe. The datasets `WALES`, `KT19`, and `VELOX` are limited to the 13 local research flights between 22 January and 15 February.
+
+```{code-cell} ipython3
+for k, v in data.items():
+    print(f"{k}: {v.isel(time=0).time.values} -  {v.isel(time=-1).time.values}")
+```
+
 ## Case study on February 5
 We show the cloud masks from the various instruments for an 5 minute time interval around noon on February 5.
 
@@ -461,13 +468,26 @@ with plt.style.context("mplstyle/wide"):
     ax.set_xlabel("Date")
 ```
 
-```{raw-cell}
-fig.savefig("Cloud_masks_timeseries.png", bbox_inches="tight")
-```
-
-## Camapign mean cloud fraction
+## Camapign mean cloud cover
+* from all available data including the transfer flights
 
 ```{code-cell} ipython3
+print("Instrument: min - max")
+print("")
 for k, v in data.items():
-    print(f"{k}: {v.CF_max.mean().values:.2f}")
+    print(f"{k}: {v.CF_min.mean().values:.2f} - {v.CF_max.mean().values:.2f} ")
+```
+
+* only from local research flights
+
+```{code-cell} ipython3
+rf = slice(datetime.datetime(2020, 1, 22, 0, 0, 0),
+           datetime.datetime(2020, 2, 15, 23, 59, 59))
+```
+
+```{code-cell} ipython3
+print("Instrument: min - max")
+print("")
+for k, v in data.items():
+    print(f"{k}: {v.sel(time=rf).CF_min.mean().values:.2f} - {v.sel(time=rf).CF_max.mean().values:.2f} ")
 ```
