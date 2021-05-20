@@ -4,11 +4,13 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.12
-    jupytext_version: 1.7.1
+    jupytext_version: 1.8.0
 kernelspec:
   display_name: Python 3
   language: python
   name: python3
+execution:
+  timeout: 300
 ---
 
 # Cloud masks
@@ -181,8 +183,6 @@ this dataset is only available for the following application on February 5, not 
 ```
 
 ```{code-cell} ipython3
-import ipfsspec
-
 ds_bt = xr.open_zarr("ipfs://QmQEwkhhHdJkiThf4hnj9G3wgqVreBnWGrX2A5kT6CrtY7",
                      consolidated=True,
                     ).assign_coords(va=lambda x: x.va)
@@ -462,9 +462,6 @@ with plt.style.context("mplstyle/wide"):
     ax.set_xticks(np.unique(ds.date) + np.timedelta64(12, 'h'))
     ax.xaxis.set_major_formatter(mpl.dates.DateFormatter('%b %d'))
     fig.autofmt_xdate()
-
-    ax.spines['right'].set_visible(False)
-    ax.spines['top'].set_visible(False)
 
     ax.set_ylabel("Minimum circle-mean\ncloud cover")
     #ax.legend(title="Instruments", bbox_to_anchor=(1,1), loc="upper left")
