@@ -424,32 +424,41 @@ with plt.style.context("mplstyle/wide"):
     ax1.text(-0.1, ax.get_ylim()[1], "(b)", verticalalignment='top')
 ```
 
-### Time series of circle cloud fraction
-We display the daily mean of all circle cloud fraction *(marker)* and the range from minimum to maximum circle cloud fraction *(vertical line)*.
+### Time series of circle cloud cover
+We display the daily mean of all circle cloud cover *(marker)* and the range from minimum to maximum circle cloud cover *(vertical line)*.
 
 ```{code-cell} ipython3
-fig, ax = plt.subplots(figsize=(10, 5))
 ts = np.timedelta64(2, 'h')
-for k, v in data.items():
-    ds = cf_circles(v)
-    ds["date"] = ds.time.astype('<M8[D]')
-    date = np.unique(ds.date) + ts
-    ax.errorbar(x=np.unique(ds.date) + ts,
-                y=ds.groupby("date").mean().CF_min.values,
-                yerr=[ds.groupby("date").min().CF_min.values,
-                      ds.groupby("date").max().CF_min.values],
-                fmt='o', color=colors[k], label=k)
-    ts += np.timedelta64(4, 'h')
-ax.set_ylim(0, 1)
-ax.set_xticks(np.unique(ds.date) + np.timedelta64(12, 'h'))
-ax.xaxis.set_major_formatter(mpl.dates.DateFormatter('%m-%d'))
-fig.autofmt_xdate()
 
-ax.spines['right'].set_visible(False)
-ax.spines['top'].set_visible(False)
+with plt.style.context("mplstyle/wide"):
+    fig, ax = plt.subplots()
+    for k, v in data.items():
+        ds = cf_circles(v)
+        ds["date"] = ds.time.astype('<M8[D]')
+        ax.errorbar(
+            x=np.unique(ds.date) + ts,
+            y=ds.groupby("date").mean().CF_min.values,
+            yerr=abs(np.array([ds.groupby("date").min().CF_min.values,
+                               ds.groupby("date").max().CF_min.values])
+                     - ds.groupby("date").mean().CF_min.values),
+            fmt='o',
+            color=colors[k],
+            label=k,
+        )
+        ts += np.timedelta64(4, 'h')
+    ax.set_ylim(0, 1)
+    ax.set_xticks(np.unique(ds.date) + np.timedelta64(12, 'h'))
+    ax.xaxis.set_major_formatter(mpl.dates.DateFormatter('%b %d'))
+    fig.autofmt_xdate()
 
-ax.set_ylabel("Cloud fraction")
-ax.legend(title="Instruments", bbox_to_anchor=(1,1), loc="upper left")
+    ax.spines['right'].set_visible(False)
+    ax.spines['top'].set_visible(False)
+
+    ax.set_ylabel("Minimum circle-mean\ncloud cover")
+    #ax.legend(title="Instruments", bbox_to_anchor=(1,1), loc="upper left")
+    ax.text(np.datetime64("2020-01-15T00:00:00"), ax.get_ylim()[1], "(c)",
+            verticalalignment='center')
+    ax.set_xlabel("Date")
 ```
 
 ```{raw-cell}
