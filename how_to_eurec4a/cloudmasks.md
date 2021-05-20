@@ -183,6 +183,8 @@ this dataset is only available for the following application on February 5, not 
 ```
 
 ```{code-cell} ipython3
+import ipfsspec
+
 ds_bt = xr.open_zarr("ipfs://QmQEwkhhHdJkiThf4hnj9G3wgqVreBnWGrX2A5kT6CrtY7",
                      consolidated=True, storage_options={'normalize_keys': False}
                     ).assign_coords(va=lambda x: x.va)
