@@ -187,14 +187,22 @@ ds_bt = xr.open_zarr("ipfs://QmQEwkhhHdJkiThf4hnj9G3wgqVreBnWGrX2A5kT6CrtY7",
                     ).assign_coords(va=lambda x: x.va)
 ```
 
+What is the angle of the 11 central pixel in accross track direction?
+
+```{code-cell} ipython3
+xmid = ds_bt.x.size // 2
+va_central = ds_bt.isel(time=0, x=slice(xmid - 5, xmid + 6)).va
+(va_central.max() - va_central.min()).values
+```
+
 #### Preprocess cloud mask data
 
 We copy the data dictionary and apply the time selection.
 
 +++
 
-For the 2D horizontal imagers we select a region in the center, derive a representative `cloud_mask` flag value and use that in the following intercomparison plot.
-* VELOX: we select only the cetral 10 x 10 pixels
+For the 2D horizontal imagers we select a region in the center, derive a representative (most frequent) `cloud_mask` flag value and use that in the following intercomparison plot.
+* VELOX: we select only the cetral 11 x 11 pixels, i.e. view angle = 0 ∓ 0.2865
 * SpecMACS: we select the central 0.6 degrees, i.e. angle = 0 ∓ 0.3
 
 ```{code-cell} ipython3
@@ -214,7 +222,7 @@ def select_specmacs_cloudmask(ds):
 def select_velox_cloudmask(ds):
     xmid = ds.x.size // 2
     ymid = ds.y.size // 2
-    velox = ds.isel(x=slice(xmid - 5, xmid + 5), y=slice(ymid - 5, ymid + 5))
+    velox = ds.isel(x=slice(xmid - 5, xmid + 6), y=slice(ymid - 5, ymid + 6))
     return ds.assign({"cloud_mask": most_frequent_flag(velox.cloud_mask, ("x", "y")),
                       "CF_min": cfmin(velox),
                       "CF_max": cfmax(velox)})
