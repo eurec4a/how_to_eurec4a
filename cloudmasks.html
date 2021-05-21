@@ -396,8 +396,8 @@
             <nav id="bd-toc-nav">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cloud-fraction-functions">
-   Cloud fraction functions
+  <a class="reference internal nav-link" href="#cloud-cover-functions">
+   Cloud cover functions
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -436,6 +436,11 @@
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#velox-broadband-ir-brightness-temperature">
+       VELOX broadband IR brightness temperature
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#preprocess-cloud-mask-data">
        Preprocess cloud mask data
       </a>
@@ -460,20 +465,25 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#histogram-of-circle-mean-cloud-fraction">
-     Histogram of circle mean cloud fraction
+    <a class="reference internal nav-link" href="#histogram-of-circle-mean-cloud-cover">
+     Histogram of circle mean cloud cover
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#time-series-of-circle-cloud-fraction">
-     Time series of circle cloud fraction
+    <a class="reference internal nav-link" href="#time-series-of-circle-cloud-cover">
+     Time series of circle cloud cover
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-small-interpretation">
+     A small interpretation
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#camapign-mean-cloud-fraction">
-   Camapign mean cloud fraction
+  <a class="reference internal nav-link" href="#camapign-mean-cloud-cover">
+   Camapign mean cloud cover
   </a>
  </li>
 </ul>
@@ -494,23 +504,10 @@ In the following, we compare the different cloud mask products for a case study 
 <p>More information on the dataset can be found in Konow et al. (in preparation). If you have questions or if you would like to use the data for a publication, please don’t hesitate to get in contact with the dataset authors as stated in the dataset attributes <code class="docutils literal notranslate"><span class="pre">contact</span></code> or <code class="docutils literal notranslate"><span class="pre">author</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">pylab</span> inline
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Populating the interactive namespace from numpy and matplotlib
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">eurec4a</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
 <span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
-<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">12</span>
 
 <span class="kn">from</span> <span class="nn">mpl_toolkits.axes_grid1</span> <span class="kn">import</span> <span class="n">make_axes_locatable</span>
 <span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">LogNorm</span>
@@ -527,10 +524,10 @@ In the following, we compare the different cloud mask products for a case study 
 </div>
 </div>
 </div>
-<div class="section" id="cloud-fraction-functions">
-<h2>Cloud fraction functions<a class="headerlink" href="#cloud-fraction-functions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="cloud-cover-functions">
+<h2>Cloud cover functions<a class="headerlink" href="#cloud-cover-functions" title="Permalink to this headline">¶</a></h2>
 <p>We define some utility functions to extract (circle) cloud cover estimates from different datasets assuming that the datasets follow a certain flag meaning convention.</p>
-<p>In particular, we define a <strong>minimum cloud fraction</strong> based on the cloud mask flag <code class="docutils literal notranslate"><span class="pre">most_likely_cloudy</span></code> and a <strong>maximum cloud fraction</strong> combining the flags <code class="docutils literal notranslate"><span class="pre">most_likely_cloudy</span></code> and <code class="docutils literal notranslate"><span class="pre">probably_cloudy</span></code>. The cloud mask datasets slightly vary in their flag definition for cloud free conditions and their handling of unvalid measurements which is taken care of by the following functions.</p>
+<p>In particular, we define a <strong>minimum cloud cover</strong> based on the cloud mask flag <code class="docutils literal notranslate"><span class="pre">most_likely_cloudy</span></code> and a <strong>maximum cloud cover</strong> combining the flags <code class="docutils literal notranslate"><span class="pre">most_likely_cloudy</span></code> and <code class="docutils literal notranslate"><span class="pre">probably_cloudy</span></code>. The cloud mask datasets slightly vary in their flag definition for cloud free conditions and their handling of unvalid measurements which is taken care of by the following functions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">_isvalid</span><span class="p">(</span><span class="n">da</span><span class="p">):</span>
@@ -571,7 +568,8 @@ In the following, we compare the different cloud mask products for a case study 
 <span class="k">def</span> <span class="nf">load_cloudmask_dataset</span><span class="p">(</span><span class="n">cat_item</span><span class="p">):</span>
     <span class="c1"># load in parallel as this function is mainly limited by the network roundtrip time</span>
     <span class="n">p</span> <span class="o">=</span> <span class="n">ThreadPool</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">ensure_cfminmax</span><span class="p">(</span><span class="n">xr</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">v</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">to_dask</span><span class="p">()</span><span class="o">.</span><span class="n">chunk</span><span class="p">(),</span> <span class="n">cat_item</span><span class="o">.</span><span class="n">values</span><span class="p">())),</span>
+    <span class="k">return</span> <span class="n">ensure_cfminmax</span><span class="p">(</span><span class="n">xr</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">v</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">to_dask</span><span class="p">()</span><span class="o">.</span><span class="n">chunk</span><span class="p">(),</span>
+                                                <span class="n">cat_item</span><span class="o">.</span><span class="n">values</span><span class="p">())),</span>
                                      <span class="n">dim</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -624,6 +622,25 @@ In the following, we compare the different cloud mask products for a case study 
 </div>
 </div>
 </div>
+<p>We have a look at the time periods spanned by the individual datasets: The datasets <code class="docutils literal notranslate"><span class="pre">HAMP</span> <span class="pre">Radar</span></code>, <code class="docutils literal notranslate"><span class="pre">HAMP</span> <span class="pre">Radiometer</span></code>, and <code class="docutils literal notranslate"><span class="pre">specMACS</span></code> include measurements from the transfer flights on 19 January to Barbados and on 18 February back over the Atlantic to Europe. The datasets <code class="docutils literal notranslate"><span class="pre">WALES</span></code>, <code class="docutils literal notranslate"><span class="pre">KT19</span></code>, and <code class="docutils literal notranslate"><span class="pre">VELOX</span></code> are limited to the 13 local research flights between 22 January and 15 February.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">v</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="si">}</span><span class="s2"> -  </span><span class="si">{</span><span class="n">v</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WALES: 2020-01-22T15:18:00.155000064 -  2020-02-15T23:30:02.176000000
+HAMP Radar: 2020-01-19T09:34:25.000004352 -  2020-02-18T18:55:30.999997440
+specMACS: 2020-01-19T09:29:00.063636992 -  2020-02-18T17:27:00.982214912
+HAMP Radiometer: 2020-01-19T09:34:25.000004352 -  2020-02-18T18:55:30.999997440
+KT19: 2020-01-22T14:57:36.041336059 -  2020-02-15T23:59:53.497467041
+VELOX: 2020-01-24T09:33:35.000000000 -  2020-02-15T23:25:18.000000000
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 <div class="section" id="case-study-on-february-5">
 <h2>Case study on February 5<a class="headerlink" href="#case-study-on-february-5" title="Permalink to this headline">¶</a></h2>
@@ -635,8 +652,7 @@ In the following, we compare the different cloud mask products for a case study 
 <h4>Time interval<a class="headerlink" href="#time-interval" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-          <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="s2">&quot;2020-02-05T11:22:00&quot;</span><span class="p">,</span> <span class="s2">&quot;2020-02-05T11:27:00&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -687,7 +703,11 @@ height = height_above_sea_level[0] - range
 </div>
 <div class="section" id="specmacs-imager-radiance">
 <h4>SpecMACS imager radiance<a class="headerlink" href="#specmacs-imager-radiance" title="Permalink to this headline">¶</a></h4>
-<p>From specMACS we include the radiances at 1.6 micron in the short-wave infrared (SWIR). Note: this sepcMACS radiance dataset is only available for the following application on February 5, not for the whole campaign.</p>
+<p>From specMACS we include the radiances at 1.6 micron in the short-wave infrared (SWIR).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>this dataset is only available for the following application on February 5, not for the whole campaign.</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/SPECMACS-CLOUDMASK/&quot;</span>
@@ -699,14 +719,46 @@ height = height_above_sea_level[0] - range
 </div>
 </div>
 </div>
+<div class="section" id="velox-broadband-ir-brightness-temperature">
+<h4>VELOX broadband IR brightness temperature<a class="headerlink" href="#velox-broadband-ir-brightness-temperature" title="Permalink to this headline">¶</a></h4>
+<p>Next to the SpecMACS SWIR radiance, we include broadband brightness temperatures from VELOX (7.7 - 12 μm).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>this dataset is only available for the following application on February 5, not for the whole campaign.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds_bt</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_zarr</span><span class="p">(</span><span class="s2">&quot;ipfs://QmQEwkhhHdJkiThf4hnj9G3wgqVreBnWGrX2A5kT6CrtY7&quot;</span><span class="p">,</span>
+                     <span class="n">consolidated</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                    <span class="p">)</span><span class="o">.</span><span class="n">assign_coords</span><span class="p">(</span><span class="n">va</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">va</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 <div class="section" id="preprocess-cloud-mask-data">
 <h4>Preprocess cloud mask data<a class="headerlink" href="#preprocess-cloud-mask-data" title="Permalink to this headline">¶</a></h4>
 <p>We copy the data dictionary and apply the time selection.</p>
-<p>For the 2D horizontal imagers we select a region in the center, derive a representative <code class="docutils literal notranslate"><span class="pre">cloud_mask</span></code> flag value and use that in the following intercomparison plot.</p>
+<p>For the 2D horizontal imagers we select a region in the center, derive a representative (most frequent) <code class="docutils literal notranslate"><span class="pre">cloud_mask</span></code> flag value and use that in the following intercomparison plot.</p>
 <ul class="simple">
-<li><p>VELOX: we select only the cetral 10 x 10 pixels</p></li>
+<li><p>VELOX: we select only the central 11 x 11 pixels, i.e. view angle = 0 ∓ 0.2865 (see below)</p></li>
 <li><p>SpecMACS: we select the central 0.6 degrees, i.e. angle = 0 ∓ 0.3</p></li>
 </ul>
+<p>What is the angle of the 11 central pixel in accross track direction for VELOX?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xmid</span> <span class="o">=</span> <span class="n">ds_bt</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">size</span> <span class="o">//</span> <span class="mi">2</span>
+<span class="n">va_central</span> <span class="o">=</span> <span class="n">ds_bt</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="n">xmid</span> <span class="o">-</span> <span class="mi">5</span><span class="p">,</span> <span class="n">xmid</span> <span class="o">+</span> <span class="mi">6</span><span class="p">))</span><span class="o">.</span><span class="n">va</span>
+<span class="p">(</span><span class="n">va_central</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">va_central</span><span class="o">.</span><span class="n">min</span><span class="p">())</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array(0.57295305, dtype=float32)
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">most_frequent_flag</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="n">dims</span><span class="p">):</span>
@@ -725,7 +777,7 @@ height = height_above_sea_level[0] - range
 <span class="k">def</span> <span class="nf">select_velox_cloudmask</span><span class="p">(</span><span class="n">ds</span><span class="p">):</span>
     <span class="n">xmid</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">size</span> <span class="o">//</span> <span class="mi">2</span>
     <span class="n">ymid</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">size</span> <span class="o">//</span> <span class="mi">2</span>
-    <span class="n">velox</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="n">xmid</span> <span class="o">-</span> <span class="mi">5</span><span class="p">,</span> <span class="n">xmid</span> <span class="o">+</span> <span class="mi">5</span><span class="p">),</span> <span class="n">y</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="n">ymid</span> <span class="o">-</span> <span class="mi">5</span><span class="p">,</span> <span class="n">ymid</span> <span class="o">+</span> <span class="mi">5</span><span class="p">))</span>
+    <span class="n">velox</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="n">xmid</span> <span class="o">-</span> <span class="mi">5</span><span class="p">,</span> <span class="n">xmid</span> <span class="o">+</span> <span class="mi">6</span><span class="p">),</span> <span class="n">y</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="n">ymid</span> <span class="o">-</span> <span class="mi">5</span><span class="p">,</span> <span class="n">ymid</span> <span class="o">+</span> <span class="mi">6</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">ds</span><span class="o">.</span><span class="n">assign</span><span class="p">({</span><span class="s2">&quot;cloud_mask&quot;</span><span class="p">:</span> <span class="n">most_frequent_flag</span><span class="p">(</span><span class="n">velox</span><span class="o">.</span><span class="n">cloud_mask</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">)),</span>
                       <span class="s2">&quot;CF_min&quot;</span><span class="p">:</span> <span class="n">cfmin</span><span class="p">(</span><span class="n">velox</span><span class="p">),</span>
                       <span class="s2">&quot;CF_max&quot;</span><span class="p">:</span> <span class="n">cfmax</span><span class="p">(</span><span class="n">velox</span><span class="p">)})</span>
@@ -745,20 +797,7 @@ height = height_above_sea_level[0] - range
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data0205</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">ensure_cfminmax</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="s2">&quot;HALO-0205&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_dask</span><span class="p">())</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">cat_cloudmask</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 <span class="n">data_feb5</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">cloudmask_selectors</span><span class="p">[</span><span class="n">k</span><span class="p">](</span><span class="n">v</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">s</span><span class="p">))</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data0205</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 174 ms, sys: 19.9 ms, total: 194 ms
-Wall time: 2.21 s
 </pre></div>
 </div>
 </div>
@@ -783,89 +822,117 @@ Wall time: 2.21 s
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">axV</span><span class="p">,</span> <span class="n">axVb</span><span class="p">,</span> <span class="n">axH</span><span class="p">,</span> <span class="n">axP</span><span class="p">,</span> <span class="n">axL1</span><span class="p">,</span> <span class="n">axL2</span><span class="p">,</span> <span class="n">axL3</span><span class="p">,</span> <span class="n">axL4</span><span class="p">,</span> <span class="n">axL5</span><span class="p">,</span> <span class="n">axL6</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span>
-    <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
-    <span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;height_ratios&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]}</span>
-<span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">([</span><span class="s2">&quot;./mplstyle/book&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="s2">&quot;mplstyle/square&quot;</span><span class="p">):</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax0</span><span class="p">,</span> <span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span><span class="p">,</span> <span class="n">axLegend</span><span class="p">,</span> <span class="n">axL1</span><span class="p">,</span> <span class="n">axL2</span><span class="p">,</span> <span class="n">axL3</span><span class="p">,</span> <span class="n">axL4</span><span class="p">,</span> <span class="n">axL5</span><span class="p">,</span> <span class="n">axL6</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span>
+        <span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;height_ratios&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span>
+                                                           <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]}</span>
+    <span class="p">)</span>
 
-<span class="c1">## 2D vertical</span>
-<span class="c1"># Wales backscatter ratio</span>
-<span class="n">im0</span> <span class="o">=</span> <span class="n">da_bsri</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span>
-    <span class="n">ax</span><span class="o">=</span><span class="n">axV</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;height&quot;</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">LogNorm</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">100</span><span class="p">),</span>
-    <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Spectral_r&quot;</span><span class="p">,</span> <span class="n">rasterized</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">add_colorbar</span><span class="o">=</span><span class="kc">False</span>
-<span class="p">)</span>
-<span class="n">cax0</span> <span class="o">=</span> <span class="n">make_axes_locatable</span><span class="p">(</span><span class="n">axV</span><span class="p">)</span><span class="o">.</span><span class="n">append_axes</span><span class="p">(</span><span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s2">&quot;1%&quot;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=-</span><span class="mf">0.05</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im0</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">cax0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;backscatter ratio&quot;</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
-<span class="c1"># cloud top height</span>
-<span class="n">da_cth</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axV</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Cloud top&quot;</span><span class="p">)</span>
-<span class="n">axV</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="c1">## 2D vertical</span>
+    <span class="c1"># Wales backscatter ratio</span>
+    <span class="n">im0</span> <span class="o">=</span> <span class="n">da_bsri</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span>
+        <span class="n">ax</span><span class="o">=</span><span class="n">ax0</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;height&quot;</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">LogNorm</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">100</span><span class="p">),</span>
+        <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Spectral_r&quot;</span><span class="p">,</span> <span class="n">rasterized</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">add_colorbar</span><span class="o">=</span><span class="kc">False</span>
+    <span class="p">)</span>
+    <span class="n">cax0</span> <span class="o">=</span> <span class="n">make_axes_locatable</span><span class="p">(</span><span class="n">ax0</span><span class="p">)</span><span class="o">.</span><span class="n">append_axes</span><span class="p">(</span><span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s2">&quot;1%&quot;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=-</span><span class="mf">0.05</span><span class="p">)</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im0</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">cax0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;backscatter ratio&quot;</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+    <span class="c1"># cloud top height</span>
+    <span class="n">da_cth</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax0</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Cloud top&quot;</span><span class="p">)</span>
+    <span class="n">ax0</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 
-<span class="c1"># Radar reflectivity</span>
-<span class="n">im1</span> <span class="o">=</span> <span class="n">da_radar</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axVb</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="n">add_colorbar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">cax1</span> <span class="o">=</span> <span class="n">make_axes_locatable</span><span class="p">(</span><span class="n">axVb</span><span class="p">)</span><span class="o">.</span><span class="n">append_axes</span><span class="p">(</span><span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s2">&quot;1%&quot;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=-</span><span class="mf">0.05</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im1</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">cax1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;reflectivity / dBZ&quot;</span><span class="p">)</span>
+    <span class="c1"># Radar reflectivity</span>
+    <span class="n">im1</span> <span class="o">=</span> <span class="n">da_radar</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="n">rasterized</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">add_colorbar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">cax1</span> <span class="o">=</span> <span class="n">make_axes_locatable</span><span class="p">(</span><span class="n">ax1</span><span class="p">)</span><span class="o">.</span><span class="n">append_axes</span><span class="p">(</span><span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s2">&quot;1%&quot;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=-</span><span class="mf">0.05</span><span class="p">)</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im1</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">cax1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;reflectivity / dBZ&quot;</span><span class="p">)</span>
 
-<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">[</span><span class="n">axV</span><span class="p">,</span> <span class="n">axVb</span><span class="p">]:</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">3000</span><span class="p">])</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;height / m&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">[</span><span class="n">ax0</span><span class="p">,</span> <span class="n">ax1</span><span class="p">]:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">3000</span><span class="p">])</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;height / m&quot;</span><span class="p">)</span>
 
-<span class="c1">## 2D horizontal</span>
-<span class="c1"># SpecMACS radiance</span>
-<span class="n">im2</span> <span class="o">=</span> <span class="n">da_swir</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axH</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;angle&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Greys_r&quot;</span><span class="p">,</span>
-                              <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">rasterized</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">add_colorbar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">cax2</span> <span class="o">=</span> <span class="n">make_axes_locatable</span><span class="p">(</span><span class="n">axH</span><span class="p">)</span><span class="o">.</span><span class="n">append_axes</span><span class="p">(</span><span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s2">&quot;1%&quot;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=-</span><span class="mf">0.05</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im2</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">cax2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;SWIR radiance&quot;</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;max&#39;</span><span class="p">)</span>
-<span class="n">axH</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;view angle / deg&quot;</span><span class="p">)</span>
+    <span class="c1">## 2D horizontal</span>
+    <span class="c1"># SpecMACS radiance</span>
+    <span class="n">im2</span> <span class="o">=</span> <span class="n">da_swir</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;angle&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Greys_r&quot;</span><span class="p">,</span>
+                                  <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">rasterized</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">add_colorbar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">cax2</span> <span class="o">=</span> <span class="n">make_axes_locatable</span><span class="p">(</span><span class="n">ax2</span><span class="p">)</span><span class="o">.</span><span class="n">append_axes</span><span class="p">(</span><span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s2">&quot;1%&quot;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=-</span><span class="mf">0.05</span><span class="p">)</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im2</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">cax2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;SWIR radiance&quot;</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;max&#39;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;view angle / deg&quot;</span><span class="p">)</span>
 
-<span class="c1">## We leave an empty axis to put the legend here</span>
-<span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">axP</span><span class="o">.</span><span class="n">spines</span><span class="o">.</span><span class="n">values</span><span class="p">()]</span>
-<span class="n">axP</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">axP</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="c1"># VELOX brightness temperature</span>
+    <span class="n">im3</span> <span class="o">=</span> <span class="p">(</span><span class="n">ds_bt</span><span class="o">.</span><span class="n">Brightness_temperature</span> <span class="o">-</span> <span class="mf">273.15</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax3</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;va&quot;</span><span class="p">,</span>
+            <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;RdYlBu_r&quot;</span><span class="p">,</span> <span class="n">rasterized</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">add_colorbar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">cax3</span> <span class="o">=</span> <span class="n">make_axes_locatable</span><span class="p">(</span><span class="n">ax3</span><span class="p">)</span><span class="o">.</span><span class="n">append_axes</span><span class="p">(</span><span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s2">&quot;1%&quot;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=-</span><span class="mf">0.05</span><span class="p">)</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im3</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">cax3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Brightness</span><span class="se">\n</span><span class="s2">temperature / °C&quot;</span><span class="p">)</span>
+    <span class="n">ax3</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;view angle / deg&quot;</span><span class="p">)</span>
 
-<span class="c1">## 1D</span>
-<span class="c1"># We plot 1D cloud masks</span>
-<span class="c1"># Each we annotate with a total min and max cloud fraction for the scene shown and</span>
-<span class="c1"># remove disturbing spines</span>
-<span class="n">lines</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">plot_order</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;WALES&#39;</span><span class="p">,</span> <span class="s1">&#39;HAMP Radar&#39;</span><span class="p">,</span> <span class="s1">&#39;specMACS&#39;</span><span class="p">,</span> <span class="s1">&#39;HAMP Radiometer&#39;</span><span class="p">,</span> <span class="s1">&#39;KT19&#39;</span><span class="p">,</span> <span class="s1">&#39;VELOX&#39;</span><span class="p">]</span>
-<span class="n">axes</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">plot_order</span><span class="p">,</span> <span class="p">[</span><span class="n">axL1</span><span class="p">,</span> <span class="n">axL2</span><span class="p">,</span> <span class="n">axL3</span><span class="p">,</span> <span class="n">axL4</span><span class="p">,</span> <span class="n">axL5</span><span class="p">,</span> <span class="n">axL6</span><span class="p">]))</span>
 
-<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">plot_order</span><span class="p">:</span>
-    <span class="n">ds</span> <span class="o">=</span> <span class="n">data_feb5</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
-    <span class="n">lines</span> <span class="o">+=</span> <span class="n">ds</span><span class="o">.</span><span class="n">cloud_mask</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
-    <span class="k">if</span> <span class="n">axes</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">!=</span><span class="n">axL6</span><span class="p">:</span>
-        <span class="n">axes</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">&quot;bottom&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-        <span class="n">axes</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">axes</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-    <span class="n">axes</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ds</span><span class="o">.</span><span class="n">CF_min</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">values</span> <span class="o">*</span> <span class="mi">100</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span>
-                     <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot; - </span><span class="si">{</span><span class="n">ds</span><span class="o">.</span><span class="n">CF_max</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">values</span> <span class="o">*</span> <span class="mi">100</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> %&quot;</span><span class="p">,</span>
-                     <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">xycoords</span><span class="o">=</span><span class="s2">&quot;axes fraction&quot;</span><span class="p">)</span>
+    <span class="c1">## We leave an empty axis to put the legend here</span>
+    <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">axLegend</span><span class="o">.</span><span class="n">spines</span><span class="o">.</span><span class="n">values</span><span class="p">()]</span>
+    <span class="n">axLegend</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">axLegend</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 
-<span class="c1"># We add one legend for all 1D cloud masks</span>
-<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">l</span><span class="o">.</span><span class="n">get_label</span><span class="p">()</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">]</span>
-<span class="n">axL1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">))</span>
-<span class="n">axL3</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;cloud flag&quot;</span><span class="p">)</span>
+    <span class="c1">## 1D</span>
+    <span class="c1"># We plot 1D cloud masks</span>
+    <span class="c1"># Each we annotate with a total min and max cloud cover for the scene shown and</span>
+    <span class="c1"># remove disturbing spines</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">plot_order</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;WALES&#39;</span><span class="p">,</span> <span class="s1">&#39;HAMP Radar&#39;</span><span class="p">,</span> <span class="s1">&#39;specMACS&#39;</span><span class="p">,</span> <span class="s1">&#39;VELOX&#39;</span><span class="p">,</span> <span class="s1">&#39;KT19&#39;</span><span class="p">,</span> <span class="s1">&#39;HAMP Radiometer&#39;</span><span class="p">]</span>
+    <span class="n">axes</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">plot_order</span><span class="p">,</span> <span class="p">[</span><span class="n">axL1</span><span class="p">,</span> <span class="n">axL2</span><span class="p">,</span> <span class="n">axL3</span><span class="p">,</span> <span class="n">axL4</span><span class="p">,</span> <span class="n">axL5</span><span class="p">,</span> <span class="n">axL6</span><span class="p">]))</span>
 
-<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">[</span><span class="n">axV</span><span class="p">,</span> <span class="n">axVb</span><span class="p">,</span> <span class="n">axH</span><span class="p">,</span> <span class="n">axP</span><span class="p">,</span> <span class="n">axL1</span><span class="p">,</span> <span class="n">axL2</span><span class="p">,</span> <span class="n">axL3</span><span class="p">,</span> <span class="n">axL4</span><span class="p">,</span> <span class="n">axL5</span><span class="p">,</span> <span class="n">axL6</span><span class="p">]:</span>
-    <span class="k">if</span> <span class="n">ax</span><span class="o">!=</span><span class="n">axL6</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">plot_order</span><span class="p">:</span>
+        <span class="n">ds</span> <span class="o">=</span> <span class="n">data_feb5</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+        <span class="n">lines</span> <span class="o">+=</span> <span class="n">ds</span><span class="o">.</span><span class="n">cloud_mask</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">axes</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">!=</span><span class="n">axL6</span><span class="p">:</span>
+            <span class="n">axes</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">&quot;bottom&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+            <span class="n">axes</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ds</span><span class="o">.</span><span class="n">CF_min</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">values</span> <span class="o">*</span> <span class="mi">100</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span>
+                         <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot; - </span><span class="si">{</span><span class="n">ds</span><span class="o">.</span><span class="n">CF_max</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">values</span> <span class="o">*</span> <span class="mi">100</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> %&quot;</span><span class="p">,</span>
+                         <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">xycoords</span><span class="o">=</span><span class="s2">&quot;axes fraction&quot;</span><span class="p">)</span>
+
+    <span class="c1"># We add one legend for all 1D cloud masks</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">l</span><span class="o">.</span><span class="n">get_label</span><span class="p">()</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">]</span>
+    <span class="n">axL1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">))</span>
+    <span class="n">axL3</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;cloud flag&quot;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">[</span><span class="n">ax0</span><span class="p">,</span> <span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span><span class="p">,</span> <span class="n">axLegend</span><span class="p">,</span> <span class="n">axL1</span><span class="p">,</span> <span class="n">axL2</span><span class="p">,</span> <span class="n">axL3</span><span class="p">,</span> <span class="n">axL4</span><span class="p">,</span> <span class="n">axL5</span><span class="p">,</span> <span class="n">axL6</span><span class="p">]:</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;right&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+    <span class="n">axL6</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;UTC time&quot;</span><span class="p">)</span>
+    <span class="n">axL6</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">datetime64</span><span class="p">(</span><span class="s1">&#39;2020-02-05T11:22:00&#39;</span><span class="p">),</span>
+                    <span class="n">np</span><span class="o">.</span><span class="n">datetime64</span><span class="p">(</span><span class="s1">&#39;2020-02-05T11:28:00&#39;</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">timedelta64</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;m&#39;</span><span class="p">)))</span>
+    <span class="n">ax0</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">mpl</span><span class="o">.</span><span class="n">dates</span><span class="o">.</span><span class="n">DateFormatter</span><span class="p">(</span><span class="s1">&#39;%H:%M&#39;</span><span class="p">))</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">autofmt_xdate</span><span class="p">()</span>
+
+    <span class="n">fig</span><span class="o">.</span><span class="n">align_ylabels</span><span class="p">(</span><span class="n">axs</span><span class="o">=</span><span class="p">[</span><span class="n">ax0</span><span class="p">,</span> <span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span><span class="p">,</span> <span class="n">axL3</span><span class="p">])</span>
+    <span class="c1">#fig.align_ylabels(axs=[cax0, cax1, cax2])</span>
+
+    <span class="n">label_pos_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">datetime64</span><span class="p">(</span><span class="s1">&#39;2020-02-05T11:21:35&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">([</span><span class="n">ax0</span><span class="p">,</span> <span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span><span class="p">,</span> <span class="n">axL1</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;(a)&quot;</span><span class="p">,</span> <span class="s2">&quot;(b)&quot;</span><span class="p">,</span> <span class="s2">&quot;(c)&quot;</span><span class="p">,</span> <span class="s2">&quot;(d)&quot;</span><span class="p">,</span> <span class="s2">&quot;(e)&quot;</span><span class="p">]):</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">label_pos_x</span><span class="p">,</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="p">,</span> <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/cloudmasks_31_0.png" src="_images/cloudmasks_31_0.png" />
+<img alt="_images/cloudmasks_35_0.png" src="_images/cloudmasks_35_0.png" />
 </div>
 </div>
 </div>
 </div>
 <div class="section" id="statistical-comparison">
 <h2>Statistical comparison<a class="headerlink" href="#statistical-comparison" title="Permalink to this headline">¶</a></h2>
-<p>We will further compare cloud mask information from all HALO flights during EUREC4A on the basis of circle flight segments. Most of the time, the HALO aircraft sampled the airmass in circles east of Barbados. We use the meta data on flight segments, extract the information on start and end time of individual circles, and derive circle-average cloud fractions.</p>
+<p>We will further compare cloud mask information from all HALO flights during EUREC4A on the basis of circle flight segments. Most of the time, the HALO aircraft sampled the airmass in circles east of Barbados. We use the meta data on flight segments, extract the information on start and end time of individual circles, and derive circle-average cloud cover.</p>
 <p>For the 2D imagers VELOX and speMACS we use the full swath. In the case study above we had selected the central measurements for a better comparison with the other instruments. However, in the following we investigate the broad statistics and therefore include as much information on the cloud field as we can get from the full footprints of each instrument.</p>
-<p>The following statistics are based on the <strong>maximum cloud fraction</strong> with cloud mask flags <span class="math notranslate nohighlight">\(\in\)</span> {<code class="docutils literal notranslate"><span class="pre">most_likely_cloudy</span></code>, <code class="docutils literal notranslate"><span class="pre">probably_cloudy</span></code>}.</p>
+<p>The following statistics are based on the <strong>maximum cloud cover</strong> with cloud mask flags <span class="math notranslate nohighlight">\(\in\)</span> {<code class="docutils literal notranslate"><span class="pre">most_likely_cloudy</span></code>, <code class="docutils literal notranslate"><span class="pre">probably_cloudy</span></code>}.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">midpoint</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
@@ -875,8 +942,8 @@ Wall time: 2.21 s
     <span class="k">return</span> <span class="n">xr</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span>
         <span class="p">[</span>
             <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">({</span>
-                <span class="s2">&quot;CF_max&quot;</span><span class="p">:</span> <span class="n">ds</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="s2">&quot;start&quot;</span><span class="p">],</span> <span class="n">i</span><span class="p">[</span><span class="s2">&quot;end&quot;</span><span class="p">]))</span><span class="o">.</span><span class="n">CF_max</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="n">skipna</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
-                <span class="s2">&quot;CF_min&quot;</span><span class="p">:</span> <span class="n">ds</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="s2">&quot;start&quot;</span><span class="p">],</span> <span class="n">i</span><span class="p">[</span><span class="s2">&quot;end&quot;</span><span class="p">]))</span><span class="o">.</span><span class="n">CF_min</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="n">skipna</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+                <span class="s2">&quot;CF_max&quot;</span><span class="p">:</span> <span class="n">ds</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="s2">&quot;start&quot;</span><span class="p">],</span> <span class="n">i</span><span class="p">[</span><span class="s2">&quot;end&quot;</span><span class="p">]))</span><span class="o">.</span><span class="n">CF_max</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">),</span>
+                <span class="s2">&quot;CF_min&quot;</span><span class="p">:</span> <span class="n">ds</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="s2">&quot;start&quot;</span><span class="p">],</span> <span class="n">i</span><span class="p">[</span><span class="s2">&quot;end&quot;</span><span class="p">]))</span><span class="o">.</span><span class="n">CF_min</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">),</span>
                 <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">midpoint</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="s2">&quot;start&quot;</span><span class="p">],</span> <span class="n">i</span><span class="p">[</span><span class="s2">&quot;end&quot;</span><span class="p">]),</span> <span class="n">dims</span><span class="o">=</span><span class="p">()),</span>
                 <span class="s2">&quot;segment_id&quot;</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="s2">&quot;segment_id&quot;</span><span class="p">],</span> <span class="n">dims</span><span class="o">=</span><span class="p">())</span>
             <span class="p">})</span>
@@ -928,8 +995,8 @@ Wall time: 2.21 s
 </div>
 </div>
 </div>
-<div class="section" id="histogram-of-circle-mean-cloud-fraction">
-<h3>Histogram of circle mean cloud fraction<a class="headerlink" href="#histogram-of-circle-mean-cloud-fraction" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="histogram-of-circle-mean-cloud-cover">
+<h3>Histogram of circle mean cloud cover<a class="headerlink" href="#histogram-of-circle-mean-cloud-cover" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">binedges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="o">.</span><span class="mi">2</span><span class="p">)</span>
@@ -940,99 +1007,157 @@ Wall time: 2.21 s
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">ax1</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">binmids</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">cf_circles</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="o">.</span><span class="n">CF_min</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">binedges</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
-            <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">k</span><span class="p">)</span>
-    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">binmids</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">cf_circles</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="o">.</span><span class="n">CF_max</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">binedges</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
-            <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">k</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="s2">&quot;mplstyle/wide&quot;</span><span class="p">):</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax0</span><span class="p">,</span> <span class="n">ax1</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">ds</span> <span class="o">=</span> <span class="n">cf_circles</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+        <span class="n">ax0</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">binmids</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">CF_min</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">binedges</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
+                <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">k</span><span class="p">)</span>
+        <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">binmids</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">CF_max</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">binedges</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
+                <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">k</span><span class="p">)</span>
 
 
-<span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="p">[</span><span class="n">ax</span><span class="p">,</span> <span class="n">ax1</span><span class="p">]:</span>
-    <span class="n">a</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">a</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">48</span><span class="p">)</span>
-    <span class="n">a</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;right&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">a</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">[</span><span class="n">ax0</span><span class="p">,</span> <span class="n">ax1</span><span class="p">]:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">ax0</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span> <span class="n">ax1</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()[</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="n">ax0</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Minimum circle-mean cloud cover&quot;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Maximum circle-mean cloud cover&quot;</span><span class="p">)</span>
+    <span class="n">ax0</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Number of circles&quot;</span><span class="p">)</span>
+    <span class="n">ax0</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Instruments&quot;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mi">55</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">)</span>
 
-    <span class="n">a</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Cloud fraction&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Frequency&quot;</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Instruments&quot;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">)</span>
+    <span class="n">ax0</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">-</span><span class="mf">0.12</span><span class="p">,</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;(a)&quot;</span><span class="p">,</span> <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;(b)&quot;</span><span class="p">,</span> <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f653e6b6f70&gt;
-</pre></div>
-</div>
-<img alt="_images/cloudmasks_43_1.png" src="_images/cloudmasks_43_1.png" />
+<img alt="_images/cloudmasks_46_0.png" src="_images/cloudmasks_46_0.png" />
 </div>
 </div>
 </div>
-<div class="section" id="time-series-of-circle-cloud-fraction">
-<h3>Time series of circle cloud fraction<a class="headerlink" href="#time-series-of-circle-cloud-fraction" title="Permalink to this headline">¶</a></h3>
-<p>We display the daily mean of all circle cloud fraction <em>(marker)</em> and the range from minimum to maximum circle cloud fraction <em>(vertical line)</em>.</p>
+<div class="section" id="time-series-of-circle-cloud-cover">
+<h3>Time series of circle cloud cover<a class="headerlink" href="#time-series-of-circle-cloud-cover" title="Permalink to this headline">¶</a></h3>
+<p>We display the daily mean of all circle cloud cover <em>(marker)</em> and the range from minimum to maximum circle cloud cover <em>(vertical line)</em>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">timedelta64</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;h&#39;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="n">ds</span> <span class="o">=</span> <span class="n">cf_circles</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
-    <span class="n">ds</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;&lt;M8[D]&#39;</span><span class="p">)</span>
-    <span class="n">date</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">date</span><span class="p">)</span> <span class="o">+</span> <span class="n">ts</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">date</span><span class="p">)</span> <span class="o">+</span> <span class="n">ts</span><span class="p">,</span>
-                <span class="n">y</span><span class="o">=</span><span class="n">ds</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;date&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">CF_min</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
-                <span class="n">yerr</span><span class="o">=</span><span class="p">[</span><span class="n">ds</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;date&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">.</span><span class="n">CF_min</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
-                      <span class="n">ds</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;date&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">CF_min</span><span class="o">.</span><span class="n">values</span><span class="p">],</span>
-                <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">k</span><span class="p">)</span>
-    <span class="n">ts</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">timedelta64</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;h&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">date</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">timedelta64</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="s1">&#39;h&#39;</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">mpl</span><span class="o">.</span><span class="n">dates</span><span class="o">.</span><span class="n">DateFormatter</span><span class="p">(</span><span class="s1">&#39;%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">))</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">autofmt_xdate</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">timedelta64</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;h&#39;</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;right&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="s2">&quot;mplstyle/wide&quot;</span><span class="p">):</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">ds</span> <span class="o">=</span> <span class="n">cf_circles</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+        <span class="n">ds</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;&lt;M8[D]&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span>
+            <span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">date</span><span class="p">)</span> <span class="o">+</span> <span class="n">ts</span><span class="p">,</span>
+            <span class="n">y</span><span class="o">=</span><span class="n">ds</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;date&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">CF_min</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+            <span class="n">yerr</span><span class="o">=</span><span class="nb">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">ds</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;date&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">.</span><span class="n">CF_min</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+                               <span class="n">ds</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;date&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">CF_min</span><span class="o">.</span><span class="n">values</span><span class="p">])</span>
+                     <span class="o">-</span> <span class="n">ds</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;date&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">CF_min</span><span class="o">.</span><span class="n">values</span><span class="p">),</span>
+            <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span>
+            <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">k</span><span class="p">],</span>
+            <span class="n">label</span><span class="o">=</span><span class="n">k</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">ts</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">timedelta64</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;h&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">date</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">timedelta64</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="s1">&#39;h&#39;</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">mpl</span><span class="o">.</span><span class="n">dates</span><span class="o">.</span><span class="n">DateFormatter</span><span class="p">(</span><span class="s1">&#39;%b </span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">))</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">autofmt_xdate</span><span class="p">()</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Cloud fraction&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Instruments&quot;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Minimum circle-mean</span><span class="se">\n</span><span class="s2">cloud cover&quot;</span><span class="p">)</span>
+    <span class="c1">#ax.legend(title=&quot;Instruments&quot;, bbox_to_anchor=(1,1), loc=&quot;upper left&quot;)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">datetime64</span><span class="p">(</span><span class="s2">&quot;2020-01-15T00:00:00&quot;</span><span class="p">),</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;(c)&quot;</span><span class="p">,</span>
+            <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Date&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f653e84f8e0&gt;
-</pre></div>
-</div>
-<img alt="_images/cloudmasks_46_1.png" src="_images/cloudmasks_46_1.png" />
+<img alt="_images/cloudmasks_48_0.png" src="_images/cloudmasks_48_0.png" />
 </div>
 </div>
 </div>
+<div class="section" id="a-small-interpretation">
+<h3>A small interpretation<a class="headerlink" href="#a-small-interpretation" title="Permalink to this headline">¶</a></h3>
+<p>A few features stick out in the above figures showing the cloud cover statistics:</p>
+<ul class="simple">
+<li><p>the WALES dataset does not have a <code class="docutils literal notranslate"><span class="pre">probably_cloudy</span></code> flag, and thus, the <code class="docutils literal notranslate"><span class="pre">CF_min</span></code> and <code class="docutils literal notranslate"><span class="pre">CF_max</span></code> variables are the same. The instrument design and methodology used to define the cloud flag seems to be very sensitive to small and optically thin clouds and the cloud cover estimates agree better with the <code class="docutils literal notranslate"><span class="pre">CF_max</span></code> of all other instruments.</p></li>
+<li><p>All instruments, excluding WALES, agree well in the distribution of circle-mean cloud cover estimates according to their <code class="docutils literal notranslate"><span class="pre">CF_min</span></code> variable, while they vary on their definition of uncertain <code class="docutils literal notranslate"><span class="pre">probably_cloudy</span></code> measurements that are included in <code class="docutils literal notranslate"><span class="pre">CF_max</span></code>.</p></li>
+<li><p>On the transfer flight on 19 January the HAMP radar and radiometer and specMACS datasets were processed and datasets are available including one circle near Barbados. For WALES, VELOX, and KT19 no data is available.</p></li>
+<li><p>The disagreement in cloud cover estimates for the flight on 15 February is partly due to a deep stratocumulus layer with a strong reflection at cloud top that blinded the lidar (WALES), while the radar was still able to provide reasonable estimates.</p></li>
+</ul>
 </div>
-<div class="section" id="camapign-mean-cloud-fraction">
-<h2>Camapign mean cloud fraction<a class="headerlink" href="#camapign-mean-cloud-fraction" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="camapign-mean-cloud-cover">
+<h2>Camapign mean cloud cover<a class="headerlink" href="#camapign-mean-cloud-cover" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>from all available data including the transfer flights</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">v</span><span class="o">.</span><span class="n">CF_max</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Instrument: min - max&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">v</span><span class="o">.</span><span class="n">CF_min</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">v</span><span class="o">.</span><span class="n">CF_max</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> &quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WALES: 0.34
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Instrument: min - max
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HAMP Radar: 0.25
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WALES: 0.34 - 0.34 
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>specMACS: 0.24
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HAMP Radar: 0.25 - 0.25 
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HAMP Radiometer: 0.18
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>specMACS: 0.18 - 0.24 
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>KT19: 0.31
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HAMP Radiometer: 0.17 - 0.25 
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>VELOX: 0.39
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>KT19: 0.20 - 0.31 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>VELOX: 0.21 - 0.39 
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>only from local research flights</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">localRF</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="s2">&quot;2020-01-22T00:00:00&quot;</span><span class="p">,</span> <span class="s2">&quot;2020-02-15T23:59:59&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Instrument: min - max&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">v</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">localRF</span><span class="p">)</span><span class="o">.</span><span class="n">CF_min</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> - &quot;</span>
+          <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">v</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">localRF</span><span class="p">)</span><span class="o">.</span><span class="n">CF_max</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> &quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Instrument: min - max
+
+WALES: 0.34 - 0.34 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HAMP Radar: 0.21 - 0.22 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>specMACS: 0.16 - 0.22 
+HAMP Radiometer: 0.16 - 0.25 
+KT19: 0.20 - 0.31 
+VELOX: 0.21 - 0.39 
 </pre></div>
 </div>
 </div>
