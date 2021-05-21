@@ -37,10 +37,10 @@ import warnings
 warnings.filterwarnings("ignore")
 ```
 
-## Cloud fraction functions
+## Cloud cover functions
 We define some utility functions to extract (circle) cloud cover estimates from different datasets assuming that the datasets follow a certain flag meaning convention.  
 
-In particular, we define a **minimum cloud fraction** based on the cloud mask flag `most_likely_cloudy` and a **maximum cloud fraction** combining the flags `most_likely_cloudy` and `probably_cloudy`. The cloud mask datasets slightly vary in their flag definition for cloud free conditions and their handling of unvalid measurements which is taken care of by the following functions.
+In particular, we define a **minimum cloud cover** based on the cloud mask flag `most_likely_cloudy` and a **maximum cloud cover** combining the flags `most_likely_cloudy` and `probably_cloudy`. The cloud mask datasets slightly vary in their flag definition for cloud free conditions and their handling of unvalid measurements which is taken care of by the following functions.
 
 ```{code-cell} ipython3
 def _isvalid(da):
@@ -195,17 +195,17 @@ We copy the data dictionary and apply the time selection.
 
 +++
 
-What is the angle of the 11 central pixel in accross track direction?
+For the 2D horizontal imagers we select a region in the center, derive a representative (most frequent) `cloud_mask` flag value and use that in the following intercomparison plot.
+* VELOX: we select only the central 11 x 11 pixels, i.e. view angle = 0 ∓ 0.2865 (see below)
+* SpecMACS: we select the central 0.6 degrees, i.e. angle = 0 ∓ 0.3
+
+What is the angle of the 11 central pixel in accross track direction for VELOX?
 
 ```{code-cell} ipython3
 xmid = ds_bt.x.size // 2
 va_central = ds_bt.isel(time=0, x=slice(xmid - 5, xmid + 6)).va
 (va_central.max() - va_central.min()).values
 ```
-
-For the 2D horizontal imagers we select a region in the center, derive a representative (most frequent) `cloud_mask` flag value and use that in the following intercomparison plot.
-* VELOX: we select only the cetral 11 x 11 pixels, i.e. view angle = 0 ∓ 0.2865
-* SpecMACS: we select the central 0.6 degrees, i.e. angle = 0 ∓ 0.3
 
 ```{code-cell} ipython3
 def most_frequent_flag(var, dims):
@@ -314,7 +314,7 @@ with plt.style.context("mplstyle/square"):
 
     ## 1D
     # We plot 1D cloud masks
-    # Each we annotate with a total min and max cloud fraction for the scene shown and 
+    # Each we annotate with a total min and max cloud cover for the scene shown and
     # remove disturbing spines
     lines = []
     plot_order = ['WALES', 'HAMP Radar', 'specMACS', 'VELOX', 'KT19', 'HAMP Radiometer']
@@ -356,11 +356,11 @@ with plt.style.context("mplstyle/square"):
 
 ## Statistical comparison
 
-We will further compare cloud mask information from all HALO flights during EUREC4A on the basis of circle flight segments. Most of the time, the HALO aircraft sampled the airmass in circles east of Barbados. We use the meta data on flight segments, extract the information on start and end time of individual circles, and derive circle-average cloud fractions.
+We will further compare cloud mask information from all HALO flights during EUREC4A on the basis of circle flight segments. Most of the time, the HALO aircraft sampled the airmass in circles east of Barbados. We use the meta data on flight segments, extract the information on start and end time of individual circles, and derive circle-average cloud cover.
 
 For the 2D imagers VELOX and speMACS we use the full swath. In the case study above we had selected the central measurements for a better comparison with the other instruments. However, in the following we investigate the broad statistics and therefore include as much information on the cloud field as we can get from the full footprints of each instrument.
 
-The following statistics are based on the **maximum cloud fraction** with cloud mask flags $\in$ {`most_likely_cloudy`, `probably_cloudy`}.
+The following statistics are based on the **maximum cloud cover** with cloud mask flags $\in$ {`most_likely_cloudy`, `probably_cloudy`}.
 
 ```{code-cell} ipython3
 def midpoint(a, b):
@@ -408,7 +408,7 @@ segments = {s["segment_id"]: {**s, "flight_id": flight["flight_id"]}
 print(f"In total HALO flew {len(segments)} circles during EUREC4A")
 ```
 
-### Histogram of circle mean cloud fraction
+### Histogram of circle mean cloud cover
 
 ```{code-cell} ipython3
 binedges = np.arange(0, 1.2, .2)
@@ -473,7 +473,7 @@ with plt.style.context("mplstyle/wide"):
 ```
 
 ### A small interpretation
-A few features stick out in the above figures showing the statistics:
+A few features stick out in the above figures showing the cloud cover statistics:
 * the WALES dataset does not have a `probably_cloudy` flag, and thus, the `CF_min` and `CF_max` variables are the same. The instrument design and methodology used to define the cloud flag seems to be very sensitive to small and optically thin clouds and the cloud cover estimates agree better with the `CF_max` of all other instruments.
 * All instruments, excluding WALES, agree well in the distribution of circle-mean cloud cover estimates according to their `CF_min` variable, while they vary on their definition of uncertain `probably_cloudy` measurements that are included in `CF_max`.
 * On the transfer flight on 19 January the HAMP radar and radiometer and specMACS datasets were processed and datasets are available including one circle near Barbados. For WALES, VELOX, and KT19 no data is available.
