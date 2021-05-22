@@ -390,6 +390,28 @@
      compile the book
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#adding-new-articles">
+     adding new articles
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#text-articles">
+       text articles
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#executable-notebook">
+       executable notebook
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#entry-in-the-table-of-contents">
+       entry in the table of contents
+      </a>
+     </li>
+    </ul>
+   </li>
   </ul>
  </li>
 </ul>
@@ -465,9 +487,22 @@ conda activate how_to_eurec4a
 </div>
 <div class="section" id="via-git">
 <h2>via git<a class="headerlink" href="#via-git" title="Permalink to this headline">¶</a></h2>
-<p>If you like to do it more properly, you can also clone the repository via git:</p>
+<p>If you like to do it more properly, you can also clone the repository via git. Depending on if you have SSH public key authentication set up or not, you can do this via SSH or HTTPS:</p>
+<div class="tabbed-set docutils">
+<input checked="checked" id="51fb808b-ea55-4403-a716-bf1371c58eab" name="8b938a90-b146-4b91-b2f6-1d74843edff6" type="radio">
+</input><label class="tabbed-label" for="51fb808b-ea55-4403-a716-bf1371c58eab">
+SSH</label><div class="tabbed-content docutils">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone git@github.com:eurec4a/how_to_eurec4a.git
 </pre></div>
+</div>
+</div>
+<input id="a17fda1d-3bdc-4c59-9160-cd083073a33e" name="8b938a90-b146-4b91-b2f6-1d74843edff6" type="radio">
+</input><label class="tabbed-label" for="a17fda1d-3bdc-4c59-9160-cd083073a33e">
+HTTPS</label><div class="tabbed-content docutils">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/eurec4a/how_to_eurec4a
+</pre></div>
+</div>
+</div>
 </div>
 <p>This will create a local copy of the entire book repository in a newly created local folder <code class="docutils literal notranslate"><span class="pre">how_to_eurec4a</span></code>.
 Please change into this directory.</p>
@@ -572,6 +607,30 @@ If that does not work, please have a look at the <a class="reference external" h
 </div>
 <p>which itself will run all code cells and output the results as HTML pages in a newly created folder.
 This variant is especially useful if you like to work directly on the MyST files (see note below) using a text editor and should be done every time before you submit new changes to the book.</p>
+</div>
+<div class="section" id="adding-new-articles">
+<h3>adding new articles<a class="headerlink" href="#adding-new-articles" title="Permalink to this headline">¶</a></h3>
+<p>Articles are generated from markdown files within the <code class="docutils literal notranslate"><span class="pre">how_to_eurec4a</span></code> folder of the git repository.
+The following instructions assume that you are working in that directory.</p>
+<div class="section" id="text-articles">
+<h4>text articles<a class="headerlink" href="#text-articles" title="Permalink to this headline">¶</a></h4>
+<p>Text articles can be created by adding standard markdown files using your favourite text editor.</p>
+</div>
+<div class="section" id="executable-notebook">
+<h4>executable notebook<a class="headerlink" href="#executable-notebook" title="Permalink to this headline">¶</a></h4>
+<p>If you want to add a new notebook, you can either start out from an existing <strong>MyST</strong> Markdown file by copying and modifying it, or you can create a new one from the jupyter notebook menu using <code class="docutils literal notranslate"><span class="pre">File</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">Text</span> <span class="pre">Notebook</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">MyST</span> <span class="pre">Markdown</span></code>.
+If you already have an existing ipython notebook and want to convert it to <strong>MyST</strong>, you can do this by running</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupytext --to myst your_notebook.ipynb
+</pre></div>
+</div>
+<p>This will create a new markdown file named <code class="docutils literal notranslate"><span class="pre">your_notebook.md</span></code>.
+After conversion, the <code class="docutils literal notranslate"><span class="pre">ipynb</span></code> file is not needed anymore and it should not be committed into the repository.</p>
+</div>
+<div class="section" id="entry-in-the-table-of-contents">
+<h4>entry in the table of contents<a class="headerlink" href="#entry-in-the-table-of-contents" title="Permalink to this headline">¶</a></h4>
+<p>After preparing your article or notebook, you’ll have to add it into the table of contents, such that it will actually show up in the compiled book.
+You can do this by modifying <code class="docutils literal notranslate"><span class="pre">_toc.yml</span></code>, where you can add the articles file name without suffix.</p>
+</div>
 </div>
 </div>
 </div>
