@@ -472,8 +472,99 @@ with plt.style.context("mplstyle/wide"):
     ax.set_xlabel("Date")
 ```
 
-### A small interpretation
-A few features stick out in the above figures showing the cloud cover statistics:
+### Histogram of circle-mean cloud cover
+
+We first have a look at the distributions of circle-mean cloud cover based on the minimum (`most_likely_cloudy`) and the maximum estimates (`most_likely_cloudy` & `probably_cloudy`).
+
+```{code-cell} ipython3
+binedges = np.arange(0, 1.2, .2)
+binmids = (binedges[1:] + binedges[:-1]) / 2
+```
+
+```{code-cell} ipython3
+with plt.style.context("mplstyle/wide"):
+    fig, (ax0, ax1) = plt.subplots(1, 2, sharey=True)
+    count = 0
+    width = 0.02
+    for k, v in data.items():
+        ds = cf_circles(v)
+        ax0.bar(x=binmids - 0.05 + count,
+                height=np.histogram(ds.CF_min.values, bins=binedges)[0] / ds.time.size,
+                width=width, color=colors[k], label=k)
+        ax1.bar(x=binmids - 0.05 + count,
+                height=np.histogram(ds.CF_max.values, bins=binedges)[0] / ds.time.size,
+                width=width, color=colors[k], label=k)
+        count+=0.02
+
+    xticks = [0.1, 0.3, 0.5, 0.7, 0.9]
+
+    for ax in [ax0, ax1]:
+        ax.set_xlim(0, 1)
+        ax.set_ylim(0, 1)#max(ax0.get_ylim()[1], ax1.get_ylim()[1]))
+        ax.spines['right'].set_visible(False)
+        ax.spines['top'].set_visible(False)
+        ax.spines['bottom'].set_visible(False)
+        for x in xticks:
+            ax.axhline(y=0, xmin=x-0.06, xmax=x+0.06, color="k")
+        ax.set_xticks([0, 0.2, 0.4, 0.6, 0.8, 1])
+
+
+    ax0.set_xlabel("Minimum circle-mean cloud cover")
+    ax1.set_xlabel("Maximum circle-mean cloud cover")
+    ax0.set_ylabel("Fraction of circles")
+    ax1.legend(title="Instruments", bbox_to_anchor=(.55,1), loc="upper left")
+
+    ax0.text(-0.18, ax.get_ylim()[1], "(a)", verticalalignment='top')
+    ax1.text(-0.1, ax.get_ylim()[1], "(b)", verticalalignment='top')
+```
+
+For a better comparison of minimum and maximum circle-mean cloud cover we merge the two above plots and show their difference in the following plot. In particular, we show the cumulative fraction of circle-mean cloud cover estimates. Depending on the instruments and some instrument downtimes, the available circle counts range from 64 to 72. The bins on the x-axis have a bin width of 0.2 respectively. The bars span the range defined by the minimum cloud cover based on cloud flag `most likely cloudy`and the maximum cloud cover based on cloud flags `most likely cloudy` and `probably cloudy`.
+
+```{code-cell} ipython3
+with plt.style.context("mplstyle/wide"):
+    fig, ax = plt.subplots()
+    count = 0
+    width = 0.02
+    for k, v in data.items():
+        ds = cf_circles(v)
+        hist_min = (np.histogram(ds.CF_min.values, bins=binedges)[0]
+                    / (ds.time.size - np.isnan(ds.CF_min.values).sum()))
+        hist_max = (np.histogram(ds.CF_max.values, bins=binedges)[0]
+                    / (ds.time.size - np.isnan(ds.CF_max.values).sum()))
+        # draw a fake default line at the minimum
+        ax.bar(x=binmids - 0.05 + count,
+                height=0.015,
+                width=width,
+                bottom=np.cumsum(hist_min),
+                color=colors[k], label=k)
+        ax.bar(x=binmids - 0.05 + count,
+                height=np.cumsum(hist_max) - np.cumsum(hist_min),
+                width=width,
+                bottom=np.cumsum(hist_min),
+                color=colors[k])
+        count+=0.02
+
+    # manually set x- and y-axis
+    [s.set_visible(False) for s in ax.spines.values()]
+    # x-axis
+    ax.set_xlim(0, 1)
+    xticks = [0.1, 0.3, 0.5, 0.7, 0.9]
+    for x in xticks:
+        ax.axhline(y=0, xmin=x-0.06, xmax=x+0.06, color="k")
+    ax.set_xticks([0, 0.2, 0.4, 0.6, 0.8, 1])
+    ax.set_xlabel("Circle-mean cloud cover")
+    # y-axis
+    ax.set_ylim(0, 1.02)
+    ax.plot([0, 0], [0, 1], color="k")
+    ax.set_ylabel("Fraction of circles")
+
+    ax.legend(title="Instruments", bbox_to_anchor=(1,1), loc="upper left")
+```
+
+### A small interpretation attempt
+We highlight a few features that stick out in the above figures showing the cloud cover statistics.
+
+Time series:
 * the WALES dataset does not have a `probably_cloudy` flag, and thus, the `CF_min` and `CF_max` variables are the same. The instrument design and methodology used to define the cloud flag seems to be very sensitive to small and optically thin clouds and the cloud cover estimates agree better with the `CF_max` of all other instruments.
 * All instruments, excluding WALES, agree well in the distribution of circle-mean cloud cover estimates according to their `CF_min` variable, while they vary on their definition of uncertain `probably_cloudy` measurements that are included in `CF_max`.
 * On the transfer flight on 19 January the HAMP radar and radiometer and specMACS datasets were processed and datasets are available including one circle near Barbados. For WALES, VELOX, and KT19 no data is available.
