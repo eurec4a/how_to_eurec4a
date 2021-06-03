@@ -16,6 +16,13 @@ launch_buttons:
   binderhub_url             : https://mybinder.org
   thebe                     : true
   colab_url                 : https://colab.research.google.com
+parse:
+  myst_enable_extensions:
+    - dollarmath
+    - linkify
+    - substitution
+    - colon_fence
+    - deflist
 html:
   favicon                   : "logo_pyeurec4a.png" # A path to the favicon
   use_repository_button     : true

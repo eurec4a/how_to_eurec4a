@@ -11,3 +11,5 @@ On typical flight days an excursion to the NTAS buoy or a satellite underpass se
 :width: 400px
 :align: center
 ```
+
+Please continue on the next page for an {doc}`HALO_instrument_overview`.
