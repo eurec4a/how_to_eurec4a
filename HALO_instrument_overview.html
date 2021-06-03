@@ -1,0 +1,597 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Instrument Overview &#8212; How to EUREC4A</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="_static/logo_pyeurec4a.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="specMACS cloudmask" href="specmacs.html" />
+    <link rel="prev" title="HALO" href="halo.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      <img src="_static/logo_pyeurec4a.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">How to EUREC4A</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="halo.html">
+   HALO
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Instrument Overview
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="specmacs.html">
+     specMACS cloudmask
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="unified.html">
+     HALO UNIFIED dataset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="flight_tracks_leaflet.html">
+     interactive HALO tracks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="smart.html">
+     SMART dataset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="velox.html">
+     VELOX
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bacardi.html">
+     BACARDI dataset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="wales.html">
+     WALES Lidar
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="hamp_comparison.html">
+     HAMP comparison
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cloudmasks.html">
+     Cloud masks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="pthree.html">
+   NOAA P3 “Miss Piggy”
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="p3_flight_tracks.html">
+     Flight tracks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="p3_humidity_comparison.html">
+     Humidity comparison: Hygrometer and isotope analyzer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="p3_wband_radar.html">
+     W-band radar example
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="p3_AXBTs.html">
+     Ocean temperatures: AXBTs and SWIFT buoys
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="p3_wsra.html">
+     WSRA example: surface wave state
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="meteor.html">
+   Meteor
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="meteor_cloudradar.html">
+     Reading cloud radar data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="merian.html">
+   Merian
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="merian_cloudradar.html">
+     Cloud radar data collected on MS Merian
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="multi_platform_data.html">
+   Multi-platform datasets
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="dropsondes.html">
+     Dropsondes dataset JOANNE
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="toolbox.html">
+   Toolbox
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="flight-phase-operations.html">
+     How to work with flight phase segmentation files
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="show_intake_catalog.html">
+     Show the intake catalog
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="running_locally.html">
+     running How to EUREC4A locally
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="netcdf_datatypes.html">
+     The issue with netCDF data types
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="references.html">
+   References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stats.html">
+   Script execution statistics
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/HALO_instrument_overview.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/eurec4a/how_to_eurec4a"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/eurec4a/how_to_eurec4a/issues/new?title=Issue%20on%20page%20%2FHALO_instrument_overview.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/eurec4a/how_to_eurec4a/edit/master/how_to_eurec4a/HALO_instrument_overview.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="instrument-overview">
+<h1>Instrument Overview<a class="headerlink" href="#instrument-overview" title="Permalink to this headline">¶</a></h1>
+<p>The instrumentation of the HALO aircraft is based on contributions from various universities and research institutions.
+Each instrument is developed and operated by an individual group, which leads to a modern instrumentation suite and well trained operators, but also requires to contact a range of people when working with data from HALO’s instruments.
+The purpose of this chapter is to introduce you to the individual contact points.</p>
+<p>During the EUREC4A field campaign, the HALO aircraft had been outfitted in an updated “Cloud Observatory” configuration, much like as described by <span id="id1">[<a class="reference internal" href="references.html#id4"><span>SAB+19</span></a>]</span>.
+As the aircraft is build to be flying at high altitudes, most of the instrumentation observes the atmosphere (and in particular clouds) from the nadir perspective.</p>
+<div class="figure align-center" id="id2">
+<a class="reference internal image-reference" href="_images/HALO_details.png"><img alt="HALO Instrument Overview" src="_images/HALO_details.png" style="width: 600px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Instruments on HALO as configured for the EUREC4A campaign.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<p>In particular, the instrumentation consists of broadband radiometers (<strong>BACARDI</strong>), basic instrumentation (<strong>BAHAMAS</strong>), a dropsonde launching system (<strong>Dropsondes</strong>), the active (radar) and passive microwave package (<strong>HAMP</strong>), irradiance spectrometers (<strong>SMART</strong>), a thermal imager (<strong>VELOX</strong>), an infrared radiometer (<strong>VELOX-KT19</strong>), a water vapor differential absorption lidar (<strong>WALES</strong>) and spectral and polarization resolving imagers (<strong>specMACS</strong>).
+You can find more detailed references to the instruments in the tabs below, as well as examples for data access in the upcoming chapters.</p>
+<div class="tabbed-set docutils">
+<input checked="checked" id="34b9fe3c-2ecf-44e5-9633-bb00149dec30" name="1faa8f36-5291-4b30-b470-e2a327739e2f" type="radio">
+</input><label class="tabbed-label" for="34b9fe3c-2ecf-44e5-9633-bb00149dec30">
+BACARDI</label><div class="tabbed-content docutils">
+<p>A set of broadband radiometer measuring upward and downward irradiance in the solar (0.2 - 3.6 micrometer) and terrestrial (4.5 - 42 micrometer) spectral range.</p>
+<dl class="simple myst">
+<dt>home</dt><dd><p><a class="reference external" href="https://www.physgeo.uni-leipzig.de/institut-fuer-meteorologie/">Leipzig Institute for Meteorology, Leipzig University</a></p>
+</dd>
+<dt>pi</dt><dd><p><a class="reference external" href="mailto:m&#46;wendisch&#37;&#52;&#48;uni-leipzig&#46;de">Manfred Wendisch</a></p>
+</dd>
+<dt>data provider</dt><dd><p><a class="reference external" href="mailto:a&#46;ehrlich&#37;&#52;&#48;uni-leipzig&#46;de">André Ehrlich</a></p>
+</dd>
+</dl>
+</div>
+<input id="3b8539af-6f1a-47eb-bb4a-a3130800f4da" name="1faa8f36-5291-4b30-b470-e2a327739e2f" type="radio">
+</input><label class="tabbed-label" for="3b8539af-6f1a-47eb-bb4a-a3130800f4da">
+BAHAMAS</label><div class="tabbed-content docutils">
+<dl class="simple myst">
+<dt>home</dt><dd><p><a class="reference external" href="https://www.dlr.de/fx">DLR Flugbetrieb, Deutsches Zentrum für Luft- und Raumfahrt</a></p>
+</dd>
+<dt>pi</dt><dd><p><a class="reference external" href="mailto:andreas&#46;giez&#37;&#52;&#48;dlr&#46;de">Andreas Giez</a></p>
+</dd>
+<dt>references</dt><dd><p><a class="reference external" href="https://doi.org/10.1007/978-3-642-30183-4_37">The Transition From FALCON to HALO Era Airborne Atmospheric Research</a></p>
+</dd>
+</dl>
+</div>
+<input id="3eab6ef0-8e72-47b4-974c-3d58e21889c0" name="1faa8f36-5291-4b30-b470-e2a327739e2f" type="radio">
+</input><label class="tabbed-label" for="3eab6ef0-8e72-47b4-974c-3d58e21889c0">
+Dropsondes</label><div class="tabbed-content docutils">
+<dl class="simple myst">
+<dt>home</dt><dd><p><a class="reference external" href="https://mpimet.mpg.de">Max-Planck-Institut für Meteorologie</a></p>
+</dd>
+<dt>pi</dt><dd><p><a class="reference external" href="mailto:sandrine&#46;bony&#37;&#52;&#48;lmd&#46;ipsl&#46;fr">Sandrine Bony</a></p>
+</dd>
+<dd><p><a class="reference external" href="mailto:bjorn&#46;stevens&#37;&#52;&#48;mpimet&#46;mpg&#46;de">Bjorn Stevens</a></p>
+</dd>
+<dd><p><a class="reference external" href="mailto:felix&#46;ament&#37;&#52;&#48;uni-hamburg&#46;de">Felix Ament</a></p>
+</dd>
+<dt>data provider</dt><dd><p><a class="reference external" href="mailto:geet&#46;george&#37;&#52;&#48;mpimet&#46;mpg&#46;de">Geet George</a></p>
+</dd>
+</dl>
+</div>
+<input id="a05ae86a-2d56-432d-ac15-d82326f26e84" name="1faa8f36-5291-4b30-b470-e2a327739e2f" type="radio">
+</input><label class="tabbed-label" for="a05ae86a-2d56-432d-ac15-d82326f26e84">
+HAMP</label><div class="tabbed-content docutils">
+<p>HAMP consists of a suite of passive microwave radiometers with 26 frequencies ranging between 22.24 and 183.31 GHz, and an active cloud radar measuring at 35.5 GHz. The radiometeres are installed nadir-pointing in a bellypod under the fuselage with opening angles between 2.7 (G-band) and 5.0° (K-band). The almost nadir-pointed radar antenna is located in a bellypod and connected to the electronics in the cabin. Pre-flight calibration was performed before each flight for the radiometers, and before the transfer flight to Barbados for the radar.</p>
+<dl class="simple myst">
+<dt>home</dt><dd><p><a class="reference external" href="https://mpimet.mpg.de">Max-Planck-Institut für Meteorologie</a></p>
+</dd>
+<dd><p><a class="reference external" href="https://www.dlr.de/pa/">Institut für Physik der Atmosphäre, Deutsches Zentrum für Luft- und Raumfahrt</a></p>
+</dd>
+<dd><p><a class="reference external" href="https://www.mi.uni-hamburg.de">Meteorologisches Institut, Universität Hamburg</a></p>
+</dd>
+<dt>pi</dt><dd><p><a class="reference external" href="mailto:lutz&#46;hirsch&#37;&#52;&#48;mpimet&#46;mpg&#46;de">Lutz Hirsch</a></p>
+</dd>
+<dd><p><a class="reference external" href="mailto:felix&#46;ament&#37;&#52;&#48;uni-hamburg&#46;de">Felix Ament</a></p>
+</dd>
+<dd><p><a class="reference external" href="mailto:bjorn&#46;stevens&#37;&#52;&#48;mpimet&#46;mpg&#46;de">Bjorn Stevens</a></p>
+</dd>
+<dt>data provider</dt><dd><p><a class="reference external" href="mailto:marek&#46;jacob&#37;&#52;&#48;uni-koeln&#46;de">Marek Jacob</a></p>
+</dd>
+<dd><p><a class="reference external" href="mailto:heike&#46;konow&#37;&#52;&#48;mpimet&#46;mpg&#46;de">Heike Konow</a></p>
+</dd>
+<dd><p><a class="reference external" href="mailto:florian&#46;ewald&#37;&#52;&#48;dlr&#46;de">Florian Ewald</a></p>
+</dd>
+<dt>references</dt><dd><p><a class="reference external" href="https://doi.org/10.5194/amt-12-1815-2019">Calibration of a 35 GHz airborne cloud radar: lessons learned and intercomparisons with 94 GHz cloud radars</a></p>
+</dd>
+<dd><p><a class="reference external" href="https://doi.org/10.5194/amt-7-4539-2014">HAMP – the microwave package on the High Altitude and LOng range research aircraft (HALO)</a></p>
+</dd>
+</dl>
+</div>
+<input id="a52fa71e-3dda-4987-800e-35fdb50c25f6" name="1faa8f36-5291-4b30-b470-e2a327739e2f" type="radio">
+</input><label class="tabbed-label" for="a52fa71e-3dda-4987-800e-35fdb50c25f6">
+SMART</label><div class="tabbed-content docutils">
+<p>The Spectral Modular Airborne Radiation measurement sysTem (SMART) measures downward irradiances in the solar spectral range between 300 nm and 2200 nm.</p>
+<dl class="simple myst">
+<dt>home</dt><dd><p><a class="reference external" href="https://www.physgeo.uni-leipzig.de/institut-fuer-meteorologie/">Leipzig Institute for Meteorology, Leipzig University</a></p>
+</dd>
+<dt>pi</dt><dd><p><a class="reference external" href="mailto:m&#46;wendisch&#37;&#52;&#48;uni-leipzig&#46;de">Manfred Wendisch</a></p>
+</dd>
+<dt>data provider</dt><dd><p><a class="reference external" href="mailto:kevin&#46;wolf&#37;&#52;&#48;uni-leipzig&#46;de">Kevin Wolf</a></p>
+</dd>
+<dt>references</dt><dd><p><a class="reference external" href="https://doi.org/10.1175/1520-0426(2001)018%3C1856:AASAWA%3E2.0.CO;2">An Airborne Spectral Albedometer with Active Horizontal Stabilization</a></p>
+</dd>
+<dd><p><a class="reference external" href="https://doi.org/10.1175/BAMS-D-14-00255.1">ACRIDICON–CHUVA Campaign: Studying Tropical Deep Convective Clouds and Precipitation over Amazonia Using the New German Research Aircraft HALO</a></p>
+</dd>
+</dl>
+</div>
+<input id="d20b11dd-a10d-45f2-81ce-f8e94a5b6add" name="1faa8f36-5291-4b30-b470-e2a327739e2f" type="radio">
+</input><label class="tabbed-label" for="d20b11dd-a10d-45f2-81ce-f8e94a5b6add">
+VELOX</label><div class="tabbed-content docutils">
+<p>VELOX is a thermal infrared spectral imager (VELOX327k veL, 640 pixel by 512 pixels) with a synchronized filter wheel (at 100 Hz) covering six spectral channels in the thermal infrared wavelength range from 7.7 to 12.0 micrometer. The instrument measures the brightness temperature of upward radiance in a field-of-view of 35.49° by 28.71°.</p>
+<dl class="simple myst">
+<dt>home</dt><dd><p><a class="reference external" href="https://www.physgeo.uni-leipzig.de/institut-fuer-meteorologie/">Leipzig Institute for Meteorology, Leipzig University</a></p>
+</dd>
+<dt>pi</dt><dd><p><a class="reference external" href="mailto:m&#46;wendisch&#37;&#52;&#48;uni-leipzig&#46;de">Manfred Wendisch</a></p>
+</dd>
+<dt>data provider</dt><dd><p><a class="reference external" href="mailto:michael&#46;schaefer&#37;&#52;&#48;uni-leipzig&#46;de">Michael Schäfer</a></p>
+</dd>
+</dl>
+</div>
+<input id="621dcd15-128d-46b0-b717-9a273037ac27" name="1faa8f36-5291-4b30-b470-e2a327739e2f" type="radio">
+</input><label class="tabbed-label" for="621dcd15-128d-46b0-b717-9a273037ac27">
+VELOX - KT19</label><div class="tabbed-content docutils">
+<p>Thermal infrared radiometer measuring the brightness temperature of nadir radiance between 9.6 and 11.5 micrometer.
+The field-of-view of 2.3° is located in the center of the VELOX images.</p>
+<dl class="simple myst">
+<dt>home</dt><dd><p><a class="reference external" href="https://www.physgeo.uni-leipzig.de/institut-fuer-meteorologie/">Leipzig Institute for Meteorology, Leipzig University</a></p>
+</dd>
+<dt>pi</dt><dd><p><a class="reference external" href="mailto:m&#46;wendisch&#37;&#52;&#48;uni-leipzig&#46;de">Manfred Wendisch</a></p>
+</dd>
+<dt>data provider</dt><dd><p><a class="reference external" href="mailto:michael&#46;schaefer&#37;&#52;&#48;uni-leipzig&#46;de">Michael Schäfer</a></p>
+</dd>
+</dl>
+</div>
+<input id="f7faf0b1-0604-4ce1-bddd-1b89d67afb2c" name="1faa8f36-5291-4b30-b470-e2a327739e2f" type="radio">
+</input><label class="tabbed-label" for="f7faf0b1-0604-4ce1-bddd-1b89d67afb2c">
+WALES</label><div class="tabbed-content docutils">
+<dl class="simple myst">
+<dt>home</dt><dd><p><a class="reference external" href="https://www.dlr.de/pa/">Institut für Physik der Atmosphäre, Deutsches Zentrum für Luft- und Raumfahrt</a></p>
+</dd>
+<dt>pi</dt><dd><p><a class="reference external" href="mailto:martin&#46;wirth&#37;&#52;&#48;dlr&#46;de">Martin Wirth</a></p>
+</dd>
+<dt>data provider</dt><dd><p><a class="reference external" href="mailto:martin&#46;wirth&#37;&#52;&#48;dlr&#46;de">Martin Wirth</a></p>
+</dd>
+<dt>references</dt><dd><p><a class="reference external" href="https://doi.org/10.1007/s00340-009-3365-7">The airborne multi-wavelength water vapor differential absorption lidar WALES: system design and performance</a></p>
+</dd>
+</dl>
+</div>
+<input id="98338f97-0f13-49e1-b1a5-d0e5c6bda937" name="1faa8f36-5291-4b30-b470-e2a327739e2f" type="radio">
+</input><label class="tabbed-label" for="98338f97-0f13-49e1-b1a5-d0e5c6bda937">
+specMACS</label><div class="tabbed-content docutils">
+<p>specMACS is the hyperspectral imager of the LMU in Munich. It measures from 400nm to 2500nm at a FOV of approximately 32° in a nadir looking perspective</p>
+<dl class="simple myst">
+<dt>home</dt><dd><p><a class="reference external" href="https://www.meteo.physik.uni-muenchen.de">Meteorologisches Institut der LMU, Ludwigs Maximilians Universität</a></p>
+</dd>
+<dt>pi</dt><dd><p><a class="reference external" href="mailto:tobias&#46;zinner&#37;&#52;&#48;lmu&#46;de">Tobias Zinner</a></p>
+</dd>
+<dd><p><a class="reference external" href="mailto:bernhard&#46;mayer&#37;&#52;&#48;lmu&#46;de">Bernhard Mayer</a></p>
+</dd>
+<dd><p><a class="reference external" href="mailto:veronika&#46;poertge&#37;&#52;&#48;physik&#46;uni-muenchen&#46;de">Veronika Pörtge</a></p>
+</dd>
+<dt>data provider</dt><dd><p><a class="reference external" href="mailto:veronika&#46;poertge&#37;&#52;&#48;physik&#46;uni-muenchen&#46;de">Veronika Pörtge</a></p>
+</dd>
+<dt>references</dt><dd><p><a class="reference external" href="https://doi.org/10.5194/amt-9-2015-2016">Design and characterization of specMACS, a multipurpose hyperspectral cloud and sky imager</a></p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "eurec4a/how_to_eurec4a",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="halo.html" title="previous page">HALO</a>
+    <a class='right-next' id="next-link" href="specmacs.html" title="next page">specMACS cloudmask</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By EUREC4A community<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
