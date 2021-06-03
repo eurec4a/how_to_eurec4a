@@ -462,15 +462,13 @@ with plt.style.context("mplstyle/wide"):
         ax1.bar(x=binmids - 0.05 + count,
                 height=np.histogram(ds.CF_max.values, bins=binedges)[0] / ds.time.size,
                 width=width, color=colors[k], label=k)
-        count+=0.02
+        count += 0.02
 
     xticks = [0.1, 0.3, 0.5, 0.7, 0.9]
 
     for ax in [ax0, ax1]:
         ax.set_xlim(0, 1)
-        ax.set_ylim(0, 1)#max(ax0.get_ylim()[1], ax1.get_ylim()[1]))
-        ax.spines['right'].set_visible(False)
-        ax.spines['top'].set_visible(False)
+        ax.set_ylim(0, 1)
         ax.spines['bottom'].set_visible(False)
         for x in xticks:
             ax.axhline(y=0, xmin=x-0.06, xmax=x+0.06, color="k")
@@ -540,9 +538,9 @@ Time series:
 Distributions:
 * All instruments, excluding WALES, agree well in the distribution of circle-mean cloud cover estimates according to their `CF_min` variable, while they vary on their definition of uncertain `probably_cloudy` measurements that are included in `CF_max`.
 * In the case of VELOX as well as for all other passive instruments, the cloud cover estimates shift to higher numbers when including the uncertain cloud flag (from minimum to maximum cloud cover).
-* the fraction of circle-mean cloud cover difference (minimum to maximum) shows a disagreement between the instruments for cloud cover ranges up to about 0.5 due to their different detection principles. Optically thin clouds can have a significant impact on circle-mean estimates in low cloud cover situations and lead to uncertain pixels. WALES can detect such thin clouds and suggest generally higher cloud cover with the change in cumulative fraction being strongest between 0.2 and 0.6.
+* The fraction of circle-mean cloud cover difference (minimum to maximum) shows a disagreement between the instruments for cloud cover ranges up to about 0.5 due to their different detection principles. Optically thin clouds can have a significant impact on circle-mean estimates in low cloud cover situations and lead to uncertain pixels. WALES can detect such thin clouds and suggest generally higher cloud cover with the change in cumulative fraction being strongest between 0.2 and 0.6.
 * In general we find that only few circles have a cloud cover higher than 0.6. At such high cloud cover the instruments agree remarkably well and also, minimum and maximum cloud cover are almost equal.
-* about 50 % of the time cloud cover estimates are below 0.2.
+* About 50 % of the time cloud cover estimates are below 0.2.
 
 +++
 
