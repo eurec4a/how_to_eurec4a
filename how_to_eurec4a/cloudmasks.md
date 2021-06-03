@@ -360,7 +360,7 @@ We will further compare cloud mask information from all HALO flights during EURE
 
 For the 2D imagers VELOX and speMACS we use the full swath. In the case study above we had selected the central measurements for a better comparison with the other instruments. However, in the following we investigate the broad statistics and therefore include as much information on the cloud field as we can get from the full footprints of each instrument.
 
-The following statistics are based on the **maximum cloud cover** with cloud mask flags $\in$ {`most_likely_cloudy`, `probably_cloudy`}.
+The following statistics are based on the **minimum cloud cover** including the cloud mask flag `most_likely_cloudy` and **maximum cloud cover** with cloud mask flags $\in$ {`most_likely_cloudy`, `probably_cloudy`}.
 
 ```{code-cell} ipython3
 def midpoint(a, b):
@@ -408,38 +408,8 @@ segments = {s["segment_id"]: {**s, "flight_id": flight["flight_id"]}
 print(f"In total HALO flew {len(segments)} circles during EUREC4A")
 ```
 
-### Histogram of circle mean cloud cover
-
-```{code-cell} ipython3
-binedges = np.arange(0, 1.2, .2)
-binmids = (binedges[1:] + binedges[:-1]) / 2
-```
-
-```{code-cell} ipython3
-with plt.style.context("mplstyle/wide"):
-    fig, (ax0, ax1) = plt.subplots(1, 2, sharey=True)
-    for k, v in data.items():
-        ds = cf_circles(v)
-        ax0.plot(binmids, np.histogram(ds.CF_min.values, bins=binedges)[0],
-                ls="-", lw=2, marker=".", color=colors[k], label=k)
-        ax1.plot(binmids, np.histogram(ds.CF_max.values, bins=binedges)[0],
-                ls="-", lw=2, marker=".", color=colors[k], label=k)
-
-
-    for ax in [ax0, ax1]:
-        ax.set_xlim(0, 1)
-        ax.set_ylim(0, max(ax0.get_ylim()[1], ax1.get_ylim()[1]))
-    ax0.set_xlabel("Minimum circle-mean cloud cover")
-    ax1.set_xlabel("Maximum circle-mean cloud cover")
-    ax0.set_ylabel("Number of circles")
-    ax0.legend(title="Instruments", bbox_to_anchor=(.55,1), loc="upper left")
-
-    ax0.text(-0.12, ax.get_ylim()[1], "(a)", verticalalignment='top')
-    ax1.text(-0.1, ax.get_ylim()[1], "(b)", verticalalignment='top')
-```
-
 ### Time series of circle cloud cover
-We display the daily mean of all circle cloud cover *(marker)* and the range from minimum to maximum circle cloud cover *(vertical line)*.
+Time series of circle-mean (minimum) cloud cover estimates. The markers visualize the research-flight average, while the lines span the range of all circle-mean cloud cover estimates within a respective flight.
 
 ```{code-cell} ipython3
 ts = np.timedelta64(2, 'h')
@@ -466,9 +436,7 @@ with plt.style.context("mplstyle/wide"):
     fig.autofmt_xdate()
 
     ax.set_ylabel("Minimum circle-mean\ncloud cover")
-    #ax.legend(title="Instruments", bbox_to_anchor=(1,1), loc="upper left")
-    ax.text(np.datetime64("2020-01-15T00:00:00"), ax.get_ylim()[1], "(c)",
-            verticalalignment='center')
+    ax.legend(title="Instruments", bbox_to_anchor=(1,1), loc="upper left")
     ax.set_xlabel("Date")
 ```
 
@@ -566,9 +534,15 @@ We highlight a few features that stick out in the above figures showing the clou
 
 Time series:
 * the WALES dataset does not have a `probably_cloudy` flag, and thus, the `CF_min` and `CF_max` variables are the same. The instrument design and methodology used to define the cloud flag seems to be very sensitive to small and optically thin clouds and the cloud cover estimates agree better with the `CF_max` of all other instruments.
-* All instruments, excluding WALES, agree well in the distribution of circle-mean cloud cover estimates according to their `CF_min` variable, while they vary on their definition of uncertain `probably_cloudy` measurements that are included in `CF_max`.
-* On the transfer flight on 19 January the HAMP radar and radiometer and specMACS datasets were processed and datasets are available including one circle near Barbados. For WALES, VELOX, and KT19 no data is available.
+* The time series shows that on the transfer flight on 19 January the HAMP radar and radiometer and specMACS datasets were processed and datasets are available including one circle near Barbados. For WALES, VELOX, and KT19 no data is available.
 * The disagreement in cloud cover estimates for the flight on 15 February is partly due to a deep stratocumulus layer with a strong reflection at cloud top that blinded the lidar (WALES), while the radar was still able to provide reasonable estimates.
+
+Distributions:
+* All instruments, excluding WALES, agree well in the distribution of circle-mean cloud cover estimates according to their `CF_min` variable, while they vary on their definition of uncertain `probably_cloudy` measurements that are included in `CF_max`.
+* In the case of VELOX as well as for all other passive instruments, the cloud cover estimates shift to higher numbers when including the uncertain cloud flag (from minimum to maximum cloud cover).
+* the fraction of circle-mean cloud cover difference (minimum to maximum) shows a disagreement between the instruments for cloud cover ranges up to about 0.5 due to their different detection principles. Optically thin clouds can have a significant impact on circle-mean estimates in low cloud cover situations and lead to uncertain pixels. WALES can detect such thin clouds and suggest generally higher cloud cover with the change in cumulative fraction being strongest between 0.2 and 0.6.
+* In general we find that only few circles have a cloud cover higher than 0.6. At such high cloud cover the instruments agree remarkably well and also, minimum and maximum cloud cover are almost equal.
+* about 50 % of the time cloud cover estimates are below 0.2.
 
 +++
 
