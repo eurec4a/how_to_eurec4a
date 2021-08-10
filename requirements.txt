@@ -1,4 +1,4 @@
-jupyter-book>0.9.0 # Pinned version of sphinxcontrib-bibtex
+jupyter-book>0.11.0 # New toc structure
 jupytext
 matplotlib
 numpy
