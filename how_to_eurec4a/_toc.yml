@@ -33,6 +33,7 @@
   sections:
     - file: flight-phase-operations
     - file: show_intake_catalog
+    - file: cloud_stat_tools
     - file: running_locally
     - file: netcdf_datatypes
 - file: references
