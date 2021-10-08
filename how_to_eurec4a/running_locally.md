@@ -157,3 +157,12 @@ After conversion, the `ipynb` file is not needed anymore and it should not be co
 #### entry in the table of contents
 After preparing your article or notebook, you'll have to add it into the table of contents, such that it will actually show up in the compiled book.
 You can do this by modifying `_toc.yml`, where you can add the articles file name without suffix.
+
+### compile to PDF
+
+If you've got a LaTeX environment available (e.g. TeXLive), you can also compile the book into a single PDF file.
+To do so, just run:
+
+```bash
+jb build how_to_eurec4a --builder pdflatex
+```
