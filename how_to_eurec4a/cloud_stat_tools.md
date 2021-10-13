@@ -210,10 +210,50 @@ Let's have a look at the whole process idea in a graphical way:
 +++
 
 Let's say we want to compute the average optical thickness of each detected cloud segment.
-We already know how many pixels are part of the cloud (the cloud length from above), so we only need the sum of the optical thickness within the segment.
+For this example, we assume the following optical thickness per source pixel:
+```{code-cell} ipython3
+ot = np.array([0., 0., 1., 2., 4., 5., 0., 0., 0., 2., 2., 0., 0., 0., 0., 1., 1., 1., 0., 0.])
+```
+We already know how many pixels are part of the cloud (the cloud length from above), so we only need the sum of the optical thickness within the segment in order to compute the mean.
 Thus, what we conceptually want to do is:
 ```python
 ot_sum[section_ids] += ot
 ```
 But `+=` will only work correctly if none of the index values from `section_ids` are duplicated, which definitely is not the case, as we designed `section_ids` such that it will contain the same value for every pixel within the same cloud.
 Fortunately `numpy` provides [`ufunc.at`](https://numpy.org/doc/stable/reference/generated/numpy.ufunc.at.html) which solves this exact problem.
+The `at` method is available for all scalar universal functions of numpy which take two arguments and is intended for repeated in-place application of the given universal function.
+Addition (`add`) is such a scalar ufunc with two arguments, so we can use `np.add.at` in this case:
+
+
+```{code-cell} ipython3
+ot_sum = np.zeros(np.max(section_ids) + 1)
+np.add.at(ot_sum, section_ids, ot)
+ot_sum
+```
+
+````{note}
+Observe how
+```python
+np.add.at(ot_sum, section_ids, ot)
+```
+can be used as a direct replacement for
+```python
+ot_sum[section_ids] += ot
+```
+However, while the latter is simpler to understand intuitively, only `np.add.at` will provide the correct results.
+````
+
+As indicated above, the result will contain values for each clear and cloudy segment.
+In order to compute the final mean cloud optical thickness, we simply can use every odd element of `ot_sum` (those are the cloudy pieces) and divide them by cloud length:
+
+
+```{code-cell} ipython3
+ot_sum[1::2] / cloud_lengths(cloudmask)
+```
+
+which is indeed the average optical thickness of the three detected clouds.
+
+## Further generalizations
+
+If we would have computed the cloud lengths not based on the index locations of the cloud edges, but instead based on the position along the flight path (e.g. in meters), this method can be generalized to unevenly spaced datasets.
+Furthermore, if we would multiply the pixel optical thickness by the size of the pixel, the same method as above could be used to compute distance weighted averages of cloud parameters.
