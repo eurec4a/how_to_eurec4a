@@ -23,7 +23,7 @@ A list of links to general information about EUREC4A:
 
 ## License
 
-The how to EUREC4A book is licensed unter:
+The how to EUREC4A book is licensed under:
 
 ```{include} LICENSE
 ```
