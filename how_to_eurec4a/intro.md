@@ -20,3 +20,10 @@ A list of links to general information about EUREC4A:
 * [eurec4a GitHub repository](https://github.com/eurec4a)
 * [AERIS data server](https://observations.ipsl.fr/aeris/eurec4a-data/)
 * [AERIS leaflet](https://observations.ipsl.fr/aeris/eurec4a/Leaflet/index.html)(data visualization)
+
+## License
+
+The how to EUREC4A book is licensed unter:
+
+```{include} LICENSE
+```
