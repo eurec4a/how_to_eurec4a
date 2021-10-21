@@ -13,9 +13,9 @@ kernelspec:
 
 # Cloud statistics
 
-Computing statistics of consecutive cloudy segments in a dataset can be challanging to implement efficiently in Python. Here are some ideas which show how this can be done in a vectorized (i.e. numpy friendly) way.
+Computing statistics of consecutive cloudy segments in a dataset can be challenging to implement efficiently in Python. Here are some ideas which show how this can be done in a vectorized (i.e. numpy friendly) way.
 
-This chapter assumes that a cloud mask and possibly other cloud-related parameters are defined on a 1D trajectory as shown as blue line in the following illustration. We are interested in analysing those parameters per consicutive cloudy segment (indicated in orange).
+This chapter assumes that a cloud mask and possibly other cloud-related parameters are defined on a 1D trajectory as shown as blue line in the following illustration. We are interested in analysing those parameters per consecutive cloudy segment (indicated in orange).
 
 ```{figure} figures/cloud_segment_trajectory.jpg
 :alt: trajectory with cloud segments
@@ -36,7 +36,7 @@ plt.style.use(["./mplstyle/book", "./mplstyle/wide"])
 ## Cloud length
 
 Cloud length is the distance along the trajectory from start to end of a cloudy region.
-Let's look at the trajectory from above, but layed out as a straight line:
+Let's look at the trajectory from above, but laid out as a straight line:
 ```{figure} figures/cloud_segment_track.png
 :alt: cloud segment track as a straight line
 :width: 100%
@@ -157,7 +157,7 @@ ax2.set_xlim(0,20)
 ax2.xaxis.set_major_locator(ticker.MultipleLocator(1));
 ```
 
-Let's also have a look at a graphical representation of where we came so far:
+Let's also have a look at a graphical representation of what we have done so far:
 ```{figure} figures/cloud_segment_length.png
 :alt: computing cloud segment length
 :width: 100%
@@ -189,10 +189,10 @@ It works just as we expected.
 
 ## Segment statistics
 
-Now that we know how to separate consecutive cloudy segments from our trajectory data, it might be useful to aggegare data for each cloudy segment. We want to do this using a similar approach, but one thing is different: we do need to care about each individual data point within a cloud, so we need to do many aggregations across differently sized sets of data. That is not something which seems be expressable in a vectorized way at first sight. Nonetheless, there are some ways of accomplishing our goal.
+Now that we know how to separate consecutive cloudy segments from our trajectory data, it might be useful to aggregate data for each cloudy segment. We want to do this using a similar approach, but one thing is different: we do need to care about each individual data point within a cloud, so we need to do many aggregations across differently sized sets of data. That is not something which seems be expressible in a vectorized way at first sight. Nonetheless, there are some ways of accomplishing our goal.
 
 One approach to this problem is the [group - apply - combine](https://pandas.pydata.org/pandas-docs/stable/user_guide/groupby.html) approach, which is what among others, `xarray`, `pandas` and SQL provide.
-The idea is group our data into common sections (those would be one group per individual cloud) and then run a funciton (which reduces some data to a single value) on each group individually.
+The idea is group our data into common sections (those would be one group per individual cloud) and then run a function (which reduces some data to a single value) on each group individually.
 The resulting values would then be combined back to our final result.
 While this is a neat way to think about the problem, it has a major drawback when applied to `xarray` or `pandas`: it is really slow.
 The method is just a sneaky way of running a for loop over all clouds and thus deliberately avoids the use of `numpy` to speed things up.
