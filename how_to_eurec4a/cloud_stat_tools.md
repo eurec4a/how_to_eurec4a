@@ -97,13 +97,44 @@ E = \begin{cases}
   \end{cases}
 $$
 
-```{note}
-The edge locations are defined in between each measured pixel.
+These two shifted subsets are best visualized by thinking of two shifts about half a pixel in opposite directions.
+Subtracting the two leads to the cloud edges:
+
+```{code-cell} ipython3
+:tags: [hide-input]
+
+fig, (ax1, ax2, ax3, ax4) = plt.subplots(4, sharex=True, figsize=(10,4))
+ax1.step(np.arange(len(cloudmask)) + .5, cloudmask, where='mid')
+ax1.spines["bottom"].set_visible(False)
+ax1.set_aspect(.5)
+ax1.set_title("cloudmask")
+
+ax2.step(np.arange(len(cloudmask) - 1) + 1, cloudmask[1:], where='mid')
+ax2.spines["bottom"].set_visible(False)
+ax2.set_aspect(.5)
+ax2.set_title("cloudmask [1...N-1]")
+
+ax3.step(np.arange(len(cloudmask) - 1) + 1, cloudmask[:-1], where='mid')
+ax3.spines["bottom"].set_visible(False)
+ax3.set_aspect(.5)
+ax3.set_title("cloudmask [0...N-2]")
+
+cloudmask_ = np.asarray(cloudmask, dtype="int")
+edges = cloudmask_[1:] - cloudmask_[:-1]
+ax4.step(np.arange(len(edges)) + 1, edges, where='mid')
+ax4.spines["bottom"].set_visible(False)
+ax4.set_aspect(.5)
+ax4.set_title("edges")
+ax4.set_xlabel("locs")
+ax4.set_xlim(0,20)
+ax4.xaxis.set_major_locator(ticker.MultipleLocator(1));
 ```
 
 ```{note}
-If applied exactly as above, $E$ would be one entry less than the number of pixels. In order to make the following method work properly, we need to extend the edge information to before and after the first and last pixel. We'll set $E_0 = C_0$ (we only start with a cloud if the first pixel is a cloudy one, but don't end a cloud before the first pixel) and $E_N = -C_{N-1}$ (we end a cloud if the last pixels is a cloudy one, but don't start a cloud after the last pixel).
+Shifting both subsets by half a pixel (in stead of shifting one subset by a full pixel) has a deeper meeaning: The cloud edges are indeed between the pixels which have been identified as a cloud.
 ```
+
+If the method would be applied exactly as above, $E$ would be one entry less than the number of pixels. In order to make the following method work properly, we need to extend the edge information to before and after the first and last pixel. We'll set $E_0 = C_0$ (we only start with a cloud if the first pixel is a cloudy one, but don't end a cloud before the first pixel) and $E_N = -C_{N-1}$ (we end a cloud if the last pixels is a cloudy one, but don't start a cloud after the last pixel).
 
 ```{code-cell} ipython3
 :tags: [hide-input]
