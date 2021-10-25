@@ -28,6 +28,16 @@ html:
   use_repository_button     : true
   use_issues_button         : true
   use_edit_page_button      : true
+latex:
+  latex_documents:
+     targetname: how_to_eurec4a.tex
+sphinx:
+  config:
+    latex_logo: logo_pyeurec4a.png
+    latex_elements:
+      preamble: \usepackage{how_to_eurec4a}
+    latex_additional_files:
+      - latex/how_to_eurec4a.sty
 execute:
   execute_notebooks         : force
   timeout: 90
