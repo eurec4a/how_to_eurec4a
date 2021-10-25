@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
@@ -34,19 +34,19 @@
     
   <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
 
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
         const thebe_selector = ".thebe,.cell"
         const thebe_selector_input = "pre,.cell_input div.highlight"
         const thebe_selector_output = ".output,.cell_output"
@@ -75,6 +75,10 @@
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
       <img src="_static/logo_pyeurec4a.png" class="logo" alt="logo">
       
       
@@ -84,7 +88,7 @@
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
@@ -378,7 +382,7 @@
         
               <div>
                 
-  <div class="section" id="instrument-overview">
+  <div class="tex2jax_ignore mathjax_ignore section" id="instrument-overview">
 <h1>Instrument Overview<a class="headerlink" href="#instrument-overview" title="Permalink to this headline">¶</a></h1>
 <p>The instrumentation of the HALO aircraft is based on contributions from various universities and research institutions.
 Each instrument is developed and operated by an individual group, which leads to a modern instrumentation suite and well trained operators, but also requires to contact a range of people when working with data from HALO’s instruments.
@@ -392,8 +396,8 @@ As the aircraft is build to be flying at high altitudes, most of the instrumenta
 <p>In particular, the instrumentation consists of broadband radiometers (<strong>BACARDI</strong>), basic instrumentation (<strong>BAHAMAS</strong>), a dropsonde launching system (<strong>Dropsondes</strong>), the active (radar) and passive microwave package (<strong>HAMP</strong>), irradiance spectrometers (<strong>SMART</strong>), a thermal imager (<strong>VELOX</strong>), an infrared radiometer (<strong>VELOX-KT19</strong>), a water vapor differential absorption lidar (<strong>WALES</strong>) and spectral and polarization resolving imagers (<strong>specMACS</strong>).
 You can find more detailed references to the instruments in the tabs below, as well as examples for data access in the upcoming chapters.</p>
 <div class="tabbed-set docutils">
-<input checked="checked" id="4b209e10-7d36-4b3c-946a-950e82961dd3" name="c42f20f2-7c16-446e-bee1-aba30e6617a0" type="radio">
-</input><label class="tabbed-label" for="4b209e10-7d36-4b3c-946a-950e82961dd3">
+<input checked="checked" id="02aa5d42-b350-4e93-a3e9-3e7d1a5a8a3b" name="8f8df5f4-fd52-4482-b10e-8b9e9bfdc69f" type="radio">
+</input><label class="tabbed-label" for="02aa5d42-b350-4e93-a3e9-3e7d1a5a8a3b">
 BACARDI</label><div class="tabbed-content docutils">
 <p>A set of broadband radiometer measuring upward and downward irradiance in the solar (0.2 - 3.6 micrometer) and terrestrial (4.5 - 42 micrometer) spectral range.</p>
 <dl class="simple myst">
@@ -405,8 +409,8 @@ BACARDI</label><div class="tabbed-content docutils">
 </dd>
 </dl>
 </div>
-<input id="e2ceb4c0-d007-4b86-8313-bcd69babf821" name="c42f20f2-7c16-446e-bee1-aba30e6617a0" type="radio">
-</input><label class="tabbed-label" for="e2ceb4c0-d007-4b86-8313-bcd69babf821">
+<input id="a24f8719-7eb4-49e8-a950-0f02b186ac62" name="8f8df5f4-fd52-4482-b10e-8b9e9bfdc69f" type="radio">
+</input><label class="tabbed-label" for="a24f8719-7eb4-49e8-a950-0f02b186ac62">
 BAHAMAS</label><div class="tabbed-content docutils">
 <dl class="simple myst">
 <dt>home</dt><dd><p><a class="reference external" href="https://www.dlr.de/fx">DLR Flugbetrieb, Deutsches Zentrum für Luft- und Raumfahrt</a></p>
@@ -417,8 +421,8 @@ BAHAMAS</label><div class="tabbed-content docutils">
 </dd>
 </dl>
 </div>
-<input id="e17d5063-c02f-455c-9ac0-d8e9aedb7ace" name="c42f20f2-7c16-446e-bee1-aba30e6617a0" type="radio">
-</input><label class="tabbed-label" for="e17d5063-c02f-455c-9ac0-d8e9aedb7ace">
+<input id="f2443545-1e95-450e-848d-60d94b09d12e" name="8f8df5f4-fd52-4482-b10e-8b9e9bfdc69f" type="radio">
+</input><label class="tabbed-label" for="f2443545-1e95-450e-848d-60d94b09d12e">
 Dropsondes</label><div class="tabbed-content docutils">
 <dl class="simple myst">
 <dt>home</dt><dd><p><a class="reference external" href="https://mpimet.mpg.de">Max-Planck-Institut für Meteorologie</a></p>
@@ -433,8 +437,8 @@ Dropsondes</label><div class="tabbed-content docutils">
 </dd>
 </dl>
 </div>
-<input id="1335a299-1df7-4fcc-834a-df3c8d05214d" name="c42f20f2-7c16-446e-bee1-aba30e6617a0" type="radio">
-</input><label class="tabbed-label" for="1335a299-1df7-4fcc-834a-df3c8d05214d">
+<input id="a1a403b8-ec25-420d-bc9e-6239b299d28d" name="8f8df5f4-fd52-4482-b10e-8b9e9bfdc69f" type="radio">
+</input><label class="tabbed-label" for="a1a403b8-ec25-420d-bc9e-6239b299d28d">
 HAMP</label><div class="tabbed-content docutils">
 <p>HAMP consists of a suite of passive microwave radiometers with 26 frequencies ranging between 22.24 and 183.31 GHz, and an active cloud radar measuring at 35.5 GHz. The radiometeres are installed nadir-pointing in a bellypod under the fuselage with opening angles between 2.7 (G-band) and 5.0° (K-band). The almost nadir-pointed radar antenna is located in a bellypod and connected to the electronics in the cabin. Pre-flight calibration was performed before each flight for the radiometers, and before the transfer flight to Barbados for the radar.</p>
 <dl class="simple myst">
@@ -462,8 +466,8 @@ HAMP</label><div class="tabbed-content docutils">
 </dd>
 </dl>
 </div>
-<input id="d71f7eb9-5200-4302-a29d-adfbc6c612ba" name="c42f20f2-7c16-446e-bee1-aba30e6617a0" type="radio">
-</input><label class="tabbed-label" for="d71f7eb9-5200-4302-a29d-adfbc6c612ba">
+<input id="d40d564a-fd31-41f4-a750-e1cd0beeb9fe" name="8f8df5f4-fd52-4482-b10e-8b9e9bfdc69f" type="radio">
+</input><label class="tabbed-label" for="d40d564a-fd31-41f4-a750-e1cd0beeb9fe">
 SMART</label><div class="tabbed-content docutils">
 <p>The Spectral Modular Airborne Radiation measurement sysTem (SMART) measures downward irradiances in the solar spectral range between 300 nm and 2200 nm.</p>
 <dl class="simple myst">
@@ -479,8 +483,8 @@ SMART</label><div class="tabbed-content docutils">
 </dd>
 </dl>
 </div>
-<input id="61cd2bf0-5334-491e-8776-87539f4dc18d" name="c42f20f2-7c16-446e-bee1-aba30e6617a0" type="radio">
-</input><label class="tabbed-label" for="61cd2bf0-5334-491e-8776-87539f4dc18d">
+<input id="61c3779f-5479-4044-805f-897ef88d737e" name="8f8df5f4-fd52-4482-b10e-8b9e9bfdc69f" type="radio">
+</input><label class="tabbed-label" for="61c3779f-5479-4044-805f-897ef88d737e">
 VELOX</label><div class="tabbed-content docutils">
 <p>VELOX is a thermal infrared spectral imager (VELOX327k veL, 640 pixel by 512 pixels) with a synchronized filter wheel (at 100 Hz) covering six spectral channels in the thermal infrared wavelength range from 7.7 to 12.0 micrometer. The instrument measures the brightness temperature of upward radiance in a field-of-view of 35.49° by 28.71°.</p>
 <dl class="simple myst">
@@ -492,8 +496,8 @@ VELOX</label><div class="tabbed-content docutils">
 </dd>
 </dl>
 </div>
-<input id="31c33bac-18d7-4f43-aec2-fa5474d4266c" name="c42f20f2-7c16-446e-bee1-aba30e6617a0" type="radio">
-</input><label class="tabbed-label" for="31c33bac-18d7-4f43-aec2-fa5474d4266c">
+<input id="75c57041-6743-48a8-b994-1b50383df9ff" name="8f8df5f4-fd52-4482-b10e-8b9e9bfdc69f" type="radio">
+</input><label class="tabbed-label" for="75c57041-6743-48a8-b994-1b50383df9ff">
 VELOX - KT19</label><div class="tabbed-content docutils">
 <p>Thermal infrared radiometer measuring the brightness temperature of nadir radiance between 9.6 and 11.5 micrometer.
 The field-of-view of 2.3° is located in the center of the VELOX images.</p>
@@ -506,8 +510,8 @@ The field-of-view of 2.3° is located in the center of the VELOX images.</p>
 </dd>
 </dl>
 </div>
-<input id="24fdf1eb-89e9-4985-964b-db5aa210ece0" name="c42f20f2-7c16-446e-bee1-aba30e6617a0" type="radio">
-</input><label class="tabbed-label" for="24fdf1eb-89e9-4985-964b-db5aa210ece0">
+<input id="245b1a73-dd3a-44f4-8a4f-c62781989eeb" name="8f8df5f4-fd52-4482-b10e-8b9e9bfdc69f" type="radio">
+</input><label class="tabbed-label" for="245b1a73-dd3a-44f4-8a4f-c62781989eeb">
 WALES</label><div class="tabbed-content docutils">
 <dl class="simple myst">
 <dt>home</dt><dd><p><a class="reference external" href="https://www.dlr.de/pa/">Institut für Physik der Atmosphäre, Deutsches Zentrum für Luft- und Raumfahrt</a></p>
@@ -520,8 +524,8 @@ WALES</label><div class="tabbed-content docutils">
 </dd>
 </dl>
 </div>
-<input id="84e6f557-0020-4e2a-9fed-c3451a1da505" name="c42f20f2-7c16-446e-bee1-aba30e6617a0" type="radio">
-</input><label class="tabbed-label" for="84e6f557-0020-4e2a-9fed-c3451a1da505">
+<input id="c970423d-17c7-44bd-a1e0-74a13a92fc09" name="8f8df5f4-fd52-4482-b10e-8b9e9bfdc69f" type="radio">
+</input><label class="tabbed-label" for="c970423d-17c7-44bd-a1e0-74a13a92fc09">
 specMACS</label><div class="tabbed-content docutils">
 <p>specMACS is the hyperspectral imager of the LMU in Munich. It measures from 400nm to 2500nm at a FOV of approximately 32° in a nadir looking perspective</p>
 <dl class="simple myst">
@@ -565,16 +569,36 @@ specMACS</label><div class="tabbed-content docutils">
               </div>
               
         
-        <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="halo.html" title="previous page">HALO</a>
-    <a class='right-next' id="next-link" href="specmacs.html" title="next page">specMACS cloudmask</a>
 
-        </div>
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="halo.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">HALO</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="specmacs.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">specMACS cloudmask</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
         
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         

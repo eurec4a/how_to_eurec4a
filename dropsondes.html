@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
@@ -34,19 +34,19 @@
     
   <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
 
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
         const thebe_selector = ".thebe,.cell"
         const thebe_selector_input = "pre,.cell_input div.highlight"
         const thebe_selector_output = ".output,.cell_output"
@@ -75,6 +75,10 @@
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
       <img src="_static/logo_pyeurec4a.png" class="logo" alt="logo">
       
       
@@ -84,7 +88,7 @@
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
@@ -396,7 +400,7 @@
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav">
+            <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#get-data">
@@ -441,7 +445,7 @@
         
               <div>
                 
-  <div class="section" id="dropsondes-dataset-joanne">
+  <div class="tex2jax_ignore mathjax_ignore section" id="dropsondes-dataset-joanne">
 <h1>Dropsondes dataset JOANNE<a class="headerlink" href="#dropsondes-dataset-joanne" title="Permalink to this headline">¶</a></h1>
 <p>The following script exemplifies the access and usage of dropsonde data measured
 during EUREC4A - ATOMIC.</p>
@@ -829,7 +833,7 @@ dl.xr-attrs {
   fill: currentColor;
 }
 </style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt;
-Dimensions:          (alt: 1001, nv: 2, sounding: 1064)
+Dimensions:          (sounding: 1064, alt: 1001, nv: 2)
 Coordinates:
   * alt              (alt) int64 0 10 20 30 40 50 ... 9960 9970 9980 9990 10000
     lat              (sounding, alt) float32 dask.array&lt;chunksize=(266, 501), meta=np.ndarray&gt;
@@ -864,23 +868,45 @@ Attributes: (12/13)
     instrument_id:           Vaisala RD-41
     product_id:              Level-3
     project_id:              JOANNE
-    title:                   EUREC4A JOANNE Level-3</pre><div class='xr-wrap' hidden><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-17ca7dfd-dea6-4075-ab72-66f4c5782b55' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-17ca7dfd-dea6-4075-ab72-66f4c5782b55' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>alt</span>: 1001</li><li><span>nv</span>: 2</li><li><span class='xr-has-index'>sounding</span>: 1064</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-2e2af4ba-2cc1-4904-bc38-37e6e1d529a2' class='xr-section-summary-in' type='checkbox'  checked><label for='section-2e2af4ba-2cc1-4904-bc38-37e6e1d529a2' class='xr-section-summary' >Coordinates: <span>(5)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>alt</span></div><div class='xr-var-dims'>(alt)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>0 10 20 30 ... 9970 9980 9990 10000</div><input id='attrs-1164d978-f299-4758-81bf-472600583f05' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-1164d978-f299-4758-81bf-472600583f05' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-03cfaf69-9903-4bbf-926b-bceeb8c2c4e8' class='xr-var-data-in' type='checkbox'><label for='data-03cfaf69-9903-4bbf-926b-bceeb8c2c4e8' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([    0,    10,    20, ...,  9980,  9990, 10000])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lat</span></div><div class='xr-var-dims'>(sounding, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(266, 501), meta=np.ndarray&gt;</div><input id='attrs-be89d709-9815-4a80-bcb1-d86ad9d9e30a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-be89d709-9815-4a80-bcb1-d86ad9d9e30a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1f3056f6-f6fb-44b8-a473-37093884c133' class='xr-var-data-in' type='checkbox'><label for='data-1f3056f6-f6fb-44b8-a473-37093884c133' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>axis :</span></dt><dd>X</dd><dt><span>long_name :</span></dt><dd>Latitude</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd></dl></div><div class='xr-var-data'><table>
-<tr>
-<td>
-<table>
-  <thead>
-    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
-  </thead>
-  <tbody>
-    <tr><th> Bytes </th><td> 4.06 MiB </td> <td> 520.57 kiB </td></tr>
-    <tr><th> Shape </th><td> (1064, 1001) </td> <td> (266, 501) </td></tr>
-    <tr><th> Count </th><td> 9 Tasks </td><td> 8 Chunks </td></tr>
-    <tr><th> Type </th><td> float32 </td><td> numpy.ndarray </td></tr>
-  </tbody>
-</table>
-</td>
-<td>
-<svg width="162" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
+    title:                   EUREC4A JOANNE Level-3</pre><div class='xr-wrap' hidden><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-c394913d-092f-4523-ad3f-e110f55c5de5' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-c394913d-092f-4523-ad3f-e110f55c5de5' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>sounding</span>: 1064</li><li><span class='xr-has-index'>alt</span>: 1001</li><li><span>nv</span>: 2</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-bc5050f7-49be-4743-bd00-f1de1e8d396a' class='xr-section-summary-in' type='checkbox'  checked><label for='section-bc5050f7-49be-4743-bd00-f1de1e8d396a' class='xr-section-summary' >Coordinates: <span>(5)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>alt</span></div><div class='xr-var-dims'>(alt)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>0 10 20 30 ... 9970 9980 9990 10000</div><input id='attrs-01a2055e-a0de-4fba-8655-53d812d8a884' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-01a2055e-a0de-4fba-8655-53d812d8a884' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-3bc342a5-8c23-4374-87f4-b883f466a395' class='xr-var-data-in' type='checkbox'><label for='data-3bc342a5-8c23-4374-87f4-b883f466a395' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([    0,    10,    20, ...,  9980,  9990, 10000])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lat</span></div><div class='xr-var-dims'>(sounding, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(266, 501), meta=np.ndarray&gt;</div><input id='attrs-6be6a2b2-9fda-4318-a1fc-28ffa4764777' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-6be6a2b2-9fda-4318-a1fc-28ffa4764777' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a6631d69-92f7-48e9-abe0-1f11a8398b79' class='xr-var-data-in' type='checkbox'><label for='data-a6631d69-92f7-48e9-abe0-1f11a8398b79' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>axis :</span></dt><dd>X</dd><dt><span>long_name :</span></dt><dd>Latitude</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 4.06 MiB </td>
+                        <td> 520.57 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (1064, 1001) </td>
+                        <td> (266, 501) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 9 Tasks </td>
+                        <td> 8 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="162" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
 
   <!-- Horizontal lines -->
   <line x1="0" y1="0" x2="112" y2="0" style="stroke-width:2" />
@@ -901,25 +927,47 @@ Attributes: (12/13)
   <text x="56.447368" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >1001</text>
   <text x="132.894737" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,132.894737,60.000000)">1064</text>
 </svg>
-</td>
-</tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>launch_time</span></div><div class='xr-var-dims'>(sounding)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1064,), meta=np.ndarray&gt;</div><input id='attrs-700fdd1d-16ad-4f30-9e7e-7c632a1b5ffd' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-700fdd1d-16ad-4f30-9e7e-7c632a1b5ffd' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ea4b7460-bf64-443b-896a-d4f040a236d1' class='xr-var-data-in' type='checkbox'><label for='data-ea4b7460-bf64-443b-896a-d4f040a236d1' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>axis :</span></dt><dd>T</dd><dt><span>long_name :</span></dt><dd>Time of dropsonde launch</dd><dt><span>standard_name :</span></dt><dd>time</dd></dl></div><div class='xr-var-data'><table>
-<tr>
-<td>
-<table>
-  <thead>
-    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
-  </thead>
-  <tbody>
-    <tr><th> Bytes </th><td> 8.31 kiB </td> <td> 8.31 kiB </td></tr>
-    <tr><th> Shape </th><td> (1064,) </td> <td> (1064,) </td></tr>
-    <tr><th> Count </th><td> 2 Tasks </td><td> 1 Chunks </td></tr>
-    <tr><th> Type </th><td> datetime64[ns] </td><td> numpy.ndarray </td></tr>
-  </tbody>
-</table>
-</td>
-<td>
-<svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>launch_time</span></div><div class='xr-var-dims'>(sounding)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1064,), meta=np.ndarray&gt;</div><input id='attrs-f7d4905e-523b-4f02-9f04-946b6888aae9' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-f7d4905e-523b-4f02-9f04-946b6888aae9' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4f0b350c-e953-4e81-9f41-d1ccd89aa354' class='xr-var-data-in' type='checkbox'><label for='data-4f0b350c-e953-4e81-9f41-d1ccd89aa354' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>axis :</span></dt><dd>T</dd><dt><span>long_name :</span></dt><dd>Time of dropsonde launch</dd><dt><span>standard_name :</span></dt><dd>time</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 8.31 kiB </td>
+                        <td> 8.31 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (1064,) </td>
+                        <td> (1064,) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 2 Tasks </td>
+                        <td> 1 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> datetime64[ns] </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
 
   <!-- Horizontal lines -->
   <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
@@ -936,25 +984,47 @@ Attributes: (12/13)
   <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >1064</text>
   <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
 </svg>
-</td>
-</tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lon</span></div><div class='xr-var-dims'>(sounding, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(266, 501), meta=np.ndarray&gt;</div><input id='attrs-318ee66a-2c98-41e1-b6e1-f49e44a79dec' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-318ee66a-2c98-41e1-b6e1-f49e44a79dec' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-66b3b478-b939-4f62-b586-28fd517da1a3' class='xr-var-data-in' type='checkbox'><label for='data-66b3b478-b939-4f62-b586-28fd517da1a3' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>axis :</span></dt><dd>Y</dd><dt><span>long_name :</span></dt><dd>Longitude</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd></dl></div><div class='xr-var-data'><table>
-<tr>
-<td>
-<table>
-  <thead>
-    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
-  </thead>
-  <tbody>
-    <tr><th> Bytes </th><td> 4.06 MiB </td> <td> 520.57 kiB </td></tr>
-    <tr><th> Shape </th><td> (1064, 1001) </td> <td> (266, 501) </td></tr>
-    <tr><th> Count </th><td> 9 Tasks </td><td> 8 Chunks </td></tr>
-    <tr><th> Type </th><td> float32 </td><td> numpy.ndarray </td></tr>
-  </tbody>
-</table>
-</td>
-<td>
-<svg width="162" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lon</span></div><div class='xr-var-dims'>(sounding, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(266, 501), meta=np.ndarray&gt;</div><input id='attrs-2fb79bfc-518b-4de2-890e-f089c5035b9b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-2fb79bfc-518b-4de2-890e-f089c5035b9b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c7119f2d-0e14-4d8c-b4a8-dc772ed896a3' class='xr-var-data-in' type='checkbox'><label for='data-c7119f2d-0e14-4d8c-b4a8-dc772ed896a3' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>axis :</span></dt><dd>Y</dd><dt><span>long_name :</span></dt><dd>Longitude</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 4.06 MiB </td>
+                        <td> 520.57 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (1064, 1001) </td>
+                        <td> (266, 501) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 9 Tasks </td>
+                        <td> 8 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="162" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
 
   <!-- Horizontal lines -->
   <line x1="0" y1="0" x2="112" y2="0" style="stroke-width:2" />
@@ -975,25 +1045,47 @@ Attributes: (12/13)
   <text x="56.447368" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >1001</text>
   <text x="132.894737" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,132.894737,60.000000)">1064</text>
 </svg>
-</td>
-</tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>sounding</span></div><div class='xr-var-dims'>(sounding)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>0 1 2 3 4 ... 1060 1061 1062 1063</div><input id='attrs-00ee9b88-8f28-4b5a-9cc2-5f6318f8794a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-00ee9b88-8f28-4b5a-9cc2-5f6318f8794a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-bbb69807-0933-48a7-bc51-647281d535fd' class='xr-var-data-in' type='checkbox'><label for='data-bbb69807-0933-48a7-bc51-647281d535fd' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>axis :</span></dt><dd>T</dd><dt><span>long_name :</span></dt><dd>Sonde number</dd><dt><span>standard_name :</span></dt><dd>sounding</dd><dt><span>units :</span></dt><dd></dd></dl></div><div class='xr-var-data'><pre>array([   0,    1,    2, ..., 1061, 1062, 1063])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-22fdaaa1-863b-47a5-8850-10dcf34a0b6f' class='xr-section-summary-in' type='checkbox'  ><label for='section-22fdaaa1-863b-47a5-8850-10dcf34a0b6f' class='xr-section-summary' >Data variables: <span>(19)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>N_gps</span></div><div class='xr-var-dims'>(sounding, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(266, 501), meta=np.ndarray&gt;</div><input id='attrs-73e27688-1b60-4537-9e7f-f1f9b4f40494' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-73e27688-1b60-4537-9e7f-f1f9b4f40494' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-fe213be6-27ad-4c68-a503-ccf9cd673ebe' class='xr-var-data-in' type='checkbox'><label for='data-fe213be6-27ad-4c68-a503-ccf9cd673ebe' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>number of observations used to derive level 3 GPS-data</dd><dt><span>standard_name :</span></dt><dd>number_of_observations</dd><dt><span>units :</span></dt><dd></dd></dl></div><div class='xr-var-data'><table>
-<tr>
-<td>
-<table>
-  <thead>
-    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
-  </thead>
-  <tbody>
-    <tr><th> Bytes </th><td> 4.06 MiB </td> <td> 520.57 kiB </td></tr>
-    <tr><th> Shape </th><td> (1064, 1001) </td> <td> (266, 501) </td></tr>
-    <tr><th> Count </th><td> 9 Tasks </td><td> 8 Chunks </td></tr>
-    <tr><th> Type </th><td> float32 </td><td> numpy.ndarray </td></tr>
-  </tbody>
-</table>
-</td>
-<td>
-<svg width="162" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>sounding</span></div><div class='xr-var-dims'>(sounding)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>0 1 2 3 4 ... 1060 1061 1062 1063</div><input id='attrs-c28d6bad-e8e7-4488-9502-dbb53de6c548' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c28d6bad-e8e7-4488-9502-dbb53de6c548' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b38c92a8-e9fc-435f-9659-fa0c0d877d80' class='xr-var-data-in' type='checkbox'><label for='data-b38c92a8-e9fc-435f-9659-fa0c0d877d80' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>axis :</span></dt><dd>T</dd><dt><span>long_name :</span></dt><dd>Sonde number</dd><dt><span>standard_name :</span></dt><dd>sounding</dd><dt><span>units :</span></dt><dd></dd></dl></div><div class='xr-var-data'><pre>array([   0,    1,    2, ..., 1061, 1062, 1063])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-7892ec78-379d-4c59-bd07-0eae9a086333' class='xr-section-summary-in' type='checkbox'  ><label for='section-7892ec78-379d-4c59-bd07-0eae9a086333' class='xr-section-summary' >Data variables: <span>(19)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>N_gps</span></div><div class='xr-var-dims'>(sounding, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(266, 501), meta=np.ndarray&gt;</div><input id='attrs-2ecb4a51-1a0e-4e2a-8ea7-36413129426b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-2ecb4a51-1a0e-4e2a-8ea7-36413129426b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-3865ad16-585f-4d43-ac70-4fed2054a188' class='xr-var-data-in' type='checkbox'><label for='data-3865ad16-585f-4d43-ac70-4fed2054a188' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>number of observations used to derive level 3 GPS-data</dd><dt><span>standard_name :</span></dt><dd>number_of_observations</dd><dt><span>units :</span></dt><dd></dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 4.06 MiB </td>
+                        <td> 520.57 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (1064, 1001) </td>
+                        <td> (266, 501) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 9 Tasks </td>
+                        <td> 8 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="162" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
 
   <!-- Horizontal lines -->
   <line x1="0" y1="0" x2="112" y2="0" style="stroke-width:2" />
@@ -1014,25 +1106,47 @@ Attributes: (12/13)
   <text x="56.447368" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >1001</text>
   <text x="132.894737" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,132.894737,60.000000)">1064</text>
 </svg>
-</td>
-</tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>N_ptu</span></div><div class='xr-var-dims'>(sounding, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(266, 501), meta=np.ndarray&gt;</div><input id='attrs-499bcfd5-b1f4-47eb-8936-eb81521101fb' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-499bcfd5-b1f4-47eb-8936-eb81521101fb' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-9daeeb9f-49e1-49e3-8273-589681435ea6' class='xr-var-data-in' type='checkbox'><label for='data-9daeeb9f-49e1-49e3-8273-589681435ea6' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>number of observations used to derive level 3 PTU-data</dd><dt><span>standard_name :</span></dt><dd>number_of_observations</dd><dt><span>units :</span></dt><dd></dd></dl></div><div class='xr-var-data'><table>
-<tr>
-<td>
-<table>
-  <thead>
-    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
-  </thead>
-  <tbody>
-    <tr><th> Bytes </th><td> 4.06 MiB </td> <td> 520.57 kiB </td></tr>
-    <tr><th> Shape </th><td> (1064, 1001) </td> <td> (266, 501) </td></tr>
-    <tr><th> Count </th><td> 9 Tasks </td><td> 8 Chunks </td></tr>
-    <tr><th> Type </th><td> float32 </td><td> numpy.ndarray </td></tr>
-  </tbody>
-</table>
-</td>
-<td>
-<svg width="162" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>N_ptu</span></div><div class='xr-var-dims'>(sounding, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(266, 501), meta=np.ndarray&gt;</div><input id='attrs-5dfd2dc3-d3c3-4bca-a9b1-952c8cf766b1' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-5dfd2dc3-d3c3-4bca-a9b1-952c8cf766b1' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-58698ead-2cee-4777-9478-0bf6f9f88819' class='xr-var-data-in' type='checkbox'><label for='data-58698ead-2cee-4777-9478-0bf6f9f88819' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>number of observations used to derive level 3 PTU-data</dd><dt><span>standard_name :</span></dt><dd>number_of_observations</dd><dt><span>units :</span></dt><dd></dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 4.06 MiB </td>
+                        <td> 520.57 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (1064, 1001) </td>
+                        <td> (266, 501) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 9 Tasks </td>
+                        <td> 8 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="162" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
 
   <!-- Horizontal lines -->
   <line x1="0" y1="0" x2="112" y2="0" style="stroke-width:2" />
@@ -1053,25 +1167,47 @@ Attributes: (12/13)
   <text x="56.447368" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >1001</text>
   <text x="132.894737" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,132.894737,60.000000)">1064</text>
 </svg>
-</td>
-</tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>PW</span></div><div class='xr-var-dims'>(sounding)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1064,), meta=np.ndarray&gt;</div><input id='attrs-cc9960f6-8b66-4ece-8f7c-bc42f41664fe' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-cc9960f6-8b66-4ece-8f7c-bc42f41664fe' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a0c31a31-6507-4ef1-b101-ea58b6ed84cc' class='xr-var-data-in' type='checkbox'><label for='data-a0c31a31-6507-4ef1-b101-ea58b6ed84cc' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>integrated water vapour in the measured column</dd><dt><span>standard_name :</span></dt><dd>precipitable_water</dd><dt><span>units :</span></dt><dd>kg m-2</dd></dl></div><div class='xr-var-data'><table>
-<tr>
-<td>
-<table>
-  <thead>
-    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
-  </thead>
-  <tbody>
-    <tr><th> Bytes </th><td> 4.16 kiB </td> <td> 4.16 kiB </td></tr>
-    <tr><th> Shape </th><td> (1064,) </td> <td> (1064,) </td></tr>
-    <tr><th> Count </th><td> 2 Tasks </td><td> 1 Chunks </td></tr>
-    <tr><th> Type </th><td> float32 </td><td> numpy.ndarray </td></tr>
-  </tbody>
-</table>
-</td>
-<td>
-<svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>PW</span></div><div class='xr-var-dims'>(sounding)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1064,), meta=np.ndarray&gt;</div><input id='attrs-39b30a40-ada8-4765-85a5-4be1b7a9fc41' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-39b30a40-ada8-4765-85a5-4be1b7a9fc41' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e4a3ff0f-e868-433f-815b-cdf71b0c5b42' class='xr-var-data-in' type='checkbox'><label for='data-e4a3ff0f-e868-433f-815b-cdf71b0c5b42' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>integrated water vapour in the measured column</dd><dt><span>standard_name :</span></dt><dd>precipitable_water</dd><dt><span>units :</span></dt><dd>kg m-2</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 4.16 kiB </td>
+                        <td> 4.16 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (1064,) </td>
+                        <td> (1064,) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 2 Tasks </td>
+                        <td> 1 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
 
   <!-- Horizontal lines -->
   <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
@@ -1088,25 +1224,47 @@ Attributes: (12/13)
   <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >1064</text>
   <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
 </svg>
-</td>
-</tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>alt_bnds</span></div><div class='xr-var-dims'>(alt, nv)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1001, 2), meta=np.ndarray&gt;</div><input id='attrs-a7c9a850-66bf-43d4-b3f1-1e9b408b7074' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-a7c9a850-66bf-43d4-b3f1-1e9b408b7074' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-086b385d-5232-4cd7-b317-81d4f84fb739' class='xr-var-data-in' type='checkbox'><label for='data-086b385d-5232-4cd7-b317-81d4f84fb739' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><table>
-<tr>
-<td>
-<table>
-  <thead>
-    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
-  </thead>
-  <tbody>
-    <tr><th> Bytes </th><td> 15.64 kiB </td> <td> 15.64 kiB </td></tr>
-    <tr><th> Shape </th><td> (1001, 2) </td> <td> (1001, 2) </td></tr>
-    <tr><th> Count </th><td> 2 Tasks </td><td> 1 Chunks </td></tr>
-    <tr><th> Type </th><td> float64 </td><td> numpy.ndarray </td></tr>
-  </tbody>
-</table>
-</td>
-<td>
-<svg width="75" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>alt_bnds</span></div><div class='xr-var-dims'>(alt, nv)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1001, 2), meta=np.ndarray&gt;</div><input id='attrs-ea33f3d0-fb0f-4d47-9741-82a25179865b' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-ea33f3d0-fb0f-4d47-9741-82a25179865b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-2f87e1f4-0d2c-4e72-ad96-c2ec2d3bcc55' class='xr-var-data-in' type='checkbox'><label for='data-2f87e1f4-0d2c-4e72-ad96-c2ec2d3bcc55' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 15.64 kiB </td>
+                        <td> 15.64 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (1001, 2) </td>
+                        <td> (1001, 2) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 2 Tasks </td>
+                        <td> 1 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float64 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="75" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
 
   <!-- Horizontal lines -->
   <line x1="0" y1="0" x2="25" y2="0" style="stroke-width:2" />
@@ -1123,25 +1281,47 @@ Attributes: (12/13)
   <text x="12.706308" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >2</text>
   <text x="45.412617" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,45.412617,60.000000)">1001</text>
 </svg>
-</td>
-</tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>flight_height</span></div><div class='xr-var-dims'>(sounding)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1064,), meta=np.ndarray&gt;</div><input id='attrs-0f0b3edc-61fd-4dad-84ff-e4eaf87485ee' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-0f0b3edc-61fd-4dad-84ff-e4eaf87485ee' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-14d22469-7b9b-488f-8805-d12f28211509' class='xr-var-data-in' type='checkbox'><label for='data-14d22469-7b9b-488f-8805-d12f28211509' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>height of the aircraft when the dropsonde was launched</dd><dt><span>standard_name :</span></dt><dd>height</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><table>
-<tr>
-<td>
-<table>
-  <thead>
-    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
-  </thead>
-  <tbody>
-    <tr><th> Bytes </th><td> 4.16 kiB </td> <td> 4.16 kiB </td></tr>
-    <tr><th> Shape </th><td> (1064,) </td> <td> (1064,) </td></tr>
-    <tr><th> Count </th><td> 2 Tasks </td><td> 1 Chunks </td></tr>
-    <tr><th> Type </th><td> float32 </td><td> numpy.ndarray </td></tr>
-  </tbody>
-</table>
-</td>
-<td>
-<svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>flight_height</span></div><div class='xr-var-dims'>(sounding)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1064,), meta=np.ndarray&gt;</div><input id='attrs-ef13620f-9834-46f3-a64d-08eef03dee2c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ef13620f-9834-46f3-a64d-08eef03dee2c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a177bbc5-5a5a-4af2-9fbe-f46628217564' class='xr-var-data-in' type='checkbox'><label for='data-a177bbc5-5a5a-4af2-9fbe-f46628217564' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>height of the aircraft when the dropsonde was launched</dd><dt><span>standard_name :</span></dt><dd>height</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 4.16 kiB </td>
+                        <td> 4.16 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (1064,) </td>
+                        <td> (1064,) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 2 Tasks </td>
+                        <td> 1 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
 
   <!-- Horizontal lines -->
   <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
@@ -1158,25 +1338,47 @@ Attributes: (12/13)
   <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >1064</text>
   <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
 </svg>
-</td>
-</tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>flight_lat</span></div><div class='xr-var-dims'>(sounding)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1064,), meta=np.ndarray&gt;</div><input id='attrs-dcb142c3-1147-4579-9b69-94cd5185bd25' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-dcb142c3-1147-4579-9b69-94cd5185bd25' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8665c578-0b05-4190-ada6-9714d2c3c38f' class='xr-var-data-in' type='checkbox'><label for='data-8665c578-0b05-4190-ada6-9714d2c3c38f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>north latitude of the aircraft when the dropsonde was launched</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd></dl></div><div class='xr-var-data'><table>
-<tr>
-<td>
-<table>
-  <thead>
-    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
-  </thead>
-  <tbody>
-    <tr><th> Bytes </th><td> 4.16 kiB </td> <td> 4.16 kiB </td></tr>
-    <tr><th> Shape </th><td> (1064,) </td> <td> (1064,) </td></tr>
-    <tr><th> Count </th><td> 2 Tasks </td><td> 1 Chunks </td></tr>
-    <tr><th> Type </th><td> float32 </td><td> numpy.ndarray </td></tr>
-  </tbody>
-</table>
-</td>
-<td>
-<svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>flight_lat</span></div><div class='xr-var-dims'>(sounding)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1064,), meta=np.ndarray&gt;</div><input id='attrs-531ccd6b-f03f-40ee-9702-717cea752e55' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-531ccd6b-f03f-40ee-9702-717cea752e55' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-9056bed8-3399-4df9-af8a-81a3f1b0013f' class='xr-var-data-in' type='checkbox'><label for='data-9056bed8-3399-4df9-af8a-81a3f1b0013f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>north latitude of the aircraft when the dropsonde was launched</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 4.16 kiB </td>
+                        <td> 4.16 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (1064,) </td>
+                        <td> (1064,) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 2 Tasks </td>
+                        <td> 1 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
 
   <!-- Horizontal lines -->
   <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
@@ -1193,25 +1395,47 @@ Attributes: (12/13)
   <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >1064</text>
   <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
 </svg>
-</td>
-</tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>flight_lon</span></div><div class='xr-var-dims'>(sounding)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1064,), meta=np.ndarray&gt;</div><input id='attrs-b05fff1b-d2ad-4df1-a658-62bfaf143747' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-b05fff1b-d2ad-4df1-a658-62bfaf143747' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0fae92a5-fef7-4efc-989e-f2aa49106150' class='xr-var-data-in' type='checkbox'><label for='data-0fae92a5-fef7-4efc-989e-f2aa49106150' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>east longitude of the aircraft when the dropsonde was launched</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd></dl></div><div class='xr-var-data'><table>
-<tr>
-<td>
-<table>
-  <thead>
-    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
-  </thead>
-  <tbody>
-    <tr><th> Bytes </th><td> 4.16 kiB </td> <td> 4.16 kiB </td></tr>
-    <tr><th> Shape </th><td> (1064,) </td> <td> (1064,) </td></tr>
-    <tr><th> Count </th><td> 2 Tasks </td><td> 1 Chunks </td></tr>
-    <tr><th> Type </th><td> float32 </td><td> numpy.ndarray </td></tr>
-  </tbody>
-</table>
-</td>
-<td>
-<svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>flight_lon</span></div><div class='xr-var-dims'>(sounding)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1064,), meta=np.ndarray&gt;</div><input id='attrs-e864e78a-fc9f-448b-abe6-d267ae88f80d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e864e78a-fc9f-448b-abe6-d267ae88f80d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-5f56427a-12ea-4249-8310-c98ad3685115' class='xr-var-data-in' type='checkbox'><label for='data-5f56427a-12ea-4249-8310-c98ad3685115' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>east longitude of the aircraft when the dropsonde was launched</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 4.16 kiB </td>
+                        <td> 4.16 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (1064,) </td>
+                        <td> (1064,) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 2 Tasks </td>
+                        <td> 1 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
 
   <!-- Horizontal lines -->
   <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
@@ -1228,25 +1452,47 @@ Attributes: (12/13)
   <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >1064</text>
   <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
 </svg>
-</td>
-</tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>low_height_flag</span></div><div class='xr-var-dims'>(sounding)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1064,), meta=np.ndarray&gt;</div><input id='attrs-138d3566-bae6-45ce-9dc5-08c231934c0d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-138d3566-bae6-45ce-9dc5-08c231934c0d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-89bd03dc-ad56-45a0-be8f-cf0aeb055457' class='xr-var-data-in' type='checkbox'><label for='data-89bd03dc-ad56-45a0-be8f-cf0aeb055457' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>flag_meanings :</span></dt><dd>flight height below 4 km flight height at or above 4 km</dd><dt><span>flag_values :</span></dt><dd>1, 0</dd><dt><span>long_name :</span></dt><dd>flag to indicate if flight height at launch was low</dd><dt><span>units :</span></dt><dd></dd><dt><span>valid_range :</span></dt><dd>0, 1</dd></dl></div><div class='xr-var-data'><table>
-<tr>
-<td>
-<table>
-  <thead>
-    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
-  </thead>
-  <tbody>
-    <tr><th> Bytes </th><td> 8.31 kiB </td> <td> 8.31 kiB </td></tr>
-    <tr><th> Shape </th><td> (1064,) </td> <td> (1064,) </td></tr>
-    <tr><th> Count </th><td> 2 Tasks </td><td> 1 Chunks </td></tr>
-    <tr><th> Type </th><td> float64 </td><td> numpy.ndarray </td></tr>
-  </tbody>
-</table>
-</td>
-<td>
-<svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>low_height_flag</span></div><div class='xr-var-dims'>(sounding)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1064,), meta=np.ndarray&gt;</div><input id='attrs-0aa9e39c-8d95-45d4-8bc6-26b48281e26f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-0aa9e39c-8d95-45d4-8bc6-26b48281e26f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-df5a308b-a446-4f1a-b00e-dd4641d597cc' class='xr-var-data-in' type='checkbox'><label for='data-df5a308b-a446-4f1a-b00e-dd4641d597cc' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>flag_meanings :</span></dt><dd>flight height below 4 km flight height at or above 4 km</dd><dt><span>flag_values :</span></dt><dd>1, 0</dd><dt><span>long_name :</span></dt><dd>flag to indicate if flight height at launch was low</dd><dt><span>units :</span></dt><dd></dd><dt><span>valid_range :</span></dt><dd>0, 1</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 8.31 kiB </td>
+                        <td> 8.31 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (1064,) </td>
+                        <td> (1064,) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 2 Tasks </td>
+                        <td> 1 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float64 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
 
   <!-- Horizontal lines -->
   <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
@@ -1263,25 +1509,47 @@ Attributes: (12/13)
   <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >1064</text>
   <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
 </svg>
-</td>
-</tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>p</span></div><div class='xr-var-dims'>(sounding, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(266, 501), meta=np.ndarray&gt;</div><input id='attrs-1b4b74e2-e9c6-49c6-a55f-f0fcf42a0ae3' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-1b4b74e2-e9c6-49c6-a55f-f0fcf42a0ae3' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-64769555-2e86-4757-a70f-aec811c563d1' class='xr-var-data-in' type='checkbox'><label for='data-64769555-2e86-4757-a70f-aec811c563d1' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Atmospheric Pressure</dd><dt><span>standard_name :</span></dt><dd>air_pressure</dd><dt><span>units :</span></dt><dd>Pa</dd></dl></div><div class='xr-var-data'><table>
-<tr>
-<td>
-<table>
-  <thead>
-    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
-  </thead>
-  <tbody>
-    <tr><th> Bytes </th><td> 4.06 MiB </td> <td> 520.57 kiB </td></tr>
-    <tr><th> Shape </th><td> (1064, 1001) </td> <td> (266, 501) </td></tr>
-    <tr><th> Count </th><td> 9 Tasks </td><td> 8 Chunks </td></tr>
-    <tr><th> Type </th><td> float32 </td><td> numpy.ndarray </td></tr>
-  </tbody>
-</table>
-</td>
-<td>
-<svg width="162" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>p</span></div><div class='xr-var-dims'>(sounding, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(266, 501), meta=np.ndarray&gt;</div><input id='attrs-d22e6211-80a5-4825-9366-86d6f9cb557c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-d22e6211-80a5-4825-9366-86d6f9cb557c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ba4f92cb-4c4c-4912-969b-fa3c4a1cb945' class='xr-var-data-in' type='checkbox'><label for='data-ba4f92cb-4c4c-4912-969b-fa3c4a1cb945' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Atmospheric Pressure</dd><dt><span>standard_name :</span></dt><dd>air_pressure</dd><dt><span>units :</span></dt><dd>Pa</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 4.06 MiB </td>
+                        <td> 520.57 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (1064, 1001) </td>
+                        <td> (266, 501) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 9 Tasks </td>
+                        <td> 8 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="162" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
 
   <!-- Horizontal lines -->
   <line x1="0" y1="0" x2="112" y2="0" style="stroke-width:2" />
@@ -1302,25 +1570,47 @@ Attributes: (12/13)
   <text x="56.447368" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >1001</text>
   <text x="132.894737" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,132.894737,60.000000)">1064</text>
 </svg>
-</td>
-</tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>platform</span></div><div class='xr-var-dims'>(sounding)</div><div class='xr-var-dtype'>object</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1064,), meta=np.ndarray&gt;</div><input id='attrs-e7da63c8-1ef4-49d5-896b-97c51d146d3e' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e7da63c8-1ef4-49d5-896b-97c51d146d3e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d6f757dc-aedd-462c-bcef-555c434be422' class='xr-var-data-in' type='checkbox'><label for='data-d6f757dc-aedd-462c-bcef-555c434be422' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>platform from which the sounding was made</dd><dt><span>standard_name :</span></dt><dd>platform</dd><dt><span>units :</span></dt><dd></dd></dl></div><div class='xr-var-data'><table>
-<tr>
-<td>
-<table>
-  <thead>
-    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
-  </thead>
-  <tbody>
-    <tr><th> Bytes </th><td> 8.31 kiB </td> <td> 8.31 kiB </td></tr>
-    <tr><th> Shape </th><td> (1064,) </td> <td> (1064,) </td></tr>
-    <tr><th> Count </th><td> 2 Tasks </td><td> 1 Chunks </td></tr>
-    <tr><th> Type </th><td> object </td><td> numpy.ndarray </td></tr>
-  </tbody>
-</table>
-</td>
-<td>
-<svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>platform</span></div><div class='xr-var-dims'>(sounding)</div><div class='xr-var-dtype'>object</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1064,), meta=np.ndarray&gt;</div><input id='attrs-d78153bf-3bd0-47d4-bd3f-0d8bc03af9a1' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-d78153bf-3bd0-47d4-bd3f-0d8bc03af9a1' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8fa8c857-3af6-4f64-a6d5-59809b22e6bd' class='xr-var-data-in' type='checkbox'><label for='data-8fa8c857-3af6-4f64-a6d5-59809b22e6bd' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>platform from which the sounding was made</dd><dt><span>standard_name :</span></dt><dd>platform</dd><dt><span>units :</span></dt><dd></dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 8.31 kiB </td>
+                        <td> 8.31 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (1064,) </td>
+                        <td> (1064,) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 2 Tasks </td>
+                        <td> 1 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> object </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
 
   <!-- Horizontal lines -->
   <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
@@ -1337,25 +1627,47 @@ Attributes: (12/13)
   <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >1064</text>
   <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
 </svg>
-</td>
-</tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>q</span></div><div class='xr-var-dims'>(sounding, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(266, 501), meta=np.ndarray&gt;</div><input id='attrs-361c7003-85b8-4619-9335-c12c5bae1432' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-361c7003-85b8-4619-9335-c12c5bae1432' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0624e728-52af-4d51-9c2f-e0106903bf2d' class='xr-var-data-in' type='checkbox'><label for='data-0624e728-52af-4d51-9c2f-e0106903bf2d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Specific humidity</dd><dt><span>standard_name :</span></dt><dd>specific_humidity</dd><dt><span>units :</span></dt><dd>kg kg-1</dd></dl></div><div class='xr-var-data'><table>
-<tr>
-<td>
-<table>
-  <thead>
-    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
-  </thead>
-  <tbody>
-    <tr><th> Bytes </th><td> 4.06 MiB </td> <td> 520.57 kiB </td></tr>
-    <tr><th> Shape </th><td> (1064, 1001) </td> <td> (266, 501) </td></tr>
-    <tr><th> Count </th><td> 9 Tasks </td><td> 8 Chunks </td></tr>
-    <tr><th> Type </th><td> float32 </td><td> numpy.ndarray </td></tr>
-  </tbody>
-</table>
-</td>
-<td>
-<svg width="162" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>q</span></div><div class='xr-var-dims'>(sounding, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(266, 501), meta=np.ndarray&gt;</div><input id='attrs-5ab6af99-3d28-415d-a1e1-22b26f1276b7' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-5ab6af99-3d28-415d-a1e1-22b26f1276b7' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-17335afe-6dc8-4c3c-af78-392b3d5d549d' class='xr-var-data-in' type='checkbox'><label for='data-17335afe-6dc8-4c3c-af78-392b3d5d549d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Specific humidity</dd><dt><span>standard_name :</span></dt><dd>specific_humidity</dd><dt><span>units :</span></dt><dd>kg kg-1</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 4.06 MiB </td>
+                        <td> 520.57 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (1064, 1001) </td>
+                        <td> (266, 501) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 9 Tasks </td>
+                        <td> 8 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="162" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
 
   <!-- Horizontal lines -->
   <line x1="0" y1="0" x2="112" y2="0" style="stroke-width:2" />
@@ -1376,25 +1688,47 @@ Attributes: (12/13)
   <text x="56.447368" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >1001</text>
   <text x="132.894737" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,132.894737,60.000000)">1064</text>
 </svg>
-</td>
-</tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>rh</span></div><div class='xr-var-dims'>(sounding, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(266, 501), meta=np.ndarray&gt;</div><input id='attrs-12b37235-a142-4fa7-8e75-b59e6f20e70e' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-12b37235-a142-4fa7-8e75-b59e6f20e70e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-2a3391c6-a7b1-4a07-80ec-015aea4a25e5' class='xr-var-data-in' type='checkbox'><label for='data-2a3391c6-a7b1-4a07-80ec-015aea4a25e5' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Relative Humidity</dd><dt><span>standard_name :</span></dt><dd>relative_humidity</dd><dt><span>units :</span></dt><dd></dd></dl></div><div class='xr-var-data'><table>
-<tr>
-<td>
-<table>
-  <thead>
-    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
-  </thead>
-  <tbody>
-    <tr><th> Bytes </th><td> 4.06 MiB </td> <td> 520.57 kiB </td></tr>
-    <tr><th> Shape </th><td> (1064, 1001) </td> <td> (266, 501) </td></tr>
-    <tr><th> Count </th><td> 9 Tasks </td><td> 8 Chunks </td></tr>
-    <tr><th> Type </th><td> float32 </td><td> numpy.ndarray </td></tr>
-  </tbody>
-</table>
-</td>
-<td>
-<svg width="162" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>rh</span></div><div class='xr-var-dims'>(sounding, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(266, 501), meta=np.ndarray&gt;</div><input id='attrs-aef40f12-a560-4f09-a915-5c5d77604dd9' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-aef40f12-a560-4f09-a915-5c5d77604dd9' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-13a3015f-d51b-49ac-9c5d-7456f5de3d32' class='xr-var-data-in' type='checkbox'><label for='data-13a3015f-d51b-49ac-9c5d-7456f5de3d32' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Relative Humidity</dd><dt><span>standard_name :</span></dt><dd>relative_humidity</dd><dt><span>units :</span></dt><dd></dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 4.06 MiB </td>
+                        <td> 520.57 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (1064, 1001) </td>
+                        <td> (266, 501) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 9 Tasks </td>
+                        <td> 8 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="162" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
 
   <!-- Horizontal lines -->
   <line x1="0" y1="0" x2="112" y2="0" style="stroke-width:2" />
@@ -1415,25 +1749,47 @@ Attributes: (12/13)
   <text x="56.447368" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >1001</text>
   <text x="132.894737" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,132.894737,60.000000)">1064</text>
 </svg>
-</td>
-</tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>sonde_id</span></div><div class='xr-var-dims'>(sounding)</div><div class='xr-var-dtype'>object</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1064,), meta=np.ndarray&gt;</div><input id='attrs-8eaa0589-7a6c-49fc-9a72-489713a17dee' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-8eaa0589-7a6c-49fc-9a72-489713a17dee' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c0628f07-59c4-4aa5-b1cf-c2b4c228bf50' class='xr-var-data-in' type='checkbox'><label for='data-c0628f07-59c4-4aa5-b1cf-c2b4c228bf50' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>cf_role :</span></dt><dd>trajectory_id</dd><dt><span>description :</span></dt><dd>unique sonde ID in the format PLATFORM_FLIGHT-ID_sSONDE-NUMBER-FOR-THE-FLIGHT</dd><dt><span>long_name :</span></dt><dd>sonde identifier</dd></dl></div><div class='xr-var-data'><table>
-<tr>
-<td>
-<table>
-  <thead>
-    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
-  </thead>
-  <tbody>
-    <tr><th> Bytes </th><td> 8.31 kiB </td> <td> 8.31 kiB </td></tr>
-    <tr><th> Shape </th><td> (1064,) </td> <td> (1064,) </td></tr>
-    <tr><th> Count </th><td> 2 Tasks </td><td> 1 Chunks </td></tr>
-    <tr><th> Type </th><td> object </td><td> numpy.ndarray </td></tr>
-  </tbody>
-</table>
-</td>
-<td>
-<svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>sonde_id</span></div><div class='xr-var-dims'>(sounding)</div><div class='xr-var-dtype'>object</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1064,), meta=np.ndarray&gt;</div><input id='attrs-8263726e-e551-4776-9dbf-c9a8a6d96d50' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-8263726e-e551-4776-9dbf-c9a8a6d96d50' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-3bd34924-027b-4a8d-94a5-a46d3ab10b53' class='xr-var-data-in' type='checkbox'><label for='data-3bd34924-027b-4a8d-94a5-a46d3ab10b53' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>cf_role :</span></dt><dd>trajectory_id</dd><dt><span>description :</span></dt><dd>unique sonde ID in the format PLATFORM_FLIGHT-ID_sSONDE-NUMBER-FOR-THE-FLIGHT</dd><dt><span>long_name :</span></dt><dd>sonde identifier</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 8.31 kiB </td>
+                        <td> 8.31 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (1064,) </td>
+                        <td> (1064,) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 2 Tasks </td>
+                        <td> 1 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> object </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
 
   <!-- Horizontal lines -->
   <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
@@ -1450,25 +1806,47 @@ Attributes: (12/13)
   <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >1064</text>
   <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
 </svg>
-</td>
-</tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>ta</span></div><div class='xr-var-dims'>(sounding, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(266, 501), meta=np.ndarray&gt;</div><input id='attrs-e4b31ba5-fc3a-424b-926c-b9937f3e819e' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e4b31ba5-fc3a-424b-926c-b9937f3e819e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f1547d89-3fd1-4f98-b53d-b1c697081bcd' class='xr-var-data-in' type='checkbox'><label for='data-f1547d89-3fd1-4f98-b53d-b1c697081bcd' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Dry Bulb Temperature</dd><dt><span>standard_name :</span></dt><dd>air_temperature</dd><dt><span>units :</span></dt><dd>K</dd></dl></div><div class='xr-var-data'><table>
-<tr>
-<td>
-<table>
-  <thead>
-    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
-  </thead>
-  <tbody>
-    <tr><th> Bytes </th><td> 4.06 MiB </td> <td> 520.57 kiB </td></tr>
-    <tr><th> Shape </th><td> (1064, 1001) </td> <td> (266, 501) </td></tr>
-    <tr><th> Count </th><td> 9 Tasks </td><td> 8 Chunks </td></tr>
-    <tr><th> Type </th><td> float32 </td><td> numpy.ndarray </td></tr>
-  </tbody>
-</table>
-</td>
-<td>
-<svg width="162" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>ta</span></div><div class='xr-var-dims'>(sounding, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(266, 501), meta=np.ndarray&gt;</div><input id='attrs-544fff90-94ed-4a6f-8417-32c68d2c17ef' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-544fff90-94ed-4a6f-8417-32c68d2c17ef' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-86f29ccb-7586-48b0-ab4a-91cf43e1fd80' class='xr-var-data-in' type='checkbox'><label for='data-86f29ccb-7586-48b0-ab4a-91cf43e1fd80' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Dry Bulb Temperature</dd><dt><span>standard_name :</span></dt><dd>air_temperature</dd><dt><span>units :</span></dt><dd>K</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 4.06 MiB </td>
+                        <td> 520.57 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (1064, 1001) </td>
+                        <td> (266, 501) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 9 Tasks </td>
+                        <td> 8 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="162" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
 
   <!-- Horizontal lines -->
   <line x1="0" y1="0" x2="112" y2="0" style="stroke-width:2" />
@@ -1489,25 +1867,47 @@ Attributes: (12/13)
   <text x="56.447368" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >1001</text>
   <text x="132.894737" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,132.894737,60.000000)">1064</text>
 </svg>
-</td>
-</tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>theta</span></div><div class='xr-var-dims'>(sounding, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(266, 501), meta=np.ndarray&gt;</div><input id='attrs-2de18b24-1ad1-4fdf-b1a6-aac382a6bdcf' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-2de18b24-1ad1-4fdf-b1a6-aac382a6bdcf' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-7e33140e-1e7b-4dda-addd-4bc29f81dbe8' class='xr-var-data-in' type='checkbox'><label for='data-7e33140e-1e7b-4dda-addd-4bc29f81dbe8' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Potential Temperature</dd><dt><span>standard_name :</span></dt><dd>potential_temperature</dd><dt><span>units :</span></dt><dd>K</dd></dl></div><div class='xr-var-data'><table>
-<tr>
-<td>
-<table>
-  <thead>
-    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
-  </thead>
-  <tbody>
-    <tr><th> Bytes </th><td> 4.06 MiB </td> <td> 520.57 kiB </td></tr>
-    <tr><th> Shape </th><td> (1064, 1001) </td> <td> (266, 501) </td></tr>
-    <tr><th> Count </th><td> 9 Tasks </td><td> 8 Chunks </td></tr>
-    <tr><th> Type </th><td> float32 </td><td> numpy.ndarray </td></tr>
-  </tbody>
-</table>
-</td>
-<td>
-<svg width="162" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>theta</span></div><div class='xr-var-dims'>(sounding, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(266, 501), meta=np.ndarray&gt;</div><input id='attrs-5836f864-9ea3-4b1d-a4b4-0bee2be0a97e' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-5836f864-9ea3-4b1d-a4b4-0bee2be0a97e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-35921ae5-83d0-4146-8fb5-a6e8a375f78a' class='xr-var-data-in' type='checkbox'><label for='data-35921ae5-83d0-4146-8fb5-a6e8a375f78a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Potential Temperature</dd><dt><span>standard_name :</span></dt><dd>potential_temperature</dd><dt><span>units :</span></dt><dd>K</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 4.06 MiB </td>
+                        <td> 520.57 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (1064, 1001) </td>
+                        <td> (266, 501) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 9 Tasks </td>
+                        <td> 8 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="162" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
 
   <!-- Horizontal lines -->
   <line x1="0" y1="0" x2="112" y2="0" style="stroke-width:2" />
@@ -1528,25 +1928,47 @@ Attributes: (12/13)
   <text x="56.447368" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >1001</text>
   <text x="132.894737" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,132.894737,60.000000)">1064</text>
 </svg>
-</td>
-</tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>u</span></div><div class='xr-var-dims'>(sounding, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(266, 501), meta=np.ndarray&gt;</div><input id='attrs-247a1714-f2e8-4bfc-ba65-124ed4199a22' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-247a1714-f2e8-4bfc-ba65-124ed4199a22' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-7533a2e3-1f0a-4e6d-bd23-60da71c2614b' class='xr-var-data-in' type='checkbox'><label for='data-7533a2e3-1f0a-4e6d-bd23-60da71c2614b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>u-component of the wind</dd><dt><span>standard_name :</span></dt><dd>eastward_wind</dd><dt><span>units :</span></dt><dd>m s-1</dd></dl></div><div class='xr-var-data'><table>
-<tr>
-<td>
-<table>
-  <thead>
-    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
-  </thead>
-  <tbody>
-    <tr><th> Bytes </th><td> 4.06 MiB </td> <td> 520.57 kiB </td></tr>
-    <tr><th> Shape </th><td> (1064, 1001) </td> <td> (266, 501) </td></tr>
-    <tr><th> Count </th><td> 9 Tasks </td><td> 8 Chunks </td></tr>
-    <tr><th> Type </th><td> float32 </td><td> numpy.ndarray </td></tr>
-  </tbody>
-</table>
-</td>
-<td>
-<svg width="162" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>u</span></div><div class='xr-var-dims'>(sounding, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(266, 501), meta=np.ndarray&gt;</div><input id='attrs-403f18a6-59c6-42f4-b7b5-8ae5e2411abb' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-403f18a6-59c6-42f4-b7b5-8ae5e2411abb' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-3b759030-5ab5-4982-bba8-9774a57a4273' class='xr-var-data-in' type='checkbox'><label for='data-3b759030-5ab5-4982-bba8-9774a57a4273' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>u-component of the wind</dd><dt><span>standard_name :</span></dt><dd>eastward_wind</dd><dt><span>units :</span></dt><dd>m s-1</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 4.06 MiB </td>
+                        <td> 520.57 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (1064, 1001) </td>
+                        <td> (266, 501) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 9 Tasks </td>
+                        <td> 8 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="162" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
 
   <!-- Horizontal lines -->
   <line x1="0" y1="0" x2="112" y2="0" style="stroke-width:2" />
@@ -1567,25 +1989,47 @@ Attributes: (12/13)
   <text x="56.447368" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >1001</text>
   <text x="132.894737" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,132.894737,60.000000)">1064</text>
 </svg>
-</td>
-</tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>v</span></div><div class='xr-var-dims'>(sounding, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(266, 501), meta=np.ndarray&gt;</div><input id='attrs-eace1a6f-b869-4296-8dd3-24e1c550aa4e' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-eace1a6f-b869-4296-8dd3-24e1c550aa4e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0604375a-ccb5-4da3-bf56-319fda70c0cd' class='xr-var-data-in' type='checkbox'><label for='data-0604375a-ccb5-4da3-bf56-319fda70c0cd' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>v-component of the wind</dd><dt><span>standard_name :</span></dt><dd>northward_wind</dd><dt><span>units :</span></dt><dd>m s-1</dd></dl></div><div class='xr-var-data'><table>
-<tr>
-<td>
-<table>
-  <thead>
-    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
-  </thead>
-  <tbody>
-    <tr><th> Bytes </th><td> 4.06 MiB </td> <td> 520.57 kiB </td></tr>
-    <tr><th> Shape </th><td> (1064, 1001) </td> <td> (266, 501) </td></tr>
-    <tr><th> Count </th><td> 9 Tasks </td><td> 8 Chunks </td></tr>
-    <tr><th> Type </th><td> float32 </td><td> numpy.ndarray </td></tr>
-  </tbody>
-</table>
-</td>
-<td>
-<svg width="162" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>v</span></div><div class='xr-var-dims'>(sounding, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(266, 501), meta=np.ndarray&gt;</div><input id='attrs-71dbac70-755e-4bcb-ac9f-a19908eebefc' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-71dbac70-755e-4bcb-ac9f-a19908eebefc' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ad7f7b16-8635-44aa-a4f0-1c5d65b35250' class='xr-var-data-in' type='checkbox'><label for='data-ad7f7b16-8635-44aa-a4f0-1c5d65b35250' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>v-component of the wind</dd><dt><span>standard_name :</span></dt><dd>northward_wind</dd><dt><span>units :</span></dt><dd>m s-1</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 4.06 MiB </td>
+                        <td> 520.57 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (1064, 1001) </td>
+                        <td> (266, 501) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 9 Tasks </td>
+                        <td> 8 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="162" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
 
   <!-- Horizontal lines -->
   <line x1="0" y1="0" x2="112" y2="0" style="stroke-width:2" />
@@ -1606,25 +2050,47 @@ Attributes: (12/13)
   <text x="56.447368" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >1001</text>
   <text x="132.894737" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,132.894737,60.000000)">1064</text>
 </svg>
-</td>
-</tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>wdir</span></div><div class='xr-var-dims'>(sounding, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(266, 501), meta=np.ndarray&gt;</div><input id='attrs-95ddb09a-3621-4b61-9305-eb77a561631f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-95ddb09a-3621-4b61-9305-eb77a561631f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1cfcfe73-c87d-4738-b6fc-7dd20cdcfd4e' class='xr-var-data-in' type='checkbox'><label for='data-1cfcfe73-c87d-4738-b6fc-7dd20cdcfd4e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Wind Direction</dd><dt><span>standard_name :</span></dt><dd>wind_from_direction</dd><dt><span>units :</span></dt><dd>degrees</dd></dl></div><div class='xr-var-data'><table>
-<tr>
-<td>
-<table>
-  <thead>
-    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
-  </thead>
-  <tbody>
-    <tr><th> Bytes </th><td> 4.06 MiB </td> <td> 520.57 kiB </td></tr>
-    <tr><th> Shape </th><td> (1064, 1001) </td> <td> (266, 501) </td></tr>
-    <tr><th> Count </th><td> 9 Tasks </td><td> 8 Chunks </td></tr>
-    <tr><th> Type </th><td> float32 </td><td> numpy.ndarray </td></tr>
-  </tbody>
-</table>
-</td>
-<td>
-<svg width="162" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>wdir</span></div><div class='xr-var-dims'>(sounding, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(266, 501), meta=np.ndarray&gt;</div><input id='attrs-d21eba24-5463-4214-9735-b7ac1287a4be' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-d21eba24-5463-4214-9735-b7ac1287a4be' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d675287a-1ca9-4cdf-b5cb-d07f3d7a04b1' class='xr-var-data-in' type='checkbox'><label for='data-d675287a-1ca9-4cdf-b5cb-d07f3d7a04b1' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Wind Direction</dd><dt><span>standard_name :</span></dt><dd>wind_from_direction</dd><dt><span>units :</span></dt><dd>degrees</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 4.06 MiB </td>
+                        <td> 520.57 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (1064, 1001) </td>
+                        <td> (266, 501) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 9 Tasks </td>
+                        <td> 8 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="162" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
 
   <!-- Horizontal lines -->
   <line x1="0" y1="0" x2="112" y2="0" style="stroke-width:2" />
@@ -1645,25 +2111,47 @@ Attributes: (12/13)
   <text x="56.447368" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >1001</text>
   <text x="132.894737" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,132.894737,60.000000)">1064</text>
 </svg>
-</td>
-</tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>wspd</span></div><div class='xr-var-dims'>(sounding, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(266, 501), meta=np.ndarray&gt;</div><input id='attrs-db04a5fb-e49c-48c7-8427-c18206c06713' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-db04a5fb-e49c-48c7-8427-c18206c06713' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-7b80d2ed-fa06-47fe-a5ce-2168ae1b8b26' class='xr-var-data-in' type='checkbox'><label for='data-7b80d2ed-fa06-47fe-a5ce-2168ae1b8b26' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Wind Speed</dd><dt><span>standard_name :</span></dt><dd>wind_speed</dd><dt><span>units :</span></dt><dd>m s-1</dd></dl></div><div class='xr-var-data'><table>
-<tr>
-<td>
-<table>
-  <thead>
-    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
-  </thead>
-  <tbody>
-    <tr><th> Bytes </th><td> 4.06 MiB </td> <td> 520.57 kiB </td></tr>
-    <tr><th> Shape </th><td> (1064, 1001) </td> <td> (266, 501) </td></tr>
-    <tr><th> Count </th><td> 9 Tasks </td><td> 8 Chunks </td></tr>
-    <tr><th> Type </th><td> float32 </td><td> numpy.ndarray </td></tr>
-  </tbody>
-</table>
-</td>
-<td>
-<svg width="162" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>wspd</span></div><div class='xr-var-dims'>(sounding, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(266, 501), meta=np.ndarray&gt;</div><input id='attrs-7e412839-7fd7-4863-97fe-602887a800a2' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-7e412839-7fd7-4863-97fe-602887a800a2' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-17f49faf-bb1a-4375-be9f-a9ac1d88fe61' class='xr-var-data-in' type='checkbox'><label for='data-17f49faf-bb1a-4375-be9f-a9ac1d88fe61' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Wind Speed</dd><dt><span>standard_name :</span></dt><dd>wind_speed</dd><dt><span>units :</span></dt><dd>m s-1</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 4.06 MiB </td>
+                        <td> 520.57 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (1064, 1001) </td>
+                        <td> (266, 501) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 9 Tasks </td>
+                        <td> 8 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="162" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
 
   <!-- Horizontal lines -->
   <line x1="0" y1="0" x2="112" y2="0" style="stroke-width:2" />
@@ -1684,9 +2172,9 @@ Attributes: (12/13)
   <text x="56.447368" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >1001</text>
   <text x="132.894737" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,132.894737,60.000000)">1064</text>
 </svg>
-</td>
-</tr>
-</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-1445a0c4-f374-4c05-9b8d-3135c383efb3' class='xr-section-summary-in' type='checkbox'  ><label for='section-1445a0c4-f374-4c05-9b8d-3135c383efb3' class='xr-section-summary' >Attributes: <span>(13)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>ASPEN-version :</span></dt><dd>BatchAspen v3.4.3</dd><dt><span>AVAPS-Software-version :</span></dt><dd>Version 4.1.2</dd><dt><span>Conventions :</span></dt><dd>CF-1.8</dd><dt><span>JOANNE-version :</span></dt><dd>0.7.0+2.g4a878b3.dirty</dd><dt><span>author :</span></dt><dd>Geet George</dd><dt><span>author_email :</span></dt><dd>geet.george@mpimet.mpg.de</dd><dt><span>campaign_id :</span></dt><dd>EUREC4A</dd><dt><span>creation_time :</span></dt><dd>2020-08-06 09:58:16.927582 UTC</dd><dt><span>featureType :</span></dt><dd>trajectory</dd><dt><span>instrument_id :</span></dt><dd>Vaisala RD-41</dd><dt><span>product_id :</span></dt><dd>Level-3</dd><dt><span>project_id :</span></dt><dd>JOANNE</dd><dt><span>title :</span></dt><dd>EUREC4A JOANNE Level-3</dd></dl></div></li></ul></div></div></div></div>
+        </td>
+    </tr>
+</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-37fe5330-acfa-42ba-b97b-8147cffae994' class='xr-section-summary-in' type='checkbox'  ><label for='section-37fe5330-acfa-42ba-b97b-8147cffae994' class='xr-section-summary' >Attributes: <span>(13)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>ASPEN-version :</span></dt><dd>BatchAspen v3.4.3</dd><dt><span>AVAPS-Software-version :</span></dt><dd>Version 4.1.2</dd><dt><span>Conventions :</span></dt><dd>CF-1.8</dd><dt><span>JOANNE-version :</span></dt><dd>0.7.0+2.g4a878b3.dirty</dd><dt><span>author :</span></dt><dd>Geet George</dd><dt><span>author_email :</span></dt><dd>geet.george@mpimet.mpg.de</dd><dt><span>campaign_id :</span></dt><dd>EUREC4A</dd><dt><span>creation_time :</span></dt><dd>2020-08-06 09:58:16.927582 UTC</dd><dt><span>featureType :</span></dt><dd>trajectory</dd><dt><span>instrument_id :</span></dt><dd>Vaisala RD-41</dd><dt><span>product_id :</span></dt><dd>Level-3</dd><dt><span>project_id :</span></dt><dd>JOANNE</dd><dt><span>title :</span></dt><dd>EUREC4A JOANNE Level-3</dd></dl></div></li></ul></div></div></div></div>
 </div>
 </div>
 <div class="section" id="load-halo-flight-phase-information">
@@ -1921,16 +2409,36 @@ Attributes: (12/13)
               </div>
               
         
-        <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="multi_platform_data.html" title="previous page">Multi-platform datasets</a>
-    <a class='right-next' id="next-link" href="toolbox.html" title="next page">Toolbox</a>
 
-        </div>
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="multi_platform_data.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Multi-platform datasets</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="toolbox.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Toolbox</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
         
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         
