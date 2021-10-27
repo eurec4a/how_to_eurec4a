@@ -90,7 +90,7 @@ def load_cloudmask_dataset(cat_item):
 We use the [eurec4a intake catalog](https://github.com/eurec4a/eurec4a-intake) to access the data files.
 
 ```{code-cell} ipython3
-cat = eurec4a.get_intake_catalog()
+cat = eurec4a.get_intake_catalog(use_ipfs=True)
 list(cat.HALO)
 ```
 
@@ -209,9 +209,10 @@ va_central = ds_bt.isel(time=0, x=slice(xmid - 5, xmid + 6)).va
 
 ```{code-cell} ipython3
 def most_frequent_flag(var, dims):
-    flags = xr.DataArray(var.flag_values, dims=("__internal__flags__"))
+    flag_values = np.asarray(var.flag_values)
+    flags = xr.DataArray(flag_values, dims=("__internal__flags__"))
     flag_indices = (var == flags).sum(dims).argmax("__internal__flags__")
-    return xr.DataArray(var.flag_values[flag_indices.data],
+    return xr.DataArray(flag_values[flag_indices.data],
                         dims=flag_indices.dims,
                         attrs=var.attrs)
 

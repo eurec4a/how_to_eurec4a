@@ -28,7 +28,7 @@ import colorcet as cc
 %matplotlib inline
 
 import eurec4a
-cat = eurec4a.get_intake_catalog()
+cat = eurec4a.get_intake_catalog(use_ipfs=True)
 ```
 
 We'll select an hour's worth of observations from a single flight day, and mask

@@ -44,7 +44,7 @@ Now access the flight track data.
 
 ```{code-cell} ipython3
 import eurec4a
-cat = eurec4a.get_intake_catalog()
+cat = eurec4a.get_intake_catalog(use_ipfs=True)
 ```
 
 Mapping takes quite some setup. Maybe we'll encapsulate this later but for now we repeat code

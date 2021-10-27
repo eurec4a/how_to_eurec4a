@@ -30,7 +30,7 @@ import colorcet as cc
 %matplotlib inline
 
 import eurec4a
-cat = eurec4a.get_intake_catalog()
+cat = eurec4a.get_intake_catalog(use_ipfs=True)
 ```
 
 We'll create a combined data with relative humidity from the aircraft hygrometer
