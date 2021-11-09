@@ -5,4 +5,4 @@ dependencies:
   - cartopy
   - pip
   - pip:
-    - -r file:requirements.txt
+    - -r requirements.txt
