@@ -4,3 +4,5 @@ dependencies:
   - anaconda
   - cartopy
   - pip
+  - pip:
+    - -r requirements.txt

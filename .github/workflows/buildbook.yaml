@@ -31,8 +31,6 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y wget curl jq
         bash <(curl https://raw.githubusercontent.com/eurec4a/ipfs_tools/main/install_and_run_ipfs.sh) ${{ matrix.ipfs-version }}
-    - name: Install remaining dependencies with pip
-      run: pip install -r requirements.txt
     - name: build book
       run: |
         conda info
