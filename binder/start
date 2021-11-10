@@ -1,0 +1,5 @@
+#!/bin/bash
+
+export IPFSSPEC_GATEWAYS="https://tempgw01.web3.storage https://ipfs.io https://dweb.link https://cloudflare-ipfs.com/"
+
+exec "$@"
