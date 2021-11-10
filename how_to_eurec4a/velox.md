@@ -3,8 +3,8 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
-    format_version: 0.12
-    jupytext_version: 1.8.0
+    format_version: 0.13
+    jupytext_version: 1.11.5
 kernelspec:
   display_name: Python 3
   language: python
@@ -100,7 +100,7 @@ dropsondes = cat.dropsondes.JOANNE.level3.to_dask()
 ```
 
 ```{code-cell} ipython3
-sonde_dt = dropsondes.swap_dims({"sounding": "sonde_id"}).sel(sonde_id=first_dropsonde).launch_time.values
+sonde_dt = dropsondes.sel(sonde_id=first_dropsonde).launch_time.values
 sonde_dt
 ```
 
