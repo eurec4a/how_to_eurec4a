@@ -3,8 +3,8 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
-    format_version: 0.12
-    jupytext_version: 1.9.1
+    format_version: 0.13
+    jupytext_version: 1.11.5
 kernelspec:
   display_name: Python 3
   language: python
@@ -75,7 +75,7 @@ cat = eurec4a.get_intake_catalog()
 ```{code-cell} ipython3
 dropsondes = cat.dropsondes.JOANNE.level3.to_dask()
 # this following line should go away in the soon to be released new version of JOANNE
-sonde_dt = dropsondes.swap_dims({"sounding": "sonde_id"}).sel(sonde_id=first_dropsonde).launch_time.values
+sonde_dt = dropsondes.sel(sonde_id=first_dropsonde).launch_time.values
 str(sonde_dt)
 ```
 
