@@ -170,9 +170,7 @@ this dataset is only available for the following application on February 5, not 
 ```
 
 ```{code-cell} ipython3
-url = ("https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/SPECMACS-CLOUDMASK/"
-       + "EUREC4A_HALO_specMACS_cloud_mask_20200205T100000-20200205T182359_v1.1.nc")
-ds_swir = xr.open_dataset(url, engine="netcdf4")
+ds_swir = xr.open_zarr("ipfs://QmZUNCXKvKSeugVHFUsgzDnTrrPHomc5ikEhjoYH2hRq4N")
 da_swir = ds_swir.sel(time=s).isel(radiation_wavelength=0).swir_radiance
 ```
 
