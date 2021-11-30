@@ -81,7 +81,7 @@ ax.set_xlim(0,20)
 ax.set_title("cloudmask");
 ```
 
-Based on this flag, it is possible to derive cloud edge locations by shifting $C$ by one and subtracting from itself:
+Based on this flag, it is possible to derive cloud edge locations $E$ by shifting $C$ by one and subtracting from itself:
 
 $$
 E_{1...N-1} = C_{1...N-1} - C_{0...N-2}
@@ -131,10 +131,10 @@ ax4.xaxis.set_major_locator(ticker.MultipleLocator(1));
 ```
 
 ```{note}
-Shifting both subsets by half a pixel (in stead of shifting one subset by a full pixel) has a deeper meeaning: The cloud edges are indeed between the pixels which have been identified as a cloud.
+Shifting both subsets by half a pixel (in stead of shifting one subset by a full pixel) has a deeper meaning: The cloud edges are indeed between the pixels which have been identified as a cloud.
 ```
 
-If the method would be applied exactly as above, $E$ would be one entry less than the number of pixels. In order to make the following method work properly, we need to extend the edge information to before and after the first and last pixel. We'll set $E_0 = C_0$ (we only start with a cloud if the first pixel is a cloudy one, but don't end a cloud before the first pixel) and $E_N = -C_{N-1}$ (we end a cloud if the last pixels is a cloudy one, but don't start a cloud after the last pixel).
+If the method would be applied exactly as above, $E$ would be one entry less than the number of pixels. In order to make the following method work properly, we need to extend the edge information to before and after the first and last pixel. We'll set $E_0 = C_0$ (we only start with a cloud if the first pixel is a cloudy one, but don't end a cloud before the first pixel) and $E_N = -C_{N-1}$ (we end a cloud if the last pixel is a cloudy one, but don't start a cloud after the last pixel).
 
 ```{code-cell} ipython3
 :tags: [hide-input]
@@ -189,18 +189,18 @@ It works just as we expected.
 
 ## Segment statistics
 
-Now that we know how to separate consecutive cloudy segments from our trajectory data, it might be useful to aggregate data for each cloudy segment. We want to do this using a similar approach, but one thing is different: we do need to care about each individual data point within a cloud, so we need to do many aggregations across differently sized sets of data. That is not something which seems be expressible in a vectorized way at first sight. Nonetheless, there are some ways of accomplishing our goal.
+Now that we know how to separate consecutive cloudy segments from our trajectory data, it might be useful to aggregate data for each cloudy segment. We want to do this using a similar approach, but one thing is different: we do need to care about each individual data point within a cloud, so we need to do many aggregations across differently sized sets of data. That is not something which seems to be expressible in a vectorized way at first sight. Nonetheless, there are some ways of accomplishing our goal.
 
-One approach to this problem is the [group - apply - combine](https://pandas.pydata.org/pandas-docs/stable/user_guide/groupby.html) approach, which is what among others, `xarray`, `pandas` and SQL provide.
-The idea is group our data into common sections (those would be one group per individual cloud) and then run a function (which reduces some data to a single value) on each group individually.
-The resulting values would then be combined back to our final result.
+One approach to this problem is the [split - apply - combine](https://pandas.pydata.org/pandas-docs/stable/user_guide/groupby.html) approach, which is what among others, `xarray`, `pandas` and SQL provide.
+The idea is that we group our data into common sections (those would be one group per individual cloud) and then run a function (which reduces some data to a single value) on each group individually.
+The return values from each group are combined into a final result.
 While this is a neat way to think about the problem, it has a major drawback when applied to `xarray` or `pandas`: it is really slow.
 The method is just a sneaky way of running a for loop over all clouds and thus deliberately avoids the use of `numpy` to speed things up.
 
 But we can still look at the structure of such an operation and then think about how we could do something similar with better performance.
 So first, we need some way of identifying each individual cloud (let's call them `section_id`).
 We can create such an array by applying the cumulative sum on the absolute value of the edges $E$.
-This will also assign individual ids to cloud free parts, but that's fine, we can filter them out afterwards.
+This will also assign individual identifiers `ids` to cloud free parts, but that's fine, we can filter them out afterwards.
 If we can then find a way to accumulate data into individual bins based on the `section_id`, we should be ready to compute further statistics.
 
 ```{code-cell} ipython3
@@ -252,7 +252,7 @@ ot_sum[section_ids] += ot
 ```
 But `+=` will only work correctly if none of the index values from `section_ids` are duplicated, which definitely is not the case, as we designed `section_ids` such that it will contain the same value for every pixel within the same cloud.
 Fortunately `numpy` provides [`ufunc.at`](https://numpy.org/doc/stable/reference/generated/numpy.ufunc.at.html) which solves this exact problem.
-The `at` method is available for all scalar universal functions of numpy which take two arguments and is intended for repeated in-place application of the given universal function.
+The `at` method is available for all scalar universal functions of `numpy` which take two arguments and is intended for repeated in-place application of the given universal function.
 Addition (`add`) is such a scalar ufunc with two arguments, so we can use `np.add.at` in this case:
 
 
@@ -271,7 +271,7 @@ can be used as a direct replacement for
 ```python
 ot_sum[section_ids] += ot
 ```
-However, while the latter is simpler to understand intuitively, only `np.add.at` will provide the correct results.
+However, though the latter is simpler to understand, only `np.add.at` will provide the correct results.
 ````
 
 As indicated above, the result will contain values for each clear and cloudy segment.
