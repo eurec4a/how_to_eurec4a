@@ -152,16 +152,27 @@ None
 
 ### wind speed variations on HALO circles throughout February 5
 
+To have a look at the wind speed variations during the circles flown by HALO,
+we again select the relevant soundings:
+
 ```{code-cell} ipython3
 mask_sondes_Feb05 = (ds.launch_time.astype("<M8[D]") == np.datetime64("2020-02-05")) & (ds.platform_id == "HALO")
 ds_sondes_Feb05 = ds.isel(sonde_id=mask_sondes_Feb05)
 ```
 
+We now want to show a time-altitude plot of the soundings. In order to show larger gaps between consecutive soundings,
+we first resample the data onto an equidistant grid (along `launch_time` in stead of `sound_id`) using nearest-neighbor
+interpolation, but limit the maximum difference between sonde launch and interpolated time to 5 minutes. That way,
+smaller gaps in the plot are filled while larger gaps are indicated as missing values.
+
 ```{code-cell} ipython3
 import matplotlib.dates as mdates
 with plt.style.context("mplstyle/wide"):
     fig, ax = plt.subplots()
-    ds_sondes_Feb05.wspd.load().plot(ax=ax, x="launch_time", y="alt")
+    ds_sondes_Feb05.wspd.load() \
+                   .swap_dims({"sonde_id": "launch_time"}) \
+                   .resample(launch_time="1min").nearest(np.timedelta64(5, "m")) \
+                   .plot(ax=ax, x="launch_time", y="alt")
     ax.xaxis.set_major_formatter(mdates.DateFormatter("%H:%M"))
     None
 ```
