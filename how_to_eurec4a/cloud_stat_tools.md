@@ -198,9 +198,11 @@ While this is a neat way to think about the problem, it has a major drawback whe
 The method is just a sneaky way of running a for loop over all clouds and thus deliberately avoids the use of `numpy` to speed things up.
 
 But we can still look at the structure of such an operation and then think about how we could do something similar with better performance.
-So first, we need some way of identifying each individual cloud (let's call them `section_id`).
+So first, we need some way of identifying each individual cloud.
+We'll do this by introducing another array.
 We can create such an array by applying the cumulative sum on the absolute value of the edges $E$.
-This will also assign individual identifiers `ids` to cloud free parts, but that's fine, we can filter them out afterwards.
+This will also assign individual identifiers to cloud free parts, but that's fine, we can filter them out afterwards.
+For now, we'll call this array `section_id` to distinguish between all data split up in sections and the (cloud-only) segments mentioned before.
 If we can then find a way to accumulate data into individual bins based on the `section_id`, we should be ready to compute further statistics.
 
 ```{code-cell} ipython3
