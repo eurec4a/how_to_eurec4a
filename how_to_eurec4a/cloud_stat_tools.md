@@ -286,6 +286,10 @@ ot_sum[1::2] / cloud_lengths(cloudmask)
 
 which is indeed the average optical thickness of the three detected clouds.
 
+```{note}
+While taking every odd element might seem to be a special case (what if the first pixel ist cloudy?), it is in fact the general case. As we've set $E_0 = C_0$, the very first edge entry will mark the start of a cloud in this case and thus the first `section_id` (the cumulative sum) will be 1 in stead of 0 and thus odd as well.
+```
+
 ## Further generalizations
 
 If we would have computed the cloud lengths not based on the index locations of the cloud edges, but instead based on the position along the flight path (e.g. in meters), this method can be generalized to unevenly spaced datasets.
