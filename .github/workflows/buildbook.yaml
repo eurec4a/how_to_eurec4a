@@ -39,7 +39,7 @@ jobs:
 
   publish:
     needs: build
-    if: "github.event_name == 'push' && github.ref == 'refs/heads/master' && github.repository_owner == 'eurec4a'"
+    if: "always() && github.event_name == 'push' && github.ref == 'refs/heads/master' && github.repository_owner == 'eurec4a'"
     runs-on: ubuntu-latest
     steps:
       - name: Download compiled book
