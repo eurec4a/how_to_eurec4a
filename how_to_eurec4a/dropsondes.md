@@ -3,8 +3,8 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
-    format_version: 0.12
-    jupytext_version: 1.8.0
+    format_version: 0.13
+    jupytext_version: 1.11.5
 kernelspec:
   display_name: Python 3
   language: python
@@ -89,7 +89,7 @@ We transfer the information from our flight segment selection to the dropsondes 
 from functools import reduce
 mask_sondes_first_circle_Feb05 = reduce(lambda a, b: a | b, [ds.sonde_id==d
                                                              for d in dropsonde_ids])
-ds_sondes_first_circle_Feb05 = ds.isel(sounding=mask_sondes_first_circle_Feb05)
+ds_sondes_first_circle_Feb05 = ds.isel(sonde_id=mask_sondes_first_circle_Feb05)
 ```
 
 ## Plots
@@ -109,13 +109,13 @@ plt.style.use("./mplstyle/book")
 
 ```{code-cell} ipython3
 fig, (ax0, ax1) = plt.subplots(1, 2)
-ds_sondes_first_circle_Feb05.ta.transpose("alt", "sounding").plot(ax=ax0, cmap="magma")
-ds_sondes_first_circle_Feb05.rh.transpose("alt", "sounding").plot(ax=ax1, cmap="BrBG")
+ds_sondes_first_circle_Feb05.ta.plot(ax=ax0, cmap="magma", x="launch_time", y="alt")
+ds_sondes_first_circle_Feb05.rh.plot(ax=ax1, cmap="BrBG", x="launch_time", y="alt")
 None
 ```
 
 ### Temperature and relative humidity profiles.
-The temperature profiles are colored according to their launch time, while relative humidity profiles are colored according to their integrated water vapour in the measured column, i.e. precipitable water.
+The temperature and humidity profiles are colored according to their launch time.
 
 ```{code-cell} ipython3
 def dt64_to_dt(dt64):
@@ -129,7 +129,7 @@ fig, (ax0, ax1) = plt.subplots(1, 2)
 
 y = ds_sondes_first_circle_Feb05.alt
 
-x0 = ds_sondes_first_circle_Feb05.ta.transpose("alt", "sounding")
+x0 = ds_sondes_first_circle_Feb05.ta.transpose("alt", "sonde_id")
 ax0.set_prop_cycle(color=plt.cm.viridis(np.linspace(0, 1, len(dropsonde_ids))))
 ax0.plot(x0, y.data[:, np.newaxis])
 ax0.set_xlabel(f"{x0.long_name} / {x0.units}")
@@ -138,40 +138,41 @@ ax0.legend([dt64_to_dt(d).strftime("%H:%M:%S")
             for d in ds_sondes_first_circle_Feb05.launch_time],
            title=x0.launch_time.name)
 
-x1 = ds_sondes_first_circle_Feb05.rh.transpose("alt", "sounding")
-c = ds_sondes_first_circle_Feb05.PW
-
-ax1.set_prop_cycle(color=plt.cm.BrBG([int(i) for i in (c - c.min())#cividis_r
-                                           / (c - c.min()).max() * 255]))
-p = ax1.plot(x1, y.data[:, np.newaxis])
+x1 = ds_sondes_first_circle_Feb05.rh.transpose("alt", "sonde_id")
+ax1.set_prop_cycle(color=plt.cm.viridis(np.linspace(0, 1, len(dropsonde_ids))))
+ax1.plot(x1, y.data[:, np.newaxis])
 ax1.set_xlabel(f"{x1.long_name} / {x1.units}")
 ax1.set_ylabel(f"{y.name} / m")
-ax1.legend(ds_sondes_first_circle_Feb05.PW.values,
-           title=ds_sondes_first_circle_Feb05.PW.standard_name)
+ax1.legend(ds_sondes_first_circle_Feb05.sonde_id.values,
+           title="sonde_id")
 
 fig.suptitle('Dropsondes from 1st circle an February 5', fontsize=18)
 None
 ```
 
-### wind speed variations throughout February 5
+### wind speed variations on HALO circles throughout February 5
+
+To have a look at the wind speed variations during the circles flown by HALO,
+we again select the relevant soundings:
 
 ```{code-cell} ipython3
-mask_sondes_Feb05 = ds.launch_time.astype("<M8[D]") == np.datetime64("2020-02-05")
-ds_sondes_Feb05 = ds.isel(sounding=mask_sondes_Feb05)
+mask_sondes_Feb05 = (ds.launch_time.astype("<M8[D]") == np.datetime64("2020-02-05")) & (ds.platform_id == "HALO")
+ds_sondes_Feb05 = ds.isel(sonde_id=mask_sondes_Feb05)
 ```
 
+We now want to show a time-altitude plot of the soundings. In order to show larger gaps between consecutive soundings,
+we first resample the data onto an equidistant grid (along `launch_time` in stead of `sound_id`) using nearest-neighbor
+interpolation, but limit the maximum difference between sonde launch and interpolated time to 5 minutes. That way,
+smaller gaps in the plot are filled while larger gaps are indicated as missing values.
+
 ```{code-cell} ipython3
+import matplotlib.dates as mdates
 with plt.style.context("mplstyle/wide"):
     fig, ax = plt.subplots()
-    p = ax.pcolormesh(ds_sondes_Feb05.wspd.transpose("alt", "sounding"), vmin=0, vmax=20)
-    plt.colorbar(p, ax=ax, label=f"{ds_sondes_Feb05.wspd.long_name} / {ds_sondes_Feb05.wspd.units}")
-    xticks = np.arange(0, ds_sondes_Feb05.sounding.size, int(ds_sondes_Feb05.sounding.size/10))
-    ax.set_xticks(xticks)
-    ax.set_xticklabels([dt64_to_dt(t).strftime("%H:%M") for t in ds.launch_time.values[xticks]])
-    ax.set_xlabel(f"{ds_sondes_Feb05.launch_time.long_name}")
-    yticks = np.arange(0, ds_sondes_Feb05.alt.size, int(ds_sondes_Feb05.alt.size/5))
-    ax.set_yticks(yticks)
-    ax.set_yticklabels(ds_sondes_Feb05.alt.values[yticks])
-    ax.set_ylabel(f"{ds_sondes_Feb05.alt.name} / m")
+    ds_sondes_Feb05.wspd.load() \
+                   .swap_dims({"sonde_id": "launch_time"}) \
+                   .resample(launch_time="1min").nearest(np.timedelta64(5, "m")) \
+                   .plot(ax=ax, x="launch_time", y="alt")
+    ax.xaxis.set_major_formatter(mdates.DateFormatter("%H:%M"))
     None
 ```
