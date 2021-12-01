@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cloud masks &#8212; How to EUREC4A</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet" />
-  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -60,7 +60,10 @@
     <link rel="next" title="NOAA P3 “Miss Piggy”" href="pthree.html" />
     <link rel="prev" title="HAMP comparison" href="hamp_comparison.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -268,6 +271,11 @@
    <li class="toctree-l2">
     <a class="reference internal" href="show_intake_catalog.html">
      Show the intake catalog
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cloud_stat_tools.html">
+     Cloud statistics
     </a>
    </li>
    <li class="toctree-l2">
@@ -743,6 +751,286 @@ height = height_above_sea_level[0] - range
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_5115</span><span class="o">/</span><span class="mf">3080218225.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ds_bt</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_zarr</span><span class="p">(</span><span class="s2">&quot;ipfs://QmQEwkhhHdJkiThf4hnj9G3wgqVreBnWGrX2A5kT6CrtY7&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span>                      <span class="n">consolidated</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>                     <span class="p">)</span><span class="o">.</span><span class="n">assign_coords</span><span class="p">(</span><span class="n">va</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">va</span><span class="p">)</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/xarray/backends/zarr.py</span> in <span class="ni">open_zarr</span><span class="nt">(store, group, synchronizer, chunks, decode_cf, mask_and_scale, decode_times, concat_characters, decode_coords, drop_variables, consolidated, overwrite_encoded_chunks, chunk_store, storage_options, decode_timedelta, use_cftime, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">766</span>     <span class="p">}</span>
+<span class="g g-Whitespace">    </span><span class="mi">767</span> 
+<span class="ne">--&gt; </span><span class="mi">768</span>     <span class="n">ds</span> <span class="o">=</span> <span class="n">open_dataset</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">769</span>         <span class="n">filename_or_obj</span><span class="o">=</span><span class="n">store</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">770</span>         <span class="n">group</span><span class="o">=</span><span class="n">group</span><span class="p">,</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/xarray/backends/api.py</span> in <span class="ni">open_dataset</span><span class="nt">(filename_or_obj, engine, chunks, cache, decode_cf, mask_and_scale, decode_times, decode_timedelta, use_cftime, concat_characters, decode_coords, drop_variables, backend_kwargs, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">493</span> 
+<span class="g g-Whitespace">    </span><span class="mi">494</span>     <span class="n">overwrite_encoded_chunks</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;overwrite_encoded_chunks&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">495</span>     <span class="n">backend_ds</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">496</span>         <span class="n">filename_or_obj</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">497</span>         <span class="n">drop_variables</span><span class="o">=</span><span class="n">drop_variables</span><span class="p">,</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/xarray/backends/zarr.py</span> in <span class="ni">open_dataset</span><span class="nt">(self, filename_or_obj, mask_and_scale, decode_times, concat_characters, decode_coords, drop_variables, use_cftime, decode_timedelta, group, mode, synchronizer, consolidated, chunk_store, storage_options, stacklevel, lock)</span>
+<span class="g g-Whitespace">    </span><span class="mi">836</span>         <span class="n">store_entrypoint</span> <span class="o">=</span> <span class="n">StoreBackendEntrypoint</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">837</span>         <span class="k">with</span> <span class="n">close_on_error</span><span class="p">(</span><span class="n">store</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">838</span>             <span class="n">ds</span> <span class="o">=</span> <span class="n">store_entrypoint</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">839</span>                 <span class="n">store</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">840</span>                 <span class="n">mask_and_scale</span><span class="o">=</span><span class="n">mask_and_scale</span><span class="p">,</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/xarray/backends/store.py</span> in <span class="ni">open_dataset</span><span class="nt">(self, store, mask_and_scale, decode_times, concat_characters, decode_coords, drop_variables, use_cftime, decode_timedelta)</span>
+<span class="g g-Whitespace">     </span><span class="mi">25</span>         <span class="n">encoding</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">get_encoding</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">26</span> 
+<span class="ne">---&gt; </span><span class="mi">27</span>         <span class="nb">vars</span><span class="p">,</span> <span class="n">attrs</span><span class="p">,</span> <span class="n">coord_names</span> <span class="o">=</span> <span class="n">conventions</span><span class="o">.</span><span class="n">decode_cf_variables</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">28</span>             <span class="nb">vars</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">29</span>             <span class="n">attrs</span><span class="p">,</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/xarray/conventions.py</span> in <span class="ni">decode_cf_variables</span><span class="nt">(variables, attributes, concat_characters, mask_and_scale, decode_times, decode_coords, drop_variables, use_cftime, decode_timedelta)</span>
+<span class="g g-Whitespace">    </span><span class="mi">510</span>             <span class="ow">and</span> <span class="n">stackable</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">dims</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="g g-Whitespace">    </span><span class="mi">511</span>         <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">512</span>         <span class="n">new_vars</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">decode_cf_variable</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">513</span>             <span class="n">k</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">514</span>             <span class="n">v</span><span class="p">,</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/xarray/conventions.py</span> in <span class="ni">decode_cf_variable</span><span class="nt">(name, var, concat_characters, mask_and_scale, decode_times, decode_endianness, stack_char_dim, use_cftime, decode_timedelta)</span>
+<span class="g g-Whitespace">    </span><span class="mi">358</span>         <span class="n">var</span> <span class="o">=</span> <span class="n">times</span><span class="o">.</span><span class="n">CFTimedeltaCoder</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">359</span>     <span class="k">if</span> <span class="n">decode_times</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">360</span>         <span class="n">var</span> <span class="o">=</span> <span class="n">times</span><span class="o">.</span><span class="n">CFDatetimeCoder</span><span class="p">(</span><span class="n">use_cftime</span><span class="o">=</span><span class="n">use_cftime</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">361</span> 
+<span class="g g-Whitespace">    </span><span class="mi">362</span>     <span class="n">dimensions</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">attributes</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="n">variables</span><span class="o">.</span><span class="n">unpack_for_decoding</span><span class="p">(</span><span class="n">var</span><span class="p">)</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/xarray/coding/times.py</span> in <span class="ni">decode</span><span class="nt">(self, variable, name)</span>
+<span class="g g-Whitespace">    </span><span class="mi">524</span>             <span class="n">units</span> <span class="o">=</span> <span class="n">pop_to</span><span class="p">(</span><span class="n">attrs</span><span class="p">,</span> <span class="n">encoding</span><span class="p">,</span> <span class="s2">&quot;units&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">525</span>             <span class="n">calendar</span> <span class="o">=</span> <span class="n">pop_to</span><span class="p">(</span><span class="n">attrs</span><span class="p">,</span> <span class="n">encoding</span><span class="p">,</span> <span class="s2">&quot;calendar&quot;</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">526</span>             <span class="n">dtype</span> <span class="o">=</span> <span class="n">_decode_cf_datetime_dtype</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">units</span><span class="p">,</span> <span class="n">calendar</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_cftime</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">527</span>             <span class="n">transform</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">528</span>                 <span class="n">decode_cf_datetime</span><span class="p">,</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/xarray/coding/times.py</span> in <span class="ni">_decode_cf_datetime_dtype</span><span class="nt">(data, units, calendar, use_cftime)</span>
+<span class="g g-Whitespace">    </span><span class="mi">147</span>     <span class="n">values</span> <span class="o">=</span> <span class="n">indexing</span><span class="o">.</span><span class="n">ImplicitToExplicitIndexingAdapter</span><span class="p">(</span><span class="n">indexing</span><span class="o">.</span><span class="n">as_indexable</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">148</span>     <span class="n">example_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span>
+<span class="ne">--&gt; </span><span class="mi">149</span>         <span class="p">[</span><span class="n">first_n_items</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">or</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">last_item</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="ow">or</span> <span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+<span class="g g-Whitespace">    </span><span class="mi">150</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">151</span> 
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/xarray/core/formatting.py</span> in <span class="ni">first_n_items</span><span class="nt">(array, n_desired)</span>
+<span class="g g-Whitespace">     </span><span class="mi">70</span>         <span class="n">indexer</span> <span class="o">=</span> <span class="n">_get_indexer_at_least_n_items</span><span class="p">(</span><span class="n">array</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">n_desired</span><span class="p">,</span> <span class="n">from_end</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">71</span>         <span class="n">array</span> <span class="o">=</span> <span class="n">array</span><span class="p">[</span><span class="n">indexer</span><span class="p">]</span>
+<span class="ne">---&gt; </span><span class="mi">72</span>     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">array</span><span class="p">)</span><span class="o">.</span><span class="n">flat</span><span class="p">[:</span><span class="n">n_desired</span><span class="p">]</span>
+<span class="g g-Whitespace">     </span><span class="mi">73</span> 
+<span class="g g-Whitespace">     </span><span class="mi">74</span> 
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/xarray/core/indexing.py</span> in <span class="ni">__array__</span><span class="nt">(self, dtype)</span>
+<span class="g g-Whitespace">    </span><span class="mi">355</span> 
+<span class="g g-Whitespace">    </span><span class="mi">356</span>     <span class="k">def</span> <span class="nf">__array__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">357</span>         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">array</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">358</span> 
+<span class="g g-Whitespace">    </span><span class="mi">359</span>     <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/xarray/core/indexing.py</span> in <span class="ni">__array__</span><span class="nt">(self, dtype)</span>
+<span class="g g-Whitespace">    </span><span class="mi">420</span>     <span class="k">def</span> <span class="nf">__array__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">421</span>         <span class="n">array</span> <span class="o">=</span> <span class="n">as_indexable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">array</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">422</span>         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">key</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">423</span> 
+<span class="g g-Whitespace">    </span><span class="mi">424</span>     <span class="k">def</span> <span class="nf">transpose</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">order</span><span class="p">):</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/xarray/backends/zarr.py</span> in <span class="ni">__getitem__</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">     </span><span class="mi">71</span>         <span class="n">array</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_array</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">72</span>         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">indexing</span><span class="o">.</span><span class="n">BasicIndexer</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">73</span>             <span class="k">return</span> <span class="n">array</span><span class="p">[</span><span class="n">key</span><span class="o">.</span><span class="n">tuple</span><span class="p">]</span>
+<span class="g g-Whitespace">     </span><span class="mi">74</span>         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">indexing</span><span class="o">.</span><span class="n">VectorizedIndexer</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">75</span>             <span class="k">return</span> <span class="n">array</span><span class="o">.</span><span class="n">vindex</span><span class="p">[</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/zarr/core.py</span> in <span class="ni">__getitem__</span><span class="nt">(self, selection)</span>
+<span class="g g-Whitespace">    </span><span class="mi">671</span> 
+<span class="g g-Whitespace">    </span><span class="mi">672</span>         <span class="n">fields</span><span class="p">,</span> <span class="n">selection</span> <span class="o">=</span> <span class="n">pop_fields</span><span class="p">(</span><span class="n">selection</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">673</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_basic_selection</span><span class="p">(</span><span class="n">selection</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="n">fields</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">674</span> 
+<span class="g g-Whitespace">    </span><span class="mi">675</span>     <span class="k">def</span> <span class="nf">get_basic_selection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">selection</span><span class="o">=</span><span class="bp">Ellipsis</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/zarr/core.py</span> in <span class="ni">get_basic_selection</span><span class="nt">(self, selection, out, fields)</span>
+<span class="g g-Whitespace">    </span><span class="mi">796</span>                                                 <span class="n">fields</span><span class="o">=</span><span class="n">fields</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">797</span>         <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">798</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_basic_selection_nd</span><span class="p">(</span><span class="n">selection</span><span class="o">=</span><span class="n">selection</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">799</span>                                                 <span class="n">fields</span><span class="o">=</span><span class="n">fields</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">800</span> 
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/zarr/core.py</span> in <span class="ni">_get_basic_selection_nd</span><span class="nt">(self, selection, out, fields)</span>
+<span class="g g-Whitespace">    </span><span class="mi">839</span>         <span class="n">indexer</span> <span class="o">=</span> <span class="n">BasicIndexer</span><span class="p">(</span><span class="n">selection</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">840</span> 
+<span class="ne">--&gt; </span><span class="mi">841</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_selection</span><span class="p">(</span><span class="n">indexer</span><span class="o">=</span><span class="n">indexer</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="n">fields</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">842</span> 
+<span class="g g-Whitespace">    </span><span class="mi">843</span>     <span class="k">def</span> <span class="nf">get_orthogonal_selection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">selection</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/zarr/core.py</span> in <span class="ni">_get_selection</span><span class="nt">(self, indexer, out, fields)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1134</span>             <span class="c1"># allow storage to get multiple items at once</span>
+<span class="g g-Whitespace">   </span><span class="mi">1135</span>             <span class="n">lchunk_coords</span><span class="p">,</span> <span class="n">lchunk_selection</span><span class="p">,</span> <span class="n">lout_selection</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">indexer</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1136</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_chunk_getitems</span><span class="p">(</span><span class="n">lchunk_coords</span><span class="p">,</span> <span class="n">lchunk_selection</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="n">lout_selection</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1137</span>                                  <span class="n">drop_axes</span><span class="o">=</span><span class="n">indexer</span><span class="o">.</span><span class="n">drop_axes</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="n">fields</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1138</span> 
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/zarr/core.py</span> in <span class="ni">_chunk_getitems</span><span class="nt">(self, lchunk_coords, lchunk_selection, out, lout_selection, drop_axes, fields)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1845</span>         <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1846</span>             <span class="n">partial_read_decode</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="ne">-&gt; </span><span class="mi">1847</span>             <span class="n">cdatas</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunk_store</span><span class="o">.</span><span class="n">getitems</span><span class="p">(</span><span class="n">ckeys</span><span class="p">,</span> <span class="n">on_error</span><span class="o">=</span><span class="s2">&quot;omit&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1848</span>         <span class="k">for</span> <span class="n">ckey</span><span class="p">,</span> <span class="n">chunk_select</span><span class="p">,</span> <span class="n">out_select</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">ckeys</span><span class="p">,</span> <span class="n">lchunk_selection</span><span class="p">,</span> <span class="n">lout_selection</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1849</span>             <span class="k">if</span> <span class="n">ckey</span> <span class="ow">in</span> <span class="n">cdatas</span><span class="p">:</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/zarr/storage.py</span> in <span class="ni">getitems</span><span class="nt">(self, keys, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1114</span>     <span class="k">def</span> <span class="nf">getitems</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keys</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1115</span>         <span class="n">keys_transformed</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_normalize_key</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">]</span>
+<span class="ne">-&gt; </span><span class="mi">1116</span>         <span class="n">results</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">map</span><span class="o">.</span><span class="n">getitems</span><span class="p">(</span><span class="n">keys_transformed</span><span class="p">,</span> <span class="n">on_error</span><span class="o">=</span><span class="s2">&quot;omit&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1117</span>         <span class="c1"># The function calling this method may not recognize the transformed keys</span>
+<span class="g g-Whitespace">   </span><span class="mi">1118</span>         <span class="c1"># So we send the values returned by self.map.getitems back into the original key space.</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/fsspec/mapping.py</span> in <span class="ni">getitems</span><span class="nt">(self, keys, on_error)</span>
+<span class="g g-Whitespace">     </span><span class="mi">88</span>         <span class="n">oe</span> <span class="o">=</span> <span class="n">on_error</span> <span class="k">if</span> <span class="n">on_error</span> <span class="o">==</span> <span class="s2">&quot;raise&quot;</span> <span class="k">else</span> <span class="s2">&quot;return&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">89</span>         <span class="k">try</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">90</span>             <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span><span class="n">keys2</span><span class="p">,</span> <span class="n">on_error</span><span class="o">=</span><span class="n">oe</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">91</span>             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">92</span>                 <span class="n">out</span> <span class="o">=</span> <span class="p">{</span><span class="n">keys2</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span> <span class="n">out</span><span class="p">}</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/fsspec/spec.py</span> in <span class="ni">cat</span><span class="nt">(self, path, recursive, on_error, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">750</span>             <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">paths</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">751</span>                 <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">752</span>                     <span class="n">out</span><span class="p">[</span><span class="n">path</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cat_file</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">753</span>                 <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">754</span>                     <span class="k">if</span> <span class="n">on_error</span> <span class="o">==</span> <span class="s2">&quot;raise&quot;</span><span class="p">:</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/ipfsspec/core.py</span> in <span class="ni">cat_file</span><span class="nt">(self, path)</span>
+<span class="g g-Whitespace">    </span><span class="mi">181</span>     <span class="k">def</span> <span class="nf">cat_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">182</span>         <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;cat on </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">183</span>         <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gw_get</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">184</span>         <span class="k">if</span> <span class="n">logger</span><span class="o">.</span><span class="n">isEnabledFor</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">185</span>             <span class="n">h</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/ipfsspec/core.py</span> in <span class="ni">_gw_get</span><span class="nt">(self, path)</span>
+<span class="g g-Whitespace">    </span><span class="mi">159</span> 
+<span class="g g-Whitespace">    </span><span class="mi">160</span>     <span class="k">def</span> <span class="nf">_gw_get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">161</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run_on_any_gateway</span><span class="p">(</span><span class="k">lambda</span> <span class="n">gw</span><span class="p">:</span> <span class="n">gw</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">162</span> 
+<span class="g g-Whitespace">    </span><span class="mi">163</span>     <span class="k">def</span> <span class="nf">_gw_apipost</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">call</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/ipfsspec/core.py</span> in <span class="ni">_run_on_any_gateway</span><span class="nt">(self, f)</span>
+<span class="g g-Whitespace">    </span><span class="mi">153</span>             <span class="k">if</span> <span class="n">wait_time</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">154</span>                 <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">wait_time</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">155</span>             <span class="n">res</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">gw</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">156</span>             <span class="k">if</span> <span class="n">res</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">157</span>                 <span class="k">break</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/ipfsspec/core.py</span> in <span class="ni">&lt;lambda&gt;</span><span class="nt">(gw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">159</span> 
+<span class="g g-Whitespace">    </span><span class="mi">160</span>     <span class="k">def</span> <span class="nf">_gw_get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">161</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run_on_any_gateway</span><span class="p">(</span><span class="k">lambda</span> <span class="n">gw</span><span class="p">:</span> <span class="n">gw</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">162</span> 
+<span class="g g-Whitespace">    </span><span class="mi">163</span>     <span class="k">def</span> <span class="nf">_gw_apipost</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">call</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/ipfsspec/core.py</span> in <span class="ni">get</span><span class="nt">(self, path)</span>
+<span class="g g-Whitespace">     </span><span class="mi">35</span>         <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;get </span><span class="si">%s</span><span class="s2"> via </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">36</span>         <span class="k">try</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">37</span>             <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">+</span> <span class="s2">&quot;/ipfs/&quot;</span> <span class="o">+</span> <span class="n">path</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">38</span>         <span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">ConnectionError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">39</span>             <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Connection Error: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/requests/sessions.py</span> in <span class="ni">get</span><span class="nt">(self, url, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">553</span> 
+<span class="g g-Whitespace">    </span><span class="mi">554</span>         <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;allow_redirects&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">555</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">556</span> 
+<span class="g g-Whitespace">    </span><span class="mi">557</span>     <span class="k">def</span> <span class="nf">options</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/requests/sessions.py</span> in <span class="ni">request</span><span class="nt">(self, method, url, params, data, headers, cookies, files, auth, timeout, allow_redirects, proxies, hooks, stream, verify, cert, json)</span>
+<span class="g g-Whitespace">    </span><span class="mi">540</span>         <span class="p">}</span>
+<span class="g g-Whitespace">    </span><span class="mi">541</span>         <span class="n">send_kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">settings</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">542</span>         <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">prep</span><span class="p">,</span> <span class="o">**</span><span class="n">send_kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">543</span> 
+<span class="g g-Whitespace">    </span><span class="mi">544</span>         <span class="k">return</span> <span class="n">resp</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/requests/sessions.py</span> in <span class="ni">send</span><span class="nt">(self, request, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">653</span> 
+<span class="g g-Whitespace">    </span><span class="mi">654</span>         <span class="c1"># Send the request</span>
+<span class="ne">--&gt; </span><span class="mi">655</span>         <span class="n">r</span> <span class="o">=</span> <span class="n">adapter</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">656</span> 
+<span class="g g-Whitespace">    </span><span class="mi">657</span>         <span class="c1"># Total elapsed time of the request (approximately)</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/requests/adapters.py</span> in <span class="ni">send</span><span class="nt">(self, request, stream, timeout, verify, cert, proxies)</span>
+<span class="g g-Whitespace">    </span><span class="mi">437</span>         <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">438</span>             <span class="k">if</span> <span class="ow">not</span> <span class="n">chunked</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">439</span>                 <span class="n">resp</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">440</span>                     <span class="n">method</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">method</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">441</span>                     <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/urllib3/connectionpool.py</span> in <span class="ni">urlopen</span><span class="nt">(self, method, url, body, headers, retries, redirect, assert_same_host, timeout, pool_timeout, release_conn, chunked, body_pos, **response_kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">697</span> 
+<span class="g g-Whitespace">    </span><span class="mi">698</span>             <span class="c1"># Make the request on the httplib connection object.</span>
+<span class="ne">--&gt; </span><span class="mi">699</span>             <span class="n">httplib_response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_request</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">700</span>                 <span class="n">conn</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">701</span>                 <span class="n">method</span><span class="p">,</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/urllib3/connectionpool.py</span> in <span class="ni">_make_request</span><span class="nt">(self, conn, method, url, timeout, chunked, **httplib_request_kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">443</span>                     <span class="c1"># Python 3 (including for exceptions like SystemExit).</span>
+<span class="g g-Whitespace">    </span><span class="mi">444</span>                     <span class="c1"># Otherwise it looks like a bug in the code.</span>
+<span class="ne">--&gt; </span><span class="mi">445</span>                     <span class="n">six</span><span class="o">.</span><span class="n">raise_from</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">446</span>         <span class="k">except</span> <span class="p">(</span><span class="n">SocketTimeout</span><span class="p">,</span> <span class="n">BaseSSLError</span><span class="p">,</span> <span class="n">SocketError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">447</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_raise_timeout</span><span class="p">(</span><span class="n">err</span><span class="o">=</span><span class="n">e</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">timeout_value</span><span class="o">=</span><span class="n">read_timeout</span><span class="p">)</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/urllib3/packages/six.py</span> in <span class="ni">raise_from</span><span class="nt">(value, from_value)</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/urllib3/connectionpool.py</span> in <span class="ni">_make_request</span><span class="nt">(self, conn, method, url, timeout, chunked, **httplib_request_kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">438</span>                 <span class="c1"># Python 3</span>
+<span class="g g-Whitespace">    </span><span class="mi">439</span>                 <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">440</span>                     <span class="n">httplib_response</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">getresponse</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">441</span>                 <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">442</span>                     <span class="c1"># Remove the TypeError from the exception chain in</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/http/client.py</span> in <span class="ni">getresponse</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1346</span>         <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1347</span>             <span class="k">try</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1348</span>                 <span class="n">response</span><span class="o">.</span><span class="n">begin</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1349</span>             <span class="k">except</span> <span class="ne">ConnectionError</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1350</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/http/client.py</span> in <span class="ni">begin</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">314</span>         <span class="c1"># read until we get a non-100 response</span>
+<span class="g g-Whitespace">    </span><span class="mi">315</span>         <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">316</span>             <span class="n">version</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="n">reason</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_status</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">317</span>             <span class="k">if</span> <span class="n">status</span> <span class="o">!=</span> <span class="n">CONTINUE</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">318</span>                 <span class="k">break</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/http/client.py</span> in <span class="ni">_read_status</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">275</span> 
+<span class="g g-Whitespace">    </span><span class="mi">276</span>     <span class="k">def</span> <span class="nf">_read_status</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">277</span>         <span class="n">line</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fp</span><span class="o">.</span><span class="n">readline</span><span class="p">(</span><span class="n">_MAXLINE</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="s2">&quot;iso-8859-1&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">278</span>         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">_MAXLINE</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">279</span>             <span class="k">raise</span> <span class="n">LineTooLong</span><span class="p">(</span><span class="s2">&quot;status line&quot;</span><span class="p">)</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/socket.py</span> in <span class="ni">readinto</span><span class="nt">(self, b)</span>
+<span class="g g-Whitespace">    </span><span class="mi">667</span>         <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">668</span>             <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">669</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sock</span><span class="o">.</span><span class="n">recv_into</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">670</span>             <span class="k">except</span> <span class="n">timeout</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">671</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">_timeout_occurred</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/ssl.py</span> in <span class="ni">recv_into</span><span class="nt">(self, buffer, nbytes, flags)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1239</span>                   <span class="s2">&quot;non-zero flags not allowed in calls to recv_into() on </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span>
+<span class="g g-Whitespace">   </span><span class="mi">1240</span>                   <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1241</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">nbytes</span><span class="p">,</span> <span class="n">buffer</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1242</span>         <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1243</span>             <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">recv_into</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="n">nbytes</span><span class="p">,</span> <span class="n">flags</span><span class="p">)</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/ssl.py</span> in <span class="ni">read</span><span class="nt">(self, len, buffer)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1097</span>         <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1098</span>             <span class="k">if</span> <span class="n">buffer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1099</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sslobj</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="nb">len</span><span class="p">,</span> <span class="n">buffer</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1100</span>             <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1101</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sslobj</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="preprocess-cloud-mask-data">
@@ -759,11 +1047,6 @@ height = height_above_sea_level[0] - range
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xmid</span> <span class="o">=</span> <span class="n">ds_bt</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">size</span> <span class="o">//</span> <span class="mi">2</span>
 <span class="n">va_central</span> <span class="o">=</span> <span class="n">ds_bt</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="n">xmid</span> <span class="o">-</span> <span class="mi">5</span><span class="p">,</span> <span class="n">xmid</span> <span class="o">+</span> <span class="mi">6</span><span class="p">))</span><span class="o">.</span><span class="n">va</span>
 <span class="p">(</span><span class="n">va_central</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">va_central</span><span class="o">.</span><span class="n">min</span><span class="p">())</span><span class="o">.</span><span class="n">values</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array(0.57295305, dtype=float32)
 </pre></div>
 </div>
 </div>
@@ -931,9 +1214,6 @@ height = height_above_sea_level[0] - range
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/cloudmasks_35_0.png" src="_images/cloudmasks_35_0.png" />
-</div>
 </div>
 </div>
 </div>
@@ -997,11 +1277,6 @@ height = height_above_sea_level[0] - range
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>In total HALO flew 72 circles during EUREC4A
-</pre></div>
-</div>
-</div>
 </div>
 </div>
 <div class="section" id="time-series-of-circle-cloud-cover">
@@ -1037,9 +1312,6 @@ height = height_above_sea_level[0] - range
     <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Date&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/cloudmasks_45_0.png" src="_images/cloudmasks_45_0.png" />
 </div>
 </div>
 </div>
@@ -1091,9 +1363,6 @@ height = height_above_sea_level[0] - range
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/cloudmasks_48_0.png" src="_images/cloudmasks_48_0.png" />
-</div>
 </div>
 <p>For a better comparison of minimum and maximum circle-mean cloud cover we merge the two above plots and show their difference in the following plot. In particular, we show the cumulative fraction of circle-mean cloud cover estimates. Depending on the instruments and some instrument downtimes, the available circle counts range from 64 to 72. The bins on the x-axis have a bin width of 0.2 respectively. The bars span the range defined by the minimum cloud cover based on cloud flag <code class="docutils literal notranslate"><span class="pre">most</span> <span class="pre">likely</span> <span class="pre">cloudy</span></code>and the maximum cloud cover based on cloud flags <code class="docutils literal notranslate"><span class="pre">most</span> <span class="pre">likely</span> <span class="pre">cloudy</span></code> and <code class="docutils literal notranslate"><span class="pre">probably</span> <span class="pre">cloudy</span></code>.</p>
 <div class="cell docutils container">
@@ -1139,9 +1408,6 @@ height = height_above_sea_level[0] - range
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/cloudmasks_50_0.png" src="_images/cloudmasks_50_0.png" />
-</div>
 </div>
 </div>
 <div class="section" id="a-small-interpretation-attempt">
@@ -1177,29 +1443,6 @@ height = height_above_sea_level[0] - range
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Instrument: min - max
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WALES: 0.34 - 0.34 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HAMP Radar: 0.25 - 0.25 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>specMACS: 0.18 - 0.24 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HAMP Radiometer: 0.17 - 0.25 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>KT19: 0.20 - 0.31 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>VELOX: 0.21 - 0.39 
-</pre></div>
-</div>
-</div>
 </div>
 <ul class="simple">
 <li><p>only from local research flights</p></li>
@@ -1218,24 +1461,6 @@ height = height_above_sea_level[0] - range
 <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">v</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">localRF</span><span class="p">)</span><span class="o">.</span><span class="n">CF_min</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> - &quot;</span>
           <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">v</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">localRF</span><span class="p">)</span><span class="o">.</span><span class="n">CF_max</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> &quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Instrument: min - max
-
-WALES: 0.34 - 0.34 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HAMP Radar: 0.21 - 0.22 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>specMACS: 0.16 - 0.22 
-HAMP Radiometer: 0.16 - 0.25 
-KT19: 0.20 - 0.31 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>VELOX: 0.21 - 0.39 
 </pre></div>
 </div>
 </div>
@@ -1266,31 +1491,22 @@ KT19: 0.20 - 0.31
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="hamp_comparison.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">HAMP comparison</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="hamp_comparison.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">HAMP comparison</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="pthree.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">NOAA P3 “Miss Piggy”</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="pthree.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">NOAA P3 “Miss Piggy”</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -1311,8 +1527,7 @@ KT19: 0.20 - 0.31
       </div>
     </div>
   
-  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>
