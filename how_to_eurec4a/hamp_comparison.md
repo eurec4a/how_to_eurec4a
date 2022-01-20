@@ -18,7 +18,7 @@ Another application of the HAMP data is included in the chapter {doc}`unified`.
 ```{code-cell} ipython3
 import numpy as np
 import eurec4a
-cat = eurec4a.get_intake_catalog(use_ipfs=True)
+cat = eurec4a.get_intake_catalog(use_ipfs="QmaeF3PCCmcGMHi12t7c4aZeob3Kkj1JJ322aNwCBBtUHF")
 ```
 
 We'll define a helper-function to approximately convert cell centers to edges:

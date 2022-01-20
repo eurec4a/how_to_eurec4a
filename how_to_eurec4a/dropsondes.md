@@ -26,7 +26,7 @@ If you have questions or if you would like to use the data for a publication, pl
 import datetime
 import numpy as np
 import eurec4a
-cat = eurec4a.get_intake_catalog(use_ipfs=True)
+cat = eurec4a.get_intake_catalog(use_ipfs="QmaeF3PCCmcGMHi12t7c4aZeob3Kkj1JJ322aNwCBBtUHF")
 ```
 
 * We can funrther specify the platform, instrument, if applicable dataset level or variable name, and pass it on to dask.

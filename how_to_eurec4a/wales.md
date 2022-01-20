@@ -36,7 +36,7 @@ To load the data we first load the EUREC4A meta data catalog and list the availa
 More information on the catalog can be found [here](https://github.com/eurec4a/eurec4a-intake#eurec4a-intake-catalogue).
 
 ```{code-cell} ipython3
-cat = eurec4a.get_intake_catalog(use_ipfs=True)
+cat = eurec4a.get_intake_catalog(use_ipfs="QmaeF3PCCmcGMHi12t7c4aZeob3Kkj1JJ322aNwCBBtUHF")
 print(cat.HALO.WALES.cloudparameter.description)
 ```
 
