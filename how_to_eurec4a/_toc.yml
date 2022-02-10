@@ -31,6 +31,7 @@ chapters:
   - file: dropsondes
 - file: toolbox
   sections:
+  - file: c3ontext
   - file: flight-phase-operations
   - file: show_intake_catalog
   - file: cloud_stat_tools
