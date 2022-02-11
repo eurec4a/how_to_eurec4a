@@ -24,7 +24,7 @@ Here, an example shows how the meso-scale patterns at a specific location in tim
 space can be retrieved.
 
 More details on this dataset can be found in [Schulz (2020)](https://doi.org/10.5194/essd-2021-427)  
-Futher information can also be found on the [C<sup>3</sup>ONTEXT GitHub-repository](https://github.com/observingClouds/EUREC4A_manualclassifications).
+and in the [C<sup>3</sup>ONTEXT GitHub-repository](https://github.com/observingClouds/EUREC4A_manualclassifications).
 
 ## Accessing the data
 
