@@ -23,8 +23,8 @@ the *Common Consensus on Convective OrgaNizaTionduring the EUREC4A eXperimenT* d
 Here, an example shows how the meso-scale patterns at a specific location in time and
 space can be retrieved.
 
-More details on this dataset can be found in [Schulz (2020)](https://doi.org/10.5194/essd-2021-427)  
-and in the [C<sup>3</sup>ONTEXT GitHub-repository](https://github.com/observingClouds/EUREC4A_manualclassifications).
+More details on this dataset can be found in [Schulz (2020)](https://doi.org/10.5194/essd-2021-427) and
+in the [C<sup>3</sup>ONTEXT GitHub-repository](https://github.com/observingClouds/EUREC4A_manualclassifications).
 
 ## Accessing the data
 
@@ -42,7 +42,7 @@ plt.style.use(["./mplstyle/book", "./mplstyle/wide"])
 cat = eurec4a.get_intake_catalog()
 ```
 
-The *C<sup>3</sup>ONTEXT* dataset consists of various post-processed levels. In the catalog the level-2 and level-3 data
+The *C<sup>3</sup>ONTEXT* dataset consists of various processing levels. In the intake catalog the level-2 and level-3 data
 are registered, which should be sufficient for most applications. These datasets consist of spatial-temporal referenced
 classification masks for all available workflows such that queries are rather simple.
 
@@ -63,7 +63,7 @@ ds
 ```
 
 To get the classifications along a trajectory, we can make further use of the platform tracks indexed in the EUREC<sup>4</sup>A
-Intake catalog. In the following we show the example based on the track of the R/V Meteor.
+Intake catalog. In the following, we show an example based on the track of the R/V Meteor.
 
 ```{code-cell} ipython3
 platform = 'Meteor'
@@ -77,7 +77,7 @@ and will fail when the track crosses the 0 meridian.
 ds_plat_rs = ds_plat.resample(time='1D').mean()
 ```
 
-Finally we can load the data and plot the timeseries of classifications along the trajectory.
+Finally, we can load the data and plot the timeseries of classifications along the trajectory.
 
 ```{code-cell} ipython3
 # Colors typical used for patterns
@@ -111,7 +111,7 @@ plt.ylabel('agreement / %')
 xlim=plt.xlim(dt.datetime(2020,1,6), dt.datetime(2020,2,23))
 ```
 
-This figure shows, how many participants agreed on a specific pattern on a given date at a given location.
+This figure shows how many participants agreed on a specific pattern on a given date at a given location.
 
 ```{note}
 Participants could attribute a given location to different patterns, causing some overlap. This overlap
