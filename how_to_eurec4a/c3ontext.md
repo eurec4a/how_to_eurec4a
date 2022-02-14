@@ -20,6 +20,15 @@ has identified these meso-scale patterns on satellite images. Their classificati
 the *Common Consensus on Convective OrgaNizaTionduring the EUREC4A eXperimenT* dataset, short
 **C<sup>3</sup>ONTEXT**.
 
+```{figure} c3ontext_cloud_patterns.jpg
+:alt: Meso-scale cloud patterns
+:width: 400px
+:align: center
+
+Four meso-scale cloud patterns have been identified to be reoccuring in the trades. They are
+named based on their visual impressions: Sugar, Gravel, Flowers, Fish.
+```
+
 Here, an example shows how the meso-scale patterns at a specific location in time and
 space can be retrieved.
 
