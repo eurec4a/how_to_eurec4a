@@ -34,6 +34,10 @@ list(sorted(cat))[:5]
 
 ... we get the same result 😃. Ideally, the resulting intake catalog should behave just as the "classical" counterpart. Apart from a few edge-cases, which often are related to {doc}`netcdf_datatypes`, you should be able to use both catalogs interchangeably, although almost everything behind the scenes works differently.
 
+The IPFS based catalog is auto-generated from the non-IPFS catalog, such that the latest version of the IPFS-based catalog should match the non-IPFS catalog.
+However, as the IPFS-based catalog is set up such that each version of the catalog references distributed, immutable copies of the datasets, those datasets stay available even if they are removed from their original storage locations (or the original servers are unavailable).
+If datasets in the non-IPFS catalog are updated, this will result in a new version of the IPFS-based catalog, which will then refer to the updated datasets subsequently.
+
 While just the option to have two completely separate ways of accessing the data already improves data availability, our hope would be that accessing data via IPFS would virtually never fail. In order to discuss this further, we'll have to take a deeper look at what IPFS and content addressing actually is.
 But before arriving there, we'll have a short detour about which properties we'll want to have for references to our datasets.
 
@@ -186,8 +190,9 @@ So a content addressable store allows to `put` and `get` some content.
 Content which is already in the store won't change over time.
 If two different stores contain the same content, that same content will be retrievable under the same identifier, independent of the machine hosting the store.
 
-So far, we've got a local, **immutable** store, which gives **direct** access to the content stored.
-As it is a local store, access is as **performant** as any other local key-based access method would be (with automatic de-duplication as potential advantage in terms of required storage).
+So far, we've got an **immutable** store, which gives **direct** access to the content stored.
+As we've not yet built in any means of external communication (that's for later), the store is only local.
+But as a local store, access is as **performant** as any other local key-based access method would be (with automatic de-duplication as potential advantage in terms of required storage).
 
 If some requested identifier is not available on a store, it will simply fail (and not return something different):
 
@@ -238,14 +243,19 @@ Thus if a node is running on the computer of the user of a dataset, a first requ
 
 ### ease of use
 Ease of use is probably the most difficult to quantify.
-For read access to the data, IPFS should be very similar to what we know.
-In order to access datasets on the EUREC4A intake catalog via IPFS, you'll need to have `ipfsspec` installed in addition to your usual python packages:
+We've seen that while the `put` function looks different, the `get` function essentially looks the same as for any key-value store: we hand in a key and get a value.
+Accordingly, read access to the data should be very similar on IPFS when compared to other methods like a file-system or object store.
+
+#### reading data
+The [`zarr`](https://zarr.readthedocs.io/) and [`intake`](https://intake.readthedocs.io/) libraries both use [`fsspec`](https://filesystem-spec.readthedocs.io) to access file-like resources (e.g. local files, HTTP links, cloud storage, zip archives and more) in a common way.
+As the EUREC4A intake catalog builds on `zarr` and `intake`, IPFS can be supported relatively easily through an `fsspec` backend.
+This is the purpose of `ipfsspec`, which we'll have to install in addition to your usual python packages:
 
 ```
 pip install ipfsspec
 ``` 
 
-Afterwards, you can use links of the form `ipfs://<CID>` or `ipfs://<CID>/some/path/within/the/content` wherever `fsspec` is used to access files.
+Afterwards, we can use links of the form `ipfs://<CID>` or `ipfs://<CID>/some/path/within/the/content` wherever `fsspec` is used to access files.
 In particular, it is possible to open intake catalogs and zarr datasets from those references, which is exactly what happens behind the scenes when opening the EUREC4A intake catalog using `use_ipfs`:
 
 ```python
@@ -255,6 +265,11 @@ cat = eurec4a.get_intake_catalog(use_ipfs=True)
 For better **performance**, you should also run an [IPFS node](https://ipfs.io/#install) on the machine accessing the data.
 `ipfsspec` will detect the presence of the node and will start requesting content through the local node in stead of using [public gateways](https://docs.ipfs.io/concepts/ipfs-gateway/#gateway-providers).
 This mode of operation will not only enable local caching, but also will request data from nearby peers (e.g. colleagues next door) should they already have the content.
+
+#### writing data
+
+As `put` works differently (we can only hand in content and not a key and content), adding data to a content addressable store must work a bit differently as compared to other stores.
+Let's see how we can do this.
 
 If a local node is running on your machine, you can also add data to IPFS.
 E.g. if a folder containing a dataset in zarr format should be added, you can do so by running:
