@@ -16,6 +16,7 @@ kernelspec:
 We use [IPFS](https://ipfs.io/) to store public data from the field campaign in a decentralized manner in order to increase data availability and accessibility.
 Ideally, as a user of the How to EUREC4A book, you'd maybe not even notice that this system is working, because [intake](https://intake.readthedocs.io/en/latest/) handles the details of the data retrieval.
 
+## Access via intake
 Currently, the use of IPFS within the How to EUREC4A book is mostly optional and can be enabled by the `use_ipfs` argument of `eurec4a.get_intake_catalog` (it's disabled by default):
 
 ```{code-cell} ipython3
@@ -81,12 +82,12 @@ Referencing by location can become a big problem, if data has to move between lo
 Addressing data by it's content is an approach to remove location information from the references.
 Let's see how this concept works:
 
-### Content Addressable Storage
+## Content Addressable Storage
 
 The concept of content addressable storage is based on the idea that identifiers which can be used to reference some content are based on the content itself.
 This concept helps with many of the requirements listed above, so let's have a look at some usual properties of content addressable storage.
 
-#### Hash functions
+### Hash functions
 Typically, content identifiers are based on a cryptographic hash of the content to be referenced.
 Cryptographic hashes are functions which accept an arbitrarily sized stream of bytes and convert them into a fixed sized (relatively short) sequence of bytes.
 They are designed such that the output (i.e. the hash value) changes whenever anything of the input changes.
@@ -122,7 +123,7 @@ If the check fails, we know that the data was modified in between.
 
 Content addressable stores usually use such hash values to reference the stored data, thus when retrieving data from such a store, one already knows the hash and can check if the retrieved content was returned unmodified.
 
-#### Immutability
+### Immutability
 
 As a direct consequence of using hashes as references, it is not possible to change data behind this kind of reference.
 The data behind a reference is **immutable**.
@@ -131,7 +132,7 @@ Immutability not only solves the request for non-changing data behind a referenc
 Any machine hosting a dataset can either have or not have the dataset, but it can not have the dataset in a different (or old) variant, because that would be a different dataset, referenced by  a different hash.
 
 
-#### Basic content addressable store
+### Basic content addressable store
 
 Let's have a look at how a basic content addressable store could be implemented:
 
