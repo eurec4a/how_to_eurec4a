@@ -40,7 +40,7 @@ But before arriving there, we'll have a short detour about which properties we'l
 There's one more option (accessing the intake catalog by content identifier), which will be described in more detail below:
 
 ```python
-cat = eurec4a.get_intake_catalog(use_ipfs="QmaeF3PCCmcGMHi12t7c4aZeob3Kkj1JJ322aNwCBBtUHF")
+cat = eurec4a.get_intake_catalog(use_ipfs="QmahMN2wgPauHYkkiTGoG2TpPBmj3p5FoYJAq9uE9iXT9N")
 ```
 
 If the intake catalog is loaded by explicitly stating the content identifier of the catalog, it is ensured that always the same catalog and the same data within the catalog is returned (instead of always returning the newest catalog and datasets). We use this method of accessing the catalog in the book to ensure that our examples are reproducible.

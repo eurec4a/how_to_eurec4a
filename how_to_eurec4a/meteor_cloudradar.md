@@ -19,7 +19,7 @@ Let's obtain the EUREC4A intake catalog:
 
 ```{code-cell} ipython3
 import eurec4a
-cat = eurec4a.get_intake_catalog(use_ipfs="QmaeF3PCCmcGMHi12t7c4aZeob3Kkj1JJ322aNwCBBtUHF")
+cat = eurec4a.get_intake_catalog(use_ipfs="QmahMN2wgPauHYkkiTGoG2TpPBmj3p5FoYJAq9uE9iXT9N")
 ```
 
 ## Available products

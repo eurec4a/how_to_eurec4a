@@ -36,7 +36,7 @@ To load the data we first load the [EUREC4A intake catalog](https://github.com/e
 Currently, there is a cloud mask product available.
 
 ```{code-cell} ipython3
-cat = eurec4a.get_intake_catalog(use_ipfs="QmaeF3PCCmcGMHi12t7c4aZeob3Kkj1JJ322aNwCBBtUHF")
+cat = eurec4a.get_intake_catalog(use_ipfs="QmahMN2wgPauHYkkiTGoG2TpPBmj3p5FoYJAq9uE9iXT9N")
 list(cat.HALO.VELOX)
 ```
 

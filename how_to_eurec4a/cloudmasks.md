@@ -90,7 +90,7 @@ def load_cloudmask_dataset(cat_item):
 We use the [eurec4a intake catalog](https://github.com/eurec4a/eurec4a-intake) to access the data files.
 
 ```{code-cell} ipython3
-cat = eurec4a.get_intake_catalog(use_ipfs="QmaeF3PCCmcGMHi12t7c4aZeob3Kkj1JJ322aNwCBBtUHF")
+cat = eurec4a.get_intake_catalog(use_ipfs="QmahMN2wgPauHYkkiTGoG2TpPBmj3p5FoYJAq9uE9iXT9N")
 list(cat.HALO)
 ```
 
