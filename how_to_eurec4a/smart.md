@@ -25,7 +25,7 @@ import eurec4a
 ```
 
 ```{code-cell} ipython3
-cat = eurec4a.get_intake_catalog()
+cat = eurec4a.get_intake_catalog(use_ipfs="QmahMN2wgPauHYkkiTGoG2TpPBmj3p5FoYJAq9uE9iXT9N")
 list(cat.HALO.SMART)
 ```
 

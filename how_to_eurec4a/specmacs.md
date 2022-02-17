@@ -69,7 +69,7 @@ Now we would like to know when this sonde was launched. The [JOANNE dataset](htt
 More information on the data catalog can be found [here](https://github.com/eurec4a/eurec4a-intake#eurec4a-intake-catalogue).
 
 ```{code-cell} ipython3
-cat = eurec4a.get_intake_catalog()
+cat = eurec4a.get_intake_catalog(use_ipfs="QmahMN2wgPauHYkkiTGoG2TpPBmj3p5FoYJAq9uE9iXT9N")
 ```
 
 ```{code-cell} ipython3
@@ -267,7 +267,8 @@ def ellipsoidal_to_ecef_ds(ds: xr.Dataset) -> xr.DataArray:
     This function applies the conversion from above directly to an xarray dataset.
     '''
     return xr.apply_ufunc(ellipsoidal_to_ecef, np.deg2rad(ds.lat), np.deg2rad(ds.lon), ds.alt,
-                          output_core_dims=[("xyz_ecef",)])
+                          output_core_dims=[("xyz_ecef",)],
+                          dask="allowed")
 ```
 
 With these functions it is easy to transform the `lat`/`lon`/`alt` position of the HALO into the ECEF-coordinate system.
@@ -310,7 +311,7 @@ def Rz(alpha, dim_a="a", dim_b="b"):
 
 def vector_norm(x, dim, ord=None):
     return xr.apply_ufunc(
-        np.linalg.norm, x, input_core_dims=[[dim]], kwargs={"ord": ord, "axis": -1}
+        np.linalg.norm, x, input_core_dims=[[dim]], kwargs={"ord": ord, "axis": -1}, dask="allowed"
     )
 
 def normalize(x, dim, ord=None):

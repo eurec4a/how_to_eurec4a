@@ -90,7 +90,7 @@ def load_cloudmask_dataset(cat_item):
 We use the [eurec4a intake catalog](https://github.com/eurec4a/eurec4a-intake) to access the data files.
 
 ```{code-cell} ipython3
-cat = eurec4a.get_intake_catalog()
+cat = eurec4a.get_intake_catalog(use_ipfs="QmahMN2wgPauHYkkiTGoG2TpPBmj3p5FoYJAq9uE9iXT9N")
 list(cat.HALO)
 ```
 
@@ -170,9 +170,7 @@ this dataset is only available for the following application on February 5, not 
 ```
 
 ```{code-cell} ipython3
-url = ("https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/SPECMACS-CLOUDMASK/"
-       + "EUREC4A_HALO_specMACS_cloud_mask_20200205T100000-20200205T182359_v1.1.nc")
-ds_swir = xr.open_dataset(url, engine="netcdf4")
+ds_swir = xr.open_zarr("ipfs://QmZUNCXKvKSeugVHFUsgzDnTrrPHomc5ikEhjoYH2hRq4N")
 da_swir = ds_swir.sel(time=s).isel(radiation_wavelength=0).swir_radiance
 ```
 
@@ -209,9 +207,10 @@ va_central = ds_bt.isel(time=0, x=slice(xmid - 5, xmid + 6)).va
 
 ```{code-cell} ipython3
 def most_frequent_flag(var, dims):
-    flags = xr.DataArray(var.flag_values, dims=("__internal__flags__"))
+    flag_values = np.asarray(var.flag_values)
+    flags = xr.DataArray(flag_values, dims=("__internal__flags__"))
     flag_indices = (var == flags).sum(dims).argmax("__internal__flags__")
-    return xr.DataArray(var.flag_values[flag_indices.data],
+    return xr.DataArray(flag_values[flag_indices.data],
                         dims=flag_indices.dims,
                         attrs=var.attrs)
 

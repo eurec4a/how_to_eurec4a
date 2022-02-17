@@ -36,5 +36,6 @@ chapters:
   - file: cloud_stat_tools
   - file: running_locally
   - file: netcdf_datatypes
+  - file: data_on_ipfs
 - file: references
 - file: stats

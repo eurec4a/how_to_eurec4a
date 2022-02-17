@@ -8,6 +8,7 @@ jobs:
     strategy:
       matrix:
         python-version: [3.8]
+        ipfs-version: [0.10.0]
     defaults:
       run:
         shell: bash -l {0}
@@ -25,6 +26,11 @@ jobs:
         environment-file: environment.yml
         python-version: ${{ matrix.python-version }}
         auto-activate-base: false
+    - name: Install local ipfs node
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y wget curl jq
+        bash <(curl https://raw.githubusercontent.com/eurec4a/ipfs_tools/main/install_and_run_ipfs.sh) ${{ matrix.ipfs-version }}
     - name: build book
       run: |
         conda info

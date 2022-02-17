@@ -21,7 +21,7 @@ First, we'll import pylab and the EUREC4A data catalog.
 
 ```{code-cell} ipython3
 import eurec4a
-cat = eurec4a.get_intake_catalog()
+cat = eurec4a.get_intake_catalog(use_ipfs="QmahMN2wgPauHYkkiTGoG2TpPBmj3p5FoYJAq9uE9iXT9N")
 ```
 
 ### Inspecting the dataset
