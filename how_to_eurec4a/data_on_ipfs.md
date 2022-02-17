@@ -24,7 +24,7 @@ import eurec4a
 cat = eurec4a.get_intake_catalog(use_ipfs=False)
 list(sorted(cat))[:5]
 ```
-This above command returns the first five entries in our [intake catalog](https://github.com/eurec4a/eurec4a-intake/#readme). Most of the data references by this catalog is accessed via the [OPeNDAP](https://www.opendap.org/) protocol from several servers in use by the EUREC4A community.
+This above command returns the first five entries in the [eurec4a-intake catalog](https://github.com/eurec4a/eurec4a-intake/#readme). Most of the data references by this catalog is accessed via the [OPeNDAP](https://www.opendap.org/) protocol from several servers in use by the EUREC4A community.
 Let's look how this changes if we enable `use_ipfs`:
 
 ```{code-cell} ipython3
@@ -32,7 +32,7 @@ cat = eurec4a.get_intake_catalog(use_ipfs=True)
 list(sorted(cat))[:5]
 ```
 
-... we get the same result 😃. Ideally, the resulting intake catalog should behave just as the "classical" counterpart. Apart from a few edge-cases, which often are related to {doc}`netcdf_datatypes`, you should be able use both catalogs interchangeably, although almost everything behind the scenes works much differently.
+... we get the same result 😃. Ideally, the resulting intake catalog should behave just as the "classical" counterpart. Apart from a few edge-cases, which often are related to {doc}`netcdf_datatypes`, you should be able to use both catalogs interchangeably, although almost everything behind the scenes works differently.
 
 While just the option to have two completely separate ways of accessing the data already improves data availability, our hope would be that accessing data via IPFS would virtually never fail. In order to discuss this further, we'll have to take a deeper look at what IPFS and content addressing actually is.
 But before arriving there, we'll have a short detour about which properties we'll want to have for references to our datasets.
@@ -53,7 +53,7 @@ The book is about sharing knowledge on available datasets and analysis methods.
 We want to be able to create reproducible analysis scripts (or stories) which may be run and modified by anyone.
 While sharing code (e.g. analysis scripts) and explanatory texts is largely solved by version control systems like [git](https://git-scm.com/), sharing data is much more complicated due to the size of the referenced files.
 While often it is just undesirable to copy larger files around over and over again, for some datasets it might even be impossible to store them entirely on a laptop.
-If we can't just copy all the data all around, we need a way of referencing data which might be stored somewhere else, such that we can just send around the code like the following and it will get the data for us:
+If we can't just copy data, we need a way of referencing data that is stored elsewhere. A unique and reliable reference ensures the correct retrieval of data for everyone and from everywhere via a code snippet such as the following:
 
 ```python
 dataset = open_dataset("some reference")
@@ -184,7 +184,7 @@ Because every item is stored under it's own hash, identical items will only be s
 
 So a content addressable store allows to `put` and `get` some content.
 Content which is already in the store won't change over time.
-If two different stores contain the same content, that same content will be retrievable under the same identifier, independent on which machine the store is.
+If two different stores contain the same content, that same content will be retrievable under the same identifier, independent of the machine hosting the store.
 
 So far, we've got a local, **immutable** store, which gives **direct** access to the content stored.
 As it is a local store, access is as **performant** as any other local key-based access method would be (with automatic de-duplication as potential advantage in terms of required storage).
@@ -239,7 +239,7 @@ Thus if a node is running on the computer of the user of a dataset, a first requ
 ### ease of use
 Ease of use is probably the most difficult to quantify.
 For read access to the data, IPFS should be very similar to what we know.
-In order to access datasets on the EUREC4A intake catalog via IPFS, you'll need to have `ipfsspec` installed in addition to what's needed anyways:
+In order to access datasets on the EUREC4A intake catalog via IPFS, you'll need to have `ipfsspec` installed in addition to your usual python packages:
 
 ```
 pip install ipfsspec
