@@ -192,6 +192,9 @@ If some requested identifier is not available on a store, it will simply fail (a
 
 
 ```{code-cell} ipython3
+---
+tags: [raises-exception]
+---
 store.get('d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9')  # the key of b"hallo"
 ```
 
