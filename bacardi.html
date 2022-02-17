@@ -38,11 +38,14 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -286,6 +289,11 @@
      The issue with netCDF data types
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="data_on_ipfs.html">
+     Data on IPFS
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1">
@@ -347,7 +355,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -403,7 +411,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -428,7 +436,35 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>BACARDI dataset</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#get-data">
+   Get data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plots">
+   Plots
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="bacardi-dataset">
@@ -449,7 +485,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">=</span> <span class="n">eurec4a</span><span class="o">.</span><span class="n">get_intake_catalog</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">=</span> <span class="n">eurec4a</span><span class="o">.</span><span class="n">get_intake_catalog</span><span class="p">(</span><span class="n">use_ipfs</span><span class="o">=</span><span class="s2">&quot;QmahMN2wgPauHYkkiTGoG2TpPBmj3p5FoYJAq9uE9iXT9N&quot;</span><span class="p">)</span>
 <span class="nb">list</span><span class="p">(</span><span class="n">cat</span><span class="o">.</span><span class="n">HALO</span><span class="o">.</span><span class="n">BACARDI</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -518,7 +554,7 @@ body.vscode-dark {
 }
 
 .xr-wrap {
-  display: block;
+  display: block !important;
   min-width: 300px;
   max-width: 700px;
 }
@@ -831,30 +867,748 @@ Dimensions:             (time: 327320)
 Coordinates:
   * time                (time) datetime64[ns] 2020-02-05T09:15:52 ... 2020-02...
 Data variables:
-    alt                 (time) float32 ...
-    lat                 (time) float32 ...
-    lon                 (time) float32 ...
-    sza                 (time) float32 ...
-    saa                 (time) float32 ...
-    F_down_solar        (time) float32 ...
-    F_down_solar_diff   (time) float32 ...
-    F_up_solar          (time) float32 ...
-    F_down_terrestrial  (time) float32 ...
-    F_up_terrestrial    (time) float32 ...
-    F_down_solar_sim    (time) float32 ...
-    cloud_mask          (time) int8 ...
+    F_down_solar        (time) float32 dask.array&lt;chunksize=(81830,), meta=np.ndarray&gt;
+    F_down_solar_diff   (time) float32 dask.array&lt;chunksize=(81830,), meta=np.ndarray&gt;
+    F_down_solar_sim    (time) float32 dask.array&lt;chunksize=(81830,), meta=np.ndarray&gt;
+    F_down_terrestrial  (time) float32 dask.array&lt;chunksize=(81830,), meta=np.ndarray&gt;
+    F_up_solar          (time) float32 dask.array&lt;chunksize=(81830,), meta=np.ndarray&gt;
+    F_up_terrestrial    (time) float32 dask.array&lt;chunksize=(81830,), meta=np.ndarray&gt;
+    alt                 (time) float32 dask.array&lt;chunksize=(81830,), meta=np.ndarray&gt;
+    cloud_mask          (time) int8 dask.array&lt;chunksize=(163660,), meta=np.ndarray&gt;
+    lat                 (time) float32 dask.array&lt;chunksize=(81830,), meta=np.ndarray&gt;
+    lon                 (time) float32 dask.array&lt;chunksize=(81830,), meta=np.ndarray&gt;
+    saa                 (time) float32 dask.array&lt;chunksize=(81830,), meta=np.ndarray&gt;
+    sza                 (time) float32 dask.array&lt;chunksize=(81830,), meta=np.ndarray&gt;
 Attributes:
-    title:                Broadband radiation mesured by BACARDI during EUREC4A
     campaign:             EUREC4A
-    platform:             HALO
+    comment 1:            BACARDI Raw data was processed by DLR, contact Andr...
+    contact:              Andre Ehrlich, University Leipzig, a.ehrlich@uni-le...
     instrument:           Broadband AirCrAft RaDiometer Instrumentation (BACA...
+    platform:             HALO
     research_flight_day:  2020/02/05
-    version:              Revision 1 from 2021/02/04
-    comment_1:            BACARDI Raw data was processed by DLR, contact Andr...
-    contact:              Andre Ehrlich, University Leipzig, a.ehrlich@uni-le...</pre><div class='xr-wrap' hidden><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-19358ce1-719e-439c-af1f-2ebbdf7848ca' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-19358ce1-719e-439c-af1f-2ebbdf7848ca' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 327320</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-494eed3f-2fdd-419b-9eef-a07d6215e2a7' class='xr-section-summary-in' type='checkbox'  checked><label for='section-494eed3f-2fdd-419b-9eef-a07d6215e2a7' class='xr-section-summary' >Coordinates: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2020-02-05T09:15:52 ... 2020-02-...</div><input id='attrs-0f9fcc66-ac81-49b8-b582-071fba133f8b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-0f9fcc66-ac81-49b8-b582-071fba133f8b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-5422bf4f-81ac-41f6-9a87-2bb0d724ec01' class='xr-var-data-in' type='checkbox'><label for='data-5422bf4f-81ac-41f6-9a87-2bb0d724ec01' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>time</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;2020-02-05T09:15:52.000000000&#x27;, &#x27;2020-02-05T09:15:52.100000000&#x27;,
+    title:                Broadband radiation mesured by BACARDI during EUREC4A
+    version:              Revision 1 from 2021/02/04</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-70cf7602-dc69-4255-ab51-b7aa4860c189' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-70cf7602-dc69-4255-ab51-b7aa4860c189' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 327320</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-72ec1bc9-effd-4d58-86e4-6107210dfd3b' class='xr-section-summary-in' type='checkbox'  checked><label for='section-72ec1bc9-effd-4d58-86e4-6107210dfd3b' class='xr-section-summary' >Coordinates: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2020-02-05T09:15:52 ... 2020-02-...</div><input id='attrs-1ac43e51-45b7-4f4a-81c4-1ff2130a196c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-1ac43e51-45b7-4f4a-81c4-1ff2130a196c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-94f4c141-6cf6-4898-9df1-06f0ab6b127b' class='xr-var-data-in' type='checkbox'><label for='data-94f4c141-6cf6-4898-9df1-06f0ab6b127b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>time</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;2020-02-05T09:15:52.000000000&#x27;, &#x27;2020-02-05T09:15:52.100000000&#x27;,
        &#x27;2020-02-05T09:15:52.200000000&#x27;, ..., &#x27;2020-02-05T18:21:23.700000000&#x27;,
        &#x27;2020-02-05T18:21:23.800000000&#x27;, &#x27;2020-02-05T18:21:23.900000000&#x27;],
-      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-025bd9e4-bbf8-4f0c-ab79-0b08b491224d' class='xr-section-summary-in' type='checkbox'  checked><label for='section-025bd9e4-bbf8-4f0c-ab79-0b08b491224d' class='xr-section-summary' >Data variables: <span>(12)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>alt</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-6ef99539-6e80-4092-b021-dc2f43d34806' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-6ef99539-6e80-4092-b021-dc2f43d34806' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4cf2a2d6-fcdb-4ddd-a331-084fabee596a' class='xr-var-data-in' type='checkbox'><label for='data-4cf2a2d6-fcdb-4ddd-a331-084fabee596a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>altitude (WGS84 Datum/Elliptical, BAHAMAS)</dd><dt><span>standard_name :</span></dt><dd>altitude</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><pre>[327320 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lat</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-923b9635-790d-4795-911e-76ea7b84a37e' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-923b9635-790d-4795-911e-76ea7b84a37e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a30a1b27-eef2-4fdd-bc14-93300bb7b2af' class='xr-var-data-in' type='checkbox'><label for='data-a30a1b27-eef2-4fdd-bc14-93300bb7b2af' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>latitude (WGS84 Datum/Latitude, BAHAMAS)</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd></dl></div><div class='xr-var-data'><pre>[327320 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lon</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-37885372-10f3-408f-b84d-3159c59b2507' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-37885372-10f3-408f-b84d-3159c59b2507' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-211dc459-a22e-4c00-b8c9-20383fd8474b' class='xr-var-data-in' type='checkbox'><label for='data-211dc459-a22e-4c00-b8c9-20383fd8474b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>longitude (WGS84 Datum/Longitude, BAHAMAS)</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degree_east</dd></dl></div><div class='xr-var-data'><pre>[327320 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>sza</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-d1e5001f-f146-4891-87f7-f7cb62681907' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-d1e5001f-f146-4891-87f7-f7cb62681907' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c6815b02-5ddd-4fcb-928b-60a993bbdf5e' class='xr-var-data-in' type='checkbox'><label for='data-c6815b02-5ddd-4fcb-928b-60a993bbdf5e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>solar zenith angle</dd><dt><span>standard_name :</span></dt><dd>solar_zenith_angle</dd><dt><span>units :</span></dt><dd>degree</dd></dl></div><div class='xr-var-data'><pre>[327320 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>saa</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-887fd7fd-186b-4d74-8a7f-477f86d6b77c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-887fd7fd-186b-4d74-8a7f-477f86d6b77c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-3d0fed73-1afe-4b3b-9364-d2d3dedb003a' class='xr-var-data-in' type='checkbox'><label for='data-3d0fed73-1afe-4b3b-9364-d2d3dedb003a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>solar azimuth angle</dd><dt><span>standard_name :</span></dt><dd>solar_azimuth_angle</dd><dt><span>units :</span></dt><dd>degree</dd></dl></div><div class='xr-var-data'><pre>[327320 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>F_down_solar</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-b2da24ac-e37f-477c-92ec-9f70ee373f46' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-b2da24ac-e37f-477c-92ec-9f70ee373f46' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-757f59a4-0364-4118-913f-b71fc8d2585b' class='xr-var-data-in' type='checkbox'><label for='data-757f59a4-0364-4118-913f-b71fc8d2585b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Downward solar irradiance corrected for cloud-free conditions (0.2-3.6 um) (BACARDI)</dd><dt><span>standard_name :</span></dt><dd>downwelling_shortwave_flux_in_air</dd><dt><span>units :</span></dt><dd>W m-2</dd><dt><span>comment1 :</span></dt><dd>Corrected for temperature offset, time response, aircraft attitude</dd><dt><span>comment2 :</span></dt><dd>Temperature offset correction based on DLR parametrization</dd><dt><span>comment3 :</span></dt><dd>Time response correction: response time 1.2s, cut-off_frequency 0.6Hz, running mean length = 0.5s </dd><dt><span>comment4 :</span></dt><dd>Attitude correction: roll offset = +0.3� , pitch offset = +2.55�</dd></dl></div><div class='xr-var-data'><pre>[327320 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>F_down_solar_diff</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-a967d677-37b5-40e7-9e5c-7bd19ca63d67' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-a967d677-37b5-40e7-9e5c-7bd19ca63d67' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-92d64a98-f0fb-477a-81db-93e4620654dc' class='xr-var-data-in' type='checkbox'><label for='data-92d64a98-f0fb-477a-81db-93e4620654dc' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Downward solar irradiance corrected for diffuse/cloudy conditions (0.2-3.6 um) (BACARDI)</dd><dt><span>standard_name :</span></dt><dd>diffuse_downwelling_shortwave_flux_in_air</dd><dt><span>units :</span></dt><dd>W m-2</dd><dt><span>comment1 :</span></dt><dd>Corrected for temperature offset, time response, aircraft attitude</dd><dt><span>comment2 :</span></dt><dd>Temperature offset correction based on DLR parametrization</dd><dt><span>comment3 :</span></dt><dd>Time response correction: response time 1.2s, cut-off_frequency 0.6Hz, running mean length = 0.5s </dd><dt><span>comment4 :</span></dt><dd>No attitude correction applied, assuming a 100% diffuse radiation field due to clouds </dd></dl></div><div class='xr-var-data'><pre>[327320 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>F_up_solar</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-4927cf6a-17ca-4d07-bd84-33b471eccc1e' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-4927cf6a-17ca-4d07-bd84-33b471eccc1e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d7a2b94f-5dc4-4746-a183-0820d347d026' class='xr-var-data-in' type='checkbox'><label for='data-d7a2b94f-5dc4-4746-a183-0820d347d026' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Upward solar irradiance (0.2-3.6 um) (BACARDI)</dd><dt><span>standard_name :</span></dt><dd>upwelling_shortwave_flux_in_air</dd><dt><span>units :</span></dt><dd>W m-2</dd><dt><span>comment1 :</span></dt><dd>Corrected for temperature offset, time response</dd><dt><span>comment2 :</span></dt><dd>Temperature offset correction based on DLR parametrization</dd><dt><span>comment3 :</span></dt><dd>Time response correction: response time 1.2s, cut-off_frequency 0.6Hz, running mean length = 0.5s </dd></dl></div><div class='xr-var-data'><pre>[327320 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>F_down_terrestrial</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-3431c11a-8fb9-41f6-bb90-2075efc84071' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-3431c11a-8fb9-41f6-bb90-2075efc84071' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-fe88d68a-2ea4-4d30-b28f-14c149133514' class='xr-var-data-in' type='checkbox'><label for='data-fe88d68a-2ea4-4d30-b28f-14c149133514' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Downward terrestrial irradiance (4.5-42 um) (BACARDI)</dd><dt><span>standard_name :</span></dt><dd>downwelling_longwave_flux_in_air</dd><dt><span>units :</span></dt><dd>W m-2</dd><dt><span>comment1 :</span></dt><dd>Corrected for temperature offset, time response</dd><dt><span>comment2 :</span></dt><dd>Temperature offset correction based on DLR parametrization</dd><dt><span>comment3 :</span></dt><dd>Time response correction: response time 2.0s, cut-off_frequency 0.5Hz, running mean length = 2.0s </dd></dl></div><div class='xr-var-data'><pre>[327320 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>F_up_terrestrial</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-adc5b974-a445-4950-8992-0482adbd41fe' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-adc5b974-a445-4950-8992-0482adbd41fe' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d362f8aa-b7da-408a-8cdc-fcfa8a642068' class='xr-var-data-in' type='checkbox'><label for='data-d362f8aa-b7da-408a-8cdc-fcfa8a642068' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Upward terrestrial irradiance (4.5-42 um) (BACARDI)</dd><dt><span>standard_name :</span></dt><dd>upwelling_longwave_flux_in_air</dd><dt><span>units :</span></dt><dd>W m-2</dd><dt><span>comment1 :</span></dt><dd>Corrected for temperature offset, time response</dd><dt><span>comment2 :</span></dt><dd>Temperature offset correction based on DLR parametrization</dd><dt><span>comment3 :</span></dt><dd>Time response correction: response time 2.0s, cut-off_frequency 0.5Hz, running mean length = 2.0s </dd></dl></div><div class='xr-var-data'><pre>[327320 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>F_down_solar_sim</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-2142cdd8-59f3-4e0b-8d49-0637bda47750' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-2142cdd8-59f3-4e0b-8d49-0637bda47750' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ea7ac569-8171-4bc7-9e59-da3f968620e4' class='xr-var-data-in' type='checkbox'><label for='data-ea7ac569-8171-4bc7-9e59-da3f968620e4' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Downward solar irradiance simulated for cloud-free conditions (with libRadtran)</dd><dt><span>units :</span></dt><dd>W m-2</dd><dt><span>comment :</span></dt><dd>Simulated for aircraft position, altitude using the BCO radio soundings</dd></dl></div><div class='xr-var-data'><pre>[327320 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>cloud_mask</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>int8</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-52e254cf-5a29-4a0a-93fe-b2ec00d4bc1d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-52e254cf-5a29-4a0a-93fe-b2ec00d4bc1d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-49eae24f-b00b-4fdf-8099-755131c24921' class='xr-var-data-in' type='checkbox'><label for='data-49eae24f-b00b-4fdf-8099-755131c24921' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Cloud flag for clouds in front of the Sun affecting the solar downward irradiance [0 = cloud free, 1 = cloudy]</dd><dt><span>comment1 :</span></dt><dd>The cloud flag is a rough conservative estimate of the presence of clouds based on the variability of the downward solar irradiance within a 20 second running window.</dd></dl></div><div class='xr-var-data'><pre>[327320 values with dtype=int8]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-ee510cf8-ed37-4da3-9282-d0e6d22869d0' class='xr-section-summary-in' type='checkbox'  checked><label for='section-ee510cf8-ed37-4da3-9282-d0e6d22869d0' class='xr-section-summary' >Attributes: <span>(8)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>title :</span></dt><dd>Broadband radiation mesured by BACARDI during EUREC4A</dd><dt><span>campaign :</span></dt><dd>EUREC4A</dd><dt><span>platform :</span></dt><dd>HALO</dd><dt><span>instrument :</span></dt><dd>Broadband AirCrAft RaDiometer Instrumentation (BACARDI) </dd><dt><span>research_flight_day :</span></dt><dd>2020/02/05</dd><dt><span>version :</span></dt><dd>Revision 1 from 2021/02/04</dd><dt><span>comment_1 :</span></dt><dd>BACARDI Raw data was processed by DLR, contact Andreas Giez</dd><dt><span>contact :</span></dt><dd>Andre Ehrlich, University Leipzig, a.ehrlich@uni-leipzig.de</dd></dl></div></li></ul></div></div></div></div>
+      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-2f9e965d-683e-4447-b0d3-c20c38f5e889' class='xr-section-summary-in' type='checkbox'  checked><label for='section-2f9e965d-683e-4447-b0d3-c20c38f5e889' class='xr-section-summary' >Data variables: <span>(12)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>F_down_solar</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(81830,), meta=np.ndarray&gt;</div><input id='attrs-21d4585b-6f60-4476-a5cb-090c911384ea' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-21d4585b-6f60-4476-a5cb-090c911384ea' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-9b9c49ab-f6c5-4222-a266-e5120ffe5b9f' class='xr-var-data-in' type='checkbox'><label for='data-9b9c49ab-f6c5-4222-a266-e5120ffe5b9f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment1 :</span></dt><dd>Corrected for temperature offset, time response, aircraft attitude</dd><dt><span>comment2 :</span></dt><dd>Temperature offset correction based on DLR parametrization</dd><dt><span>comment3 :</span></dt><dd>Time response correction: response time 1.2s, cut-off_frequency 0.6Hz, running mean length = 0.5s </dd><dt><span>comment4 :</span></dt><dd>Attitude correction: roll offset = +0.3� , pitch offset = +2.55�</dd><dt><span>long_name :</span></dt><dd>Downward solar irradiance corrected for cloud-free conditions (0.2-3.6 um) (BACARDI)</dd><dt><span>standard_name :</span></dt><dd>downwelling_shortwave_flux_in_air</dd><dt><span>units :</span></dt><dd>W m-2</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 1.25 MiB </td>
+                        <td> 319.65 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (327320,) </td>
+                        <td> (81830,) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 5 Tasks </td>
+                        <td> 4 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
+  <line x1="30" y1="0" x2="30" y2="25" />
+  <line x1="60" y1="0" x2="60" y2="25" />
+  <line x1="90" y1="0" x2="90" y2="25" />
+  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >327320</text>
+  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>F_down_solar_diff</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(81830,), meta=np.ndarray&gt;</div><input id='attrs-bf81ebe0-8b10-4459-a091-4d0c78d10f62' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-bf81ebe0-8b10-4459-a091-4d0c78d10f62' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e5ced6f1-0d7c-41f0-9fb2-4dcee1b41f61' class='xr-var-data-in' type='checkbox'><label for='data-e5ced6f1-0d7c-41f0-9fb2-4dcee1b41f61' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment1 :</span></dt><dd>Corrected for temperature offset, time response, aircraft attitude</dd><dt><span>comment2 :</span></dt><dd>Temperature offset correction based on DLR parametrization</dd><dt><span>comment3 :</span></dt><dd>Time response correction: response time 1.2s, cut-off_frequency 0.6Hz, running mean length = 0.5s </dd><dt><span>comment4 :</span></dt><dd>No attitude correction applied, assuming a 100% diffuse radiation field due to clouds </dd><dt><span>long_name :</span></dt><dd>Downward solar irradiance corrected for diffuse/cloudy conditions (0.2-3.6 um) (BACARDI)</dd><dt><span>standard_name :</span></dt><dd>diffuse_downwelling_shortwave_flux_in_air</dd><dt><span>units :</span></dt><dd>W m-2</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 1.25 MiB </td>
+                        <td> 319.65 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (327320,) </td>
+                        <td> (81830,) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 5 Tasks </td>
+                        <td> 4 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
+  <line x1="30" y1="0" x2="30" y2="25" />
+  <line x1="60" y1="0" x2="60" y2="25" />
+  <line x1="90" y1="0" x2="90" y2="25" />
+  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >327320</text>
+  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>F_down_solar_sim</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(81830,), meta=np.ndarray&gt;</div><input id='attrs-a6884891-3f9c-43ae-b590-977a4e5d2884' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-a6884891-3f9c-43ae-b590-977a4e5d2884' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1cf71c15-f72a-4ad5-be16-d86b5827f5a4' class='xr-var-data-in' type='checkbox'><label for='data-1cf71c15-f72a-4ad5-be16-d86b5827f5a4' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment :</span></dt><dd>Simulated for aircraft position, altitude using the BCO radio soundings</dd><dt><span>long_name :</span></dt><dd>Downward solar irradiance simulated for cloud-free conditions (with libRadtran)</dd><dt><span>units :</span></dt><dd>W m-2</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 1.25 MiB </td>
+                        <td> 319.65 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (327320,) </td>
+                        <td> (81830,) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 5 Tasks </td>
+                        <td> 4 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
+  <line x1="30" y1="0" x2="30" y2="25" />
+  <line x1="60" y1="0" x2="60" y2="25" />
+  <line x1="90" y1="0" x2="90" y2="25" />
+  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >327320</text>
+  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>F_down_terrestrial</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(81830,), meta=np.ndarray&gt;</div><input id='attrs-0108faf1-bb26-43d7-a1b8-1323ef9fe72e' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-0108faf1-bb26-43d7-a1b8-1323ef9fe72e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-26269651-687d-419c-a60c-09a48e691e60' class='xr-var-data-in' type='checkbox'><label for='data-26269651-687d-419c-a60c-09a48e691e60' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment1 :</span></dt><dd>Corrected for temperature offset, time response</dd><dt><span>comment2 :</span></dt><dd>Temperature offset correction based on DLR parametrization</dd><dt><span>comment3 :</span></dt><dd>Time response correction: response time 2.0s, cut-off_frequency 0.5Hz, running mean length = 2.0s </dd><dt><span>long_name :</span></dt><dd>Downward terrestrial irradiance (4.5-42 um) (BACARDI)</dd><dt><span>standard_name :</span></dt><dd>downwelling_longwave_flux_in_air</dd><dt><span>units :</span></dt><dd>W m-2</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 1.25 MiB </td>
+                        <td> 319.65 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (327320,) </td>
+                        <td> (81830,) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 5 Tasks </td>
+                        <td> 4 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
+  <line x1="30" y1="0" x2="30" y2="25" />
+  <line x1="60" y1="0" x2="60" y2="25" />
+  <line x1="90" y1="0" x2="90" y2="25" />
+  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >327320</text>
+  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>F_up_solar</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(81830,), meta=np.ndarray&gt;</div><input id='attrs-e2efe4fd-6236-4c71-b6af-41c7a22ee959' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e2efe4fd-6236-4c71-b6af-41c7a22ee959' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-231289dd-8c7c-4b01-92d2-23e275b259dc' class='xr-var-data-in' type='checkbox'><label for='data-231289dd-8c7c-4b01-92d2-23e275b259dc' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment1 :</span></dt><dd>Corrected for temperature offset, time response</dd><dt><span>comment2 :</span></dt><dd>Temperature offset correction based on DLR parametrization</dd><dt><span>comment3 :</span></dt><dd>Time response correction: response time 1.2s, cut-off_frequency 0.6Hz, running mean length = 0.5s </dd><dt><span>long_name :</span></dt><dd>Upward solar irradiance (0.2-3.6 um) (BACARDI)</dd><dt><span>standard_name :</span></dt><dd>upwelling_shortwave_flux_in_air</dd><dt><span>units :</span></dt><dd>W m-2</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 1.25 MiB </td>
+                        <td> 319.65 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (327320,) </td>
+                        <td> (81830,) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 5 Tasks </td>
+                        <td> 4 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
+  <line x1="30" y1="0" x2="30" y2="25" />
+  <line x1="60" y1="0" x2="60" y2="25" />
+  <line x1="90" y1="0" x2="90" y2="25" />
+  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >327320</text>
+  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>F_up_terrestrial</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(81830,), meta=np.ndarray&gt;</div><input id='attrs-bf7880f4-1d37-4839-a6a4-488cd76d6f5d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-bf7880f4-1d37-4839-a6a4-488cd76d6f5d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a5a50257-788f-45e7-bd82-70e5d8cf1a9a' class='xr-var-data-in' type='checkbox'><label for='data-a5a50257-788f-45e7-bd82-70e5d8cf1a9a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment1 :</span></dt><dd>Corrected for temperature offset, time response</dd><dt><span>comment2 :</span></dt><dd>Temperature offset correction based on DLR parametrization</dd><dt><span>comment3 :</span></dt><dd>Time response correction: response time 2.0s, cut-off_frequency 0.5Hz, running mean length = 2.0s </dd><dt><span>long_name :</span></dt><dd>Upward terrestrial irradiance (4.5-42 um) (BACARDI)</dd><dt><span>standard_name :</span></dt><dd>upwelling_longwave_flux_in_air</dd><dt><span>units :</span></dt><dd>W m-2</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 1.25 MiB </td>
+                        <td> 319.65 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (327320,) </td>
+                        <td> (81830,) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 5 Tasks </td>
+                        <td> 4 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
+  <line x1="30" y1="0" x2="30" y2="25" />
+  <line x1="60" y1="0" x2="60" y2="25" />
+  <line x1="90" y1="0" x2="90" y2="25" />
+  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >327320</text>
+  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>alt</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(81830,), meta=np.ndarray&gt;</div><input id='attrs-03fdd920-a2d0-4c19-92e0-780564507626' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-03fdd920-a2d0-4c19-92e0-780564507626' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d6cec122-e5b4-4a5a-9280-deada80e2462' class='xr-var-data-in' type='checkbox'><label for='data-d6cec122-e5b4-4a5a-9280-deada80e2462' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>altitude (WGS84 Datum/Elliptical, BAHAMAS)</dd><dt><span>standard_name :</span></dt><dd>altitude</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 1.25 MiB </td>
+                        <td> 319.65 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (327320,) </td>
+                        <td> (81830,) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 5 Tasks </td>
+                        <td> 4 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
+  <line x1="30" y1="0" x2="30" y2="25" />
+  <line x1="60" y1="0" x2="60" y2="25" />
+  <line x1="90" y1="0" x2="90" y2="25" />
+  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >327320</text>
+  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>cloud_mask</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>int8</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(163660,), meta=np.ndarray&gt;</div><input id='attrs-eb976c4d-2cff-4b6d-9588-b1bfcb742672' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-eb976c4d-2cff-4b6d-9588-b1bfcb742672' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1234335f-953b-45ae-9ff1-5221e88526ab' class='xr-var-data-in' type='checkbox'><label for='data-1234335f-953b-45ae-9ff1-5221e88526ab' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment1 :</span></dt><dd>The cloud flag is a rough conservative estimate of the presence of clouds based on the variability of the downward solar irradiance within a 20 second running window.</dd><dt><span>long_name :</span></dt><dd>Cloud flag for clouds in front of the Sun affecting the solar downward irradiance [0 = cloud free, 1 = cloudy]</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 319.65 kiB </td>
+                        <td> 159.82 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (327320,) </td>
+                        <td> (163660,) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 3 Tasks </td>
+                        <td> 2 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> int8 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
+  <line x1="60" y1="0" x2="60" y2="25" />
+  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >327320</text>
+  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lat</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(81830,), meta=np.ndarray&gt;</div><input id='attrs-403d86d1-cfa2-47c4-8c1a-b3ca6d0770eb' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-403d86d1-cfa2-47c4-8c1a-b3ca6d0770eb' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-afe53df8-8c87-45bf-976a-60e41010ac72' class='xr-var-data-in' type='checkbox'><label for='data-afe53df8-8c87-45bf-976a-60e41010ac72' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>latitude (WGS84 Datum/Latitude, BAHAMAS)</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 1.25 MiB </td>
+                        <td> 319.65 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (327320,) </td>
+                        <td> (81830,) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 5 Tasks </td>
+                        <td> 4 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
+  <line x1="30" y1="0" x2="30" y2="25" />
+  <line x1="60" y1="0" x2="60" y2="25" />
+  <line x1="90" y1="0" x2="90" y2="25" />
+  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >327320</text>
+  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lon</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(81830,), meta=np.ndarray&gt;</div><input id='attrs-4995ba15-eb18-44a9-8b89-20b752464933' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-4995ba15-eb18-44a9-8b89-20b752464933' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8ba3718e-1111-4e4d-a980-c4edd1ef2d0d' class='xr-var-data-in' type='checkbox'><label for='data-8ba3718e-1111-4e4d-a980-c4edd1ef2d0d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>longitude (WGS84 Datum/Longitude, BAHAMAS)</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degree_east</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 1.25 MiB </td>
+                        <td> 319.65 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (327320,) </td>
+                        <td> (81830,) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 5 Tasks </td>
+                        <td> 4 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
+  <line x1="30" y1="0" x2="30" y2="25" />
+  <line x1="60" y1="0" x2="60" y2="25" />
+  <line x1="90" y1="0" x2="90" y2="25" />
+  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >327320</text>
+  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>saa</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(81830,), meta=np.ndarray&gt;</div><input id='attrs-cb3e2996-9b50-4629-a967-2f1500bc7a94' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-cb3e2996-9b50-4629-a967-2f1500bc7a94' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-262e60b1-c265-48cd-a433-1910fde23aaa' class='xr-var-data-in' type='checkbox'><label for='data-262e60b1-c265-48cd-a433-1910fde23aaa' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>solar azimuth angle</dd><dt><span>standard_name :</span></dt><dd>solar_azimuth_angle</dd><dt><span>units :</span></dt><dd>degree</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 1.25 MiB </td>
+                        <td> 319.65 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (327320,) </td>
+                        <td> (81830,) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 5 Tasks </td>
+                        <td> 4 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
+  <line x1="30" y1="0" x2="30" y2="25" />
+  <line x1="60" y1="0" x2="60" y2="25" />
+  <line x1="90" y1="0" x2="90" y2="25" />
+  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >327320</text>
+  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>sza</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(81830,), meta=np.ndarray&gt;</div><input id='attrs-b7de990a-b2e0-445c-a317-3b4eae9a86f1' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-b7de990a-b2e0-445c-a317-3b4eae9a86f1' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-829b7949-efe1-4576-996d-d3a7510c0cff' class='xr-var-data-in' type='checkbox'><label for='data-829b7949-efe1-4576-996d-d3a7510c0cff' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>solar zenith angle</dd><dt><span>standard_name :</span></dt><dd>solar_zenith_angle</dd><dt><span>units :</span></dt><dd>degree</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 1.25 MiB </td>
+                        <td> 319.65 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (327320,) </td>
+                        <td> (81830,) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 5 Tasks </td>
+                        <td> 4 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
+  <line x1="30" y1="0" x2="30" y2="25" />
+  <line x1="60" y1="0" x2="60" y2="25" />
+  <line x1="90" y1="0" x2="90" y2="25" />
+  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >327320</text>
+  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-0ade8251-c636-4cfb-a29a-85a6082e88e3' class='xr-section-summary-in' type='checkbox'  checked><label for='section-0ade8251-c636-4cfb-a29a-85a6082e88e3' class='xr-section-summary' >Attributes: <span>(8)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>campaign :</span></dt><dd>EUREC4A</dd><dt><span>comment 1 :</span></dt><dd>BACARDI Raw data was processed by DLR, contact Andreas Giez</dd><dt><span>contact :</span></dt><dd>Andre Ehrlich, University Leipzig, a.ehrlich@uni-leipzig.de</dd><dt><span>instrument :</span></dt><dd>Broadband AirCrAft RaDiometer Instrumentation (BACARDI) </dd><dt><span>platform :</span></dt><dd>HALO</dd><dt><span>research_flight_day :</span></dt><dd>2020/02/05</dd><dt><span>title :</span></dt><dd>Broadband radiation mesured by BACARDI during EUREC4A</dd><dt><span>version :</span></dt><dd>Revision 1 from 2021/02/04</dd></dl></div></li></ul></div></div></div></div>
 </div>
 <p>The data from EUREC4A is of 10 Hz measurement frequency and corrected for dynamic temperature effects. For the downward solar irradiance, data are provided with and without aircraft attitude correction corresponding to cloud-free and cloudy conditions, respectively, above HALO.</p>
 </div>
@@ -934,8 +1688,8 @@ Attributes:
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="velox.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -952,19 +1706,17 @@ Attributes:
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By EUREC4A community<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By EUREC4A community<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

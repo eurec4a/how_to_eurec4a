@@ -38,11 +38,14 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -286,6 +289,11 @@
      The issue with netCDF data types
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="data_on_ipfs.html">
+     Data on IPFS
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1">
@@ -344,7 +352,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -380,7 +388,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -444,7 +452,74 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>running How to EUREC4A locally</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quick-and-dirty">
+   quick and dirty
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#via-git">
+   via git
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interactive">
+     interactive
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#compile-the-book">
+     compile the book
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#adding-new-articles">
+     adding new articles
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#text-articles">
+       text articles
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#executable-notebook">
+       executable notebook
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#entry-in-the-table-of-contents">
+       entry in the table of contents
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#compile-to-pdf">
+     compile to PDF
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="running-how-to-eurec4a-locally">
@@ -511,15 +586,15 @@ conda activate how_to_eurec4a
 <h2>via git<a class="headerlink" href="#via-git" title="Permalink to this headline">¶</a></h2>
 <p>If you like to do it more properly, you can also clone the repository via git. Depending on if you have SSH public key authentication set up or not, you can do this via SSH or HTTPS:</p>
 <div class="tabbed-set docutils">
-<input checked="checked" id="a56f3621-faa2-4d50-a72a-fd6df4b6404f" name="747b6ddc-bfd0-42fb-a8e3-ad1857ad18bf" type="radio">
-</input><label class="tabbed-label" for="a56f3621-faa2-4d50-a72a-fd6df4b6404f">
+<input checked="checked" id="4c9ec4c4-06f2-4caa-84fd-ef066d790b0d" name="6884979f-d5d9-4179-944c-4f523e680738" type="radio">
+</input><label class="tabbed-label" for="4c9ec4c4-06f2-4caa-84fd-ef066d790b0d">
 SSH</label><div class="tabbed-content docutils">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone git@github.com:eurec4a/how_to_eurec4a.git
 </pre></div>
 </div>
 </div>
-<input id="bf693a82-e711-4be1-abdf-02a73776b366" name="747b6ddc-bfd0-42fb-a8e3-ad1857ad18bf" type="radio">
-</input><label class="tabbed-label" for="bf693a82-e711-4be1-abdf-02a73776b366">
+<input id="9c878328-b785-4d27-92e1-6b7776cceac6" name="6884979f-d5d9-4179-944c-4f523e680738" type="radio">
+</input><label class="tabbed-label" for="9c878328-b785-4d27-92e1-6b7776cceac6">
 HTTPS</label><div class="tabbed-content docutils">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/eurec4a/how_to_eurec4a
 </pre></div>
@@ -687,8 +762,8 @@ To do so, just run:</p>
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="cloud_stat_tools.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -705,19 +780,17 @@ To do so, just run:</p>
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By EUREC4A community<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By EUREC4A community<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

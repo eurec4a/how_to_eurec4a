@@ -38,11 +38,14 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -286,6 +289,11 @@
      The issue with netCDF data types
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="data_on_ipfs.html">
+     Data on IPFS
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1">
@@ -347,7 +355,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -403,7 +411,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -450,7 +458,57 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>VELOX</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#get-data">
+   Get data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-does-the-velox-image-look-like-at-a-specific-dropsonde-launch">
+   What does the VELOX image look like at a specific dropsonde launch?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#get-dropsonde-id">
+     Get dropsonde ID
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-the-corresponding-launch-time-of-the-selected-sonde">
+     What is the corresponding launch time of the selected sonde?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cloud-mask-plot">
+     Cloud mask plot
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cloud-fraction-time-series-from-the-second-circle-on-february-5">
+   Cloud fraction time series from the second circle on February 5
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="velox">
@@ -482,7 +540,7 @@
 Currently, there is a cloud mask product available.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">=</span> <span class="n">eurec4a</span><span class="o">.</span><span class="n">get_intake_catalog</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">=</span> <span class="n">eurec4a</span><span class="o">.</span><span class="n">get_intake_catalog</span><span class="p">(</span><span class="n">use_ipfs</span><span class="o">=</span><span class="s2">&quot;QmahMN2wgPauHYkkiTGoG2TpPBmj3p5FoYJAq9uE9iXT9N&quot;</span><span class="p">)</span>
 <span class="nb">list</span><span class="p">(</span><span class="n">cat</span><span class="o">.</span><span class="n">HALO</span><span class="o">.</span><span class="n">VELOX</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -544,7 +602,7 @@ body.vscode-dark {
 }
 
 .xr-wrap {
-  display: block;
+  display: block !important;
   min-width: 300px;
   max-width: 700px;
 }
@@ -855,39 +913,591 @@ dl.xr-attrs {
 </style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt;
 Dimensions:     (time: 29894, y: 512, x: 640)
 Coordinates:
+    alt         (time) float32 dask.array&lt;chunksize=(29894,), meta=np.ndarray&gt;
+    lat         (time) float32 dask.array&lt;chunksize=(29894,), meta=np.ndarray&gt;
+    lon         (time) float32 dask.array&lt;chunksize=(29894,), meta=np.ndarray&gt;
   * time        (time) datetime64[ns] 2020-02-05T09:21:46 ... 2020-02-05T18:0...
-    lat         (time) float32 13.12 13.12 13.12 13.12 ... 12.92 12.92 12.92
-    lon         (time) float32 -59.11 -59.11 -59.1 ... -59.21 -59.21 -59.21
-    alt         (time) float32 4.293e+03 4.303e+03 ... 4.057e+03 4.046e+03
 Dimensions without coordinates: y, x
 Data variables:
-    vza         (y, x) float32 ...
-    vaa         (y, x) float32 ...
-    cloud_mask  (y, x, time) int8 ...
-    CF_min      (time) float32 0.2208 0.3052 0.3982 ... 0.02369 0.0296 0.03152
-    CF_max      (time) float32 0.5016 0.581 0.6464 0.6987 ... 0.1081 0.115 0.108
+    CF_max      (time) float32 dask.array&lt;chunksize=(29894,), meta=np.ndarray&gt;
+    CF_min      (time) float32 dask.array&lt;chunksize=(29894,), meta=np.ndarray&gt;
+    cloud_mask  (y, x, time) int8 dask.array&lt;chunksize=(32, 40, 3737), meta=np.ndarray&gt;
+    vaa         (y, x) float32 dask.array&lt;chunksize=(256, 320), meta=np.ndarray&gt;
+    vza         (y, x) float32 dask.array&lt;chunksize=(256, 320), meta=np.ndarray&gt;
 Attributes: (12/22)
-    title:                Two-dimensional cloud mask and cloud fraction with ...
-    research_flight_day:  20200205
-    version:              Version 3 from 2021-02-12
+    Conventions:          &quot;CF-1.8&quot;
+    author:               Michael Schäfer, André Ehrlich, Anna Luebke, Jakob ...
+    campaign:             EUREC4A
     comment_1:            The cloud mask is derived with 1 Hz temporal resolu...
     comment_2:            Four different thresholds (0.5 K, 1.0 K, 1.5 K, and...
     comment_3:            The final cloud mask logically combines the differe...
     ...                   ...
+    platform:             HALO
+    research_flight_day:  20200205
     source:               Airborne imaging with the VELOX system
-    institution:          University of Leipzig, Leipzig Institute for Meteor...
-    author:               Michael Schäfer, André Ehrlich, Anna Luebke, Jakob ...
-    history:              2021-02-06 flag_values, flag_meanings, and comments...
-    created_on:           2021-02-12
-    Conventions:          &quot;CF-1.8&quot;</pre><div class='xr-wrap' hidden><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-76c52742-588e-4ce2-be73-4751473cc45a' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-76c52742-588e-4ce2-be73-4751473cc45a' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 29894</li><li><span>y</span>: 512</li><li><span>x</span>: 640</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-f1ed1d4e-ff5f-4453-9fec-037bdbb5797a' class='xr-section-summary-in' type='checkbox'  checked><label for='section-f1ed1d4e-ff5f-4453-9fec-037bdbb5797a' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2020-02-05T09:21:46 ... 2020-02-...</div><input id='attrs-fd4877ad-2d5c-4b17-932a-4c9d6b9d534e' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-fd4877ad-2d5c-4b17-932a-4c9d6b9d534e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d4bb9ffd-eb21-45d9-b284-9ccda27c944f' class='xr-var-data-in' type='checkbox'><label for='data-d4bb9ffd-eb21-45d9-b284-9ccda27c944f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>time</dd><dt><span>_ChunkSizes :</span></dt><dd>29894</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;2020-02-05T09:21:46.000000000&#x27;, &#x27;2020-02-05T09:21:47.000000000&#x27;,
+    title:                Two-dimensional cloud mask and cloud fraction with ...
+    variable:             cloud_mask, CF_min, CF_max
+    version:              Version 3 from 2021-02-12</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-37adc243-ed9c-4bdb-bf46-589b8c33f99c' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-37adc243-ed9c-4bdb-bf46-589b8c33f99c' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 29894</li><li><span>y</span>: 512</li><li><span>x</span>: 640</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-afe63b13-02ac-4201-a7d4-ce051f500b9f' class='xr-section-summary-in' type='checkbox'  checked><label for='section-afe63b13-02ac-4201-a7d4-ce051f500b9f' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>alt</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(29894,), meta=np.ndarray&gt;</div><input id='attrs-c1c47c87-8f79-4805-869b-aba6873e6674' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c1c47c87-8f79-4805-869b-aba6873e6674' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b574fe8d-1e60-418b-be44-a2372c607ffd' class='xr-var-data-in' type='checkbox'><label for='data-b574fe8d-1e60-418b-be44-a2372c607ffd' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Platform altitude coordinate</dd><dt><span>long_name :</span></dt><dd>altitude</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 116.77 kiB </td>
+                        <td> 116.77 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (29894,) </td>
+                        <td> (29894,) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 2 Tasks </td>
+                        <td> 1 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
+  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >29894</text>
+  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lat</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(29894,), meta=np.ndarray&gt;</div><input id='attrs-de224609-f1e5-4925-851a-e051963d0b54' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-de224609-f1e5-4925-851a-e051963d0b54' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-622bbaab-6605-47d2-bc0f-56c1dd6ed59d' class='xr-var-data-in' type='checkbox'><label for='data-622bbaab-6605-47d2-bc0f-56c1dd6ed59d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Platform latitude coordinate</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 116.77 kiB </td>
+                        <td> 116.77 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (29894,) </td>
+                        <td> (29894,) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 2 Tasks </td>
+                        <td> 1 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
+  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >29894</text>
+  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lon</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(29894,), meta=np.ndarray&gt;</div><input id='attrs-6bd4631c-434b-405b-9dd2-00009445f03d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-6bd4631c-434b-405b-9dd2-00009445f03d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b5f0b2f3-c67d-43f5-b4c2-e7fc55eb53d6' class='xr-var-data-in' type='checkbox'><label for='data-b5f0b2f3-c67d-43f5-b4c2-e7fc55eb53d6' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Platform longitude coordinate</dd><dt><span>long_name :</span></dt><dd>longitude</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 116.77 kiB </td>
+                        <td> 116.77 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (29894,) </td>
+                        <td> (29894,) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 2 Tasks </td>
+                        <td> 1 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
+  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >29894</text>
+  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2020-02-05T09:21:46 ... 2020-02-...</div><input id='attrs-a63ec446-c19e-4e5d-b69a-e810e5709078' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-a63ec446-c19e-4e5d-b69a-e810e5709078' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-2630815a-1938-4e53-aacc-13ec4c84d75a' class='xr-var-data-in' type='checkbox'><label for='data-2630815a-1938-4e53-aacc-13ec4c84d75a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>time</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;2020-02-05T09:21:46.000000000&#x27;, &#x27;2020-02-05T09:21:47.000000000&#x27;,
        &#x27;2020-02-05T09:21:48.000000000&#x27;, ..., &#x27;2020-02-05T18:08:26.000000000&#x27;,
        &#x27;2020-02-05T18:08:27.000000000&#x27;, &#x27;2020-02-05T18:08:28.000000000&#x27;],
-      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lat</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-61a235c4-1104-4817-bbfa-5e547aee205c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-61a235c4-1104-4817-bbfa-5e547aee205c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-067e214b-bfcc-4c70-8c18-a7c6652ed743' class='xr-var-data-in' type='checkbox'><label for='data-067e214b-bfcc-4c70-8c18-a7c6652ed743' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>description :</span></dt><dd>Platform latitude coordinate</dd><dt><span>_ChunkSizes :</span></dt><dd>29894</dd></dl></div><div class='xr-var-data'><pre>array([13.124009, 13.124204, 13.124382, ..., 12.918505, 12.918467, 12.918427],
-      dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lon</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-1d57656c-564a-4909-bdb2-20b8593a503c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-1d57656c-564a-4909-bdb2-20b8593a503c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0243caa1-212b-46d2-8805-0dfd389f6331' class='xr-var-data-in' type='checkbox'><label for='data-0243caa1-212b-46d2-8805-0dfd389f6331' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>description :</span></dt><dd>Platform longitude coordinate</dd><dt><span>_ChunkSizes :</span></dt><dd>29894</dd></dl></div><div class='xr-var-data'><pre>array([-59.107395, -59.10592 , -59.10457 , ..., -59.212208, -59.21346 ,
-       -59.21478 ], dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>alt</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-adde2515-cb26-453c-88fe-e6df7ca98f51' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-adde2515-cb26-453c-88fe-e6df7ca98f51' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d1085eb9-2f46-4922-95f8-d0effb7fdc5c' class='xr-var-data-in' type='checkbox'><label for='data-d1085eb9-2f46-4922-95f8-d0effb7fdc5c' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>altitude</dd><dt><span>units :</span></dt><dd>m</dd><dt><span>description :</span></dt><dd>Platform altitude coordinate</dd><dt><span>_ChunkSizes :</span></dt><dd>29894</dd></dl></div><div class='xr-var-data'><pre>array([4293.22  , 4302.553 , 4310.9165, ..., 4067.645 , 4057.247 , 4046.3904],
-      dtype=float32)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-752c01d8-ec78-4234-beef-7eb401c33889' class='xr-section-summary-in' type='checkbox'  checked><label for='section-752c01d8-ec78-4234-beef-7eb401c33889' class='xr-section-summary' >Data variables: <span>(5)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>vza</span></div><div class='xr-var-dims'>(y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-13e65eae-650b-482d-9746-0c8aa91b74e3' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-13e65eae-650b-482d-9746-0c8aa91b74e3' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-126af6ce-820a-4823-88ef-d7ce649e9ae2' class='xr-var-data-in' type='checkbox'><label for='data-126af6ce-820a-4823-88ef-d7ce649e9ae2' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Viewing sensor zenith angle</dd><dt><span>units :</span></dt><dd>degree</dd><dt><span>description :</span></dt><dd>Angle between the line of sight and the viewing direction of each spatial pixel of the sensor.</dd><dt><span>_ChunkSizes :</span></dt><dd>[512 640]</dd></dl></div><div class='xr-var-data'><pre>[327680 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>vaa</span></div><div class='xr-var-dims'>(y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-cb3938d0-76d1-45ab-bd92-81ef83c1cc90' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-cb3938d0-76d1-45ab-bd92-81ef83c1cc90' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8063a70f-2875-42de-b54a-abea9ea030e6' class='xr-var-data-in' type='checkbox'><label for='data-8063a70f-2875-42de-b54a-abea9ea030e6' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Viewing sensor azimuth angle</dd><dt><span>units :</span></dt><dd>degree</dd><dt><span>description :</span></dt><dd>Camera viewing azimuth angle of each spatial pixel, mathematic negative system with 0° into flight direction, clockwise.</dd><dt><span>_ChunkSizes :</span></dt><dd>[512 640]</dd></dl></div><div class='xr-var-data'><pre>[327680 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>cloud_mask</span></div><div class='xr-var-dims'>(y, x, time)</div><div class='xr-var-dtype'>int8</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-86d9c5c4-61ab-47c8-b8bf-26cf57888676' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-86d9c5c4-61ab-47c8-b8bf-26cf57888676' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f011c51b-17c1-438a-997d-71fb9782dc59' class='xr-var-data-in' type='checkbox'><label for='data-f011c51b-17c1-438a-997d-71fb9782dc59' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>flag_values :</span></dt><dd>[-1  0  1  2]</dd><dt><span>flag_meanings :</span></dt><dd>unknown cloud_free probably_cloudy most_likely_cloudy</dd><dt><span>description :</span></dt><dd>Cloud mask derived by comparing the measured brightness temperature with the brightness temperature in a clear-sky assumption using the four thresholds of 0.5 K, 1.0 K, 1.5 K, and 2.0 K. If all thresholds are exceeded, the measurement is denoted as &quot;most_likely_cloudy&quot;, if only one of the thresholds is exceeded, the measurement is denoted as &quot;probably_cloudy&quot;. &quot;cloud_free&quot; is classified when no threshold is reached. &quot;unknown&quot; is classified when no estimation of the cloud mask was possible, e.g. due to condensation on the window.</dd><dt><span>long_name :</span></dt><dd>cloud flag</dd><dt><span>_ChunkSizes :</span></dt><dd>[  37   46 2136]</dd></dl></div><div class='xr-var-data'><pre>[9795665920 values with dtype=int8]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>CF_min</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-5619eba6-91b7-44e6-9c1c-d3612c3541f5' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-5619eba6-91b7-44e6-9c1c-d3612c3541f5' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-6888d2ba-a1a4-4d44-8089-e39c6eb95cb5' class='xr-var-data-in' type='checkbox'><label for='data-6888d2ba-a1a4-4d44-8089-e39c6eb95cb5' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Minimal cloud fraction</dd><dt><span>description :</span></dt><dd>Minimal possible cloud fraction derived from the ratio between the number of pixels classified with a cloud mask value of &quot;2b&quot; and the total number of usable pixels in the image.</dd><dt><span>_ChunkSizes :</span></dt><dd>29894</dd></dl></div><div class='xr-var-data'><pre>array([0.220755, 0.305246, 0.398218, ..., 0.023688, 0.029602, 0.031522],
-      dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>CF_max</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-94b3fc49-8627-4f4c-8f8c-b0edc51c85d5' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-94b3fc49-8627-4f4c-8f8c-b0edc51c85d5' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ce4a1db7-a2a4-4d00-9524-c736106a0cce' class='xr-var-data-in' type='checkbox'><label for='data-ce4a1db7-a2a4-4d00-9524-c736106a0cce' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Maximal cloud fraction</dd><dt><span>description :</span></dt><dd>Maximal possible cloud fraction derived from the ratio between the number of pixels classified with cloud mask values of &quot;1b&quot; and &quot;2b&quot; and the total number of usable pixels in the image.</dd><dt><span>_ChunkSizes :</span></dt><dd>29894</dd></dl></div><div class='xr-var-data'><pre>array([0.501639, 0.581049, 0.646381, ..., 0.108105, 0.114993, 0.107956],
-      dtype=float32)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-4e2afcfc-421d-4bb0-a114-5abe8617c04e' class='xr-section-summary-in' type='checkbox'  ><label for='section-4e2afcfc-421d-4bb0-a114-5abe8617c04e' class='xr-section-summary' >Attributes: <span>(22)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>title :</span></dt><dd>Two-dimensional cloud mask and cloud fraction with 1 Hz temporal resolution derived from VELOX during the EUREC4A field campaign.</dd><dt><span>research_flight_day :</span></dt><dd>20200205</dd><dt><span>version :</span></dt><dd>Version 3 from 2021-02-12</dd><dt><span>comment_1 :</span></dt><dd>The cloud mask is derived with 1 Hz temporal resolution from the broadband channel of VELOX by comparing the measured brightness temperature with simulations assuming cloud-free conditions.</dd><dt><span>comment_2 :</span></dt><dd>Four different thresholds (0.5 K, 1.0 K, 1.5 K, and 2.0 K) for the difference between measurements and simulations are applied.</dd><dt><span>comment_3 :</span></dt><dd>The final cloud mask logically combines the different thresholds for each spatial pixel and each time step.</dd><dt><span>comment_4 :</span></dt><dd>If all thresholds are exceeded, the measurement is denoted as &quot;most_likely_cloudy&quot;, if only one of the thresholds is exceeded, the measurement is denoted as &quot;probably_cloudy&quot;. &quot;cloud_free&quot; is classified when no threshold is reached. &quot;unknown&quot; is classified when no estimation of the cloud mask was possible, e.g. due to condensation on the window.</dd><dt><span>comment_5 :</span></dt><dd>Due to possible condensation at the instrument window during the ascent, some data in the beginning of the flight might be not usable. Such data points are classified as &quot;-1b, unknown&quot;.</dd><dt><span>comment_6 :</span></dt><dd>Flight direction is towards positive y-direction of the image</dd><dt><span>comment_7 :</span></dt><dd>Thermal infrared imager information: focal length: 15 mm, image size: 640 x 512 pixels, detector size: 9.60 mm x 7.68 mm, FOV: 35.49° x 28.71°</dd><dt><span>contact_1 :</span></dt><dd>Michael Schäfer, University Leipzig, michael.schaefer@uni-leipzig.de</dd><dt><span>contact_2 :</span></dt><dd>André Ehrlich, University Leipzig, a.ehrlich@uni-leipzig.de</dd><dt><span>platform :</span></dt><dd>HALO</dd><dt><span>campaign :</span></dt><dd>EUREC4A</dd><dt><span>variable :</span></dt><dd>cloud_mask, CF_min, CF_max</dd><dt><span>instrument :</span></dt><dd>VELOX</dd><dt><span>source :</span></dt><dd>Airborne imaging with the VELOX system</dd><dt><span>institution :</span></dt><dd>University of Leipzig, Leipzig Institute for Meteorology</dd><dt><span>author :</span></dt><dd>Michael Schäfer, André Ehrlich, Anna Luebke, Jakob Thoböll, Kevin Wolf, Manfred Wendisch</dd><dt><span>history :</span></dt><dd>2021-02-06 flag_values, flag_meanings, and comments adapted to unified EUREC4A convention, 2021-02-12 vaa and vza included, descriptions updated, cloud_fraction as byte, alt lon lat source changed from SMART INS to BAHAMAS INS, minor changes</dd><dt><span>created_on :</span></dt><dd>2021-02-12</dd><dt><span>Conventions :</span></dt><dd>&quot;CF-1.8&quot;</dd></dl></div></li></ul></div></div></div></div>
+      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-64b43864-c34d-41c6-9d89-1afca69391a2' class='xr-section-summary-in' type='checkbox'  checked><label for='section-64b43864-c34d-41c6-9d89-1afca69391a2' class='xr-section-summary' >Data variables: <span>(5)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>CF_max</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(29894,), meta=np.ndarray&gt;</div><input id='attrs-fbbe422c-05b9-46a0-b90e-59c57468bbfa' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-fbbe422c-05b9-46a0-b90e-59c57468bbfa' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c158bc76-4127-45d0-8956-b8b4d8eca8fa' class='xr-var-data-in' type='checkbox'><label for='data-c158bc76-4127-45d0-8956-b8b4d8eca8fa' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Maximal possible cloud fraction derived from the ratio between the number of pixels classified with cloud mask values of &quot;1b&quot; and &quot;2b&quot; and the total number of usable pixels in the image.</dd><dt><span>long_name :</span></dt><dd>Maximal cloud fraction</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 116.77 kiB </td>
+                        <td> 116.77 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (29894,) </td>
+                        <td> (29894,) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 2 Tasks </td>
+                        <td> 1 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
+  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >29894</text>
+  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>CF_min</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(29894,), meta=np.ndarray&gt;</div><input id='attrs-6a92a0e2-8599-46ba-8561-d5c244ced258' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-6a92a0e2-8599-46ba-8561-d5c244ced258' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ab4082bb-84d0-4a50-864a-d987f9a61168' class='xr-var-data-in' type='checkbox'><label for='data-ab4082bb-84d0-4a50-864a-d987f9a61168' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Minimal possible cloud fraction derived from the ratio between the number of pixels classified with a cloud mask value of &quot;2b&quot; and the total number of usable pixels in the image.</dd><dt><span>long_name :</span></dt><dd>Minimal cloud fraction</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 116.77 kiB </td>
+                        <td> 116.77 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (29894,) </td>
+                        <td> (29894,) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 2 Tasks </td>
+                        <td> 1 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
+  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >29894</text>
+  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>cloud_mask</span></div><div class='xr-var-dims'>(y, x, time)</div><div class='xr-var-dtype'>int8</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(32, 40, 3737), meta=np.ndarray&gt;</div><input id='attrs-99af9b9f-57c7-4be9-900c-30ed64ee771e' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-99af9b9f-57c7-4be9-900c-30ed64ee771e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e4db176e-dadf-4170-8cd3-abaa8980220a' class='xr-var-data-in' type='checkbox'><label for='data-e4db176e-dadf-4170-8cd3-abaa8980220a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Cloud mask derived by comparing the measured brightness temperature with the brightness temperature in a clear-sky assumption using the four thresholds of 0.5 K, 1.0 K, 1.5 K, and 2.0 K. If all thresholds are exceeded, the measurement is denoted as &quot;most_likely_cloudy&quot;, if only one of the thresholds is exceeded, the measurement is denoted as &quot;probably_cloudy&quot;. &quot;cloud_free&quot; is classified when no threshold is reached. &quot;unknown&quot; is classified when no estimation of the cloud mask was possible, e.g. due to condensation on the window.</dd><dt><span>flag_meanings :</span></dt><dd>unknown cloud_free probably_cloudy most_likely_cloudy</dd><dt><span>flag_values :</span></dt><dd>[-1, 0, 1, 2]</dd><dt><span>long_name :</span></dt><dd>cloud flag</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 9.12 GiB </td>
+                        <td> 4.56 MiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (512, 640, 29894) </td>
+                        <td> (32, 40, 3737) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 2049 Tasks </td>
+                        <td> 2048 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> int8 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="196" height="95" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="10" y1="0" x2="26" y2="16" style="stroke-width:2" />
+  <line x1="10" y1="1" x2="26" y2="18" />
+  <line x1="10" y1="3" x2="26" y2="20" />
+  <line x1="10" y1="5" x2="26" y2="22" />
+  <line x1="10" y1="7" x2="26" y2="23" />
+  <line x1="10" y1="9" x2="26" y2="25" />
+  <line x1="10" y1="11" x2="26" y2="27" />
+  <line x1="10" y1="12" x2="26" y2="29" />
+  <line x1="10" y1="14" x2="26" y2="31" />
+  <line x1="10" y1="16" x2="26" y2="33" />
+  <line x1="10" y1="18" x2="26" y2="34" />
+  <line x1="10" y1="20" x2="26" y2="36" />
+  <line x1="10" y1="22" x2="26" y2="38" />
+  <line x1="10" y1="23" x2="26" y2="40" />
+  <line x1="10" y1="25" x2="26" y2="42" />
+  <line x1="10" y1="27" x2="26" y2="44" />
+  <line x1="10" y1="29" x2="26" y2="45" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="10" y1="0" x2="10" y2="29" style="stroke-width:2" />
+  <line x1="11" y1="1" x2="11" y2="30" />
+  <line x1="12" y1="2" x2="12" y2="31" />
+  <line x1="13" y1="3" x2="13" y2="32" />
+  <line x1="14" y1="4" x2="14" y2="33" />
+  <line x1="15" y1="5" x2="15" y2="34" />
+  <line x1="16" y1="6" x2="16" y2="35" />
+  <line x1="17" y1="7" x2="17" y2="36" />
+  <line x1="18" y1="8" x2="18" y2="37" />
+  <line x1="19" y1="9" x2="19" y2="38" />
+  <line x1="20" y1="10" x2="20" y2="39" />
+  <line x1="21" y1="11" x2="21" y2="40" />
+  <line x1="22" y1="12" x2="22" y2="41" />
+  <line x1="23" y1="13" x2="23" y2="42" />
+  <line x1="24" y1="14" x2="24" y2="43" />
+  <line x1="25" y1="15" x2="25" y2="44" />
+  <line x1="26" y1="16" x2="26" y2="45" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="10.0,0.0 26.571286550379966,16.571286550379966 26.571286550379966,45.98745256882368 10.0,29.41616601844371" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Horizontal lines -->
+  <line x1="10" y1="0" x2="130" y2="0" style="stroke-width:2" />
+  <line x1="11" y1="1" x2="131" y2="1" />
+  <line x1="12" y1="2" x2="132" y2="2" />
+  <line x1="13" y1="3" x2="133" y2="3" />
+  <line x1="14" y1="4" x2="134" y2="4" />
+  <line x1="15" y1="5" x2="135" y2="5" />
+  <line x1="16" y1="6" x2="136" y2="6" />
+  <line x1="17" y1="7" x2="137" y2="7" />
+  <line x1="18" y1="8" x2="138" y2="8" />
+  <line x1="19" y1="9" x2="139" y2="9" />
+  <line x1="20" y1="10" x2="140" y2="10" />
+  <line x1="21" y1="11" x2="141" y2="11" />
+  <line x1="22" y1="12" x2="142" y2="12" />
+  <line x1="23" y1="13" x2="143" y2="13" />
+  <line x1="24" y1="14" x2="144" y2="14" />
+  <line x1="25" y1="15" x2="145" y2="15" />
+  <line x1="26" y1="16" x2="146" y2="16" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="10" y1="0" x2="26" y2="16" style="stroke-width:2" />
+  <line x1="25" y1="0" x2="41" y2="16" />
+  <line x1="40" y1="0" x2="56" y2="16" />
+  <line x1="55" y1="0" x2="71" y2="16" />
+  <line x1="70" y1="0" x2="86" y2="16" />
+  <line x1="85" y1="0" x2="101" y2="16" />
+  <line x1="100" y1="0" x2="116" y2="16" />
+  <line x1="115" y1="0" x2="131" y2="16" />
+  <line x1="130" y1="0" x2="146" y2="16" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="10.0,0.0 130.0,0.0 146.57128655037997,16.571286550379966 26.571286550379966,16.571286550379966" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Horizontal lines -->
+  <line x1="26" y1="16" x2="146" y2="16" style="stroke-width:2" />
+  <line x1="26" y1="18" x2="146" y2="18" />
+  <line x1="26" y1="20" x2="146" y2="20" />
+  <line x1="26" y1="22" x2="146" y2="22" />
+  <line x1="26" y1="23" x2="146" y2="23" />
+  <line x1="26" y1="25" x2="146" y2="25" />
+  <line x1="26" y1="27" x2="146" y2="27" />
+  <line x1="26" y1="29" x2="146" y2="29" />
+  <line x1="26" y1="31" x2="146" y2="31" />
+  <line x1="26" y1="33" x2="146" y2="33" />
+  <line x1="26" y1="34" x2="146" y2="34" />
+  <line x1="26" y1="36" x2="146" y2="36" />
+  <line x1="26" y1="38" x2="146" y2="38" />
+  <line x1="26" y1="40" x2="146" y2="40" />
+  <line x1="26" y1="42" x2="146" y2="42" />
+  <line x1="26" y1="44" x2="146" y2="44" />
+  <line x1="26" y1="45" x2="146" y2="45" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="26" y1="16" x2="26" y2="45" style="stroke-width:2" />
+  <line x1="41" y1="16" x2="41" y2="45" />
+  <line x1="56" y1="16" x2="56" y2="45" />
+  <line x1="71" y1="16" x2="71" y2="45" />
+  <line x1="86" y1="16" x2="86" y2="45" />
+  <line x1="101" y1="16" x2="101" y2="45" />
+  <line x1="116" y1="16" x2="116" y2="45" />
+  <line x1="131" y1="16" x2="131" y2="45" />
+  <line x1="146" y1="16" x2="146" y2="45" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="26.571286550379966,16.571286550379966 146.57128655037997,16.571286550379966 146.57128655037997,45.98745256882368 26.571286550379966,45.98745256882368" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="86.571287" y="65.987453" font-size="1.0rem" font-weight="100" text-anchor="middle" >29894</text>
+  <text x="166.571287" y="31.279370" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,166.571287,31.279370)">640</text>
+  <text x="8.285643" y="57.701809" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(45,8.285643,57.701809)">512</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>vaa</span></div><div class='xr-var-dims'>(y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(256, 320), meta=np.ndarray&gt;</div><input id='attrs-f6ad52f3-5388-4425-a7b5-a0523fb9677b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-f6ad52f3-5388-4425-a7b5-a0523fb9677b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0d88065d-96d9-47d8-b66e-2ed34d6cd92b' class='xr-var-data-in' type='checkbox'><label for='data-0d88065d-96d9-47d8-b66e-2ed34d6cd92b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Camera viewing azimuth angle of each spatial pixel, mathematic negative system with 0° into flight direction, clockwise.</dd><dt><span>long_name :</span></dt><dd>Viewing sensor azimuth angle</dd><dt><span>units :</span></dt><dd>degree</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 1.25 MiB </td>
+                        <td> 320.00 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (512, 640) </td>
+                        <td> (256, 320) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 5 Tasks </td>
+                        <td> 4 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="170" height="146" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="48" x2="120" y2="48" />
+  <line x1="0" y1="96" x2="120" y2="96" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="96" style="stroke-width:2" />
+  <line x1="60" y1="0" x2="60" y2="96" />
+  <line x1="120" y1="0" x2="120" y2="96" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,96.0 0.0,96.0" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="116.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >640</text>
+  <text x="140.000000" y="48.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,140.000000,48.000000)">512</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>vza</span></div><div class='xr-var-dims'>(y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(256, 320), meta=np.ndarray&gt;</div><input id='attrs-e32c4eac-e454-49df-964f-73ba7c44754b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e32c4eac-e454-49df-964f-73ba7c44754b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-880622ec-b5aa-40b6-b950-e024a74de48e' class='xr-var-data-in' type='checkbox'><label for='data-880622ec-b5aa-40b6-b950-e024a74de48e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Angle between the line of sight and the viewing direction of each spatial pixel of the sensor.</dd><dt><span>long_name :</span></dt><dd>Viewing sensor zenith angle</dd><dt><span>units :</span></dt><dd>degree</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 1.25 MiB </td>
+                        <td> 320.00 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (512, 640) </td>
+                        <td> (256, 320) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 5 Tasks </td>
+                        <td> 4 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="170" height="146" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="48" x2="120" y2="48" />
+  <line x1="0" y1="96" x2="120" y2="96" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="96" style="stroke-width:2" />
+  <line x1="60" y1="0" x2="60" y2="96" />
+  <line x1="120" y1="0" x2="120" y2="96" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,96.0 0.0,96.0" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="116.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >640</text>
+  <text x="140.000000" y="48.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,140.000000,48.000000)">512</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-7abc1f71-f0bf-49cb-b216-5bcef92b043d' class='xr-section-summary-in' type='checkbox'  ><label for='section-7abc1f71-f0bf-49cb-b216-5bcef92b043d' class='xr-section-summary' >Attributes: <span>(22)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>Conventions :</span></dt><dd>&quot;CF-1.8&quot;</dd><dt><span>author :</span></dt><dd>Michael Schäfer, André Ehrlich, Anna Luebke, Jakob Thoböll, Kevin Wolf, Manfred Wendisch</dd><dt><span>campaign :</span></dt><dd>EUREC4A</dd><dt><span>comment_1 :</span></dt><dd>The cloud mask is derived with 1 Hz temporal resolution from the broadband channel of VELOX by comparing the measured brightness temperature with simulations assuming cloud-free conditions.</dd><dt><span>comment_2 :</span></dt><dd>Four different thresholds (0.5 K, 1.0 K, 1.5 K, and 2.0 K) for the difference between measurements and simulations are applied.</dd><dt><span>comment_3 :</span></dt><dd>The final cloud mask logically combines the different thresholds for each spatial pixel and each time step.</dd><dt><span>comment_4 :</span></dt><dd>If all thresholds are exceeded, the measurement is denoted as &quot;most_likely_cloudy&quot;, if only one of the thresholds is exceeded, the measurement is denoted as &quot;probably_cloudy&quot;. &quot;cloud_free&quot; is classified when no threshold is reached. &quot;unknown&quot; is classified when no estimation of the cloud mask was possible, e.g. due to condensation on the window.</dd><dt><span>comment_5 :</span></dt><dd>Due to possible condensation at the instrument window during the ascent, some data in the beginning of the flight might be not usable. Such data points are classified as &quot;-1b, unknown&quot;.</dd><dt><span>comment_6 :</span></dt><dd>Flight direction is towards positive y-direction of the image</dd><dt><span>comment_7 :</span></dt><dd>Thermal infrared imager information: focal length: 15 mm, image size: 640 x 512 pixels, detector size: 9.60 mm x 7.68 mm, FOV: 35.49° x 28.71°</dd><dt><span>contact_1 :</span></dt><dd>Michael Schäfer, University Leipzig, michael.schaefer@uni-leipzig.de</dd><dt><span>contact_2 :</span></dt><dd>André Ehrlich, University Leipzig, a.ehrlich@uni-leipzig.de</dd><dt><span>created_on :</span></dt><dd>2021-02-12</dd><dt><span>history :</span></dt><dd>2021-02-06 flag_values, flag_meanings, and comments adapted to unified EUREC4A convention, 2021-02-12 vaa and vza included, descriptions updated, cloud_fraction as byte, alt lon lat source changed from SMART INS to BAHAMAS INS, minor changes</dd><dt><span>institution :</span></dt><dd>University of Leipzig, Leipzig Institute for Meteorology</dd><dt><span>instrument :</span></dt><dd>VELOX</dd><dt><span>platform :</span></dt><dd>HALO</dd><dt><span>research_flight_day :</span></dt><dd>20200205</dd><dt><span>source :</span></dt><dd>Airborne imaging with the VELOX system</dd><dt><span>title :</span></dt><dd>Two-dimensional cloud mask and cloud fraction with 1 Hz temporal resolution derived from VELOX during the EUREC4A field campaign.</dd><dt><span>variable :</span></dt><dd>cloud_mask, CF_min, CF_max</dd><dt><span>version :</span></dt><dd>Version 3 from 2021-02-12</dd></dl></div></li></ul></div></div></div></div>
 </div>
 </div>
 <div class="section" id="what-does-the-velox-image-look-like-at-a-specific-dropsonde-launch">
@@ -1092,8 +1702,8 @@ Image maximum cloud fraction (most likely and probably cloudy) :0.09
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="smart.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1110,19 +1720,17 @@ Image maximum cloud fraction (most likely and probably cloudy) :0.09
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By EUREC4A community<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By EUREC4A community<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

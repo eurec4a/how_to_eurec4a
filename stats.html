@@ -38,11 +38,14 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -285,6 +288,11 @@
      The issue with netCDF data types
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="data_on_ipfs.html">
+     Data on IPFS
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1">
@@ -343,7 +351,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -379,14 +387,24 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
         </div>
     </div>
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Script execution statistics</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="script-execution-statistics">
@@ -402,123 +420,129 @@
 </thead>
 <tbody>
 <tr class="row-even"><td><p>bacardi</p></td>
-<td><p>2021-12-01 13:53</p></td>
+<td><p>2022-02-17 22:08</p></td>
 <td><p>force</p></td>
-<td><p>26.11</p></td>
+<td><p>20.66</p></td>
 <td><p>✅</p></td>
 </tr>
 <tr class="row-odd"><td><p>cloud_stat_tools</p></td>
-<td><p>2021-12-01 13:53</p></td>
+<td><p>2022-02-17 22:08</p></td>
 <td><p>force</p></td>
-<td><p>5.02</p></td>
+<td><p>3.61</p></td>
 <td><p>✅</p></td>
 </tr>
 <tr class="row-even"><td><p>cloudmasks</p></td>
-<td><p>2021-12-01 14:00</p></td>
+<td><p>2022-02-17 22:10</p></td>
 <td><p>force</p></td>
-<td><p>461.17</p></td>
-<td><p>❌</p></td>
-</tr>
-<tr class="row-odd"><td><p>dropsondes</p></td>
-<td><p>2021-12-01 14:01</p></td>
-<td><p>force</p></td>
-<td><p>10.02</p></td>
+<td><p>145.97</p></td>
 <td><p>✅</p></td>
 </tr>
-<tr class="row-even"><td><p>flight-phase-operations</p></td>
-<td><p>2021-12-01 14:01</p></td>
+<tr class="row-odd"><td><p>data_on_ipfs</p></td>
+<td><p>2022-02-17 22:10</p></td>
 <td><p>force</p></td>
-<td><p>2.55</p></td>
+<td><p>4.02</p></td>
 <td><p>✅</p></td>
 </tr>
-<tr class="row-odd"><td><p>flight_tracks_leaflet</p></td>
-<td><p>2021-12-01 14:02</p></td>
+<tr class="row-even"><td><p>dropsondes</p></td>
+<td><p>2022-02-17 22:10</p></td>
 <td><p>force</p></td>
-<td><p>76.9</p></td>
+<td><p>9.8</p></td>
 <td><p>✅</p></td>
 </tr>
-<tr class="row-even"><td><p>hamp_comparison</p></td>
-<td><p>2021-12-01 14:03</p></td>
+<tr class="row-odd"><td><p>flight-phase-operations</p></td>
+<td><p>2022-02-17 22:10</p></td>
 <td><p>force</p></td>
-<td><p>47.69</p></td>
+<td><p>2.4</p></td>
 <td><p>✅</p></td>
 </tr>
-<tr class="row-odd"><td><p>merian_cloudradar</p></td>
-<td><p>2021-12-01 14:03</p></td>
+<tr class="row-even"><td><p>flight_tracks_leaflet</p></td>
+<td><p>2022-02-17 22:11</p></td>
 <td><p>force</p></td>
-<td><p>9.02</p></td>
+<td><p>30.95</p></td>
 <td><p>✅</p></td>
 </tr>
-<tr class="row-even"><td><p>meteor_cloudradar</p></td>
-<td><p>2021-12-01 14:04</p></td>
+<tr class="row-odd"><td><p>hamp_comparison</p></td>
+<td><p>2022-02-17 22:11</p></td>
 <td><p>force</p></td>
-<td><p>54.04</p></td>
+<td><p>27.44</p></td>
 <td><p>✅</p></td>
 </tr>
-<tr class="row-odd"><td><p>p3_AXBTs</p></td>
-<td><p>2021-12-01 14:04</p></td>
+<tr class="row-even"><td><p>merian_cloudradar</p></td>
+<td><p>2022-02-17 22:12</p></td>
 <td><p>force</p></td>
-<td><p>9.02</p></td>
-<td><p>❌</p></td>
-</tr>
-<tr class="row-even"><td><p>p3_flight_tracks</p></td>
-<td><p>2021-12-01 14:04</p></td>
-<td><p>force</p></td>
-<td><p>13.02</p></td>
-<td><p>❌</p></td>
-</tr>
-<tr class="row-odd"><td><p>p3_humidity_comparison</p></td>
-<td><p>2021-12-01 14:04</p></td>
-<td><p>force</p></td>
-<td><p>7.7</p></td>
+<td><p>6.81</p></td>
 <td><p>✅</p></td>
 </tr>
-<tr class="row-even"><td><p>p3_wband_radar</p></td>
-<td><p>2021-12-01 14:05</p></td>
+<tr class="row-odd"><td><p>meteor_cloudradar</p></td>
+<td><p>2022-02-17 22:12</p></td>
 <td><p>force</p></td>
-<td><p>15.9</p></td>
+<td><p>24.03</p></td>
 <td><p>✅</p></td>
 </tr>
-<tr class="row-odd"><td><p>p3_wsra</p></td>
-<td><p>2021-12-01 14:05</p></td>
+<tr class="row-even"><td><p>p3_AXBTs</p></td>
+<td><p>2022-02-17 22:12</p></td>
 <td><p>force</p></td>
-<td><p>10.02</p></td>
+<td><p>18.02</p></td>
 <td><p>✅</p></td>
 </tr>
-<tr class="row-even"><td><p>show_intake_catalog</p></td>
-<td><p>2021-12-01 14:05</p></td>
+<tr class="row-odd"><td><p>p3_flight_tracks</p></td>
+<td><p>2022-02-17 22:13</p></td>
 <td><p>force</p></td>
-<td><p>22.03</p></td>
+<td><p>22.02</p></td>
 <td><p>✅</p></td>
 </tr>
-<tr class="row-odd"><td><p>smart</p></td>
-<td><p>2021-12-01 14:06</p></td>
+<tr class="row-even"><td><p>p3_humidity_comparison</p></td>
+<td><p>2022-02-17 22:13</p></td>
 <td><p>force</p></td>
-<td><p>20.63</p></td>
+<td><p>5.79</p></td>
 <td><p>✅</p></td>
 </tr>
-<tr class="row-even"><td><p>specmacs</p></td>
-<td><p>2021-12-01 14:06</p></td>
+<tr class="row-odd"><td><p>p3_wband_radar</p></td>
+<td><p>2022-02-17 22:13</p></td>
 <td><p>force</p></td>
-<td><p>18.93</p></td>
+<td><p>11.02</p></td>
 <td><p>✅</p></td>
 </tr>
-<tr class="row-odd"><td><p>unified</p></td>
-<td><p>2021-12-01 14:07</p></td>
+<tr class="row-even"><td><p>p3_wsra</p></td>
+<td><p>2022-02-17 22:13</p></td>
 <td><p>force</p></td>
-<td><p>48.04</p></td>
+<td><p>9.03</p></td>
 <td><p>✅</p></td>
 </tr>
-<tr class="row-even"><td><p>velox</p></td>
-<td><p>2021-12-01 14:07</p></td>
+<tr class="row-odd"><td><p>show_intake_catalog</p></td>
+<td><p>2022-02-17 22:13</p></td>
 <td><p>force</p></td>
-<td><p>21.03</p></td>
+<td><p>14.43</p></td>
 <td><p>✅</p></td>
 </tr>
-<tr class="row-odd"><td><p>wales</p></td>
-<td><p>2021-12-01 14:07</p></td>
+<tr class="row-even"><td><p>smart</p></td>
+<td><p>2022-02-17 22:14</p></td>
 <td><p>force</p></td>
-<td><p>9.02</p></td>
+<td><p>8.02</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p>specmacs</p></td>
+<td><p>2022-02-17 22:14</p></td>
+<td><p>force</p></td>
+<td><p>18.55</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td><p>unified</p></td>
+<td><p>2022-02-17 22:14</p></td>
+<td><p>force</p></td>
+<td><p>8.74</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p>velox</p></td>
+<td><p>2022-02-17 22:14</p></td>
+<td><p>force</p></td>
+<td><p>28.85</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td><p>wales</p></td>
+<td><p>2022-02-17 22:15</p></td>
+<td><p>force</p></td>
+<td><p>6.69</p></td>
 <td><p>✅</p></td>
 </tr>
 </tbody>
@@ -547,8 +571,8 @@
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="references.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -558,19 +582,17 @@
         </div>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By EUREC4A community<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By EUREC4A community<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

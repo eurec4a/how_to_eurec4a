@@ -38,11 +38,14 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -286,6 +289,11 @@
      The issue with netCDF data types
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="data_on_ipfs.html">
+     Data on IPFS
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1">
@@ -347,7 +355,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -403,7 +411,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -433,7 +441,40 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>WALES Lidar</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#get-data">
+   Get data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cloud-parameter">
+   Cloud parameter
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cloud-fraction">
+   Cloud fraction
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="wales-lidar">
@@ -461,13 +502,13 @@ The system also contains additional aerosol channels at 532 nm and 1064 nm with 
 <p>More information on the catalog can be found <a class="reference external" href="https://github.com/eurec4a/eurec4a-intake#eurec4a-intake-catalogue">here</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">=</span> <span class="n">eurec4a</span><span class="o">.</span><span class="n">get_intake_catalog</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">=</span> <span class="n">eurec4a</span><span class="o">.</span><span class="n">get_intake_catalog</span><span class="p">(</span><span class="n">use_ipfs</span><span class="o">=</span><span class="s2">&quot;QmahMN2wgPauHYkkiTGoG2TpPBmj3p5FoYJAq9uE9iXT9N&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">cat</span><span class="o">.</span><span class="n">HALO</span><span class="o">.</span><span class="n">WALES</span><span class="o">.</span><span class="n">cloudparameter</span><span class="o">.</span><span class="n">description</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WALES-Lidar cloud top height, cloud optical thickness and cloud flag data.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -526,7 +567,7 @@ body.vscode-dark {
 }
 
 .xr-wrap {
-  display: block;
+  display: block !important;
   min-width: 300px;
   max-width: 700px;
 }
@@ -837,40 +878,507 @@ dl.xr-attrs {
 </style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt;
 Dimensions:     (time: 121200)
 Coordinates:
+    lat         (time) float32 dask.array&lt;chunksize=(60600,), meta=np.ndarray&gt;
+    lon         (time) float32 dask.array&lt;chunksize=(60600,), meta=np.ndarray&gt;
   * time        (time) datetime64[ns] 2020-02-05T09:34:00.167000064 ... 2020-...
-    lat         (time) float32 ...
-    lon         (time) float32 ...
 Data variables:
-    cloud_mask  (time) float32 ...
-    cloud_top   (time) float32 ...
-    cloud_ot    (time) float32 ...
-    pbl_top     (time) float32 ...
-    target_lat  (time) float64 ...
-    target_lon  (time) float64 ...
+    cloud_mask  (time) float32 dask.array&lt;chunksize=(121200,), meta=np.ndarray&gt;
+    cloud_ot    (time) float32 dask.array&lt;chunksize=(60600,), meta=np.ndarray&gt;
+    cloud_top   (time) float32 dask.array&lt;chunksize=(60600,), meta=np.ndarray&gt;
+    pbl_top     (time) float32 dask.array&lt;chunksize=(60600,), meta=np.ndarray&gt;
+    target_lat  (time) float64 dask.array&lt;chunksize=(30300,), meta=np.ndarray&gt;
+    target_lon  (time) float64 dask.array&lt;chunksize=(30300,), meta=np.ndarray&gt;
 Attributes: (12/24)
-    convention:            CF-1.8
-    location_name:         HALO
-    platform:              HALO
-    instrument:            WALES
-    system:                WALES H2O-DIAL
-    title:                 WALES lidar cloud mask
-    ...                    ...
-    ongoing_subset:        10
-    featureType:           trajectory
     author:                Martin Wirth
+    comment:               Dataset for EUREC4A ESSD cloud mask paper. Version...
     contact:               martin.wirth@dlr.de
+    convention:            CF-1.8
+    data_modified:         20210309
+    data_processing_date:  20210309
+    ...                    ...
+    platform:              HALO
     source:                airborne observation
-    history:               2021-03-09 17:02:35 Generated by generate_cloudmas...</pre><div class='xr-wrap' hidden><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-ae2f0562-5fb7-4ee8-87f6-82487af1d0f5' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-ae2f0562-5fb7-4ee8-87f6-82487af1d0f5' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 121200</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-8adb990f-7fd9-414f-9bea-bb8181c53f58' class='xr-section-summary-in' type='checkbox'  checked><label for='section-8adb990f-7fd9-414f-9bea-bb8181c53f58' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2020-02-05T09:34:00.167000064 .....</div><input id='attrs-63107189-fd45-4b7d-a714-3f5d890a87d1' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-63107189-fd45-4b7d-a714-3f5d890a87d1' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b8df1b7d-ef55-4585-95d3-299cba8ad3fc' class='xr-var-data-in' type='checkbox'><label for='data-b8df1b7d-ef55-4585-95d3-299cba8ad3fc' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>time</dd><dt><span>long_name :</span></dt><dd>time</dd><dt><span>description :</span></dt><dd>Number of seconds on the UTC time scale since 1. Jan. 1970 00:00:00</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;2020-02-05T09:34:00.167000064&#x27;, &#x27;2020-02-05T09:34:00.367000064&#x27;,
+    start_datetime:        2020-02-05T09:34:00
+    stop_datetime:         2020-02-05T16:18:01
+    system:                WALES H2O-DIAL
+    title:                 WALES lidar cloud mask</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-3dc21612-98e9-4bd3-a25f-8e8355ac1506' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-3dc21612-98e9-4bd3-a25f-8e8355ac1506' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 121200</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-c61f3fa0-8c90-42e8-b100-0d1f9d8ee25b' class='xr-section-summary-in' type='checkbox'  checked><label for='section-c61f3fa0-8c90-42e8-b100-0d1f9d8ee25b' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>lat</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(60600,), meta=np.ndarray&gt;</div><input id='attrs-53a343e6-9d99-4f4e-acfb-dcaea46b3aaa' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-53a343e6-9d99-4f4e-acfb-dcaea46b3aaa' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e5275eea-e147-4d31-bd4a-02446dd1c3ca' class='xr-var-data-in' type='checkbox'><label for='data-e5275eea-e147-4d31-bd4a-02446dd1c3ca' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Platform latitude coordinate</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 473.44 kiB </td>
+                        <td> 236.72 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (121200,) </td>
+                        <td> (60600,) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 3 Tasks </td>
+                        <td> 2 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
+  <line x1="60" y1="0" x2="60" y2="25" />
+  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >121200</text>
+  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lon</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(60600,), meta=np.ndarray&gt;</div><input id='attrs-27892132-c344-4e3f-b211-7bc937ca925f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-27892132-c344-4e3f-b211-7bc937ca925f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b21cc16c-e03c-475e-adc9-1fa26e38f8c3' class='xr-var-data-in' type='checkbox'><label for='data-b21cc16c-e03c-475e-adc9-1fa26e38f8c3' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Platform longitude coordinate</dd><dt><span>long_name :</span></dt><dd>longitude</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 473.44 kiB </td>
+                        <td> 236.72 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (121200,) </td>
+                        <td> (60600,) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 3 Tasks </td>
+                        <td> 2 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
+  <line x1="60" y1="0" x2="60" y2="25" />
+  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >121200</text>
+  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2020-02-05T09:34:00.167000064 .....</div><input id='attrs-77fe2303-1fd5-43e1-88b2-e0828bd4d253' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-77fe2303-1fd5-43e1-88b2-e0828bd4d253' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-aab7fbcc-91e8-4721-b83f-065a8178a55d' class='xr-var-data-in' type='checkbox'><label for='data-aab7fbcc-91e8-4721-b83f-065a8178a55d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Number of seconds on the UTC time scale since 1. Jan. 1970 00:00:00</dd><dt><span>long_name :</span></dt><dd>time</dd><dt><span>standard_name :</span></dt><dd>time</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;2020-02-05T09:34:00.167000064&#x27;, &#x27;2020-02-05T09:34:00.367000064&#x27;,
        &#x27;2020-02-05T09:34:00.566999808&#x27;, ..., &#x27;2020-02-05T16:18:01.161999872&#x27;,
        &#x27;2020-02-05T16:18:01.361999872&#x27;, &#x27;2020-02-05T16:18:01.562000128&#x27;],
-      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lat</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-fa309bc2-4197-4ded-8640-c3eba9cbc945' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-fa309bc2-4197-4ded-8640-c3eba9cbc945' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-6ef6a30f-c353-4191-b005-7af04d415d01' class='xr-var-data-in' type='checkbox'><label for='data-6ef6a30f-c353-4191-b005-7af04d415d01' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>description :</span></dt><dd>Platform latitude coordinate</dd></dl></div><div class='xr-var-data'><pre>[121200 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lon</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-cd066cbc-5baa-48c7-8745-c6ff0cd1fa08' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-cd066cbc-5baa-48c7-8745-c6ff0cd1fa08' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d4b28143-554a-4264-a5c8-360e90c24773' class='xr-var-data-in' type='checkbox'><label for='data-d4b28143-554a-4264-a5c8-360e90c24773' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>long_name :</span></dt><dd>longitude</dd><dt><span>description :</span></dt><dd>Platform longitude coordinate</dd></dl></div><div class='xr-var-data'><pre>[121200 values with dtype=float32]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-5c615fe3-1074-4eef-b053-f2017f4570c6' class='xr-section-summary-in' type='checkbox'  checked><label for='section-5c615fe3-1074-4eef-b053-f2017f4570c6' class='xr-section-summary' >Data variables: <span>(6)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>cloud_mask</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-0d7c1926-150c-42ad-9b91-39c3493200ef' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-0d7c1926-150c-42ad-9b91-39c3493200ef' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f7ecc6b9-bb60-4bc8-9e36-bc44039e8d27' class='xr-var-data-in' type='checkbox'><label for='data-f7ecc6b9-bb60-4bc8-9e36-bc44039e8d27' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd></dd><dt><span>long_name :</span></dt><dd>cloud mask</dd><dt><span>description :</span></dt><dd>Cloud mask inferred from step of lidar backscatter ratio at 532 nm to values bigger than 10</dd><dt><span>valid_range :</span></dt><dd>[0 2]</dd><dt><span>flag_values :</span></dt><dd>[0 1 2]</dd><dt><span>flag_meanings :</span></dt><dd>cloud_free probably_cloudy most_likely_cloudy</dd></dl></div><div class='xr-var-data'><pre>[121200 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>cloud_top</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-2f4fd07f-c808-46c4-970c-dcb4c2565614' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-2f4fd07f-c808-46c4-970c-dcb4c2565614' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-25d78801-8d2f-46b2-a738-5525429b6245' class='xr-var-data-in' type='checkbox'><label for='data-25d78801-8d2f-46b2-a738-5525429b6245' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>m</dd><dt><span>long_name :</span></dt><dd>cloud top</dd><dt><span>description :</span></dt><dd>Cloud top altitude above sea level inferred from step of lidar backscatter ratio at 532 nm to values bigger than 10</dd></dl></div><div class='xr-var-data'><pre>[121200 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>cloud_ot</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-4e09f3fc-ca66-4130-b678-95a20feeb540' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-4e09f3fc-ca66-4130-b678-95a20feeb540' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-51d10245-6f22-4a76-bd41-e74709c67b34' class='xr-var-data-in' type='checkbox'><label for='data-51d10245-6f22-4a76-bd41-e74709c67b34' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd></dd><dt><span>long_name :</span></dt><dd>cloud optical thickness</dd><dt><span>standard_name :</span></dt><dd>atmosphere_optical_thickness_due_to_cloud</dd><dt><span>description :</span></dt><dd>Optical thickness δ of the cloud between the top and 200 m above ground derived from the HSRL backscatter channel at 532 nm. Values above 3 are rough estimates. Values are computationally limited to numbers below 12. </dd></dl></div><div class='xr-var-data'><pre>[121200 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>pbl_top</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-c73a25c8-c568-45b7-aa86-4f3f11d48f5b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c73a25c8-c568-45b7-aa86-4f3f11d48f5b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-56a0025c-1dd3-49da-bd96-d92a05b368c5' class='xr-var-data-in' type='checkbox'><label for='data-56a0025c-1dd3-49da-bd96-d92a05b368c5' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>m</dd><dt><span>long_name :</span></dt><dd>planetary boundary layer height</dd><dt><span>standard_name :</span></dt><dd>atmosphere_boundary_layer_thickness</dd><dt><span>description :</span></dt><dd>Altitude of the top of the boundary layer above sea level.
+      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-ae453dc2-696c-497f-a892-726bc4cd4ff6' class='xr-section-summary-in' type='checkbox'  checked><label for='section-ae453dc2-696c-497f-a892-726bc4cd4ff6' class='xr-section-summary' >Data variables: <span>(6)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>cloud_mask</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(121200,), meta=np.ndarray&gt;</div><input id='attrs-c7a06488-b098-45bb-b4ba-5ac39053f059' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c7a06488-b098-45bb-b4ba-5ac39053f059' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b79db9c1-c3fd-40b8-bf64-e320b0293454' class='xr-var-data-in' type='checkbox'><label for='data-b79db9c1-c3fd-40b8-bf64-e320b0293454' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Cloud mask inferred from step of lidar backscatter ratio at 532 nm to values bigger than 10</dd><dt><span>flag_meanings :</span></dt><dd>cloud_free probably_cloudy most_likely_cloudy</dd><dt><span>flag_values :</span></dt><dd>[0, 1, 2]</dd><dt><span>long_name :</span></dt><dd>cloud mask</dd><dt><span>units :</span></dt><dd></dd><dt><span>valid_range :</span></dt><dd>[0, 2]</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 473.44 kiB </td>
+                        <td> 473.44 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (121200,) </td>
+                        <td> (121200,) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 2 Tasks </td>
+                        <td> 1 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
+  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >121200</text>
+  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>cloud_ot</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(60600,), meta=np.ndarray&gt;</div><input id='attrs-b6310393-0afa-4d9d-ba89-4470ffdd4781' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-b6310393-0afa-4d9d-ba89-4470ffdd4781' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-98b9a1d4-c492-46fe-bc67-f22e704d4827' class='xr-var-data-in' type='checkbox'><label for='data-98b9a1d4-c492-46fe-bc67-f22e704d4827' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Optical thickness δ of the cloud between the top and 200 m above ground derived from the HSRL backscatter channel at 532 nm. Values above 3 are rough estimates. Values are computationally limited to numbers below 12. </dd><dt><span>long_name :</span></dt><dd>cloud optical thickness</dd><dt><span>standard_name :</span></dt><dd>atmosphere_optical_thickness_due_to_cloud</dd><dt><span>units :</span></dt><dd></dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 473.44 kiB </td>
+                        <td> 236.72 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (121200,) </td>
+                        <td> (60600,) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 3 Tasks </td>
+                        <td> 2 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
+  <line x1="60" y1="0" x2="60" y2="25" />
+  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >121200</text>
+  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>cloud_top</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(60600,), meta=np.ndarray&gt;</div><input id='attrs-d92f16aa-4d21-43d3-8eb8-907e46cdb81e' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-d92f16aa-4d21-43d3-8eb8-907e46cdb81e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-805e81bb-c569-4d5b-bafa-3a75703598b0' class='xr-var-data-in' type='checkbox'><label for='data-805e81bb-c569-4d5b-bafa-3a75703598b0' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Cloud top altitude above sea level inferred from step of lidar backscatter ratio at 532 nm to values bigger than 10</dd><dt><span>long_name :</span></dt><dd>cloud top</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 473.44 kiB </td>
+                        <td> 236.72 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (121200,) </td>
+                        <td> (60600,) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 3 Tasks </td>
+                        <td> 2 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
+  <line x1="60" y1="0" x2="60" y2="25" />
+  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >121200</text>
+  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>pbl_top</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(60600,), meta=np.ndarray&gt;</div><input id='attrs-f6820ec9-9a7d-46c6-b8fa-77b114e29a68' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-f6820ec9-9a7d-46c6-b8fa-77b114e29a68' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e7c076aa-8542-4e4e-9543-a8f59736ccb6' class='xr-var-data-in' type='checkbox'><label for='data-e7c076aa-8542-4e4e-9543-a8f59736ccb6' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Altitude of the top of the boundary layer above sea level.
 Inferred from the maximum correlation of the lidar backscatter ratio profile at 532 nm
 with a step function.
 This is experimental data and should be interpreted with care, especially in the
 presence of residual layers or strong horizontal wind shear which may cause multi-layer structures.
 In the case of a cloud, no pbl top is given.
-</dd></dl></div><div class='xr-var-data'><pre>[121200 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>target_lat</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-c0bb500e-055b-4050-8281-749ecc3c9579' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c0bb500e-055b-4050-8281-749ecc3c9579' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a4a8b321-4ef0-4b02-a12c-5a2d8cffcd5f' class='xr-var-data-in' type='checkbox'><label for='data-a4a8b321-4ef0-4b02-a12c-5a2d8cffcd5f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>long_name :</span></dt><dd>target_latitude</dd><dt><span>description :</span></dt><dd>Latitude coordinate of the cloud top. Different from platform lat during curves.</dd></dl></div><div class='xr-var-data'><pre>[121200 values with dtype=float64]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>target_lon</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-c85b789a-d00a-4b77-a035-ae319ee2d60e' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c85b789a-d00a-4b77-a035-ae319ee2d60e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-5b63e06d-003e-47c9-9a5c-c095c8eb2af3' class='xr-var-data-in' type='checkbox'><label for='data-5b63e06d-003e-47c9-9a5c-c095c8eb2af3' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>long_name :</span></dt><dd>target_longitude</dd><dt><span>description :</span></dt><dd>Longitude coordinate of the cloud top. Different from platform lon during curves.</dd></dl></div><div class='xr-var-data'><pre>[121200 values with dtype=float64]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-aeb1e204-dccd-4ea1-a786-c87024e9a62d' class='xr-section-summary-in' type='checkbox'  ><label for='section-aeb1e204-dccd-4ea1-a786-c87024e9a62d' class='xr-section-summary' >Attributes: <span>(24)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>convention :</span></dt><dd>CF-1.8</dd><dt><span>location_name :</span></dt><dd>HALO</dd><dt><span>platform :</span></dt><dd>HALO</dd><dt><span>instrument :</span></dt><dd>WALES</dd><dt><span>system :</span></dt><dd>WALES H2O-DIAL</dd><dt><span>title :</span></dt><dd>WALES lidar cloud mask</dd><dt><span>institution :</span></dt><dd>Deutsches Zentrum fuer Luft- und Raumfahrt, Institut fuer Physik der Atmosphaere, Oberpfaffenhofen, Muenchener Str. 20, 82234 Wessling, Germany</dd><dt><span>comment :</span></dt><dd>Dataset for EUREC4A ESSD cloud mask paper. Version 2 with enhanced noise filter for optical thickness. Format is now classic netCDF and with signed short data type for flag variables and attributes to avoid problems with OPeNDAP</dd><dt><span>data_processing_date :</span></dt><dd>20210309</dd><dt><span>data_modified :</span></dt><dd>20210309</dd><dt><span>data_version :</span></dt><dd>2.1</dd><dt><span>max_latitude :</span></dt><dd>       15.508407</dd><dt><span>min_latitude :</span></dt><dd>       12.300429</dd><dt><span>max_longitude :</span></dt><dd>      -53.032715</dd><dt><span>min_longitude :</span></dt><dd>      -58.743504</dd><dt><span>start_datetime :</span></dt><dd>2020-02-05T09:34:00</dd><dt><span>stop_datetime :</span></dt><dd>2020-02-05T16:18:01</dd><dt><span>mission :</span></dt><dd>EUREC4A</dd><dt><span>ongoing_subset :</span></dt><dd>10</dd><dt><span>featureType :</span></dt><dd>trajectory</dd><dt><span>author :</span></dt><dd>Martin Wirth</dd><dt><span>contact :</span></dt><dd>martin.wirth@dlr.de</dd><dt><span>source :</span></dt><dd>airborne observation</dd><dt><span>history :</span></dt><dd>2021-03-09 17:02:35 Generated by generate_cloudmask.jl from EUREC4A_HALO_WALES_cloudtop_20200205a_V2.nc
-2021-03-09 17:04:33 target positions added by add_target_position.jl</dd></dl></div></li></ul></div></div></div></div>
+</dd><dt><span>long_name :</span></dt><dd>planetary boundary layer height</dd><dt><span>standard_name :</span></dt><dd>atmosphere_boundary_layer_thickness</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 473.44 kiB </td>
+                        <td> 236.72 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (121200,) </td>
+                        <td> (60600,) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 3 Tasks </td>
+                        <td> 2 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
+  <line x1="60" y1="0" x2="60" y2="25" />
+  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >121200</text>
+  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>target_lat</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(30300,), meta=np.ndarray&gt;</div><input id='attrs-fefd323a-0a70-4b60-91d0-2c8630c25c74' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-fefd323a-0a70-4b60-91d0-2c8630c25c74' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-bed37bff-1276-4855-994d-5a502f7e5485' class='xr-var-data-in' type='checkbox'><label for='data-bed37bff-1276-4855-994d-5a502f7e5485' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Latitude coordinate of the cloud top. Different from platform lat during curves.</dd><dt><span>long_name :</span></dt><dd>target_latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 0.92 MiB </td>
+                        <td> 236.72 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (121200,) </td>
+                        <td> (30300,) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 5 Tasks </td>
+                        <td> 4 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float64 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
+  <line x1="30" y1="0" x2="30" y2="25" />
+  <line x1="60" y1="0" x2="60" y2="25" />
+  <line x1="90" y1="0" x2="90" y2="25" />
+  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >121200</text>
+  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>target_lon</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(30300,), meta=np.ndarray&gt;</div><input id='attrs-a676d4b3-a16e-4844-bf77-1bce0261de19' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-a676d4b3-a16e-4844-bf77-1bce0261de19' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b738a7bf-4d05-4f88-9a21-60a70a1a5939' class='xr-var-data-in' type='checkbox'><label for='data-b738a7bf-4d05-4f88-9a21-60a70a1a5939' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Longitude coordinate of the cloud top. Different from platform lon during curves.</dd><dt><span>long_name :</span></dt><dd>target_longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 0.92 MiB </td>
+                        <td> 236.72 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (121200,) </td>
+                        <td> (30300,) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 5 Tasks </td>
+                        <td> 4 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float64 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
+  <line x1="30" y1="0" x2="30" y2="25" />
+  <line x1="60" y1="0" x2="60" y2="25" />
+  <line x1="90" y1="0" x2="90" y2="25" />
+  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >121200</text>
+  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-46d04077-58fe-4ffb-9720-b853fc98d171' class='xr-section-summary-in' type='checkbox'  ><label for='section-46d04077-58fe-4ffb-9720-b853fc98d171' class='xr-section-summary' >Attributes: <span>(24)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>author :</span></dt><dd>Martin Wirth</dd><dt><span>comment :</span></dt><dd>Dataset for EUREC4A ESSD cloud mask paper. Version 2 with enhanced noise filter for optical thickness. Format is now classic netCDF and with signed short data type for flag variables and attributes to avoid problems with OPeNDAP</dd><dt><span>contact :</span></dt><dd>martin.wirth@dlr.de</dd><dt><span>convention :</span></dt><dd>CF-1.8</dd><dt><span>data_modified :</span></dt><dd>20210309</dd><dt><span>data_processing_date :</span></dt><dd>20210309</dd><dt><span>data_version :</span></dt><dd>2.1</dd><dt><span>featureType :</span></dt><dd>trajectory</dd><dt><span>history :</span></dt><dd>2021-03-09 17:02:35 Generated by generate_cloudmask.jl from EUREC4A_HALO_WALES_cloudtop_20200205a_V2.nc
+2021-03-09 17:04:33 target positions added by add_target_position.jl</dd><dt><span>institution :</span></dt><dd>Deutsches Zentrum fuer Luft- und Raumfahrt, Institut fuer Physik der Atmosphaere, Oberpfaffenhofen, Muenchener Str. 20, 82234 Wessling, Germany</dd><dt><span>instrument :</span></dt><dd>WALES</dd><dt><span>location_name :</span></dt><dd>HALO</dd><dt><span>max_latitude :</span></dt><dd>       15.508407</dd><dt><span>max_longitude :</span></dt><dd>      -53.032715</dd><dt><span>min_latitude :</span></dt><dd>       12.300429</dd><dt><span>min_longitude :</span></dt><dd>      -58.743504</dd><dt><span>mission :</span></dt><dd>EUREC4A</dd><dt><span>ongoing_subset :</span></dt><dd>10</dd><dt><span>platform :</span></dt><dd>HALO</dd><dt><span>source :</span></dt><dd>airborne observation</dd><dt><span>start_datetime :</span></dt><dd>2020-02-05T09:34:00</dd><dt><span>stop_datetime :</span></dt><dd>2020-02-05T16:18:01</dd><dt><span>system :</span></dt><dd>WALES H2O-DIAL</dd><dt><span>title :</span></dt><dd>WALES lidar cloud mask</dd></dl></div></li></ul></div></div></div></div>
 </div>
 <p>We select 1min of flight <code class="docutils literal notranslate"><span class="pre">time</span></code>. You can freely change the times or put <code class="docutils literal notranslate"><span class="pre">None</span></code> instead of the slice start and/or end to get up to the full flight data.
 We explicitly <code class="docutils literal notranslate"><span class="pre">load()</span></code> the dataset at this stage as want to use this subset multiple times in the following.</p>
@@ -1065,8 +1573,8 @@ Yet, this missing value story was a bit complicated, so let’s check if we woul
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="bacardi.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1083,19 +1591,17 @@ Yet, this missing value story was a bit complicated, so let’s check if we woul
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By EUREC4A community<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By EUREC4A community<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

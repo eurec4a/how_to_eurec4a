@@ -1,0 +1,965 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data on IPFS &#8212; How to EUREC4A</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="_static/logo_pyeurec4a.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="References" href="references.html" />
+    <link rel="prev" title="The issue with netCDF data types" href="netcdf_datatypes.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo_pyeurec4a.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">How to EUREC4A</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="halo.html">
+   HALO
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="HALO_instrument_overview.html">
+     Instrument Overview
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="specmacs.html">
+     specMACS cloudmask
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="unified.html">
+     HALO UNIFIED dataset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="flight_tracks_leaflet.html">
+     interactive HALO tracks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="smart.html">
+     SMART dataset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="velox.html">
+     VELOX
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bacardi.html">
+     BACARDI dataset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="wales.html">
+     WALES Lidar
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="hamp_comparison.html">
+     HAMP comparison
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cloudmasks.html">
+     Cloud masks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="pthree.html">
+   NOAA P3 “Miss Piggy”
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="p3_flight_tracks.html">
+     Flight tracks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="p3_humidity_comparison.html">
+     Humidity comparison: Hygrometer and isotope analyzer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="p3_wband_radar.html">
+     W-band radar example
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="p3_AXBTs.html">
+     Ocean temperatures: AXBTs and SWIFT buoys
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="p3_wsra.html">
+     WSRA example: surface wave state
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="meteor.html">
+   Meteor
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="meteor_cloudradar.html">
+     Reading cloud radar data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="merian.html">
+   Merian
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="merian_cloudradar.html">
+     Cloud radar data collected on MS Merian
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="multi_platform_data.html">
+   Multi-platform datasets
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="dropsondes.html">
+     Dropsondes dataset JOANNE
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="toolbox.html">
+   Toolbox
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="flight-phase-operations.html">
+     How to work with flight phase segmentation files
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="show_intake_catalog.html">
+     Show the intake catalog
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cloud_stat_tools.html">
+     Cloud statistics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="running_locally.html">
+     running How to EUREC4A locally
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="netcdf_datatypes.html">
+     The issue with netCDF data types
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Data on IPFS
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="references.html">
+   References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stats.html">
+   Script execution statistics
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="_sources/data_on_ipfs.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/data_on_ipfs.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/eurec4a/how_to_eurec4a"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/eurec4a/how_to_eurec4a/issues/new?title=Issue%20on%20page%20%2Fdata_on_ipfs.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/eurec4a/how_to_eurec4a/edit/master/how_to_eurec4a/data_on_ipfs.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/eurec4a/how_to_eurec4a/master?urlpath=tree/how_to_eurec4a/data_on_ipfs.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#access-via-intake">
+   Access via intake
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#referencing-data">
+   Referencing data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#content-addressable-storage">
+   Content Addressable Storage
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hash-functions">
+     Hash functions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#immutability">
+     Immutability
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#basic-content-addressable-store">
+     Basic content addressable store
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-ipfs">
+   What is IPFS?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ease-of-use">
+     ease of use
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#reading-data">
+       reading data
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#writing-data">
+       writing data
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Data on IPFS</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#access-via-intake">
+   Access via intake
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#referencing-data">
+   Referencing data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#content-addressable-storage">
+   Content Addressable Storage
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hash-functions">
+     Hash functions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#immutability">
+     Immutability
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#basic-content-addressable-store">
+     Basic content addressable store
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-ipfs">
+   What is IPFS?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ease-of-use">
+     ease of use
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#reading-data">
+       reading data
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#writing-data">
+       writing data
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="data-on-ipfs">
+<h1>Data on IPFS<a class="headerlink" href="#data-on-ipfs" title="Permalink to this headline">¶</a></h1>
+<p>We use <a class="reference external" href="https://ipfs.io/">IPFS</a> to store public data from the field campaign in a decentralized manner in order to increase data availability and accessibility.
+Ideally, as a user of the How to EUREC4A book, you’d maybe not even notice that this system is working, because <a class="reference external" href="https://intake.readthedocs.io/en/latest/">intake</a> handles the details of the data retrieval.</p>
+<div class="section" id="access-via-intake">
+<h2>Access via intake<a class="headerlink" href="#access-via-intake" title="Permalink to this headline">¶</a></h2>
+<p>Currently, the use of IPFS within the How to EUREC4A book is mostly optional and can be enabled by the <code class="docutils literal notranslate"><span class="pre">use_ipfs</span></code> argument of <code class="docutils literal notranslate"><span class="pre">eurec4a.get_intake_catalog</span></code> (it’s disabled by default):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">eurec4a</span>
+<span class="n">cat</span> <span class="o">=</span> <span class="n">eurec4a</span><span class="o">.</span><span class="n">get_intake_catalog</span><span class="p">(</span><span class="n">use_ipfs</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nb">list</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">cat</span><span class="p">))[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;ATR&#39;, &#39;Atalante&#39;, &#39;BOREAL&#39;, &#39;CU-RAAVEN&#39;, &#39;Caravela&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>This above command returns the first five entries in the <a class="reference external" href="https://github.com/eurec4a/eurec4a-intake/#readme">eurec4a-intake catalog</a>. Most of the data references by this catalog is accessed via the <a class="reference external" href="https://www.opendap.org/">OPeNDAP</a> protocol from several servers in use by the EUREC4A community.
+Let’s look how this changes if we enable <code class="docutils literal notranslate"><span class="pre">use_ipfs</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">=</span> <span class="n">eurec4a</span><span class="o">.</span><span class="n">get_intake_catalog</span><span class="p">(</span><span class="n">use_ipfs</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">list</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">cat</span><span class="p">))[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;ATR&#39;, &#39;Atalante&#39;, &#39;BOREAL&#39;, &#39;CU-RAAVEN&#39;, &#39;Caravela&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>… we get the same result 😃. Ideally, the resulting intake catalog should behave just as the “classical” counterpart. Apart from a few edge-cases, which often are related to <a class="reference internal" href="netcdf_datatypes.html"><span class="doc">The issue with netCDF data types</span></a>, you should be able to use both catalogs interchangeably, although almost everything behind the scenes works differently.</p>
+<p>The IPFS based catalog is auto-generated from the non-IPFS catalog, such that the latest version of the IPFS-based catalog should match the non-IPFS catalog.
+However, as the IPFS-based catalog is set up such that each version of the catalog references distributed, immutable copies of the datasets, those datasets stay available even if they are removed from their original storage locations (or the original servers are unavailable).
+If datasets in the non-IPFS catalog are updated, this will result in a new version of the IPFS-based catalog, which will then refer to the updated datasets subsequently.</p>
+<p>While just the option to have two completely separate ways of accessing the data already improves data availability, our hope would be that accessing data via IPFS would virtually never fail. In order to discuss this further, we’ll have to take a deeper look at what IPFS and content addressing actually is.
+But before arriving there, we’ll have a short detour about which properties we’ll want to have for references to our datasets.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There’s one more option (accessing the intake catalog by content identifier), which will be described in more detail below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">=</span> <span class="n">eurec4a</span><span class="o">.</span><span class="n">get_intake_catalog</span><span class="p">(</span><span class="n">use_ipfs</span><span class="o">=</span><span class="s2">&quot;QmahMN2wgPauHYkkiTGoG2TpPBmj3p5FoYJAq9uE9iXT9N&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If the intake catalog is loaded by explicitly stating the content identifier of the catalog, it is ensured that always the same catalog and the same data within the catalog is returned (instead of always returning the newest catalog and datasets). We use this method of accessing the catalog in the book to ensure that our examples are reproducible.</p>
+</div>
+</div>
+<div class="section" id="referencing-data">
+<h2>Referencing data<a class="headerlink" href="#referencing-data" title="Permalink to this headline">¶</a></h2>
+<p>The book is about sharing knowledge on available datasets and analysis methods.
+We want to be able to create reproducible analysis scripts (or stories) which may be run and modified by anyone.
+While sharing code (e.g. analysis scripts) and explanatory texts is largely solved by version control systems like <a class="reference external" href="https://git-scm.com/">git</a>, sharing data is much more complicated due to the size of the referenced files.
+While often it is just undesirable to copy larger files around over and over again, for some datasets it might even be impossible to store them entirely on a laptop.
+If we can’t just copy data, we need a way of referencing data that is stored elsewhere. A unique and reliable reference ensures the correct retrieval of data for everyone and from everywhere via a code snippet such as the following:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">open_dataset</span><span class="p">(</span><span class="s2">&quot;some reference&quot;</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">do_some_analysis</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+<span class="n">make_a_nice_plot</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>But as it turns out, creating good references which work nicely in this setting can be harder than it seems to be in the first place. We’ll want a couple of features which those kinds of references should fulfill to be really useful:</p>
+<ul class="simple">
+<li><p>They should be <strong>global</strong> (i.e. work anywhere on the world)</p></li>
+<li><p>They should be <strong>fault tolerant</strong> and <strong>available</strong> (i.e. if a server fails, not everyone’s workflows should stop)</p></li>
+<li><p>They should be <strong>performant</strong> (i.e. accessing the data should be at least about as fast as downloading them once and access them locally)</p></li>
+<li><p>The data behind the reference may not change / must be <strong>immutable</strong> (i.e. if I’m running an analysis, I don’t want my result to change without me noticing it, I also want to be able to re-run the analysis at a later point in time to re-evaluate my conclusions)</p></li>
+<li><p>They should refer <strong>directly</strong> to the data to be used, such that no manual steps are required. (This is in contrast to DOIs, which <a class="reference external" href="https://support.datacite.org/docs/landing-pages#best-practices">should resolve to a landing page, not directly to the content</a>)</p></li>
+<li><p>They should be <strong>easy to use</strong> (it’s important that people <em>want</em> to use these references, such that dataset creators use datasets in their published form).</p></li>
+</ul>
+<p>Many popular references only provide some of these goals, e.g.:</p>
+<ul class="simple">
+<li><p><em>filesystem paths</em> are not globally available and generally not immutable</p></li>
+<li><p><em>HTTP-links</em> are global, but often less performant than local files. They are also not immutable and not by themselves fault tolerant</p></li>
+<li><p><em>DOIs</em> don’t refer directly to the data, as they are mostly about metadata. In most cases a DOI just forwards to some HTTP link, providing only some contractual guarantees on immutability and availability, but little technical benefits.</p></li>
+</ul>
+<p>There’s one unfortunate piece, which all of these references have in common: they always include (implicit or explicit) a server or computing system which is responsible to host the data.
+They are references to the <strong>location</strong> of the data, not the <strong>identity</strong> of the data.
+This is much like describing the location of a book in a bookshelf (and the location of the bookshelf…) in stead of describing the book’s identity by ISBN or author / title.
+Referencing by location can become a big problem, if data has to move between locations or important servers fail.
+Addressing data by it’s content is an approach to remove location information from the references.
+Let’s see how this concept works:</p>
+</div>
+<div class="section" id="content-addressable-storage">
+<h2>Content Addressable Storage<a class="headerlink" href="#content-addressable-storage" title="Permalink to this headline">¶</a></h2>
+<p>The concept of content addressable storage is based on the idea that identifiers which can be used to reference some content are based on the content itself.
+This concept helps with many of the requirements listed above, so let’s have a look at some usual properties of content addressable storage.</p>
+<div class="section" id="hash-functions">
+<h3>Hash functions<a class="headerlink" href="#hash-functions" title="Permalink to this headline">¶</a></h3>
+<p>Typically, content identifiers are based on a cryptographic hash of the content to be referenced.
+Cryptographic hashes are functions which accept an arbitrarily sized stream of bytes and convert them into a fixed sized (relatively short) sequence of bytes.
+They are designed such that the output (i.e. the hash value) changes whenever anything of the input changes.
+Furthermore, it is extremely unlikely (i.e. practically impossible) to find two different inputs which result in the same hash value.
+Python already provides a couple of hash functions, so let’s look how a typical hash function (<code class="docutils literal notranslate"><span class="pre">sha256</span></code>) of some values looks like:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">hashlib</span> <span class="kn">import</span> <span class="n">sha256</span>
+<span class="n">sha256</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;hallo&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sha256</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;hello&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Two similar (but different) input byte-sequences return completely different hash values.
+If we compute a hash value from a longer byte-sequence (e.g. 1000 numbers from a <code class="docutils literal notranslate"><span class="pre">numpy</span></code> array), the resulting hash value is of the same size as before:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">sha256</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1000</span><span class="p">))</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;702746827e553786bb026ac120cb58745fef3d3f554c33891809001cc37639f0&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>And if we redo a hash-computation of the same input, we’ll get exactly the same output as before:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sha256</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;hello&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Furthermore, if you do this hash computation on your own machine, you’ll obtain exactly the same value as shown here.
+This property can be used for <strong>verification</strong>: if one knows the correct hash-value of some newly retrieved data, one can re-compute the hash-value from the data and check if it matches the known value.
+If the check fails, we know that the data was modified in between.</p>
+<p>Content addressable stores usually use such hash values to reference the stored data, thus when retrieving data from such a store, one already knows the hash and can check if the retrieved content was returned unmodified.</p>
+</div>
+<div class="section" id="immutability">
+<h3>Immutability<a class="headerlink" href="#immutability" title="Permalink to this headline">¶</a></h3>
+<p>As a direct consequence of using hashes as references, it is not possible to change data behind this kind of reference.
+The data behind a reference is <strong>immutable</strong>.
+Instead, whenever something is changed, a new (different) reference will be created.
+Immutability not only solves the request for non-changing data behind a reference, it also facilitates distributed hosting of data.
+Any machine hosting a dataset can either have or not have the dataset, but it can not have the dataset in a different (or old) variant, because that would be a different dataset, referenced by  a different hash.</p>
+</div>
+<div class="section" id="basic-content-addressable-store">
+<h3>Basic content addressable store<a class="headerlink" href="#basic-content-addressable-store" title="Permalink to this headline">¶</a></h3>
+<p>Let’s have a look at how a basic content addressable store could be implemented:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CAStore</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_store</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">def</span> <span class="nf">put</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">content</span><span class="p">):</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="n">sha256</span><span class="p">(</span><span class="n">content</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_store</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">content</span>
+        <span class="k">return</span> <span class="n">key</span>
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_store</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The store is just a wrapper around a dictionary, with the crucial change that a <code class="docutils literal notranslate"><span class="pre">put</span></code> doesn’t have the <code class="docutils literal notranslate"><span class="pre">key</span></code> as an argument, but as a return value.
+Let’s try it out:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">store</span> <span class="o">=</span> <span class="n">CAStore</span><span class="p">()</span>
+<span class="n">k_hello</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;hello&quot;</span><span class="p">)</span>
+<span class="n">k_Hello</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">store</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">k_hello</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;h&quot;</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;H&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As we know the key of <code class="docutils literal notranslate"><span class="pre">hello</span></code> from before, we can now use that to ask our store for that value:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">store</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b&#39;hello&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that the modified version of <code class="docutils literal notranslate"><span class="pre">hello</span></code> with a capital <code class="docutils literal notranslate"><span class="pre">H</span></code> is also in the store, but of course under a different key:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">store</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">k_Hello</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b&#39;Hello&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finding out the value of <code class="docutils literal notranslate"><span class="pre">k_Hello</span></code> is left as an exercise to the reader 😃.</p>
+<p>Another interesting feature is automatic de-duplication.
+Let’s see what happens to the amount of data stored before and after putting <code class="docutils literal notranslate"><span class="pre">hello</span></code> again:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;item count before put: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">store</span><span class="o">.</span><span class="n">_store</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">store</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;hello&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;item count after put: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">store</span><span class="o">.</span><span class="n">_store</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>item count before put: 2
+item count after put: 2
+</pre></div>
+</div>
+</div>
+</div>
+<p>Because every item is stored under it’s own hash, identical items will only be stored once.</p>
+<p>So a content addressable store allows to <code class="docutils literal notranslate"><span class="pre">put</span></code> and <code class="docutils literal notranslate"><span class="pre">get</span></code> some content.
+Content which is already in the store won’t change over time.
+If two different stores contain the same content, that same content will be retrievable under the same identifier, independent of the machine hosting the store.</p>
+<p>So far, we’ve got an <strong>immutable</strong> store, which gives <strong>direct</strong> access to the content stored.
+As we’ve not yet built in any means of external communication (that’s for later), the store is only local.
+But as a local store, access is as <strong>performant</strong> as any other local key-based access method would be (with automatic de-duplication as potential advantage in terms of required storage).</p>
+<p>If some requested identifier is not available on a store, it will simply fail (and not return something different):</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">store</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9&#39;</span><span class="p">)</span>  <span class="c1"># the key of b&quot;hallo&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_6296</span><span class="o">/</span><span class="mf">3081679699.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">store</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9&#39;</span><span class="p">)</span>  <span class="c1"># the key of b&quot;hallo&quot;</span>
+
+<span class="nn">/tmp/ipykernel_6296/3829873909.py</span> in <span class="ni">get</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span>         <span class="k">return</span> <span class="n">key</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span>     <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+<span class="ne">----&gt; </span><span class="mi">9</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_store</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+
+<span class="ne">KeyError</span>: &#39;d3751d33f9cd5049c4af2b462735457e4d3baf130bcbb87f389e349fbaeb20b9&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>If there would be a method to find a store on another machine which does contain the missing key, this would open the door for a global and fault tolerant content distribution system.
+This is where IPFS comes into play.</p>
+</div>
+</div>
+<div class="section" id="what-is-ipfs">
+<h2>What is IPFS?<a class="headerlink" href="#what-is-ipfs" title="Permalink to this headline">¶</a></h2>
+<p><img alt="" src="_images/ipfs-logo-text-128-ice.png" /></p>
+<p>We’ll start with a self-description of the <a class="reference external" href="https://ipfs.io/">IPFS project</a>:</p>
+<blockquote>
+<div><p>IPFS (the InterPlanetary File System) is a peer-to-peer hypermedia protocol for content addressing. An alternative to the HTTP protocol, IPFS builds on the principles of peer-to-peer networking and content-based addressing to create a decentralized, distributed, and trustless data storage and delivery network. With IPFS, users ask for a file and the system finds and delivers the closest copy without the need to trust a centralized delivery source. In addition to more efficient content distribution, IPFS offers improved security, content integrity, and resistance to third-party tampering.</p>
+</div></blockquote>
+<p>So, that’s quite a bunch of words. How can we relate this to what’s written above? And what does this really mean in the context of EUREC4A data and the How to EUREC4A book?</p>
+<p>IPFS is a protocol, defining how machines can communicate with each other to exchange content.
+To do so, IPFS combines ideas of peer-to-peer networking with content addressing.
+In IPFS, each participating node (there’s no distinction between clients, servers or the like), will have it’s own content addressable store, which behaves much like what we’ve seen above.
+On top of that, each node communicates with other nodes (the peers) asking for and exchanging content based  on hash-based content identifiers (CIDs).
+Whenever a requested CID is not available in the local store, IPFS will ask the connected peers if they can deliver the requested content.
+If any of the nodes has the requested content, it is delivered to the local node and to the user.
+Because it is enough if <em>any</em> peer answers the request, simply running multiple machines storing the same content creates <strong>fault tolerance</strong> and better <strong>availability</strong> for the requested content.
+Requests will automatically be answered by the remaining machines if one machine goes offline.
+Furthermore, the correctness of the content can be verified using the hash as described above.
+Thus, one doesn’t have to trust any of those peers and anyone can join the network freely, potentially providing additional redundancy without the risk of modifying existing content.</p>
+<p>Of course, a single node can’t be connected to the entire internet, so there must be an efficient mechanism to find peers having the requested CID without being connected to the peer.
+For this purpose, IPFS builds a <a class="reference external" href="https://en.wikipedia.org/wiki/Distributed_hash_table">distributed hash table</a> (DHT) as common in other peer-to-peer networks across all participating nodes.
+The DHT contains a mapping from CID to node addresses.
+Using this DHT, it is possible to find more peers which have the requested content stored without the need of any central registry.
+Once connected to one of those newly discovered nodes, content can be retrieved from those nodes as above.
+Because the DHT enables a <strong>global</strong> search for nodes which have the content behind a CID stored, it indeed becomes possible to use CIDs as a global identifier.</p>
+<p>Whenever a node retrieves data behind a CID, it may keep a copy of that data for a while in a local cache.
+Subsequent requests to the same CID can then be fulfilled locally.
+Thus if a node is running on the computer of the user of a dataset, a first request to a dataset identified by CID will download the data, while future requests will operate on a local copy, leading to good access <strong>performance</strong> as mentioned in the beginning.</p>
+<div class="section" id="ease-of-use">
+<h3>ease of use<a class="headerlink" href="#ease-of-use" title="Permalink to this headline">¶</a></h3>
+<p>Ease of use is probably the most difficult to quantify.
+We’ve seen that while the <code class="docutils literal notranslate"><span class="pre">put</span></code> function looks different, the <code class="docutils literal notranslate"><span class="pre">get</span></code> function essentially looks the same as for any key-value store: we hand in a key and get a value.
+Accordingly, read access to the data should be very similar on IPFS when compared to other methods like a file-system or object store.</p>
+<div class="section" id="reading-data">
+<h4>reading data<a class="headerlink" href="#reading-data" title="Permalink to this headline">¶</a></h4>
+<p>The <a class="reference external" href="https://zarr.readthedocs.io/"><code class="docutils literal notranslate"><span class="pre">zarr</span></code></a> and <a class="reference external" href="https://intake.readthedocs.io/"><code class="docutils literal notranslate"><span class="pre">intake</span></code></a> libraries both use <a class="reference external" href="https://filesystem-spec.readthedocs.io"><code class="docutils literal notranslate"><span class="pre">fsspec</span></code></a> to access file-like resources (e.g. local files, HTTP links, cloud storage, zip archives and more) in a common way.
+As the EUREC4A intake catalog builds on <code class="docutils literal notranslate"><span class="pre">zarr</span></code> and <code class="docutils literal notranslate"><span class="pre">intake</span></code>, IPFS can be supported relatively easily through an <code class="docutils literal notranslate"><span class="pre">fsspec</span></code> backend.
+This is the purpose of <code class="docutils literal notranslate"><span class="pre">ipfsspec</span></code>, which we’ll have to install in addition to your usual python packages:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">ipfsspec</span>
+</pre></div>
+</div>
+<p>Afterwards, we can use links of the form <code class="docutils literal notranslate"><span class="pre">ipfs://&lt;CID&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">ipfs://&lt;CID&gt;/some/path/within/the/content</span></code> wherever <code class="docutils literal notranslate"><span class="pre">fsspec</span></code> is used to access files.
+In particular, it is possible to open intake catalogs and zarr datasets from those references, which is exactly what happens behind the scenes when opening the EUREC4A intake catalog using <code class="docutils literal notranslate"><span class="pre">use_ipfs</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">=</span> <span class="n">eurec4a</span><span class="o">.</span><span class="n">get_intake_catalog</span><span class="p">(</span><span class="n">use_ipfs</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For better <strong>performance</strong>, you should also run an <a class="reference external" href="https://ipfs.io/#install">IPFS node</a> on the machine accessing the data.
+<code class="docutils literal notranslate"><span class="pre">ipfsspec</span></code> will detect the presence of the node and will start requesting content through the local node in stead of using <a class="reference external" href="https://docs.ipfs.io/concepts/ipfs-gateway/#gateway-providers">public gateways</a>.
+This mode of operation will not only enable local caching, but also will request data from nearby peers (e.g. colleagues next door) should they already have the content.</p>
+</div>
+<div class="section" id="writing-data">
+<h4>writing data<a class="headerlink" href="#writing-data" title="Permalink to this headline">¶</a></h4>
+<p>As <code class="docutils literal notranslate"><span class="pre">put</span></code> works differently (we can only hand in content and not a key and content), adding data to a content addressable store must work a bit differently as compared to other stores.
+Let’s see how we can do this.</p>
+<p>If a local node is running on your machine, you can also add data to IPFS.
+E.g. if a folder containing a dataset in zarr format should be added, you can do so by running:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ipfs add -r -H --raw-leaves dataset.zarr
+</pre></div>
+</div>
+<p>which will return a CID, which can subsequently be used to access the data, e.g. by opening it like:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_zarr</span><span class="p">(</span><span class="s2">&quot;ipfs://CID&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>IPFS is a <strong>public</strong> network. Thus data added to IPFS will potentially be publicly available after adding it to your local node.</p>
+</div>
+<p>After adding the dataset to your local node, it can be accessed by others, but this may be slow initially, as your machine is the only one hosting it.
+If you add your dataset to the EUREC4A intake catalog, we’ll retrieve the dataset and store additional copies on servers with good internet connectivity, which will improve dataset retrieval speeds.
+Of course, you can also setup your own nodes for dataset hosting or have a look at <a class="reference external" href="https://docs.ipfs.io/concepts/persistence/#pinning-services">pinning services</a>.</p>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "eurec4a/how_to_eurec4a",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="netcdf_datatypes.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">The issue with netCDF data types</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="references.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">References</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By EUREC4A community<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

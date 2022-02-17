@@ -38,11 +38,14 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -286,6 +289,11 @@
      The issue with netCDF data types
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="data_on_ipfs.html">
+     Data on IPFS
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1">
@@ -347,7 +355,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -403,14 +411,24 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
         </div>
     </div>
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Ocean temperatures: AXBTs and SWIFT buoys</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="ocean-temperatures-axbts-and-swift-buoys">
@@ -435,7 +453,7 @@ SWIFTs.</p>
 <span class="o">%</span><span class="k">matplotlib</span> inline
 
 <span class="kn">import</span> <span class="nn">eurec4a</span>
-<span class="n">cat</span> <span class="o">=</span> <span class="n">eurec4a</span><span class="o">.</span><span class="n">get_intake_catalog</span><span class="p">()</span>
+<span class="n">cat</span> <span class="o">=</span> <span class="n">eurec4a</span><span class="o">.</span><span class="n">get_intake_catalog</span><span class="p">(</span><span class="n">use_ipfs</span><span class="o">=</span><span class="s2">&quot;QmahMN2wgPauHYkkiTGoG2TpPBmj3p5FoYJAq9uE9iXT9N&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -529,100 +547,6 @@ on a subset of those dates.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">HTTPError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_5876</span><span class="o">/</span><span class="mf">4194817175.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">axbts</span> <span class="o">=</span> <span class="n">cat</span><span class="o">.</span><span class="n">P3</span><span class="o">.</span><span class="n">AXBT</span><span class="o">.</span><span class="n">Level_3</span><span class="o">.</span><span class="n">to_dask</span><span class="p">()</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">swifts</span> <span class="o">=</span> <span class="p">[</span><span class="n">cat</span><span class="p">[</span><span class="n">s</span><span class="p">]</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">to_dask</span><span class="p">()</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">cat</span><span class="p">)</span> <span class="k">if</span> <span class="s2">&quot;SWIFT&quot;</span> <span class="ow">in</span> <span class="n">s</span><span class="p">]</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">axbt_dates</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">intersect1d</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">axbts</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;datetime64[D]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">),</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>                             <span class="n">flight_dates</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> 
-
-<span class="nn">/tmp/ipykernel_5876/4194817175.py</span> in <span class="ni">&lt;listcomp&gt;</span><span class="nt">(.0)</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">axbts</span> <span class="o">=</span> <span class="n">cat</span><span class="o">.</span><span class="n">P3</span><span class="o">.</span><span class="n">AXBT</span><span class="o">.</span><span class="n">Level_3</span><span class="o">.</span><span class="n">to_dask</span><span class="p">()</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">swifts</span> <span class="o">=</span> <span class="p">[</span><span class="n">cat</span><span class="p">[</span><span class="n">s</span><span class="p">]</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">to_dask</span><span class="p">()</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">cat</span><span class="p">)</span> <span class="k">if</span> <span class="s2">&quot;SWIFT&quot;</span> <span class="ow">in</span> <span class="n">s</span><span class="p">]</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">axbt_dates</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">intersect1d</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">axbts</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;datetime64[D]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">),</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>                             <span class="n">flight_dates</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> 
-
-<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/intake_xarray/base.py</span> in <span class="ni">to_dask</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">     </span><span class="mi">67</span>     <span class="k">def</span> <span class="nf">to_dask</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">68</span>         <span class="sd">&quot;&quot;&quot;Return xarray object where variables are dask arrays&quot;&quot;&quot;</span>
-<span class="ne">---&gt; </span><span class="mi">69</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">read_chunked</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">70</span> 
-<span class="g g-Whitespace">     </span><span class="mi">71</span>     <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-
-<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/intake_xarray/base.py</span> in <span class="ni">read_chunked</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">     </span><span class="mi">42</span>     <span class="k">def</span> <span class="nf">read_chunked</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">43</span>         <span class="sd">&quot;&quot;&quot;Return xarray object (which will have chunks)&quot;&quot;&quot;</span>
-<span class="ne">---&gt; </span><span class="mi">44</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_load_metadata</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">45</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ds</span>
-<span class="g g-Whitespace">     </span><span class="mi">46</span> 
-
-<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/intake/source/base.py</span> in <span class="ni">_load_metadata</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">234</span>         <span class="sd">&quot;&quot;&quot;load metadata only if needed&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">235</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_schema</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">236</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_schema</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_schema</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">237</span>             <span class="bp">self</span><span class="o">.</span><span class="n">dtype</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_schema</span><span class="o">.</span><span class="n">dtype</span>
-<span class="g g-Whitespace">    </span><span class="mi">238</span>             <span class="bp">self</span><span class="o">.</span><span class="n">shape</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_schema</span><span class="o">.</span><span class="n">shape</span>
-
-<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/intake_xarray/base.py</span> in <span class="ni">_get_schema</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span> 
-<span class="g g-Whitespace">     </span><span class="mi">17</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ds</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">18</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_open_dataset</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">19</span> 
-<span class="g g-Whitespace">     </span><span class="mi">20</span>             <span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span>
-
-<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/intake_xarray/opendap.py</span> in <span class="ni">_open_dataset</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">     </span><span class="mi">91</span>     <span class="k">def</span> <span class="nf">_open_dataset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">92</span>         <span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
-<span class="ne">---&gt; </span><span class="mi">93</span>         <span class="n">store</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_store</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">94</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">store</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">chunks</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">_kwargs</span><span class="p">)</span>
-
-<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/intake_xarray/opendap.py</span> in <span class="ni">_get_store</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">     </span><span class="mi">83</span>             <span class="k">return</span> <span class="n">xr</span><span class="o">.</span><span class="n">backends</span><span class="o">.</span><span class="n">NetCDF4DataStore</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">urlpath</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">84</span>         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span> <span class="o">==</span> <span class="s2">&quot;pydap&quot;</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">85</span>             <span class="k">return</span> <span class="n">xr</span><span class="o">.</span><span class="n">backends</span><span class="o">.</span><span class="n">PydapDataStore</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">urlpath</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="n">session</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">86</span>         <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">87</span>             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-
-<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/xarray/backends/pydap_.py</span> in <span class="ni">open</span><span class="nt">(cls, url, session)</span>
-<span class="g g-Whitespace">     </span><span class="mi">91</span>     <span class="k">def</span> <span class="nf">open</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">92</span> 
-<span class="ne">---&gt; </span><span class="mi">93</span>         <span class="n">ds</span> <span class="o">=</span> <span class="n">pydap</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">open_url</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="n">session</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">94</span>         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">95</span> 
-
-<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/pydap/client.py</span> in <span class="ni">open_url</span><span class="nt">(url, application, session, output_grid, timeout)</span>
-<span class="g g-Whitespace">     </span><span class="mi">64</span>     <span class="n">never</span> <span class="n">retrieve</span> <span class="n">coordinate</span> <span class="n">axes</span><span class="o">.</span>
-<span class="g g-Whitespace">     </span><span class="mi">65</span>     <span class="s2">&quot;&quot;&quot;</span>
-<span class="ne">---&gt; </span><span class="mi">66</span><span class="s2">     dataset = DAPHandler(url, application, session, output_grid,</span>
-<span class="g g-Whitespace">     </span><span class="mi">67</span><span class="s2">                          timeout).dataset</span>
-<span class="g g-Whitespace">     </span><span class="mi">68</span><span class="s2"> </span>
-
-<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/pydap/handlers/dap.py</span> in <span class="ni">__init__</span><span class="nt">(self, url, application, session, output_grid, timeout)</span>
-<span class="g g-Whitespace">     </span><span class="mi">52</span><span class="s2">         ddsurl = urlunsplit((scheme, netloc, path + &#39;.dds&#39;, query, fragment))</span>
-<span class="g g-Whitespace">     </span><span class="mi">53</span><span class="s2">         r = GET(ddsurl, application, session, timeout=timeout)</span>
-<span class="ne">---&gt; </span><span class="mi">54</span><span class="s2">         raise_for_status(r)</span>
-<span class="g g-Whitespace">     </span><span class="mi">55</span><span class="s2">         if not r.charset:</span>
-<span class="g g-Whitespace">     </span><span class="mi">56</span><span class="s2">             r.charset = &#39;ascii&#39;</span>
-
-<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/pydap/net.py</span> in <span class="ni">raise_for_status</span><span class="nt">(response)</span>
-<span class="g g-Whitespace">     </span><span class="mi">31</span><span class="s2">     # Raise error if status is above 300:</span>
-<span class="g g-Whitespace">     </span><span class="mi">32</span><span class="s2">     if response.status_code &gt;= 300:</span>
-<span class="ne">---&gt; </span><span class="mi">33</span><span class="s2">         raise HTTPError(</span>
-<span class="g g-Whitespace">     </span><span class="mi">34</span><span class="s2">             detail=response.status+&#39;</span><span class="se">\n</span><span class="s2">&#39;+response.text,</span>
-<span class="g g-Whitespace">     </span><span class="mi">35</span><span class="s2">             headers=response.headers,</span>
-
-<span class="ne">HTTPError</span>: 404 Not Found
-<span class="s2">Error {</span>
-<span class="s2">    code = 404;</span>
-<span class="s2">    message = &quot;Datasets/ATOMIC/data/swift_drifters/EUREC4A_ATOMIC_SWIFT16_All_v2.1.nc&quot;;</span>
-<span class="s2">};</span>
-</pre></div>
-</div>
-</div>
 </div>
 <p>For plotting purposes it’ll be handy to define a one-day time window and to convert between date/time formats</p>
 <div class="cell docutils container">
@@ -671,6 +595,20 @@ were on days there the two platforms overlapped</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f7cc1b5a550&gt;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/cartopy/io/__init__.py:260: DownloadWarning: Downloading: https://naciscdn.org/naturalearth/10m/physical/ne_10m_land.zip
+  warnings.warn(&#39;Downloading: {}&#39;.format(url), DownloadWarning)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/cartopy/io/__init__.py:260: DownloadWarning: Downloading: https://naciscdn.org/naturalearth/10m/physical/ne_10m_coastline.zip
+  warnings.warn(&#39;Downloading: {}&#39;.format(url), DownloadWarning)
+</pre></div>
+</div>
+<img alt="_images/p3_AXBTs_13_3.png" src="_images/p3_AXBTs_13_3.png" />
+</div>
 </div>
 <p>On 19 Jan and 3 Feb the AXBTs bracket the SWIFTs; on 23 Jan the SWIFTs are at
 the southern end of the AXBT pattern.</p>
@@ -709,6 +647,16 @@ and compare the near-surface temperatures to the SWIFTs they are surrounding.</p
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;matplotlib.patches.Rectangle at 0x7f7cc1d05be0&gt;,
+ (&lt;matplotlib.patches.ConnectionPatch at 0x7f7cc044f940&gt;,
+  &lt;matplotlib.patches.ConnectionPatch at 0x7f7cc047be80&gt;,
+  &lt;matplotlib.patches.ConnectionPatch at 0x7f7cb86e1340&gt;,
+  &lt;matplotlib.patches.ConnectionPatch at 0x7f7cb86e15e0&gt;))
+</pre></div>
+</div>
+<img alt="_images/p3_AXBTs_15_1.png" src="_images/p3_AXBTs_15_1.png" />
+</div>
 </div>
 </div>
 
@@ -734,8 +682,8 @@ and compare the near-surface temperatures to the SWIFTs they are surrounding.</p
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="p3_wband_radar.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -752,19 +700,17 @@ and compare the near-surface temperatures to the SWIFTs they are surrounding.</p
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By EUREC4A community<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By EUREC4A community<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

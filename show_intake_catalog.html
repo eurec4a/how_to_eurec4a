@@ -38,11 +38,14 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -286,6 +289,11 @@
      The issue with netCDF data types
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="data_on_ipfs.html">
+     Data on IPFS
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1">
@@ -347,7 +355,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -403,14 +411,24 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
         </div>
     </div>
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Show the intake catalog</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="show-the-intake-catalog">
@@ -425,7 +443,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">=</span> <span class="n">eurec4a</span><span class="o">.</span><span class="n">get_intake_catalog</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">=</span> <span class="n">eurec4a</span><span class="o">.</span><span class="n">get_intake_catalog</span><span class="p">(</span><span class="n">use_ipfs</span><span class="o">=</span><span class="s2">&quot;QmahMN2wgPauHYkkiTGoG2TpPBmj3p5FoYJAq9uE9iXT9N&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -456,30 +474,15 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>radiosondes
-   atalante_meteomodem
-   atalante_vaisala
-   bco
-   meteor
-   ms_merian
-   ronbrown
-barbados
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   bco
-      CORAL_LIDAR (version, date, dt, content_type)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ATR
+   track
 Atalante
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   track
-ATR
    track
-BOREAL
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   track
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>BOREAL
+   track
 CU-RAAVEN
-   track
    CUR_0124_f01
    CUR_0125_f01
    CUR_0126_f01
@@ -500,11 +503,11 @@ CU-RAAVEN
    CUR_0203_f01
    CUR_0204_f01
    CUR_0204_f02
+   CUR_0205_f01
+   CUR_0205_f02
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   CUR_0205_f01
-   CUR_0205_f02
-   CUR_0206_f01
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   CUR_0206_f01
    CUR_0206_f02
    CUR_0207_f01
    CUR_0207_f02
@@ -521,19 +524,20 @@ CU-RAAVEN
    CUR_0214_f02
    CUR_0215_f01
    CUR_0215_f02
+   track
 Caravela
    track
 HALO
-   BAHAMAS
-      QL
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         HALO-0119
+   BACARDI
+      irradiances
+         HALO-0119
          HALO-0122
          HALO-0124
          HALO-0126
          HALO-0128
-         HALO-0130
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         HALO-0130
          HALO-0131
          HALO-0202
          HALO-0205
@@ -543,6 +547,7 @@ HALO
          HALO-0213
          HALO-0215
          HALO-0218
+   BAHAMAS
       PositionAttitude
          HALO-0115
          HALO-0118
@@ -561,8 +566,9 @@ HALO
          HALO-0213
          HALO-0215
          HALO-0218
-   specMACS
-      cloudmaskSWIR
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      QL
          HALO-0119
          HALO-0122
          HALO-0124
@@ -578,30 +584,42 @@ HALO
          HALO-0213
          HALO-0215
          HALO-0218
-      experimental
+   KT19
+      cloudmask
+         HALO-0122
+         HALO-0124
+         HALO-0126
+         HALO-0128
+         HALO-0130
+         HALO-0131
+         HALO-0202
+         HALO-0205
+         HALO-0207
+         HALO-0209
+         HALO-0211
+         HALO-0213
+         HALO-0215
+   SMART
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         points
-            HALO-0205_sl1
-            HALO-0205_sl2
-            HALO-0205_sl3
-            HALO-0205_sl4
-         centroids
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>            HALO-0205_sl1
-            HALO-0205_sl2
-            HALO-0205_sl3
-            HALO-0205_sl4
-         mesh
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>            HALO-0205_sl1
-            HALO-0205_sl2
-            HALO-0205_sl3
-            HALO-0205_sl4
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      spectral_irradiances
+         HALO-0122
+         HALO-0124
+         HALO-0126
+         HALO-0128
+         HALO-0130
+         HALO-0131
+         HALO-0202
+         HALO-0205
+         HALO-0207
+         HALO-0209
+         HALO-0211
+         HALO-0213
+         HALO-0215
    UNIFIED
-      dropsondes
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      BAHAMAS
          HALO-0119
          HALO-0122
          HALO-0124
@@ -618,58 +636,6 @@ HALO
          HALO-0215
          HALO-0218
       HAMPradar
-         HALO-0119
-         HALO-0122
-         HALO-0124
-         HALO-0126
-         HALO-0128
-         HALO-0130
-         HALO-0131
-         HALO-0202
-         HALO-0205
-         HALO-0207
-         HALO-0209
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         HALO-0211
-         HALO-0213
-         HALO-0215
-         HALO-0218
-      HAMPradiometer
-         HALO-0119
-         HALO-0122
-         HALO-0124
-         HALO-0126
-         HALO-0128
-         HALO-0130
-         HALO-0131
-         HALO-0202
-         HALO-0205
-         HALO-0207
-         HALO-0209
-         HALO-0211
-         HALO-0213
-         HALO-0215
-         HALO-0218
-      BAHAMAS
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         HALO-0119
-         HALO-0122
-         HALO-0124
-         HALO-0126
-         HALO-0128
-         HALO-0130
-         HALO-0131
-         HALO-0202
-         HALO-0205
-         HALO-0207
-         HALO-0209
-         HALO-0211
-         HALO-0213
-         HALO-0215
-         HALO-0218
-      HAMPradiometer_cloudmask
          HALO-0119
          HALO-0122
          HALO-0124
@@ -701,6 +667,40 @@ HALO
          HALO-0213
          HALO-0215
          HALO-0218
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      HAMPradiometer
+         HALO-0119
+         HALO-0122
+         HALO-0124
+         HALO-0126
+         HALO-0128
+         HALO-0130
+         HALO-0131
+         HALO-0202
+         HALO-0205
+         HALO-0207
+         HALO-0209
+         HALO-0211
+         HALO-0213
+         HALO-0215
+         HALO-0218
+      HAMPradiometer_cloudmask
+         HALO-0119
+         HALO-0122
+         HALO-0124
+         HALO-0126
+         HALO-0128
+         HALO-0130
+         HALO-0131
+         HALO-0202
+         HALO-0205
+         HALO-0207
+         HALO-0209
+         HALO-0211
+         HALO-0213
+         HALO-0215
+         HALO-0218
       HAMPradiometer_retrievals
          HALO-0119
          HALO-0122
@@ -717,10 +717,10 @@ HALO
          HALO-0213
          HALO-0215
          HALO-0218
-   SMART
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      spectral_irradiances
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      dropsondes
+         HALO-0119
          HALO-0122
          HALO-0124
          HALO-0126
@@ -734,27 +734,9 @@ HALO
          HALO-0211
          HALO-0213
          HALO-0215
+         HALO-0218
    VELOX
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      cloudmask
-         HALO-0124
-         HALO-0126
-         HALO-0128
-         HALO-0130
-         HALO-0131
-         HALO-0202
-         HALO-0205
-         HALO-0207
-         HALO-0209
-         HALO-0211
-         HALO-0213
-         HALO-0215
-   KT19
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      cloudmask
-         HALO-0122
+      cloudmask
          HALO-0124
          HALO-0126
          HALO-0128
@@ -768,54 +750,10 @@ HALO
          HALO-0213
          HALO-0215
    WALES
-      cloudparameter
-         HALO-0122
-         HALO-0124
-         HALO-0126
-         HALO-0128
-         HALO-0130
-         HALO-0131
-         HALO-0202
-         HALO-0205
-         HALO-0207
-         HALO-0209
-         HALO-0211
-         HALO-0213
-         HALO-0215
-      wv
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         HALO-0122
-         HALO-0124
-         HALO-0126
-         HALO-0128
-         HALO-0130
-         HALO-0131
-         HALO-0202
-         HALO-0205
-         HALO-0207
-         HALO-0209
-         HALO-0211
-         HALO-0213
-         HALO-0215
-      adepg
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      adepg
          HALO-0122
-         HALO-0124
-         HALO-0126
-         HALO-0128
-         HALO-0130
-         HALO-0131
-         HALO-0202
-         HALO-0205
-         HALO-0207
-         HALO-0209
-         HALO-0211
-         HALO-0213
-         HALO-0215
-      bsri
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         HALO-0122
          HALO-0124
          HALO-0126
          HALO-0128
@@ -842,10 +780,54 @@ HALO
          HALO-0211
          HALO-0213
          HALO-0215
-   BACARDI
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      irradiances
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      bsri
+         HALO-0122
+         HALO-0124
+         HALO-0126
+         HALO-0128
+         HALO-0130
+         HALO-0131
+         HALO-0202
+         HALO-0205
+         HALO-0207
+         HALO-0209
+         HALO-0211
+         HALO-0213
+         HALO-0215
+      cloudparameter
+         HALO-0122
+         HALO-0124
+         HALO-0126
+         HALO-0128
+         HALO-0130
+         HALO-0131
+         HALO-0202
+         HALO-0205
+         HALO-0207
+         HALO-0209
+         HALO-0211
+         HALO-0213
+         HALO-0215
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      wv
+         HALO-0122
+         HALO-0124
+         HALO-0126
+         HALO-0128
+         HALO-0130
+         HALO-0131
+         HALO-0202
+         HALO-0205
+         HALO-0207
+         HALO-0209
+         HALO-0211
+         HALO-0213
+         HALO-0215
+   specMACS
+      cloudmaskSWIR
          HALO-0119
          HALO-0122
          HALO-0124
@@ -861,45 +843,64 @@ HALO
          HALO-0213
          HALO-0215
          HALO-0218
+      experimental
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         centroids
+            HALO-0205_sl1
+            HALO-0205_sl2
+            HALO-0205_sl3
+            HALO-0205_sl4
+         mesh
+            HALO-0205_sl1
+            HALO-0205_sl2
+            HALO-0205_sl3
+            HALO-0205_sl4
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         points
+            HALO-0205_sl1
+            HALO-0205_sl2
+            HALO-0205_sl3
+            HALO-0205_sl4
    track
 Humpback
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   track
+   track
 IFM03
    track
-IFM09
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   track
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IFM09
+   track
 IFM12
    track
 Kracken
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   track
-Melonhead
-   track
-mini-MPCK
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   track
 MPCK-plus
    track
 MS-Merian
-   MRR_PRO
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      motion_corrected (date)
-   track
    FMCW94_RPG
       motion_corrected (date)
-NTAS
-   all
-Omura
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   track
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   MRR_PRO
+      motion_corrected (date)
+   track
+Melonhead
+   track
+Meteor
+   LIMRAD94
+      high_res (date, version)
+      low_res (date)
+   track
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NTAS
+   all
+Omura
+   track
 P3
    AXBT
       Level_3
@@ -915,7 +916,9 @@ P3
       P3-0209
       P3-0210
       P3-0211
-   isotope_analyzer
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   isotope_analyzer
       water_vapor_1hz
          P3-0117
          P3-0119
@@ -928,10 +931,10 @@ P3
          P3-0209
          P3-0210
          P3-0211
-      water_vapor_5hz
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         P3-0117
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      water_vapor_5hz
+         P3-0117
          P3-0119
          P3-0123
          P3-0124
@@ -979,43 +982,49 @@ P3
       P3-0209
       P3-0210
       P3-0211
-QuadCopter
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   track
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>QuadCopter
+   track
 RonBrown
-   atmos-chem
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      PMEL_XRF_Chem
-      PMEL_Seawater
-      PMEL_Radon
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   MAERI
+      SSTskin
+   ROSR
+      SSTskin
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   atmos-chem
+      PMEL_AOD
+      PMEL_CCN
+      PMEL_CN_O3
+      PMEL_IC_Chem
+      PMEL_Met_Nav
+      PMEL_OCEC
       PMEL_Optics
       PMEL_Optics_Intensive
-      PMEL_OCEC
-      PMEL_Met_Nav
-      PMEL_IC_Chem
-      PMEL_CN_O3
-      PMEL_CCN
-      PMEL_AOD
+      PMEL_Radon
+      PMEL_Seawater
+      PMEL_XRF_Chem
    ceilometer
-      15_s
       10_min
+      15_s
       1_hour
-   disdrometer
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      rain_dropcount_dbz_10sec
-      rain_1min
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   disdrometer
       rain_10min
+      rain_1min
+      rain_dropcount_dbz_10sec
    doppler-lidar
-      windProfs
       velStats
+      windProfs
    isotope-analyzer
-      water_vapor_5hz
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         RHB-0126
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      water_vapor_5hz
+         RHB-0126
          RHB-0127
          RHB-0128
          RHB-0129
@@ -1031,25 +1040,19 @@ RonBrown
          RHB-0208
          RHB-0209
          RHB-0210
-   MAERI
-      SSTskin
    nav-met-sea-flux
-      profile
-      1min
       10min
+      1min
+      profile
    ocean_profiles
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      ADCP
+      ADCP
       CTD
       UCTD
-   ROSR
-      SSTskin
    track
-   w-band-radar
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      RHB-20200129T00-20200129T01
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   w-band-radar
+      RHB-20200129T00-20200129T01
       RHB-20200129T01-20200129T02
       RHB-20200129T02-20200129T03
       RHB-20200129T03-20200129T04
@@ -1190,7 +1193,9 @@ RonBrown
       RHB-20200203T18-20200203T19
       RHB-20200203T19-20200203T20
       RHB-20200203T20-20200203T21
-      RHB-20200203T21-20200203T22
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      RHB-20200203T21-20200203T22
       RHB-20200203T22-20200203T23
       RHB-20200203T23-20200204T00
       RHB-20200204T00-20200204T01
@@ -1214,9 +1219,7 @@ RonBrown
       RHB-20200204T18-20200204T19
       RHB-20200204T19-20200204T20
       RHB-20200204T20-20200204T21
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      RHB-20200204T21-20200204T22
+      RHB-20200204T21-20200204T22
       RHB-20200206T19-20200206T20
       RHB-20200206T20-20200206T21
       RHB-20200206T21-20200206T22
@@ -1360,162 +1363,162 @@ RonBrown
       RHB-20200212T15-20200212T16
       RHB-20200212T16-20200212T17
       RHB-20200212T17-20200212T18
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      RHB-20200212T18-20200212T19
+      RHB-20200212T18-20200212T19
       RHB-20200212T19-20200212T20
       RHB-20200212T20-20200212T21
       RHB-20200212T21-20200212T22
       RHB-20200212T22-20200212T23
       RHB-20200212T23-20200213T00
-SD-1026
-   track
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SD-1026
    1min
    5min
+   track
 SD-1060
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   track
    1min
    5min
+   track
 SD-1061
-   track
    1min
    5min
-SD-1063
+   track
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   track
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SD-1063
    1min
+   track
 SD-1064
-   track
    1min
-Skywalker07
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   track
-Skywalker10
    track
-Skywalker12
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   track
 SVP-B-4101696
    track
-SVP-B-4101697
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   track
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SVP-B-4101697
+   track
 SVP-B-4101698
    track
 SVP-B-4101699
+   track
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   track
-SVP-B-4101780
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SVP-B-4101780
    track
 SVP-BRST-4402505
    track
 SVP-BRST-4402506
+   track
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   track
-SVP-BRST-4402507
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   track
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SVP-BRST-4402507
+   track
 SVP-BRST-4402508
    track
 SVP-BRST-6203717
+   track
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   track
-SVP-BS-4101757
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SVP-BS-4101757
    track
 SVP-BS-4101758
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   track
+   track
 SVP-BSW-3101569
    track
-SVP-BSW-3101570
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   track
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SVP-BSW-3101570
+   track
 SVP-BSW-3101571
    track
 SVP-BSW-3101572
+   track
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   track
-SVP-BSW-3101573
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SVP-BSW-3101573
    track
 SVP-BSW-3101574
    track
 SVP-BSW-3101575
+   track
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   track
-SVP-BSW-3101576
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   track
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SVP-BSW-3101576
+   track
 SVP-BSW-3101577
    track
 SVP-BSW-3101578
    track
-SWIFT16
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   track
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SWIFT16
    all
+   track
 SWIFT17
-   track
    all
+   track
 SWIFT22
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   track
    all
+   track
 SWIFT23
-   track
    all
+   track
 SWIFT24
+   all
+   track
+SWIFT25
+   all
+   track
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   track
-   all
-SWIFT25
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Skywalker07
    track
-   all
-TO
+Skywalker10
+   track
+Skywalker12
+   track
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TO
    track
 WG245
+   all
+   track
+WG247
+   all
+   track
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   track
-   all
-WG247
-   track
-   all
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>barbados
+   bco
+      CORAL_LIDAR (content_type, date, dt, version)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c3ontext
+   level2
+   level3_ICON-albedo_daily
+   level3_ICON-albedo_instant
+   level3_IR_daily
+   level3_IR_instant
+   level3_VIS_daily
+   level3_VIS_instant
 dropsondes
    JOANNE
       level3
       level4
-satellites
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   GOES16
-      latlongrid (resolution, channel, date)
-radiative_profiles
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   clear_sky (version)
-Meteor
-   LIMRAD94
-      low_res (date)
-      high_res (date, version)
+mini-MPCK
    track
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>radiative_profiles
+   clear_sky (version)
+radiosondes
+   atalante_meteomodem
+   atalante_vaisala
+   bco
+   meteor
+   ms_merian
+   ronbrown
 </pre></div>
 </div>
 </div>
@@ -1554,8 +1557,8 @@ Meteor
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="flight-phase-operations.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1572,19 +1575,17 @@ Meteor
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By EUREC4A community<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By EUREC4A community<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 
