@@ -15,10 +15,9 @@ kernelspec:
 
 The meso-scale patterns of shallow convection as described by {cite}`Stevens:2021` 
 are a great way to learn more about the meso-scale variability in cloudiness in the
-trades. For the time period of the EUREC<sup>4</sup>A campaign, a group of 50 participants
-has identified these meso-scale patterns on satellite images. Their classifications build
-the *Common Consensus on Convective OrgaNizaTionduring the EUREC4A eXperimenT* dataset, short
-**C<sup>3</sup>ONTEXT**.
+trades. Four meso-scale cloud patterns have been identified to frequently reoccur.
+These four patterns that are shown in the figure below are named based on their
+visual impressions: Sugar, Gravel, Flowers and Fish.
 
 ```{figure} c3ontext_cloud_patterns.jpg
 :alt: Meso-scale cloud patterns
@@ -26,11 +25,21 @@ the *Common Consensus on Convective OrgaNizaTionduring the EUREC4A eXperimenT* d
 :align: center
 
 Four meso-scale cloud patterns have been identified to be reoccuring in the trades. They are
-named based on their visual impressions: Sugar, Gravel, Flowers, Fish.
+named based on their visual impressions: Sugar, Gravel, Flowers, Fish. Satellite image source: NASA Worldview.
 ```
 
-Here, an example shows how the meso-scale patterns at a specific location in time and
-space can be retrieved.
+Both rule-based algorithms and deep neural networks have been developed to identify these
+patterns automatically to learn more about their characteristics and processes.
+For the time period of the EUREC<sup>4</sup>A campaign, a group of 50 participants
+has identified these meso-scale patterns manually on satellite images. Their classifications build
+the *Common Consensus on Convective OrgaNizaTionduring the EUREC4A eXperimenT* dataset, short
+**C<sup>3</sup>ONTEXT**.
+
+As the acronym already suggests, the dataset is meant to provide the meso-scale *context* to additional
+observations. The following example shows how this meso-scale context, the information about the most
+dominant cloud patterns, can be retrieved along a platform track. In this particular example, it is
+the track of the R/V Meteor. The measurements made onboard the research vessel like cloud radar and Raman
+lidar can therefor be analysed and interpreted with respect to the four cloud patterns.
 
 More details on this dataset can be found in {cite}`Schulz:2021` and
 in the [C<sup>3</sup>ONTEXT GitHub-repository](https://github.com/observingClouds/EUREC4A_manualclassifications).
