@@ -46,15 +46,14 @@
     <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe,.cell"
-        const thebe_selector_input = "pre,.cell_input div.highlight"
-        const thebe_selector_output = ".output,.cell_output"
-    </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="shortcut icon" href="_static/logo_pyeurec4a.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -254,12 +253,29 @@
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="auxiliary_datasets.html">
+   Auxiliary datasets
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="c3ontext.html">
+     How to put your measurements into the meso-scale context of cloud patterns
+    </a>
+   </li>
+  </ul>
+ </li>
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="toolbox.html">
    Toolbox
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -574,7 +590,7 @@ We further look at the relevance of the netCDF data model and netCDF persistence
 Maybe the most illustrative way to show this general idea is an extended version of <a class="reference external" href="http://xarray.pydata.org/">xarray</a>’s logo, but the underlying ideas are of course applicable independently of xarray or even Python.</p>
 <div class="figure align-center" id="id1">
 <a class="reference internal image-reference" href="_images/dataset-diagram.png"><img alt="dataset diagram" src="_images/dataset-diagram.png" style="width: 70%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Dataset diagram (From the <a class="reference external" href="http://xarray.pydata.org/en/stable/data-structures.html">xarray documentation</a>)</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Dataset diagram (From the <a class="reference external" href="http://xarray.pydata.org/en/stable/data-structures.html">xarray documentation</a>)</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </div>
 <p>A dataset is a collection of <em>variables</em> and <em>dimensions</em>.
 Variables are multi-dimensional arrays and they can share dimensions (i.e. to express that <code class="docutils literal notranslate"><span class="pre">temperature</span></code> and <code class="docutils literal notranslate"><span class="pre">precipitation</span></code> are defined at the same locations, the three axes of the corresponding arrays should be identified with the same dimension label, that is e.g. <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code> and <code class="docutils literal notranslate"><span class="pre">z</span></code>).
@@ -747,8 +763,8 @@ If any one of the sub cases failed, the data type is marked as erroneous.</p>
 <div class="dropdown error admonition">
 <p class="admonition-title">BYTE</p>
 <div class="tabbed-set docutils">
-<input checked="checked" id="21811080-33ce-4b79-ae39-71e5f7701eac" name="0dcd04c8-c705-48e2-b90a-3e08051bf93e" type="radio">
-</input><label class="tabbed-label" for="21811080-33ce-4b79-ae39-71e5f7701eac">
+<input checked="checked" id="1d7bb453-1382-459b-a768-ce48565886cf" name="aaa08986-b662-4794-836d-a077dc33d2ec" type="radio">
+</input><label class="tabbed-label" for="1d7bb453-1382-459b-a768-ce48565886cf">
 + numbers</label><div class="tabbed-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_BYTE.nc
@@ -794,8 +810,8 @@ data:
 </div>
 <p>✅</p>
 </div>
-<input id="55842ec8-dd5b-45b9-b3bc-5c5aa2b6d1f5" name="0dcd04c8-c705-48e2-b90a-3e08051bf93e" type="radio">
-</input><label class="tabbed-label" for="55842ec8-dd5b-45b9-b3bc-5c5aa2b6d1f5">
+<input id="63a3f1c3-b1af-4fd7-9ed6-31a9a42217c2" name="aaa08986-b662-4794-836d-a077dc33d2ec" type="radio">
+</input><label class="tabbed-label" for="63a3f1c3-b1af-4fd7-9ed6-31a9a42217c2">
 +/- numbers</label><div class="tabbed-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_BYTE_neg.nc
@@ -844,8 +860,8 @@ data:
 <p>data type of attribute <code class="docutils literal notranslate"><span class="pre">valid_range</span></code> of variable <code class="docutils literal notranslate"><span class="pre">test</span></code> differs</p>
 </div>
 </div>
-<input id="89354560-6d04-457b-a471-2cf1f92b4ae9" name="0dcd04c8-c705-48e2-b90a-3e08051bf93e" type="radio">
-</input><label class="tabbed-label" for="89354560-6d04-457b-a471-2cf1f92b4ae9">
+<input id="bc2c504e-d7ab-4dfc-81e1-ec5182488551" name="aaa08986-b662-4794-836d-a077dc33d2ec" type="radio">
+</input><label class="tabbed-label" for="bc2c504e-d7ab-4dfc-81e1-ec5182488551">
 + flags</label><div class="tabbed-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_BYTE_flag.nc
@@ -891,8 +907,8 @@ data:
 </div>
 <p>✅</p>
 </div>
-<input id="3c123cff-b6cf-441d-86a1-8d109ceab9d0" name="0dcd04c8-c705-48e2-b90a-3e08051bf93e" type="radio">
-</input><label class="tabbed-label" for="3c123cff-b6cf-441d-86a1-8d109ceab9d0">
+<input id="80627f0a-75a7-49f1-8901-7d8e96601784" name="aaa08986-b662-4794-836d-a077dc33d2ec" type="radio">
+</input><label class="tabbed-label" for="80627f0a-75a7-49f1-8901-7d8e96601784">
 +/- flags</label><div class="tabbed-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_BYTE_flag_neg.nc
@@ -946,8 +962,8 @@ data:
 <div class="dropdown error admonition">
 <p class="admonition-title">UBYTE</p>
 <div class="tabbed-set docutils">
-<input checked="checked" id="823a5b43-5327-43d2-8c85-4b2997cb9d05" name="10878e57-92d3-45ae-9372-858acdb2a3c2" type="radio">
-</input><label class="tabbed-label" for="823a5b43-5327-43d2-8c85-4b2997cb9d05">
+<input checked="checked" id="4e979976-16fa-4f42-8b72-9748f5b982fa" name="e9b0f9f2-df78-43b6-ba9f-edbdd9528571" type="radio">
+</input><label class="tabbed-label" for="4e979976-16fa-4f42-8b72-9748f5b982fa">
 + numbers</label><div class="tabbed-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_UBYTE.nc
@@ -996,8 +1012,8 @@ data:
 <p>values of variable <code class="docutils literal notranslate"><span class="pre">test</span></code> are not equal</p>
 </div>
 </div>
-<input id="aeb548d8-83d2-4c69-9848-d5b266b7b108" name="10878e57-92d3-45ae-9372-858acdb2a3c2" type="radio">
-</input><label class="tabbed-label" for="aeb548d8-83d2-4c69-9848-d5b266b7b108">
+<input id="554d523e-d8c2-4412-88a7-a3cb5cbe298b" name="e9b0f9f2-df78-43b6-ba9f-edbdd9528571" type="radio">
+</input><label class="tabbed-label" for="554d523e-d8c2-4412-88a7-a3cb5cbe298b">
 + flags</label><div class="tabbed-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_UBYTE_flag.nc
@@ -1044,8 +1060,8 @@ Attributes {
 <div class="dropdown admonition">
 <p class="admonition-title">SHORT</p>
 <div class="tabbed-set docutils">
-<input checked="checked" id="0494d7f1-c3a9-49ac-b24a-ee6f4c1afcf1" name="62a28fbe-8d35-4b60-b042-84aceff4ae4b" type="radio">
-</input><label class="tabbed-label" for="0494d7f1-c3a9-49ac-b24a-ee6f4c1afcf1">
+<input checked="checked" id="5b028028-697a-4d3c-afdc-dad93e4dc7b5" name="7e06494d-4a8e-4e6c-9ea8-e9390d977dc0" type="radio">
+</input><label class="tabbed-label" for="5b028028-697a-4d3c-afdc-dad93e4dc7b5">
 + numbers</label><div class="tabbed-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_SHORT.nc
@@ -1089,8 +1105,8 @@ data:
 </div>
 <p>✅</p>
 </div>
-<input id="9216bc1c-1b8c-49b9-93f9-09bbb3f66b29" name="62a28fbe-8d35-4b60-b042-84aceff4ae4b" type="radio">
-</input><label class="tabbed-label" for="9216bc1c-1b8c-49b9-93f9-09bbb3f66b29">
+<input id="7bbde0b7-0fbe-4261-86c7-cd33d34d9381" name="7e06494d-4a8e-4e6c-9ea8-e9390d977dc0" type="radio">
+</input><label class="tabbed-label" for="7bbde0b7-0fbe-4261-86c7-cd33d34d9381">
 +/- numbers</label><div class="tabbed-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_SHORT_neg.nc
@@ -1134,8 +1150,8 @@ data:
 </div>
 <p>✅</p>
 </div>
-<input id="2b3b225d-d23f-4648-9cf6-6adc0c510361" name="62a28fbe-8d35-4b60-b042-84aceff4ae4b" type="radio">
-</input><label class="tabbed-label" for="2b3b225d-d23f-4648-9cf6-6adc0c510361">
+<input id="8d13b751-e6c4-4f1a-8538-3657c082dbb2" name="7e06494d-4a8e-4e6c-9ea8-e9390d977dc0" type="radio">
+</input><label class="tabbed-label" for="8d13b751-e6c4-4f1a-8538-3657c082dbb2">
 + flags</label><div class="tabbed-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_SHORT_flag.nc
@@ -1179,8 +1195,8 @@ data:
 </div>
 <p>✅</p>
 </div>
-<input id="61455abd-1f6f-4166-9379-cabe1affe30a" name="62a28fbe-8d35-4b60-b042-84aceff4ae4b" type="radio">
-</input><label class="tabbed-label" for="61455abd-1f6f-4166-9379-cabe1affe30a">
+<input id="779830e1-0367-4d40-b4fe-3a25297a9884" name="7e06494d-4a8e-4e6c-9ea8-e9390d977dc0" type="radio">
+</input><label class="tabbed-label" for="779830e1-0367-4d40-b4fe-3a25297a9884">
 +/- flags</label><div class="tabbed-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_SHORT_flag_neg.nc
@@ -1229,8 +1245,8 @@ data:
 <div class="dropdown error admonition">
 <p class="admonition-title">USHORT</p>
 <div class="tabbed-set docutils">
-<input checked="checked" id="54fe3dd8-b4e2-4051-8642-95238dc9edb6" name="9077cdf0-2e03-4e3d-b8df-23a788a92d2a" type="radio">
-</input><label class="tabbed-label" for="54fe3dd8-b4e2-4051-8642-95238dc9edb6">
+<input checked="checked" id="248f9cce-55fd-4955-a8fa-d4dfdaaacb6a" name="db9697fc-14b7-4090-8021-249655a57afa" type="radio">
+</input><label class="tabbed-label" for="248f9cce-55fd-4955-a8fa-d4dfdaaacb6a">
 + numbers</label><div class="tabbed-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_USHORT.nc
@@ -1271,8 +1287,8 @@ Attributes {
 <p>[Errno -45] NetCDF: Not a valid data type or _FillValue type mismatch: b’<a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_USHORT.nc">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_USHORT.nc</a>’</p>
 </div>
 </div>
-<input id="436744b7-17be-4911-887e-6f66010e8ecd" name="9077cdf0-2e03-4e3d-b8df-23a788a92d2a" type="radio">
-</input><label class="tabbed-label" for="436744b7-17be-4911-887e-6f66010e8ecd">
+<input id="28c24de1-5730-49d8-9450-3af56a834dbd" name="db9697fc-14b7-4090-8021-249655a57afa" type="radio">
+</input><label class="tabbed-label" for="28c24de1-5730-49d8-9450-3af56a834dbd">
 + flags</label><div class="tabbed-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_USHORT_flag.nc
@@ -1319,8 +1335,8 @@ Attributes {
 <div class="dropdown admonition">
 <p class="admonition-title">INT</p>
 <div class="tabbed-set docutils">
-<input checked="checked" id="e7a196df-42f4-4fc5-9a3d-cb95e9e794a0" name="f8339ea0-2d76-4124-b6eb-fc1217653b92" type="radio">
-</input><label class="tabbed-label" for="e7a196df-42f4-4fc5-9a3d-cb95e9e794a0">
+<input checked="checked" id="80a5a4dd-3d83-40dc-bf37-ec41a472ccdc" name="3e40a143-95bc-4783-81ba-e4e364d654ac" type="radio">
+</input><label class="tabbed-label" for="80a5a4dd-3d83-40dc-bf37-ec41a472ccdc">
 + numbers</label><div class="tabbed-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_INT.nc
@@ -1364,8 +1380,8 @@ data:
 </div>
 <p>✅</p>
 </div>
-<input id="842d2f12-8be8-453a-95e4-0cd93624b8b9" name="f8339ea0-2d76-4124-b6eb-fc1217653b92" type="radio">
-</input><label class="tabbed-label" for="842d2f12-8be8-453a-95e4-0cd93624b8b9">
+<input id="b540da7f-f608-4ba2-89cb-409cf2b270d9" name="3e40a143-95bc-4783-81ba-e4e364d654ac" type="radio">
+</input><label class="tabbed-label" for="b540da7f-f608-4ba2-89cb-409cf2b270d9">
 +/- numbers</label><div class="tabbed-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_INT_neg.nc
@@ -1409,8 +1425,8 @@ data:
 </div>
 <p>✅</p>
 </div>
-<input id="7d5cae3f-2f45-4dec-83be-1ba1bb139307" name="f8339ea0-2d76-4124-b6eb-fc1217653b92" type="radio">
-</input><label class="tabbed-label" for="7d5cae3f-2f45-4dec-83be-1ba1bb139307">
+<input id="8c45e9c2-81b6-4672-b6a8-098192406d14" name="3e40a143-95bc-4783-81ba-e4e364d654ac" type="radio">
+</input><label class="tabbed-label" for="8c45e9c2-81b6-4672-b6a8-098192406d14">
 + flags</label><div class="tabbed-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_INT_flag.nc
@@ -1454,8 +1470,8 @@ data:
 </div>
 <p>✅</p>
 </div>
-<input id="46e3d62f-d624-48eb-84d6-1ea8e49e45b9" name="f8339ea0-2d76-4124-b6eb-fc1217653b92" type="radio">
-</input><label class="tabbed-label" for="46e3d62f-d624-48eb-84d6-1ea8e49e45b9">
+<input id="9b9d9946-5217-4e5b-a4b5-a3484db656b3" name="3e40a143-95bc-4783-81ba-e4e364d654ac" type="radio">
+</input><label class="tabbed-label" for="9b9d9946-5217-4e5b-a4b5-a3484db656b3">
 +/- flags</label><div class="tabbed-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_INT_flag_neg.nc
@@ -1504,8 +1520,8 @@ data:
 <div class="dropdown error admonition">
 <p class="admonition-title">UINT</p>
 <div class="tabbed-set docutils">
-<input checked="checked" id="b8a84316-a9cf-46e5-b167-54337d904239" name="b20100d1-f57b-45e3-b34f-8104b2b9a0ca" type="radio">
-</input><label class="tabbed-label" for="b8a84316-a9cf-46e5-b167-54337d904239">
+<input checked="checked" id="5b742034-1c19-4725-95b8-f01c15fc6b67" name="0d87f325-539a-434d-acf9-b8c6941e2de9" type="radio">
+</input><label class="tabbed-label" for="5b742034-1c19-4725-95b8-f01c15fc6b67">
 + numbers</label><div class="tabbed-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_UINT.nc
@@ -1546,8 +1562,8 @@ Attributes {
 <p>[Errno -45] NetCDF: Not a valid data type or _FillValue type mismatch: b’<a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT.nc">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT.nc</a>’</p>
 </div>
 </div>
-<input id="8584707e-4db2-4eb0-83e3-b09e4ca86cf3" name="b20100d1-f57b-45e3-b34f-8104b2b9a0ca" type="radio">
-</input><label class="tabbed-label" for="8584707e-4db2-4eb0-83e3-b09e4ca86cf3">
+<input id="dc0ef291-d8dd-4b2d-a1eb-17c4559e6c4a" name="0d87f325-539a-434d-acf9-b8c6941e2de9" type="radio">
+</input><label class="tabbed-label" for="dc0ef291-d8dd-4b2d-a1eb-17c4559e6c4a">
 + flags</label><div class="tabbed-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_UINT_flag.nc
@@ -1594,8 +1610,8 @@ Attributes {
 <div class="dropdown error admonition">
 <p class="admonition-title">INT64</p>
 <div class="tabbed-set docutils">
-<input checked="checked" id="cbfe8db9-1602-4b35-b6f3-8664d3b7cbf8" name="1ea55f36-2897-492e-89e1-99d958fc91f9" type="radio">
-</input><label class="tabbed-label" for="cbfe8db9-1602-4b35-b6f3-8664d3b7cbf8">
+<input checked="checked" id="d201e144-b03a-460c-8bdf-b898cf9fb85a" name="aa51695c-3089-4225-a89e-c88ad2e6e9b6" type="radio">
+</input><label class="tabbed-label" for="d201e144-b03a-460c-8bdf-b898cf9fb85a">
 + numbers</label><div class="tabbed-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_INT64.nc
@@ -1633,8 +1649,8 @@ Error {
 <p>[Errno -77] NetCDF: Access failure: b’<a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64.nc">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64.nc</a>’</p>
 </div>
 </div>
-<input id="aaaad129-649d-4a9f-b518-c2f008135e84" name="1ea55f36-2897-492e-89e1-99d958fc91f9" type="radio">
-</input><label class="tabbed-label" for="aaaad129-649d-4a9f-b518-c2f008135e84">
+<input id="78fdfc51-d648-4310-b03f-5346e71832cc" name="aa51695c-3089-4225-a89e-c88ad2e6e9b6" type="radio">
+</input><label class="tabbed-label" for="78fdfc51-d648-4310-b03f-5346e71832cc">
 +/- numbers</label><div class="tabbed-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_INT64_neg.nc
@@ -1672,8 +1688,8 @@ Error {
 <p>[Errno -77] NetCDF: Access failure: b’<a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_neg.nc">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_neg.nc</a>’</p>
 </div>
 </div>
-<input id="65c5be19-6381-4327-a2ed-20a32179c82b" name="1ea55f36-2897-492e-89e1-99d958fc91f9" type="radio">
-</input><label class="tabbed-label" for="65c5be19-6381-4327-a2ed-20a32179c82b">
+<input id="671fc546-d230-47c9-8bd0-0843e0927176" name="aa51695c-3089-4225-a89e-c88ad2e6e9b6" type="radio">
+</input><label class="tabbed-label" for="671fc546-d230-47c9-8bd0-0843e0927176">
 + flags</label><div class="tabbed-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_INT64_flag.nc
@@ -1711,8 +1727,8 @@ Error {
 <p>[Errno -77] NetCDF: Access failure: b’<a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_flag.nc">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_flag.nc</a>’</p>
 </div>
 </div>
-<input id="e25fa839-17a7-4e87-9a9a-947ee096dc50" name="1ea55f36-2897-492e-89e1-99d958fc91f9" type="radio">
-</input><label class="tabbed-label" for="e25fa839-17a7-4e87-9a9a-947ee096dc50">
+<input id="c6111966-3ed7-4995-8efc-6591a8298088" name="aa51695c-3089-4225-a89e-c88ad2e6e9b6" type="radio">
+</input><label class="tabbed-label" for="c6111966-3ed7-4995-8efc-6591a8298088">
 +/- flags</label><div class="tabbed-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_INT64_flag_neg.nc
@@ -1755,8 +1771,8 @@ Error {
 <div class="dropdown error admonition">
 <p class="admonition-title">UINT64</p>
 <div class="tabbed-set docutils">
-<input checked="checked" id="863da055-de63-4221-abe0-18708b9e8c77" name="15a0cdd3-5139-422b-a1c7-9eab47669572" type="radio">
-</input><label class="tabbed-label" for="863da055-de63-4221-abe0-18708b9e8c77">
+<input checked="checked" id="dd0463a2-163f-402e-973c-61d99a1c89cf" name="48781352-3dd5-4c09-8df7-e125fe1af357" type="radio">
+</input><label class="tabbed-label" for="dd0463a2-163f-402e-973c-61d99a1c89cf">
 + numbers</label><div class="tabbed-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_UINT64.nc
@@ -1794,8 +1810,8 @@ Error {
 <p>[Errno -77] NetCDF: Access failure: b’<a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT64.nc">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT64.nc</a>’</p>
 </div>
 </div>
-<input id="bd911266-65ce-4a17-8951-e7ab201576bf" name="15a0cdd3-5139-422b-a1c7-9eab47669572" type="radio">
-</input><label class="tabbed-label" for="bd911266-65ce-4a17-8951-e7ab201576bf">
+<input id="d8b53fdd-5807-4d22-ad10-792680f75b57" name="48781352-3dd5-4c09-8df7-e125fe1af357" type="radio">
+</input><label class="tabbed-label" for="d8b53fdd-5807-4d22-ad10-792680f75b57">
 + flags</label><div class="tabbed-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_UINT64_flag.nc
@@ -1838,8 +1854,8 @@ Error {
 <div class="dropdown admonition">
 <p class="admonition-title">FLOAT</p>
 <div class="tabbed-set docutils">
-<input checked="checked" id="2bdbab36-ea92-4814-bb59-75fe92242973" name="81e46a5b-4aef-4118-a87c-069e1f60b932" type="radio">
-</input><label class="tabbed-label" for="2bdbab36-ea92-4814-bb59-75fe92242973">
+<input checked="checked" id="27726522-557a-40e4-a254-cc32d675484c" name="b3d592ec-2f18-4d1d-8b56-28d5a5f722dc" type="radio">
+</input><label class="tabbed-label" for="27726522-557a-40e4-a254-cc32d675484c">
 + numbers</label><div class="tabbed-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_FLOAT.nc
@@ -1883,8 +1899,8 @@ data:
 </div>
 <p>✅</p>
 </div>
-<input id="a04cdfdc-2d5c-46c7-99af-74996c6ae648" name="81e46a5b-4aef-4118-a87c-069e1f60b932" type="radio">
-</input><label class="tabbed-label" for="a04cdfdc-2d5c-46c7-99af-74996c6ae648">
+<input id="6b24397f-dba4-4d3b-a641-7792ae14c24c" name="b3d592ec-2f18-4d1d-8b56-28d5a5f722dc" type="radio">
+</input><label class="tabbed-label" for="6b24397f-dba4-4d3b-a641-7792ae14c24c">
 +/- numbers</label><div class="tabbed-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_FLOAT_neg.nc
@@ -1933,8 +1949,8 @@ data:
 <div class="dropdown admonition">
 <p class="admonition-title">DOUBLE</p>
 <div class="tabbed-set docutils">
-<input checked="checked" id="45403942-9a0b-4415-986e-1f76f1ff1bc6" name="08ece2fb-c779-4cef-b5bd-3d5af276a5be" type="radio">
-</input><label class="tabbed-label" for="45403942-9a0b-4415-986e-1f76f1ff1bc6">
+<input checked="checked" id="ceca8317-44d9-42e0-b6d8-8dae4a495240" name="a12792c0-29f8-454e-ba6f-d6e35d0b6c77" type="radio">
+</input><label class="tabbed-label" for="ceca8317-44d9-42e0-b6d8-8dae4a495240">
 + numbers</label><div class="tabbed-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_DOUBLE.nc
@@ -1978,8 +1994,8 @@ data:
 </div>
 <p>✅</p>
 </div>
-<input id="dd8438fa-fe89-43eb-a6a0-c8bb929a1d1e" name="08ece2fb-c779-4cef-b5bd-3d5af276a5be" type="radio">
-</input><label class="tabbed-label" for="dd8438fa-fe89-43eb-a6a0-c8bb929a1d1e">
+<input id="785604bc-64c8-4997-b635-165b685ff34e" name="a12792c0-29f8-454e-ba6f-d6e35d0b6c77" type="radio">
+</input><label class="tabbed-label" for="785604bc-64c8-4997-b635-165b685ff34e">
 +/- numbers</label><div class="tabbed-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_DOUBLE_neg.nc

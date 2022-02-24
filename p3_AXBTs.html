@@ -46,15 +46,14 @@
     <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe,.cell"
-        const thebe_selector_input = "pre,.cell_input div.highlight"
-        const thebe_selector_output = ".output,.cell_output"
-    </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="shortcut icon" href="_static/logo_pyeurec4a.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -255,11 +254,28 @@
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="toolbox.html">
-   Toolbox
+  <a class="reference internal" href="auxiliary_datasets.html">
+   Auxiliary datasets
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
   <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="c3ontext.html">
+     How to put your measurements into the meso-scale context of cloud patterns
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="toolbox.html">
+   Toolbox
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -439,7 +455,7 @@ dropsondes but they don’t measure salinity.) Often these were dropped around
 other ocean temperature measurements - for example the autonomous
 Surface Wave Instrument Floats with Tracking (SWIFT) buoys deployed from the
 Ron Brown by Elizabeth Thompson of NOAA and her colleagues. The SWIFT deployment
-is described in <span id="id1">[<a class="reference internal" href="references.html#id6">QTC+21</a>]</span>.</p>
+is described in <span id="id1">[<a class="reference internal" href="references.html#id6" title="P. K. Quinn, E. J. Thompson, D. J. Coffman, S. Baidar, L. Bariteau, T. S. Bates, S. Bigorre, A. Brewer, G. de Boer, S. P. de Szoeke, K. Drushka, G. R. Foltz, J. Intrieri, S. Iyer, C. W. Fairall, C. J. Gaston, F. Jansen, J. E. Johnson, O. O. Krüger, R. D. Marchbanks, K. P. Moran, D. Noone, S. Pezoa, R. Pincus, A. J. Plueddemann, M. L. Pöhlker, U. Pöschl, E. Quinones Melendez, H. M. Royer, M. Szczodrak, J. Thomson, L. M. Upchurch, C. Zhang, D. Zhang, and P. Zuidema. Measurements from the rv \textit Ronald H. Brown and related platforms as part of the atlantic tradewind ocean-atmosphere mesoscale interaction campaign (atomic). Earth Syst. Sci. Data, 13(4):1759–1790, 2021. doi:10.5194/essd-13-1759-2021.">QTC+21</a>]</span>.</p>
 <p>Let’s take a look at some of the AXBT measurements and how they compare to the
 SWIFTs.</p>
 <div class="cell docutils container">
@@ -596,7 +612,7 @@ were on days there the two platforms overlapped</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f7cc1b5a550&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f3fdd16b490&gt;
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/cartopy/io/__init__.py:260: DownloadWarning: Downloading: https://naciscdn.org/naturalearth/10m/physical/ne_10m_land.zip
@@ -648,11 +664,11 @@ and compare the near-surface temperatures to the SWIFTs they are surrounding.</p
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;matplotlib.patches.Rectangle at 0x7f7cc1d05be0&gt;,
- (&lt;matplotlib.patches.ConnectionPatch at 0x7f7cc044f940&gt;,
-  &lt;matplotlib.patches.ConnectionPatch at 0x7f7cc047be80&gt;,
-  &lt;matplotlib.patches.ConnectionPatch at 0x7f7cb86e1340&gt;,
-  &lt;matplotlib.patches.ConnectionPatch at 0x7f7cb86e15e0&gt;))
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;matplotlib.patches.Rectangle at 0x7f3fdd50dbb0&gt;,
+ (&lt;matplotlib.patches.ConnectionPatch at 0x7f3fd3fd6370&gt;,
+  &lt;matplotlib.patches.ConnectionPatch at 0x7f3fd3e1c280&gt;,
+  &lt;matplotlib.patches.ConnectionPatch at 0x7f3fd3e1c610&gt;,
+  &lt;matplotlib.patches.ConnectionPatch at 0x7f3fd3e1c8b0&gt;))
 </pre></div>
 </div>
 <img alt="_images/p3_AXBTs_15_1.png" src="_images/p3_AXBTs_15_1.png" />

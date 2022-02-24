@@ -46,15 +46,14 @@
     <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe,.cell"
-        const thebe_selector_input = "pre,.cell_input div.highlight"
-        const thebe_selector_output = ".output,.cell_output"
-    </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="shortcut icon" href="_static/logo_pyeurec4a.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -255,11 +254,28 @@
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="toolbox.html">
-   Toolbox
+  <a class="reference internal" href="auxiliary_datasets.html">
+   Auxiliary datasets
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
   <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="c3ontext.html">
+     How to put your measurements into the meso-scale context of cloud patterns
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="toolbox.html">
+   Toolbox
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -414,7 +430,7 @@
 whole campaign to derive statistics of clouds inside this area. For this, the ship was steaming on a north-south
 transect between ∼ 12° N and ∼ 14° 30’ N. It was equipped with a suite of in situ and remote sensing systems. For
 further details please refer to the official eurec4a
-<a class="reference external" href="http://eurec4a.eu/platforms/rv-meteor">website</a> and the cruise report <span id="id1">[<a class="reference internal" href="references.html#id9">MKR+20</a>]</span>.</p>
+<a class="reference external" href="http://eurec4a.eu/platforms/rv-meteor">website</a> and the cruise report <span id="id1">[<a class="reference internal" href="references.html#id9" title="Wiebke Mohr, Stefan Kinne, Callum Rollo, Abiel Kidane, Oliver Schlenczek, Marcel Schröder, Robert Grosz, Sanola Sandiford, Andreas Raeke, Przemyslaw Makuch, John Gollop, Almuth Neuberger, Geiske de Groot, Marcel Meyer, Sebastian Los, Michal Chilinski, Alma Anna Ubele, Darek Baranowski, Yanmichel Morfa-Avalos, Jan von Arx, Ludwig Worbes, Jakub Nowak, Kevin Helfer, Heike Kalesse, Antonio Ibáñez-Landeta, Elizabeth Siddle, Katharina Baier, Wojciech Szkolka, Imke Schirmacher, and Johannes Röttenbacher. Eurec4a campaign, cruise no. m161, 17 jan 2020 - 03 mar 2020, bridgetown \(barbados\) - ponta delgada \(portugal\), meteor-berichte. 2020. doi:10.2312/cr_m161.">MKR+20</a>]</span>.</p>
 <div class="figure align-center">
 <a class="reference internal image-reference" href="_images/meteor_sideview.png"><img alt="RV Meteor" src="_images/meteor_sideview.png" style="width: 400px;" /></a>
 </div>

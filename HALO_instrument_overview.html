@@ -46,15 +46,14 @@
     <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe,.cell"
-        const thebe_selector_input = "pre,.cell_input div.highlight"
-        const thebe_selector_output = ".output,.cell_output"
-    </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="shortcut icon" href="_static/logo_pyeurec4a.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -255,11 +254,28 @@
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="toolbox.html">
-   Toolbox
+  <a class="reference internal" href="auxiliary_datasets.html">
+   Auxiliary datasets
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
   <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="c3ontext.html">
+     How to put your measurements into the meso-scale context of cloud patterns
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="toolbox.html">
+   Toolbox
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -413,7 +429,7 @@
 <p>The instrumentation of the HALO aircraft is based on contributions from various universities and research institutions.
 Each instrument is developed and operated by an individual group, which leads to a modern instrumentation suite and well trained operators, but also requires to contact a range of people when working with data from HALO’s instruments.
 The purpose of this chapter is to introduce you to the individual contact points.</p>
-<p>During the EUREC4A field campaign, the HALO aircraft had been outfitted in an updated “Cloud Observatory” configuration, much like as described by <span id="id1">[<a class="reference internal" href="references.html#id4">SAB+19</a>]</span>.
+<p>During the EUREC4A field campaign, the HALO aircraft had been outfitted in an updated “Cloud Observatory” configuration, much like as described by <span id="id1">[<a class="reference internal" href="references.html#id4" title="Bjorn Stevens, Felix Ament, Sandrine Bony, Susanne Crewell, Florian Ewald, Silke Gross, Akio Hansen, Lutz Hirsch, Marek Jacob, Tobias Kölling, Heike Konow, Bernhard Mayer, Manfred Wendisch, Martin Wirth, Kevin Wolf, Stephan Bakan, Matthias Bauer-Pfundstein, Matthias Brueck, Julien Delanoë, André Ehrlich, David Farrell, Marvin Forde, Felix Gödde, Hans Grob, Martin Hagen, Evelyn Jäkel, Friedhelm Jansen, Christian Klepp, Marcus Klingebiel, Mario Mech, Gerhard Peters, Markus Rapp, Allison A. Wing, and Tobias Zinner. A high-altitude long-range aircraft configured as a cloud observatory: the narval expeditions. Bull Amer. Met. Soc., 100(6):1061–1077, 2019. doi:10.1175/BAMS-D-18-0198.1.">SAB+19</a>]</span>.
 As the aircraft is build to be flying at high altitudes, most of the instrumentation observes the atmosphere (and in particular clouds) from the nadir perspective.</p>
 <div class="figure align-center" id="id2">
 <a class="reference internal image-reference" href="_images/HALO_details.png"><img alt="HALO Instrument Overview" src="_images/HALO_details.png" style="width: 600px;" /></a>
@@ -422,8 +438,8 @@ As the aircraft is build to be flying at high altitudes, most of the instrumenta
 <p>In particular, the instrumentation consists of broadband radiometers (<strong>BACARDI</strong>), basic instrumentation (<strong>BAHAMAS</strong>), a dropsonde launching system (<strong>Dropsondes</strong>), the active (radar) and passive microwave package (<strong>HAMP</strong>), irradiance spectrometers (<strong>SMART</strong>), a thermal imager (<strong>VELOX</strong>), an infrared radiometer (<strong>VELOX-KT19</strong>), a water vapor differential absorption lidar (<strong>WALES</strong>) and spectral and polarization resolving imagers (<strong>specMACS</strong>).
 You can find more detailed references to the instruments in the tabs below, as well as examples for data access in the upcoming chapters.</p>
 <div class="tabbed-set docutils">
-<input checked="checked" id="ad15c1a4-cef0-4b14-a0fc-aa43fcaf47f0" name="7d7a4450-44ba-4a39-9b77-e0c90a9910e9" type="radio">
-</input><label class="tabbed-label" for="ad15c1a4-cef0-4b14-a0fc-aa43fcaf47f0">
+<input checked="checked" id="d00133a9-f7ce-4414-949a-c750a2948932" name="8e12fbf7-ed01-4bc8-b253-7e122f327384" type="radio">
+</input><label class="tabbed-label" for="d00133a9-f7ce-4414-949a-c750a2948932">
 BACARDI</label><div class="tabbed-content docutils">
 <p>A set of broadband radiometer measuring upward and downward irradiance in the solar (0.2 - 3.6 micrometer) and terrestrial (4.5 - 42 micrometer) spectral range.</p>
 <dl class="simple myst">
@@ -435,8 +451,8 @@ BACARDI</label><div class="tabbed-content docutils">
 </dd>
 </dl>
 </div>
-<input id="02cdcd85-3704-432a-91e6-5509770e2ae1" name="7d7a4450-44ba-4a39-9b77-e0c90a9910e9" type="radio">
-</input><label class="tabbed-label" for="02cdcd85-3704-432a-91e6-5509770e2ae1">
+<input id="7e48709e-10c4-46bc-b7b7-cd0dba5d873a" name="8e12fbf7-ed01-4bc8-b253-7e122f327384" type="radio">
+</input><label class="tabbed-label" for="7e48709e-10c4-46bc-b7b7-cd0dba5d873a">
 BAHAMAS</label><div class="tabbed-content docutils">
 <dl class="simple myst">
 <dt>home</dt><dd><p><a class="reference external" href="https://www.dlr.de/fx">DLR Flugbetrieb, Deutsches Zentrum für Luft- und Raumfahrt</a></p>
@@ -447,8 +463,8 @@ BAHAMAS</label><div class="tabbed-content docutils">
 </dd>
 </dl>
 </div>
-<input id="83f9ddaf-57f9-4c74-965f-5ed4bfbd3070" name="7d7a4450-44ba-4a39-9b77-e0c90a9910e9" type="radio">
-</input><label class="tabbed-label" for="83f9ddaf-57f9-4c74-965f-5ed4bfbd3070">
+<input id="996a941e-f495-4859-848d-de0bb169eb24" name="8e12fbf7-ed01-4bc8-b253-7e122f327384" type="radio">
+</input><label class="tabbed-label" for="996a941e-f495-4859-848d-de0bb169eb24">
 Dropsondes</label><div class="tabbed-content docutils">
 <dl class="simple myst">
 <dt>home</dt><dd><p><a class="reference external" href="https://mpimet.mpg.de">Max-Planck-Institut für Meteorologie</a></p>
@@ -463,8 +479,8 @@ Dropsondes</label><div class="tabbed-content docutils">
 </dd>
 </dl>
 </div>
-<input id="ae012c2a-7150-4d95-9966-eef565867584" name="7d7a4450-44ba-4a39-9b77-e0c90a9910e9" type="radio">
-</input><label class="tabbed-label" for="ae012c2a-7150-4d95-9966-eef565867584">
+<input id="23da88a2-d719-4c12-b2aa-f1e9a95eb96b" name="8e12fbf7-ed01-4bc8-b253-7e122f327384" type="radio">
+</input><label class="tabbed-label" for="23da88a2-d719-4c12-b2aa-f1e9a95eb96b">
 HAMP</label><div class="tabbed-content docutils">
 <p>HAMP consists of a suite of passive microwave radiometers with 26 frequencies ranging between 22.24 and 183.31 GHz, and an active cloud radar measuring at 35.5 GHz. The radiometeres are installed nadir-pointing in a bellypod under the fuselage with opening angles between 2.7 (G-band) and 5.0° (K-band). The almost nadir-pointed radar antenna is located in a bellypod and connected to the electronics in the cabin. Pre-flight calibration was performed before each flight for the radiometers, and before the transfer flight to Barbados for the radar.</p>
 <dl class="simple myst">
@@ -492,8 +508,8 @@ HAMP</label><div class="tabbed-content docutils">
 </dd>
 </dl>
 </div>
-<input id="5668c4f4-7e0c-45db-bae1-1236ebcc50ac" name="7d7a4450-44ba-4a39-9b77-e0c90a9910e9" type="radio">
-</input><label class="tabbed-label" for="5668c4f4-7e0c-45db-bae1-1236ebcc50ac">
+<input id="137045b5-de8c-4f69-9ed5-d0e5c09e991e" name="8e12fbf7-ed01-4bc8-b253-7e122f327384" type="radio">
+</input><label class="tabbed-label" for="137045b5-de8c-4f69-9ed5-d0e5c09e991e">
 SMART</label><div class="tabbed-content docutils">
 <p>The Spectral Modular Airborne Radiation measurement sysTem (SMART) measures downward irradiances in the solar spectral range between 300 nm and 2200 nm.</p>
 <dl class="simple myst">
@@ -509,8 +525,8 @@ SMART</label><div class="tabbed-content docutils">
 </dd>
 </dl>
 </div>
-<input id="245f47e9-4e7b-44c4-93a7-57e086e8b6f8" name="7d7a4450-44ba-4a39-9b77-e0c90a9910e9" type="radio">
-</input><label class="tabbed-label" for="245f47e9-4e7b-44c4-93a7-57e086e8b6f8">
+<input id="dc7733ca-0434-4aed-b14b-aef48b358a0d" name="8e12fbf7-ed01-4bc8-b253-7e122f327384" type="radio">
+</input><label class="tabbed-label" for="dc7733ca-0434-4aed-b14b-aef48b358a0d">
 VELOX</label><div class="tabbed-content docutils">
 <p>VELOX is a thermal infrared spectral imager (VELOX327k veL, 640 pixel by 512 pixels) with a synchronized filter wheel (at 100 Hz) covering six spectral channels in the thermal infrared wavelength range from 7.7 to 12.0 micrometer. The instrument measures the brightness temperature of upward radiance in a field-of-view of 35.49° by 28.71°.</p>
 <dl class="simple myst">
@@ -522,8 +538,8 @@ VELOX</label><div class="tabbed-content docutils">
 </dd>
 </dl>
 </div>
-<input id="dc9f45f6-0f53-46da-893d-d3021c170819" name="7d7a4450-44ba-4a39-9b77-e0c90a9910e9" type="radio">
-</input><label class="tabbed-label" for="dc9f45f6-0f53-46da-893d-d3021c170819">
+<input id="327355de-8f15-469d-88f4-6933532cab99" name="8e12fbf7-ed01-4bc8-b253-7e122f327384" type="radio">
+</input><label class="tabbed-label" for="327355de-8f15-469d-88f4-6933532cab99">
 VELOX - KT19</label><div class="tabbed-content docutils">
 <p>Thermal infrared radiometer measuring the brightness temperature of nadir radiance between 9.6 and 11.5 micrometer.
 The field-of-view of 2.3° is located in the center of the VELOX images.</p>
@@ -536,8 +552,8 @@ The field-of-view of 2.3° is located in the center of the VELOX images.</p>
 </dd>
 </dl>
 </div>
-<input id="79ccd781-fbfd-48a4-8eef-ecfc77232421" name="7d7a4450-44ba-4a39-9b77-e0c90a9910e9" type="radio">
-</input><label class="tabbed-label" for="79ccd781-fbfd-48a4-8eef-ecfc77232421">
+<input id="7e39971b-2b92-45f8-95f3-08bd4ea27255" name="8e12fbf7-ed01-4bc8-b253-7e122f327384" type="radio">
+</input><label class="tabbed-label" for="7e39971b-2b92-45f8-95f3-08bd4ea27255">
 WALES</label><div class="tabbed-content docutils">
 <dl class="simple myst">
 <dt>home</dt><dd><p><a class="reference external" href="https://www.dlr.de/pa/">Institut für Physik der Atmosphäre, Deutsches Zentrum für Luft- und Raumfahrt</a></p>
@@ -550,8 +566,8 @@ WALES</label><div class="tabbed-content docutils">
 </dd>
 </dl>
 </div>
-<input id="35892e0f-301e-4626-a751-d10c3e679edd" name="7d7a4450-44ba-4a39-9b77-e0c90a9910e9" type="radio">
-</input><label class="tabbed-label" for="35892e0f-301e-4626-a751-d10c3e679edd">
+<input id="b662406c-86cd-4754-94bc-42cb66c7f9d8" name="8e12fbf7-ed01-4bc8-b253-7e122f327384" type="radio">
+</input><label class="tabbed-label" for="b662406c-86cd-4754-94bc-42cb66c7f9d8">
 specMACS</label><div class="tabbed-content docutils">
 <p>specMACS is the hyperspectral imager of the LMU in Munich. It measures from 400nm to 2500nm at a FOV of approximately 32° in a nadir looking perspective</p>
 <dl class="simple myst">

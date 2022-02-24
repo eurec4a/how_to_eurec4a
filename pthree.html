@@ -46,15 +46,14 @@
     <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe,.cell"
-        const thebe_selector_input = "pre,.cell_input div.highlight"
-        const thebe_selector_output = ".output,.cell_output"
-    </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="shortcut icon" href="_static/logo_pyeurec4a.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -255,11 +254,28 @@
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="toolbox.html">
-   Toolbox
+  <a class="reference internal" href="auxiliary_datasets.html">
+   Auxiliary datasets
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
   <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="c3ontext.html">
+     How to put your measurements into the meso-scale context of cloud patterns
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="toolbox.html">
+   Toolbox
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -425,7 +441,7 @@ was tasked with obtaining a wide array of observations including remote sensing
 of clouds and the ocean surface, <em>in situ</em> measurements within clouds and of
 isotopic composition throughout the lower troposphere, and the deployment of
 expendable profiling instruments in the atmosphere and ocean.</p>
-<p>Most observations obtained from the P-3 are described in <span id="id1">[<a class="reference internal" href="references.html#id7">PFB+21</a>]</span>.</p>
+<p>Most observations obtained from the P-3 are described in <span id="id1">[<a class="reference internal" href="references.html#id7" title="R. Pincus, C. W. Fairall, A. Bailey, H. Chen, P. Y. Chuang, G. de Boer, G. Feingold, D. Henze, Q. T. Kalen, J. Kazil, M. Leandro, A. Lundry, K. Moran, D. A. Naeher, D. Noone, A. J. Patel, S. Pezoa, I. PopStefanija, E. J. Thompson, J. Warnecke, and P. Zuidema. Observations from the noaa p-3 aircraft during atomic. Earth Syst. Sci. Data Discuss., 2021:1–25, 2021. doi:10.5194/essd-2021-11.">PFB+21</a>]</span>.</p>
 <div class="figure align-center">
 <a class="reference internal image-reference" href="_images/Miss-Piggy.jpeg"><img alt="NOAA WP-3D &quot;Miss Piggy&quot;" src="_images/Miss-Piggy.jpeg" style="width: 600px;" /></a>
 </div>

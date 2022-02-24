@@ -46,15 +46,14 @@
     <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe,.cell"
-        const thebe_selector_input = "pre,.cell_input div.highlight"
-        const thebe_selector_output = ".output,.cell_output"
-    </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="shortcut icon" href="_static/logo_pyeurec4a.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -254,12 +253,29 @@
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="auxiliary_datasets.html">
+   Auxiliary datasets
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="c3ontext.html">
+     How to put your measurements into the meso-scale context of cloud patterns
+    </a>
+   </li>
+  </ul>
+ </li>
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="toolbox.html">
    Toolbox
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -586,15 +602,15 @@ conda activate how_to_eurec4a
 <h2>via git<a class="headerlink" href="#via-git" title="Permalink to this headline">¶</a></h2>
 <p>If you like to do it more properly, you can also clone the repository via git. Depending on if you have SSH public key authentication set up or not, you can do this via SSH or HTTPS:</p>
 <div class="tabbed-set docutils">
-<input checked="checked" id="4c9ec4c4-06f2-4caa-84fd-ef066d790b0d" name="6884979f-d5d9-4179-944c-4f523e680738" type="radio">
-</input><label class="tabbed-label" for="4c9ec4c4-06f2-4caa-84fd-ef066d790b0d">
+<input checked="checked" id="f56d39e5-a522-4e12-bc1c-372fc2dec0ec" name="d348aadd-8c5f-4aab-84d6-de1fbc78fb22" type="radio">
+</input><label class="tabbed-label" for="f56d39e5-a522-4e12-bc1c-372fc2dec0ec">
 SSH</label><div class="tabbed-content docutils">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone git@github.com:eurec4a/how_to_eurec4a.git
 </pre></div>
 </div>
 </div>
-<input id="9c878328-b785-4d27-92e1-6b7776cceac6" name="6884979f-d5d9-4179-944c-4f523e680738" type="radio">
-</input><label class="tabbed-label" for="9c878328-b785-4d27-92e1-6b7776cceac6">
+<input id="2ffbd7e1-ac7f-452d-b440-49587c0c1ab2" name="d348aadd-8c5f-4aab-84d6-de1fbc78fb22" type="radio">
+</input><label class="tabbed-label" for="2ffbd7e1-ac7f-452d-b440-49587c0c1ab2">
 HTTPS</label><div class="tabbed-content docutils">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/eurec4a/how_to_eurec4a
 </pre></div>
