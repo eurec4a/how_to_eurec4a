@@ -57,7 +57,7 @@ from pandas.plotting import register_matplotlib_converters
 register_matplotlib_converters()
 plt.style.use(["./mplstyle/book", "./mplstyle/wide"])
 
-cat = eurec4a.get_intake_catalog()
+cat = eurec4a.get_intake_catalog(use_ipfs="QmahMN2wgPauHYkkiTGoG2TpPBmj3p5FoYJAq9uE9iXT9N")
 ```
 
 The *C<sup>3</sup>ONTEXT* dataset consists of various processing levels. In the intake catalog the level-2 and level-3 data
