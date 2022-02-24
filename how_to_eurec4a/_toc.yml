@@ -29,6 +29,9 @@ chapters:
 - file: multi_platform_data
   sections:
   - file: dropsondes
+- file: auxiliary_datasets
+  sections:
+  - file: c3ontext
 - file: toolbox
   sections:
   - file: flight-phase-operations
