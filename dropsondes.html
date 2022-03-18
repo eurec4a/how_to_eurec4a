@@ -563,2007 +563,219 @@ If you have questions or if you would like to use the data for a publication, pl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
-<defs>
-<symbol id="icon-database" viewBox="0 0 32 32">
-<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
-<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
-<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
-</symbol>
-<symbol id="icon-file-text2" viewBox="0 0 32 32">
-<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
-<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
-<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
-<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
-</symbol>
-</defs>
-</svg>
-<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
- *
- */
-
-:root {
-  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
-  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
-  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
-  --xr-border-color: var(--jp-border-color2, #e0e0e0);
-  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
-  --xr-background-color: var(--jp-layout-color0, white);
-  --xr-background-color-row-even: var(--jp-layout-color1, white);
-  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
-}
-
-html[theme=dark],
-body.vscode-dark {
-  --xr-font-color0: rgba(255, 255, 255, 1);
-  --xr-font-color2: rgba(255, 255, 255, 0.54);
-  --xr-font-color3: rgba(255, 255, 255, 0.38);
-  --xr-border-color: #1F1F1F;
-  --xr-disabled-color: #515151;
-  --xr-background-color: #111111;
-  --xr-background-color-row-even: #111111;
-  --xr-background-color-row-odd: #313131;
-}
-
-.xr-wrap {
-  display: block !important;
-  min-width: 300px;
-  max-width: 700px;
-}
-
-.xr-text-repr-fallback {
-  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
-  display: none;
-}
-
-.xr-header {
-  padding-top: 6px;
-  padding-bottom: 6px;
-  margin-bottom: 4px;
-  border-bottom: solid 1px var(--xr-border-color);
-}
-
-.xr-header > div,
-.xr-header > ul {
-  display: inline;
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.xr-obj-type,
-.xr-array-name {
-  margin-left: 2px;
-  margin-right: 10px;
-}
-
-.xr-obj-type {
-  color: var(--xr-font-color2);
-}
-
-.xr-sections {
-  padding-left: 0 !important;
-  display: grid;
-  grid-template-columns: 150px auto auto 1fr 20px 20px;
-}
-
-.xr-section-item {
-  display: contents;
-}
-
-.xr-section-item input {
-  display: none;
-}
-
-.xr-section-item input + label {
-  color: var(--xr-disabled-color);
-}
-
-.xr-section-item input:enabled + label {
-  cursor: pointer;
-  color: var(--xr-font-color2);
-}
-
-.xr-section-item input:enabled + label:hover {
-  color: var(--xr-font-color0);
-}
-
-.xr-section-summary {
-  grid-column: 1;
-  color: var(--xr-font-color2);
-  font-weight: 500;
-}
-
-.xr-section-summary > span {
-  display: inline-block;
-  padding-left: 0.5em;
-}
-
-.xr-section-summary-in:disabled + label {
-  color: var(--xr-font-color2);
-}
-
-.xr-section-summary-in + label:before {
-  display: inline-block;
-  content: '►';
-  font-size: 11px;
-  width: 15px;
-  text-align: center;
-}
-
-.xr-section-summary-in:disabled + label:before {
-  color: var(--xr-disabled-color);
-}
-
-.xr-section-summary-in:checked + label:before {
-  content: '▼';
-}
-
-.xr-section-summary-in:checked + label > span {
-  display: none;
-}
-
-.xr-section-summary,
-.xr-section-inline-details {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-.xr-section-inline-details {
-  grid-column: 2 / -1;
-}
-
-.xr-section-details {
-  display: none;
-  grid-column: 1 / -1;
-  margin-bottom: 5px;
-}
-
-.xr-section-summary-in:checked ~ .xr-section-details {
-  display: contents;
-}
-
-.xr-array-wrap {
-  grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: 20px auto;
-}
-
-.xr-array-wrap > label {
-  grid-column: 1;
-  vertical-align: top;
-}
-
-.xr-preview {
-  color: var(--xr-font-color3);
-}
-
-.xr-array-preview,
-.xr-array-data {
-  padding: 0 5px !important;
-  grid-column: 2;
-}
-
-.xr-array-data,
-.xr-array-in:checked ~ .xr-array-preview {
-  display: none;
-}
-
-.xr-array-in:checked ~ .xr-array-data,
-.xr-array-preview {
-  display: inline-block;
-}
-
-.xr-dim-list {
-  display: inline-block !important;
-  list-style: none;
-  padding: 0 !important;
-  margin: 0;
-}
-
-.xr-dim-list li {
-  display: inline-block;
-  padding: 0;
-  margin: 0;
-}
-
-.xr-dim-list:before {
-  content: '(';
-}
-
-.xr-dim-list:after {
-  content: ')';
-}
-
-.xr-dim-list li:not(:last-child):after {
-  content: ',';
-  padding-right: 5px;
-}
-
-.xr-has-index {
-  font-weight: bold;
-}
-
-.xr-var-list,
-.xr-var-item {
-  display: contents;
-}
-
-.xr-var-item > div,
-.xr-var-item label,
-.xr-var-item > .xr-var-name span {
-  background-color: var(--xr-background-color-row-even);
-  margin-bottom: 0;
-}
-
-.xr-var-item > .xr-var-name:hover span {
-  padding-right: 5px;
-}
-
-.xr-var-list > li:nth-child(odd) > div,
-.xr-var-list > li:nth-child(odd) > label,
-.xr-var-list > li:nth-child(odd) > .xr-var-name span {
-  background-color: var(--xr-background-color-row-odd);
-}
-
-.xr-var-name {
-  grid-column: 1;
-}
-
-.xr-var-dims {
-  grid-column: 2;
-}
-
-.xr-var-dtype {
-  grid-column: 3;
-  text-align: right;
-  color: var(--xr-font-color2);
-}
-
-.xr-var-preview {
-  grid-column: 4;
-}
-
-.xr-var-name,
-.xr-var-dims,
-.xr-var-dtype,
-.xr-preview,
-.xr-attrs dt {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  padding-right: 10px;
-}
-
-.xr-var-name:hover,
-.xr-var-dims:hover,
-.xr-var-dtype:hover,
-.xr-attrs dt:hover {
-  overflow: visible;
-  width: auto;
-  z-index: 1;
-}
-
-.xr-var-attrs,
-.xr-var-data {
-  display: none;
-  background-color: var(--xr-background-color) !important;
-  padding-bottom: 5px !important;
-}
-
-.xr-var-attrs-in:checked ~ .xr-var-attrs,
-.xr-var-data-in:checked ~ .xr-var-data {
-  display: block;
-}
-
-.xr-var-data > table {
-  float: right;
-}
-
-.xr-var-name span,
-.xr-var-data,
-.xr-attrs {
-  padding-left: 25px !important;
-}
-
-.xr-attrs,
-.xr-var-attrs,
-.xr-var-data {
-  grid-column: 1 / -1;
-}
-
-dl.xr-attrs {
-  padding: 0;
-  margin: 0;
-  display: grid;
-  grid-template-columns: 125px auto;
-}
-
-.xr-attrs dt,
-.xr-attrs dd {
-  padding: 0;
-  margin: 0;
-  float: left;
-  padding-right: 10px;
-  width: auto;
-}
-
-.xr-attrs dt {
-  font-weight: normal;
-  grid-column: 1;
-}
-
-.xr-attrs dt:hover span {
-  display: inline-block;
-  background: var(--xr-background-color);
-  padding-right: 10px;
-}
-
-.xr-attrs dd {
-  grid-column: 2;
-  white-space: pre-wrap;
-  word-break: break-all;
-}
-
-.xr-icon-database,
-.xr-icon-file-text2 {
-  display: inline-block;
-  vertical-align: middle;
-  width: 1em;
-  height: 1.5em !important;
-  stroke-width: 0;
-  stroke: currentColor;
-  fill: currentColor;
-}
-</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt;
-Dimensions:            (sonde_id: 1068, alt: 1001, nv: 2)
-Coordinates:
-  * alt                (alt) int16 0 10 20 30 40 ... 9960 9970 9980 9990 10000
-    interpolated_time  (sonde_id, alt) datetime64[ns] dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;
-    lat                (sonde_id, alt) float32 dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;
-    launch_time        (sonde_id) datetime64[ns] dask.array&lt;chunksize=(1068,), meta=np.ndarray&gt;
-    lon                (sonde_id, alt) float32 dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;
-  * sonde_id           (sonde_id) object &#x27;HALO-0119_s02&#x27; ... &#x27;P3-0211_s43&#x27;
-Dimensions without coordinates: nv
-Data variables: (12/23)
-    N_gps              (sonde_id, alt) float32 dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;
-    N_p                (sonde_id, alt) float32 dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;
-    N_rh               (sonde_id, alt) float32 dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;
-    N_ta               (sonde_id, alt) float32 dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;
-    alt_bnds           (alt, nv) int32 dask.array&lt;chunksize=(1001, 2), meta=np.ndarray&gt;
-    flight_altitude    (sonde_id) float32 dask.array&lt;chunksize=(1068,), meta=np.ndarray&gt;
-    ...                 ...
-    ta                 (sonde_id, alt) float32 dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;
-    theta              (sonde_id, alt) float32 dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;
-    u                  (sonde_id, alt) float32 dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;
-    v                  (sonde_id, alt) float32 dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;
-    wdir               (sonde_id, alt) float32 dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;
-    wspd               (sonde_id, alt) float32 dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;
-Attributes: (12/16)
-    ASPEN_version:           BatchAspen v3.4.3
-    AVAPS_software_version:  Version 4.1.2
-    Conventions:             CF-1.8
-    JOANNE_version:          2.0.0
-    author:                  Geet George
-    author_email:            geet.george@mpimet.mpg.de
-    ...                      ...
-    featureType:             trajectory
-    instrument_id:           Vaisala RD-41
-    product_id:              Level-3
-    project_id:              JOANNE
-    reference:               George et al., JOANNE : Joint dropsonde Observat...
-    title:                   EUREC4A JOANNE Level-3</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-cf6f3e36-3028-4a95-a0df-63dcdeaa57fa' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-cf6f3e36-3028-4a95-a0df-63dcdeaa57fa' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>sonde_id</span>: 1068</li><li><span class='xr-has-index'>alt</span>: 1001</li><li><span>nv</span>: 2</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-c73ed2bd-ae7c-43f7-bb73-acd6fd1ad130' class='xr-section-summary-in' type='checkbox'  checked><label for='section-c73ed2bd-ae7c-43f7-bb73-acd6fd1ad130' class='xr-section-summary' >Coordinates: <span>(6)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>alt</span></div><div class='xr-var-dims'>(alt)</div><div class='xr-var-dtype'>int16</div><div class='xr-var-preview xr-preview'>0 10 20 30 ... 9970 9980 9990 10000</div><input id='attrs-f0c9896b-4774-4066-b8fc-3c06407ea4ef' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-f0c9896b-4774-4066-b8fc-3c06407ea4ef' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d522a612-5794-499a-a4da-faae12bbd31d' class='xr-var-data-in' type='checkbox'><label for='data-d522a612-5794-499a-a4da-faae12bbd31d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>axis :</span></dt><dd>Z</dd><dt><span>bounds :</span></dt><dd>alt_bnds</dd><dt><span>description :</span></dt><dd>height obtained by integrating upwards the atmospheric thickness estimated from the hypsometric equation</dd><dt><span>long_name :</span></dt><dd>geopotential height</dd><dt><span>positive :</span></dt><dd>up</dd><dt><span>standard_name :</span></dt><dd>geopotential_height</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><pre>array([    0,    10,    20, ...,  9980,  9990, 10000], dtype=int16)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>interpolated_time</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;</div><input id='attrs-f4789cf7-3b42-4660-8419-83b9fee8bfc5' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-f4789cf7-3b42-4660-8419-83b9fee8bfc5' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-6a32ec35-80d6-4c39-b68c-21218e31204c' class='xr-var-data-in' type='checkbox'><label for='data-6a32ec35-80d6-4c39-b68c-21218e31204c' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>axis :</span></dt><dd>T</dd><dt><span>description :</span></dt><dd>value of time (original independent dimension) linearly interpolated to altitude grid</dd><dt><span>long_name :</span></dt><dd>interpolated time</dd><dt><span>standard_name :</span></dt><dd>time</dd></dl></div><div class='xr-var-data'><table>
-    <tr>
-        <td>
-            <table>
-                <thead>
-                    <tr>
-                        <td> </td>
-                        <th> Array </th>
-                        <th> Chunk </th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <tr>
-                        <th> Bytes </th>
-                        <td> 8.16 MiB </td>
-                        <td> 1.02 MiB </td>
-                    </tr>
-
-                    <tr>
-                        <th> Shape </th>
-                        <td> (1068, 1001) </td>
-                        <td> (267, 501) </td>
-                    </tr>
-                    <tr>
-                        <th> Count </th>
-                        <td> 9 Tasks </td>
-                        <td> 8 Chunks </td>
-                    </tr>
-                    <tr>
-                    <th> Type </th>
-                    <td> datetime64[ns] </td>
-                    <td> numpy.ndarray </td>
-                    </tr>
-                </tbody>
-            </table>
-        </td>
-        <td>
-        <svg width="162" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
-
-  <!-- Horizontal lines -->
-  <line x1="0" y1="0" x2="112" y2="0" style="stroke-width:2" />
-  <line x1="0" y1="30" x2="112" y2="30" />
-  <line x1="0" y1="60" x2="112" y2="60" />
-  <line x1="0" y1="90" x2="112" y2="90" />
-  <line x1="0" y1="120" x2="112" y2="120" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
-  <line x1="56" y1="0" x2="56" y2="120" />
-  <line x1="112" y1="0" x2="112" y2="120" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="0.0,0.0 112.47191011235954,0.0 112.47191011235954,120.0 0.0,120.0" style="fill:#ECB172A0;stroke-width:0"/>
-
-  <!-- Text -->
-  <text x="56.235955" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >1001</text>
-  <text x="132.471910" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,132.471910,60.000000)">1068</text>
-</svg>
-        </td>
-    </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lat</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;</div><input id='attrs-3a86bb9e-37e7-48d2-89fe-9dd75d7c8729' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-3a86bb9e-37e7-48d2-89fe-9dd75d7c8729' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ed454777-355b-4138-a664-0402a965ea5c' class='xr-var-data-in' type='checkbox'><label for='data-ed454777-355b-4138-a664-0402a965ea5c' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>axis :</span></dt><dd>Y</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degree_north</dd></dl></div><div class='xr-var-data'><table>
-    <tr>
-        <td>
-            <table>
-                <thead>
-                    <tr>
-                        <td> </td>
-                        <th> Array </th>
-                        <th> Chunk </th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <tr>
-                        <th> Bytes </th>
-                        <td> 4.08 MiB </td>
-                        <td> 522.53 kiB </td>
-                    </tr>
-
-                    <tr>
-                        <th> Shape </th>
-                        <td> (1068, 1001) </td>
-                        <td> (267, 501) </td>
-                    </tr>
-                    <tr>
-                        <th> Count </th>
-                        <td> 9 Tasks </td>
-                        <td> 8 Chunks </td>
-                    </tr>
-                    <tr>
-                    <th> Type </th>
-                    <td> float32 </td>
-                    <td> numpy.ndarray </td>
-                    </tr>
-                </tbody>
-            </table>
-        </td>
-        <td>
-        <svg width="162" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
-
-  <!-- Horizontal lines -->
-  <line x1="0" y1="0" x2="112" y2="0" style="stroke-width:2" />
-  <line x1="0" y1="30" x2="112" y2="30" />
-  <line x1="0" y1="60" x2="112" y2="60" />
-  <line x1="0" y1="90" x2="112" y2="90" />
-  <line x1="0" y1="120" x2="112" y2="120" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
-  <line x1="56" y1="0" x2="56" y2="120" />
-  <line x1="112" y1="0" x2="112" y2="120" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="0.0,0.0 112.47191011235954,0.0 112.47191011235954,120.0 0.0,120.0" style="fill:#ECB172A0;stroke-width:0"/>
-
-  <!-- Text -->
-  <text x="56.235955" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >1001</text>
-  <text x="132.471910" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,132.471910,60.000000)">1068</text>
-</svg>
-        </td>
-    </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>launch_time</span></div><div class='xr-var-dims'>(sonde_id)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1068,), meta=np.ndarray&gt;</div><input id='attrs-ff9b5d85-2aa1-41d1-ad84-ddabfa985e0b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ff9b5d85-2aa1-41d1-ad84-ddabfa985e0b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-dd54f093-cfcf-4e51-bbfc-86da3d232042' class='xr-var-data-in' type='checkbox'><label for='data-dd54f093-cfcf-4e51-bbfc-86da3d232042' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>axis :</span></dt><dd>T</dd><dt><span>long_name :</span></dt><dd>time of dropsonde launch</dd><dt><span>standard_name :</span></dt><dd>time</dd></dl></div><div class='xr-var-data'><table>
-    <tr>
-        <td>
-            <table>
-                <thead>
-                    <tr>
-                        <td> </td>
-                        <th> Array </th>
-                        <th> Chunk </th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <tr>
-                        <th> Bytes </th>
-                        <td> 8.34 kiB </td>
-                        <td> 8.34 kiB </td>
-                    </tr>
-
-                    <tr>
-                        <th> Shape </th>
-                        <td> (1068,) </td>
-                        <td> (1068,) </td>
-                    </tr>
-                    <tr>
-                        <th> Count </th>
-                        <td> 2 Tasks </td>
-                        <td> 1 Chunks </td>
-                    </tr>
-                    <tr>
-                    <th> Type </th>
-                    <td> datetime64[ns] </td>
-                    <td> numpy.ndarray </td>
-                    </tr>
-                </tbody>
-            </table>
-        </td>
-        <td>
-        <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
-
-  <!-- Horizontal lines -->
-  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
-  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
-  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#ECB172A0;stroke-width:0"/>
-
-  <!-- Text -->
-  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >1068</text>
-  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
-</svg>
-        </td>
-    </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lon</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;</div><input id='attrs-b7eeaa90-c0e0-4865-8c66-cd6914a9b860' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-b7eeaa90-c0e0-4865-8c66-cd6914a9b860' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-953aaa84-baee-49e1-b729-4ab8d0baa892' class='xr-var-data-in' type='checkbox'><label for='data-953aaa84-baee-49e1-b729-4ab8d0baa892' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>axis :</span></dt><dd>X</dd><dt><span>long_name :</span></dt><dd>longitude</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degree_east</dd></dl></div><div class='xr-var-data'><table>
-    <tr>
-        <td>
-            <table>
-                <thead>
-                    <tr>
-                        <td> </td>
-                        <th> Array </th>
-                        <th> Chunk </th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <tr>
-                        <th> Bytes </th>
-                        <td> 4.08 MiB </td>
-                        <td> 522.53 kiB </td>
-                    </tr>
-
-                    <tr>
-                        <th> Shape </th>
-                        <td> (1068, 1001) </td>
-                        <td> (267, 501) </td>
-                    </tr>
-                    <tr>
-                        <th> Count </th>
-                        <td> 9 Tasks </td>
-                        <td> 8 Chunks </td>
-                    </tr>
-                    <tr>
-                    <th> Type </th>
-                    <td> float32 </td>
-                    <td> numpy.ndarray </td>
-                    </tr>
-                </tbody>
-            </table>
-        </td>
-        <td>
-        <svg width="162" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
-
-  <!-- Horizontal lines -->
-  <line x1="0" y1="0" x2="112" y2="0" style="stroke-width:2" />
-  <line x1="0" y1="30" x2="112" y2="30" />
-  <line x1="0" y1="60" x2="112" y2="60" />
-  <line x1="0" y1="90" x2="112" y2="90" />
-  <line x1="0" y1="120" x2="112" y2="120" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
-  <line x1="56" y1="0" x2="56" y2="120" />
-  <line x1="112" y1="0" x2="112" y2="120" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="0.0,0.0 112.47191011235954,0.0 112.47191011235954,120.0 0.0,120.0" style="fill:#ECB172A0;stroke-width:0"/>
-
-  <!-- Text -->
-  <text x="56.235955" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >1001</text>
-  <text x="132.471910" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,132.471910,60.000000)">1068</text>
-</svg>
-        </td>
-    </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>sonde_id</span></div><div class='xr-var-dims'>(sonde_id)</div><div class='xr-var-dtype'>object</div><div class='xr-var-preview xr-preview'>&#x27;HALO-0119_s02&#x27; ... &#x27;P3-0211_s43&#x27;</div><input id='attrs-dc40548b-572b-45bc-81c4-91dab266cf0c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-dc40548b-572b-45bc-81c4-91dab266cf0c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8043d60f-3e2f-4e85-bd73-8e7df1f10d14' class='xr-var-data-in' type='checkbox'><label for='data-8043d60f-3e2f-4e85-bd73-8e7df1f10d14' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>cf_role :</span></dt><dd>trajectory_id</dd><dt><span>description :</span></dt><dd>unique sonde ID</dd><dt><span>long_name :</span></dt><dd>sonde identifier</dd><dt><span>units :</span></dt><dd></dd></dl></div><div class='xr-var-data'><pre>array([&#x27;HALO-0119_s02&#x27;, &#x27;HALO-0119_s03&#x27;, &#x27;HALO-0119_s04&#x27;, ..., &#x27;P3-0211_s41&#x27;,
-       &#x27;P3-0211_s42&#x27;, &#x27;P3-0211_s43&#x27;], dtype=object)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-1c3425b2-7c5a-4c4e-a0f9-9850b1df0751' class='xr-section-summary-in' type='checkbox'  ><label for='section-1c3425b2-7c5a-4c4e-a0f9-9850b1df0751' class='xr-section-summary' >Data variables: <span>(23)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>N_gps</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;</div><input id='attrs-3bfd3444-c435-4e3f-8d54-c4114f035d9a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-3bfd3444-c435-4e3f-8d54-c4114f035d9a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-63604415-b8de-4829-bd02-8019bc1d66a1' class='xr-var-data-in' type='checkbox'><label for='data-63604415-b8de-4829-bd02-8019bc1d66a1' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>number of observations used to derive level 3 GPS-data</dd><dt><span>standard_name :</span></dt><dd>number_of_observations</dd><dt><span>units :</span></dt><dd></dd></dl></div><div class='xr-var-data'><table>
-    <tr>
-        <td>
-            <table>
-                <thead>
-                    <tr>
-                        <td> </td>
-                        <th> Array </th>
-                        <th> Chunk </th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <tr>
-                        <th> Bytes </th>
-                        <td> 4.08 MiB </td>
-                        <td> 522.53 kiB </td>
-                    </tr>
-
-                    <tr>
-                        <th> Shape </th>
-                        <td> (1068, 1001) </td>
-                        <td> (267, 501) </td>
-                    </tr>
-                    <tr>
-                        <th> Count </th>
-                        <td> 9 Tasks </td>
-                        <td> 8 Chunks </td>
-                    </tr>
-                    <tr>
-                    <th> Type </th>
-                    <td> float32 </td>
-                    <td> numpy.ndarray </td>
-                    </tr>
-                </tbody>
-            </table>
-        </td>
-        <td>
-        <svg width="162" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
-
-  <!-- Horizontal lines -->
-  <line x1="0" y1="0" x2="112" y2="0" style="stroke-width:2" />
-  <line x1="0" y1="30" x2="112" y2="30" />
-  <line x1="0" y1="60" x2="112" y2="60" />
-  <line x1="0" y1="90" x2="112" y2="90" />
-  <line x1="0" y1="120" x2="112" y2="120" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
-  <line x1="56" y1="0" x2="56" y2="120" />
-  <line x1="112" y1="0" x2="112" y2="120" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="0.0,0.0 112.47191011235954,0.0 112.47191011235954,120.0 0.0,120.0" style="fill:#ECB172A0;stroke-width:0"/>
-
-  <!-- Text -->
-  <text x="56.235955" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >1001</text>
-  <text x="132.471910" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,132.471910,60.000000)">1068</text>
-</svg>
-        </td>
-    </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>N_p</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;</div><input id='attrs-a2053f36-82ef-42ae-bb3e-7017832cd128' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-a2053f36-82ef-42ae-bb3e-7017832cd128' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-170309dd-780e-47d6-88c4-d91d8e2b93b8' class='xr-var-data-in' type='checkbox'><label for='data-170309dd-780e-47d6-88c4-d91d8e2b93b8' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>number of observations used to derive level 3 pressure data</dd><dt><span>standard_name :</span></dt><dd>number_of_observations</dd><dt><span>units :</span></dt><dd></dd></dl></div><div class='xr-var-data'><table>
-    <tr>
-        <td>
-            <table>
-                <thead>
-                    <tr>
-                        <td> </td>
-                        <th> Array </th>
-                        <th> Chunk </th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <tr>
-                        <th> Bytes </th>
-                        <td> 4.08 MiB </td>
-                        <td> 522.53 kiB </td>
-                    </tr>
-
-                    <tr>
-                        <th> Shape </th>
-                        <td> (1068, 1001) </td>
-                        <td> (267, 501) </td>
-                    </tr>
-                    <tr>
-                        <th> Count </th>
-                        <td> 9 Tasks </td>
-                        <td> 8 Chunks </td>
-                    </tr>
-                    <tr>
-                    <th> Type </th>
-                    <td> float32 </td>
-                    <td> numpy.ndarray </td>
-                    </tr>
-                </tbody>
-            </table>
-        </td>
-        <td>
-        <svg width="162" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
-
-  <!-- Horizontal lines -->
-  <line x1="0" y1="0" x2="112" y2="0" style="stroke-width:2" />
-  <line x1="0" y1="30" x2="112" y2="30" />
-  <line x1="0" y1="60" x2="112" y2="60" />
-  <line x1="0" y1="90" x2="112" y2="90" />
-  <line x1="0" y1="120" x2="112" y2="120" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
-  <line x1="56" y1="0" x2="56" y2="120" />
-  <line x1="112" y1="0" x2="112" y2="120" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="0.0,0.0 112.47191011235954,0.0 112.47191011235954,120.0 0.0,120.0" style="fill:#ECB172A0;stroke-width:0"/>
-
-  <!-- Text -->
-  <text x="56.235955" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >1001</text>
-  <text x="132.471910" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,132.471910,60.000000)">1068</text>
-</svg>
-        </td>
-    </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>N_rh</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;</div><input id='attrs-b6bcf7d5-0b67-4697-ae4b-3bd9eec1b46a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-b6bcf7d5-0b67-4697-ae4b-3bd9eec1b46a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-534dfb85-195c-4250-b4c1-6e9c33b2acd3' class='xr-var-data-in' type='checkbox'><label for='data-534dfb85-195c-4250-b4c1-6e9c33b2acd3' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>number of observations used to derive level 3 relative humidity data</dd><dt><span>standard_name :</span></dt><dd>number_of_observations</dd><dt><span>units :</span></dt><dd></dd></dl></div><div class='xr-var-data'><table>
-    <tr>
-        <td>
-            <table>
-                <thead>
-                    <tr>
-                        <td> </td>
-                        <th> Array </th>
-                        <th> Chunk </th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <tr>
-                        <th> Bytes </th>
-                        <td> 4.08 MiB </td>
-                        <td> 522.53 kiB </td>
-                    </tr>
-
-                    <tr>
-                        <th> Shape </th>
-                        <td> (1068, 1001) </td>
-                        <td> (267, 501) </td>
-                    </tr>
-                    <tr>
-                        <th> Count </th>
-                        <td> 9 Tasks </td>
-                        <td> 8 Chunks </td>
-                    </tr>
-                    <tr>
-                    <th> Type </th>
-                    <td> float32 </td>
-                    <td> numpy.ndarray </td>
-                    </tr>
-                </tbody>
-            </table>
-        </td>
-        <td>
-        <svg width="162" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
-
-  <!-- Horizontal lines -->
-  <line x1="0" y1="0" x2="112" y2="0" style="stroke-width:2" />
-  <line x1="0" y1="30" x2="112" y2="30" />
-  <line x1="0" y1="60" x2="112" y2="60" />
-  <line x1="0" y1="90" x2="112" y2="90" />
-  <line x1="0" y1="120" x2="112" y2="120" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
-  <line x1="56" y1="0" x2="56" y2="120" />
-  <line x1="112" y1="0" x2="112" y2="120" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="0.0,0.0 112.47191011235954,0.0 112.47191011235954,120.0 0.0,120.0" style="fill:#ECB172A0;stroke-width:0"/>
-
-  <!-- Text -->
-  <text x="56.235955" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >1001</text>
-  <text x="132.471910" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,132.471910,60.000000)">1068</text>
-</svg>
-        </td>
-    </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>N_ta</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;</div><input id='attrs-f514563c-ae05-4287-9773-5218d687ed7b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-f514563c-ae05-4287-9773-5218d687ed7b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-3ec6f1cc-8a2d-4b12-b83e-54a4aba13c7c' class='xr-var-data-in' type='checkbox'><label for='data-3ec6f1cc-8a2d-4b12-b83e-54a4aba13c7c' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>number of observations used to derive level 3 temperature data</dd><dt><span>standard_name :</span></dt><dd>number_of_observations</dd><dt><span>units :</span></dt><dd></dd></dl></div><div class='xr-var-data'><table>
-    <tr>
-        <td>
-            <table>
-                <thead>
-                    <tr>
-                        <td> </td>
-                        <th> Array </th>
-                        <th> Chunk </th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <tr>
-                        <th> Bytes </th>
-                        <td> 4.08 MiB </td>
-                        <td> 522.53 kiB </td>
-                    </tr>
-
-                    <tr>
-                        <th> Shape </th>
-                        <td> (1068, 1001) </td>
-                        <td> (267, 501) </td>
-                    </tr>
-                    <tr>
-                        <th> Count </th>
-                        <td> 9 Tasks </td>
-                        <td> 8 Chunks </td>
-                    </tr>
-                    <tr>
-                    <th> Type </th>
-                    <td> float32 </td>
-                    <td> numpy.ndarray </td>
-                    </tr>
-                </tbody>
-            </table>
-        </td>
-        <td>
-        <svg width="162" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
-
-  <!-- Horizontal lines -->
-  <line x1="0" y1="0" x2="112" y2="0" style="stroke-width:2" />
-  <line x1="0" y1="30" x2="112" y2="30" />
-  <line x1="0" y1="60" x2="112" y2="60" />
-  <line x1="0" y1="90" x2="112" y2="90" />
-  <line x1="0" y1="120" x2="112" y2="120" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
-  <line x1="56" y1="0" x2="56" y2="120" />
-  <line x1="112" y1="0" x2="112" y2="120" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="0.0,0.0 112.47191011235954,0.0 112.47191011235954,120.0 0.0,120.0" style="fill:#ECB172A0;stroke-width:0"/>
-
-  <!-- Text -->
-  <text x="56.235955" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >1001</text>
-  <text x="132.471910" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,132.471910,60.000000)">1068</text>
-</svg>
-        </td>
-    </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>alt_bnds</span></div><div class='xr-var-dims'>(alt, nv)</div><div class='xr-var-dtype'>int32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1001, 2), meta=np.ndarray&gt;</div><input id='attrs-5761ccdc-7ee1-45de-b4ae-55372e39f910' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-5761ccdc-7ee1-45de-b4ae-55372e39f910' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-07fd2ce5-ba4d-4221-81dc-3d742321a174' class='xr-var-data-in' type='checkbox'><label for='data-07fd2ce5-ba4d-4221-81dc-3d742321a174' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment :</span></dt><dd>(lower bound, upper bound]</dd><dt><span>description :</span></dt><dd>cell interval bounds for altitude</dd></dl></div><div class='xr-var-data'><table>
-    <tr>
-        <td>
-            <table>
-                <thead>
-                    <tr>
-                        <td> </td>
-                        <th> Array </th>
-                        <th> Chunk </th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <tr>
-                        <th> Bytes </th>
-                        <td> 7.82 kiB </td>
-                        <td> 7.82 kiB </td>
-                    </tr>
-
-                    <tr>
-                        <th> Shape </th>
-                        <td> (1001, 2) </td>
-                        <td> (1001, 2) </td>
-                    </tr>
-                    <tr>
-                        <th> Count </th>
-                        <td> 2 Tasks </td>
-                        <td> 1 Chunks </td>
-                    </tr>
-                    <tr>
-                    <th> Type </th>
-                    <td> int32 </td>
-                    <td> numpy.ndarray </td>
-                    </tr>
-                </tbody>
-            </table>
-        </td>
-        <td>
-        <svg width="75" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
-
-  <!-- Horizontal lines -->
-  <line x1="0" y1="0" x2="25" y2="0" style="stroke-width:2" />
-  <line x1="0" y1="120" x2="25" y2="120" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
-  <line x1="25" y1="0" x2="25" y2="120" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="0.0,0.0 25.412616514582485,0.0 25.412616514582485,120.0 0.0,120.0" style="fill:#ECB172A0;stroke-width:0"/>
-
-  <!-- Text -->
-  <text x="12.706308" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >2</text>
-  <text x="45.412617" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,45.412617,60.000000)">1001</text>
-</svg>
-        </td>
-    </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>flight_altitude</span></div><div class='xr-var-dims'>(sonde_id)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1068,), meta=np.ndarray&gt;</div><input id='attrs-97a69caa-0213-4a02-a4c7-05e4acd4c5db' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-97a69caa-0213-4a02-a4c7-05e4acd4c5db' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-44ffcbf6-4c52-4b06-8323-d15894848a87' class='xr-var-data-in' type='checkbox'><label for='data-44ffcbf6-4c52-4b06-8323-d15894848a87' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>altitude of the aircraft when dropsonde was launched</dd><dt><span>positive :</span></dt><dd>up</dd><dt><span>standard_name :</span></dt><dd>altitude</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><table>
-    <tr>
-        <td>
-            <table>
-                <thead>
-                    <tr>
-                        <td> </td>
-                        <th> Array </th>
-                        <th> Chunk </th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <tr>
-                        <th> Bytes </th>
-                        <td> 4.17 kiB </td>
-                        <td> 4.17 kiB </td>
-                    </tr>
-
-                    <tr>
-                        <th> Shape </th>
-                        <td> (1068,) </td>
-                        <td> (1068,) </td>
-                    </tr>
-                    <tr>
-                        <th> Count </th>
-                        <td> 2 Tasks </td>
-                        <td> 1 Chunks </td>
-                    </tr>
-                    <tr>
-                    <th> Type </th>
-                    <td> float32 </td>
-                    <td> numpy.ndarray </td>
-                    </tr>
-                </tbody>
-            </table>
-        </td>
-        <td>
-        <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
-
-  <!-- Horizontal lines -->
-  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
-  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
-  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#ECB172A0;stroke-width:0"/>
-
-  <!-- Text -->
-  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >1068</text>
-  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
-</svg>
-        </td>
-    </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>flight_lat</span></div><div class='xr-var-dims'>(sonde_id)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1068,), meta=np.ndarray&gt;</div><input id='attrs-658f17c2-1602-4fb3-b1fd-f536665e6eb7' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-658f17c2-1602-4fb3-b1fd-f536665e6eb7' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-958124f1-a520-412c-a224-6087334fe901' class='xr-var-data-in' type='checkbox'><label for='data-958124f1-a520-412c-a224-6087334fe901' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>north latitude of the aircraft when dropsonde was launched</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degree_north</dd></dl></div><div class='xr-var-data'><table>
-    <tr>
-        <td>
-            <table>
-                <thead>
-                    <tr>
-                        <td> </td>
-                        <th> Array </th>
-                        <th> Chunk </th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <tr>
-                        <th> Bytes </th>
-                        <td> 4.17 kiB </td>
-                        <td> 4.17 kiB </td>
-                    </tr>
-
-                    <tr>
-                        <th> Shape </th>
-                        <td> (1068,) </td>
-                        <td> (1068,) </td>
-                    </tr>
-                    <tr>
-                        <th> Count </th>
-                        <td> 2 Tasks </td>
-                        <td> 1 Chunks </td>
-                    </tr>
-                    <tr>
-                    <th> Type </th>
-                    <td> float32 </td>
-                    <td> numpy.ndarray </td>
-                    </tr>
-                </tbody>
-            </table>
-        </td>
-        <td>
-        <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
-
-  <!-- Horizontal lines -->
-  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
-  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
-  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#ECB172A0;stroke-width:0"/>
-
-  <!-- Text -->
-  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >1068</text>
-  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
-</svg>
-        </td>
-    </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>flight_lon</span></div><div class='xr-var-dims'>(sonde_id)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1068,), meta=np.ndarray&gt;</div><input id='attrs-66f48927-ac6b-4880-9347-8c1d05762ceb' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-66f48927-ac6b-4880-9347-8c1d05762ceb' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-197bcc70-843a-45fd-8ffc-0d7243c123cd' class='xr-var-data-in' type='checkbox'><label for='data-197bcc70-843a-45fd-8ffc-0d7243c123cd' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>east longitude of the aircraft when dropsonde was launched</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degree_east</dd></dl></div><div class='xr-var-data'><table>
-    <tr>
-        <td>
-            <table>
-                <thead>
-                    <tr>
-                        <td> </td>
-                        <th> Array </th>
-                        <th> Chunk </th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <tr>
-                        <th> Bytes </th>
-                        <td> 4.17 kiB </td>
-                        <td> 4.17 kiB </td>
-                    </tr>
-
-                    <tr>
-                        <th> Shape </th>
-                        <td> (1068,) </td>
-                        <td> (1068,) </td>
-                    </tr>
-                    <tr>
-                        <th> Count </th>
-                        <td> 2 Tasks </td>
-                        <td> 1 Chunks </td>
-                    </tr>
-                    <tr>
-                    <th> Type </th>
-                    <td> float32 </td>
-                    <td> numpy.ndarray </td>
-                    </tr>
-                </tbody>
-            </table>
-        </td>
-        <td>
-        <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
-
-  <!-- Horizontal lines -->
-  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
-  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
-  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#ECB172A0;stroke-width:0"/>
-
-  <!-- Text -->
-  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >1068</text>
-  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
-</svg>
-        </td>
-    </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>low_height_flag</span></div><div class='xr-var-dims'>(sonde_id)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1068,), meta=np.ndarray&gt;</div><input id='attrs-3f47837d-0a5c-49cf-ac77-bad768b5c5f6' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-3f47837d-0a5c-49cf-ac77-bad768b5c5f6' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8d5d2589-b7d3-4031-baef-e7a0e4acab20' class='xr-var-data-in' type='checkbox'><label for='data-8d5d2589-b7d3-4031-baef-e7a0e4acab20' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>flag_meanings :</span></dt><dd>flight_height_at_or_above_4_km flight_height_below_4_km</dd><dt><span>flag_values :</span></dt><dd>[0, 1]</dd><dt><span>long_name :</span></dt><dd>flag if flight height &lt; 4 km when dropsonde was launched</dd><dt><span>units :</span></dt><dd></dd><dt><span>valid_range :</span></dt><dd>0, 1</dd></dl></div><div class='xr-var-data'><table>
-    <tr>
-        <td>
-            <table>
-                <thead>
-                    <tr>
-                        <td> </td>
-                        <th> Array </th>
-                        <th> Chunk </th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <tr>
-                        <th> Bytes </th>
-                        <td> 4.17 kiB </td>
-                        <td> 4.17 kiB </td>
-                    </tr>
-
-                    <tr>
-                        <th> Shape </th>
-                        <td> (1068,) </td>
-                        <td> (1068,) </td>
-                    </tr>
-                    <tr>
-                        <th> Count </th>
-                        <td> 2 Tasks </td>
-                        <td> 1 Chunks </td>
-                    </tr>
-                    <tr>
-                    <th> Type </th>
-                    <td> float32 </td>
-                    <td> numpy.ndarray </td>
-                    </tr>
-                </tbody>
-            </table>
-        </td>
-        <td>
-        <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
-
-  <!-- Horizontal lines -->
-  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
-  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
-  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#ECB172A0;stroke-width:0"/>
-
-  <!-- Text -->
-  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >1068</text>
-  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
-</svg>
-        </td>
-    </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>m_gps</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(534, 501), meta=np.ndarray&gt;</div><input id='attrs-06930f74-ffa9-4272-91d9-4f4928233514' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-06930f74-ffa9-4272-91d9-4f4928233514' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e2707cec-ac7f-4b6d-9097-c1d3fbfdb611' class='xr-var-data-in' type='checkbox'><label for='data-e2707cec-ac7f-4b6d-9097-c1d3fbfdb611' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>method used to derive Level-3 GPS-data</dd><dt><span>flag_meanings :</span></dt><dd>no_data interpolation averaging</dd><dt><span>flag_values :</span></dt><dd>[0, 1, 2]</dd><dt><span>long_name :</span></dt><dd>bin_method</dd><dt><span>units :</span></dt><dd></dd></dl></div><div class='xr-var-data'><table>
-    <tr>
-        <td>
-            <table>
-                <thead>
-                    <tr>
-                        <td> </td>
-                        <th> Array </th>
-                        <th> Chunk </th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <tr>
-                        <th> Bytes </th>
-                        <td> 4.08 MiB </td>
-                        <td> 1.02 MiB </td>
-                    </tr>
-
-                    <tr>
-                        <th> Shape </th>
-                        <td> (1068, 1001) </td>
-                        <td> (534, 501) </td>
-                    </tr>
-                    <tr>
-                        <th> Count </th>
-                        <td> 5 Tasks </td>
-                        <td> 4 Chunks </td>
-                    </tr>
-                    <tr>
-                    <th> Type </th>
-                    <td> float32 </td>
-                    <td> numpy.ndarray </td>
-                    </tr>
-                </tbody>
-            </table>
-        </td>
-        <td>
-        <svg width="162" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
-
-  <!-- Horizontal lines -->
-  <line x1="0" y1="0" x2="112" y2="0" style="stroke-width:2" />
-  <line x1="0" y1="60" x2="112" y2="60" />
-  <line x1="0" y1="120" x2="112" y2="120" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
-  <line x1="56" y1="0" x2="56" y2="120" />
-  <line x1="112" y1="0" x2="112" y2="120" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="0.0,0.0 112.47191011235954,0.0 112.47191011235954,120.0 0.0,120.0" style="fill:#ECB172A0;stroke-width:0"/>
-
-  <!-- Text -->
-  <text x="56.235955" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >1001</text>
-  <text x="132.471910" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,132.471910,60.000000)">1068</text>
-</svg>
-        </td>
-    </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>m_p</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(534, 501), meta=np.ndarray&gt;</div><input id='attrs-4349cb08-b892-4ea9-9d6b-d45e1e26e451' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-4349cb08-b892-4ea9-9d6b-d45e1e26e451' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c4ac5fec-4162-4d65-97d0-9ddda57921a4' class='xr-var-data-in' type='checkbox'><label for='data-c4ac5fec-4162-4d65-97d0-9ddda57921a4' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>method used to derive Level-3 pressure data</dd><dt><span>flag_meanings :</span></dt><dd>no_data interpolation averaging</dd><dt><span>flag_values :</span></dt><dd>[0, 1, 2]</dd><dt><span>long_name :</span></dt><dd>bin_method</dd><dt><span>units :</span></dt><dd></dd></dl></div><div class='xr-var-data'><table>
-    <tr>
-        <td>
-            <table>
-                <thead>
-                    <tr>
-                        <td> </td>
-                        <th> Array </th>
-                        <th> Chunk </th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <tr>
-                        <th> Bytes </th>
-                        <td> 4.08 MiB </td>
-                        <td> 1.02 MiB </td>
-                    </tr>
-
-                    <tr>
-                        <th> Shape </th>
-                        <td> (1068, 1001) </td>
-                        <td> (534, 501) </td>
-                    </tr>
-                    <tr>
-                        <th> Count </th>
-                        <td> 5 Tasks </td>
-                        <td> 4 Chunks </td>
-                    </tr>
-                    <tr>
-                    <th> Type </th>
-                    <td> float32 </td>
-                    <td> numpy.ndarray </td>
-                    </tr>
-                </tbody>
-            </table>
-        </td>
-        <td>
-        <svg width="162" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
-
-  <!-- Horizontal lines -->
-  <line x1="0" y1="0" x2="112" y2="0" style="stroke-width:2" />
-  <line x1="0" y1="60" x2="112" y2="60" />
-  <line x1="0" y1="120" x2="112" y2="120" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
-  <line x1="56" y1="0" x2="56" y2="120" />
-  <line x1="112" y1="0" x2="112" y2="120" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="0.0,0.0 112.47191011235954,0.0 112.47191011235954,120.0 0.0,120.0" style="fill:#ECB172A0;stroke-width:0"/>
-
-  <!-- Text -->
-  <text x="56.235955" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >1001</text>
-  <text x="132.471910" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,132.471910,60.000000)">1068</text>
-</svg>
-        </td>
-    </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>m_rh</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(534, 501), meta=np.ndarray&gt;</div><input id='attrs-4e3852f6-bf39-4cc8-8ca7-d518f76f4ee7' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-4e3852f6-bf39-4cc8-8ca7-d518f76f4ee7' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a6390fa4-4cd0-4a53-b185-1a76096e0590' class='xr-var-data-in' type='checkbox'><label for='data-a6390fa4-4cd0-4a53-b185-1a76096e0590' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>method used to derive Level-3 relative humidity data</dd><dt><span>flag_meanings :</span></dt><dd>no_data interpolation averaging</dd><dt><span>flag_values :</span></dt><dd>[0, 1, 2]</dd><dt><span>long_name :</span></dt><dd>bin_method</dd><dt><span>units :</span></dt><dd></dd></dl></div><div class='xr-var-data'><table>
-    <tr>
-        <td>
-            <table>
-                <thead>
-                    <tr>
-                        <td> </td>
-                        <th> Array </th>
-                        <th> Chunk </th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <tr>
-                        <th> Bytes </th>
-                        <td> 4.08 MiB </td>
-                        <td> 1.02 MiB </td>
-                    </tr>
-
-                    <tr>
-                        <th> Shape </th>
-                        <td> (1068, 1001) </td>
-                        <td> (534, 501) </td>
-                    </tr>
-                    <tr>
-                        <th> Count </th>
-                        <td> 5 Tasks </td>
-                        <td> 4 Chunks </td>
-                    </tr>
-                    <tr>
-                    <th> Type </th>
-                    <td> float32 </td>
-                    <td> numpy.ndarray </td>
-                    </tr>
-                </tbody>
-            </table>
-        </td>
-        <td>
-        <svg width="162" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
-
-  <!-- Horizontal lines -->
-  <line x1="0" y1="0" x2="112" y2="0" style="stroke-width:2" />
-  <line x1="0" y1="60" x2="112" y2="60" />
-  <line x1="0" y1="120" x2="112" y2="120" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
-  <line x1="56" y1="0" x2="56" y2="120" />
-  <line x1="112" y1="0" x2="112" y2="120" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="0.0,0.0 112.47191011235954,0.0 112.47191011235954,120.0 0.0,120.0" style="fill:#ECB172A0;stroke-width:0"/>
-
-  <!-- Text -->
-  <text x="56.235955" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >1001</text>
-  <text x="132.471910" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,132.471910,60.000000)">1068</text>
-</svg>
-        </td>
-    </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>m_ta</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(534, 501), meta=np.ndarray&gt;</div><input id='attrs-405198d2-8e01-4000-9a36-fd59677a351c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-405198d2-8e01-4000-9a36-fd59677a351c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e9073c75-c345-4dcf-b74e-0d79738c9c37' class='xr-var-data-in' type='checkbox'><label for='data-e9073c75-c345-4dcf-b74e-0d79738c9c37' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>method used to derive Level-3 temperature data</dd><dt><span>flag_meanings :</span></dt><dd>no_data interpolation averaging</dd><dt><span>flag_values :</span></dt><dd>[0, 1, 2]</dd><dt><span>long_name :</span></dt><dd>bin_method</dd><dt><span>units :</span></dt><dd></dd></dl></div><div class='xr-var-data'><table>
-    <tr>
-        <td>
-            <table>
-                <thead>
-                    <tr>
-                        <td> </td>
-                        <th> Array </th>
-                        <th> Chunk </th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <tr>
-                        <th> Bytes </th>
-                        <td> 4.08 MiB </td>
-                        <td> 1.02 MiB </td>
-                    </tr>
-
-                    <tr>
-                        <th> Shape </th>
-                        <td> (1068, 1001) </td>
-                        <td> (534, 501) </td>
-                    </tr>
-                    <tr>
-                        <th> Count </th>
-                        <td> 5 Tasks </td>
-                        <td> 4 Chunks </td>
-                    </tr>
-                    <tr>
-                    <th> Type </th>
-                    <td> float32 </td>
-                    <td> numpy.ndarray </td>
-                    </tr>
-                </tbody>
-            </table>
-        </td>
-        <td>
-        <svg width="162" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
-
-  <!-- Horizontal lines -->
-  <line x1="0" y1="0" x2="112" y2="0" style="stroke-width:2" />
-  <line x1="0" y1="60" x2="112" y2="60" />
-  <line x1="0" y1="120" x2="112" y2="120" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
-  <line x1="56" y1="0" x2="56" y2="120" />
-  <line x1="112" y1="0" x2="112" y2="120" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="0.0,0.0 112.47191011235954,0.0 112.47191011235954,120.0 0.0,120.0" style="fill:#ECB172A0;stroke-width:0"/>
-
-  <!-- Text -->
-  <text x="56.235955" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >1001</text>
-  <text x="132.471910" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,132.471910,60.000000)">1068</text>
-</svg>
-        </td>
-    </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>p</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;</div><input id='attrs-9cbb8b7c-1d3f-49c6-89f6-084163505531' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-9cbb8b7c-1d3f-49c6-89f6-084163505531' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e7ca2d91-0f45-44db-9c26-12c74b92fade' class='xr-var-data-in' type='checkbox'><label for='data-e7ca2d91-0f45-44db-9c26-12c74b92fade' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>atmospheric pressure</dd><dt><span>standard_name :</span></dt><dd>air_pressure</dd><dt><span>units :</span></dt><dd>Pa</dd></dl></div><div class='xr-var-data'><table>
-    <tr>
-        <td>
-            <table>
-                <thead>
-                    <tr>
-                        <td> </td>
-                        <th> Array </th>
-                        <th> Chunk </th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <tr>
-                        <th> Bytes </th>
-                        <td> 4.08 MiB </td>
-                        <td> 522.53 kiB </td>
-                    </tr>
-
-                    <tr>
-                        <th> Shape </th>
-                        <td> (1068, 1001) </td>
-                        <td> (267, 501) </td>
-                    </tr>
-                    <tr>
-                        <th> Count </th>
-                        <td> 9 Tasks </td>
-                        <td> 8 Chunks </td>
-                    </tr>
-                    <tr>
-                    <th> Type </th>
-                    <td> float32 </td>
-                    <td> numpy.ndarray </td>
-                    </tr>
-                </tbody>
-            </table>
-        </td>
-        <td>
-        <svg width="162" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
-
-  <!-- Horizontal lines -->
-  <line x1="0" y1="0" x2="112" y2="0" style="stroke-width:2" />
-  <line x1="0" y1="30" x2="112" y2="30" />
-  <line x1="0" y1="60" x2="112" y2="60" />
-  <line x1="0" y1="90" x2="112" y2="90" />
-  <line x1="0" y1="120" x2="112" y2="120" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
-  <line x1="56" y1="0" x2="56" y2="120" />
-  <line x1="112" y1="0" x2="112" y2="120" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="0.0,0.0 112.47191011235954,0.0 112.47191011235954,120.0 0.0,120.0" style="fill:#ECB172A0;stroke-width:0"/>
-
-  <!-- Text -->
-  <text x="56.235955" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >1001</text>
-  <text x="132.471910" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,132.471910,60.000000)">1068</text>
-</svg>
-        </td>
-    </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>platform_id</span></div><div class='xr-var-dims'>(sonde_id)</div><div class='xr-var-dtype'>object</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1068,), meta=np.ndarray&gt;</div><input id='attrs-7742887d-1acc-4d8b-8ae6-0c1d6d8f9f34' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-7742887d-1acc-4d8b-8ae6-0c1d6d8f9f34' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-cd6242f8-e4da-41f6-977f-c7e12eea378b' class='xr-var-data-in' type='checkbox'><label for='data-cd6242f8-e4da-41f6-977f-c7e12eea378b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>platform from which dropsonde was launched</dd><dt><span>standard_name :</span></dt><dd>platform_id</dd><dt><span>units :</span></dt><dd></dd></dl></div><div class='xr-var-data'><table>
-    <tr>
-        <td>
-            <table>
-                <thead>
-                    <tr>
-                        <td> </td>
-                        <th> Array </th>
-                        <th> Chunk </th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <tr>
-                        <th> Bytes </th>
-                        <td> 8.34 kiB </td>
-                        <td> 8.34 kiB </td>
-                    </tr>
-
-                    <tr>
-                        <th> Shape </th>
-                        <td> (1068,) </td>
-                        <td> (1068,) </td>
-                    </tr>
-                    <tr>
-                        <th> Count </th>
-                        <td> 2 Tasks </td>
-                        <td> 1 Chunks </td>
-                    </tr>
-                    <tr>
-                    <th> Type </th>
-                    <td> object </td>
-                    <td> numpy.ndarray </td>
-                    </tr>
-                </tbody>
-            </table>
-        </td>
-        <td>
-        <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
-
-  <!-- Horizontal lines -->
-  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
-  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
-  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#ECB172A0;stroke-width:0"/>
-
-  <!-- Text -->
-  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >1068</text>
-  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
-</svg>
-        </td>
-    </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>q</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;</div><input id='attrs-67d1d29f-30f1-4228-8020-404144d95bcd' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-67d1d29f-30f1-4228-8020-404144d95bcd' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-9d4eeaa3-3707-456a-816f-2121c9b2aa9c' class='xr-var-data-in' type='checkbox'><label for='data-9d4eeaa3-3707-456a-816f-2121c9b2aa9c' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>specific humidity</dd><dt><span>standard_name :</span></dt><dd>specific_humidity</dd><dt><span>units :</span></dt><dd>kg kg-1</dd></dl></div><div class='xr-var-data'><table>
-    <tr>
-        <td>
-            <table>
-                <thead>
-                    <tr>
-                        <td> </td>
-                        <th> Array </th>
-                        <th> Chunk </th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <tr>
-                        <th> Bytes </th>
-                        <td> 4.08 MiB </td>
-                        <td> 522.53 kiB </td>
-                    </tr>
-
-                    <tr>
-                        <th> Shape </th>
-                        <td> (1068, 1001) </td>
-                        <td> (267, 501) </td>
-                    </tr>
-                    <tr>
-                        <th> Count </th>
-                        <td> 9 Tasks </td>
-                        <td> 8 Chunks </td>
-                    </tr>
-                    <tr>
-                    <th> Type </th>
-                    <td> float32 </td>
-                    <td> numpy.ndarray </td>
-                    </tr>
-                </tbody>
-            </table>
-        </td>
-        <td>
-        <svg width="162" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
-
-  <!-- Horizontal lines -->
-  <line x1="0" y1="0" x2="112" y2="0" style="stroke-width:2" />
-  <line x1="0" y1="30" x2="112" y2="30" />
-  <line x1="0" y1="60" x2="112" y2="60" />
-  <line x1="0" y1="90" x2="112" y2="90" />
-  <line x1="0" y1="120" x2="112" y2="120" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
-  <line x1="56" y1="0" x2="56" y2="120" />
-  <line x1="112" y1="0" x2="112" y2="120" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="0.0,0.0 112.47191011235954,0.0 112.47191011235954,120.0 0.0,120.0" style="fill:#ECB172A0;stroke-width:0"/>
-
-  <!-- Text -->
-  <text x="56.235955" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >1001</text>
-  <text x="132.471910" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,132.471910,60.000000)">1068</text>
-</svg>
-        </td>
-    </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>rh</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;</div><input id='attrs-c3c103ff-05c9-4201-b9db-818a6ae0db00' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c3c103ff-05c9-4201-b9db-818a6ae0db00' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b44b48e2-2b23-48eb-a368-b421ee9cdfda' class='xr-var-data-in' type='checkbox'><label for='data-b44b48e2-2b23-48eb-a368-b421ee9cdfda' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>relative humidity</dd><dt><span>standard_name :</span></dt><dd>relative_humidity</dd><dt><span>units :</span></dt><dd></dd></dl></div><div class='xr-var-data'><table>
-    <tr>
-        <td>
-            <table>
-                <thead>
-                    <tr>
-                        <td> </td>
-                        <th> Array </th>
-                        <th> Chunk </th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <tr>
-                        <th> Bytes </th>
-                        <td> 4.08 MiB </td>
-                        <td> 522.53 kiB </td>
-                    </tr>
-
-                    <tr>
-                        <th> Shape </th>
-                        <td> (1068, 1001) </td>
-                        <td> (267, 501) </td>
-                    </tr>
-                    <tr>
-                        <th> Count </th>
-                        <td> 9 Tasks </td>
-                        <td> 8 Chunks </td>
-                    </tr>
-                    <tr>
-                    <th> Type </th>
-                    <td> float32 </td>
-                    <td> numpy.ndarray </td>
-                    </tr>
-                </tbody>
-            </table>
-        </td>
-        <td>
-        <svg width="162" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
-
-  <!-- Horizontal lines -->
-  <line x1="0" y1="0" x2="112" y2="0" style="stroke-width:2" />
-  <line x1="0" y1="30" x2="112" y2="30" />
-  <line x1="0" y1="60" x2="112" y2="60" />
-  <line x1="0" y1="90" x2="112" y2="90" />
-  <line x1="0" y1="120" x2="112" y2="120" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
-  <line x1="56" y1="0" x2="56" y2="120" />
-  <line x1="112" y1="0" x2="112" y2="120" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="0.0,0.0 112.47191011235954,0.0 112.47191011235954,120.0 0.0,120.0" style="fill:#ECB172A0;stroke-width:0"/>
-
-  <!-- Text -->
-  <text x="56.235955" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >1001</text>
-  <text x="132.471910" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,132.471910,60.000000)">1068</text>
-</svg>
-        </td>
-    </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>ta</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;</div><input id='attrs-69c406b8-9f57-4390-a57b-263caa2676e8' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-69c406b8-9f57-4390-a57b-263caa2676e8' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-6173a951-d43d-4806-8dc2-dfb4ebbf4021' class='xr-var-data-in' type='checkbox'><label for='data-6173a951-d43d-4806-8dc2-dfb4ebbf4021' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>dry bulb temperature</dd><dt><span>standard_name :</span></dt><dd>air_temperature</dd><dt><span>units :</span></dt><dd>K</dd></dl></div><div class='xr-var-data'><table>
-    <tr>
-        <td>
-            <table>
-                <thead>
-                    <tr>
-                        <td> </td>
-                        <th> Array </th>
-                        <th> Chunk </th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <tr>
-                        <th> Bytes </th>
-                        <td> 4.08 MiB </td>
-                        <td> 522.53 kiB </td>
-                    </tr>
-
-                    <tr>
-                        <th> Shape </th>
-                        <td> (1068, 1001) </td>
-                        <td> (267, 501) </td>
-                    </tr>
-                    <tr>
-                        <th> Count </th>
-                        <td> 9 Tasks </td>
-                        <td> 8 Chunks </td>
-                    </tr>
-                    <tr>
-                    <th> Type </th>
-                    <td> float32 </td>
-                    <td> numpy.ndarray </td>
-                    </tr>
-                </tbody>
-            </table>
-        </td>
-        <td>
-        <svg width="162" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
-
-  <!-- Horizontal lines -->
-  <line x1="0" y1="0" x2="112" y2="0" style="stroke-width:2" />
-  <line x1="0" y1="30" x2="112" y2="30" />
-  <line x1="0" y1="60" x2="112" y2="60" />
-  <line x1="0" y1="90" x2="112" y2="90" />
-  <line x1="0" y1="120" x2="112" y2="120" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
-  <line x1="56" y1="0" x2="56" y2="120" />
-  <line x1="112" y1="0" x2="112" y2="120" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="0.0,0.0 112.47191011235954,0.0 112.47191011235954,120.0 0.0,120.0" style="fill:#ECB172A0;stroke-width:0"/>
-
-  <!-- Text -->
-  <text x="56.235955" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >1001</text>
-  <text x="132.471910" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,132.471910,60.000000)">1068</text>
-</svg>
-        </td>
-    </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>theta</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;</div><input id='attrs-9f5ff9b4-beee-4251-868b-884f2084080f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-9f5ff9b4-beee-4251-868b-884f2084080f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-fac57b4d-9c37-420f-85e3-f6ccc11746e6' class='xr-var-data-in' type='checkbox'><label for='data-fac57b4d-9c37-420f-85e3-f6ccc11746e6' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>air potential temperature</dd><dt><span>standard_name :</span></dt><dd>air_potential_temperature</dd><dt><span>units :</span></dt><dd>K</dd></dl></div><div class='xr-var-data'><table>
-    <tr>
-        <td>
-            <table>
-                <thead>
-                    <tr>
-                        <td> </td>
-                        <th> Array </th>
-                        <th> Chunk </th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <tr>
-                        <th> Bytes </th>
-                        <td> 4.08 MiB </td>
-                        <td> 522.53 kiB </td>
-                    </tr>
-
-                    <tr>
-                        <th> Shape </th>
-                        <td> (1068, 1001) </td>
-                        <td> (267, 501) </td>
-                    </tr>
-                    <tr>
-                        <th> Count </th>
-                        <td> 9 Tasks </td>
-                        <td> 8 Chunks </td>
-                    </tr>
-                    <tr>
-                    <th> Type </th>
-                    <td> float32 </td>
-                    <td> numpy.ndarray </td>
-                    </tr>
-                </tbody>
-            </table>
-        </td>
-        <td>
-        <svg width="162" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
-
-  <!-- Horizontal lines -->
-  <line x1="0" y1="0" x2="112" y2="0" style="stroke-width:2" />
-  <line x1="0" y1="30" x2="112" y2="30" />
-  <line x1="0" y1="60" x2="112" y2="60" />
-  <line x1="0" y1="90" x2="112" y2="90" />
-  <line x1="0" y1="120" x2="112" y2="120" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
-  <line x1="56" y1="0" x2="56" y2="120" />
-  <line x1="112" y1="0" x2="112" y2="120" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="0.0,0.0 112.47191011235954,0.0 112.47191011235954,120.0 0.0,120.0" style="fill:#ECB172A0;stroke-width:0"/>
-
-  <!-- Text -->
-  <text x="56.235955" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >1001</text>
-  <text x="132.471910" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,132.471910,60.000000)">1068</text>
-</svg>
-        </td>
-    </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>u</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;</div><input id='attrs-65b3a669-65c4-4a8b-8bfd-5bdeab1cb13e' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-65b3a669-65c4-4a8b-8bfd-5bdeab1cb13e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c7e75003-6b4b-43d9-aa67-f20332b57f1a' class='xr-var-data-in' type='checkbox'><label for='data-c7e75003-6b4b-43d9-aa67-f20332b57f1a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>u-component of the wind</dd><dt><span>standard_name :</span></dt><dd>eastward_wind</dd><dt><span>units :</span></dt><dd>m s-1</dd></dl></div><div class='xr-var-data'><table>
-    <tr>
-        <td>
-            <table>
-                <thead>
-                    <tr>
-                        <td> </td>
-                        <th> Array </th>
-                        <th> Chunk </th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <tr>
-                        <th> Bytes </th>
-                        <td> 4.08 MiB </td>
-                        <td> 522.53 kiB </td>
-                    </tr>
-
-                    <tr>
-                        <th> Shape </th>
-                        <td> (1068, 1001) </td>
-                        <td> (267, 501) </td>
-                    </tr>
-                    <tr>
-                        <th> Count </th>
-                        <td> 9 Tasks </td>
-                        <td> 8 Chunks </td>
-                    </tr>
-                    <tr>
-                    <th> Type </th>
-                    <td> float32 </td>
-                    <td> numpy.ndarray </td>
-                    </tr>
-                </tbody>
-            </table>
-        </td>
-        <td>
-        <svg width="162" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
-
-  <!-- Horizontal lines -->
-  <line x1="0" y1="0" x2="112" y2="0" style="stroke-width:2" />
-  <line x1="0" y1="30" x2="112" y2="30" />
-  <line x1="0" y1="60" x2="112" y2="60" />
-  <line x1="0" y1="90" x2="112" y2="90" />
-  <line x1="0" y1="120" x2="112" y2="120" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
-  <line x1="56" y1="0" x2="56" y2="120" />
-  <line x1="112" y1="0" x2="112" y2="120" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="0.0,0.0 112.47191011235954,0.0 112.47191011235954,120.0 0.0,120.0" style="fill:#ECB172A0;stroke-width:0"/>
-
-  <!-- Text -->
-  <text x="56.235955" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >1001</text>
-  <text x="132.471910" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,132.471910,60.000000)">1068</text>
-</svg>
-        </td>
-    </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>v</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;</div><input id='attrs-f7705447-a5a2-42e9-8aa9-7ee170196446' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-f7705447-a5a2-42e9-8aa9-7ee170196446' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-04ae32f3-4b67-437b-8a4a-e3369ff53051' class='xr-var-data-in' type='checkbox'><label for='data-04ae32f3-4b67-437b-8a4a-e3369ff53051' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>v-component of the wind</dd><dt><span>standard_name :</span></dt><dd>northward_wind</dd><dt><span>units :</span></dt><dd>m s-1</dd></dl></div><div class='xr-var-data'><table>
-    <tr>
-        <td>
-            <table>
-                <thead>
-                    <tr>
-                        <td> </td>
-                        <th> Array </th>
-                        <th> Chunk </th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <tr>
-                        <th> Bytes </th>
-                        <td> 4.08 MiB </td>
-                        <td> 522.53 kiB </td>
-                    </tr>
-
-                    <tr>
-                        <th> Shape </th>
-                        <td> (1068, 1001) </td>
-                        <td> (267, 501) </td>
-                    </tr>
-                    <tr>
-                        <th> Count </th>
-                        <td> 9 Tasks </td>
-                        <td> 8 Chunks </td>
-                    </tr>
-                    <tr>
-                    <th> Type </th>
-                    <td> float32 </td>
-                    <td> numpy.ndarray </td>
-                    </tr>
-                </tbody>
-            </table>
-        </td>
-        <td>
-        <svg width="162" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
-
-  <!-- Horizontal lines -->
-  <line x1="0" y1="0" x2="112" y2="0" style="stroke-width:2" />
-  <line x1="0" y1="30" x2="112" y2="30" />
-  <line x1="0" y1="60" x2="112" y2="60" />
-  <line x1="0" y1="90" x2="112" y2="90" />
-  <line x1="0" y1="120" x2="112" y2="120" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
-  <line x1="56" y1="0" x2="56" y2="120" />
-  <line x1="112" y1="0" x2="112" y2="120" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="0.0,0.0 112.47191011235954,0.0 112.47191011235954,120.0 0.0,120.0" style="fill:#ECB172A0;stroke-width:0"/>
-
-  <!-- Text -->
-  <text x="56.235955" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >1001</text>
-  <text x="132.471910" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,132.471910,60.000000)">1068</text>
-</svg>
-        </td>
-    </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>wdir</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;</div><input id='attrs-b0a36913-760f-4cda-8812-262a14c36463' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-b0a36913-760f-4cda-8812-262a14c36463' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-6e92ec87-6166-4626-a6ba-514ff80854ac' class='xr-var-data-in' type='checkbox'><label for='data-6e92ec87-6166-4626-a6ba-514ff80854ac' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>wind direction</dd><dt><span>standard_name :</span></dt><dd>wind_from_direction</dd><dt><span>units :</span></dt><dd>degree</dd></dl></div><div class='xr-var-data'><table>
-    <tr>
-        <td>
-            <table>
-                <thead>
-                    <tr>
-                        <td> </td>
-                        <th> Array </th>
-                        <th> Chunk </th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <tr>
-                        <th> Bytes </th>
-                        <td> 4.08 MiB </td>
-                        <td> 522.53 kiB </td>
-                    </tr>
-
-                    <tr>
-                        <th> Shape </th>
-                        <td> (1068, 1001) </td>
-                        <td> (267, 501) </td>
-                    </tr>
-                    <tr>
-                        <th> Count </th>
-                        <td> 9 Tasks </td>
-                        <td> 8 Chunks </td>
-                    </tr>
-                    <tr>
-                    <th> Type </th>
-                    <td> float32 </td>
-                    <td> numpy.ndarray </td>
-                    </tr>
-                </tbody>
-            </table>
-        </td>
-        <td>
-        <svg width="162" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
-
-  <!-- Horizontal lines -->
-  <line x1="0" y1="0" x2="112" y2="0" style="stroke-width:2" />
-  <line x1="0" y1="30" x2="112" y2="30" />
-  <line x1="0" y1="60" x2="112" y2="60" />
-  <line x1="0" y1="90" x2="112" y2="90" />
-  <line x1="0" y1="120" x2="112" y2="120" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
-  <line x1="56" y1="0" x2="56" y2="120" />
-  <line x1="112" y1="0" x2="112" y2="120" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="0.0,0.0 112.47191011235954,0.0 112.47191011235954,120.0 0.0,120.0" style="fill:#ECB172A0;stroke-width:0"/>
-
-  <!-- Text -->
-  <text x="56.235955" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >1001</text>
-  <text x="132.471910" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,132.471910,60.000000)">1068</text>
-</svg>
-        </td>
-    </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>wspd</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;</div><input id='attrs-ce733363-7283-42cc-b236-93e6f0b44bf5' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ce733363-7283-42cc-b236-93e6f0b44bf5' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4d2b81c4-89e8-4a38-b858-bc58513d4792' class='xr-var-data-in' type='checkbox'><label for='data-4d2b81c4-89e8-4a38-b858-bc58513d4792' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>wind speed</dd><dt><span>standard_name :</span></dt><dd>wind_speed</dd><dt><span>units :</span></dt><dd>m s-1</dd></dl></div><div class='xr-var-data'><table>
-    <tr>
-        <td>
-            <table>
-                <thead>
-                    <tr>
-                        <td> </td>
-                        <th> Array </th>
-                        <th> Chunk </th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <tr>
-                        <th> Bytes </th>
-                        <td> 4.08 MiB </td>
-                        <td> 522.53 kiB </td>
-                    </tr>
-
-                    <tr>
-                        <th> Shape </th>
-                        <td> (1068, 1001) </td>
-                        <td> (267, 501) </td>
-                    </tr>
-                    <tr>
-                        <th> Count </th>
-                        <td> 9 Tasks </td>
-                        <td> 8 Chunks </td>
-                    </tr>
-                    <tr>
-                    <th> Type </th>
-                    <td> float32 </td>
-                    <td> numpy.ndarray </td>
-                    </tr>
-                </tbody>
-            </table>
-        </td>
-        <td>
-        <svg width="162" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
-
-  <!-- Horizontal lines -->
-  <line x1="0" y1="0" x2="112" y2="0" style="stroke-width:2" />
-  <line x1="0" y1="30" x2="112" y2="30" />
-  <line x1="0" y1="60" x2="112" y2="60" />
-  <line x1="0" y1="90" x2="112" y2="90" />
-  <line x1="0" y1="120" x2="112" y2="120" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
-  <line x1="56" y1="0" x2="56" y2="120" />
-  <line x1="112" y1="0" x2="112" y2="120" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="0.0,0.0 112.47191011235954,0.0 112.47191011235954,120.0 0.0,120.0" style="fill:#ECB172A0;stroke-width:0"/>
-
-  <!-- Text -->
-  <text x="56.235955" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >1001</text>
-  <text x="132.471910" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,132.471910,60.000000)">1068</text>
-</svg>
-        </td>
-    </tr>
-</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-59c1c967-a9e2-4a28-8a59-3834970eb643' class='xr-section-summary-in' type='checkbox'  ><label for='section-59c1c967-a9e2-4a28-8a59-3834970eb643' class='xr-section-summary' >Attributes: <span>(16)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>ASPEN_version :</span></dt><dd>BatchAspen v3.4.3</dd><dt><span>AVAPS_software_version :</span></dt><dd>Version 4.1.2</dd><dt><span>Conventions :</span></dt><dd>CF-1.8</dd><dt><span>JOANNE_version :</span></dt><dd>2.0.0</dd><dt><span>author :</span></dt><dd>Geet George</dd><dt><span>author_email :</span></dt><dd>geet.george@mpimet.mpg.de</dd><dt><span>campaign_id :</span></dt><dd>EUREC4A</dd><dt><span>created with :</span></dt><dd>run_joanne.py doi:10.5281/zenodo.5521192</dd><dt><span>creation_time :</span></dt><dd>2021-09-22 14:35:24.817595 UTC</dd><dt><span>doi :</span></dt><dd>10.25326/246</dd><dt><span>featureType :</span></dt><dd>trajectory</dd><dt><span>instrument_id :</span></dt><dd>Vaisala RD-41</dd><dt><span>product_id :</span></dt><dd>Level-3</dd><dt><span>project_id :</span></dt><dd>JOANNE</dd><dt><span>reference :</span></dt><dd>George et al., JOANNE : Joint dropsonde Observations of the Atmosphere in tropical North atlaNtic meso-scale Environments, ESSD, 2021</dd><dt><span>title :</span></dt><dd>EUREC4A JOANNE Level-3</dd></dl></div></li></ul></div></div></div></div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_6498</span><span class="o">/</span><span class="mf">2913846430.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ds</span> <span class="o">=</span> <span class="n">cat</span><span class="o">.</span><span class="n">dropsondes</span><span class="o">.</span><span class="n">JOANNE</span><span class="o">.</span><span class="n">level3</span><span class="o">.</span><span class="n">to_dask</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">ds</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/intake_xarray/base.py</span> in <span class="ni">to_dask</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">     </span><span class="mi">67</span>     <span class="k">def</span> <span class="nf">to_dask</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">68</span>         <span class="sd">&quot;&quot;&quot;Return xarray object where variables are dask arrays&quot;&quot;&quot;</span>
+<span class="ne">---&gt; </span><span class="mi">69</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">read_chunked</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">70</span> 
+<span class="g g-Whitespace">     </span><span class="mi">71</span>     <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/intake_xarray/base.py</span> in <span class="ni">read_chunked</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">     </span><span class="mi">42</span>     <span class="k">def</span> <span class="nf">read_chunked</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">43</span>         <span class="sd">&quot;&quot;&quot;Return xarray object (which will have chunks)&quot;&quot;&quot;</span>
+<span class="ne">---&gt; </span><span class="mi">44</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_load_metadata</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">45</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ds</span>
+<span class="g g-Whitespace">     </span><span class="mi">46</span> 
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/intake/source/base.py</span> in <span class="ni">_load_metadata</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">234</span>         <span class="sd">&quot;&quot;&quot;load metadata only if needed&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">235</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_schema</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">236</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_schema</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_schema</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">237</span>             <span class="bp">self</span><span class="o">.</span><span class="n">dtype</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_schema</span><span class="o">.</span><span class="n">dtype</span>
+<span class="g g-Whitespace">    </span><span class="mi">238</span>             <span class="bp">self</span><span class="o">.</span><span class="n">shape</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_schema</span><span class="o">.</span><span class="n">shape</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/intake_xarray/base.py</span> in <span class="ni">_get_schema</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span> 
+<span class="g g-Whitespace">     </span><span class="mi">17</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ds</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">18</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_open_dataset</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">19</span> 
+<span class="g g-Whitespace">     </span><span class="mi">20</span>             <span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/intake_xarray/xzarr.py</span> in <span class="ni">_open_dataset</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">     </span><span class="mi">44</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">urlpath</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">45</span>         <span class="k">else</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">46</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">urlpath</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">47</span> 
+<span class="g g-Whitespace">     </span><span class="mi">48</span>     <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/xarray/backends/api.py</span> in <span class="ni">open_dataset</span><span class="nt">(filename_or_obj, engine, chunks, cache, decode_cf, mask_and_scale, decode_times, decode_timedelta, use_cftime, concat_characters, decode_coords, drop_variables, backend_kwargs, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">493</span> 
+<span class="g g-Whitespace">    </span><span class="mi">494</span>     <span class="n">overwrite_encoded_chunks</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;overwrite_encoded_chunks&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">495</span>     <span class="n">backend_ds</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">496</span>         <span class="n">filename_or_obj</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">497</span>         <span class="n">drop_variables</span><span class="o">=</span><span class="n">drop_variables</span><span class="p">,</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/xarray/backends/zarr.py</span> in <span class="ni">open_dataset</span><span class="nt">(self, filename_or_obj, mask_and_scale, decode_times, concat_characters, decode_coords, drop_variables, use_cftime, decode_timedelta, group, mode, synchronizer, consolidated, chunk_store, storage_options, stacklevel)</span>
+<span class="g g-Whitespace">    </span><span class="mi">812</span>         <span class="n">store_entrypoint</span> <span class="o">=</span> <span class="n">StoreBackendEntrypoint</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">813</span>         <span class="k">with</span> <span class="n">close_on_error</span><span class="p">(</span><span class="n">store</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">814</span>             <span class="n">ds</span> <span class="o">=</span> <span class="n">store_entrypoint</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">815</span>                 <span class="n">store</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">816</span>                 <span class="n">mask_and_scale</span><span class="o">=</span><span class="n">mask_and_scale</span><span class="p">,</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/xarray/backends/store.py</span> in <span class="ni">open_dataset</span><span class="nt">(self, store, mask_and_scale, decode_times, concat_characters, decode_coords, drop_variables, use_cftime, decode_timedelta)</span>
+<span class="g g-Whitespace">     </span><span class="mi">25</span>         <span class="n">encoding</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">get_encoding</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">26</span> 
+<span class="ne">---&gt; </span><span class="mi">27</span>         <span class="nb">vars</span><span class="p">,</span> <span class="n">attrs</span><span class="p">,</span> <span class="n">coord_names</span> <span class="o">=</span> <span class="n">conventions</span><span class="o">.</span><span class="n">decode_cf_variables</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">28</span>             <span class="nb">vars</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">29</span>             <span class="n">attrs</span><span class="p">,</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/xarray/conventions.py</span> in <span class="ni">decode_cf_variables</span><span class="nt">(variables, attributes, concat_characters, mask_and_scale, decode_times, decode_coords, drop_variables, use_cftime, decode_timedelta)</span>
+<span class="g g-Whitespace">    </span><span class="mi">514</span>             <span class="ow">and</span> <span class="n">stackable</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">dims</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="g g-Whitespace">    </span><span class="mi">515</span>         <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">516</span>         <span class="n">new_vars</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">decode_cf_variable</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">517</span>             <span class="n">k</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">518</span>             <span class="n">v</span><span class="p">,</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/xarray/conventions.py</span> in <span class="ni">decode_cf_variable</span><span class="nt">(name, var, concat_characters, mask_and_scale, decode_times, decode_endianness, stack_char_dim, use_cftime, decode_timedelta)</span>
+<span class="g g-Whitespace">    </span><span class="mi">362</span>         <span class="n">var</span> <span class="o">=</span> <span class="n">times</span><span class="o">.</span><span class="n">CFTimedeltaCoder</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">363</span>     <span class="k">if</span> <span class="n">decode_times</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">364</span>         <span class="n">var</span> <span class="o">=</span> <span class="n">times</span><span class="o">.</span><span class="n">CFDatetimeCoder</span><span class="p">(</span><span class="n">use_cftime</span><span class="o">=</span><span class="n">use_cftime</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">365</span> 
+<span class="g g-Whitespace">    </span><span class="mi">366</span>     <span class="n">dimensions</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">attributes</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="n">variables</span><span class="o">.</span><span class="n">unpack_for_decoding</span><span class="p">(</span><span class="n">var</span><span class="p">)</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/xarray/coding/times.py</span> in <span class="ni">decode</span><span class="nt">(self, variable, name)</span>
+<span class="g g-Whitespace">    </span><span class="mi">671</span>             <span class="n">units</span> <span class="o">=</span> <span class="n">pop_to</span><span class="p">(</span><span class="n">attrs</span><span class="p">,</span> <span class="n">encoding</span><span class="p">,</span> <span class="s2">&quot;units&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">672</span>             <span class="n">calendar</span> <span class="o">=</span> <span class="n">pop_to</span><span class="p">(</span><span class="n">attrs</span><span class="p">,</span> <span class="n">encoding</span><span class="p">,</span> <span class="s2">&quot;calendar&quot;</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">673</span>             <span class="n">dtype</span> <span class="o">=</span> <span class="n">_decode_cf_datetime_dtype</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">units</span><span class="p">,</span> <span class="n">calendar</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_cftime</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">674</span>             <span class="n">transform</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">675</span>                 <span class="n">decode_cf_datetime</span><span class="p">,</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/xarray/coding/times.py</span> in <span class="ni">_decode_cf_datetime_dtype</span><span class="nt">(data, units, calendar, use_cftime)</span>
+<span class="g g-Whitespace">    </span><span class="mi">168</span>     <span class="n">values</span> <span class="o">=</span> <span class="n">indexing</span><span class="o">.</span><span class="n">ImplicitToExplicitIndexingAdapter</span><span class="p">(</span><span class="n">indexing</span><span class="o">.</span><span class="n">as_indexable</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">169</span>     <span class="n">example_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span>
+<span class="ne">--&gt; </span><span class="mi">170</span>         <span class="p">[</span><span class="n">first_n_items</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">or</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">last_item</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="ow">or</span> <span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+<span class="g g-Whitespace">    </span><span class="mi">171</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">172</span> 
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/xarray/core/formatting.py</span> in <span class="ni">first_n_items</span><span class="nt">(array, n_desired)</span>
+<span class="g g-Whitespace">     </span><span class="mi">70</span>         <span class="n">indexer</span> <span class="o">=</span> <span class="n">_get_indexer_at_least_n_items</span><span class="p">(</span><span class="n">array</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">n_desired</span><span class="p">,</span> <span class="n">from_end</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">71</span>         <span class="n">array</span> <span class="o">=</span> <span class="n">array</span><span class="p">[</span><span class="n">indexer</span><span class="p">]</span>
+<span class="ne">---&gt; </span><span class="mi">72</span>     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">array</span><span class="p">)</span><span class="o">.</span><span class="n">flat</span><span class="p">[:</span><span class="n">n_desired</span><span class="p">]</span>
+<span class="g g-Whitespace">     </span><span class="mi">73</span> 
+<span class="g g-Whitespace">     </span><span class="mi">74</span> 
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/xarray/core/indexing.py</span> in <span class="ni">__array__</span><span class="nt">(self, dtype)</span>
+<span class="g g-Whitespace">    </span><span class="mi">356</span> 
+<span class="g g-Whitespace">    </span><span class="mi">357</span>     <span class="k">def</span> <span class="nf">__array__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">358</span>         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">array</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">359</span> 
+<span class="g g-Whitespace">    </span><span class="mi">360</span>     <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/xarray/coding/variables.py</span> in <span class="ni">__array__</span><span class="nt">(self, dtype)</span>
+<span class="g g-Whitespace">     </span><span class="mi">68</span> 
+<span class="g g-Whitespace">     </span><span class="mi">69</span>     <span class="k">def</span> <span class="nf">__array__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">70</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">array</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">71</span> 
+<span class="g g-Whitespace">     </span><span class="mi">72</span>     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/xarray/coding/variables.py</span> in <span class="ni">_apply_mask</span><span class="nt">(data, encoded_fill_values, decoded_fill_value, dtype)</span>
+<span class="g g-Whitespace">    </span><span class="mi">135</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">136</span>     <span class="sd">&quot;&quot;&quot;Mask all matching values in a NumPy arrays.&quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">137</span>     <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">138</span>     <span class="n">condition</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="g g-Whitespace">    </span><span class="mi">139</span>     <span class="k">for</span> <span class="n">fv</span> <span class="ow">in</span> <span class="n">encoded_fill_values</span><span class="p">:</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/xarray/core/indexing.py</span> in <span class="ni">__array__</span><span class="nt">(self, dtype)</span>
+<span class="g g-Whitespace">    </span><span class="mi">421</span>     <span class="k">def</span> <span class="nf">__array__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">422</span>         <span class="n">array</span> <span class="o">=</span> <span class="n">as_indexable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">array</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">423</span>         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">key</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">424</span> 
+<span class="g g-Whitespace">    </span><span class="mi">425</span>     <span class="k">def</span> <span class="nf">transpose</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">order</span><span class="p">):</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/xarray/backends/zarr.py</span> in <span class="ni">__getitem__</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">     </span><span class="mi">71</span>         <span class="n">array</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_array</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">72</span>         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">indexing</span><span class="o">.</span><span class="n">BasicIndexer</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">73</span>             <span class="k">return</span> <span class="n">array</span><span class="p">[</span><span class="n">key</span><span class="o">.</span><span class="n">tuple</span><span class="p">]</span>
+<span class="g g-Whitespace">     </span><span class="mi">74</span>         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">indexing</span><span class="o">.</span><span class="n">VectorizedIndexer</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">75</span>             <span class="k">return</span> <span class="n">array</span><span class="o">.</span><span class="n">vindex</span><span class="p">[</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/zarr/core.py</span> in <span class="ni">__getitem__</span><span class="nt">(self, selection)</span>
+<span class="g g-Whitespace">    </span><span class="mi">718</span>             <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vindex</span><span class="p">[</span><span class="n">selection</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">719</span>         <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">720</span>             <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_basic_selection</span><span class="p">(</span><span class="n">pure_selection</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="n">fields</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">721</span>         <span class="k">return</span> <span class="n">result</span>
+<span class="g g-Whitespace">    </span><span class="mi">722</span> 
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/zarr/core.py</span> in <span class="ni">get_basic_selection</span><span class="nt">(self, selection, out, fields)</span>
+<span class="g g-Whitespace">    </span><span class="mi">844</span>                                                 <span class="n">fields</span><span class="o">=</span><span class="n">fields</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">845</span>         <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">846</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_basic_selection_nd</span><span class="p">(</span><span class="n">selection</span><span class="o">=</span><span class="n">selection</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">847</span>                                                 <span class="n">fields</span><span class="o">=</span><span class="n">fields</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">848</span> 
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/zarr/core.py</span> in <span class="ni">_get_basic_selection_nd</span><span class="nt">(self, selection, out, fields)</span>
+<span class="g g-Whitespace">    </span><span class="mi">887</span>         <span class="n">indexer</span> <span class="o">=</span> <span class="n">BasicIndexer</span><span class="p">(</span><span class="n">selection</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">888</span> 
+<span class="ne">--&gt; </span><span class="mi">889</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_selection</span><span class="p">(</span><span class="n">indexer</span><span class="o">=</span><span class="n">indexer</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="n">fields</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">890</span> 
+<span class="g g-Whitespace">    </span><span class="mi">891</span>     <span class="k">def</span> <span class="nf">get_orthogonal_selection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">selection</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/zarr/core.py</span> in <span class="ni">_get_selection</span><span class="nt">(self, indexer, out, fields)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1182</span>             <span class="c1"># allow storage to get multiple items at once</span>
+<span class="g g-Whitespace">   </span><span class="mi">1183</span>             <span class="n">lchunk_coords</span><span class="p">,</span> <span class="n">lchunk_selection</span><span class="p">,</span> <span class="n">lout_selection</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">indexer</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1184</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_chunk_getitems</span><span class="p">(</span><span class="n">lchunk_coords</span><span class="p">,</span> <span class="n">lchunk_selection</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="n">lout_selection</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1185</span>                                  <span class="n">drop_axes</span><span class="o">=</span><span class="n">indexer</span><span class="o">.</span><span class="n">drop_axes</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="n">fields</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1186</span> 
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/zarr/core.py</span> in <span class="ni">_chunk_getitems</span><span class="nt">(self, lchunk_coords, lchunk_selection, out, lout_selection, drop_axes, fields)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1915</span>         <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1916</span>             <span class="n">partial_read_decode</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="ne">-&gt; </span><span class="mi">1917</span>             <span class="n">cdatas</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunk_store</span><span class="o">.</span><span class="n">getitems</span><span class="p">(</span><span class="n">ckeys</span><span class="p">,</span> <span class="n">on_error</span><span class="o">=</span><span class="s2">&quot;omit&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1918</span>         <span class="k">for</span> <span class="n">ckey</span><span class="p">,</span> <span class="n">chunk_select</span><span class="p">,</span> <span class="n">out_select</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">ckeys</span><span class="p">,</span> <span class="n">lchunk_selection</span><span class="p">,</span> <span class="n">lout_selection</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1919</span>             <span class="k">if</span> <span class="n">ckey</span> <span class="ow">in</span> <span class="n">cdatas</span><span class="p">:</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/zarr/storage.py</span> in <span class="ni">getitems</span><span class="nt">(self, keys, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1154</span>     <span class="k">def</span> <span class="nf">getitems</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keys</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1155</span>         <span class="n">keys_transformed</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_normalize_key</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">]</span>
+<span class="ne">-&gt; </span><span class="mi">1156</span>         <span class="n">results</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">map</span><span class="o">.</span><span class="n">getitems</span><span class="p">(</span><span class="n">keys_transformed</span><span class="p">,</span> <span class="n">on_error</span><span class="o">=</span><span class="s2">&quot;omit&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1157</span>         <span class="c1"># The function calling this method may not recognize the transformed keys</span>
+<span class="g g-Whitespace">   </span><span class="mi">1158</span>         <span class="c1"># So we send the values returned by self.map.getitems back into the original key space.</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/fsspec/mapping.py</span> in <span class="ni">getitems</span><span class="nt">(self, keys, on_error)</span>
+<span class="g g-Whitespace">     </span><span class="mi">88</span>         <span class="n">oe</span> <span class="o">=</span> <span class="n">on_error</span> <span class="k">if</span> <span class="n">on_error</span> <span class="o">==</span> <span class="s2">&quot;raise&quot;</span> <span class="k">else</span> <span class="s2">&quot;return&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">89</span>         <span class="k">try</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">90</span>             <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span><span class="n">keys2</span><span class="p">,</span> <span class="n">on_error</span><span class="o">=</span><span class="n">oe</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">91</span>             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">92</span>                 <span class="n">out</span> <span class="o">=</span> <span class="p">{</span><span class="n">keys2</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span> <span class="n">out</span><span class="p">}</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/fsspec/asyn.py</span> in <span class="ni">wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">83</span>     <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">84</span>         <span class="bp">self</span> <span class="o">=</span> <span class="n">obj</span> <span class="ow">or</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="ne">---&gt; </span><span class="mi">85</span>         <span class="k">return</span> <span class="n">sync</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">loop</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">86</span> 
+<span class="g g-Whitespace">     </span><span class="mi">87</span>     <span class="k">return</span> <span class="n">wrapper</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/fsspec/asyn.py</span> in <span class="ni">sync</span><span class="nt">(loop, func, timeout, *args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">51</span>     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">52</span>         <span class="c1"># this loops allows thread to get interrupted</span>
+<span class="ne">---&gt; </span><span class="mi">53</span>         <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span><span class="mi">1</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">54</span>             <span class="k">break</span>
+<span class="g g-Whitespace">     </span><span class="mi">55</span>         <span class="k">if</span> <span class="n">timeout</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/threading.py</span> in <span class="ni">wait</span><span class="nt">(self, timeout)</span>
+<span class="g g-Whitespace">    </span><span class="mi">556</span>             <span class="n">signaled</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_flag</span>
+<span class="g g-Whitespace">    </span><span class="mi">557</span>             <span class="k">if</span> <span class="ow">not</span> <span class="n">signaled</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">558</span>                 <span class="n">signaled</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cond</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span><span class="n">timeout</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">559</span>             <span class="k">return</span> <span class="n">signaled</span>
+<span class="g g-Whitespace">    </span><span class="mi">560</span> 
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/threading.py</span> in <span class="ni">wait</span><span class="nt">(self, timeout)</span>
+<span class="g g-Whitespace">    </span><span class="mi">304</span>             <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">305</span>                 <span class="k">if</span> <span class="n">timeout</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">306</span>                     <span class="n">gotit</span> <span class="o">=</span> <span class="n">waiter</span><span class="o">.</span><span class="n">acquire</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">307</span>                 <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">308</span>                     <span class="n">gotit</span> <span class="o">=</span> <span class="n">waiter</span><span class="o">.</span><span class="n">acquire</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="load-halo-flight-phase-information">
@@ -2617,31 +829,11 @@ Attributes: (12/16)
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;HALO-0205_c1&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dropsonde_ids</span> <span class="o">=</span> <span class="n">segments_by_segment_id</span><span class="p">[</span><span class="n">first_circle_Feb05</span><span class="p">][</span><span class="s2">&quot;dropsondes&quot;</span><span class="p">][</span><span class="s2">&quot;GOOD&quot;</span><span class="p">]</span>
 <span class="n">dropsonde_ids</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;HALO-0205_s01&#39;,
- &#39;HALO-0205_s02&#39;,
- &#39;HALO-0205_s03&#39;,
- &#39;HALO-0205_s04&#39;,
- &#39;HALO-0205_s05&#39;,
- &#39;HALO-0205_s06&#39;,
- &#39;HALO-0205_s07&#39;,
- &#39;HALO-0205_s08&#39;,
- &#39;HALO-0205_s09&#39;,
- &#39;HALO-0205_s10&#39;,
- &#39;HALO-0205_s12&#39;]
 </pre></div>
 </div>
 </div>
@@ -2684,9 +876,6 @@ Attributes: (12/16)
 <span class="kc">None</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/dropsondes_17_0.png" src="_images/dropsondes_17_0.png" />
 </div>
 </div>
 </div>
@@ -2731,9 +920,6 @@ Attributes: (12/16)
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/dropsondes_20_0.png" src="_images/dropsondes_20_0.png" />
-</div>
 </div>
 </div>
 <div class="section" id="wind-speed-variations-on-halo-circles-throughout-february-5">
@@ -2765,9 +951,6 @@ smaller gaps in the plot are filled while larger gaps are indicated as missing v
     <span class="kc">None</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/dropsondes_24_0.png" src="_images/dropsondes_24_0.png" />
 </div>
 </div>
 </div>
