@@ -38,7 +38,7 @@ jobs:
       with:
         path: |
           how_to_eurec4a/_build/.jupyter_cache
-        key: ${{ runner.os }}-${{ hashFiles('requirements.txt') }}-{{ matrix.ipfs-version }}-{{ matrix.python-version }}
+        key: ${{ runner.os }}-${{ hashFiles('requirements.txt') }}-${{ matrix.ipfs-version }}-${{ matrix.python-version }}
     - name: build book
       run: |
         conda info
