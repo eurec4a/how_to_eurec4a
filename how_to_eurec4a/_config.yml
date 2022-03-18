@@ -39,7 +39,7 @@ sphinx:
     latex_additional_files:
       - latex/how_to_eurec4a.sty
 execute:
-  execute_notebooks         : force
+  execute_notebooks         : cache
   timeout: 90
 bibtex_reference_style      : author_year
 bibtex_bibfiles             : references.bib
