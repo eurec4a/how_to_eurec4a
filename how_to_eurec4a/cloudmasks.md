@@ -10,7 +10,7 @@ kernelspec:
   language: python
   name: python3
 execution:
-  timeout: 300
+  timeout: 600
 ---
 
 # Cloud masks
