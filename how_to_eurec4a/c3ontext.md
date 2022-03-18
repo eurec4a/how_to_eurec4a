@@ -41,7 +41,7 @@ dominant cloud patterns, can be retrieved along a platform track. In this partic
 the track of the R/V Meteor. The measurements made onboard the research vessel like cloud radar and Raman
 lidar can therefor be analysed and interpreted with respect to the four cloud patterns.
 
-More details on this dataset can be found in {cite}`Schulz:2021` and
+More details on this dataset can be found in {cite}`Schulz:2022` and
 in the [C<sup>3</sup>ONTEXT GitHub-repository](https://github.com/observingClouds/EUREC4A_manualclassifications).
 
 ## Accessing the data
