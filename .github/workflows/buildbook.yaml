@@ -12,6 +12,8 @@ jobs:
     defaults:
       run:
         shell: bash -l {0}
+    env:
+      IPFSSPEC_GATEWAYS: "http://127.0.0.1:8080"
 
     steps:
     - uses: actions/checkout@v2
