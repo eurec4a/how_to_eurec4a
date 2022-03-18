@@ -882,6 +882,67 @@ height = height_above_sea_level[0] - range
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FSPathExistNotDir</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_5997</span><span class="o">/</span><span class="mf">3080218225.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ds_bt</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_zarr</span><span class="p">(</span><span class="s2">&quot;ipfs://QmQEwkhhHdJkiThf4hnj9G3wgqVreBnWGrX2A5kT6CrtY7&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span>                      <span class="n">consolidated</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>                     <span class="p">)</span><span class="o">.</span><span class="n">assign_coords</span><span class="p">(</span><span class="n">va</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">va</span><span class="p">)</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/xarray/backends/zarr.py</span> in <span class="ni">open_zarr</span><span class="nt">(store, group, synchronizer, chunks, decode_cf, mask_and_scale, decode_times, concat_characters, decode_coords, drop_variables, consolidated, overwrite_encoded_chunks, chunk_store, storage_options, decode_timedelta, use_cftime, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">750</span>     <span class="p">}</span>
+<span class="g g-Whitespace">    </span><span class="mi">751</span> 
+<span class="ne">--&gt; </span><span class="mi">752</span>     <span class="n">ds</span> <span class="o">=</span> <span class="n">open_dataset</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">753</span>         <span class="n">filename_or_obj</span><span class="o">=</span><span class="n">store</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">754</span>         <span class="n">group</span><span class="o">=</span><span class="n">group</span><span class="p">,</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/xarray/backends/api.py</span> in <span class="ni">open_dataset</span><span class="nt">(filename_or_obj, engine, chunks, cache, decode_cf, mask_and_scale, decode_times, decode_timedelta, use_cftime, concat_characters, decode_coords, drop_variables, backend_kwargs, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">493</span> 
+<span class="g g-Whitespace">    </span><span class="mi">494</span>     <span class="n">overwrite_encoded_chunks</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;overwrite_encoded_chunks&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">495</span>     <span class="n">backend_ds</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">496</span>         <span class="n">filename_or_obj</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">497</span>         <span class="n">drop_variables</span><span class="o">=</span><span class="n">drop_variables</span><span class="p">,</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/xarray/backends/zarr.py</span> in <span class="ni">open_dataset</span><span class="nt">(self, filename_or_obj, mask_and_scale, decode_times, concat_characters, decode_coords, drop_variables, use_cftime, decode_timedelta, group, mode, synchronizer, consolidated, chunk_store, storage_options, stacklevel)</span>
+<span class="g g-Whitespace">    </span><span class="mi">798</span> 
+<span class="g g-Whitespace">    </span><span class="mi">799</span>         <span class="n">filename_or_obj</span> <span class="o">=</span> <span class="n">_normalize_path</span><span class="p">(</span><span class="n">filename_or_obj</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">800</span>         <span class="n">store</span> <span class="o">=</span> <span class="n">ZarrStore</span><span class="o">.</span><span class="n">open_group</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">801</span>             <span class="n">filename_or_obj</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">802</span>             <span class="n">group</span><span class="o">=</span><span class="n">group</span><span class="p">,</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/xarray/backends/zarr.py</span> in <span class="ni">open_group</span><span class="nt">(cls, store, mode, synchronizer, group, consolidated, consolidate_on_close, chunk_store, storage_options, append_dim, write_region, safe_chunks, stacklevel)</span>
+<span class="g g-Whitespace">    </span><span class="mi">366</span>         <span class="k">elif</span> <span class="n">consolidated</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">367</span>             <span class="c1"># TODO: an option to pass the metadata_key keyword</span>
+<span class="ne">--&gt; </span><span class="mi">368</span>             <span class="n">zarr_group</span> <span class="o">=</span> <span class="n">zarr</span><span class="o">.</span><span class="n">open_consolidated</span><span class="p">(</span><span class="n">store</span><span class="p">,</span> <span class="o">**</span><span class="n">open_kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">369</span>         <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">370</span>             <span class="n">zarr_group</span> <span class="o">=</span> <span class="n">zarr</span><span class="o">.</span><span class="n">open_group</span><span class="p">(</span><span class="n">store</span><span class="p">,</span> <span class="o">**</span><span class="n">open_kwargs</span><span class="p">)</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/zarr/convenience.py</span> in <span class="ni">open_consolidated</span><span class="nt">(store, metadata_key, mode, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1179</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1180</span>     <span class="c1"># normalize parameters</span>
+<span class="ne">-&gt; </span><span class="mi">1181</span>     <span class="n">store</span> <span class="o">=</span> <span class="n">normalize_store_arg</span><span class="p">(</span><span class="n">store</span><span class="p">,</span> <span class="n">storage_options</span><span class="o">=</span><span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;storage_options&quot;</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1182</span>     <span class="k">if</span> <span class="n">mode</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">{</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;r+&#39;</span><span class="p">}:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1183</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;invalid mode, expected either &#39;r&#39; or &#39;r+&#39;; found </span><span class="si">{!r}</span><span class="s2">&quot;</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/zarr/storage.py</span> in <span class="ni">normalize_store_arg</span><span class="nt">(store, storage_options, mode)</span>
+<span class="g g-Whitespace">    </span><span class="mi">112</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">store</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">113</span>         <span class="k">if</span> <span class="s2">&quot;://&quot;</span> <span class="ow">in</span> <span class="n">store</span> <span class="ow">or</span> <span class="s2">&quot;::&quot;</span> <span class="ow">in</span> <span class="n">store</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">114</span>             <span class="k">return</span> <span class="n">FSStore</span><span class="p">(</span><span class="n">store</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="o">**</span><span class="p">(</span><span class="n">storage_options</span> <span class="ow">or</span> <span class="p">{}))</span>
+<span class="g g-Whitespace">    </span><span class="mi">115</span>         <span class="k">elif</span> <span class="n">storage_options</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">116</span>             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;storage_options passed with non-fsspec path&quot;</span><span class="p">)</span>
+
+<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/zarr/storage.py</span> in <span class="ni">__init__</span><span class="nt">(self, url, normalize_keys, key_separator, mode, exceptions, dimension_separator, **storage_options)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1139</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_dimension_separator</span> <span class="o">=</span> <span class="n">dimension_separator</span>
+<span class="g g-Whitespace">   </span><span class="mi">1140</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">1141</span>             <span class="k">raise</span> <span class="n">FSPathExistNotDir</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1142</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1143</span>     <span class="k">def</span> <span class="nf">_normalize_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+
+<span class="ne">FSPathExistNotDir</span>: path exists but is not a directory: %r
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="preprocess-cloud-mask-data">
@@ -898,11 +959,6 @@ height = height_above_sea_level[0] - range
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xmid</span> <span class="o">=</span> <span class="n">ds_bt</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">size</span> <span class="o">//</span> <span class="mi">2</span>
 <span class="n">va_central</span> <span class="o">=</span> <span class="n">ds_bt</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="n">xmid</span> <span class="o">-</span> <span class="mi">5</span><span class="p">,</span> <span class="n">xmid</span> <span class="o">+</span> <span class="mi">6</span><span class="p">))</span><span class="o">.</span><span class="n">va</span>
 <span class="p">(</span><span class="n">va_central</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">va_central</span><span class="o">.</span><span class="n">min</span><span class="p">())</span><span class="o">.</span><span class="n">values</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array(0.57295305, dtype=float32)
 </pre></div>
 </div>
 </div>
@@ -1071,9 +1127,6 @@ height = height_above_sea_level[0] - range
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/cloudmasks_35_0.png" src="_images/cloudmasks_35_0.png" />
-</div>
 </div>
 </div>
 </div>
@@ -1137,11 +1190,6 @@ height = height_above_sea_level[0] - range
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>In total HALO flew 72 circles during EUREC4A
-</pre></div>
-</div>
-</div>
 </div>
 </div>
 <div class="section" id="time-series-of-circle-cloud-cover">
@@ -1177,9 +1225,6 @@ height = height_above_sea_level[0] - range
     <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Date&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/cloudmasks_45_0.png" src="_images/cloudmasks_45_0.png" />
 </div>
 </div>
 </div>
@@ -1231,9 +1276,6 @@ height = height_above_sea_level[0] - range
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/cloudmasks_48_0.png" src="_images/cloudmasks_48_0.png" />
-</div>
 </div>
 <p>For a better comparison of minimum and maximum circle-mean cloud cover we merge the two above plots and show their difference in the following plot. In particular, we show the cumulative fraction of circle-mean cloud cover estimates. Depending on the instruments and some instrument downtimes, the available circle counts range from 64 to 72. The bins on the x-axis have a bin width of 0.2 respectively. The bars span the range defined by the minimum cloud cover based on cloud flag <code class="docutils literal notranslate"><span class="pre">most</span> <span class="pre">likely</span> <span class="pre">cloudy</span></code>and the maximum cloud cover based on cloud flags <code class="docutils literal notranslate"><span class="pre">most</span> <span class="pre">likely</span> <span class="pre">cloudy</span></code> and <code class="docutils literal notranslate"><span class="pre">probably</span> <span class="pre">cloudy</span></code>.</p>
 <div class="cell docutils container">
@@ -1279,9 +1321,6 @@ height = height_above_sea_level[0] - range
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/cloudmasks_50_0.png" src="_images/cloudmasks_50_0.png" />
-</div>
 </div>
 </div>
 <div class="section" id="a-small-interpretation-attempt">
@@ -1317,29 +1356,6 @@ height = height_above_sea_level[0] - range
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Instrument: min - max
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WALES: 0.34 - 0.34 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HAMP Radar: 0.25 - 0.25 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>specMACS: 0.18 - 0.24 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HAMP Radiometer: 0.17 - 0.25 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>KT19: 0.20 - 0.31 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>VELOX: 0.21 - 0.39 
-</pre></div>
-</div>
-</div>
 </div>
 <ul class="simple">
 <li><p>only from local research flights</p></li>
@@ -1358,23 +1374,6 @@ height = height_above_sea_level[0] - range
 <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">v</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">localRF</span><span class="p">)</span><span class="o">.</span><span class="n">CF_min</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> - &quot;</span>
           <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">v</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">localRF</span><span class="p">)</span><span class="o">.</span><span class="n">CF_max</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> &quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Instrument: min - max
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WALES: 0.34 - 0.34 
-HAMP Radar: 0.21 - 0.22 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>specMACS: 0.16 - 0.22 
-HAMP Radiometer: 0.16 - 0.25 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>KT19: 0.20 - 0.31 
-VELOX: 0.21 - 0.39 
 </pre></div>
 </div>
 </div>
