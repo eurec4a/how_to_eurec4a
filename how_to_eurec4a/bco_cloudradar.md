@@ -76,7 +76,7 @@ axs[1].set_ylim(0, 4500);
 ```
 
 ### Retrieving cloud fraction profile
-The cloud fraction profile provides information about the variability of cloudiness at different height levels. The radar is often used so retrieve such a profile but it should be noted that cloud quantities are not easy to define (see also the section about the [HALO cloud mask product]()). To be precise the following examples shows the hydrometeor fraction (cloud droplets and rain droplets and to some extend moistend sea-salt aerosols) and not the cloud fraction.
+The cloud fraction profile provides information about the variability of cloudiness at different height levels. The radar is often used to retrieve such a profile, but it should be noted that cloud quantities are not easy to define (see also the section about the [HALO cloud mask product]()) and the cloud fraction profile can look very different depending on the instrument and its sensitivity. The Ka-Band radar at the BCO captures for example not only cloud and rain droplets, but also moistened sea-salt aerosols. The example below illustrates how the profiles depend on the chosen reflectivity threshold. Note, to be precise the following examples shows the echo fraction and not the cloud fraction.
 
 ```{code-cell} ipython3
 fig, ax = plt.subplots()
@@ -91,3 +91,4 @@ plt.legend()
 ```
 
 The threshold of -50 dBZ is chosen following {cite}`Klingebiel:2019` to exclude reflectivities from moistened sea-salt aerosols.
+For questions regarding the instrument, please contact the contact person given in the metadata of this dataset.
