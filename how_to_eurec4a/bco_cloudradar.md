@@ -90,13 +90,15 @@ ds_sliced.VEL.plot(x='time', y='range', cmap="seismic", ax=axs[1])
 axs[1].set_xlim(time_min, time_max)
 axs[0].set_ylim(0, 4500);
 axs[1].set_ylim(0, 4500);
+axs[0].set_ylabel('range / m')
+axs[1].set_ylabel('range / m')
 ```
 
 ### Retrieving cloud fraction profile
 The cloud fraction profile provides information about the variability of cloudiness at different height levels. The radar is often used to retrieve such a profile, but it should be noted that cloud quantities are not easy to define (see also the section about the [HALO cloud mask product](cloudmasks.md)) and the cloud fraction profile can look very different depending on the instrument and its sensitivity. The Ka-Band radar at the BCO captures for example not only cloud and rain droplets, but also moistened sea-salt aerosols. The example below illustrates how the profiles depend on the chosen reflectivity threshold. Note, to be precise the following examples shows the echo fraction and not the cloud fraction.
 
 ```{code-cell} ipython3
-fig, ax = plt.subplots()
+fig, ax = plt.subplots(figsize=(2,3))
 # calculate the mean cloud fraction profile
 (~np.isnan(ds_sliced.Zf.sel(range=slice(0,4500)))).mean(dim='time').plot(y='range', label='no threshold')
 # reduce sensitivity
@@ -104,7 +106,7 @@ threshold = -50
 (ds_sliced.Zf > threshold).sel(range=slice(0,4500)).mean(dim='time').plot(y='range', label=f'{threshold} dBZ')
 plt.title("Mean echo fraction")
 plt.xlabel('echo fraction')
-plt.legend()
+plt.legend();
 ```
 
 The threshold of -50 dBZ is chosen following {cite}`Klingebiel:2019` to exclude reflectivities from moistened sea-salt aerosols.
