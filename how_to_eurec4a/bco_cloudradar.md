@@ -13,15 +13,32 @@ kernelspec:
 
 # Cloud radar data collected at the Barbados Cloud Observatory (BCO)
 
-+++
+```{figure} figures/coral_radar.jpg
+:alt: BCO
+:width: 400px
+:align: center
+```
 
 ## General information
 
-+++
+The polarised 35.5 GHz Doppler radar is part of the Combined Radar And Lidar instrument (CORAL) at the Barbados Cloud Observatory (BCO). It has a sensitivity of -48 dBZ at an altitude of 5 km and -70 dBZ at an altitude of 500 m. The radar has a range gating of 31.18 m and measures at ranges between 150 m and 18.9 km. It operates in a zenith looking mode, so that range gating effectively measures distance in the vertical. To measure the vertical velocity the radar uses the Doppler technique with an FFT of 256 samples, giving it a Doppler resolution of < 0.02 ms$^{-1}$ between -10 and 10 ms$^{-1}$. The radar is able to provide the linear depolarisation ratio (LDR), which can be used for a target classification based on their shape. Data processing and radar calibration are done by following {cite}`Gorsdorf:2015`, which leads to an uncertainty of 1.3 dB.
+
+## Radar characteristics
+
+| Characteristic              | CORAL Ka-band radar                 |
+| --------------------------- | ------------------------------------|
+| Radar type                  |  Mono static, pulsed, magnetron     |
+| Frequency                   |  35.5 GHz $\pm$ 150 MHz             |
+| Peak power                  |  30 kW                              |
+| Pulse width                 |  200 ns for 30 m range resolution   |
+| Doppler velocity resolution |  0.02 ms$^{-1}$                     |
+| Diameter of antenna         |  2 m                                |
+| Antenna beam width          |  0.3 deg x 0.3 deg                  |
+| Sensitivity                 |  -48 dBZ at 5 km, -70 dBZ at 500 m  |
 
 ### Getting the data catalog
 
-The python code below allows you to browse through the days avaiable
+The python code below allows you to analyze the available measurements within January/February 2020.
 
 ```{code-cell} ipython3
 from datetime import datetime
@@ -76,7 +93,7 @@ axs[1].set_ylim(0, 4500);
 ```
 
 ### Retrieving cloud fraction profile
-The cloud fraction profile provides information about the variability of cloudiness at different height levels. The radar is often used to retrieve such a profile, but it should be noted that cloud quantities are not easy to define (see also the section about the [HALO cloud mask product]()) and the cloud fraction profile can look very different depending on the instrument and its sensitivity. The Ka-Band radar at the BCO captures for example not only cloud and rain droplets, but also moistened sea-salt aerosols. The example below illustrates how the profiles depend on the chosen reflectivity threshold. Note, to be precise the following examples shows the echo fraction and not the cloud fraction.
+The cloud fraction profile provides information about the variability of cloudiness at different height levels. The radar is often used to retrieve such a profile, but it should be noted that cloud quantities are not easy to define (see also the section about the [HALO cloud mask product](cloudmasks.md)) and the cloud fraction profile can look very different depending on the instrument and its sensitivity. The Ka-Band radar at the BCO captures for example not only cloud and rain droplets, but also moistened sea-salt aerosols. The example below illustrates how the profiles depend on the chosen reflectivity threshold. Note, to be precise the following examples shows the echo fraction and not the cloud fraction.
 
 ```{code-cell} ipython3
 fig, ax = plt.subplots()
