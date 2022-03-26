@@ -90,3 +90,4 @@ plt.xlabel('echo fraction')
 plt.legend()
 ```
 
+The threshold of -50 dBZ is chosen following {cite}`Klingebiel:2019` to exclude reflectivities from moistened sea-salt aerosols.
