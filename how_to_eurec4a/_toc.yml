@@ -29,6 +29,7 @@ chapters:
 - file: multi_platform_data
   sections:
   - file: dropsondes
+- file: simulations
 - file: auxiliary_datasets
   sections:
   - file: c3ontext
