@@ -30,6 +30,8 @@ chapters:
   sections:
   - file: dropsondes
 - file: simulations
+  sections:
+  - file: icon_les
 - file: auxiliary_datasets
   sections:
   - file: c3ontext
