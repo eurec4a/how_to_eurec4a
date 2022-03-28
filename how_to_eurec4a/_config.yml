@@ -34,6 +34,7 @@ latex:
 sphinx:
   local_extensions:
     apastyle: _ext/
+    bracket_citation_style: _ext/
   config:
     latex_logo: logo_pyeurec4a.png
     latex_elements:
@@ -41,8 +42,10 @@ sphinx:
     latex_additional_files:
       - latex/how_to_eurec4a.sty
     bibtex_default_style: apastyle
+    bibtex_reference_style: author_year_round
 execute:
   execute_notebooks         : force
   timeout: 90
-bibtex_default_style      : apastyle
+bibtex_reference_style      : author_year_round
+bibtex_default_style        : apastyle
 bibtex_bibfiles             : references.bib
