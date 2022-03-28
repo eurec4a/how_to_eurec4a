@@ -32,15 +32,17 @@ latex:
   latex_documents:
      targetname: how_to_eurec4a.tex
 sphinx:
+  local_extensions:
+    bracket_citation_style: _ext/
   config:
     latex_logo: logo_pyeurec4a.png
     latex_elements:
       preamble: \usepackage{how_to_eurec4a}
     latex_additional_files:
       - latex/how_to_eurec4a.sty
-    bibtex_reference_style: author_year
+    bibtex_reference_style: author_year_round
 execute:
   execute_notebooks         : force
   timeout: 90
-bibtex_reference_style      : author_year
+bibtex_reference_style      : author_year_round
 bibtex_bibfiles             : references.bib
