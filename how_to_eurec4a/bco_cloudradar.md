@@ -21,7 +21,7 @@ kernelspec:
 
 ## General information
 
-The polarised 35.5 GHz Doppler radar is part of the Combined Radar And Lidar instrument (CORAL) at the Barbados Cloud Observatory (BCO). It has a sensitivity of -48 dBZ at an altitude of 5 km and -70 dBZ at an altitude of 500 m. The radar has a range gating of 31.18 m and measures at ranges between 150 m and 18.9 km. It operates in a zenith looking mode, so that range gating effectively measures distance in the vertical. To measure the vertical velocity the radar uses the Doppler technique with an FFT of 256 samples, giving it a Doppler resolution of < 0.02 ms$^{-1}$ between -10 and 10 ms$^{-1}$. The radar is able to provide the linear depolarisation ratio (LDR), which can be used for a target classification based on their shape. Data processing and radar calibration are done by following {cite}`Gorsdorf:2015`, which leads to an uncertainty of 1.3 dB.
+The polarised 35.5 GHz Doppler radar is part of the Combined Radar And Lidar instrument (CORAL) at the Barbados Cloud Observatory (BCO). It has a sensitivity of -48 dBZ at an altitude of 5 km and -70 dBZ at an altitude of 500 m. The radar has a range gating of 31.18 m and measures at ranges between 150 m and 18.9 km. It operates in a zenith looking mode, so that range gating effectively measures distance in the vertical. To measure the vertical velocity the radar uses the Doppler technique with an FFT of 256 samples, giving it a Doppler resolution of < 0.02 ms$^{-1}$ between -10 and 10 ms$^{-1}$. The radar is able to provide the linear depolarisation ratio (LDR), which can be used for a target classification based on their shape. Data processing and radar calibration are done by following {cite:t}`Gorsdorf:2015`, which leads to an uncertainty of 1.3 dB.
 
 ## Radar characteristics
 
@@ -109,5 +109,5 @@ plt.xlabel('echo fraction')
 plt.legend();
 ```
 
-The threshold of -50 dBZ is chosen following {cite}`Klingebiel:2019` to exclude reflectivities from moistened sea-salt aerosols.
+The threshold of -50 dBZ is chosen following {cite:t}`Klingebiel:2019` to exclude reflectivities from moistened sea-salt aerosols.
 For questions regarding the instrument, please contact the contact person given in the metadata of this dataset.
