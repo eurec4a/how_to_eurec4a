@@ -83,7 +83,8 @@ def load_cloudmask_dataset(cat_item):
     p = ThreadPool(20)
     return ensure_cfminmax(xr.concat(list(p.map(lambda v: v.get().to_dask().chunk(),
                                                 cat_item.values())),
-                                     dim="time"))
+                                     dim="time",
+                                     data_vars="minimal"))
 ```
 
 ## Get data
