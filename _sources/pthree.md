@@ -17,7 +17,7 @@ of clouds and the ocean surface, _in situ_ measurements within clouds and of
 isotopic composition throughout the lower troposphere, and the deployment of
 expendable profiling instruments in the atmosphere and ocean.
 
-Most observations obtained from the P-3 are described in {cite}`Pincus:2021`.
+Most observations obtained from the P-3 are described in {cite:t}`Pincus:2021`.
 
 ```{figure} Miss-Piggy.jpeg
 :alt: NOAA WP-3D "Miss Piggy"

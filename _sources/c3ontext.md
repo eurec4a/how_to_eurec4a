@@ -13,7 +13,7 @@ kernelspec:
 
 # How to put your measurements into the meso-scale context of cloud patterns
 
-The meso-scale patterns of shallow convection as described by {cite}`Stevens:2021` 
+The meso-scale patterns of shallow convection as described by {cite:t}`Stevens:2021`
 are a great way to learn more about the meso-scale variability in cloudiness in the
 trades. Four meso-scale cloud patterns have been identified to frequently reoccur.
 These four patterns that are shown in the figure below are named based on their
@@ -41,7 +41,7 @@ dominant cloud patterns, can be retrieved along a platform track. In this partic
 the track of the R/V Meteor. The measurements made onboard the research vessel like cloud radar and Raman
 lidar can therefor be analysed and interpreted with respect to the four cloud patterns.
 
-More details on this dataset can be found in {cite}`Schulz:2022` and
+More details on this dataset can be found in {cite:t}`Schulz:2022` and
 in the [C<sup>3</sup>ONTEXT GitHub-repository](https://github.com/observingClouds/EUREC4A_manualclassifications).
 
 ## Accessing the data

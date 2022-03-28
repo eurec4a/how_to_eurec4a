@@ -16,7 +16,7 @@ If you miss some information that could be valuable, feel free to check the link
 ## Useful links
 A list of links to general information about EUREC4A:
 * [official EUREC4A webpage](http://eurec4a.eu/)
-* EUREC4A overview papers:{cite}`Bony:2017` and {cite}`Stevens:2021`
+* EUREC4A overview papers: {cite:t}`Bony:2017` and {cite:t}`Stevens:2021`
 * [eurec4a GitHub repository](https://github.com/eurec4a)
 * [AERIS data server](https://observations.ipsl.fr/aeris/eurec4a-data/)
 * [AERIS leaflet](https://observations.ipsl.fr/aeris/eurec4a/Leaflet/index.html)(data visualization)
