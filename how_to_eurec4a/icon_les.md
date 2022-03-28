@@ -94,3 +94,7 @@ for d, dataset in enumerate(datasets):
 axs[d].xaxis.set_major_formatter(xfmt)
 plt.tight_layout()
 ```
+
+## Output description
+
+There are two main experiments: `experiment1` and `experiment2`. These experiments only distinguish themselves by the prescribed cloud condensation nuclei (CCN) concentration, respectively 1700 cm$^{-3}$ and 130 cm$^{-3}$. `DOM01` refers to the 624m run, while `DOM02` refers to the 312m nest. As the variable names suggest, the `surface` entries contain the surface variables. `rttov` refers to forward simulated synthetic satellite images and meteogram output is available at different locations using the entry format `meteogram_<location>_<domain>`. The 2D and 3D radiation fields and fluxes are referenced with `radiation`.
