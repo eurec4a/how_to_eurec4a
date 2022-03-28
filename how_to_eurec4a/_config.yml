@@ -41,11 +41,11 @@ sphinx:
       preamble: \usepackage{how_to_eurec4a}
     latex_additional_files:
       - latex/how_to_eurec4a.sty
-    bibtex_default_style: apastyle
+    bibtex_default_style: myapastyle
     bibtex_reference_style: author_year_round
 execute:
   execute_notebooks         : force
   timeout: 90
 bibtex_reference_style      : author_year_round
-bibtex_default_style        : apastyle
+bibtex_default_style        : myapastyle
 bibtex_bibfiles             : references.bib

@@ -1,16 +1,16 @@
-from pybtex.style.formatting.unsrt import Style as UnsrtStyle
-from pybtex.style.labels.alpha import LabelStyle as AlphaLabelStyle
+from pybtex.style.formatting.unsrt import Style
+from formatting.apa import APAStyle
+from labels.apa import LabelStyle as APALabelStyle
 from pybtex.plugin import register_plugin
+from pybtex.style.template import names, sentence
 
-
-class ApaLabelStyle(AlphaLabelStyle):
+class MyAPALabelStyle(APALabelStyle):
     def format_label(self, entry):
-        return "APA"
+        return APALabelStyle.format_label(self, entry)
 
-
-class ApaStyle(UnsrtStyle):
-    default_label_style = 'apa'
+class MyAPAStyle(Style):
+    default_label_style = 'myapa'
 
 def setup(app):
-    register_plugin('pybtex.style.labels', 'apa', ApaLabelStyle)
-    register_plugin('pybtex.style.formatting', 'apastyle', ApaStyle)
+    register_plugin('pybtex.style.labels', 'myapa', MyAPALabelStyle)
+    register_plugin('pybtex.style.formatting', 'myapastyle', MyAPAStyle)
