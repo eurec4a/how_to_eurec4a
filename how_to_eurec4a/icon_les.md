@@ -78,16 +78,18 @@ The currently available ICON-LES output is shown in the following:
 ```{code-cell} ipython3
 :tags: [remove-input]
 
-fig, axs = plt.subplots(len(datasets), 1, sharex=True)
+fig_height = len(datasets) * 0.5
+fig, axs = plt.subplots(len(datasets), 1, figsize=(8, fig_height), sharex=True)
 fig.set_constrained_layout(False)
 xfmt = dates.DateFormatter('%d.%m')
 for d, dataset in enumerate(datasets):
     # Load dataset
     try:
         ds = icon_les_cat[dataset].to_dask()
-    except PathNotFoundError:
+        axs[d].vlines(ds.time.values, 0, 1)
+    except (FileNotFoundError, PathNotFoundError):
         pass
-    axs[d].vlines(ds.time.values, 0, 1)
+    axs[d].set_aspect(1.5)
     axs[d].set_ylabel(dataset.replace(".","\n"), rotation=0, ha='right')
     axs[d].set(yticklabels=[])  # remove the tick labels
     axs[d].tick_params(left=False)  # remove the ticks
