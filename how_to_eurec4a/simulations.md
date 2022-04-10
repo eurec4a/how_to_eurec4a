@@ -22,6 +22,7 @@ The currently available simulations and their outputs are:
 #import eurec4a
 #cat = eurec4a.get_intake_catalog()
 # only temporary until simulations are merged to eurec4a intake catalog
+import intake
 cat = intake.open_catalog("https://raw.githubusercontent.com/observingClouds/eurec4a-intake/simulations/catalog.yml")
 
 def tree(cat, level=0):
