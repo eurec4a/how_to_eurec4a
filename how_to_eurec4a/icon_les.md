@@ -35,6 +35,7 @@ Please note that this section is still under development and might change. Pleas
 ```
 
 ```{code-cell} ipython3
+:tags: [remove-cell]
 import numpy as np
 import datetime as dt
 import dask
