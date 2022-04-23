@@ -210,7 +210,7 @@ satellite_height = 8225469.943160511
 vmin = 294.6328125
 vmax = 299.84375
 cmap = "RdBu_r"
-variable = "t_2m"  #choose one of
+variable = "t_2m"
 
 da = data[variable].sel(time='2020-02-08 12:00:00')
 
