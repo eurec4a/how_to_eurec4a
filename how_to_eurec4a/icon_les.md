@@ -101,3 +101,149 @@ plt.tight_layout()
 ## Output description
 
 There are two main experiments: `experiment1` and `experiment2`. These experiments only distinguish themselves by the prescribed cloud condensation nuclei (CCN) concentration, respectively 1700 cm$^{-3}$ and 130 cm$^{-3}$. `DOM01` refers to the 624m run, while `DOM02` refers to the 312m nest. As the variable names suggest, the `surface` entries contain the surface variables. `rttov` refers to forward simulated synthetic satellite images and meteogram output is available at different locations using the entry format `meteogram_<location>_<domain>`. The 2D and 3D radiation fields and fluxes are referenced with `radiation`.
+
+## Visualization
+
+The simulation output is mostly available on its natural, icosahedral grid but some output, like the rttov brightness temperatures, have been regridded onto a regular lat-lon grid. The following section shows how these different outputs can be visualized and explored.
+
+### Regular grid
+
+#### Loading modules
+```{code-cell} ipython3
+import xarray as xr
+import numpy as np
+import pandas as pd
+
+import matplotlib.pylab as plt
+import datashader
+from datashader.mpl_ext import dsshow
+
+import cartopy.crs as ccrs
+import cartopy.feature as cf
+```
+
+#### Selecting output
+The simulation output is indexed in the EUREC<sup>4</sup>A Intake catalog and can be easily queried:
+```{code-cell} ipython3
+from intake import open_catalog
+cat = open_catalog("https://raw.githubusercontent.com/observingClouds/eurec4a-intake/simulations/catalog.yml")
+
+# Lazy loading of selected output
+data = cat.simulations.ICON.experiment_2.rttov_DOM01.to_dask()
+print(data)
+variable = "synsat_rttov_forward_model_1__abi_ir__goes_16__channel_7"  #choose one of the once below
+da = data[variable].sel(time='2020-02-08 12:00:00')
+```
+
+#### Setting the scene
+
+```{code-cell} ipython3
+central_longitude = -53.54884554550185
+central_latitude = 12.28815437976341
+satellite_height = 8225469.943160511
+
+vmin = 270
+vmax = 300
+cmap = "RdBu_r"
+```
+
+#### Projection and plotting
+
+The regular grid data can also be plotted with a simple `da.plot()`, but more steps are involved for projections and some tweeks for faster plotting
+that come especially handy for the plotting of data on the icosahedral grid shown in the next section. 
+
+```{code-cell} ipython3
+projection = ccrs.NearsidePerspective(central_longitude=central_longitude, central_latitude=central_latitude, satellite_height=satellite_height)
+
+lats, lons = np.meshgrid(data.lat,data.lon)
+coords = projection.transform_points(
+    ccrs.Geodetic(),
+    lons.T.flatten(),
+    lats.T.flatten(),
+)
+
+fig, ax = plt.subplots(subplot_kw={"projection": projection})
+fig.canvas.draw_idle()
+ax.add_feature(cf.COASTLINE, linewidth=0.8)
+
+artist = dsshow(
+    pd.DataFrame({
+        "val": da.values.flatten(),
+        "x": coords[:, 0],
+        "y": coords[:, 1],
+    }),
+    datashader.Point('x', 'y'),
+    datashader.mean('val'),
+    vmin=vmin,
+    vmax=vmax,
+    cmap=cmap,
+    ax=ax,
+)
+
+fig.colorbar(artist, label=f"{da.long_name} / {da.units}");
+```
+
+### Icosahedral grid
+
+For the visualization of the icosahedral grid, and interactive version exists that relies on [gridlook](https://gitlab.gwdg.de/tobi/gridlook) and is shown below
+for the surface values of *experiment 2* and *DOM01*. Try it out!
+
+```{code-cell} ipython3
+:tags: [remove-input]
+from IPython.display import IFrame, display
+display(IFrame('https://tobi.pages.gwdg.de/gridlook/#https://swift.dkrz.de/v1/dkrz_948e7d4bbfbb445fbff5315fc433e36a/EUREC4A_LES/json_eurec4a_sim_time.json', '100%', '600px'))
+```
+
+Static views can be exported within the app and plotted separatedly. Here is an example for the 2m temperature that build on top of the plotting routine of the regular grid.
+
+```{code-cell} ipython3
+cat = open_catalog("https://raw.githubusercontent.com/observingClouds/eurec4a-intake/simulations/catalog.yml")
+
+# Lazy loading of output and grid
+data = cat.simulations.ICON.experiment_2.surface_DOM01.to_dask()
+grid = cat.simulations.grids.EUREC4A_PR1250m_DOM01.to_dask()
+
+central_longitude = -53.54884554550185
+central_latitude = 12.28815437976341
+satellite_height = 8225469.943160511
+
+vmin = 294.6328125
+vmax = 299.84375
+cmap = "RdBu_r"
+variable = "t_2m"  #choose one of
+
+da = data[variable].sel(time='2020-02-08 12:00:00')
+
+projection = ccrs.NearsidePerspective(central_longitude=central_longitude, central_latitude=central_latitude, satellite_height=satellite_height)
+
+coords = projection.transform_points(
+    ccrs.Geodetic(),
+    np.rad2deg(grid.clon),
+    np.rad2deg(grid.clat),
+)
+
+fig, ax = plt.subplots(subplot_kw={"projection": projection})
+fig.canvas.draw_idle()
+ax.add_feature(cf.COASTLINE, linewidth=0.8)
+
+artist = dsshow(
+    pd.DataFrame({
+        "val": da.values,
+        "x": coords[:, 0],
+        "y": coords[:, 1],
+    }),
+    datashader.Point('x', 'y'),
+    datashader.mean('val'),
+    vmin=vmin,
+    vmax=vmax,
+    cmap=cmap,
+    ax=ax,
+)
+
+fig.colorbar(artist, label=f"{da.long_name} / {da.units}");
+```
+
+## Questions and further information
+
+Questions and issues with this dataset should be raised at the [GITLAB-Repository](https://gitlab.gwdg.de/hauke.schulz/EUREC4A-ICON) to encourage an open discussion and share experiences. The repository is also the place where further information about these simulations can be found.
+
