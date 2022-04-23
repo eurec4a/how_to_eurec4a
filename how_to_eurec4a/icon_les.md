@@ -15,7 +15,7 @@ kernelspec:
 
 ## Setup
 
-These ICON Large-eddy simulations (LES) presented here are consists of three different domains that have different spatial and temporal extends depending on their horizontal grid-spacing. {numref}`icon_domains` shows the extend of the different simulations.
+These ICON Large-eddy simulations (LES) presented here consist of three different domains that have different spatial and temporal extends depending on their horizontal grid-spacing. {numref}`icon_domains` shows the extend of the different simulations.
 
 ```{figure} figures/icon_les_domains.jpg
 :name: icon_domains
