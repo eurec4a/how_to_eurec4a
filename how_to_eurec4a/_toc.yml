@@ -26,6 +26,9 @@ chapters:
 - file: merian
   sections:
   - file: merian_cloudradar
+- file: bco
+  sections:
+  - file: bco_cloudradar
 - file: multi_platform_data
   sections:
   - file: dropsondes
