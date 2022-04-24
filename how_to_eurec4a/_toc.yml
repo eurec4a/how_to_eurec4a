@@ -32,6 +32,8 @@ chapters:
 - file: simulations
   sections:
   - file: icon_les
+    sections:
+    - file: icon_les-pamtra
 - file: auxiliary_datasets
   sections:
   - file: c3ontext
