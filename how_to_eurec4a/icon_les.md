@@ -70,8 +70,23 @@ def get_datasets(cat, datasets=None, path=""):
             datasets.extend([path + "." + desc["name"]])
     return datasets
 
+def drop_datasets(datasets):
+    """
+    Drop datasets with same temporal coverage to
+    ease computation and declutter the overview page.
+    """
+    datasets_to_keep = []
+    for dataset in datasets:
+        if ('meteogram' in dataset) and ('BCO' not in dataset):
+            continue
+        elif ('synthetic_radar' in dataset) and ('BCO' not in dataset):
+            continue
+        else:
+            datasets_to_keep.append(dataset)
+    return datasets_to_keep
+
 icon_les_cat = cat.simulations.ICON
-datasets = get_datasets(icon_les_cat)
+datasets = drop_datasets(get_datasets(icon_les_cat))
 ```
 
 The currently available ICON-LES output is shown in the following:
