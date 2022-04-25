@@ -1,0 +1,941 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ICON-LES &#8212; How to EUREC4A</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <link rel="shortcut icon" href="_static/logo_pyeurec4a.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Synthetic measurements" href="icon_les-pamtra.html" />
+    <link rel="prev" title="Simulations" href="simulations.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo_pyeurec4a.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">How to EUREC4A</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="halo.html">
+   HALO
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="HALO_instrument_overview.html">
+     Instrument Overview
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="specmacs.html">
+     specMACS cloudmask
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="unified.html">
+     HALO UNIFIED dataset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="flight_tracks_leaflet.html">
+     interactive HALO tracks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="smart.html">
+     SMART dataset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="velox.html">
+     VELOX
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bacardi.html">
+     BACARDI dataset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="wales.html">
+     WALES Lidar
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="hamp_comparison.html">
+     HAMP comparison
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cloudmasks.html">
+     Cloud masks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="pthree.html">
+   NOAA P3 “Miss Piggy”
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="p3_flight_tracks.html">
+     Flight tracks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="p3_humidity_comparison.html">
+     Humidity comparison: Hygrometer and isotope analyzer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="p3_wband_radar.html">
+     W-band radar example
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="p3_AXBTs.html">
+     Ocean temperatures: AXBTs and SWIFT buoys
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="p3_wsra.html">
+     WSRA example: surface wave state
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="meteor.html">
+   Meteor
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="meteor_cloudradar.html">
+     Reading cloud radar data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="merian.html">
+   Merian
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="merian_cloudradar.html">
+     Cloud radar data collected on MS Merian
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="bco.html">
+   BCO
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bco_cloudradar.html">
+     Cloud radar data collected at the Barbados Cloud Observatory (BCO)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="multi_platform_data.html">
+   Multi-platform datasets
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="dropsondes.html">
+     Dropsondes dataset JOANNE
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="simulations.html">
+   Simulations
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active has-children">
+    <a class="current reference internal" href="#">
+     ICON-LES
+    </a>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+    <label for="toctree-checkbox-8">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="icon_les-pamtra.html">
+       Synthetic measurements
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="auxiliary_datasets.html">
+   Auxiliary datasets
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="c3ontext.html">
+     How to put your measurements into the meso-scale context of cloud patterns
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="toolbox.html">
+   Toolbox
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="flight-phase-operations.html">
+     How to work with flight phase segmentation files
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="show_intake_catalog.html">
+     Show the intake catalog
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cloud_stat_tools.html">
+     Cloud statistics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="running_locally.html">
+     running How to EUREC4A locally
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="netcdf_datatypes.html">
+     The issue with netCDF data types
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="data_on_ipfs.html">
+     Data on IPFS
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="references.html">
+   References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stats.html">
+   Script execution statistics
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="_sources/icon_les.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/icon_les.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/eurec4a/how_to_eurec4a"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/eurec4a/how_to_eurec4a/issues/new?title=Issue%20on%20page%20%2Ficon_les.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/eurec4a/how_to_eurec4a/edit/master/how_to_eurec4a/icon_les.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/eurec4a/how_to_eurec4a/master?urlpath=tree/how_to_eurec4a/icon_les.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup">
+   Setup
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#availability-of-simulation-output">
+   Availability of simulation output
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#output-description">
+   Output description
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualization">
+   Visualization
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#regular-grid">
+     Regular grid
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#loading-modules">
+       Loading modules
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#selecting-output">
+       Selecting output
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#setting-the-scene">
+       Setting the scene
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#projection-and-plotting">
+       Projection and plotting
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#icosahedral-grid">
+     Icosahedral grid
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-and-further-information">
+   Questions and further information
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>ICON-LES</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup">
+   Setup
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#availability-of-simulation-output">
+   Availability of simulation output
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#output-description">
+   Output description
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualization">
+   Visualization
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#regular-grid">
+     Regular grid
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#loading-modules">
+       Loading modules
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#selecting-output">
+       Selecting output
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#setting-the-scene">
+       Setting the scene
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#projection-and-plotting">
+       Projection and plotting
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#icosahedral-grid">
+     Icosahedral grid
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-and-further-information">
+   Questions and further information
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="icon-les">
+<h1>ICON-LES<a class="headerlink" href="#icon-les" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<p>These ICON Large-eddy simulations (LES) presented here consist of three different domains that have different spatial and temporal extends depending on their horizontal grid-spacing. <a class="reference internal" href="#icon-domains"><span class="std std-numref">Fig. 2</span></a> shows the extend of the different simulations.</p>
+<div class="figure align-center" id="icon-domains">
+<a class="reference internal image-reference" href="_images/icon_les_domains.jpg"><img alt="ICON-LES domain overview" src="_images/icon_les_domains.jpg" style="width: 800px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Overview of simulation domains. The location of the Barbados Cloud Observatory (BCO) and the NTAS buoy are marked with a red star at the western and eastern part of the domain, respectively. For a sense of scale, the MODIS image of February 12 is shown with landmasses colored in green to brown depending on height. Satellite image source: NASA Worldview.</span><a class="headerlink" href="#icon-domains" title="Permalink to this image">¶</a></p>
+</div>
+<p><a class="reference internal" href="#icon-domains"><span class="std std-numref">Fig. 2</span></a> illustrates further the extend of the ICON Storm-resolving simulation (SRM) that provides the boundary conditions for the ICON-624m run. ICON-312m and ICON-156m are both one-way nested in the respective coarser resolution run.</p>
+</div>
+<div class="section" id="availability-of-simulation-output">
+<h2>Availability of simulation output<a class="headerlink" href="#availability-of-simulation-output" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please note that this section is still under development and might change. Please revisit this page regularly for updates or changes.</p>
+</div>
+<p>The currently available ICON-LES output is shown in the following:</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/icon_les_4_0.png" src="_images/icon_les_4_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="output-description">
+<h2>Output description<a class="headerlink" href="#output-description" title="Permalink to this headline">¶</a></h2>
+<p>There are two main experiments: <code class="docutils literal notranslate"><span class="pre">LES_CampaignDomain_control</span></code> and <code class="docutils literal notranslate"><span class="pre">LES_CampaignDomain_highCCN</span></code>. These experiments only distinguish themselves by the prescribed cloud condensation nuclei (CCN) concentration, respectively 1700 cm<span class="math notranslate nohighlight">\(^{-3}\)</span> and 130 cm<span class="math notranslate nohighlight">\(^{-3}\)</span>. <code class="docutils literal notranslate"><span class="pre">DOM01</span></code> refers to the 624m run, while <code class="docutils literal notranslate"><span class="pre">DOM02</span></code> refers to the 312m nest. As the variable names suggest, the <code class="docutils literal notranslate"><span class="pre">surface</span></code> entries contain the surface variables. <code class="docutils literal notranslate"><span class="pre">rttov</span></code> refers to forward simulated synthetic satellite images and meteogram output is available at different locations using the entry format <code class="docutils literal notranslate"><span class="pre">meteogram_&lt;location&gt;_&lt;domain&gt;</span></code>. The 2D and 3D radiation fields and fluxes are referenced with <code class="docutils literal notranslate"><span class="pre">radiation</span></code>.</p>
+</div>
+<div class="section" id="visualization">
+<h2>Visualization<a class="headerlink" href="#visualization" title="Permalink to this headline">¶</a></h2>
+<p>The simulation output is mostly available on its natural, icosahedral grid but some output, like the rttov brightness temperatures, have been regridded onto a regular lat-lon grid. The following section shows how these different outputs can be visualized and explored.</p>
+<div class="section" id="regular-grid">
+<h3>Regular grid<a class="headerlink" href="#regular-grid" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="loading-modules">
+<h4>Loading modules<a class="headerlink" href="#loading-modules" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">eurec4a</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">datashader</span>
+<span class="kn">from</span> <span class="nn">datashader.mpl_ext</span> <span class="kn">import</span> <span class="n">dsshow</span>
+
+<span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="nn">ccrs</span>
+<span class="kn">import</span> <span class="nn">cartopy.feature</span> <span class="k">as</span> <span class="nn">cf</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="selecting-output">
+<h4>Selecting output<a class="headerlink" href="#selecting-output" title="Permalink to this headline">¶</a></h4>
+<p>The simulation output is indexed in the EUREC<sup>4</sup>A Intake catalog and can be easily queried:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">=</span> <span class="n">eurec4a</span><span class="o">.</span><span class="n">get_intake_catalog</span><span class="p">()</span>
+
+<span class="c1"># Lazy loading of selected output</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">cat</span><span class="o">.</span><span class="n">simulations</span><span class="o">.</span><span class="n">ICON</span><span class="o">.</span><span class="n">LES_CampaignDomain_control</span><span class="o">.</span><span class="n">rttov_DOM01</span><span class="o">.</span><span class="n">to_dask</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">variable</span> <span class="o">=</span> <span class="s2">&quot;synsat_rttov_forward_model_1__abi_ir__goes_16__channel_7&quot;</span>  <span class="c1">#choose one of the once below</span>
+<span class="n">da</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">variable</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s1">&#39;2020-02-08 12:00:00&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;xarray.Dataset&gt;
+Dimensions:                                                   (lat: 760,
+                                                               lon: 1220,
+                                                               time: 5903)
+Coordinates:
+  * lat                                                       (lat) float64 7...
+  * lon                                                       (lon) float64 -...
+  * time                                                      (time) datetime64[ns] ...
+Data variables:
+    synsat_rttov_forward_model_1__abi_ir__goes_16__channel_1  (time, lat, lon) float32 dask.array&lt;chunksize=(12, 760, 1220), meta=np.ndarray&gt;
+    synsat_rttov_forward_model_1__abi_ir__goes_16__channel_2  (time, lat, lon) float32 dask.array&lt;chunksize=(12, 760, 1220), meta=np.ndarray&gt;
+    synsat_rttov_forward_model_1__abi_ir__goes_16__channel_3  (time, lat, lon) float32 dask.array&lt;chunksize=(12, 760, 1220), meta=np.ndarray&gt;
+    synsat_rttov_forward_model_1__abi_ir__goes_16__channel_4  (time, lat, lon) float32 dask.array&lt;chunksize=(12, 760, 1220), meta=np.ndarray&gt;
+    synsat_rttov_forward_model_1__abi_ir__goes_16__channel_5  (time, lat, lon) float32 dask.array&lt;chunksize=(12, 760, 1220), meta=np.ndarray&gt;
+    synsat_rttov_forward_model_1__abi_ir__goes_16__channel_6  (time, lat, lon) float32 dask.array&lt;chunksize=(12, 760, 1220), meta=np.ndarray&gt;
+    synsat_rttov_forward_model_1__abi_ir__goes_16__channel_7  (time, lat, lon) float32 dask.array&lt;chunksize=(12, 760, 1220), meta=np.ndarray&gt;
+Attributes:
+    CDI:                       Climate Data Interface version 1.9.10 (https:/...
+    CDO:                       Climate Data Operators version 1.9.10 (https:/...
+    Conventions:               CF-1.6
+    cdo_openmp_thread_number:  30
+    comment:                   Hauke Schulz (m300408) on l30466 (Linux 4.18.0...
+    history:                   Fri Apr 22 18:15:09 2022: cdo -r -P 30 -f nc4 ...
+    institution:               Max Planck Institute for Meteorology
+    references:                see MPIM/DWD publications
+    source:                    icon-nwp\tgit@gitlab.dkrz.de:icon/icon-nwp.git...
+    title:                     ICON simulation
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="setting-the-scene">
+<h4>Setting the scene<a class="headerlink" href="#setting-the-scene" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">central_longitude</span> <span class="o">=</span> <span class="o">-</span><span class="mf">53.54884554550185</span>
+<span class="n">central_latitude</span> <span class="o">=</span> <span class="mf">12.28815437976341</span>
+<span class="n">satellite_height</span> <span class="o">=</span> <span class="mf">8225469.943160511</span>
+
+<span class="n">vmin</span> <span class="o">=</span> <span class="mi">270</span>
+<span class="n">vmax</span> <span class="o">=</span> <span class="mi">300</span>
+<span class="n">cmap</span> <span class="o">=</span> <span class="s2">&quot;RdBu_r&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="projection-and-plotting">
+<h4>Projection and plotting<a class="headerlink" href="#projection-and-plotting" title="Permalink to this headline">¶</a></h4>
+<p>The regular grid data can also be plotted with a simple <code class="docutils literal notranslate"><span class="pre">da.plot()</span></code>, but more steps are involved for projections and some tweeks for faster plotting
+that come especially handy for the plotting of data on the icosahedral grid shown in the next section.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">projection</span> <span class="o">=</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">NearsidePerspective</span><span class="p">(</span><span class="n">central_longitude</span><span class="o">=</span><span class="n">central_longitude</span><span class="p">,</span> <span class="n">central_latitude</span><span class="o">=</span><span class="n">central_latitude</span><span class="p">,</span> <span class="n">satellite_height</span><span class="o">=</span><span class="n">satellite_height</span><span class="p">)</span>
+
+<span class="n">lats</span><span class="p">,</span> <span class="n">lons</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span><span class="n">data</span><span class="o">.</span><span class="n">lon</span><span class="p">)</span>
+<span class="n">coords</span> <span class="o">=</span> <span class="n">projection</span><span class="o">.</span><span class="n">transform_points</span><span class="p">(</span>
+    <span class="n">ccrs</span><span class="o">.</span><span class="n">Geodetic</span><span class="p">(),</span>
+    <span class="n">lons</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span>
+    <span class="n">lats</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span>
+<span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;projection&quot;</span><span class="p">:</span> <span class="n">projection</span><span class="p">})</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">draw_idle</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cf</span><span class="o">.</span><span class="n">COASTLINE</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+
+<span class="n">artist</span> <span class="o">=</span> <span class="n">dsshow</span><span class="p">(</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+        <span class="s2">&quot;val&quot;</span><span class="p">:</span> <span class="n">da</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span>
+        <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="n">coords</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span>
+        <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="n">coords</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="p">}),</span>
+    <span class="n">datashader</span><span class="o">.</span><span class="n">Point</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">),</span>
+    <span class="n">datashader</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s1">&#39;val&#39;</span><span class="p">),</span>
+    <span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span>
+    <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">artist</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">da</span><span class="o">.</span><span class="n">long_name</span><span class="si">}</span><span class="s2"> / </span><span class="si">{</span><span class="n">da</span><span class="o">.</span><span class="n">units</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/IPython/core/pylabtools.py:151: UserWarning: constrained_layout not applied because axes sizes collapsed to zero.  Try making figure larger or axes decorations smaller.
+  fig.canvas.print_figure(bytes_io, **kw)
+/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/cartopy/io/__init__.py:260: DownloadWarning: Downloading: https://naciscdn.org/naturalearth/10m/physical/ne_10m_coastline.zip
+  warnings.warn(&#39;Downloading: {}&#39;.format(url), DownloadWarning)
+</pre></div>
+</div>
+<img alt="_images/icon_les_12_1.png" src="_images/icon_les_12_1.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="icosahedral-grid">
+<h3>Icosahedral grid<a class="headerlink" href="#icosahedral-grid" title="Permalink to this headline">¶</a></h3>
+<p>For the visualization of the icosahedral grid, and interactive version exists that relies on <a class="reference external" href="https://gitlab.gwdg.de/tobi/gridlook">gridlook</a> and is shown below
+for the surface values of <em>LES_CampaignDomain_control</em> and <em>DOM01</em>. Try it out!</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html">
+<iframe
+    width="100%"
+    height="600px"
+    src="https://tobi.pages.gwdg.de/gridlook/#https://swift.dkrz.de/v1/dkrz_948e7d4bbfbb445fbff5315fc433e36a/EUREC4A_LES/json_eurec4a_sim_time.json"
+    frameborder="0"
+    allowfullscreen
+
+></iframe>
+</div></div>
+</div>
+<p>Static views can be exported within the app and plotted separatedly. Here is an example for the 2m temperature that build on top of the plotting routine of the regular grid.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lazy loading of output and grid</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">cat</span><span class="o">.</span><span class="n">simulations</span><span class="o">.</span><span class="n">ICON</span><span class="o">.</span><span class="n">LES_CampaignDomain_control</span><span class="o">.</span><span class="n">surface_DOM01</span><span class="o">.</span><span class="n">to_dask</span><span class="p">()</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="n">cat</span><span class="o">.</span><span class="n">simulations</span><span class="o">.</span><span class="n">grids</span><span class="p">[</span><span class="n">data</span><span class="o">.</span><span class="n">uuidOfHGrid</span><span class="p">]</span><span class="o">.</span><span class="n">to_dask</span><span class="p">()</span>
+
+<span class="n">central_longitude</span> <span class="o">=</span> <span class="o">-</span><span class="mf">53.54884554550185</span>
+<span class="n">central_latitude</span> <span class="o">=</span> <span class="mf">12.28815437976341</span>
+<span class="n">satellite_height</span> <span class="o">=</span> <span class="mf">8225469.943160511</span>
+
+<span class="n">vmin</span> <span class="o">=</span> <span class="mf">294.6328125</span>
+<span class="n">vmax</span> <span class="o">=</span> <span class="mf">299.84375</span>
+<span class="n">cmap</span> <span class="o">=</span> <span class="s2">&quot;RdBu_r&quot;</span>
+<span class="n">variable</span> <span class="o">=</span> <span class="s2">&quot;t_2m&quot;</span>
+
+<span class="n">da</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">variable</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s1">&#39;2020-02-08 12:00:00&#39;</span><span class="p">)</span>
+
+<span class="n">projection</span> <span class="o">=</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">NearsidePerspective</span><span class="p">(</span><span class="n">central_longitude</span><span class="o">=</span><span class="n">central_longitude</span><span class="p">,</span> <span class="n">central_latitude</span><span class="o">=</span><span class="n">central_latitude</span><span class="p">,</span> <span class="n">satellite_height</span><span class="o">=</span><span class="n">satellite_height</span><span class="p">)</span>
+
+<span class="n">coords</span> <span class="o">=</span> <span class="n">projection</span><span class="o">.</span><span class="n">transform_points</span><span class="p">(</span>
+    <span class="n">ccrs</span><span class="o">.</span><span class="n">Geodetic</span><span class="p">(),</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">rad2deg</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">clon</span><span class="o">.</span><span class="n">values</span><span class="p">),</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">rad2deg</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">clat</span><span class="o">.</span><span class="n">values</span><span class="p">),</span>
+<span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;projection&quot;</span><span class="p">:</span> <span class="n">projection</span><span class="p">})</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">draw_idle</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cf</span><span class="o">.</span><span class="n">COASTLINE</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+
+<span class="n">artist</span> <span class="o">=</span> <span class="n">dsshow</span><span class="p">(</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+        <span class="s2">&quot;val&quot;</span><span class="p">:</span> <span class="n">da</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+        <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="n">coords</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span>
+        <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="n">coords</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="p">}),</span>
+    <span class="n">datashader</span><span class="o">.</span><span class="n">Point</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">),</span>
+    <span class="n">datashader</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s1">&#39;val&#39;</span><span class="p">),</span>
+    <span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span>
+    <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">artist</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">da</span><span class="o">.</span><span class="n">long_name</span><span class="si">}</span><span class="s2"> / </span><span class="si">{</span><span class="n">da</span><span class="o">.</span><span class="n">units</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/IPython/core/pylabtools.py:151: UserWarning: constrained_layout not applied because axes sizes collapsed to zero.  Try making figure larger or axes decorations smaller.
+  fig.canvas.print_figure(bytes_io, **kw)
+</pre></div>
+</div>
+<img alt="_images/icon_les_16_1.png" src="_images/icon_les_16_1.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="questions-and-further-information">
+<h2>Questions and further information<a class="headerlink" href="#questions-and-further-information" title="Permalink to this headline">¶</a></h2>
+<p>Questions and issues with this dataset should be raised at the <a class="reference external" href="https://gitlab.gwdg.de/hauke.schulz/EUREC4A-ICON">GITLAB-Repository</a> to encourage an open discussion and share experiences. The repository is also the place where further information about these simulations can be found.</p>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "eurec4a/how_to_eurec4a",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="simulations.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Simulations</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="icon_les-pamtra.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Synthetic measurements</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By EUREC4A community<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
