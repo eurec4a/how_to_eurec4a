@@ -40,13 +40,13 @@ import numpy as np
 import datetime as dt
 import dask
 import matplotlib.pyplot as plt
-import intake
+import eurec4a
 from zarr.errors import PathNotFoundError
 from matplotlib import dates
 from pandas.plotting import register_matplotlib_converters
 register_matplotlib_converters()
 plt.style.use(["./mplstyle/book", "./mplstyle/wide"])
-cat = intake.open_catalog("https://raw.githubusercontent.com/observingClouds/eurec4a-intake/simulations/catalog.yml")
+cat = eurec4a.get_intake_catalog()
 ```
 
 ```{code-cell} ipython3
@@ -115,7 +115,7 @@ plt.tight_layout()
 
 ## Output description
 
-There are two main experiments: `experiment1` and `experiment2`. These experiments only distinguish themselves by the prescribed cloud condensation nuclei (CCN) concentration, respectively 1700 cm$^{-3}$ and 130 cm$^{-3}$. `DOM01` refers to the 624m run, while `DOM02` refers to the 312m nest. As the variable names suggest, the `surface` entries contain the surface variables. `rttov` refers to forward simulated synthetic satellite images and meteogram output is available at different locations using the entry format `meteogram_<location>_<domain>`. The 2D and 3D radiation fields and fluxes are referenced with `radiation`.
+There are two main experiments: `LES_CampaignDomain_control` and `LES_CampaignDomain_highCCN`. These experiments only distinguish themselves by the prescribed cloud condensation nuclei (CCN) concentration, respectively 1700 cm$^{-3}$ and 130 cm$^{-3}$. `DOM01` refers to the 624m run, while `DOM02` refers to the 312m nest. As the variable names suggest, the `surface` entries contain the surface variables. `rttov` refers to forward simulated synthetic satellite images and meteogram output is available at different locations using the entry format `meteogram_<location>_<domain>`. The 2D and 3D radiation fields and fluxes are referenced with `radiation`.
 
 ## Visualization
 
@@ -125,6 +125,7 @@ The simulation output is mostly available on its natural, icosahedral grid but s
 
 #### Loading modules
 ```{code-cell} ipython3
+import eurec4a
 import xarray as xr
 import numpy as np
 import pandas as pd
@@ -140,11 +141,10 @@ import cartopy.feature as cf
 #### Selecting output
 The simulation output is indexed in the EUREC<sup>4</sup>A Intake catalog and can be easily queried:
 ```{code-cell} ipython3
-from intake import open_catalog
-cat = open_catalog("https://raw.githubusercontent.com/observingClouds/eurec4a-intake/simulations/catalog.yml")
+cat = eurec4a.get_intake_catalog()
 
 # Lazy loading of selected output
-data = cat.simulations.ICON.experiment_2.rttov_DOM01.to_dask()
+data = cat.simulations.ICON.LES_CampaignDomain_control.rttov_DOM01.to_dask()
 print(data)
 variable = "synsat_rttov_forward_model_1__abi_ir__goes_16__channel_7"  #choose one of the once below
 da = data[variable].sel(time='2020-02-08 12:00:00')
@@ -201,7 +201,7 @@ fig.colorbar(artist, label=f"{da.long_name} / {da.units}");
 ### Icosahedral grid
 
 For the visualization of the icosahedral grid, and interactive version exists that relies on [gridlook](https://gitlab.gwdg.de/tobi/gridlook) and is shown below
-for the surface values of *experiment 2* and *DOM01*. Try it out!
+for the surface values of *LES_CampaignDomain_control* and *DOM01*. Try it out!
 
 ```{code-cell} ipython3
 :tags: [remove-input]
@@ -212,11 +212,10 @@ display(IFrame('https://tobi.pages.gwdg.de/gridlook/#https://swift.dkrz.de/v1/dk
 Static views can be exported within the app and plotted separatedly. Here is an example for the 2m temperature that build on top of the plotting routine of the regular grid.
 
 ```{code-cell} ipython3
-cat = open_catalog("https://raw.githubusercontent.com/observingClouds/eurec4a-intake/simulations/catalog.yml")
 
 # Lazy loading of output and grid
-data = cat.simulations.ICON.experiment_2.surface_DOM01.to_dask()
-grid = cat.simulations.grids.EUREC4A_PR1250m_DOM01.to_dask()
+data = cat.simulations.ICON.LES_CampaignDomain_control.surface_DOM01.to_dask()
+grid = cat.simulations.grids[data.uuidOfHGrid].to_dask()
 
 central_longitude = -53.54884554550185
 central_latitude = 12.28815437976341

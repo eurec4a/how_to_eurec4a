@@ -26,20 +26,20 @@ The synthetic radar data is available through the EUREC<sup>4</sup>A Intake cata
 :tags: [remove-cell]
 import numpy as np
 import datetime as dt
+import eurec4a
 import matplotlib.pyplot as plt
-import intake
 from matplotlib import dates
 from pandas.plotting import register_matplotlib_converters
 register_matplotlib_converters()
 plt.style.use(["./mplstyle/book", "./mplstyle/wide"])
-cat = intake.open_catalog("https://raw.githubusercontent.com/observingClouds/eurec4a-intake/simulations/catalog.yml")
+cat = eurec4a.get_intake_catalog()
 ```
 
 #### Selecting a specific synthetic radar location, in this case at the BCO.
 
 ```{code-cell} ipython3
 #Synthetic
-ds_syn = cat.simulations.ICON.experiment_2.synthetic_radar_BCO_DOM01.to_dask()
+ds_syn = cat.simulations.ICON.LES_CampaignDomain_control.synthetic_radar_BCO_DOM01.to_dask()
 #Observations
 ds_obs = cat.barbados.bco.radar_reflectivity.to_dask()
 ```
