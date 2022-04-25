@@ -233,8 +233,8 @@ projection = ccrs.NearsidePerspective(central_longitude=central_longitude, centr
 
 coords = projection.transform_points(
     ccrs.Geodetic(),
-    np.rad2deg(grid.clon),
-    np.rad2deg(grid.clat),
+    np.rad2deg(grid.clon.values),
+    np.rad2deg(grid.clat.values),
 )
 
 fig, ax = plt.subplots(subplot_kw={"projection": projection})
