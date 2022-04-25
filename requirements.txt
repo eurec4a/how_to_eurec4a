@@ -16,3 +16,4 @@ simplification
 colorcet
 zarr>=2.8.3
 datashader
+pybtex-apa-style
