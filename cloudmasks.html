@@ -817,200 +817,22 @@ In the following, we compare the different cloud mask products for a case study 
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ClientResponseError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_6316</span><span class="o">/</span><span class="mf">3883556282.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">load_cloudmask_dataset</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">cat_cloudmask</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
-
-<span class="nn">/tmp/ipykernel_6316/3883556282.py</span> in <span class="ni">&lt;dictcomp&gt;</span><span class="nt">(.0)</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">load_cloudmask_dataset</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">cat_cloudmask</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
-
-<span class="nn">/tmp/ipykernel_6316/3204722144.py</span> in <span class="ni">load_cloudmask_dataset</span><span class="nt">(cat_item)</span>
-<span class="g g-Whitespace">     </span><span class="mi">37</span>     <span class="c1"># load in parallel as this function is mainly limited by the network roundtrip time</span>
-<span class="g g-Whitespace">     </span><span class="mi">38</span>     <span class="n">p</span> <span class="o">=</span> <span class="n">ThreadPool</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">39</span>     <span class="k">return</span> <span class="n">ensure_cfminmax</span><span class="p">(</span><span class="n">xr</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">v</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">to_dask</span><span class="p">()</span><span class="o">.</span><span class="n">chunk</span><span class="p">(),</span>
-<span class="g g-Whitespace">     </span><span class="mi">40</span>                                                 <span class="n">cat_item</span><span class="o">.</span><span class="n">values</span><span class="p">())),</span>
-<span class="g g-Whitespace">     </span><span class="mi">41</span>                                      <span class="n">dim</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">))</span>
-
-<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/multiprocessing/pool.py</span> in <span class="ni">map</span><span class="nt">(self, func, iterable, chunksize)</span>
-<span class="g g-Whitespace">    </span><span class="mi">362</span>         <span class="ow">in</span> <span class="n">a</span> <span class="nb">list</span> <span class="n">that</span> <span class="ow">is</span> <span class="n">returned</span><span class="o">.</span>
-<span class="g g-Whitespace">    </span><span class="mi">363</span>         <span class="s1">&#39;&#39;&#39;</span>
-<span class="ne">--&gt; </span><span class="mi">364</span><span class="s1">         return self._map_async(func, iterable, mapstar, chunksize).get()</span>
-<span class="g g-Whitespace">    </span><span class="mi">365</span><span class="s1"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">366</span><span class="s1">     def starmap(self, func, iterable, chunksize=None):</span>
-
-<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/multiprocessing/pool.py</span> in <span class="ni">get</span><span class="nt">(self, timeout)</span>
-<span class="g g-Whitespace">    </span><span class="mi">769</span><span class="s1">             return self._value</span>
-<span class="g g-Whitespace">    </span><span class="mi">770</span><span class="s1">         else:</span>
-<span class="ne">--&gt; </span><span class="mi">771</span><span class="s1">             raise self._value</span>
-<span class="g g-Whitespace">    </span><span class="mi">772</span><span class="s1"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">773</span><span class="s1">     def _set(self, i, obj):</span>
-
-<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/multiprocessing/pool.py</span> in <span class="ni">worker</span><span class="nt">(inqueue, outqueue, initializer, initargs, maxtasks, wrap_exception)</span>
-<span class="g g-Whitespace">    </span><span class="mi">123</span><span class="s1">         job, i, func, args, kwds = task</span>
-<span class="g g-Whitespace">    </span><span class="mi">124</span><span class="s1">         try:</span>
-<span class="ne">--&gt; </span><span class="mi">125</span><span class="s1">             result = (True, func(*args, **kwds))</span>
-<span class="g g-Whitespace">    </span><span class="mi">126</span><span class="s1">         except Exception as e:</span>
-<span class="g g-Whitespace">    </span><span class="mi">127</span><span class="s1">             if wrap_exception and func is not _helper_reraises_exception:</span>
-
-<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/multiprocessing/pool.py</span> in <span class="ni">mapstar</span><span class="nt">(args)</span>
-<span class="g g-Whitespace">     </span><span class="mi">46</span><span class="s1"> </span>
-<span class="g g-Whitespace">     </span><span class="mi">47</span><span class="s1"> def mapstar(args):</span>
-<span class="ne">---&gt; </span><span class="mi">48</span><span class="s1">     return list(map(*args))</span>
-<span class="g g-Whitespace">     </span><span class="mi">49</span><span class="s1"> </span>
-<span class="g g-Whitespace">     </span><span class="mi">50</span><span class="s1"> def starmapstar(args):</span>
-
-<span class="nn">/tmp/ipykernel_6316/3204722144.py</span> in <span class="ni">&lt;lambda&gt;</span><span class="nt">(v)</span>
-<span class="g g-Whitespace">     </span><span class="mi">37</span><span class="s1">     # load in parallel as this function is mainly limited by the network roundtrip time</span>
-<span class="g g-Whitespace">     </span><span class="mi">38</span><span class="s1">     p = ThreadPool(20)</span>
-<span class="ne">---&gt; </span><span class="mi">39</span><span class="s1">     return ensure_cfminmax(xr.concat(list(p.map(lambda v: v.get().to_dask().chunk(),</span>
-<span class="g g-Whitespace">     </span><span class="mi">40</span><span class="s1">                                                 cat_item.values())),</span>
-<span class="g g-Whitespace">     </span><span class="mi">41</span><span class="s1">                                      dim=&quot;time&quot;))</span>
-
-<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/intake_xarray/base.py</span> in <span class="ni">to_dask</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">     </span><span class="mi">67</span><span class="s1">     def to_dask(self):</span>
-<span class="g g-Whitespace">     </span><span class="mi">68</span><span class="s1">         &quot;&quot;&quot;Return xarray object where variables are dask arrays&quot;&quot;&quot;</span>
-<span class="ne">---&gt; </span><span class="mi">69</span><span class="s1">         return self.read_chunked()</span>
-<span class="g g-Whitespace">     </span><span class="mi">70</span><span class="s1"> </span>
-<span class="g g-Whitespace">     </span><span class="mi">71</span><span class="s1">     def close(self):</span>
-
-<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/intake_xarray/base.py</span> in <span class="ni">read_chunked</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">     </span><span class="mi">42</span><span class="s1">     def read_chunked(self):</span>
-<span class="g g-Whitespace">     </span><span class="mi">43</span><span class="s1">         &quot;&quot;&quot;Return xarray object (which will have chunks)&quot;&quot;&quot;</span>
-<span class="ne">---&gt; </span><span class="mi">44</span><span class="s1">         self._load_metadata()</span>
-<span class="g g-Whitespace">     </span><span class="mi">45</span><span class="s1">         return self._ds</span>
-<span class="g g-Whitespace">     </span><span class="mi">46</span><span class="s1"> </span>
-
-<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/intake/source/base.py</span> in <span class="ni">_load_metadata</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">234</span><span class="s1">         &quot;&quot;&quot;load metadata only if needed&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">235</span><span class="s1">         if self._schema is None:</span>
-<span class="ne">--&gt; </span><span class="mi">236</span><span class="s1">             self._schema = self._get_schema()</span>
-<span class="g g-Whitespace">    </span><span class="mi">237</span><span class="s1">             self.dtype = self._schema.dtype</span>
-<span class="g g-Whitespace">    </span><span class="mi">238</span><span class="s1">             self.shape = self._schema.shape</span>
-
-<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/intake_xarray/base.py</span> in <span class="ni">_get_schema</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span><span class="s1"> </span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span><span class="s1">         if self._ds is None:</span>
-<span class="ne">---&gt; </span><span class="mi">18</span><span class="s1">             self._open_dataset()</span>
-<span class="g g-Whitespace">     </span><span class="mi">19</span><span class="s1"> </span>
-<span class="g g-Whitespace">     </span><span class="mi">20</span><span class="s1">             metadata = {</span>
-
-<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/intake_xarray/xzarr.py</span> in <span class="ni">_open_dataset</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">     </span><span class="mi">44</span><span class="s1">             self._ds = xr.open_mfdataset(self.urlpath, **kw)</span>
-<span class="g g-Whitespace">     </span><span class="mi">45</span><span class="s1">         else:</span>
-<span class="ne">---&gt; </span><span class="mi">46</span><span class="s1">             self._ds = xr.open_dataset(self.urlpath, **kw)</span>
-<span class="g g-Whitespace">     </span><span class="mi">47</span><span class="s1"> </span>
-<span class="g g-Whitespace">     </span><span class="mi">48</span><span class="s1">     def close(self):</span>
-
-<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/xarray/backends/api.py</span> in <span class="ni">open_dataset</span><span class="nt">(filename_or_obj, engine, chunks, cache, decode_cf, mask_and_scale, decode_times, decode_timedelta, use_cftime, concat_characters, decode_coords, drop_variables, backend_kwargs, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">493</span><span class="s1"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">494</span><span class="s1">     overwrite_encoded_chunks = kwargs.pop(&quot;overwrite_encoded_chunks&quot;, None)</span>
-<span class="ne">--&gt; </span><span class="mi">495</span><span class="s1">     backend_ds = backend.open_dataset(</span>
-<span class="g g-Whitespace">    </span><span class="mi">496</span><span class="s1">         filename_or_obj,</span>
-<span class="g g-Whitespace">    </span><span class="mi">497</span><span class="s1">         drop_variables=drop_variables,</span>
-
-<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/xarray/backends/zarr.py</span> in <span class="ni">open_dataset</span><span class="nt">(self, filename_or_obj, mask_and_scale, decode_times, concat_characters, decode_coords, drop_variables, use_cftime, decode_timedelta, group, mode, synchronizer, consolidated, chunk_store, storage_options, stacklevel)</span>
-<span class="g g-Whitespace">    </span><span class="mi">798</span><span class="s1"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">799</span><span class="s1">         filename_or_obj = _normalize_path(filename_or_obj)</span>
-<span class="ne">--&gt; </span><span class="mi">800</span><span class="s1">         store = ZarrStore.open_group(</span>
-<span class="g g-Whitespace">    </span><span class="mi">801</span><span class="s1">             filename_or_obj,</span>
-<span class="g g-Whitespace">    </span><span class="mi">802</span><span class="s1">             group=group,</span>
-
-<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/xarray/backends/zarr.py</span> in <span class="ni">open_group</span><span class="nt">(cls, store, mode, synchronizer, group, consolidated, consolidate_on_close, chunk_store, storage_options, append_dim, write_region, safe_chunks, stacklevel)</span>
-<span class="g g-Whitespace">    </span><span class="mi">366</span><span class="s1">         elif consolidated:</span>
-<span class="g g-Whitespace">    </span><span class="mi">367</span><span class="s1">             # TODO: an option to pass the metadata_key keyword</span>
-<span class="ne">--&gt; </span><span class="mi">368</span><span class="s1">             zarr_group = zarr.open_consolidated(store, **open_kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">369</span><span class="s1">         else:</span>
-<span class="g g-Whitespace">    </span><span class="mi">370</span><span class="s1">             zarr_group = zarr.open_group(store, **open_kwargs)</span>
-
-<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/zarr/convenience.py</span> in <span class="ni">open_consolidated</span><span class="nt">(store, metadata_key, mode, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1179</span><span class="s1"> </span>
-<span class="g g-Whitespace">   </span><span class="mi">1180</span><span class="s1">     # normalize parameters</span>
-<span class="ne">-&gt; </span><span class="mi">1181</span><span class="s1">     store = normalize_store_arg(store, storage_options=kwargs.get(&quot;storage_options&quot;), mode=mode)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1182</span><span class="s1">     if mode not in {&#39;r&#39;, &#39;r+&#39;}:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1183</span><span class="s1">         raise ValueError(&quot;invalid mode, expected either &#39;r&#39; or &#39;r+&#39;; found </span><span class="si">{!r}</span><span class="s1">&quot;</span>
-
-<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/zarr/storage.py</span> in <span class="ni">normalize_store_arg</span><span class="nt">(store, storage_options, mode)</span>
-<span class="g g-Whitespace">    </span><span class="mi">112</span><span class="s1">     if isinstance(store, str):</span>
-<span class="g g-Whitespace">    </span><span class="mi">113</span><span class="s1">         if &quot;://&quot; in store or &quot;::&quot; in store:</span>
-<span class="ne">--&gt; </span><span class="mi">114</span><span class="s1">             return FSStore(store, mode=mode, **(storage_options or </span><span class="si">{}</span><span class="s1">))</span>
-<span class="g g-Whitespace">    </span><span class="mi">115</span><span class="s1">         elif storage_options:</span>
-<span class="g g-Whitespace">    </span><span class="mi">116</span><span class="s1">             raise ValueError(&quot;storage_options passed with non-fsspec path&quot;)</span>
-
-<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/zarr/storage.py</span> in <span class="ni">__init__</span><span class="nt">(self, url, normalize_keys, key_separator, mode, exceptions, dimension_separator, **storage_options)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1138</span><span class="s1">         # Pass attributes to array creation</span>
-<span class="g g-Whitespace">   </span><span class="mi">1139</span><span class="s1">         self._dimension_separator = dimension_separator</span>
-<span class="ne">-&gt; </span><span class="mi">1140</span><span class="s1">         if self.fs.exists(self.path) and not self.fs.isdir(self.path):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1141</span><span class="s1">             raise FSPathExistNotDir(url)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1142</span><span class="s1"> </span>
-
-<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/fsspec/asyn.py</span> in <span class="ni">wrapper</span><span class="nt">(*args, **kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">83</span><span class="s1">     def wrapper(*args, **kwargs):</span>
-<span class="g g-Whitespace">     </span><span class="mi">84</span><span class="s1">         self = obj or args[0]</span>
-<span class="ne">---&gt; </span><span class="mi">85</span><span class="s1">         return sync(self.loop, func, *args, **kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">86</span><span class="s1"> </span>
-<span class="g g-Whitespace">     </span><span class="mi">87</span><span class="s1">     return wrapper</span>
-
-<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/fsspec/asyn.py</span> in <span class="ni">sync</span><span class="nt">(loop, func, timeout, *args, **kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">63</span><span class="s1">         raise FSTimeoutError from return_result</span>
-<span class="g g-Whitespace">     </span><span class="mi">64</span><span class="s1">     elif isinstance(return_result, BaseException):</span>
-<span class="ne">---&gt; </span><span class="mi">65</span><span class="s1">         raise return_result</span>
-<span class="g g-Whitespace">     </span><span class="mi">66</span><span class="s1">     else:</span>
-<span class="g g-Whitespace">     </span><span class="mi">67</span><span class="s1">         return return_result</span>
-
-<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/fsspec/asyn.py</span> in <span class="ni">_runner</span><span class="nt">(event, coro, result, timeout)</span>
-<span class="g g-Whitespace">     </span><span class="mi">23</span><span class="s1">         coro = asyncio.wait_for(coro, timeout=timeout)</span>
-<span class="g g-Whitespace">     </span><span class="mi">24</span><span class="s1">     try:</span>
-<span class="ne">---&gt; </span><span class="mi">25</span><span class="s1">         result[0] = await coro</span>
-<span class="g g-Whitespace">     </span><span class="mi">26</span><span class="s1">     except Exception as ex:</span>
-<span class="g g-Whitespace">     </span><span class="mi">27</span><span class="s1">         result[0] = ex</span>
-
-<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/fsspec/asyn.py</span> in <span class="ni">_isdir</span><span class="nt">(self, path)</span>
-<span class="g g-Whitespace">    </span><span class="mi">530</span><span class="s1">     async def _isdir(self, path):</span>
-<span class="g g-Whitespace">    </span><span class="mi">531</span><span class="s1">         try:</span>
-<span class="ne">--&gt; </span><span class="mi">532</span><span class="s1">             return (await self._info(path))[&quot;type&quot;] == &quot;directory&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">533</span><span class="s1">         except IOError:</span>
-<span class="g g-Whitespace">    </span><span class="mi">534</span><span class="s1">             return False</span>
-
-<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/ipfsspec/async_ipfs.py</span> in <span class="ni">_info</span><span class="nt">(self, path, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">318</span><span class="s1">         path = self._strip_protocol(path)</span>
-<span class="g g-Whitespace">    </span><span class="mi">319</span><span class="s1">         session = await self.set_session()</span>
-<span class="ne">--&gt; </span><span class="mi">320</span><span class="s1">         return await self.gateway.file_info(path, session)</span>
-<span class="g g-Whitespace">    </span><span class="mi">321</span><span class="s1"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">322</span><span class="s1">     def open(self, path, mode=&quot;rb&quot;, block_size=None, cache_options=None, **kwargs):</span>
-
-<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/ipfsspec/async_ipfs.py</span> in <span class="ni">file_info</span><span class="nt">(self, path, session)</span>
-<span class="g g-Whitespace">     </span><span class="mi">34</span><span class="s1"> </span>
-<span class="g g-Whitespace">     </span><span class="mi">35</span><span class="s1">         async with res:</span>
-<span class="ne">---&gt; </span><span class="mi">36</span><span class="s1">             self._raise_not_found_for_status(res, path)</span>
-<span class="g g-Whitespace">     </span><span class="mi">37</span><span class="s1">             if res.status != 200:</span>
-<span class="g g-Whitespace">     </span><span class="mi">38</span><span class="s1">                 # TODO: maybe handle 301 here</span>
-
-<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/ipfsspec/async_ipfs.py</span> in <span class="ni">_raise_not_found_for_status</span><span class="nt">(self, response, url)</span>
-<span class="g g-Whitespace">     </span><span class="mi">84</span><span class="s1">         elif response.status == 400:</span>
-<span class="g g-Whitespace">     </span><span class="mi">85</span><span class="s1">             raise FileNotFoundError(url)</span>
-<span class="ne">---&gt; </span><span class="mi">86</span><span class="s1">         response.raise_for_status()</span>
-<span class="g g-Whitespace">     </span><span class="mi">87</span><span class="s1"> </span>
-<span class="g g-Whitespace">     </span><span class="mi">88</span><span class="s1"> </span>
-
-<span class="nn">/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/aiohttp/client_reqrep.py</span> in <span class="ni">raise_for_status</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1002</span><span class="s1">             assert self.reason is not None</span>
-<span class="g g-Whitespace">   </span><span class="mi">1003</span><span class="s1">             self.release()</span>
-<span class="ne">-&gt; </span><span class="mi">1004</span><span class="s1">             raise ClientResponseError(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1005</span><span class="s1">                 self.request_info,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1006</span><span class="s1">                 self.history,</span>
-
-<span class="ne">ClientResponseError</span>: 503, message=&#39;Service Unavailable&#39;, url=URL(&#39;https://cloudflare-ipfs.com/ipfs/QmaWLxcBDxufNK5C55xQX77HjQkjfmQcbPKf2FyiSbi7oK&#39;)
-</pre></div>
-</div>
-</div>
 </div>
 <p>We have a look at the time periods spanned by the individual datasets: The datasets <code class="docutils literal notranslate"><span class="pre">HAMP</span> <span class="pre">Radar</span></code>, <code class="docutils literal notranslate"><span class="pre">HAMP</span> <span class="pre">Radiometer</span></code>, and <code class="docutils literal notranslate"><span class="pre">specMACS</span></code> include measurements from the transfer flights on 19 January to Barbados and on 18 February back over the Atlantic to Europe. The datasets <code class="docutils literal notranslate"><span class="pre">WALES</span></code>, <code class="docutils literal notranslate"><span class="pre">KT19</span></code>, and <code class="docutils literal notranslate"><span class="pre">VELOX</span></code> are limited to the 13 local research flights between 22 January and 15 February.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">v</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="si">}</span><span class="s2"> -  </span><span class="si">{</span><span class="n">v</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WALES: 2020-01-22T15:18:00.155000064 -  2020-02-15T23:30:02.176000000
+HAMP Radar: 2020-01-19T09:34:25.000004352 -  2020-02-18T18:55:30.999997440
+specMACS: 2020-01-19T09:29:00.063636992 -  2020-02-18T17:27:00.982214912
+HAMP Radiometer: 2020-01-19T09:34:25.000004352 -  2020-02-18T18:55:30.999997440
+KT19: 2020-01-22T14:57:36.041336059 -  2020-02-15T23:59:53.497467041
+VELOX: 2020-01-24T09:33:35.000000000 -  2020-02-15T23:25:18.000000000
 </pre></div>
 </div>
 </div>
@@ -1122,6 +944,11 @@ height = height_above_sea_level[0] - range
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xmid</span> <span class="o">=</span> <span class="n">ds_bt</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">size</span> <span class="o">//</span> <span class="mi">2</span>
 <span class="n">va_central</span> <span class="o">=</span> <span class="n">ds_bt</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="n">xmid</span> <span class="o">-</span> <span class="mi">5</span><span class="p">,</span> <span class="n">xmid</span> <span class="o">+</span> <span class="mi">6</span><span class="p">))</span><span class="o">.</span><span class="n">va</span>
 <span class="p">(</span><span class="n">va_central</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">va_central</span><span class="o">.</span><span class="n">min</span><span class="p">())</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array(0.57295305, dtype=float32)
 </pre></div>
 </div>
 </div>
@@ -1290,6 +1117,9 @@ height = height_above_sea_level[0] - range
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/cloudmasks_35_0.png" src="_images/cloudmasks_35_0.png" />
+</div>
 </div>
 </div>
 </div>
@@ -1353,6 +1183,11 @@ height = height_above_sea_level[0] - range
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>In total HALO flew 72 circles during EUREC4A
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="time-series-of-circle-cloud-cover">
@@ -1388,6 +1223,9 @@ height = height_above_sea_level[0] - range
     <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Date&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/cloudmasks_45_0.png" src="_images/cloudmasks_45_0.png" />
 </div>
 </div>
 </div>
@@ -1439,6 +1277,9 @@ height = height_above_sea_level[0] - range
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/cloudmasks_48_0.png" src="_images/cloudmasks_48_0.png" />
+</div>
 </div>
 <p>For a better comparison of minimum and maximum circle-mean cloud cover we merge the two above plots and show their difference in the following plot. In particular, we show the cumulative fraction of circle-mean cloud cover estimates. Depending on the instruments and some instrument downtimes, the available circle counts range from 64 to 72. The bins on the x-axis have a bin width of 0.2 respectively. The bars span the range defined by the minimum cloud cover based on cloud flag <code class="docutils literal notranslate"><span class="pre">most</span> <span class="pre">likely</span> <span class="pre">cloudy</span></code>and the maximum cloud cover based on cloud flags <code class="docutils literal notranslate"><span class="pre">most</span> <span class="pre">likely</span> <span class="pre">cloudy</span></code> and <code class="docutils literal notranslate"><span class="pre">probably</span> <span class="pre">cloudy</span></code>.</p>
 <div class="cell docutils container">
@@ -1484,6 +1325,9 @@ height = height_above_sea_level[0] - range
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/cloudmasks_50_0.png" src="_images/cloudmasks_50_0.png" />
+</div>
 </div>
 </div>
 <div class="section" id="a-small-interpretation-attempt">
@@ -1519,6 +1363,29 @@ height = height_above_sea_level[0] - range
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Instrument: min - max
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WALES: 0.34 - 0.34 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HAMP Radar: 0.25 - 0.25 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>specMACS: 0.18 - 0.24 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HAMP Radiometer: 0.17 - 0.25 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>KT19: 0.20 - 0.31 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>VELOX: 0.21 - 0.39 
+</pre></div>
+</div>
+</div>
 </div>
 <ul class="simple">
 <li><p>only from local research flights</p></li>
@@ -1537,6 +1404,29 @@ height = height_above_sea_level[0] - range
 <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">v</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">localRF</span><span class="p">)</span><span class="o">.</span><span class="n">CF_min</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> - &quot;</span>
           <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">v</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">localRF</span><span class="p">)</span><span class="o">.</span><span class="n">CF_max</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> &quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Instrument: min - max
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WALES: 0.34 - 0.34 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HAMP Radar: 0.21 - 0.22 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>specMACS: 0.16 - 0.22 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HAMP Radiometer: 0.16 - 0.25 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>KT19: 0.20 - 0.31 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>VELOX: 0.21 - 0.39 
 </pre></div>
 </div>
 </div>
