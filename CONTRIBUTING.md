@@ -25,14 +25,14 @@ and "help wanted" is open to whoever wants to implement it.
 
 ## Write Documentation
 
-How to EUREC4A could always use more documentation, whether as part of the
-official How to EUREC4A docs, in docstrings, or even on the web in blog posts,
+How to EUREC⁴A could always use more documentation, whether as part of the
+official How to EUREC⁴A docs, in docstrings, or even on the web in blog posts,
 articles, and such.
 
 
 ## Get Started
 
-Ready to contribute? Here's how to set up `How to EUREC4A` for local development.
+Ready to contribute? Here's how to set up `How to EUREC⁴A` for local development.
 
 1. Fork the repo on GitHub.
 2. Clone your fork locally.
@@ -57,4 +57,4 @@ A fully-rendered HTML version of the book will be built in `how_to_eurec4a/_buil
 
 ## Code of Conduct
 
-Please note that the How to EUREC4A project is released with a [Contributor Code of Conduct](CONDUCT.md). By contributing to this project you agree to abide by its terms.
+Please note that the How to EUREC⁴A project is released with a [Contributor Code of Conduct](CONDUCT.md). By contributing to this project you agree to abide by its terms.

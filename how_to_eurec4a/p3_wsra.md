@@ -13,7 +13,7 @@ kernelspec:
 
 # WSRA example: surface wave state
 
-During EUREC4A/ATOMIC the P-3 flew with a Wide Swath Radar Altimeter (WSRA),
+During EUREC⁴A/ATOMIC the P-3 flew with a Wide Swath Radar Altimeter (WSRA),
 a digital beam-forming radar altimeter operating at 16 GHz in the Ku band. It
 generates 80 narrow beams spread over 30 deg to produce a topographic map of the
 sea surface waves and their backscattered power. These measurements allow for
@@ -26,7 +26,7 @@ which designed and built the instrument.
 The WSRA also produces rainfall rate estimates from path-integrated attenuation but
 we won't look at those here.
 
-The data are available through the EUREC4A intake catalog.
+The data are available through the EUREC⁴A intake catalog.
 
 ```{code-cell} ipython3
 import xarray as xr
