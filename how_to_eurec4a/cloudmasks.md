@@ -10,7 +10,7 @@ kernelspec:
   language: python
   name: python3
 execution:
-  timeout: 300
+  timeout: 600
 ---
 
 # Cloud masks
@@ -74,6 +74,8 @@ def ensure_cfminmax(ds):
         ds = ds.assign(CF_min=cfmin)
     if "CF_max" not in ds:
         ds = ds.assign(CF_max=cfmax)
+    ds.CF_min.load()
+    ds.CF_max.load()
     return correct_VELOX(ds)
 
 from multiprocessing.pool import ThreadPool
@@ -83,7 +85,8 @@ def load_cloudmask_dataset(cat_item):
     p = ThreadPool(20)
     return ensure_cfminmax(xr.concat(list(p.map(lambda v: v.get().to_dask().chunk(),
                                                 cat_item.values())),
-                                     dim="time"))
+                                     dim="time",
+                                     data_vars="minimal"))
 ```
 
 ## Get data

@@ -8,10 +8,12 @@ jobs:
     strategy:
       matrix:
         python-version: [3.8]
-        ipfs-version: [0.10.0]
+        ipfs-version: [0.12.0]
     defaults:
       run:
         shell: bash -l {0}
+    env:
+      IPFSSPEC_GATEWAYS: "http://127.0.0.1:8080"
 
     steps:
     - uses: actions/checkout@v2
@@ -31,6 +33,12 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y wget curl jq
         bash <(curl https://raw.githubusercontent.com/eurec4a/ipfs_tools/main/install_and_run_ipfs.sh) ${{ matrix.ipfs-version }}
+    - name: setting up notebook execution cache
+      uses: actions/cache@v2
+      with:
+        path: |
+          how_to_eurec4a/_build/.jupyter_cache
+        key: ${{ runner.os }}-${{ hashFiles('requirements.txt') }}-${{ matrix.ipfs-version }}-${{ matrix.python-version }}
     - name: build book
       run: |
         conda info
