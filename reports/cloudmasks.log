@@ -32,6 +32,7 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-data = {k: load_cloudmask_dataset(v) for k, v in cat_cloudmask.items()}
+ds_swir = xr.open_zarr("ipfs://QmZUNCXKvKSeugVHFUsgzDnTrrPHomc5ikEhjoYH2hRq4N")
+da_swir = ds_swir.sel(time=s).isel(radiation_wavelength=0).swir_radiance
 -------------------
 
