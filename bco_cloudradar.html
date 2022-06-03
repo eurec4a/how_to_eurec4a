@@ -655,7 +655,12 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;CORAL_LIDAR&#39;, &#39;radar_reflectivity&#39;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;CORAL_LIDAR&#39;,
+ &#39;ceilometer&#39;,
+ &#39;radar_reflectivity&#39;,
+ &#39;meteorology&#39;,
+ &#39;radiation&#39;,
+ &#39;MRR&#39;]
 </pre></div>
 </div>
 </div>
@@ -1031,42 +1036,2016 @@ dl.xr-attrs {
   fill: currentColor;
 }
 </style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt;
-Dimensions:     (range: 605, time: 2037350)
+Dimensions:     (time: 2037350, range: 605)
 Coordinates:
   * range       (range) float64 155.9 187.1 218.2 ... 1.896e+04 1.899e+04
   * time        (time) datetime64[ns] 2020-01-12T16:19:26 ... 2020-02-29T23:5...
 Data variables: (12/23)
-    tpow        (time) float32 ...
-    zenith      (time) float32 ...
-    northangle  (time) float32 ...
-    MeltHei     (time) float32 ...
-    RadarConst  (time) float32 ...
-    latitude    (time) float64 ...
+    HSDco       (time, range) float32 dask.array&lt;chunksize=(63668, 19), meta=np.ndarray&gt;
+    HSDcx       (time, range) float32 dask.array&lt;chunksize=(63668, 19), meta=np.ndarray&gt;
+    LDR         (time, range) float32 dask.array&lt;chunksize=(63668, 19), meta=np.ndarray&gt;
+    LDRg        (time, range) float32 dask.array&lt;chunksize=(63668, 19), meta=np.ndarray&gt;
+    MeltHei     (time) float32 dask.array&lt;chunksize=(127335,), meta=np.ndarray&gt;
+    RMS         (time, range) float32 dask.array&lt;chunksize=(63668, 19), meta=np.ndarray&gt;
     ...          ...
-    HSDco       (time, range) float32 ...
-    HSDcx       (time, range) float32 ...
-    Ze          (time, range) float32 ...
-    Zg          (time, range) float32 ...
-    Zf          (time, range) float32 ...
-    mask        (time, range) bool ...
-Attributes: (12/17)
-    location:        The Barbados Cloud Observatory, Deebles Point, Barbados,...
+    longitude   (time) float64 dask.array&lt;chunksize=(63668,), meta=np.ndarray&gt;
+    mask        (time, range) int8 dask.array&lt;chunksize=(63668, 38), meta=np.ndarray&gt;
+    northangle  (time) float32 dask.array&lt;chunksize=(127335,), meta=np.ndarray&gt;
+    status      (time) float32 dask.array&lt;chunksize=(127335,), meta=np.ndarray&gt;
+    tpow        (time) float32 dask.array&lt;chunksize=(127335,), meta=np.ndarray&gt;
+    zenith      (time) float32 dask.array&lt;chunksize=(127335,), meta=np.ndarray&gt;
+Attributes: (12/16)
     Altitude:        11 m
-    system:          MIRA36
-    title:           MIRA-3x Cloud Radar Data
-    institution:     Max Planck Institute for Meteorology, Hamburg
-    source:          /pool/OBS/BARBADOS_CLOUD_OBSERVATORY/Level_1/B_Reflectiv...
-    ...              ...
-    python_version:  3.6.9 |Anaconda, Inc.| (default, Jul 30 2019, 19:07:31) ...
     Conventions:     CF-1.7
     DOI:             10.25326/55
     contact_person:  Lutz Hirsch (lutz.hirsch@mpimet.mpg.de)
-    history:         Concatenated dataset of daily converted source files
-    _NCProperties:   version=2,netcdf=4.6.2,hdf5=1.10.4</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-fef52727-880d-4622-9a65-f83475ab336f' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-fef52727-880d-4622-9a65-f83475ab336f' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>range</span>: 605</li><li><span class='xr-has-index'>time</span>: 2037350</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-2a230010-5ad5-4958-8e99-364858aa55ad' class='xr-section-summary-in' type='checkbox'  checked><label for='section-2a230010-5ad5-4958-8e99-364858aa55ad' class='xr-section-summary' >Coordinates: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>range</span></div><div class='xr-var-dims'>(range)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>155.9 187.1 ... 1.896e+04 1.899e+04</div><input id='attrs-82634255-2b6e-4ed0-956f-0144ea6844d4' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-82634255-2b6e-4ed0-956f-0144ea6844d4' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-52e9af16-06d8-48ed-ae55-cb6c7e5cb2a1' class='xr-var-data-in' type='checkbox'><label for='data-52e9af16-06d8-48ed-ae55-cb6c7e5cb2a1' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>height</dd><dt><span>long_name :</span></dt><dd>range from antenna to the center of each range gate</dd><dt><span>units :</span></dt><dd>m</dd><dt><span>axis :</span></dt><dd>Z</dd><dt><span>_ChunkSizes :</span></dt><dd>605</dd></dl></div><div class='xr-var-data'><pre>array([  155.9 ,   187.08,   218.25, ..., 18925.78, 18956.95, 18988.13])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2020-01-12T16:19:26 ... 2020-02-...</div><input id='attrs-85f2818e-32df-47d2-a4a2-fdcb9d9ff69e' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-85f2818e-32df-47d2-a4a2-fdcb9d9ff69e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1df38528-4961-4edb-ab28-8192939da35f' class='xr-var-data-in' type='checkbox'><label for='data-1df38528-4961-4edb-ab28-8192939da35f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>time</dd><dt><span>axis :</span></dt><dd>T</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;2020-01-12T16:19:26.000000000&#x27;, &#x27;2020-01-12T16:19:28.000000000&#x27;,
+    created_with:    mmclx_to_netcdf_OOP.py with its last modification on Sat...
+    creation_date:   Sun Mar  1 07:21:58 2020
+    ...              ...
+    python_version:  3.6.9 |Anaconda, Inc.| (default, Jul 30 2019, 19:07:31) ...
+    reference:       Ka Band Cloud Radar MIRA-3x, METEK GmbH www.metek.de
+    source:          /pool/OBS/BARBADOS_CLOUD_OBSERVATORY/Level_1/B_Reflectiv...
+    system:          MIRA36
+    title:           MIRA-3x Cloud Radar Data
+    version:         1.1.1-434-g3e3deca</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-505a7343-b994-4983-a34a-1786ecc653d2' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-505a7343-b994-4983-a34a-1786ecc653d2' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 2037350</li><li><span class='xr-has-index'>range</span>: 605</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-fac35e52-41a7-47e4-82f9-bf889f431290' class='xr-section-summary-in' type='checkbox'  checked><label for='section-fac35e52-41a7-47e4-82f9-bf889f431290' class='xr-section-summary' >Coordinates: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>range</span></div><div class='xr-var-dims'>(range)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>155.9 187.1 ... 1.896e+04 1.899e+04</div><input id='attrs-bd544136-2e85-4a05-993e-2716daef559d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-bd544136-2e85-4a05-993e-2716daef559d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-059c7c2a-8a84-4607-ad24-2faf4b81ce72' class='xr-var-data-in' type='checkbox'><label for='data-059c7c2a-8a84-4607-ad24-2faf4b81ce72' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>axis :</span></dt><dd>Z</dd><dt><span>long_name :</span></dt><dd>range from antenna to the center of each range gate</dd><dt><span>standard_name :</span></dt><dd>height</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><pre>array([  155.9 ,   187.08,   218.25, ..., 18925.78, 18956.95, 18988.13])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2020-01-12T16:19:26 ... 2020-02-...</div><input id='attrs-d27f7f76-c694-4ab8-a007-2b7be99302d7' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-d27f7f76-c694-4ab8-a007-2b7be99302d7' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-eb636998-6d0e-4473-80ab-0ea7a323dcc4' class='xr-var-data-in' type='checkbox'><label for='data-eb636998-6d0e-4473-80ab-0ea7a323dcc4' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>axis :</span></dt><dd>T</dd><dt><span>standard_name :</span></dt><dd>time</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;2020-01-12T16:19:26.000000000&#x27;, &#x27;2020-01-12T16:19:28.000000000&#x27;,
        &#x27;2020-01-12T16:19:30.000000000&#x27;, ..., &#x27;2020-02-29T23:59:53.000000000&#x27;,
        &#x27;2020-02-29T23:59:55.000000000&#x27;, &#x27;2020-02-29T23:59:57.000000000&#x27;],
-      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-8c2530d3-5d49-404d-bf1d-55cbf6b882d7' class='xr-section-summary-in' type='checkbox'  ><label for='section-8c2530d3-5d49-404d-bf1d-55cbf6b882d7' class='xr-section-summary' >Data variables: <span>(23)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>tpow</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-f100d8a0-a3db-4829-85e1-a914f378181b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-f100d8a0-a3db-4829-85e1-a914f378181b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-69243fd4-ce23-44cb-a168-afb31219913b' class='xr-var-data-in' type='checkbox'><label for='data-69243fd4-ce23-44cb-a168-afb31219913b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>average transmit power</dd><dt><span>units :</span></dt><dd>W</dd><dt><span>_ChunkSizes :</span></dt><dd>1018675</dd></dl></div><div class='xr-var-data'><pre>[2037350 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>zenith</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-3eec9711-9575-4f0e-8750-8af74e7f1220' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-3eec9711-9575-4f0e-8750-8af74e7f1220' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b1d79f1b-5d04-4935-aa9a-50443075b99f' class='xr-var-data-in' type='checkbox'><label for='data-b1d79f1b-5d04-4935-aa9a-50443075b99f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>sensor_zenith_angle</dd><dt><span>long_name :</span></dt><dd>zenith angle</dd><dt><span>units :</span></dt><dd>degree</dd><dt><span>_ChunkSizes :</span></dt><dd>1018675</dd></dl></div><div class='xr-var-data'><pre>[2037350 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>northangle</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-562f9a7b-0c54-47a0-8950-9b293d1cac46' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-562f9a7b-0c54-47a0-8950-9b293d1cac46' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ecbfc67d-cd12-44a7-bf6d-94f1158d1191' class='xr-var-data-in' type='checkbox'><label for='data-ecbfc67d-cd12-44a7-bf6d-94f1158d1191' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>north angle</dd><dt><span>units :</span></dt><dd>degree</dd><dt><span>_ChunkSizes :</span></dt><dd>1018675</dd></dl></div><div class='xr-var-data'><pre>[2037350 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>MeltHei</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-7abc9dbc-9870-437f-a3fc-dcc4ce45dce2' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-7abc9dbc-9870-437f-a3fc-dcc4ce45dce2' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-5ce9fb8c-648e-49dd-8cef-66b5c990eae9' class='xr-var-data-in' type='checkbox'><label for='data-5ce9fb8c-648e-49dd-8cef-66b5c990eae9' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>melting layer height</dd><dt><span>units :</span></dt><dd>m</dd><dt><span>db :</span></dt><dd>0</dd><dt><span>valid_range :</span></dt><dd>[    0 14000]</dd><dt><span>_ChunkSizes :</span></dt><dd>1018675</dd></dl></div><div class='xr-var-data'><pre>[2037350 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>RadarConst</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-1d73581f-a445-4b91-a198-67afdf254c2d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-1d73581f-a445-4b91-a198-67afdf254c2d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-6cdb362d-a68b-4313-87ba-fdd7494f68c3' class='xr-var-data-in' type='checkbox'><label for='data-6cdb362d-a68b-4313-87ba-fdd7494f68c3' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>radar constant related to 5 km height</dd><dt><span>units :</span></dt><dd>mm6 m-3</dd><dt><span>db :</span></dt><dd>1</dd><dt><span>valid_range :</span></dt><dd>[-35. -20.]</dd><dt><span>_ChunkSizes :</span></dt><dd>1018675</dd></dl></div><div class='xr-var-data'><pre>[2037350 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>latitude</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-0c613f4e-34e2-436e-8865-49750bb41462' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-0c613f4e-34e2-436e-8865-49750bb41462' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ce2a3dd2-6324-4f53-a23e-e9871b96be61' class='xr-var-data-in' type='checkbox'><label for='data-ce2a3dd2-6324-4f53-a23e-e9871b96be61' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>north latitude</dd><dt><span>units :</span></dt><dd>degree_north</dd><dt><span>valid_min :</span></dt><dd>-90.0</dd><dt><span>valid_max :</span></dt><dd>90.0</dd><dt><span>_ChunkSizes :</span></dt><dd>509338</dd></dl></div><div class='xr-var-data'><pre>[2037350 values with dtype=float64]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>longitude</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-71461aba-ffbd-4a86-986b-61e1257860b4' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-71461aba-ffbd-4a86-986b-61e1257860b4' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ed384a17-6c08-4c62-9538-622bafb43387' class='xr-var-data-in' type='checkbox'><label for='data-ed384a17-6c08-4c62-9538-622bafb43387' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>east longitude</dd><dt><span>units :</span></dt><dd>degree_east</dd><dt><span>valid_min :</span></dt><dd>-180.0</dd><dt><span>valid_max :</span></dt><dd>180.0</dd><dt><span>_ChunkSizes :</span></dt><dd>509338</dd></dl></div><div class='xr-var-data'><pre>[2037350 values with dtype=float64]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>status</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-a568e0ce-8afb-4adf-b170-a96178211918' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-a568e0ce-8afb-4adf-b170-a96178211918' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-3cef2572-beb8-4e4e-a999-57877fa4f9fe' class='xr-var-data-in' type='checkbox'><label for='data-3cef2572-beb8-4e4e-a999-57877fa4f9fe' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>radar power flag</dd><dt><span>units :</span></dt><dd>1</dd><dt><span>flag_values :</span></dt><dd>0 1</dd><dt><span>flag_meanings :</span></dt><dd>radar_off radar_on</dd><dt><span>_ChunkSizes :</span></dt><dd>1018675</dd></dl></div><div class='xr-var-data'><pre>[2037350 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>SNR</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-544ac36b-98f9-46aa-8904-2124b0568043' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-544ac36b-98f9-46aa-8904-2124b0568043' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-16e291fb-f2aa-4aef-b96b-0eeca55a31a0' class='xr-var-data-in' type='checkbox'><label for='data-16e291fb-f2aa-4aef-b96b-0eeca55a31a0' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>reflectivity SNR</dd><dt><span>units :</span></dt><dd>dBZ</dd><dt><span>_ChunkSizes :</span></dt><dd>[58210    17]</dd></dl></div><div class='xr-var-data'><pre>[1232596750 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>VEL</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-e449287d-7896-419b-8824-bee66b39282f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e449287d-7896-419b-8824-bee66b39282f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-3316f776-a585-4c1c-858f-99320ea1348d' class='xr-var-data-in' type='checkbox'><label for='data-3316f776-a585-4c1c-858f-99320ea1348d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>doppler velocity VEL of all hydrometeors</dd><dt><span>units :</span></dt><dd>m s-1</dd><dt><span>db :</span></dt><dd>0</dd><dt><span>valid_range :</span></dt><dd>[-10.66145  10.66145]</dd><dt><span>_ChunkSizes :</span></dt><dd>[58210    17]</dd></dl></div><div class='xr-var-data'><pre>[1232596750 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>RMS</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-f0537208-b8eb-4b90-907b-411bfdc93c65' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-f0537208-b8eb-4b90-907b-411bfdc93c65' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-39dbbda5-acdf-4130-a66b-20c751ed61a3' class='xr-var-data-in' type='checkbox'><label for='data-39dbbda5-acdf-4130-a66b-20c751ed61a3' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>peak width RMS of all hydrometeors</dd><dt><span>units :</span></dt><dd>m s-1</dd><dt><span>db :</span></dt><dd>0</dd><dt><span>valid_range :</span></dt><dd>[0. 3.]</dd><dt><span>_ChunkSizes :</span></dt><dd>[58210    17]</dd></dl></div><div class='xr-var-data'><pre>[1232596750 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>LDR</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-83117a2b-d8ab-4407-9212-4c129ea109ca' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-83117a2b-d8ab-4407-9212-4c129ea109ca' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-54d135d8-2e0f-4bc6-9e93-cb9586505ba2' class='xr-var-data-in' type='checkbox'><label for='data-54d135d8-2e0f-4bc6-9e93-cb9586505ba2' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>linear de-polarization ratio LDR of all hydrometeors</dd><dt><span>units :</span></dt><dd>dBZ</dd><dt><span>_ChunkSizes :</span></dt><dd>[58210    17]</dd></dl></div><div class='xr-var-data'><pre>[1232596750 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>SNRg</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-c58357ed-1be2-4581-afb7-98d7c3e13016' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c58357ed-1be2-4581-afb7-98d7c3e13016' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d98a3c0c-4cc9-46f6-b977-1a3bf25f4c0c' class='xr-var-data-in' type='checkbox'><label for='data-d98a3c0c-4cc9-46f6-b977-1a3bf25f4c0c' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>reflectivity SNRg</dd><dt><span>units :</span></dt><dd>dBZ</dd><dt><span>_ChunkSizes :</span></dt><dd>[58210    17]</dd></dl></div><div class='xr-var-data'><pre>[1232596750 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>VELg</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-f972d84c-8aff-4672-aaed-c57f976e34a6' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-f972d84c-8aff-4672-aaed-c57f976e34a6' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-36091726-51fe-4e77-853a-f80c334ae16f' class='xr-var-data-in' type='checkbox'><label for='data-36091726-51fe-4e77-853a-f80c334ae16f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>doppler velocity VEL of all targets (global)</dd><dt><span>units :</span></dt><dd>m s-1</dd><dt><span>db :</span></dt><dd>0</dd><dt><span>valid_range :</span></dt><dd>[-10.66145  10.66145]</dd><dt><span>_ChunkSizes :</span></dt><dd>[58210    17]</dd></dl></div><div class='xr-var-data'><pre>[1232596750 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>RMSg</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-bf915e0a-e2c6-4ccc-ac45-1721a4398793' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-bf915e0a-e2c6-4ccc-ac45-1721a4398793' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-3e8cb429-b3ea-4324-ba8f-cd45640d6bb2' class='xr-var-data-in' type='checkbox'><label for='data-3e8cb429-b3ea-4324-ba8f-cd45640d6bb2' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>peak width RMS of all targets (global)</dd><dt><span>units :</span></dt><dd>m s-1</dd><dt><span>db :</span></dt><dd>0</dd><dt><span>valid_range :</span></dt><dd>[0. 3.]</dd><dt><span>_ChunkSizes :</span></dt><dd>[58210    17]</dd></dl></div><div class='xr-var-data'><pre>[1232596750 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>LDRg</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-ebc1b534-2f24-4677-a0b2-a8083737326e' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ebc1b534-2f24-4677-a0b2-a8083737326e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f3c78a91-dbe8-48cd-8417-dd9475c18ce8' class='xr-var-data-in' type='checkbox'><label for='data-f3c78a91-dbe8-48cd-8417-dd9475c18ce8' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>linear de-polarization ratio LDR of all targets (global)</dd><dt><span>units :</span></dt><dd>dBZ</dd><dt><span>_ChunkSizes :</span></dt><dd>[58210    17]</dd></dl></div><div class='xr-var-data'><pre>[1232596750 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>SNRplank</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-ec7001a6-9f03-469f-8ac8-3764f61fe9b6' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ec7001a6-9f03-469f-8ac8-3764f61fe9b6' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4e5112c1-e89f-4c98-86f7-c7aa1829cb04' class='xr-var-data-in' type='checkbox'><label for='data-4e5112c1-e89f-4c98-86f7-c7aa1829cb04' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>reflectivity SNRplank</dd><dt><span>units :</span></dt><dd>dBZ</dd><dt><span>_ChunkSizes :</span></dt><dd>[58210    17]</dd></dl></div><div class='xr-var-data'><pre>[1232596750 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>HSDco</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-fd0d1d28-6139-4b10-830c-3bce8166ade4' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-fd0d1d28-6139-4b10-830c-3bce8166ade4' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-7210aba3-d902-4c3f-9cb7-3ad90601a832' class='xr-var-data-in' type='checkbox'><label for='data-7210aba3-d902-4c3f-9cb7-3ad90601a832' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>co-channel HSdiv noise power. The arbitrary unit is DSP.</dd><dt><span>units :</span></dt><dd>1</dd><dt><span>db :</span></dt><dd>1</dd><dt><span>valid_range :</span></dt><dd>[-20.  40.]</dd><dt><span>_ChunkSizes :</span></dt><dd>[58210    17]</dd></dl></div><div class='xr-var-data'><pre>[1232596750 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>HSDcx</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-1dbdab77-9b58-41d0-9564-0a22d77020ea' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-1dbdab77-9b58-41d0-9564-0a22d77020ea' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-08298ab9-7ebb-4e3a-9f22-93c948f18543' class='xr-var-data-in' type='checkbox'><label for='data-08298ab9-7ebb-4e3a-9f22-93c948f18543' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>cross-channel HSdiv noise power. The arbitrary unit is DSP.</dd><dt><span>units :</span></dt><dd>1</dd><dt><span>db :</span></dt><dd>1</dd><dt><span>valid_range :</span></dt><dd>[-20.  40.]</dd><dt><span>_ChunkSizes :</span></dt><dd>[58210    17]</dd></dl></div><div class='xr-var-data'><pre>[1232596750 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>Ze</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-3280bb1a-f8b8-4e18-85cd-7f68f3483eed' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-3280bb1a-f8b8-4e18-85cd-7f68f3483eed' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-7feb1961-3c53-44f1-b723-ebf68bdd1d45' class='xr-var-data-in' type='checkbox'><label for='data-7feb1961-3c53-44f1-b723-ebf68bdd1d45' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>equivalent radar reflectivity of all hydrometeors</dd><dt><span>units :</span></dt><dd>dBZ</dd><dt><span>_ChunkSizes :</span></dt><dd>[58210    17]</dd></dl></div><div class='xr-var-data'><pre>[1232596750 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>Zg</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-4a19c956-8975-4474-90c0-cc4195e02166' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-4a19c956-8975-4474-90c0-cc4195e02166' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-195c2d64-08cc-4512-b485-d73f62defb85' class='xr-var-data-in' type='checkbox'><label for='data-195c2d64-08cc-4512-b485-d73f62defb85' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>equivalent radar reflectivity of all targets (global)</dd><dt><span>units :</span></dt><dd>dBZ</dd><dt><span>_ChunkSizes :</span></dt><dd>[58210    17]</dd></dl></div><div class='xr-var-data'><pre>[1232596750 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>Zf</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-ce77b904-aca6-4d0a-b879-e12f4e4efea3' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ce77b904-aca6-4d0a-b879-e12f4e4efea3' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-38dc42f3-9317-4410-8193-a6582b18a370' class='xr-var-data-in' type='checkbox'><label for='data-38dc42f3-9317-4410-8193-a6582b18a370' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>rabbit-ear filtered radar reflectivity of all hydrometeors</dd><dt><span>standard_name :</span></dt><dd>equivalent_reflectivity_factor</dd><dt><span>units :</span></dt><dd>dBZ</dd><dt><span>details :</span></dt><dd>artifacts (rabbit-ears), caused by side lobes, are removed</dd><dt><span>applied_thresholds :</span></dt><dd>dBZ &lt; -35 and VELg &lt; -2.0 or VELg &gt; 0.5 between 1000m and 8000m</dd><dt><span>_ChunkSizes :</span></dt><dd>[58210    17]</dd></dl></div><div class='xr-var-data'><pre>[1232596750 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>mask</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>bool</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-b77a56ec-c29f-481e-96f4-310b623c84ea' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-b77a56ec-c29f-481e-96f4-310b623c84ea' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-3c9f9404-b4b2-4436-b4a2-1eb3bf7ed72f' class='xr-var-data-in' type='checkbox'><label for='data-3c9f9404-b4b2-4436-b4a2-1eb3bf7ed72f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>rabbit ear mask</dd><dt><span>units :</span></dt><dd>1</dd><dt><span>flag_values :</span></dt><dd>False True</dd><dt><span>flag_meanings :</span></dt><dd>rabbit_ear_retrieval no_rabbit_ear_retrieval</dd><dt><span>usage :</span></dt><dd>multiply radar products with this mask to reduce false signals by rabbit-ear retrievals</dd><dt><span>_ChunkSizes :</span></dt><dd>[113187     34]</dd></dl></div><div class='xr-var-data'><pre>[1232596750 values with dtype=bool]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-ad1ab716-a4db-476a-a3c9-bce8736adc46' class='xr-section-summary-in' type='checkbox'  ><label for='section-ad1ab716-a4db-476a-a3c9-bce8736adc46' class='xr-section-summary' >Attributes: <span>(17)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>location :</span></dt><dd>The Barbados Cloud Observatory, Deebles Point, Barbados, West Indies</dd><dt><span>Altitude :</span></dt><dd>11 m</dd><dt><span>system :</span></dt><dd>MIRA36</dd><dt><span>title :</span></dt><dd>MIRA-3x Cloud Radar Data</dd><dt><span>institution :</span></dt><dd>Max Planck Institute for Meteorology, Hamburg</dd><dt><span>source :</span></dt><dd>/pool/OBS/BARBADOS_CLOUD_OBSERVATORY/Level_1/B_Reflectivity/Ka-Band/MBR2/2s/20200[12]/MMCR__MBR2__Spectral_Moments__2s__155m-18km__200[12]*.nc</dd><dt><span>reference :</span></dt><dd>Ka Band Cloud Radar MIRA-3x, METEK GmbH www.metek.de</dd><dt><span>instrument :</span></dt><dd>MBR2 cloud radar</dd><dt><span>created_with :</span></dt><dd>mmclx_to_netcdf_OOP.py with its last modification on Sat Nov 16 01:59:42 2019</dd><dt><span>creation_date :</span></dt><dd>Sun Mar  1 07:21:58 2020</dd><dt><span>version :</span></dt><dd>1.1.1-434-g3e3deca</dd><dt><span>python_version :</span></dt><dd>3.6.9 |Anaconda, Inc.| (default, Jul 30 2019, 19:07:31) 
-[GCC 7.3.0] (with numpy version :1.15.4)</dd><dt><span>Conventions :</span></dt><dd>CF-1.7</dd><dt><span>DOI :</span></dt><dd>10.25326/55</dd><dt><span>contact_person :</span></dt><dd>Lutz Hirsch (lutz.hirsch@mpimet.mpg.de)</dd><dt><span>history :</span></dt><dd>Concatenated dataset of daily converted source files</dd><dt><span>_NCProperties :</span></dt><dd>version=2,netcdf=4.6.2,hdf5=1.10.4</dd></dl></div></li></ul></div></div></div></div>
+      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-7d44ae91-ccdd-40d2-b76e-7e6e97861d0d' class='xr-section-summary-in' type='checkbox'  ><label for='section-7d44ae91-ccdd-40d2-b76e-7e6e97861d0d' class='xr-section-summary' >Data variables: <span>(23)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>HSDco</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(63668, 19), meta=np.ndarray&gt;</div><input id='attrs-9bd87d08-ffc6-47a1-98ad-4038b2ea4e1b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-9bd87d08-ffc6-47a1-98ad-4038b2ea4e1b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e840bb00-e85a-4b9a-992b-7ddf7a0b1623' class='xr-var-data-in' type='checkbox'><label for='data-e840bb00-e85a-4b9a-992b-7ddf7a0b1623' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>db :</span></dt><dd>1</dd><dt><span>long_name :</span></dt><dd>co-channel HSdiv noise power. The arbitrary unit is DSP.</dd><dt><span>units :</span></dt><dd>1</dd><dt><span>valid_range :</span></dt><dd>[-20.0, 40.0]</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 4.59 GiB </td>
+                        <td> 4.61 MiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (2037350, 605) </td>
+                        <td> (63668, 19) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 1025 Tasks </td>
+                        <td> 1024 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="75" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="25" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="3" x2="25" y2="3" />
+  <line x1="0" y1="11" x2="25" y2="11" />
+  <line x1="0" y1="18" x2="25" y2="18" />
+  <line x1="0" y1="22" x2="25" y2="22" />
+  <line x1="0" y1="30" x2="25" y2="30" />
+  <line x1="0" y1="37" x2="25" y2="37" />
+  <line x1="0" y1="41" x2="25" y2="41" />
+  <line x1="0" y1="48" x2="25" y2="48" />
+  <line x1="0" y1="56" x2="25" y2="56" />
+  <line x1="0" y1="60" x2="25" y2="60" />
+  <line x1="0" y1="67" x2="25" y2="67" />
+  <line x1="0" y1="75" x2="25" y2="75" />
+  <line x1="0" y1="78" x2="25" y2="78" />
+  <line x1="0" y1="86" x2="25" y2="86" />
+  <line x1="0" y1="93" x2="25" y2="93" />
+  <line x1="0" y1="97" x2="25" y2="97" />
+  <line x1="0" y1="105" x2="25" y2="105" />
+  <line x1="0" y1="112" x2="25" y2="112" />
+  <line x1="0" y1="120" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
+  <line x1="0" y1="0" x2="0" y2="120" />
+  <line x1="2" y1="0" x2="2" y2="120" />
+  <line x1="3" y1="0" x2="3" y2="120" />
+  <line x1="4" y1="0" x2="4" y2="120" />
+  <line x1="6" y1="0" x2="6" y2="120" />
+  <line x1="7" y1="0" x2="7" y2="120" />
+  <line x1="8" y1="0" x2="8" y2="120" />
+  <line x1="10" y1="0" x2="10" y2="120" />
+  <line x1="11" y1="0" x2="11" y2="120" />
+  <line x1="12" y1="0" x2="12" y2="120" />
+  <line x1="14" y1="0" x2="14" y2="120" />
+  <line x1="15" y1="0" x2="15" y2="120" />
+  <line x1="16" y1="0" x2="16" y2="120" />
+  <line x1="18" y1="0" x2="18" y2="120" />
+  <line x1="19" y1="0" x2="19" y2="120" />
+  <line x1="20" y1="0" x2="20" y2="120" />
+  <line x1="22" y1="0" x2="22" y2="120" />
+  <line x1="23" y1="0" x2="23" y2="120" />
+  <line x1="25" y1="0" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 25.412616514582485,0.0 25.412616514582485,120.0 0.0,120.0" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="12.706308" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >605</text>
+  <text x="45.412617" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,45.412617,60.000000)">2037350</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>HSDcx</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(63668, 19), meta=np.ndarray&gt;</div><input id='attrs-7608be6e-2086-455b-8378-4f1cfd476094' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-7608be6e-2086-455b-8378-4f1cfd476094' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8ef02819-e07b-49b1-8025-92413674ef2e' class='xr-var-data-in' type='checkbox'><label for='data-8ef02819-e07b-49b1-8025-92413674ef2e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>db :</span></dt><dd>1</dd><dt><span>long_name :</span></dt><dd>cross-channel HSdiv noise power. The arbitrary unit is DSP.</dd><dt><span>units :</span></dt><dd>1</dd><dt><span>valid_range :</span></dt><dd>[-20.0, 40.0]</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 4.59 GiB </td>
+                        <td> 4.61 MiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (2037350, 605) </td>
+                        <td> (63668, 19) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 1025 Tasks </td>
+                        <td> 1024 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="75" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="25" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="3" x2="25" y2="3" />
+  <line x1="0" y1="11" x2="25" y2="11" />
+  <line x1="0" y1="18" x2="25" y2="18" />
+  <line x1="0" y1="22" x2="25" y2="22" />
+  <line x1="0" y1="30" x2="25" y2="30" />
+  <line x1="0" y1="37" x2="25" y2="37" />
+  <line x1="0" y1="41" x2="25" y2="41" />
+  <line x1="0" y1="48" x2="25" y2="48" />
+  <line x1="0" y1="56" x2="25" y2="56" />
+  <line x1="0" y1="60" x2="25" y2="60" />
+  <line x1="0" y1="67" x2="25" y2="67" />
+  <line x1="0" y1="75" x2="25" y2="75" />
+  <line x1="0" y1="78" x2="25" y2="78" />
+  <line x1="0" y1="86" x2="25" y2="86" />
+  <line x1="0" y1="93" x2="25" y2="93" />
+  <line x1="0" y1="97" x2="25" y2="97" />
+  <line x1="0" y1="105" x2="25" y2="105" />
+  <line x1="0" y1="112" x2="25" y2="112" />
+  <line x1="0" y1="120" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
+  <line x1="0" y1="0" x2="0" y2="120" />
+  <line x1="2" y1="0" x2="2" y2="120" />
+  <line x1="3" y1="0" x2="3" y2="120" />
+  <line x1="4" y1="0" x2="4" y2="120" />
+  <line x1="6" y1="0" x2="6" y2="120" />
+  <line x1="7" y1="0" x2="7" y2="120" />
+  <line x1="8" y1="0" x2="8" y2="120" />
+  <line x1="10" y1="0" x2="10" y2="120" />
+  <line x1="11" y1="0" x2="11" y2="120" />
+  <line x1="12" y1="0" x2="12" y2="120" />
+  <line x1="14" y1="0" x2="14" y2="120" />
+  <line x1="15" y1="0" x2="15" y2="120" />
+  <line x1="16" y1="0" x2="16" y2="120" />
+  <line x1="18" y1="0" x2="18" y2="120" />
+  <line x1="19" y1="0" x2="19" y2="120" />
+  <line x1="20" y1="0" x2="20" y2="120" />
+  <line x1="22" y1="0" x2="22" y2="120" />
+  <line x1="23" y1="0" x2="23" y2="120" />
+  <line x1="25" y1="0" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 25.412616514582485,0.0 25.412616514582485,120.0 0.0,120.0" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="12.706308" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >605</text>
+  <text x="45.412617" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,45.412617,60.000000)">2037350</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>LDR</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(63668, 19), meta=np.ndarray&gt;</div><input id='attrs-8030b6bf-60a4-4176-af23-862d70641ed6' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-8030b6bf-60a4-4176-af23-862d70641ed6' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-22ab9965-3e2f-41ba-bf15-7182e011b83f' class='xr-var-data-in' type='checkbox'><label for='data-22ab9965-3e2f-41ba-bf15-7182e011b83f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>linear de-polarization ratio LDR of all hydrometeors</dd><dt><span>units :</span></dt><dd>dBZ</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 4.59 GiB </td>
+                        <td> 4.61 MiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (2037350, 605) </td>
+                        <td> (63668, 19) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 1025 Tasks </td>
+                        <td> 1024 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="75" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="25" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="3" x2="25" y2="3" />
+  <line x1="0" y1="11" x2="25" y2="11" />
+  <line x1="0" y1="18" x2="25" y2="18" />
+  <line x1="0" y1="22" x2="25" y2="22" />
+  <line x1="0" y1="30" x2="25" y2="30" />
+  <line x1="0" y1="37" x2="25" y2="37" />
+  <line x1="0" y1="41" x2="25" y2="41" />
+  <line x1="0" y1="48" x2="25" y2="48" />
+  <line x1="0" y1="56" x2="25" y2="56" />
+  <line x1="0" y1="60" x2="25" y2="60" />
+  <line x1="0" y1="67" x2="25" y2="67" />
+  <line x1="0" y1="75" x2="25" y2="75" />
+  <line x1="0" y1="78" x2="25" y2="78" />
+  <line x1="0" y1="86" x2="25" y2="86" />
+  <line x1="0" y1="93" x2="25" y2="93" />
+  <line x1="0" y1="97" x2="25" y2="97" />
+  <line x1="0" y1="105" x2="25" y2="105" />
+  <line x1="0" y1="112" x2="25" y2="112" />
+  <line x1="0" y1="120" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
+  <line x1="0" y1="0" x2="0" y2="120" />
+  <line x1="2" y1="0" x2="2" y2="120" />
+  <line x1="3" y1="0" x2="3" y2="120" />
+  <line x1="4" y1="0" x2="4" y2="120" />
+  <line x1="6" y1="0" x2="6" y2="120" />
+  <line x1="7" y1="0" x2="7" y2="120" />
+  <line x1="8" y1="0" x2="8" y2="120" />
+  <line x1="10" y1="0" x2="10" y2="120" />
+  <line x1="11" y1="0" x2="11" y2="120" />
+  <line x1="12" y1="0" x2="12" y2="120" />
+  <line x1="14" y1="0" x2="14" y2="120" />
+  <line x1="15" y1="0" x2="15" y2="120" />
+  <line x1="16" y1="0" x2="16" y2="120" />
+  <line x1="18" y1="0" x2="18" y2="120" />
+  <line x1="19" y1="0" x2="19" y2="120" />
+  <line x1="20" y1="0" x2="20" y2="120" />
+  <line x1="22" y1="0" x2="22" y2="120" />
+  <line x1="23" y1="0" x2="23" y2="120" />
+  <line x1="25" y1="0" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 25.412616514582485,0.0 25.412616514582485,120.0 0.0,120.0" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="12.706308" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >605</text>
+  <text x="45.412617" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,45.412617,60.000000)">2037350</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>LDRg</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(63668, 19), meta=np.ndarray&gt;</div><input id='attrs-3d73757b-f1e0-4f96-be7b-40b97c38bdcc' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-3d73757b-f1e0-4f96-be7b-40b97c38bdcc' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e129375f-68f9-4f90-8fac-5bc177f808a0' class='xr-var-data-in' type='checkbox'><label for='data-e129375f-68f9-4f90-8fac-5bc177f808a0' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>linear de-polarization ratio LDR of all targets (global)</dd><dt><span>units :</span></dt><dd>dBZ</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 4.59 GiB </td>
+                        <td> 4.61 MiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (2037350, 605) </td>
+                        <td> (63668, 19) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 1025 Tasks </td>
+                        <td> 1024 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="75" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="25" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="3" x2="25" y2="3" />
+  <line x1="0" y1="11" x2="25" y2="11" />
+  <line x1="0" y1="18" x2="25" y2="18" />
+  <line x1="0" y1="22" x2="25" y2="22" />
+  <line x1="0" y1="30" x2="25" y2="30" />
+  <line x1="0" y1="37" x2="25" y2="37" />
+  <line x1="0" y1="41" x2="25" y2="41" />
+  <line x1="0" y1="48" x2="25" y2="48" />
+  <line x1="0" y1="56" x2="25" y2="56" />
+  <line x1="0" y1="60" x2="25" y2="60" />
+  <line x1="0" y1="67" x2="25" y2="67" />
+  <line x1="0" y1="75" x2="25" y2="75" />
+  <line x1="0" y1="78" x2="25" y2="78" />
+  <line x1="0" y1="86" x2="25" y2="86" />
+  <line x1="0" y1="93" x2="25" y2="93" />
+  <line x1="0" y1="97" x2="25" y2="97" />
+  <line x1="0" y1="105" x2="25" y2="105" />
+  <line x1="0" y1="112" x2="25" y2="112" />
+  <line x1="0" y1="120" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
+  <line x1="0" y1="0" x2="0" y2="120" />
+  <line x1="2" y1="0" x2="2" y2="120" />
+  <line x1="3" y1="0" x2="3" y2="120" />
+  <line x1="4" y1="0" x2="4" y2="120" />
+  <line x1="6" y1="0" x2="6" y2="120" />
+  <line x1="7" y1="0" x2="7" y2="120" />
+  <line x1="8" y1="0" x2="8" y2="120" />
+  <line x1="10" y1="0" x2="10" y2="120" />
+  <line x1="11" y1="0" x2="11" y2="120" />
+  <line x1="12" y1="0" x2="12" y2="120" />
+  <line x1="14" y1="0" x2="14" y2="120" />
+  <line x1="15" y1="0" x2="15" y2="120" />
+  <line x1="16" y1="0" x2="16" y2="120" />
+  <line x1="18" y1="0" x2="18" y2="120" />
+  <line x1="19" y1="0" x2="19" y2="120" />
+  <line x1="20" y1="0" x2="20" y2="120" />
+  <line x1="22" y1="0" x2="22" y2="120" />
+  <line x1="23" y1="0" x2="23" y2="120" />
+  <line x1="25" y1="0" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 25.412616514582485,0.0 25.412616514582485,120.0 0.0,120.0" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="12.706308" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >605</text>
+  <text x="45.412617" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,45.412617,60.000000)">2037350</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>MeltHei</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(127335,), meta=np.ndarray&gt;</div><input id='attrs-fe80cfce-5eba-46c2-8da8-59009e574e95' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-fe80cfce-5eba-46c2-8da8-59009e574e95' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-6a60624e-36ab-40af-aa6a-a251cbedcb36' class='xr-var-data-in' type='checkbox'><label for='data-6a60624e-36ab-40af-aa6a-a251cbedcb36' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>db :</span></dt><dd>0</dd><dt><span>long_name :</span></dt><dd>melting layer height</dd><dt><span>units :</span></dt><dd>m</dd><dt><span>valid_range :</span></dt><dd>[0, 14000]</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 7.77 MiB </td>
+                        <td> 497.40 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (2037350,) </td>
+                        <td> (127335,) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 17 Tasks </td>
+                        <td> 16 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
+  <line x1="7" y1="0" x2="7" y2="25" />
+  <line x1="15" y1="0" x2="15" y2="25" />
+  <line x1="22" y1="0" x2="22" y2="25" />
+  <line x1="30" y1="0" x2="30" y2="25" />
+  <line x1="37" y1="0" x2="37" y2="25" />
+  <line x1="45" y1="0" x2="45" y2="25" />
+  <line x1="52" y1="0" x2="52" y2="25" />
+  <line x1="60" y1="0" x2="60" y2="25" />
+  <line x1="67" y1="0" x2="67" y2="25" />
+  <line x1="75" y1="0" x2="75" y2="25" />
+  <line x1="82" y1="0" x2="82" y2="25" />
+  <line x1="90" y1="0" x2="90" y2="25" />
+  <line x1="97" y1="0" x2="97" y2="25" />
+  <line x1="105" y1="0" x2="105" y2="25" />
+  <line x1="112" y1="0" x2="112" y2="25" />
+  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >2037350</text>
+  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>RMS</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(63668, 19), meta=np.ndarray&gt;</div><input id='attrs-bae9f952-9d17-40be-a237-79c01c8fb123' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-bae9f952-9d17-40be-a237-79c01c8fb123' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1797bb31-9b22-4553-9c01-da91dfd51e29' class='xr-var-data-in' type='checkbox'><label for='data-1797bb31-9b22-4553-9c01-da91dfd51e29' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>db :</span></dt><dd>0</dd><dt><span>long_name :</span></dt><dd>peak width RMS of all hydrometeors</dd><dt><span>units :</span></dt><dd>m s-1</dd><dt><span>valid_range :</span></dt><dd>[0.0, 3.0]</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 4.59 GiB </td>
+                        <td> 4.61 MiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (2037350, 605) </td>
+                        <td> (63668, 19) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 1025 Tasks </td>
+                        <td> 1024 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="75" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="25" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="3" x2="25" y2="3" />
+  <line x1="0" y1="11" x2="25" y2="11" />
+  <line x1="0" y1="18" x2="25" y2="18" />
+  <line x1="0" y1="22" x2="25" y2="22" />
+  <line x1="0" y1="30" x2="25" y2="30" />
+  <line x1="0" y1="37" x2="25" y2="37" />
+  <line x1="0" y1="41" x2="25" y2="41" />
+  <line x1="0" y1="48" x2="25" y2="48" />
+  <line x1="0" y1="56" x2="25" y2="56" />
+  <line x1="0" y1="60" x2="25" y2="60" />
+  <line x1="0" y1="67" x2="25" y2="67" />
+  <line x1="0" y1="75" x2="25" y2="75" />
+  <line x1="0" y1="78" x2="25" y2="78" />
+  <line x1="0" y1="86" x2="25" y2="86" />
+  <line x1="0" y1="93" x2="25" y2="93" />
+  <line x1="0" y1="97" x2="25" y2="97" />
+  <line x1="0" y1="105" x2="25" y2="105" />
+  <line x1="0" y1="112" x2="25" y2="112" />
+  <line x1="0" y1="120" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
+  <line x1="0" y1="0" x2="0" y2="120" />
+  <line x1="2" y1="0" x2="2" y2="120" />
+  <line x1="3" y1="0" x2="3" y2="120" />
+  <line x1="4" y1="0" x2="4" y2="120" />
+  <line x1="6" y1="0" x2="6" y2="120" />
+  <line x1="7" y1="0" x2="7" y2="120" />
+  <line x1="8" y1="0" x2="8" y2="120" />
+  <line x1="10" y1="0" x2="10" y2="120" />
+  <line x1="11" y1="0" x2="11" y2="120" />
+  <line x1="12" y1="0" x2="12" y2="120" />
+  <line x1="14" y1="0" x2="14" y2="120" />
+  <line x1="15" y1="0" x2="15" y2="120" />
+  <line x1="16" y1="0" x2="16" y2="120" />
+  <line x1="18" y1="0" x2="18" y2="120" />
+  <line x1="19" y1="0" x2="19" y2="120" />
+  <line x1="20" y1="0" x2="20" y2="120" />
+  <line x1="22" y1="0" x2="22" y2="120" />
+  <line x1="23" y1="0" x2="23" y2="120" />
+  <line x1="25" y1="0" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 25.412616514582485,0.0 25.412616514582485,120.0 0.0,120.0" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="12.706308" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >605</text>
+  <text x="45.412617" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,45.412617,60.000000)">2037350</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>RMSg</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(63668, 19), meta=np.ndarray&gt;</div><input id='attrs-cc42e51f-8f63-4b3b-b4c7-680d18943014' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-cc42e51f-8f63-4b3b-b4c7-680d18943014' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-cc3a4aac-a3aa-4cdd-98f4-24e901d93449' class='xr-var-data-in' type='checkbox'><label for='data-cc3a4aac-a3aa-4cdd-98f4-24e901d93449' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>db :</span></dt><dd>0</dd><dt><span>long_name :</span></dt><dd>peak width RMS of all targets (global)</dd><dt><span>units :</span></dt><dd>m s-1</dd><dt><span>valid_range :</span></dt><dd>[0.0, 3.0]</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 4.59 GiB </td>
+                        <td> 4.61 MiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (2037350, 605) </td>
+                        <td> (63668, 19) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 1025 Tasks </td>
+                        <td> 1024 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="75" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="25" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="3" x2="25" y2="3" />
+  <line x1="0" y1="11" x2="25" y2="11" />
+  <line x1="0" y1="18" x2="25" y2="18" />
+  <line x1="0" y1="22" x2="25" y2="22" />
+  <line x1="0" y1="30" x2="25" y2="30" />
+  <line x1="0" y1="37" x2="25" y2="37" />
+  <line x1="0" y1="41" x2="25" y2="41" />
+  <line x1="0" y1="48" x2="25" y2="48" />
+  <line x1="0" y1="56" x2="25" y2="56" />
+  <line x1="0" y1="60" x2="25" y2="60" />
+  <line x1="0" y1="67" x2="25" y2="67" />
+  <line x1="0" y1="75" x2="25" y2="75" />
+  <line x1="0" y1="78" x2="25" y2="78" />
+  <line x1="0" y1="86" x2="25" y2="86" />
+  <line x1="0" y1="93" x2="25" y2="93" />
+  <line x1="0" y1="97" x2="25" y2="97" />
+  <line x1="0" y1="105" x2="25" y2="105" />
+  <line x1="0" y1="112" x2="25" y2="112" />
+  <line x1="0" y1="120" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
+  <line x1="0" y1="0" x2="0" y2="120" />
+  <line x1="2" y1="0" x2="2" y2="120" />
+  <line x1="3" y1="0" x2="3" y2="120" />
+  <line x1="4" y1="0" x2="4" y2="120" />
+  <line x1="6" y1="0" x2="6" y2="120" />
+  <line x1="7" y1="0" x2="7" y2="120" />
+  <line x1="8" y1="0" x2="8" y2="120" />
+  <line x1="10" y1="0" x2="10" y2="120" />
+  <line x1="11" y1="0" x2="11" y2="120" />
+  <line x1="12" y1="0" x2="12" y2="120" />
+  <line x1="14" y1="0" x2="14" y2="120" />
+  <line x1="15" y1="0" x2="15" y2="120" />
+  <line x1="16" y1="0" x2="16" y2="120" />
+  <line x1="18" y1="0" x2="18" y2="120" />
+  <line x1="19" y1="0" x2="19" y2="120" />
+  <line x1="20" y1="0" x2="20" y2="120" />
+  <line x1="22" y1="0" x2="22" y2="120" />
+  <line x1="23" y1="0" x2="23" y2="120" />
+  <line x1="25" y1="0" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 25.412616514582485,0.0 25.412616514582485,120.0 0.0,120.0" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="12.706308" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >605</text>
+  <text x="45.412617" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,45.412617,60.000000)">2037350</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>RadarConst</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(127335,), meta=np.ndarray&gt;</div><input id='attrs-81d50d2a-5ec4-4783-9c99-6770c9795662' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-81d50d2a-5ec4-4783-9c99-6770c9795662' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-76720558-d238-4b44-9fe3-65cc8c91cdf1' class='xr-var-data-in' type='checkbox'><label for='data-76720558-d238-4b44-9fe3-65cc8c91cdf1' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>db :</span></dt><dd>1</dd><dt><span>long_name :</span></dt><dd>radar constant related to 5 km height</dd><dt><span>units :</span></dt><dd>mm6 m-3</dd><dt><span>valid_range :</span></dt><dd>[-35.0, -20.0]</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 7.77 MiB </td>
+                        <td> 497.40 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (2037350,) </td>
+                        <td> (127335,) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 17 Tasks </td>
+                        <td> 16 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
+  <line x1="7" y1="0" x2="7" y2="25" />
+  <line x1="15" y1="0" x2="15" y2="25" />
+  <line x1="22" y1="0" x2="22" y2="25" />
+  <line x1="30" y1="0" x2="30" y2="25" />
+  <line x1="37" y1="0" x2="37" y2="25" />
+  <line x1="45" y1="0" x2="45" y2="25" />
+  <line x1="52" y1="0" x2="52" y2="25" />
+  <line x1="60" y1="0" x2="60" y2="25" />
+  <line x1="67" y1="0" x2="67" y2="25" />
+  <line x1="75" y1="0" x2="75" y2="25" />
+  <line x1="82" y1="0" x2="82" y2="25" />
+  <line x1="90" y1="0" x2="90" y2="25" />
+  <line x1="97" y1="0" x2="97" y2="25" />
+  <line x1="105" y1="0" x2="105" y2="25" />
+  <line x1="112" y1="0" x2="112" y2="25" />
+  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >2037350</text>
+  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>SNR</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(63668, 19), meta=np.ndarray&gt;</div><input id='attrs-86287ea5-1381-4b14-adca-c2c4cecd64e5' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-86287ea5-1381-4b14-adca-c2c4cecd64e5' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-7c4e349f-3f6e-4c68-9c14-2b90341f0dc2' class='xr-var-data-in' type='checkbox'><label for='data-7c4e349f-3f6e-4c68-9c14-2b90341f0dc2' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>reflectivity SNR</dd><dt><span>units :</span></dt><dd>dBZ</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 4.59 GiB </td>
+                        <td> 4.61 MiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (2037350, 605) </td>
+                        <td> (63668, 19) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 1025 Tasks </td>
+                        <td> 1024 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="75" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="25" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="3" x2="25" y2="3" />
+  <line x1="0" y1="11" x2="25" y2="11" />
+  <line x1="0" y1="18" x2="25" y2="18" />
+  <line x1="0" y1="22" x2="25" y2="22" />
+  <line x1="0" y1="30" x2="25" y2="30" />
+  <line x1="0" y1="37" x2="25" y2="37" />
+  <line x1="0" y1="41" x2="25" y2="41" />
+  <line x1="0" y1="48" x2="25" y2="48" />
+  <line x1="0" y1="56" x2="25" y2="56" />
+  <line x1="0" y1="60" x2="25" y2="60" />
+  <line x1="0" y1="67" x2="25" y2="67" />
+  <line x1="0" y1="75" x2="25" y2="75" />
+  <line x1="0" y1="78" x2="25" y2="78" />
+  <line x1="0" y1="86" x2="25" y2="86" />
+  <line x1="0" y1="93" x2="25" y2="93" />
+  <line x1="0" y1="97" x2="25" y2="97" />
+  <line x1="0" y1="105" x2="25" y2="105" />
+  <line x1="0" y1="112" x2="25" y2="112" />
+  <line x1="0" y1="120" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
+  <line x1="0" y1="0" x2="0" y2="120" />
+  <line x1="2" y1="0" x2="2" y2="120" />
+  <line x1="3" y1="0" x2="3" y2="120" />
+  <line x1="4" y1="0" x2="4" y2="120" />
+  <line x1="6" y1="0" x2="6" y2="120" />
+  <line x1="7" y1="0" x2="7" y2="120" />
+  <line x1="8" y1="0" x2="8" y2="120" />
+  <line x1="10" y1="0" x2="10" y2="120" />
+  <line x1="11" y1="0" x2="11" y2="120" />
+  <line x1="12" y1="0" x2="12" y2="120" />
+  <line x1="14" y1="0" x2="14" y2="120" />
+  <line x1="15" y1="0" x2="15" y2="120" />
+  <line x1="16" y1="0" x2="16" y2="120" />
+  <line x1="18" y1="0" x2="18" y2="120" />
+  <line x1="19" y1="0" x2="19" y2="120" />
+  <line x1="20" y1="0" x2="20" y2="120" />
+  <line x1="22" y1="0" x2="22" y2="120" />
+  <line x1="23" y1="0" x2="23" y2="120" />
+  <line x1="25" y1="0" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 25.412616514582485,0.0 25.412616514582485,120.0 0.0,120.0" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="12.706308" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >605</text>
+  <text x="45.412617" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,45.412617,60.000000)">2037350</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>SNRg</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(63668, 19), meta=np.ndarray&gt;</div><input id='attrs-608bbd3c-5758-45ef-9608-65af05e370f0' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-608bbd3c-5758-45ef-9608-65af05e370f0' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b79dd363-b1ac-44e3-8bb2-49f2989469e9' class='xr-var-data-in' type='checkbox'><label for='data-b79dd363-b1ac-44e3-8bb2-49f2989469e9' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>reflectivity SNRg</dd><dt><span>units :</span></dt><dd>dBZ</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 4.59 GiB </td>
+                        <td> 4.61 MiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (2037350, 605) </td>
+                        <td> (63668, 19) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 1025 Tasks </td>
+                        <td> 1024 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="75" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="25" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="3" x2="25" y2="3" />
+  <line x1="0" y1="11" x2="25" y2="11" />
+  <line x1="0" y1="18" x2="25" y2="18" />
+  <line x1="0" y1="22" x2="25" y2="22" />
+  <line x1="0" y1="30" x2="25" y2="30" />
+  <line x1="0" y1="37" x2="25" y2="37" />
+  <line x1="0" y1="41" x2="25" y2="41" />
+  <line x1="0" y1="48" x2="25" y2="48" />
+  <line x1="0" y1="56" x2="25" y2="56" />
+  <line x1="0" y1="60" x2="25" y2="60" />
+  <line x1="0" y1="67" x2="25" y2="67" />
+  <line x1="0" y1="75" x2="25" y2="75" />
+  <line x1="0" y1="78" x2="25" y2="78" />
+  <line x1="0" y1="86" x2="25" y2="86" />
+  <line x1="0" y1="93" x2="25" y2="93" />
+  <line x1="0" y1="97" x2="25" y2="97" />
+  <line x1="0" y1="105" x2="25" y2="105" />
+  <line x1="0" y1="112" x2="25" y2="112" />
+  <line x1="0" y1="120" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
+  <line x1="0" y1="0" x2="0" y2="120" />
+  <line x1="2" y1="0" x2="2" y2="120" />
+  <line x1="3" y1="0" x2="3" y2="120" />
+  <line x1="4" y1="0" x2="4" y2="120" />
+  <line x1="6" y1="0" x2="6" y2="120" />
+  <line x1="7" y1="0" x2="7" y2="120" />
+  <line x1="8" y1="0" x2="8" y2="120" />
+  <line x1="10" y1="0" x2="10" y2="120" />
+  <line x1="11" y1="0" x2="11" y2="120" />
+  <line x1="12" y1="0" x2="12" y2="120" />
+  <line x1="14" y1="0" x2="14" y2="120" />
+  <line x1="15" y1="0" x2="15" y2="120" />
+  <line x1="16" y1="0" x2="16" y2="120" />
+  <line x1="18" y1="0" x2="18" y2="120" />
+  <line x1="19" y1="0" x2="19" y2="120" />
+  <line x1="20" y1="0" x2="20" y2="120" />
+  <line x1="22" y1="0" x2="22" y2="120" />
+  <line x1="23" y1="0" x2="23" y2="120" />
+  <line x1="25" y1="0" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 25.412616514582485,0.0 25.412616514582485,120.0 0.0,120.0" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="12.706308" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >605</text>
+  <text x="45.412617" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,45.412617,60.000000)">2037350</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>SNRplank</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(63668, 19), meta=np.ndarray&gt;</div><input id='attrs-2fc1b827-86e6-4cfe-9e33-caa0de31457b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-2fc1b827-86e6-4cfe-9e33-caa0de31457b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d753f23a-c06e-443c-b177-c87a0062e6f1' class='xr-var-data-in' type='checkbox'><label for='data-d753f23a-c06e-443c-b177-c87a0062e6f1' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>reflectivity SNRplank</dd><dt><span>units :</span></dt><dd>dBZ</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 4.59 GiB </td>
+                        <td> 4.61 MiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (2037350, 605) </td>
+                        <td> (63668, 19) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 1025 Tasks </td>
+                        <td> 1024 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="75" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="25" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="3" x2="25" y2="3" />
+  <line x1="0" y1="11" x2="25" y2="11" />
+  <line x1="0" y1="18" x2="25" y2="18" />
+  <line x1="0" y1="22" x2="25" y2="22" />
+  <line x1="0" y1="30" x2="25" y2="30" />
+  <line x1="0" y1="37" x2="25" y2="37" />
+  <line x1="0" y1="41" x2="25" y2="41" />
+  <line x1="0" y1="48" x2="25" y2="48" />
+  <line x1="0" y1="56" x2="25" y2="56" />
+  <line x1="0" y1="60" x2="25" y2="60" />
+  <line x1="0" y1="67" x2="25" y2="67" />
+  <line x1="0" y1="75" x2="25" y2="75" />
+  <line x1="0" y1="78" x2="25" y2="78" />
+  <line x1="0" y1="86" x2="25" y2="86" />
+  <line x1="0" y1="93" x2="25" y2="93" />
+  <line x1="0" y1="97" x2="25" y2="97" />
+  <line x1="0" y1="105" x2="25" y2="105" />
+  <line x1="0" y1="112" x2="25" y2="112" />
+  <line x1="0" y1="120" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
+  <line x1="0" y1="0" x2="0" y2="120" />
+  <line x1="2" y1="0" x2="2" y2="120" />
+  <line x1="3" y1="0" x2="3" y2="120" />
+  <line x1="4" y1="0" x2="4" y2="120" />
+  <line x1="6" y1="0" x2="6" y2="120" />
+  <line x1="7" y1="0" x2="7" y2="120" />
+  <line x1="8" y1="0" x2="8" y2="120" />
+  <line x1="10" y1="0" x2="10" y2="120" />
+  <line x1="11" y1="0" x2="11" y2="120" />
+  <line x1="12" y1="0" x2="12" y2="120" />
+  <line x1="14" y1="0" x2="14" y2="120" />
+  <line x1="15" y1="0" x2="15" y2="120" />
+  <line x1="16" y1="0" x2="16" y2="120" />
+  <line x1="18" y1="0" x2="18" y2="120" />
+  <line x1="19" y1="0" x2="19" y2="120" />
+  <line x1="20" y1="0" x2="20" y2="120" />
+  <line x1="22" y1="0" x2="22" y2="120" />
+  <line x1="23" y1="0" x2="23" y2="120" />
+  <line x1="25" y1="0" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 25.412616514582485,0.0 25.412616514582485,120.0 0.0,120.0" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="12.706308" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >605</text>
+  <text x="45.412617" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,45.412617,60.000000)">2037350</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>VEL</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(63668, 19), meta=np.ndarray&gt;</div><input id='attrs-41e6a35c-6876-4bc4-b806-52447a7fc1ab' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-41e6a35c-6876-4bc4-b806-52447a7fc1ab' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0d37bbd4-b9f3-4d28-a9b9-b348cb61d684' class='xr-var-data-in' type='checkbox'><label for='data-0d37bbd4-b9f3-4d28-a9b9-b348cb61d684' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>db :</span></dt><dd>0</dd><dt><span>long_name :</span></dt><dd>doppler velocity VEL of all hydrometeors</dd><dt><span>units :</span></dt><dd>m s-1</dd><dt><span>valid_range :</span></dt><dd>[-10.661450386047363, 10.661450386047363]</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 4.59 GiB </td>
+                        <td> 4.61 MiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (2037350, 605) </td>
+                        <td> (63668, 19) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 1025 Tasks </td>
+                        <td> 1024 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="75" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="25" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="3" x2="25" y2="3" />
+  <line x1="0" y1="11" x2="25" y2="11" />
+  <line x1="0" y1="18" x2="25" y2="18" />
+  <line x1="0" y1="22" x2="25" y2="22" />
+  <line x1="0" y1="30" x2="25" y2="30" />
+  <line x1="0" y1="37" x2="25" y2="37" />
+  <line x1="0" y1="41" x2="25" y2="41" />
+  <line x1="0" y1="48" x2="25" y2="48" />
+  <line x1="0" y1="56" x2="25" y2="56" />
+  <line x1="0" y1="60" x2="25" y2="60" />
+  <line x1="0" y1="67" x2="25" y2="67" />
+  <line x1="0" y1="75" x2="25" y2="75" />
+  <line x1="0" y1="78" x2="25" y2="78" />
+  <line x1="0" y1="86" x2="25" y2="86" />
+  <line x1="0" y1="93" x2="25" y2="93" />
+  <line x1="0" y1="97" x2="25" y2="97" />
+  <line x1="0" y1="105" x2="25" y2="105" />
+  <line x1="0" y1="112" x2="25" y2="112" />
+  <line x1="0" y1="120" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
+  <line x1="0" y1="0" x2="0" y2="120" />
+  <line x1="2" y1="0" x2="2" y2="120" />
+  <line x1="3" y1="0" x2="3" y2="120" />
+  <line x1="4" y1="0" x2="4" y2="120" />
+  <line x1="6" y1="0" x2="6" y2="120" />
+  <line x1="7" y1="0" x2="7" y2="120" />
+  <line x1="8" y1="0" x2="8" y2="120" />
+  <line x1="10" y1="0" x2="10" y2="120" />
+  <line x1="11" y1="0" x2="11" y2="120" />
+  <line x1="12" y1="0" x2="12" y2="120" />
+  <line x1="14" y1="0" x2="14" y2="120" />
+  <line x1="15" y1="0" x2="15" y2="120" />
+  <line x1="16" y1="0" x2="16" y2="120" />
+  <line x1="18" y1="0" x2="18" y2="120" />
+  <line x1="19" y1="0" x2="19" y2="120" />
+  <line x1="20" y1="0" x2="20" y2="120" />
+  <line x1="22" y1="0" x2="22" y2="120" />
+  <line x1="23" y1="0" x2="23" y2="120" />
+  <line x1="25" y1="0" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 25.412616514582485,0.0 25.412616514582485,120.0 0.0,120.0" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="12.706308" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >605</text>
+  <text x="45.412617" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,45.412617,60.000000)">2037350</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>VELg</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(63668, 19), meta=np.ndarray&gt;</div><input id='attrs-471d9439-782b-4862-b0a7-f49d2dd98053' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-471d9439-782b-4862-b0a7-f49d2dd98053' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-609ae25d-2670-41a1-a6ff-ca7d3436bdfa' class='xr-var-data-in' type='checkbox'><label for='data-609ae25d-2670-41a1-a6ff-ca7d3436bdfa' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>db :</span></dt><dd>0</dd><dt><span>long_name :</span></dt><dd>doppler velocity VEL of all targets (global)</dd><dt><span>units :</span></dt><dd>m s-1</dd><dt><span>valid_range :</span></dt><dd>[-10.661450386047363, 10.661450386047363]</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 4.59 GiB </td>
+                        <td> 4.61 MiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (2037350, 605) </td>
+                        <td> (63668, 19) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 1025 Tasks </td>
+                        <td> 1024 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="75" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="25" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="3" x2="25" y2="3" />
+  <line x1="0" y1="11" x2="25" y2="11" />
+  <line x1="0" y1="18" x2="25" y2="18" />
+  <line x1="0" y1="22" x2="25" y2="22" />
+  <line x1="0" y1="30" x2="25" y2="30" />
+  <line x1="0" y1="37" x2="25" y2="37" />
+  <line x1="0" y1="41" x2="25" y2="41" />
+  <line x1="0" y1="48" x2="25" y2="48" />
+  <line x1="0" y1="56" x2="25" y2="56" />
+  <line x1="0" y1="60" x2="25" y2="60" />
+  <line x1="0" y1="67" x2="25" y2="67" />
+  <line x1="0" y1="75" x2="25" y2="75" />
+  <line x1="0" y1="78" x2="25" y2="78" />
+  <line x1="0" y1="86" x2="25" y2="86" />
+  <line x1="0" y1="93" x2="25" y2="93" />
+  <line x1="0" y1="97" x2="25" y2="97" />
+  <line x1="0" y1="105" x2="25" y2="105" />
+  <line x1="0" y1="112" x2="25" y2="112" />
+  <line x1="0" y1="120" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
+  <line x1="0" y1="0" x2="0" y2="120" />
+  <line x1="2" y1="0" x2="2" y2="120" />
+  <line x1="3" y1="0" x2="3" y2="120" />
+  <line x1="4" y1="0" x2="4" y2="120" />
+  <line x1="6" y1="0" x2="6" y2="120" />
+  <line x1="7" y1="0" x2="7" y2="120" />
+  <line x1="8" y1="0" x2="8" y2="120" />
+  <line x1="10" y1="0" x2="10" y2="120" />
+  <line x1="11" y1="0" x2="11" y2="120" />
+  <line x1="12" y1="0" x2="12" y2="120" />
+  <line x1="14" y1="0" x2="14" y2="120" />
+  <line x1="15" y1="0" x2="15" y2="120" />
+  <line x1="16" y1="0" x2="16" y2="120" />
+  <line x1="18" y1="0" x2="18" y2="120" />
+  <line x1="19" y1="0" x2="19" y2="120" />
+  <line x1="20" y1="0" x2="20" y2="120" />
+  <line x1="22" y1="0" x2="22" y2="120" />
+  <line x1="23" y1="0" x2="23" y2="120" />
+  <line x1="25" y1="0" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 25.412616514582485,0.0 25.412616514582485,120.0 0.0,120.0" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="12.706308" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >605</text>
+  <text x="45.412617" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,45.412617,60.000000)">2037350</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>Ze</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(63668, 19), meta=np.ndarray&gt;</div><input id='attrs-b606680f-58e2-4219-a88a-b5964674167e' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-b606680f-58e2-4219-a88a-b5964674167e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-81bb997f-6dd1-43dd-acad-04b12b9b8b77' class='xr-var-data-in' type='checkbox'><label for='data-81bb997f-6dd1-43dd-acad-04b12b9b8b77' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>equivalent radar reflectivity of all hydrometeors</dd><dt><span>units :</span></dt><dd>dBZ</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 4.59 GiB </td>
+                        <td> 4.61 MiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (2037350, 605) </td>
+                        <td> (63668, 19) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 1025 Tasks </td>
+                        <td> 1024 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="75" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="25" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="3" x2="25" y2="3" />
+  <line x1="0" y1="11" x2="25" y2="11" />
+  <line x1="0" y1="18" x2="25" y2="18" />
+  <line x1="0" y1="22" x2="25" y2="22" />
+  <line x1="0" y1="30" x2="25" y2="30" />
+  <line x1="0" y1="37" x2="25" y2="37" />
+  <line x1="0" y1="41" x2="25" y2="41" />
+  <line x1="0" y1="48" x2="25" y2="48" />
+  <line x1="0" y1="56" x2="25" y2="56" />
+  <line x1="0" y1="60" x2="25" y2="60" />
+  <line x1="0" y1="67" x2="25" y2="67" />
+  <line x1="0" y1="75" x2="25" y2="75" />
+  <line x1="0" y1="78" x2="25" y2="78" />
+  <line x1="0" y1="86" x2="25" y2="86" />
+  <line x1="0" y1="93" x2="25" y2="93" />
+  <line x1="0" y1="97" x2="25" y2="97" />
+  <line x1="0" y1="105" x2="25" y2="105" />
+  <line x1="0" y1="112" x2="25" y2="112" />
+  <line x1="0" y1="120" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
+  <line x1="0" y1="0" x2="0" y2="120" />
+  <line x1="2" y1="0" x2="2" y2="120" />
+  <line x1="3" y1="0" x2="3" y2="120" />
+  <line x1="4" y1="0" x2="4" y2="120" />
+  <line x1="6" y1="0" x2="6" y2="120" />
+  <line x1="7" y1="0" x2="7" y2="120" />
+  <line x1="8" y1="0" x2="8" y2="120" />
+  <line x1="10" y1="0" x2="10" y2="120" />
+  <line x1="11" y1="0" x2="11" y2="120" />
+  <line x1="12" y1="0" x2="12" y2="120" />
+  <line x1="14" y1="0" x2="14" y2="120" />
+  <line x1="15" y1="0" x2="15" y2="120" />
+  <line x1="16" y1="0" x2="16" y2="120" />
+  <line x1="18" y1="0" x2="18" y2="120" />
+  <line x1="19" y1="0" x2="19" y2="120" />
+  <line x1="20" y1="0" x2="20" y2="120" />
+  <line x1="22" y1="0" x2="22" y2="120" />
+  <line x1="23" y1="0" x2="23" y2="120" />
+  <line x1="25" y1="0" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 25.412616514582485,0.0 25.412616514582485,120.0 0.0,120.0" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="12.706308" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >605</text>
+  <text x="45.412617" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,45.412617,60.000000)">2037350</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>Zf</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(63668, 19), meta=np.ndarray&gt;</div><input id='attrs-a1317e4d-501c-41c8-a12b-fea6b34954ee' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-a1317e4d-501c-41c8-a12b-fea6b34954ee' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-814005e5-533f-4aa5-929a-daa79424d770' class='xr-var-data-in' type='checkbox'><label for='data-814005e5-533f-4aa5-929a-daa79424d770' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>applied_thresholds :</span></dt><dd>dBZ &lt; -35 and VELg &lt; -2.0 or VELg &gt; 0.5 between 1000m and 8000m</dd><dt><span>details :</span></dt><dd>artifacts (rabbit-ears), caused by side lobes, are removed</dd><dt><span>long_name :</span></dt><dd>rabbit-ear filtered radar reflectivity of all hydrometeors</dd><dt><span>standard_name :</span></dt><dd>equivalent_reflectivity_factor</dd><dt><span>units :</span></dt><dd>dBZ</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 4.59 GiB </td>
+                        <td> 4.61 MiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (2037350, 605) </td>
+                        <td> (63668, 19) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 1025 Tasks </td>
+                        <td> 1024 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="75" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="25" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="3" x2="25" y2="3" />
+  <line x1="0" y1="11" x2="25" y2="11" />
+  <line x1="0" y1="18" x2="25" y2="18" />
+  <line x1="0" y1="22" x2="25" y2="22" />
+  <line x1="0" y1="30" x2="25" y2="30" />
+  <line x1="0" y1="37" x2="25" y2="37" />
+  <line x1="0" y1="41" x2="25" y2="41" />
+  <line x1="0" y1="48" x2="25" y2="48" />
+  <line x1="0" y1="56" x2="25" y2="56" />
+  <line x1="0" y1="60" x2="25" y2="60" />
+  <line x1="0" y1="67" x2="25" y2="67" />
+  <line x1="0" y1="75" x2="25" y2="75" />
+  <line x1="0" y1="78" x2="25" y2="78" />
+  <line x1="0" y1="86" x2="25" y2="86" />
+  <line x1="0" y1="93" x2="25" y2="93" />
+  <line x1="0" y1="97" x2="25" y2="97" />
+  <line x1="0" y1="105" x2="25" y2="105" />
+  <line x1="0" y1="112" x2="25" y2="112" />
+  <line x1="0" y1="120" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
+  <line x1="0" y1="0" x2="0" y2="120" />
+  <line x1="2" y1="0" x2="2" y2="120" />
+  <line x1="3" y1="0" x2="3" y2="120" />
+  <line x1="4" y1="0" x2="4" y2="120" />
+  <line x1="6" y1="0" x2="6" y2="120" />
+  <line x1="7" y1="0" x2="7" y2="120" />
+  <line x1="8" y1="0" x2="8" y2="120" />
+  <line x1="10" y1="0" x2="10" y2="120" />
+  <line x1="11" y1="0" x2="11" y2="120" />
+  <line x1="12" y1="0" x2="12" y2="120" />
+  <line x1="14" y1="0" x2="14" y2="120" />
+  <line x1="15" y1="0" x2="15" y2="120" />
+  <line x1="16" y1="0" x2="16" y2="120" />
+  <line x1="18" y1="0" x2="18" y2="120" />
+  <line x1="19" y1="0" x2="19" y2="120" />
+  <line x1="20" y1="0" x2="20" y2="120" />
+  <line x1="22" y1="0" x2="22" y2="120" />
+  <line x1="23" y1="0" x2="23" y2="120" />
+  <line x1="25" y1="0" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 25.412616514582485,0.0 25.412616514582485,120.0 0.0,120.0" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="12.706308" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >605</text>
+  <text x="45.412617" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,45.412617,60.000000)">2037350</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>Zg</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(63668, 19), meta=np.ndarray&gt;</div><input id='attrs-c6bb7906-9c7b-4618-95c3-dbd31ac5614b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c6bb7906-9c7b-4618-95c3-dbd31ac5614b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-6455159b-9d43-4fe8-8c7c-6b126d0a73b4' class='xr-var-data-in' type='checkbox'><label for='data-6455159b-9d43-4fe8-8c7c-6b126d0a73b4' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>equivalent radar reflectivity of all targets (global)</dd><dt><span>units :</span></dt><dd>dBZ</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 4.59 GiB </td>
+                        <td> 4.61 MiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (2037350, 605) </td>
+                        <td> (63668, 19) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 1025 Tasks </td>
+                        <td> 1024 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="75" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="25" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="3" x2="25" y2="3" />
+  <line x1="0" y1="11" x2="25" y2="11" />
+  <line x1="0" y1="18" x2="25" y2="18" />
+  <line x1="0" y1="22" x2="25" y2="22" />
+  <line x1="0" y1="30" x2="25" y2="30" />
+  <line x1="0" y1="37" x2="25" y2="37" />
+  <line x1="0" y1="41" x2="25" y2="41" />
+  <line x1="0" y1="48" x2="25" y2="48" />
+  <line x1="0" y1="56" x2="25" y2="56" />
+  <line x1="0" y1="60" x2="25" y2="60" />
+  <line x1="0" y1="67" x2="25" y2="67" />
+  <line x1="0" y1="75" x2="25" y2="75" />
+  <line x1="0" y1="78" x2="25" y2="78" />
+  <line x1="0" y1="86" x2="25" y2="86" />
+  <line x1="0" y1="93" x2="25" y2="93" />
+  <line x1="0" y1="97" x2="25" y2="97" />
+  <line x1="0" y1="105" x2="25" y2="105" />
+  <line x1="0" y1="112" x2="25" y2="112" />
+  <line x1="0" y1="120" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
+  <line x1="0" y1="0" x2="0" y2="120" />
+  <line x1="2" y1="0" x2="2" y2="120" />
+  <line x1="3" y1="0" x2="3" y2="120" />
+  <line x1="4" y1="0" x2="4" y2="120" />
+  <line x1="6" y1="0" x2="6" y2="120" />
+  <line x1="7" y1="0" x2="7" y2="120" />
+  <line x1="8" y1="0" x2="8" y2="120" />
+  <line x1="10" y1="0" x2="10" y2="120" />
+  <line x1="11" y1="0" x2="11" y2="120" />
+  <line x1="12" y1="0" x2="12" y2="120" />
+  <line x1="14" y1="0" x2="14" y2="120" />
+  <line x1="15" y1="0" x2="15" y2="120" />
+  <line x1="16" y1="0" x2="16" y2="120" />
+  <line x1="18" y1="0" x2="18" y2="120" />
+  <line x1="19" y1="0" x2="19" y2="120" />
+  <line x1="20" y1="0" x2="20" y2="120" />
+  <line x1="22" y1="0" x2="22" y2="120" />
+  <line x1="23" y1="0" x2="23" y2="120" />
+  <line x1="25" y1="0" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 25.412616514582485,0.0 25.412616514582485,120.0 0.0,120.0" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="12.706308" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >605</text>
+  <text x="45.412617" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,45.412617,60.000000)">2037350</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>latitude</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(63668,), meta=np.ndarray&gt;</div><input id='attrs-79dbfe06-ee53-4e06-9c32-bc48f3449298' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-79dbfe06-ee53-4e06-9c32-bc48f3449298' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-23110a21-7c91-4076-89c9-4038f8f439e7' class='xr-var-data-in' type='checkbox'><label for='data-23110a21-7c91-4076-89c9-4038f8f439e7' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>north latitude</dd><dt><span>units :</span></dt><dd>degree_north</dd><dt><span>valid_max :</span></dt><dd>90.0</dd><dt><span>valid_min :</span></dt><dd>-90.0</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 15.54 MiB </td>
+                        <td> 497.41 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (2037350,) </td>
+                        <td> (63668,) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 33 Tasks </td>
+                        <td> 32 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float64 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
+  <line x1="3" y1="0" x2="3" y2="25" />
+  <line x1="11" y1="0" x2="11" y2="25" />
+  <line x1="18" y1="0" x2="18" y2="25" />
+  <line x1="22" y1="0" x2="22" y2="25" />
+  <line x1="30" y1="0" x2="30" y2="25" />
+  <line x1="37" y1="0" x2="37" y2="25" />
+  <line x1="41" y1="0" x2="41" y2="25" />
+  <line x1="48" y1="0" x2="48" y2="25" />
+  <line x1="56" y1="0" x2="56" y2="25" />
+  <line x1="60" y1="0" x2="60" y2="25" />
+  <line x1="67" y1="0" x2="67" y2="25" />
+  <line x1="75" y1="0" x2="75" y2="25" />
+  <line x1="78" y1="0" x2="78" y2="25" />
+  <line x1="86" y1="0" x2="86" y2="25" />
+  <line x1="93" y1="0" x2="93" y2="25" />
+  <line x1="97" y1="0" x2="97" y2="25" />
+  <line x1="105" y1="0" x2="105" y2="25" />
+  <line x1="112" y1="0" x2="112" y2="25" />
+  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >2037350</text>
+  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>longitude</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(63668,), meta=np.ndarray&gt;</div><input id='attrs-94f509c1-29d0-491a-85de-efa6dc04527b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-94f509c1-29d0-491a-85de-efa6dc04527b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-df22123f-438d-4de4-8730-539c92006f74' class='xr-var-data-in' type='checkbox'><label for='data-df22123f-438d-4de4-8730-539c92006f74' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>east longitude</dd><dt><span>units :</span></dt><dd>degree_east</dd><dt><span>valid_max :</span></dt><dd>180.0</dd><dt><span>valid_min :</span></dt><dd>-180.0</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 15.54 MiB </td>
+                        <td> 497.41 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (2037350,) </td>
+                        <td> (63668,) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 33 Tasks </td>
+                        <td> 32 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float64 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
+  <line x1="3" y1="0" x2="3" y2="25" />
+  <line x1="11" y1="0" x2="11" y2="25" />
+  <line x1="18" y1="0" x2="18" y2="25" />
+  <line x1="22" y1="0" x2="22" y2="25" />
+  <line x1="30" y1="0" x2="30" y2="25" />
+  <line x1="37" y1="0" x2="37" y2="25" />
+  <line x1="41" y1="0" x2="41" y2="25" />
+  <line x1="48" y1="0" x2="48" y2="25" />
+  <line x1="56" y1="0" x2="56" y2="25" />
+  <line x1="60" y1="0" x2="60" y2="25" />
+  <line x1="67" y1="0" x2="67" y2="25" />
+  <line x1="75" y1="0" x2="75" y2="25" />
+  <line x1="78" y1="0" x2="78" y2="25" />
+  <line x1="86" y1="0" x2="86" y2="25" />
+  <line x1="93" y1="0" x2="93" y2="25" />
+  <line x1="97" y1="0" x2="97" y2="25" />
+  <line x1="105" y1="0" x2="105" y2="25" />
+  <line x1="112" y1="0" x2="112" y2="25" />
+  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >2037350</text>
+  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>mask</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>int8</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(63668, 38), meta=np.ndarray&gt;</div><input id='attrs-0ee219b3-b0ea-4805-b150-2ad9714736b1' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-0ee219b3-b0ea-4805-b150-2ad9714736b1' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-74e5f162-3c4b-4ca9-9c66-cc12717a31c4' class='xr-var-data-in' type='checkbox'><label for='data-74e5f162-3c4b-4ca9-9c66-cc12717a31c4' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>flag_meanings :</span></dt><dd>rabbit_ear_retrieval no_rabbit_ear_retrieval</dd><dt><span>flag_values :</span></dt><dd>False True</dd><dt><span>long_name :</span></dt><dd>rabbit ear mask</dd><dt><span>units :</span></dt><dd>1</dd><dt><span>usage :</span></dt><dd>multiply radar products with this mask to reduce false signals by rabbit-ear retrievals</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 1.15 GiB </td>
+                        <td> 2.31 MiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (2037350, 605) </td>
+                        <td> (63668, 38) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 513 Tasks </td>
+                        <td> 512 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> int8 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="75" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="25" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="3" x2="25" y2="3" />
+  <line x1="0" y1="11" x2="25" y2="11" />
+  <line x1="0" y1="18" x2="25" y2="18" />
+  <line x1="0" y1="22" x2="25" y2="22" />
+  <line x1="0" y1="30" x2="25" y2="30" />
+  <line x1="0" y1="37" x2="25" y2="37" />
+  <line x1="0" y1="41" x2="25" y2="41" />
+  <line x1="0" y1="48" x2="25" y2="48" />
+  <line x1="0" y1="56" x2="25" y2="56" />
+  <line x1="0" y1="60" x2="25" y2="60" />
+  <line x1="0" y1="67" x2="25" y2="67" />
+  <line x1="0" y1="75" x2="25" y2="75" />
+  <line x1="0" y1="78" x2="25" y2="78" />
+  <line x1="0" y1="86" x2="25" y2="86" />
+  <line x1="0" y1="93" x2="25" y2="93" />
+  <line x1="0" y1="97" x2="25" y2="97" />
+  <line x1="0" y1="105" x2="25" y2="105" />
+  <line x1="0" y1="112" x2="25" y2="112" />
+  <line x1="0" y1="120" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
+  <line x1="1" y1="0" x2="1" y2="120" />
+  <line x1="3" y1="0" x2="3" y2="120" />
+  <line x1="4" y1="0" x2="4" y2="120" />
+  <line x1="6" y1="0" x2="6" y2="120" />
+  <line x1="7" y1="0" x2="7" y2="120" />
+  <line x1="9" y1="0" x2="9" y2="120" />
+  <line x1="11" y1="0" x2="11" y2="120" />
+  <line x1="12" y1="0" x2="12" y2="120" />
+  <line x1="14" y1="0" x2="14" y2="120" />
+  <line x1="15" y1="0" x2="15" y2="120" />
+  <line x1="17" y1="0" x2="17" y2="120" />
+  <line x1="19" y1="0" x2="19" y2="120" />
+  <line x1="20" y1="0" x2="20" y2="120" />
+  <line x1="22" y1="0" x2="22" y2="120" />
+  <line x1="23" y1="0" x2="23" y2="120" />
+  <line x1="25" y1="0" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 25.412616514582485,0.0 25.412616514582485,120.0 0.0,120.0" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="12.706308" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >605</text>
+  <text x="45.412617" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,45.412617,60.000000)">2037350</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>northangle</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(127335,), meta=np.ndarray&gt;</div><input id='attrs-1a9f8c8b-6f0a-4f20-8e76-591add5fc906' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-1a9f8c8b-6f0a-4f20-8e76-591add5fc906' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-5bc068e8-b45f-4b63-8b06-072e49f27aa8' class='xr-var-data-in' type='checkbox'><label for='data-5bc068e8-b45f-4b63-8b06-072e49f27aa8' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>north angle</dd><dt><span>units :</span></dt><dd>degree</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 7.77 MiB </td>
+                        <td> 497.40 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (2037350,) </td>
+                        <td> (127335,) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 17 Tasks </td>
+                        <td> 16 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
+  <line x1="7" y1="0" x2="7" y2="25" />
+  <line x1="15" y1="0" x2="15" y2="25" />
+  <line x1="22" y1="0" x2="22" y2="25" />
+  <line x1="30" y1="0" x2="30" y2="25" />
+  <line x1="37" y1="0" x2="37" y2="25" />
+  <line x1="45" y1="0" x2="45" y2="25" />
+  <line x1="52" y1="0" x2="52" y2="25" />
+  <line x1="60" y1="0" x2="60" y2="25" />
+  <line x1="67" y1="0" x2="67" y2="25" />
+  <line x1="75" y1="0" x2="75" y2="25" />
+  <line x1="82" y1="0" x2="82" y2="25" />
+  <line x1="90" y1="0" x2="90" y2="25" />
+  <line x1="97" y1="0" x2="97" y2="25" />
+  <line x1="105" y1="0" x2="105" y2="25" />
+  <line x1="112" y1="0" x2="112" y2="25" />
+  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >2037350</text>
+  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>status</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(127335,), meta=np.ndarray&gt;</div><input id='attrs-cd620627-3c4f-497e-87d7-c4a2b98609f1' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-cd620627-3c4f-497e-87d7-c4a2b98609f1' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b599fcdc-e908-474d-96a6-84546d8eb00f' class='xr-var-data-in' type='checkbox'><label for='data-b599fcdc-e908-474d-96a6-84546d8eb00f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>flag_meanings :</span></dt><dd>radar_off radar_on</dd><dt><span>flag_values :</span></dt><dd>0 1</dd><dt><span>long_name :</span></dt><dd>radar power flag</dd><dt><span>units :</span></dt><dd>1</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 7.77 MiB </td>
+                        <td> 497.40 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (2037350,) </td>
+                        <td> (127335,) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 17 Tasks </td>
+                        <td> 16 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
+  <line x1="7" y1="0" x2="7" y2="25" />
+  <line x1="15" y1="0" x2="15" y2="25" />
+  <line x1="22" y1="0" x2="22" y2="25" />
+  <line x1="30" y1="0" x2="30" y2="25" />
+  <line x1="37" y1="0" x2="37" y2="25" />
+  <line x1="45" y1="0" x2="45" y2="25" />
+  <line x1="52" y1="0" x2="52" y2="25" />
+  <line x1="60" y1="0" x2="60" y2="25" />
+  <line x1="67" y1="0" x2="67" y2="25" />
+  <line x1="75" y1="0" x2="75" y2="25" />
+  <line x1="82" y1="0" x2="82" y2="25" />
+  <line x1="90" y1="0" x2="90" y2="25" />
+  <line x1="97" y1="0" x2="97" y2="25" />
+  <line x1="105" y1="0" x2="105" y2="25" />
+  <line x1="112" y1="0" x2="112" y2="25" />
+  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >2037350</text>
+  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>tpow</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(127335,), meta=np.ndarray&gt;</div><input id='attrs-9cd9f5df-2c31-40e8-84d1-f66176969a7a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-9cd9f5df-2c31-40e8-84d1-f66176969a7a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-2d29bfed-5fd2-4f84-9239-f266eb9e38f1' class='xr-var-data-in' type='checkbox'><label for='data-2d29bfed-5fd2-4f84-9239-f266eb9e38f1' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>average transmit power</dd><dt><span>units :</span></dt><dd>W</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 7.77 MiB </td>
+                        <td> 497.40 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (2037350,) </td>
+                        <td> (127335,) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 17 Tasks </td>
+                        <td> 16 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
+  <line x1="7" y1="0" x2="7" y2="25" />
+  <line x1="15" y1="0" x2="15" y2="25" />
+  <line x1="22" y1="0" x2="22" y2="25" />
+  <line x1="30" y1="0" x2="30" y2="25" />
+  <line x1="37" y1="0" x2="37" y2="25" />
+  <line x1="45" y1="0" x2="45" y2="25" />
+  <line x1="52" y1="0" x2="52" y2="25" />
+  <line x1="60" y1="0" x2="60" y2="25" />
+  <line x1="67" y1="0" x2="67" y2="25" />
+  <line x1="75" y1="0" x2="75" y2="25" />
+  <line x1="82" y1="0" x2="82" y2="25" />
+  <line x1="90" y1="0" x2="90" y2="25" />
+  <line x1="97" y1="0" x2="97" y2="25" />
+  <line x1="105" y1="0" x2="105" y2="25" />
+  <line x1="112" y1="0" x2="112" y2="25" />
+  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >2037350</text>
+  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>zenith</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(127335,), meta=np.ndarray&gt;</div><input id='attrs-676ee7d0-befa-47e6-881e-10af8311c511' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-676ee7d0-befa-47e6-881e-10af8311c511' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-63d922d0-ad78-4c5d-8aa0-1aa7265fb34b' class='xr-var-data-in' type='checkbox'><label for='data-63d922d0-ad78-4c5d-8aa0-1aa7265fb34b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>zenith angle</dd><dt><span>standard_name :</span></dt><dd>sensor_zenith_angle</dd><dt><span>units :</span></dt><dd>degree</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 7.77 MiB </td>
+                        <td> 497.40 kiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (2037350,) </td>
+                        <td> (127335,) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 17 Tasks </td>
+                        <td> 16 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
+  <line x1="7" y1="0" x2="7" y2="25" />
+  <line x1="15" y1="0" x2="15" y2="25" />
+  <line x1="22" y1="0" x2="22" y2="25" />
+  <line x1="30" y1="0" x2="30" y2="25" />
+  <line x1="37" y1="0" x2="37" y2="25" />
+  <line x1="45" y1="0" x2="45" y2="25" />
+  <line x1="52" y1="0" x2="52" y2="25" />
+  <line x1="60" y1="0" x2="60" y2="25" />
+  <line x1="67" y1="0" x2="67" y2="25" />
+  <line x1="75" y1="0" x2="75" y2="25" />
+  <line x1="82" y1="0" x2="82" y2="25" />
+  <line x1="90" y1="0" x2="90" y2="25" />
+  <line x1="97" y1="0" x2="97" y2="25" />
+  <line x1="105" y1="0" x2="105" y2="25" />
+  <line x1="112" y1="0" x2="112" y2="25" />
+  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >2037350</text>
+  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-4420c21e-f3e2-4d50-9755-6619e3ac9caf' class='xr-section-summary-in' type='checkbox'  ><label for='section-4420c21e-f3e2-4d50-9755-6619e3ac9caf' class='xr-section-summary' >Attributes: <span>(16)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>Altitude :</span></dt><dd>11 m</dd><dt><span>Conventions :</span></dt><dd>CF-1.7</dd><dt><span>DOI :</span></dt><dd>10.25326/55</dd><dt><span>contact_person :</span></dt><dd>Lutz Hirsch (lutz.hirsch@mpimet.mpg.de)</dd><dt><span>created_with :</span></dt><dd>mmclx_to_netcdf_OOP.py with its last modification on Sat Nov 16 01:59:42 2019</dd><dt><span>creation_date :</span></dt><dd>Sun Mar  1 07:21:58 2020</dd><dt><span>history :</span></dt><dd>Concatenated dataset of daily converted source files</dd><dt><span>institution :</span></dt><dd>Max Planck Institute for Meteorology, Hamburg</dd><dt><span>instrument :</span></dt><dd>MBR2 cloud radar</dd><dt><span>location :</span></dt><dd>The Barbados Cloud Observatory, Deebles Point, Barbados, West Indies</dd><dt><span>python_version :</span></dt><dd>3.6.9 |Anaconda, Inc.| (default, Jul 30 2019, 19:07:31) 
+[GCC 7.3.0] (with numpy version :1.15.4)</dd><dt><span>reference :</span></dt><dd>Ka Band Cloud Radar MIRA-3x, METEK GmbH www.metek.de</dd><dt><span>source :</span></dt><dd>/pool/OBS/BARBADOS_CLOUD_OBSERVATORY/Level_1/B_Reflectivity/Ka-Band/MBR2/2s/20200[12]/MMCR__MBR2__Spectral_Moments__2s__155m-18km__200[12]*.nc</dd><dt><span>system :</span></dt><dd>MIRA36</dd><dt><span>title :</span></dt><dd>MIRA-3x Cloud Radar Data</dd><dt><span>version :</span></dt><dd>1.1.1-434-g3e3deca</dd></dl></div></li></ul></div></div></div></div>
 </div>
 </div>
 <div class="section" id="plot-some-radar-quantities">
