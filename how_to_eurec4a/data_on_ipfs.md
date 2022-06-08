@@ -253,7 +253,7 @@ This is the purpose of `ipfsspec`, which we'll have to install in addition to yo
 
 ```
 pip install ipfsspec
-``` 
+```
 
 Afterwards, we can use links of the form `ipfs://<CID>` or `ipfs://<CID>/some/path/within/the/content` wherever `fsspec` is used to access files.
 In particular, it is possible to open intake catalogs and zarr datasets from those references, which is exactly what happens behind the scenes when opening the EUREC4A intake catalog using `use_ipfs`:

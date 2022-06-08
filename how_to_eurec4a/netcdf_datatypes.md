@@ -58,14 +58,17 @@ However, those models are also loosely tied to their backend storage formats and
 
 In order to put the high level idea from above into a data structure which can be stored on disk, netCDF defines two low level data models where the [Classic](https://www.unidata.ucar.edu/software/netcdf/docs/netcdf_data_model.html#classic_model) data model came first and the [Enhanced](https://www.unidata.ucar.edu/software/netcdf/docs/netcdf_data_model.html#enhanced_model) data model evolved from it.
 Both models care about _variables_, _dimensions_ and _attributes_ as introduced above.
-```{panels}
+````{grid} 2
+```{grid-item-card}
 The **classic** model knows about `CHAR`, `BYTE`, `SHORT`, `INT`, `FLOAT` and `DOUBLE` data types which are all **signed**.
 There may be at most one unlimited (i.e. resizeable) dimension per variable.
----
+```
+```{grid-item-card}
 The **enhanced** model is based on the classic model and adds `INT64` and `STRING` to the mix as well as **unsigned** variants of all integral types.
 Further additions of the enhanced model are groups (which are like a dataset within a dataset) and user defined types.
 There may be any number of unlimited dimensions per variable.
 ```
+````
 
 Those two data models are closely tied to the netCDF3 and netCDF4 storage formats.
 * netCDF3 is based on the _classic_ data model and defines a storage format which is custom to netCDF.
@@ -162,9 +165,10 @@ In each case the test follows the same steps:
 
 ### Results
 
-`````{admonition} BYTE
+``````{admonition} BYTE
 :class: dropdown, error
-````{tabbed} + numbers
+`````{tab-set}
+````{tab-item} + numbers
 original dataset:
 ```
 $ ncdump test_NC_BYTE.nc
@@ -213,8 +217,7 @@ data:
 
 ✅
 ````
-
-````{tabbed} +/- numbers
+````{tab-item} +/- numbers
 original dataset:
 ```
 $ ncdump test_NC_BYTE_neg.nc
@@ -264,8 +267,7 @@ data:
 data type of attribute `valid_range` of variable `test` differs
 ```
 ````
-
-````{tabbed} + flags
+````{tab-item} + flags
 original dataset:
 ```
 $ ncdump test_NC_BYTE_flag.nc
@@ -314,8 +316,7 @@ data:
 
 ✅
 ````
-
-````{tabbed} +/- flags
+````{tab-item} +/- flags
 original dataset:
 ```
 $ ncdump test_NC_BYTE_flag_neg.nc
@@ -365,11 +366,12 @@ data:
 data type of attribute `flag_values` of variable `test` differs
 ```
 ````
-
 `````
-`````{admonition} UBYTE
+``````
+``````{admonition} UBYTE
 :class: dropdown, error
-````{tabbed} + numbers
+`````{tab-set}
+````{tab-item} + numbers
 original dataset:
 ```
 $ ncdump test_NC_UBYTE.nc
@@ -419,8 +421,7 @@ data:
 values of variable `test` are not equal
 ```
 ````
-
-````{tabbed} + flags
+````{tab-item} + flags
 original dataset:
 ```
 $ ncdump test_NC_UBYTE_flag.nc
@@ -462,11 +463,12 @@ $ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/ne
 [Errno -45] NetCDF: Not a valid data type or _FillValue type mismatch: b'https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UBYTE_flag.nc'
 ```
 ````
-
 `````
-`````{admonition} SHORT
+``````
+``````{admonition} SHORT
 :class: dropdown
-````{tabbed} + numbers
+`````{tab-set}
+````{tab-item} + numbers
 original dataset:
 ```
 $ ncdump test_NC_SHORT.nc
@@ -513,8 +515,7 @@ data:
 
 ✅
 ````
-
-````{tabbed} +/- numbers
+````{tab-item} +/- numbers
 original dataset:
 ```
 $ ncdump test_NC_SHORT_neg.nc
@@ -561,8 +562,7 @@ data:
 
 ✅
 ````
-
-````{tabbed} + flags
+````{tab-item} + flags
 original dataset:
 ```
 $ ncdump test_NC_SHORT_flag.nc
@@ -609,8 +609,7 @@ data:
 
 ✅
 ````
-
-````{tabbed} +/- flags
+````{tab-item} +/- flags
 original dataset:
 ```
 $ ncdump test_NC_SHORT_flag_neg.nc
@@ -657,11 +656,12 @@ data:
 
 ✅
 ````
-
 `````
-`````{admonition} USHORT
+``````
+``````{admonition} USHORT
 :class: dropdown, error
-````{tabbed} + numbers
+`````{tab-set}
+````{tab-item} + numbers
 original dataset:
 ```
 $ ncdump test_NC_USHORT.nc
@@ -702,8 +702,7 @@ $ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/ne
 [Errno -45] NetCDF: Not a valid data type or _FillValue type mismatch: b'https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_USHORT.nc'
 ```
 ````
-
-````{tabbed} + flags
+````{tab-item} + flags
 original dataset:
 ```
 $ ncdump test_NC_USHORT_flag.nc
@@ -745,11 +744,12 @@ $ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/ne
 [Errno -45] NetCDF: Not a valid data type or _FillValue type mismatch: b'https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_USHORT_flag.nc'
 ```
 ````
-
 `````
-`````{admonition} INT
+``````
+``````{admonition} INT
 :class: dropdown
-````{tabbed} + numbers
+`````{tab-set}
+````{tab-item} + numbers
 original dataset:
 ```
 $ ncdump test_NC_INT.nc
@@ -796,8 +796,7 @@ data:
 
 ✅
 ````
-
-````{tabbed} +/- numbers
+````{tab-item} +/- numbers
 original dataset:
 ```
 $ ncdump test_NC_INT_neg.nc
@@ -844,8 +843,7 @@ data:
 
 ✅
 ````
-
-````{tabbed} + flags
+````{tab-item} + flags
 original dataset:
 ```
 $ ncdump test_NC_INT_flag.nc
@@ -892,8 +890,7 @@ data:
 
 ✅
 ````
-
-````{tabbed} +/- flags
+````{tab-item} +/- flags
 original dataset:
 ```
 $ ncdump test_NC_INT_flag_neg.nc
@@ -940,11 +937,12 @@ data:
 
 ✅
 ````
-
 `````
-`````{admonition} UINT
+``````
+``````{admonition} UINT
 :class: dropdown, error
-````{tabbed} + numbers
+`````{tab-set}
+````{tab-item} + numbers
 original dataset:
 ```
 $ ncdump test_NC_UINT.nc
@@ -985,8 +983,7 @@ $ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/ne
 [Errno -45] NetCDF: Not a valid data type or _FillValue type mismatch: b'https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT.nc'
 ```
 ````
-
-````{tabbed} + flags
+````{tab-item} + flags
 original dataset:
 ```
 $ ncdump test_NC_UINT_flag.nc
@@ -1028,11 +1025,12 @@ $ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/ne
 [Errno -45] NetCDF: Not a valid data type or _FillValue type mismatch: b'https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT_flag.nc'
 ```
 ````
-
 `````
-`````{admonition} INT64
+``````
+``````{admonition} INT64
 :class: dropdown, error
-````{tabbed} + numbers
+`````{tab-set}
+````{tab-item} + numbers
 original dataset:
 ```
 $ ncdump test_NC_INT64.nc
@@ -1070,8 +1068,7 @@ oc_open: server error retrieving url: code=403 message="NcDDS Variable data type
 [Errno -77] NetCDF: Access failure: b'https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64.nc'
 ```
 ````
-
-````{tabbed} +/- numbers
+````{tab-item} +/- numbers
 original dataset:
 ```
 $ ncdump test_NC_INT64_neg.nc
@@ -1109,8 +1106,7 @@ oc_open: server error retrieving url: code=403 message="NcDDS Variable data type
 [Errno -77] NetCDF: Access failure: b'https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_neg.nc'
 ```
 ````
-
-````{tabbed} + flags
+````{tab-item} + flags
 original dataset:
 ```
 $ ncdump test_NC_INT64_flag.nc
@@ -1148,8 +1144,7 @@ oc_open: server error retrieving url: code=403 message="NcDDS Variable data type
 [Errno -77] NetCDF: Access failure: b'https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_flag.nc'
 ```
 ````
-
-````{tabbed} +/- flags
+````{tab-item} +/- flags
 original dataset:
 ```
 $ ncdump test_NC_INT64_flag_neg.nc
@@ -1187,11 +1182,12 @@ oc_open: server error retrieving url: code=403 message="NcDDS Variable data type
 [Errno -77] NetCDF: Access failure: b'https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_flag_neg.nc'
 ```
 ````
-
 `````
-`````{admonition} UINT64
+``````
+``````{admonition} UINT64
 :class: dropdown, error
-````{tabbed} + numbers
+`````{tab-set}
+````{tab-item} + numbers
 original dataset:
 ```
 $ ncdump test_NC_UINT64.nc
@@ -1229,8 +1225,7 @@ oc_open: server error retrieving url: code=403 message="NcDDS Variable data type
 [Errno -77] NetCDF: Access failure: b'https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT64.nc'
 ```
 ````
-
-````{tabbed} + flags
+````{tab-item} + flags
 original dataset:
 ```
 $ ncdump test_NC_UINT64_flag.nc
@@ -1268,11 +1263,12 @@ oc_open: server error retrieving url: code=403 message="NcDDS Variable data type
 [Errno -77] NetCDF: Access failure: b'https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT64_flag.nc'
 ```
 ````
-
 `````
-`````{admonition} FLOAT
+``````
+``````{admonition} FLOAT
 :class: dropdown
-````{tabbed} + numbers
+`````{tab-set}
+````{tab-item} + numbers
 original dataset:
 ```
 $ ncdump test_NC_FLOAT.nc
@@ -1319,8 +1315,7 @@ data:
 
 ✅
 ````
-
-````{tabbed} +/- numbers
+````{tab-item} +/- numbers
 original dataset:
 ```
 $ ncdump test_NC_FLOAT_neg.nc
@@ -1367,11 +1362,12 @@ data:
 
 ✅
 ````
-
 `````
-`````{admonition} DOUBLE
+``````
+``````{admonition} DOUBLE
 :class: dropdown
-````{tabbed} + numbers
+`````{tab-set}
+````{tab-item} + numbers
 original dataset:
 ```
 $ ncdump test_NC_DOUBLE.nc
@@ -1418,8 +1414,7 @@ data:
 
 ✅
 ````
-
-````{tabbed} +/- numbers
+````{tab-item} +/- numbers
 original dataset:
 ```
 $ ncdump test_NC_DOUBLE_neg.nc
@@ -1468,8 +1463,8 @@ data:
 
 ✅
 ````
-
 `````
+``````
 
 ### Summary
 

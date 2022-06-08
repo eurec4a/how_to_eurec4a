@@ -18,7 +18,8 @@ Instruments on HALO as configured for the EUREC4A campaign.
 In particular, the instrumentation consists of broadband radiometers (**BACARDI**), basic instrumentation (**BAHAMAS**), a dropsonde launching system (**Dropsondes**), the active (radar) and passive microwave package (**HAMP**), irradiance spectrometers (**SMART**), a thermal imager (**VELOX**), an infrared radiometer (**VELOX-KT19**), a water vapor differential absorption lidar (**WALES**) and spectral and polarization resolving imagers (**specMACS**).
 You can find more detailed references to the instruments in the tabs below, as well as examples for data access in the upcoming chapters.
 
-```{tabbed} BACARDI
+````{tab-set}
+```{tab-item} BACARDI
 A set of broadband radiometer measuring upward and downward irradiance in the solar (0.2 - 3.6 micrometer) and terrestrial (4.5 - 42 micrometer) spectral range.
 
 home
@@ -32,7 +33,7 @@ data provider
 
 
 ```
-```{tabbed} BAHAMAS
+```{tab-item} BAHAMAS
 
 
 home
@@ -46,7 +47,7 @@ references
 : [The Transition From FALCON to HALO Era Airborne Atmospheric Research](https://doi.org/10.1007/978-3-642-30183-4_37)
 
 ```
-```{tabbed} Dropsondes
+```{tab-item} Dropsondes
 
 
 home
@@ -62,7 +63,7 @@ data provider
 
 
 ```
-```{tabbed} HAMP
+```{tab-item} HAMP
 HAMP consists of a suite of passive microwave radiometers with 26 frequencies ranging between 22.24 and 183.31 GHz, and an active cloud radar measuring at 35.5 GHz. The radiometeres are installed nadir-pointing in a bellypod under the fuselage with opening angles between 2.7 (G-band) and 5.0° (K-band). The almost nadir-pointed radar antenna is located in a bellypod and connected to the electronics in the cabin. Pre-flight calibration was performed before each flight for the radiometers, and before the transfer flight to Barbados for the radar.
 
 home
@@ -85,7 +86,7 @@ references
 : [HAMP – the microwave package on the High Altitude and LOng range research aircraft (HALO)](https://doi.org/10.5194/amt-7-4539-2014)
 
 ```
-```{tabbed} SMART
+```{tab-item} SMART
 The Spectral Modular Airborne Radiation measurement sysTem (SMART) measures downward irradiances in the solar spectral range between 300 nm and 2200 nm.
 
 home
@@ -102,7 +103,7 @@ references
 : [ACRIDICON–CHUVA Campaign: Studying Tropical Deep Convective Clouds and Precipitation over Amazonia Using the New German Research Aircraft HALO](https://doi.org/10.1175/BAMS-D-14-00255.1)
 
 ```
-```{tabbed} VELOX
+```{tab-item} VELOX
 VELOX is a thermal infrared spectral imager (VELOX327k veL, 640 pixel by 512 pixels) with a synchronized filter wheel (at 100 Hz) covering six spectral channels in the thermal infrared wavelength range from 7.7 to 12.0 micrometer. The instrument measures the brightness temperature of upward radiance in a field-of-view of 35.49° by 28.71°.
 
 home
@@ -116,7 +117,7 @@ data provider
 
 
 ```
-```{tabbed} VELOX - KT19
+```{tab-item} VELOX - KT19
 Thermal infrared radiometer measuring the brightness temperature of nadir radiance between 9.6 and 11.5 micrometer. 
 The field-of-view of 2.3° is located in the center of the VELOX images.
 
@@ -132,7 +133,7 @@ data provider
 
 
 ```
-```{tabbed} WALES
+```{tab-item} WALES
 
 
 home
@@ -148,7 +149,7 @@ references
 : [The airborne multi-wavelength water vapor differential absorption lidar WALES: system design and performance](https://doi.org/10.1007/s00340-009-3365-7)
 
 ```
-```{tabbed} specMACS
+```{tab-item} specMACS
 specMACS is the hyperspectral imager of the LMU in Munich. It measures from 400nm to 2500nm at a FOV of approximately 32° in a nadir looking perspective
 
 home
@@ -166,3 +167,4 @@ references
 : [Design and characterization of specMACS, a multipurpose hyperspectral cloud and sky imager](https://doi.org/10.5194/amt-9-2015-2016)
 
 ```
+````
