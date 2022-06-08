@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>BACARDI dataset &#8212; How to EUREC4A</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,21 +20,17 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -40,12 +38,13 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -66,7 +65,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -75,9 +88,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -95,14 +109,15 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="intro.html">
-   Introduction
-  </a>
- </li>
-</ul>
-<ul class="current nav bd-sidenav">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="halo.html">
    HALO
@@ -371,115 +386,279 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        <a class="dropdown-buttons"
-            href="_sources/bacardi.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/bacardi.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/eurec4a/how_to_eurec4a"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/eurec4a/how_to_eurec4a/issues/new?title=Issue%20on%20page%20%2Fbacardi.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/eurec4a/how_to_eurec4a/edit/master/how_to_eurec4a/bacardi.md"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/eurec4a/how_to_eurec4a/master?urlpath=tree/how_to_eurec4a/bacardi.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <button type="button" class="btn btn-secondary topbarbtn"
-            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
-                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/eurec4a/how_to_eurec4a/master?urlpath=tree/how_to_eurec4a/bacardi.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/eurec4a/how_to_eurec4a/blob/master/how_to_eurec4a/bacardi.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="initThebeSBT()"
+  class="headerbtn headerbtn-launch-thebe"
+  data-toggle="tooltip"
+data-placement="left"
+title="Launch Thebe"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="headerbtn__text-container">Live Code</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/eurec4a/how_to_eurec4a"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/eurec4a/how_to_eurec4a/issues/new?title=Issue%20on%20page%20%2Fbacardi.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/eurec4a/how_to_eurec4a/edit/master/how_to_eurec4a/bacardi.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/bacardi.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="_sources/bacardi.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#get-data">
    Get data
@@ -492,12 +671,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>BACARDI dataset</h1>
@@ -526,15 +704,16 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="bacardi-dataset">
-<h1>BACARDI dataset<a class="headerlink" href="#bacardi-dataset" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="bacardi-dataset">
+<h1>BACARDI dataset<a class="headerlink" href="#bacardi-dataset" title="Permalink to this headline">#</a></h1>
 <p>The following script exemplifies the access and usage of the Broadband AirCrAft RaDiometer Instrumentation (BACARDI), that combines two sets of Kipp and Zonen broadband radiometer measuring upward and downward irradiance in the solar (pyranometer model CMP-22, 0.2 - 3.6 μm) and terrestrial (pyrgeometer model CGR-4, 4.5 - 42 μm) spectral range.</p>
 <p>The dataset is published under <a class="reference external" href="https://doi.org/10.25326/160">Ehrlich et al. (2021)</a>. If you have questions or if you would like to use the data for a publication, please don’t hesitate to get in contact with the dataset authors as stated in the dataset attributes <code class="docutils literal notranslate"><span class="pre">contact</span></code> or <code class="docutils literal notranslate"><span class="pre">author</span></code>.</p>
-<div class="section" id="get-data">
-<h2>Get data<a class="headerlink" href="#get-data" title="Permalink to this headline">¶</a></h2>
+<section id="get-data">
+<h2>Get data<a class="headerlink" href="#get-data" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>To load the data we first load the EUREC4A meta data catalogue. More information on the catalog can be found <a class="reference external" href="https://github.com/eurec4a/eurec4a-intake#eurec4a-intake-catalogue">here</a>.</p></li>
 </ul>
@@ -949,10 +1128,10 @@ Attributes:
     platform:             HALO
     research_flight_day:  2020/02/05
     title:                Broadband radiation mesured by BACARDI during EUREC4A
-    version:              Revision 1 from 2021/02/04</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-6bb3d049-a21d-4bff-ad79-d55eabfa5751' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-6bb3d049-a21d-4bff-ad79-d55eabfa5751' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 327320</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-dc5f7c9f-e8bc-497b-8b41-13b73fba637d' class='xr-section-summary-in' type='checkbox'  checked><label for='section-dc5f7c9f-e8bc-497b-8b41-13b73fba637d' class='xr-section-summary' >Coordinates: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2020-02-05T09:15:52 ... 2020-02-...</div><input id='attrs-d11aeb28-0adc-4c6b-b99a-ad0b942f8aa6' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-d11aeb28-0adc-4c6b-b99a-ad0b942f8aa6' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-3b8e57d6-852d-4cfe-aa92-0337acd0ca97' class='xr-var-data-in' type='checkbox'><label for='data-3b8e57d6-852d-4cfe-aa92-0337acd0ca97' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>time</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;2020-02-05T09:15:52.000000000&#x27;, &#x27;2020-02-05T09:15:52.100000000&#x27;,
+    version:              Revision 1 from 2021/02/04</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-f62ffe1b-693c-4a58-9b0e-e5774a5be7c1' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-f62ffe1b-693c-4a58-9b0e-e5774a5be7c1' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 327320</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-c8d6bd4e-4373-4dba-828b-4fa555abbb46' class='xr-section-summary-in' type='checkbox'  checked><label for='section-c8d6bd4e-4373-4dba-828b-4fa555abbb46' class='xr-section-summary' >Coordinates: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2020-02-05T09:15:52 ... 2020-02-...</div><input id='attrs-c4a7d756-9eed-41cb-b429-b096be04d51f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c4a7d756-9eed-41cb-b429-b096be04d51f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0a82bbe5-8776-4c9c-a784-07d3eadc0e87' class='xr-var-data-in' type='checkbox'><label for='data-0a82bbe5-8776-4c9c-a784-07d3eadc0e87' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>time</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;2020-02-05T09:15:52.000000000&#x27;, &#x27;2020-02-05T09:15:52.100000000&#x27;,
        &#x27;2020-02-05T09:15:52.200000000&#x27;, ..., &#x27;2020-02-05T18:21:23.700000000&#x27;,
        &#x27;2020-02-05T18:21:23.800000000&#x27;, &#x27;2020-02-05T18:21:23.900000000&#x27;],
-      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-f20b7f7c-527e-4f38-a1d7-1b36c4c6d4aa' class='xr-section-summary-in' type='checkbox'  checked><label for='section-f20b7f7c-527e-4f38-a1d7-1b36c4c6d4aa' class='xr-section-summary' >Data variables: <span>(12)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>F_down_solar</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(81830,), meta=np.ndarray&gt;</div><input id='attrs-a0c936af-dd03-4bf6-b786-1abbd399450d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-a0c936af-dd03-4bf6-b786-1abbd399450d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-357a682b-51fa-4a01-8e11-157c109815b8' class='xr-var-data-in' type='checkbox'><label for='data-357a682b-51fa-4a01-8e11-157c109815b8' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment1 :</span></dt><dd>Corrected for temperature offset, time response, aircraft attitude</dd><dt><span>comment2 :</span></dt><dd>Temperature offset correction based on DLR parametrization</dd><dt><span>comment3 :</span></dt><dd>Time response correction: response time 1.2s, cut-off_frequency 0.6Hz, running mean length = 0.5s </dd><dt><span>comment4 :</span></dt><dd>Attitude correction: roll offset = +0.3� , pitch offset = +2.55�</dd><dt><span>long_name :</span></dt><dd>Downward solar irradiance corrected for cloud-free conditions (0.2-3.6 um) (BACARDI)</dd><dt><span>standard_name :</span></dt><dd>downwelling_shortwave_flux_in_air</dd><dt><span>units :</span></dt><dd>W m-2</dd></dl></div><div class='xr-var-data'><table>
+      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-7569ee61-637d-455f-803d-c5fe7d9b9d0e' class='xr-section-summary-in' type='checkbox'  checked><label for='section-7569ee61-637d-455f-803d-c5fe7d9b9d0e' class='xr-section-summary' >Data variables: <span>(12)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>F_down_solar</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(81830,), meta=np.ndarray&gt;</div><input id='attrs-49c3a5c2-a9bf-4e08-87a4-adca0363aede' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-49c3a5c2-a9bf-4e08-87a4-adca0363aede' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-38795be2-6b92-46da-8613-24da21e713fd' class='xr-var-data-in' type='checkbox'><label for='data-38795be2-6b92-46da-8613-24da21e713fd' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment1 :</span></dt><dd>Corrected for temperature offset, time response, aircraft attitude</dd><dt><span>comment2 :</span></dt><dd>Temperature offset correction based on DLR parametrization</dd><dt><span>comment3 :</span></dt><dd>Time response correction: response time 1.2s, cut-off_frequency 0.6Hz, running mean length = 0.5s </dd><dt><span>comment4 :</span></dt><dd>Attitude correction: roll offset = +0.3� , pitch offset = +2.55�</dd><dt><span>long_name :</span></dt><dd>Downward solar irradiance corrected for cloud-free conditions (0.2-3.6 um) (BACARDI)</dd><dt><span>standard_name :</span></dt><dd>downwelling_shortwave_flux_in_air</dd><dt><span>units :</span></dt><dd>W m-2</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1012,7 +1191,7 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>F_down_solar_diff</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(81830,), meta=np.ndarray&gt;</div><input id='attrs-ba907245-1adc-43b6-bb62-78c05ac670c9' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ba907245-1adc-43b6-bb62-78c05ac670c9' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e82b74fe-12f3-4f42-bdd2-4f1c778c12b5' class='xr-var-data-in' type='checkbox'><label for='data-e82b74fe-12f3-4f42-bdd2-4f1c778c12b5' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment1 :</span></dt><dd>Corrected for temperature offset, time response, aircraft attitude</dd><dt><span>comment2 :</span></dt><dd>Temperature offset correction based on DLR parametrization</dd><dt><span>comment3 :</span></dt><dd>Time response correction: response time 1.2s, cut-off_frequency 0.6Hz, running mean length = 0.5s </dd><dt><span>comment4 :</span></dt><dd>No attitude correction applied, assuming a 100% diffuse radiation field due to clouds </dd><dt><span>long_name :</span></dt><dd>Downward solar irradiance corrected for diffuse/cloudy conditions (0.2-3.6 um) (BACARDI)</dd><dt><span>standard_name :</span></dt><dd>diffuse_downwelling_shortwave_flux_in_air</dd><dt><span>units :</span></dt><dd>W m-2</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>F_down_solar_diff</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(81830,), meta=np.ndarray&gt;</div><input id='attrs-ab6847d0-7864-4ded-98c4-bea8c8335e0b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ab6847d0-7864-4ded-98c4-bea8c8335e0b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8420014b-3e6e-487b-bd48-145b54fe46fa' class='xr-var-data-in' type='checkbox'><label for='data-8420014b-3e6e-487b-bd48-145b54fe46fa' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment1 :</span></dt><dd>Corrected for temperature offset, time response, aircraft attitude</dd><dt><span>comment2 :</span></dt><dd>Temperature offset correction based on DLR parametrization</dd><dt><span>comment3 :</span></dt><dd>Time response correction: response time 1.2s, cut-off_frequency 0.6Hz, running mean length = 0.5s </dd><dt><span>comment4 :</span></dt><dd>No attitude correction applied, assuming a 100% diffuse radiation field due to clouds </dd><dt><span>long_name :</span></dt><dd>Downward solar irradiance corrected for diffuse/cloudy conditions (0.2-3.6 um) (BACARDI)</dd><dt><span>standard_name :</span></dt><dd>diffuse_downwelling_shortwave_flux_in_air</dd><dt><span>units :</span></dt><dd>W m-2</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1072,7 +1251,7 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>F_down_solar_sim</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(81830,), meta=np.ndarray&gt;</div><input id='attrs-4b9c9681-5aaa-4504-a6d8-af707551da8c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-4b9c9681-5aaa-4504-a6d8-af707551da8c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c3966169-4d06-4793-bdf8-476590071e1f' class='xr-var-data-in' type='checkbox'><label for='data-c3966169-4d06-4793-bdf8-476590071e1f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment :</span></dt><dd>Simulated for aircraft position, altitude using the BCO radio soundings</dd><dt><span>long_name :</span></dt><dd>Downward solar irradiance simulated for cloud-free conditions (with libRadtran)</dd><dt><span>units :</span></dt><dd>W m-2</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>F_down_solar_sim</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(81830,), meta=np.ndarray&gt;</div><input id='attrs-f9b5276f-fb53-4a43-92a7-8d99d82f6cd2' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-f9b5276f-fb53-4a43-92a7-8d99d82f6cd2' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-86d3572f-3367-4d43-ae50-4920d84870fa' class='xr-var-data-in' type='checkbox'><label for='data-86d3572f-3367-4d43-ae50-4920d84870fa' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment :</span></dt><dd>Simulated for aircraft position, altitude using the BCO radio soundings</dd><dt><span>long_name :</span></dt><dd>Downward solar irradiance simulated for cloud-free conditions (with libRadtran)</dd><dt><span>units :</span></dt><dd>W m-2</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1132,7 +1311,7 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>F_down_terrestrial</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(81830,), meta=np.ndarray&gt;</div><input id='attrs-8319f630-a42b-47a2-8d09-5509c030ef23' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-8319f630-a42b-47a2-8d09-5509c030ef23' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-923e64eb-8eb2-40c8-b571-964001a78f9f' class='xr-var-data-in' type='checkbox'><label for='data-923e64eb-8eb2-40c8-b571-964001a78f9f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment1 :</span></dt><dd>Corrected for temperature offset, time response</dd><dt><span>comment2 :</span></dt><dd>Temperature offset correction based on DLR parametrization</dd><dt><span>comment3 :</span></dt><dd>Time response correction: response time 2.0s, cut-off_frequency 0.5Hz, running mean length = 2.0s </dd><dt><span>long_name :</span></dt><dd>Downward terrestrial irradiance (4.5-42 um) (BACARDI)</dd><dt><span>standard_name :</span></dt><dd>downwelling_longwave_flux_in_air</dd><dt><span>units :</span></dt><dd>W m-2</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>F_down_terrestrial</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(81830,), meta=np.ndarray&gt;</div><input id='attrs-528425ae-a205-4ac2-bbf7-55138bb93053' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-528425ae-a205-4ac2-bbf7-55138bb93053' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-86679de7-f4fd-4171-ab50-0ce36147bb53' class='xr-var-data-in' type='checkbox'><label for='data-86679de7-f4fd-4171-ab50-0ce36147bb53' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment1 :</span></dt><dd>Corrected for temperature offset, time response</dd><dt><span>comment2 :</span></dt><dd>Temperature offset correction based on DLR parametrization</dd><dt><span>comment3 :</span></dt><dd>Time response correction: response time 2.0s, cut-off_frequency 0.5Hz, running mean length = 2.0s </dd><dt><span>long_name :</span></dt><dd>Downward terrestrial irradiance (4.5-42 um) (BACARDI)</dd><dt><span>standard_name :</span></dt><dd>downwelling_longwave_flux_in_air</dd><dt><span>units :</span></dt><dd>W m-2</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1192,7 +1371,7 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>F_up_solar</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(81830,), meta=np.ndarray&gt;</div><input id='attrs-4fb0f539-74b0-44ec-a21a-680d82266c72' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-4fb0f539-74b0-44ec-a21a-680d82266c72' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-03340718-865b-42ba-918e-6df73ce64f70' class='xr-var-data-in' type='checkbox'><label for='data-03340718-865b-42ba-918e-6df73ce64f70' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment1 :</span></dt><dd>Corrected for temperature offset, time response</dd><dt><span>comment2 :</span></dt><dd>Temperature offset correction based on DLR parametrization</dd><dt><span>comment3 :</span></dt><dd>Time response correction: response time 1.2s, cut-off_frequency 0.6Hz, running mean length = 0.5s </dd><dt><span>long_name :</span></dt><dd>Upward solar irradiance (0.2-3.6 um) (BACARDI)</dd><dt><span>standard_name :</span></dt><dd>upwelling_shortwave_flux_in_air</dd><dt><span>units :</span></dt><dd>W m-2</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>F_up_solar</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(81830,), meta=np.ndarray&gt;</div><input id='attrs-d9ac2a63-f756-4856-9c97-effde23eb302' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-d9ac2a63-f756-4856-9c97-effde23eb302' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c03342df-bbc5-4c2a-90fa-bdc51a53cd2f' class='xr-var-data-in' type='checkbox'><label for='data-c03342df-bbc5-4c2a-90fa-bdc51a53cd2f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment1 :</span></dt><dd>Corrected for temperature offset, time response</dd><dt><span>comment2 :</span></dt><dd>Temperature offset correction based on DLR parametrization</dd><dt><span>comment3 :</span></dt><dd>Time response correction: response time 1.2s, cut-off_frequency 0.6Hz, running mean length = 0.5s </dd><dt><span>long_name :</span></dt><dd>Upward solar irradiance (0.2-3.6 um) (BACARDI)</dd><dt><span>standard_name :</span></dt><dd>upwelling_shortwave_flux_in_air</dd><dt><span>units :</span></dt><dd>W m-2</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1252,7 +1431,7 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>F_up_terrestrial</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(81830,), meta=np.ndarray&gt;</div><input id='attrs-2c61cb99-3e79-4b4c-849e-48b7e92266e7' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-2c61cb99-3e79-4b4c-849e-48b7e92266e7' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-57c0b8f6-a0ed-4692-b837-40e36b17e12d' class='xr-var-data-in' type='checkbox'><label for='data-57c0b8f6-a0ed-4692-b837-40e36b17e12d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment1 :</span></dt><dd>Corrected for temperature offset, time response</dd><dt><span>comment2 :</span></dt><dd>Temperature offset correction based on DLR parametrization</dd><dt><span>comment3 :</span></dt><dd>Time response correction: response time 2.0s, cut-off_frequency 0.5Hz, running mean length = 2.0s </dd><dt><span>long_name :</span></dt><dd>Upward terrestrial irradiance (4.5-42 um) (BACARDI)</dd><dt><span>standard_name :</span></dt><dd>upwelling_longwave_flux_in_air</dd><dt><span>units :</span></dt><dd>W m-2</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>F_up_terrestrial</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(81830,), meta=np.ndarray&gt;</div><input id='attrs-75c7f03b-f79b-4cb7-976c-f2acde90b560' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-75c7f03b-f79b-4cb7-976c-f2acde90b560' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-07667b49-049b-4028-ae9c-6b25939f64f0' class='xr-var-data-in' type='checkbox'><label for='data-07667b49-049b-4028-ae9c-6b25939f64f0' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment1 :</span></dt><dd>Corrected for temperature offset, time response</dd><dt><span>comment2 :</span></dt><dd>Temperature offset correction based on DLR parametrization</dd><dt><span>comment3 :</span></dt><dd>Time response correction: response time 2.0s, cut-off_frequency 0.5Hz, running mean length = 2.0s </dd><dt><span>long_name :</span></dt><dd>Upward terrestrial irradiance (4.5-42 um) (BACARDI)</dd><dt><span>standard_name :</span></dt><dd>upwelling_longwave_flux_in_air</dd><dt><span>units :</span></dt><dd>W m-2</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1312,7 +1491,7 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>alt</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(81830,), meta=np.ndarray&gt;</div><input id='attrs-97773a60-0783-4d62-82b0-b7a959df7c73' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-97773a60-0783-4d62-82b0-b7a959df7c73' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-6ea4341f-02c7-4f60-a235-cc2dff9dab40' class='xr-var-data-in' type='checkbox'><label for='data-6ea4341f-02c7-4f60-a235-cc2dff9dab40' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>altitude (WGS84 Datum/Elliptical, BAHAMAS)</dd><dt><span>standard_name :</span></dt><dd>altitude</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>alt</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(81830,), meta=np.ndarray&gt;</div><input id='attrs-da3bfd6f-94aa-4408-a221-9b1e921a6619' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-da3bfd6f-94aa-4408-a221-9b1e921a6619' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-23d6d1fb-bd2b-4b31-a694-79a9eee5b9dd' class='xr-var-data-in' type='checkbox'><label for='data-23d6d1fb-bd2b-4b31-a694-79a9eee5b9dd' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>altitude (WGS84 Datum/Elliptical, BAHAMAS)</dd><dt><span>standard_name :</span></dt><dd>altitude</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1372,7 +1551,7 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>cloud_mask</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>int8</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(163660,), meta=np.ndarray&gt;</div><input id='attrs-8d1594b3-eb6c-4b9b-ab3e-a763b06768b1' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-8d1594b3-eb6c-4b9b-ab3e-a763b06768b1' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-55d99736-e340-4294-9259-0c932b07cce8' class='xr-var-data-in' type='checkbox'><label for='data-55d99736-e340-4294-9259-0c932b07cce8' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment1 :</span></dt><dd>The cloud flag is a rough conservative estimate of the presence of clouds based on the variability of the downward solar irradiance within a 20 second running window.</dd><dt><span>long_name :</span></dt><dd>Cloud flag for clouds in front of the Sun affecting the solar downward irradiance [0 = cloud free, 1 = cloudy]</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>cloud_mask</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>int8</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(163660,), meta=np.ndarray&gt;</div><input id='attrs-7c218c51-c9c9-4eb0-930b-81ffa9c1b064' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-7c218c51-c9c9-4eb0-930b-81ffa9c1b064' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f15189a8-d7fb-4807-93fd-5e77801f24fd' class='xr-var-data-in' type='checkbox'><label for='data-f15189a8-d7fb-4807-93fd-5e77801f24fd' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment1 :</span></dt><dd>The cloud flag is a rough conservative estimate of the presence of clouds based on the variability of the downward solar irradiance within a 20 second running window.</dd><dt><span>long_name :</span></dt><dd>Cloud flag for clouds in front of the Sun affecting the solar downward irradiance [0 = cloud free, 1 = cloudy]</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1430,7 +1609,7 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lat</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(81830,), meta=np.ndarray&gt;</div><input id='attrs-8d08dc11-2ede-47ee-a98f-66dcfee87a34' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-8d08dc11-2ede-47ee-a98f-66dcfee87a34' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8786f6c8-21ba-42bb-a001-e94a22bae08b' class='xr-var-data-in' type='checkbox'><label for='data-8786f6c8-21ba-42bb-a001-e94a22bae08b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>latitude (WGS84 Datum/Latitude, BAHAMAS)</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lat</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(81830,), meta=np.ndarray&gt;</div><input id='attrs-34aa5a76-0d2e-4332-876c-2b539f478c40' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-34aa5a76-0d2e-4332-876c-2b539f478c40' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ed0be495-eb19-4e4f-b6ac-23a25ff92ae3' class='xr-var-data-in' type='checkbox'><label for='data-ed0be495-eb19-4e4f-b6ac-23a25ff92ae3' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>latitude (WGS84 Datum/Latitude, BAHAMAS)</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1490,7 +1669,7 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lon</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(81830,), meta=np.ndarray&gt;</div><input id='attrs-604d81ac-1bd6-4056-b770-975b6655d649' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-604d81ac-1bd6-4056-b770-975b6655d649' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-83ea8dfc-a884-42b3-9c41-4777d47e5d02' class='xr-var-data-in' type='checkbox'><label for='data-83ea8dfc-a884-42b3-9c41-4777d47e5d02' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>longitude (WGS84 Datum/Longitude, BAHAMAS)</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degree_east</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lon</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(81830,), meta=np.ndarray&gt;</div><input id='attrs-ed4623ec-488b-4a76-8d31-17e0d6c96b17' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ed4623ec-488b-4a76-8d31-17e0d6c96b17' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-bc775116-deae-45ee-be6a-1b6269ad2cda' class='xr-var-data-in' type='checkbox'><label for='data-bc775116-deae-45ee-be6a-1b6269ad2cda' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>longitude (WGS84 Datum/Longitude, BAHAMAS)</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degree_east</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1550,7 +1729,7 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>saa</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(81830,), meta=np.ndarray&gt;</div><input id='attrs-09aca4b7-b631-40b3-b8d8-22a86ea3fb59' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-09aca4b7-b631-40b3-b8d8-22a86ea3fb59' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c837b87b-ca00-400a-a51b-6970918ce3b9' class='xr-var-data-in' type='checkbox'><label for='data-c837b87b-ca00-400a-a51b-6970918ce3b9' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>solar azimuth angle</dd><dt><span>standard_name :</span></dt><dd>solar_azimuth_angle</dd><dt><span>units :</span></dt><dd>degree</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>saa</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(81830,), meta=np.ndarray&gt;</div><input id='attrs-d4363417-965d-4f28-b6db-02d9b068e0b5' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-d4363417-965d-4f28-b6db-02d9b068e0b5' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-659c30e2-0944-462c-bd1f-b9f76a77155a' class='xr-var-data-in' type='checkbox'><label for='data-659c30e2-0944-462c-bd1f-b9f76a77155a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>solar azimuth angle</dd><dt><span>standard_name :</span></dt><dd>solar_azimuth_angle</dd><dt><span>units :</span></dt><dd>degree</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1610,7 +1789,7 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>sza</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(81830,), meta=np.ndarray&gt;</div><input id='attrs-51dea5c8-2561-4302-ac06-dda765fa7769' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-51dea5c8-2561-4302-ac06-dda765fa7769' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a08c9e3a-a7b0-4ca3-9261-e6278874ddec' class='xr-var-data-in' type='checkbox'><label for='data-a08c9e3a-a7b0-4ca3-9261-e6278874ddec' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>solar zenith angle</dd><dt><span>standard_name :</span></dt><dd>solar_zenith_angle</dd><dt><span>units :</span></dt><dd>degree</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>sza</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(81830,), meta=np.ndarray&gt;</div><input id='attrs-eeb76f40-8e92-41ae-a3c9-943e2b59023f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-eeb76f40-8e92-41ae-a3c9-943e2b59023f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0fd004a4-ffc4-4951-9461-069c461cc447' class='xr-var-data-in' type='checkbox'><label for='data-0fd004a4-ffc4-4951-9461-069c461cc447' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>solar zenith angle</dd><dt><span>standard_name :</span></dt><dd>solar_zenith_angle</dd><dt><span>units :</span></dt><dd>degree</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1670,12 +1849,12 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-e69ac1eb-4a3b-4024-8263-da2650a8d5c6' class='xr-section-summary-in' type='checkbox'  checked><label for='section-e69ac1eb-4a3b-4024-8263-da2650a8d5c6' class='xr-section-summary' >Attributes: <span>(8)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>campaign :</span></dt><dd>EUREC4A</dd><dt><span>comment 1 :</span></dt><dd>BACARDI Raw data was processed by DLR, contact Andreas Giez</dd><dt><span>contact :</span></dt><dd>Andre Ehrlich, University Leipzig, a.ehrlich@uni-leipzig.de</dd><dt><span>instrument :</span></dt><dd>Broadband AirCrAft RaDiometer Instrumentation (BACARDI) </dd><dt><span>platform :</span></dt><dd>HALO</dd><dt><span>research_flight_day :</span></dt><dd>2020/02/05</dd><dt><span>title :</span></dt><dd>Broadband radiation mesured by BACARDI during EUREC4A</dd><dt><span>version :</span></dt><dd>Revision 1 from 2021/02/04</dd></dl></div></li></ul></div></div></div></div>
+</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-1ae0270f-025e-42cc-b6d5-65b73504104b' class='xr-section-summary-in' type='checkbox'  checked><label for='section-1ae0270f-025e-42cc-b6d5-65b73504104b' class='xr-section-summary' >Attributes: <span>(8)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>campaign :</span></dt><dd>EUREC4A</dd><dt><span>comment 1 :</span></dt><dd>BACARDI Raw data was processed by DLR, contact Andreas Giez</dd><dt><span>contact :</span></dt><dd>Andre Ehrlich, University Leipzig, a.ehrlich@uni-leipzig.de</dd><dt><span>instrument :</span></dt><dd>Broadband AirCrAft RaDiometer Instrumentation (BACARDI) </dd><dt><span>platform :</span></dt><dd>HALO</dd><dt><span>research_flight_day :</span></dt><dd>2020/02/05</dd><dt><span>title :</span></dt><dd>Broadband radiation mesured by BACARDI during EUREC4A</dd><dt><span>version :</span></dt><dd>Revision 1 from 2021/02/04</dd></dl></div></li></ul></div></div></div></div>
 </div>
 <p>The data from EUREC4A is of 10 Hz measurement frequency and corrected for dynamic temperature effects. For the downward solar irradiance, data are provided with and without aircraft attitude correction corresponding to cloud-free and cloudy conditions, respectively, above HALO.</p>
-</div>
-<div class="section" id="plots">
-<h2>Plots<a class="headerlink" href="#plots" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="plots">
+<h2>Plots<a class="headerlink" href="#plots" title="Permalink to this headline">#</a></h2>
 <p>We plot the upward and downward irradiances in two panels.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1725,8 +1904,8 @@ Attributes:
 <img alt="_images/bacardi_12_0.png" src="_images/bacardi_12_0.png" />
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1750,9 +1929,11 @@ Attributes:
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="velox.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1768,24 +1949,28 @@ Attributes:
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By EUREC4A community<br/>
+  
+      &copy; Copyright 2021.<br/>
+</p>
+        </footer>
+    </div>
     
-      By EUREC4A community<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

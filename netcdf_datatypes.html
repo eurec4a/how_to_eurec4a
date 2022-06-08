@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>The issue with netCDF data types &#8212; How to EUREC4A</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,21 +20,17 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -40,12 +38,13 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -66,7 +65,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -75,9 +88,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -95,14 +109,15 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="intro.html">
-   Introduction
-  </a>
- </li>
-</ul>
-<ul class="current nav bd-sidenav">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="halo.html">
    HALO
@@ -371,92 +386,197 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/netcdf_datatypes.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/eurec4a/how_to_eurec4a"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/eurec4a/how_to_eurec4a/issues/new?title=Issue%20on%20page%20%2Fnetcdf_datatypes.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/eurec4a/how_to_eurec4a/edit/master/how_to_eurec4a/netcdf_datatypes.md"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/eurec4a/how_to_eurec4a"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/eurec4a/how_to_eurec4a/issues/new?title=Issue%20on%20page%20%2Fnetcdf_datatypes.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/eurec4a/how_to_eurec4a/edit/master/how_to_eurec4a/netcdf_datatypes.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/netcdf_datatypes.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#what-is-netcdf">
    What is netCDF?
@@ -520,12 +640,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>The issue with netCDF data types</h1>
@@ -605,11 +724,12 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="the-issue-with-netcdf-data-types">
-<h1>The issue with netCDF data types<a class="headerlink" href="#the-issue-with-netcdf-data-types" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="the-issue-with-netcdf-data-types">
+<h1>The issue with netCDF data types<a class="headerlink" href="#the-issue-with-netcdf-data-types" title="Permalink to this headline">#</a></h1>
 <div class="tip admonition">
 <p class="admonition-title">TL; DR</p>
 <p>If you want to be on the safe side, use only <code class="docutils literal notranslate"><span class="pre">SHORT</span></code>, <code class="docutils literal notranslate"><span class="pre">INT</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code>, <code class="docutils literal notranslate"><span class="pre">DOUBLE</span></code>, <code class="docutils literal notranslate"><span class="pre">STRING</span></code> or array of <code class="docutils literal notranslate"><span class="pre">CHAR</span></code> as data types.
@@ -622,22 +742,24 @@ One <strong>could</strong> assume that this is all fine and we can use these dat
 <p>In order to paint the full picture, we’ll have to take a little detour and think about what <a class="reference external" href="#what-is-netcdf">netCDF actually is</a> or even more what we think (or probably should think) about when talking about netCDF.
 As we’ll see, this is not something which can be answered in a straight forward manner, so it is fair to ask <a class="reference external" href="#why-should-we-care">if we should care at all</a>.
 Finally we’ll have a look at <a class="reference external" href="#an-experiment">an experiment</a> which shows plenty of ways in which different data types may fail around netCDF and which types seem to be fine.</p>
-<div class="section" id="what-is-netcdf">
-<h2>What is netCDF?<a class="headerlink" href="#what-is-netcdf" title="Permalink to this headline">¶</a></h2>
+<section id="what-is-netcdf">
+<h2>What is netCDF?<a class="headerlink" href="#what-is-netcdf" title="Permalink to this headline">#</a></h2>
 <p>NetCDF is more than only the “netCDF4 on HDF5” storage format.
 This is not only a bold statement, but is actually asked and discussed by the netCDF developers (<a class="reference external" href="https://github.com/Unidata/netcdf-c/issues/1590">What is netCDF?</a>, Jan 2020).
 This chapter is not exactly about the same topic in the referenced issue, but still has similar roots.
 The relevant part for this discussion is that there is at least netCDF, the <strong>data model</strong> and netCDF, the <strong>persistence format</strong>.
 It is also recognized that there are multiple persistence formats (netCDF3, netCDF4/HDF5, zarr) for the same data model and there are translation layers such as OPeNDAP which can be used as a transport mechanism between the computer on which data is stored and the computer on which data is analyzed.
 We further look at the relevance of the netCDF data model and netCDF persistence format for the EUREC4A datasets.</p>
-<div class="section" id="the-data-model-s">
-<h3>The data model(s)<a class="headerlink" href="#the-data-model-s" title="Permalink to this headline">¶</a></h3>
+<section id="the-data-model-s">
+<h3>The data model(s)<a class="headerlink" href="#the-data-model-s" title="Permalink to this headline">#</a></h3>
 <p>There are actually a few different ideas of data models around, which share some general ideas.
 Maybe the most illustrative way to show this general idea is an extended version of <a class="reference external" href="http://xarray.pydata.org/">xarray</a>’s logo, but the underlying ideas are of course applicable independently of xarray or even Python.</p>
-<div class="figure align-center" id="id1">
+<figure class="align-center" id="id1">
 <a class="reference internal image-reference" href="_images/dataset-diagram.png"><img alt="dataset diagram" src="_images/dataset-diagram.png" style="width: 70%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Dataset diagram (From the <a class="reference external" href="http://xarray.pydata.org/en/stable/data-structures.html">xarray documentation</a>)</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Dataset diagram (From the <a class="reference external" href="http://xarray.pydata.org/en/stable/data-structures.html">xarray documentation</a>)</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>A dataset is a collection of <em>variables</em> and <em>dimensions</em>.
 Variables are multi-dimensional arrays and they can share dimensions (i.e. to express that <code class="docutils literal notranslate"><span class="pre">temperature</span></code> and <code class="docutils literal notranslate"><span class="pre">precipitation</span></code> are defined at the same locations, the three axes of the corresponding arrays should be identified with the same dimension label, that is e.g. <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code> and <code class="docutils literal notranslate"><span class="pre">z</span></code>).
 Some variables may be promoted into a <em>coordinate</em>, which does not require to store it differently, but it changes the interpretation of the data.
@@ -649,54 +771,33 @@ In addition to the existence of <em>coordinates</em>, there are more pieces of v
 Thus we usually want those extra bits to datasets and variables, which can be done by the use of <em>attributes</em>.</p>
 <p>It turns out that many datasets in the EUREC4A context can be represented very well in this model.
 I assume that in many cases when we talk about that a dataset being available in netCDF, what we really care about is that the dataset is organized along this general structure and thus can be accesses <em>as if it were netCDF</em>.</p>
-</div>
-<div class="section" id="the-storage-and-transport-formats">
-<h3>The storage and transport formats<a class="headerlink" href="#the-storage-and-transport-formats" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="netcdf">
-<h4>netCDF<a class="headerlink" href="#netcdf" title="Permalink to this headline">¶</a></h4>
-<div class="margin sidebar">
+</section>
+<section id="the-storage-and-transport-formats">
+<h3>The storage and transport formats<a class="headerlink" href="#the-storage-and-transport-formats" title="Permalink to this headline">#</a></h3>
+<section id="netcdf">
+<h4>netCDF<a class="headerlink" href="#netcdf" title="Permalink to this headline">#</a></h4>
+<aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>NetCDF defines two internal “data models”, thus they could go into the section above.
 However, those models are also loosely tied to their backend storage formats and thus, they might fit better in the current paragraph.</p>
 </div>
-</div>
+</aside>
 <p>In order to put the high level idea from above into a data structure which can be stored on disk, netCDF defines two low level data models where the <a class="reference external" href="https://www.unidata.ucar.edu/software/netcdf/docs/netcdf_data_model.html#classic_model">Classic</a> data model came first and the <a class="reference external" href="https://www.unidata.ucar.edu/software/netcdf/docs/netcdf_data_model.html#enhanced_model">Enhanced</a> data model evolved from it.
 Both models care about <em>variables</em>, <em>dimensions</em> and <em>attributes</em> as introduced above.</p>
-<div class="sphinx-bs container pb-4 docutils">
-<div class="row docutils">
-<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
-<div class="card w-100 shadow docutils">
-<div class="card-body docutils">
-<p class="card-text">The <strong>classic</strong> model knows about <code class="docutils literal notranslate"><span class="pre">CHAR</span></code>, <code class="docutils literal notranslate"><span class="pre">BYTE</span></code>, <code class="docutils literal notranslate"><span class="pre">SHORT</span></code>, <code class="docutils literal notranslate"><span class="pre">INT</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code> and <code class="docutils literal notranslate"><span class="pre">DOUBLE</span></code> data types which are all <strong>signed</strong>.
-There may be at most one unlimited (i.e. resizeable) dimension per variable.</p>
-</div>
-</div>
-</div>
-<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
-<div class="card w-100 shadow docutils">
-<div class="card-body docutils">
-<p class="card-text">The <strong>enhanced</strong> model is based on the classic model and adds <code class="docutils literal notranslate"><span class="pre">INT64</span></code> and <code class="docutils literal notranslate"><span class="pre">STRING</span></code> to the mix as well as <strong>unsigned</strong> variants of all integral types.
-Further additions of the enhanced model are groups (which are like a dataset within a dataset) and user defined types.
-There may be any number of unlimited dimensions per variable.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
 <p>Those two data models are closely tied to the netCDF3 and netCDF4 storage formats.</p>
 <ul class="simple">
 <li><p>netCDF3 is based on the <em>classic</em> data model and defines a storage format which is custom to netCDF.</p></li>
 <li><p>netCDF4 is based on the <em>enhanced</em> data model and uses HDF5 as its backend storage format. HDF5 enables further enhancements like internal data compression.</p></li>
 </ul>
-<div class="margin sidebar">
+<aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>HDF5 features <code class="docutils literal notranslate"><span class="pre">external</span></code> and <code class="docutils literal notranslate"><span class="pre">virtual</span></code> datasets which <a class="reference external" href="https://github.com/Unidata/netcdf-c/pull/1828">can be</a> compatible to netCDF4 but can not be written using netCDF4 API.</p>
 </div>
-</div>
+</aside>
 <p>Both storage formats store all data in a single file, chunking of the dataset is done internally.
 If the dataset should be accessed from a remote location, usually the entire dataset must be fetched before accessing the data.</p>
 <p>In Jan 2019 <a class="reference external" href="https://github.com/Unidata/netcdf-c/pull/1267">HTTP byte-range</a> enabled partial reads from remote datasets have been added to netCDF-c, but as stated in the pull request, it is not meant for production use:</p>
@@ -707,16 +808,16 @@ can be quite slow. In addition, the byte-range IO drivers
 do not currently do any sort of optimization or caching.</p>
 </div></blockquote>
 <p>Thus, if a dataset should be accessed efficiently from a remote location, something different must be added, which is what OPeNDAP is for.</p>
-</div>
-<div class="section" id="opendap">
-<h4>OPeNDAP<a class="headerlink" href="#opendap" title="Permalink to this headline">¶</a></h4>
-<div class="margin sidebar">
+</section>
+<section id="opendap">
+<h4>OPeNDAP<a class="headerlink" href="#opendap" title="Permalink to this headline">#</a></h4>
+<aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Datacenters used by EUREC4A provide data via OPeNDAP include Aeris, NOAA PSL, NOAA NCEI, MPIM RAMADDA and the specMACS macsServer. The How to EUREC4A book makes use of this service to access the various datasets.</p>
 </div>
-</div>
+</aside>
 <p><a class="reference external" href="https://www.opendap.org">OPeNDAP</a> is a network protocol to access scientific data via network.
 In particular, it uses HTTP as a transport mechanism and defines a way to request subsets of a dataset which is formed along the data model as described above.
 OPeNDAP is thus the go-to method if an existing netCDF dataset should be made available remotely.
@@ -731,31 +832,31 @@ One could assume that <code class="docutils literal notranslate"><span class="pr
 <p>Furthermore, there is no <code class="docutils literal notranslate"><span class="pre">CHAR</span></code>, so whenever a netCDF dataset containing text as a sequence of <code class="docutils literal notranslate"><span class="pre">CHAR</span></code> is encountered by an OPeNDAP server, this will be converted to an OPeNDAP <code class="docutils literal notranslate"><span class="pre">String</span></code>.
 A consequence of this is that <code class="docutils literal notranslate"><span class="pre">CHAR</span></code>s and <code class="docutils literal notranslate"><span class="pre">STRING</span></code>s can not be distinguished when transferred over OPeNDAP and thus may be converted into each other after one cycle through netCDF → OPeNDAP → netCDF.
 This behaviour is not (yet) studied in this text.</p>
-</div>
-<div class="section" id="zarr">
-<h4>zarr<a class="headerlink" href="#zarr" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="zarr">
+<h4>zarr<a class="headerlink" href="#zarr" title="Permalink to this headline">#</a></h4>
 <div class="caution admonition">
 <p class="admonition-title">to do</p>
 <p><a class="reference external" href="https://zarr.readthedocs.io/">zarr</a> should be discussed in this place.</p>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="why-should-we-care">
-<h2>Why should we care?<a class="headerlink" href="#why-should-we-care" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+</section>
+<section id="why-should-we-care">
+<h2>Why should we care?<a class="headerlink" href="#why-should-we-care" title="Permalink to this headline">#</a></h2>
 <p>Each of the formats has distinct advantages and disadvantages:</p>
 <ul class="simple">
 <li><p><strong>netCDF</strong> is a compact format, the whole dataset can be stored in a single file which can be transferred from one place to another and everything is contained. This is great for storing data and to send around smaller datasets, but retrieving only a subset of a dataset from a remote server is not possible. Libraries which can open netCDF files usually do not handle HTTP, so the dataset needs to be stored in a local directory to use it.</p></li>
 <li><p><strong>OPeNDAP</strong> is a network protocol based on HTTP which has been made exactly for the purpose of requesting subsets of a dataset from a remote server. As it is only a network protocol, it can not be used to store the data, so every dataset which should be provided via OPeNDAP must be stored in another format (like netCDF) or computed on the fly. Support for reading OPeNDAP is build into netCDF-c.</p></li>
 <li><p><strong>zarr</strong> is a storage format which is spread out into several files in a defined directory structure. This makes it a little harder to pass around, but this chunked structure makes remote access exceptionally simple and fast. Chelle Gentemann has prepared an <a class="reference external" href="https://nbviewer.jupyter.org/github/oceanhackweek/ohw20-tutorials/blob/master/10-satellite-data-access/goes-cmp-netcdf-zarr.ipynb">impressive demonstration</a> on this topic.</p></li>
 </ul>
-<div class="margin sidebar">
+<aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>zarr can be used as a single file by using a zip file as its directory structure.</p>
 </div>
-</div>
+</aside>
 <p>So, depending on the use case, different formats are optimal and none of them supports everything:</p>
 <table class="colwidths-auto table">
 <thead>
@@ -788,9 +889,9 @@ This behaviour is not (yet) studied in this text.</p>
 </tbody>
 </table>
 <p>Thus, if we want to have datasets which can be used locally as well as remotely (some might call it “in the cloud”), we should take care that our datasets are convertible between those formats so that we can adapt to the specific use case.</p>
-</div>
-<div class="section" id="an-experiment">
-<h2>An experiment<a class="headerlink" href="#an-experiment" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="an-experiment">
+<h2>An experiment<a class="headerlink" href="#an-experiment" title="Permalink to this headline">#</a></h2>
 <p>Currently, the main use case for the Aeris data server is to publish netCDF files and retrieve them back, either via direct download or via OPeNDAP.
 This experiment is designed to test under which circumstances data which has been created as netCDF can be retrieved correctly via OPeNDAP.
 In order to minimize additional problems due to the mix of incompatible libraries, all dataset decoding is done using the same netCDF-c library (independent of the access to the dataset, directly or via OPeNDAP).</p>
@@ -804,1294 +905,41 @@ If any one of the sub cases failed, the data type is marked as erroneous.</p>
 <li><p>The dataset as received via OPeNDAP is dumped via <code class="docutils literal notranslate"><span class="pre">ncdump</span></code></p></li>
 <li><p>A little script checks if it detects any significant error between the original and the OPeNDAP dataset</p></li>
 </ul>
-<div class="section" id="results">
-<h3>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h3>
+<section id="results">
+<h3>Results<a class="headerlink" href="#results" title="Permalink to this headline">#</a></h3>
 <div class="dropdown error admonition">
 <p class="admonition-title">BYTE</p>
-<div class="tabbed-set docutils">
-<input checked="checked" id="00e28b79-f7ec-48d7-98ff-283c39174d5f" name="acb3f37d-38a1-42f3-aefa-ff9243a2924d" type="radio">
-</input><label class="tabbed-label" for="00e28b79-f7ec-48d7-98ff-283c39174d5f">
-+ numbers</label><div class="tabbed-content docutils">
-<p>original dataset:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_BYTE.nc
-netcdf test_NC_BYTE {
-dimensions:
-	test = 5 ;
-variables:
-	byte test(test) ;
-		test:_FillValue = 3b ;
-		test:valid_range = 0b, 127b ;
-data:
-
- test = 0, 1, 2, _, 127 ;
-}
-</pre></div>
-</div>
-<p>data attribute structure via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_BYTE.nc.das
-Attributes {
-    test {
-        String _Unsigned &quot;false&quot;;
-        Byte _FillValue 3;
-        Byte valid_range 0, 127;
-    }
-}
-</pre></div>
-</div>
-<p>dataset as interpreted by netCDF via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_BYTE.nc
-netcdf test_NC_BYTE {
-dimensions:
-	test = 5 ;
-variables:
-	byte test(test) ;
-		test:_Unsigned = &quot;false&quot; ;
-		test:_FillValue = 3b ;
-		test:valid_range = 0b, 127b ;
-data:
-
- test = 0, 1, 2, _, 127 ;
-}
-</pre></div>
-</div>
-<p>✅</p>
-</div>
-<input id="1982884e-20ab-4ee6-beee-e883f1cad1ec" name="acb3f37d-38a1-42f3-aefa-ff9243a2924d" type="radio">
-</input><label class="tabbed-label" for="1982884e-20ab-4ee6-beee-e883f1cad1ec">
-+/- numbers</label><div class="tabbed-content docutils">
-<p>original dataset:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_BYTE_neg.nc
-netcdf test_NC_BYTE_neg {
-dimensions:
-	test = 7 ;
-variables:
-	byte test(test) ;
-		test:_FillValue = 3b ;
-		test:valid_range = -128b, 127b ;
-data:
-
- test = -128, -1, 0, 1, 2, _, 127 ;
-}
-</pre></div>
-</div>
-<p>data attribute structure via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_BYTE_neg.nc.das
-Attributes {
-    test {
-        String _Unsigned &quot;false&quot;;
-        Byte _FillValue 3;
-        Int16 valid_range -128, 127;
-    }
-}
-</pre></div>
-</div>
-<p>dataset as interpreted by netCDF via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_BYTE_neg.nc
-netcdf test_NC_BYTE_neg {
-dimensions:
-	test = 7 ;
-variables:
-	byte test(test) ;
-		test:_Unsigned = &quot;false&quot; ;
-		test:_FillValue = 3b ;
-		test:valid_range = -128s, 127s ;
-data:
-
- test = -128, -1, 0, 1, 2, _, 127 ;
-}
-</pre></div>
-</div>
-<div class="admonition error">
-<p class="admonition-title">Error</p>
-<p>data type of attribute <code class="docutils literal notranslate"><span class="pre">valid_range</span></code> of variable <code class="docutils literal notranslate"><span class="pre">test</span></code> differs</p>
-</div>
-</div>
-<input id="e38c9d73-9a18-49e5-a8c5-2f36b28cf1f0" name="acb3f37d-38a1-42f3-aefa-ff9243a2924d" type="radio">
-</input><label class="tabbed-label" for="e38c9d73-9a18-49e5-a8c5-2f36b28cf1f0">
-+ flags</label><div class="tabbed-content docutils">
-<p>original dataset:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_BYTE_flag.nc
-netcdf test_NC_BYTE_flag {
-dimensions:
-	test = 5 ;
-variables:
-	byte test(test) ;
-		test:flag_values = 0b, 1b, 2b, 3b, 127b ;
-		test:flag_meanings = &quot;a b c d e&quot; ;
-data:
-
- test = 0, 1, 2, 3, 127 ;
-}
-</pre></div>
-</div>
-<p>data attribute structure via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_BYTE_flag.nc.das
-Attributes {
-    test {
-        String _Unsigned &quot;false&quot;;
-        Byte flag_values 0, 1, 2, 3, 127;
-        String flag_meanings &quot;a b c d e&quot;;
-    }
-}
-</pre></div>
-</div>
-<p>dataset as interpreted by netCDF via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_BYTE_flag.nc
-netcdf test_NC_BYTE_flag {
-dimensions:
-	test = 5 ;
-variables:
-	byte test(test) ;
-		test:_Unsigned = &quot;false&quot; ;
-		test:flag_values = 0b, 1b, 2b, 3b, 127b ;
-		test:flag_meanings = &quot;a b c d e&quot; ;
-data:
-
- test = 0, 1, 2, 3, 127 ;
-}
-</pre></div>
-</div>
-<p>✅</p>
-</div>
-<input id="cc11af4c-7ad6-44dc-ac6c-92fbfa522b9b" name="acb3f37d-38a1-42f3-aefa-ff9243a2924d" type="radio">
-</input><label class="tabbed-label" for="cc11af4c-7ad6-44dc-ac6c-92fbfa522b9b">
-+/- flags</label><div class="tabbed-content docutils">
-<p>original dataset:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_BYTE_flag_neg.nc
-netcdf test_NC_BYTE_flag_neg {
-dimensions:
-	test = 7 ;
-variables:
-	byte test(test) ;
-		test:flag_values = -128b, -1b, 0b, 1b, 2b, 3b, 127b ;
-		test:flag_meanings = &quot;a b c d e f g&quot; ;
-data:
-
- test = -128, -1, 0, 1, 2, 3, 127 ;
-}
-</pre></div>
-</div>
-<p>data attribute structure via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_BYTE_flag_neg.nc.das
-Attributes {
-    test {
-        String _Unsigned &quot;false&quot;;
-        Int16 flag_values -128, -1, 0, 1, 2, 3, 127;
-        String flag_meanings &quot;a b c d e f g&quot;;
-    }
-}
-</pre></div>
-</div>
-<p>dataset as interpreted by netCDF via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_BYTE_flag_neg.nc
-netcdf test_NC_BYTE_flag_neg {
-dimensions:
-	test = 7 ;
-variables:
-	byte test(test) ;
-		test:_Unsigned = &quot;false&quot; ;
-		test:flag_values = -128s, -1s, 0s, 1s, 2s, 3s, 127s ;
-		test:flag_meanings = &quot;a b c d e f g&quot; ;
-data:
-
- test = -128, -1, 0, 1, 2, 3, 127 ;
-}
-</pre></div>
-</div>
-<div class="admonition error">
-<p class="admonition-title">Error</p>
-<p>data type of attribute <code class="docutils literal notranslate"><span class="pre">flag_values</span></code> of variable <code class="docutils literal notranslate"><span class="pre">test</span></code> differs</p>
-</div>
-</div>
-</div>
 </div>
 <div class="dropdown error admonition">
 <p class="admonition-title">UBYTE</p>
-<div class="tabbed-set docutils">
-<input checked="checked" id="7a4aec31-d9af-491c-9373-2370ff7bafc3" name="8dfdcd6a-11af-4fde-b728-ef4546c8b16a" type="radio">
-</input><label class="tabbed-label" for="7a4aec31-d9af-491c-9373-2370ff7bafc3">
-+ numbers</label><div class="tabbed-content docutils">
-<p>original dataset:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_UBYTE.nc
-netcdf test_NC_UBYTE {
-dimensions:
-	test = 5 ;
-variables:
-	ubyte test(test) ;
-		test:_FillValue = 3UB ;
-		test:valid_range = 0UB, 255UB ;
-data:
-
- test = 0, 1, 2, _, 255 ;
-}
-</pre></div>
-</div>
-<p>data attribute structure via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UBYTE.nc.das
-Attributes {
-    test {
-        String _Unsigned &quot;true&quot;;
-        Byte _FillValue 3;
-        Int16 valid_range 0, -1;
-    }
-}
-</pre></div>
-</div>
-<p>dataset as interpreted by netCDF via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UBYTE.nc
-netcdf test_NC_UBYTE {
-dimensions:
-	test = 5 ;
-variables:
-	byte test(test) ;
-		test:_Unsigned = &quot;true&quot; ;
-		test:_FillValue = 3b ;
-		test:valid_range = 0s, -1s ;
-data:
-
- test = 0, 1, 2, _, -1 ;
-}
-</pre></div>
-</div>
-<div class="admonition error">
-<p class="admonition-title">Error</p>
-<p>values of variable <code class="docutils literal notranslate"><span class="pre">test</span></code> are not equal</p>
-</div>
-</div>
-<input id="ddd846d3-4e90-4fff-a1f5-bd16757e87a0" name="8dfdcd6a-11af-4fde-b728-ef4546c8b16a" type="radio">
-</input><label class="tabbed-label" for="ddd846d3-4e90-4fff-a1f5-bd16757e87a0">
-+ flags</label><div class="tabbed-content docutils">
-<p>original dataset:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_UBYTE_flag.nc
-netcdf test_NC_UBYTE_flag {
-dimensions:
-	test = 5 ;
-variables:
-	ubyte test(test) ;
-		test:flag_values = 0UB, 1UB, 2UB, 3UB, 255UB ;
-		test:flag_meanings = &quot;a b c d e&quot; ;
-data:
-
- test = 0, 1, 2, 3, 255 ;
-}
-</pre></div>
-</div>
-<p>data attribute structure via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UBYTE_flag.nc.das
-Attributes {
-    test {
-        String _Unsigned &quot;true&quot;;
-        Int16 flag_values 0, 1, 2, 3, -1;
-        String flag_meanings &quot;a b c d e&quot;;
-        Int16 _FillValue -1;
-    }
-}
-</pre></div>
-</div>
-<p>dataset as interpreted by netCDF via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UBYTE_flag.nc
-</pre></div>
-</div>
-<div class="admonition error">
-<p class="admonition-title">Error</p>
-<p>/usr/local/bin/ncdump: <a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UBYTE_flag.nc:">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UBYTE_flag.nc:</a> <a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UBYTE_flag.nc:">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UBYTE_flag.nc:</a> NetCDF: Not a valid data type or _FillValue type mismatch</p>
-</div>
-<div class="admonition error">
-<p class="admonition-title">Error</p>
-<p>[Errno -45] NetCDF: Not a valid data type or _FillValue type mismatch: b’<a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UBYTE_flag.nc">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UBYTE_flag.nc</a>’</p>
-</div>
-</div>
-</div>
 </div>
 <div class="dropdown admonition">
 <p class="admonition-title">SHORT</p>
-<div class="tabbed-set docutils">
-<input checked="checked" id="374b3b60-1c5b-4638-b3cc-d39871ec3e19" name="20f98738-224a-4732-beb5-b3bfd9847894" type="radio">
-</input><label class="tabbed-label" for="374b3b60-1c5b-4638-b3cc-d39871ec3e19">
-+ numbers</label><div class="tabbed-content docutils">
-<p>original dataset:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_SHORT.nc
-netcdf test_NC_SHORT {
-dimensions:
-	test = 5 ;
-variables:
-	short test(test) ;
-		test:_FillValue = 3s ;
-		test:valid_range = 0s, 32767s ;
-data:
-
- test = 0, 1, 2, _, 32767 ;
-}
-</pre></div>
-</div>
-<p>data attribute structure via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_SHORT.nc.das
-Attributes {
-    test {
-        Int16 _FillValue 3;
-        Int16 valid_range 0, 32767;
-    }
-}
-</pre></div>
-</div>
-<p>dataset as interpreted by netCDF via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_SHORT.nc
-netcdf test_NC_SHORT {
-dimensions:
-	test = 5 ;
-variables:
-	short test(test) ;
-		test:_FillValue = 3s ;
-		test:valid_range = 0s, 32767s ;
-data:
-
- test = 0, 1, 2, _, 32767 ;
-}
-</pre></div>
-</div>
-<p>✅</p>
-</div>
-<input id="e3096d8d-a61b-4238-9072-e3422fd8c0a5" name="20f98738-224a-4732-beb5-b3bfd9847894" type="radio">
-</input><label class="tabbed-label" for="e3096d8d-a61b-4238-9072-e3422fd8c0a5">
-+/- numbers</label><div class="tabbed-content docutils">
-<p>original dataset:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_SHORT_neg.nc
-netcdf test_NC_SHORT_neg {
-dimensions:
-	test = 7 ;
-variables:
-	short test(test) ;
-		test:_FillValue = 3s ;
-		test:valid_range = -32768s, 32767s ;
-data:
-
- test = -32768, -1, 0, 1, 2, _, 32767 ;
-}
-</pre></div>
-</div>
-<p>data attribute structure via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_SHORT_neg.nc.das
-Attributes {
-    test {
-        Int16 _FillValue 3;
-        Int16 valid_range -32768, 32767;
-    }
-}
-</pre></div>
-</div>
-<p>dataset as interpreted by netCDF via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_SHORT_neg.nc
-netcdf test_NC_SHORT_neg {
-dimensions:
-	test = 7 ;
-variables:
-	short test(test) ;
-		test:_FillValue = 3s ;
-		test:valid_range = -32768s, 32767s ;
-data:
-
- test = -32768, -1, 0, 1, 2, _, 32767 ;
-}
-</pre></div>
-</div>
-<p>✅</p>
-</div>
-<input id="7628d925-6fb9-4d0d-a45b-f47b61aaa7a1" name="20f98738-224a-4732-beb5-b3bfd9847894" type="radio">
-</input><label class="tabbed-label" for="7628d925-6fb9-4d0d-a45b-f47b61aaa7a1">
-+ flags</label><div class="tabbed-content docutils">
-<p>original dataset:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_SHORT_flag.nc
-netcdf test_NC_SHORT_flag {
-dimensions:
-	test = 5 ;
-variables:
-	short test(test) ;
-		test:flag_values = 0s, 1s, 2s, 3s, 32767s ;
-		test:flag_meanings = &quot;a b c d e&quot; ;
-data:
-
- test = 0, 1, 2, 3, 32767 ;
-}
-</pre></div>
-</div>
-<p>data attribute structure via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_SHORT_flag.nc.das
-Attributes {
-    test {
-        Int16 flag_values 0, 1, 2, 3, 32767;
-        String flag_meanings &quot;a b c d e&quot;;
-    }
-}
-</pre></div>
-</div>
-<p>dataset as interpreted by netCDF via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_SHORT_flag.nc
-netcdf test_NC_SHORT_flag {
-dimensions:
-	test = 5 ;
-variables:
-	short test(test) ;
-		test:flag_values = 0s, 1s, 2s, 3s, 32767s ;
-		test:flag_meanings = &quot;a b c d e&quot; ;
-data:
-
- test = 0, 1, 2, 3, 32767 ;
-}
-</pre></div>
-</div>
-<p>✅</p>
-</div>
-<input id="a22d4bb4-30bf-45d1-8eab-ba523a911ca5" name="20f98738-224a-4732-beb5-b3bfd9847894" type="radio">
-</input><label class="tabbed-label" for="a22d4bb4-30bf-45d1-8eab-ba523a911ca5">
-+/- flags</label><div class="tabbed-content docutils">
-<p>original dataset:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_SHORT_flag_neg.nc
-netcdf test_NC_SHORT_flag_neg {
-dimensions:
-	test = 7 ;
-variables:
-	short test(test) ;
-		test:flag_values = -32768s, -1s, 0s, 1s, 2s, 3s, 32767s ;
-		test:flag_meanings = &quot;a b c d e f g&quot; ;
-data:
-
- test = -32768, -1, 0, 1, 2, 3, 32767 ;
-}
-</pre></div>
-</div>
-<p>data attribute structure via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_SHORT_flag_neg.nc.das
-Attributes {
-    test {
-        Int16 flag_values -32768, -1, 0, 1, 2, 3, 32767;
-        String flag_meanings &quot;a b c d e f g&quot;;
-    }
-}
-</pre></div>
-</div>
-<p>dataset as interpreted by netCDF via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_SHORT_flag_neg.nc
-netcdf test_NC_SHORT_flag_neg {
-dimensions:
-	test = 7 ;
-variables:
-	short test(test) ;
-		test:flag_values = -32768s, -1s, 0s, 1s, 2s, 3s, 32767s ;
-		test:flag_meanings = &quot;a b c d e f g&quot; ;
-data:
-
- test = -32768, -1, 0, 1, 2, 3, 32767 ;
-}
-</pre></div>
-</div>
-<p>✅</p>
-</div>
-</div>
 </div>
 <div class="dropdown error admonition">
 <p class="admonition-title">USHORT</p>
-<div class="tabbed-set docutils">
-<input checked="checked" id="50cd78f2-0ff0-44fb-ac84-8c6a82cc01eb" name="89fb3a6d-7f61-4dd0-a45c-c358677be5d4" type="radio">
-</input><label class="tabbed-label" for="50cd78f2-0ff0-44fb-ac84-8c6a82cc01eb">
-+ numbers</label><div class="tabbed-content docutils">
-<p>original dataset:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_USHORT.nc
-netcdf test_NC_USHORT {
-dimensions:
-	test = 5 ;
-variables:
-	ushort test(test) ;
-		test:_FillValue = 3US ;
-		test:valid_range = 0US, 65535US ;
-data:
-
- test = 0, 1, 2, _, 65535 ;
-}
-</pre></div>
-</div>
-<p>data attribute structure via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_USHORT.nc.das
-Attributes {
-    test {
-        Int16 _FillValue 3;
-        Int16 valid_range 0, -1;
-        String _Unsigned &quot;true&quot;;
-    }
-}
-</pre></div>
-</div>
-<p>dataset as interpreted by netCDF via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_USHORT.nc
-</pre></div>
-</div>
-<div class="admonition error">
-<p class="admonition-title">Error</p>
-<p>/usr/local/bin/ncdump: <a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_USHORT.nc:">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_USHORT.nc:</a> <a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_USHORT.nc:">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_USHORT.nc:</a> NetCDF: Not a valid data type or _FillValue type mismatch</p>
-</div>
-<div class="admonition error">
-<p class="admonition-title">Error</p>
-<p>[Errno -45] NetCDF: Not a valid data type or _FillValue type mismatch: b’<a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_USHORT.nc">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_USHORT.nc</a>’</p>
-</div>
-</div>
-<input id="501fabec-447f-4606-a24e-9f2c8b500c97" name="89fb3a6d-7f61-4dd0-a45c-c358677be5d4" type="radio">
-</input><label class="tabbed-label" for="501fabec-447f-4606-a24e-9f2c8b500c97">
-+ flags</label><div class="tabbed-content docutils">
-<p>original dataset:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_USHORT_flag.nc
-netcdf test_NC_USHORT_flag {
-dimensions:
-	test = 5 ;
-variables:
-	ushort test(test) ;
-		test:flag_values = 0US, 1US, 2US, 3US, 65535US ;
-		test:flag_meanings = &quot;a b c d e&quot; ;
-data:
-
- test = 0, 1, 2, 3, _ ;
-}
-</pre></div>
-</div>
-<p>data attribute structure via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_USHORT_flag.nc.das
-Attributes {
-    test {
-        Int16 flag_values 0, 1, 2, 3, -1;
-        String flag_meanings &quot;a b c d e&quot;;
-        Int16 _FillValue -1;
-        String _Unsigned &quot;true&quot;;
-    }
-}
-</pre></div>
-</div>
-<p>dataset as interpreted by netCDF via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_USHORT_flag.nc
-</pre></div>
-</div>
-<div class="admonition error">
-<p class="admonition-title">Error</p>
-<p>/usr/local/bin/ncdump: <a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_USHORT_flag.nc:">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_USHORT_flag.nc:</a> <a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_USHORT_flag.nc:">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_USHORT_flag.nc:</a> NetCDF: Not a valid data type or _FillValue type mismatch</p>
-</div>
-<div class="admonition error">
-<p class="admonition-title">Error</p>
-<p>[Errno -45] NetCDF: Not a valid data type or _FillValue type mismatch: b’<a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_USHORT_flag.nc">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_USHORT_flag.nc</a>’</p>
-</div>
-</div>
-</div>
 </div>
 <div class="dropdown admonition">
 <p class="admonition-title">INT</p>
-<div class="tabbed-set docutils">
-<input checked="checked" id="46c8683c-80a2-4f68-b9a5-0a539364dbf9" name="cf1d5d61-21d4-41bd-8149-67630a0c678c" type="radio">
-</input><label class="tabbed-label" for="46c8683c-80a2-4f68-b9a5-0a539364dbf9">
-+ numbers</label><div class="tabbed-content docutils">
-<p>original dataset:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_INT.nc
-netcdf test_NC_INT {
-dimensions:
-	test = 5 ;
-variables:
-	int test(test) ;
-		test:_FillValue = 3 ;
-		test:valid_range = 0, 2147483647 ;
-data:
-
- test = 0, 1, 2, _, 2147483647 ;
-}
-</pre></div>
-</div>
-<p>data attribute structure via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT.nc.das
-Attributes {
-    test {
-        Int32 _FillValue 3;
-        Int32 valid_range 0, 2147483647;
-    }
-}
-</pre></div>
-</div>
-<p>dataset as interpreted by netCDF via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT.nc
-netcdf test_NC_INT {
-dimensions:
-	test = 5 ;
-variables:
-	int test(test) ;
-		test:_FillValue = 3 ;
-		test:valid_range = 0, 2147483647 ;
-data:
-
- test = 0, 1, 2, _, 2147483647 ;
-}
-</pre></div>
-</div>
-<p>✅</p>
-</div>
-<input id="284b9076-a4f9-45f2-8f1b-854e60af7019" name="cf1d5d61-21d4-41bd-8149-67630a0c678c" type="radio">
-</input><label class="tabbed-label" for="284b9076-a4f9-45f2-8f1b-854e60af7019">
-+/- numbers</label><div class="tabbed-content docutils">
-<p>original dataset:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_INT_neg.nc
-netcdf test_NC_INT_neg {
-dimensions:
-	test = 7 ;
-variables:
-	int test(test) ;
-		test:_FillValue = 3 ;
-		test:valid_range = -2147483648, 2147483647 ;
-data:
-
- test = -2147483648, -1, 0, 1, 2, _, 2147483647 ;
-}
-</pre></div>
-</div>
-<p>data attribute structure via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT_neg.nc.das
-Attributes {
-    test {
-        Int32 _FillValue 3;
-        Int32 valid_range -2147483648, 2147483647;
-    }
-}
-</pre></div>
-</div>
-<p>dataset as interpreted by netCDF via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT_neg.nc
-netcdf test_NC_INT_neg {
-dimensions:
-	test = 7 ;
-variables:
-	int test(test) ;
-		test:_FillValue = 3 ;
-		test:valid_range = -2147483648, 2147483647 ;
-data:
-
- test = -2147483648, -1, 0, 1, 2, _, 2147483647 ;
-}
-</pre></div>
-</div>
-<p>✅</p>
-</div>
-<input id="db7d46f0-a900-4fae-a213-38f40f7d9c4a" name="cf1d5d61-21d4-41bd-8149-67630a0c678c" type="radio">
-</input><label class="tabbed-label" for="db7d46f0-a900-4fae-a213-38f40f7d9c4a">
-+ flags</label><div class="tabbed-content docutils">
-<p>original dataset:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_INT_flag.nc
-netcdf test_NC_INT_flag {
-dimensions:
-	test = 5 ;
-variables:
-	int test(test) ;
-		test:flag_values = 0, 1, 2, 3, 2147483647 ;
-		test:flag_meanings = &quot;a b c d e&quot; ;
-data:
-
- test = 0, 1, 2, 3, 2147483647 ;
-}
-</pre></div>
-</div>
-<p>data attribute structure via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT_flag.nc.das
-Attributes {
-    test {
-        Int32 flag_values 0, 1, 2, 3, 2147483647;
-        String flag_meanings &quot;a b c d e&quot;;
-    }
-}
-</pre></div>
-</div>
-<p>dataset as interpreted by netCDF via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT_flag.nc
-netcdf test_NC_INT_flag {
-dimensions:
-	test = 5 ;
-variables:
-	int test(test) ;
-		test:flag_values = 0, 1, 2, 3, 2147483647 ;
-		test:flag_meanings = &quot;a b c d e&quot; ;
-data:
-
- test = 0, 1, 2, 3, 2147483647 ;
-}
-</pre></div>
-</div>
-<p>✅</p>
-</div>
-<input id="e40a28c2-a3ed-4e21-b924-5d76bb03d1f7" name="cf1d5d61-21d4-41bd-8149-67630a0c678c" type="radio">
-</input><label class="tabbed-label" for="e40a28c2-a3ed-4e21-b924-5d76bb03d1f7">
-+/- flags</label><div class="tabbed-content docutils">
-<p>original dataset:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_INT_flag_neg.nc
-netcdf test_NC_INT_flag_neg {
-dimensions:
-	test = 7 ;
-variables:
-	int test(test) ;
-		test:flag_values = -2147483648, -1, 0, 1, 2, 3, 2147483647 ;
-		test:flag_meanings = &quot;a b c d e f g&quot; ;
-data:
-
- test = -2147483648, -1, 0, 1, 2, 3, 2147483647 ;
-}
-</pre></div>
-</div>
-<p>data attribute structure via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT_flag_neg.nc.das
-Attributes {
-    test {
-        Int32 flag_values -2147483648, -1, 0, 1, 2, 3, 2147483647;
-        String flag_meanings &quot;a b c d e f g&quot;;
-    }
-}
-</pre></div>
-</div>
-<p>dataset as interpreted by netCDF via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT_flag_neg.nc
-netcdf test_NC_INT_flag_neg {
-dimensions:
-	test = 7 ;
-variables:
-	int test(test) ;
-		test:flag_values = -2147483648, -1, 0, 1, 2, 3, 2147483647 ;
-		test:flag_meanings = &quot;a b c d e f g&quot; ;
-data:
-
- test = -2147483648, -1, 0, 1, 2, 3, 2147483647 ;
-}
-</pre></div>
-</div>
-<p>✅</p>
-</div>
-</div>
 </div>
 <div class="dropdown error admonition">
 <p class="admonition-title">UINT</p>
-<div class="tabbed-set docutils">
-<input checked="checked" id="43378206-b1ba-47a9-a3a9-f05adcee8835" name="316ae093-8ba4-4936-b660-fd820aec2410" type="radio">
-</input><label class="tabbed-label" for="43378206-b1ba-47a9-a3a9-f05adcee8835">
-+ numbers</label><div class="tabbed-content docutils">
-<p>original dataset:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_UINT.nc
-netcdf test_NC_UINT {
-dimensions:
-	test = 5 ;
-variables:
-	uint test(test) ;
-		test:_FillValue = 3U ;
-		test:valid_range = 0U, 4294967295U ;
-data:
-
- test = 0, 1, 2, _, 4294967295 ;
-}
-</pre></div>
-</div>
-<p>data attribute structure via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT.nc.das
-Attributes {
-    test {
-        Int32 _FillValue 3;
-        Int32 valid_range 0, -1;
-        String _Unsigned &quot;true&quot;;
-    }
-}
-</pre></div>
-</div>
-<p>dataset as interpreted by netCDF via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT.nc
-</pre></div>
-</div>
-<div class="admonition error">
-<p class="admonition-title">Error</p>
-<p>/usr/local/bin/ncdump: <a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT.nc:">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT.nc:</a> <a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT.nc:">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT.nc:</a> NetCDF: Not a valid data type or _FillValue type mismatch</p>
-</div>
-<div class="admonition error">
-<p class="admonition-title">Error</p>
-<p>[Errno -45] NetCDF: Not a valid data type or _FillValue type mismatch: b’<a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT.nc">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT.nc</a>’</p>
-</div>
-</div>
-<input id="230ed027-03c4-4f52-81dd-db41aaca05ce" name="316ae093-8ba4-4936-b660-fd820aec2410" type="radio">
-</input><label class="tabbed-label" for="230ed027-03c4-4f52-81dd-db41aaca05ce">
-+ flags</label><div class="tabbed-content docutils">
-<p>original dataset:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_UINT_flag.nc
-netcdf test_NC_UINT_flag {
-dimensions:
-	test = 5 ;
-variables:
-	uint test(test) ;
-		test:flag_values = 0U, 1U, 2U, 3U, 4294967295U ;
-		test:flag_meanings = &quot;a b c d e&quot; ;
-data:
-
- test = 0, 1, 2, 3, _ ;
-}
-</pre></div>
-</div>
-<p>data attribute structure via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT_flag.nc.das
-Attributes {
-    test {
-        Int32 flag_values 0, 1, 2, 3, -1;
-        String flag_meanings &quot;a b c d e&quot;;
-        Int32 _FillValue -1;
-        String _Unsigned &quot;true&quot;;
-    }
-}
-</pre></div>
-</div>
-<p>dataset as interpreted by netCDF via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT_flag.nc
-</pre></div>
-</div>
-<div class="admonition error">
-<p class="admonition-title">Error</p>
-<p>/usr/local/bin/ncdump: <a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT_flag.nc:">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT_flag.nc:</a> <a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT_flag.nc:">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT_flag.nc:</a> NetCDF: Not a valid data type or _FillValue type mismatch</p>
-</div>
-<div class="admonition error">
-<p class="admonition-title">Error</p>
-<p>[Errno -45] NetCDF: Not a valid data type or _FillValue type mismatch: b’<a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT_flag.nc">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT_flag.nc</a>’</p>
-</div>
-</div>
-</div>
 </div>
 <div class="dropdown error admonition">
 <p class="admonition-title">INT64</p>
-<div class="tabbed-set docutils">
-<input checked="checked" id="be507eed-605e-415f-bbec-f3e13fbb4595" name="6fa32469-1efc-483e-a1bc-239e8c687ba7" type="radio">
-</input><label class="tabbed-label" for="be507eed-605e-415f-bbec-f3e13fbb4595">
-+ numbers</label><div class="tabbed-content docutils">
-<p>original dataset:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_INT64.nc
-netcdf test_NC_INT64 {
-dimensions:
-	test = 5 ;
-variables:
-	int64 test(test) ;
-		test:_FillValue = 3LL ;
-		test:valid_range = 0LL, 9223372036854775807LL ;
-data:
-
- test = 0, 1, 2, _, 9223372036854775807 ;
-}
-</pre></div>
-</div>
-<p>data attribute structure via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64.nc.das
-Error {
-    code = 403;
-    message = &quot;NcDDS Variable data type = long&quot;;
-};
-</pre></div>
-</div>
-<p>dataset as interpreted by netCDF via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64.nc
-</pre></div>
-</div>
-<div class="admonition error">
-<p class="admonition-title">Error</p>
-<p>oc_open: server error retrieving url: code=403 message=”NcDDS Variable data type = long”/usr/local/bin/ncdump: <a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64.nc:">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64.nc:</a> <a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64.nc:">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64.nc:</a> NetCDF: Access failure</p>
-</div>
-<div class="admonition error">
-<p class="admonition-title">Error</p>
-<p>[Errno -77] NetCDF: Access failure: b’<a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64.nc">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64.nc</a>’</p>
-</div>
-</div>
-<input id="d58d8bff-47ea-4cf4-ba8b-c10fd1611a99" name="6fa32469-1efc-483e-a1bc-239e8c687ba7" type="radio">
-</input><label class="tabbed-label" for="d58d8bff-47ea-4cf4-ba8b-c10fd1611a99">
-+/- numbers</label><div class="tabbed-content docutils">
-<p>original dataset:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_INT64_neg.nc
-netcdf test_NC_INT64_neg {
-dimensions:
-	test = 7 ;
-variables:
-	int64 test(test) ;
-		test:_FillValue = 3LL ;
-		test:valid_range = -9223372036854775808LL, 9223372036854775807LL ;
-data:
-
- test = -9223372036854775808, -1, 0, 1, 2, _, 9223372036854775807 ;
-}
-</pre></div>
-</div>
-<p>data attribute structure via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_neg.nc.das
-Error {
-    code = 403;
-    message = &quot;NcDDS Variable data type = long&quot;;
-};
-</pre></div>
-</div>
-<p>dataset as interpreted by netCDF via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_neg.nc
-</pre></div>
-</div>
-<div class="admonition error">
-<p class="admonition-title">Error</p>
-<p>oc_open: server error retrieving url: code=403 message=”NcDDS Variable data type = long”/usr/local/bin/ncdump: <a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_neg.nc:">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_neg.nc:</a> <a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_neg.nc:">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_neg.nc:</a> NetCDF: Access failure</p>
-</div>
-<div class="admonition error">
-<p class="admonition-title">Error</p>
-<p>[Errno -77] NetCDF: Access failure: b’<a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_neg.nc">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_neg.nc</a>’</p>
-</div>
-</div>
-<input id="acabf791-c3fa-4384-9601-a9e5bbe7e21d" name="6fa32469-1efc-483e-a1bc-239e8c687ba7" type="radio">
-</input><label class="tabbed-label" for="acabf791-c3fa-4384-9601-a9e5bbe7e21d">
-+ flags</label><div class="tabbed-content docutils">
-<p>original dataset:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_INT64_flag.nc
-netcdf test_NC_INT64_flag {
-dimensions:
-	test = 5 ;
-variables:
-	int64 test(test) ;
-		test:flag_values = 0LL, 1LL, 2LL, 3LL, 9223372036854775807LL ;
-		test:flag_meanings = &quot;a b c d e&quot; ;
-data:
-
- test = 0, 1, 2, 3, 9223372036854775807 ;
-}
-</pre></div>
-</div>
-<p>data attribute structure via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_flag.nc.das
-Error {
-    code = 403;
-    message = &quot;NcDDS Variable data type = long&quot;;
-};
-</pre></div>
-</div>
-<p>dataset as interpreted by netCDF via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_flag.nc
-</pre></div>
-</div>
-<div class="admonition error">
-<p class="admonition-title">Error</p>
-<p>oc_open: server error retrieving url: code=403 message=”NcDDS Variable data type = long”/usr/local/bin/ncdump: <a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_flag.nc:">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_flag.nc:</a> <a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_flag.nc:">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_flag.nc:</a> NetCDF: Access failure</p>
-</div>
-<div class="admonition error">
-<p class="admonition-title">Error</p>
-<p>[Errno -77] NetCDF: Access failure: b’<a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_flag.nc">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_flag.nc</a>’</p>
-</div>
-</div>
-<input id="a07eaa58-a9fa-4835-a2cb-adcbd098f570" name="6fa32469-1efc-483e-a1bc-239e8c687ba7" type="radio">
-</input><label class="tabbed-label" for="a07eaa58-a9fa-4835-a2cb-adcbd098f570">
-+/- flags</label><div class="tabbed-content docutils">
-<p>original dataset:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_INT64_flag_neg.nc
-netcdf test_NC_INT64_flag_neg {
-dimensions:
-	test = 7 ;
-variables:
-	int64 test(test) ;
-		test:flag_values = -9223372036854775808LL, -1LL, 0LL, 1LL, 2LL, 3LL, 9223372036854775807LL ;
-		test:flag_meanings = &quot;a b c d e f g&quot; ;
-data:
-
- test = -9223372036854775808, -1, 0, 1, 2, 3, 9223372036854775807 ;
-}
-</pre></div>
-</div>
-<p>data attribute structure via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_flag_neg.nc.das
-Error {
-    code = 403;
-    message = &quot;NcDDS Variable data type = long&quot;;
-};
-</pre></div>
-</div>
-<p>dataset as interpreted by netCDF via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_flag_neg.nc
-</pre></div>
-</div>
-<div class="admonition error">
-<p class="admonition-title">Error</p>
-<p>oc_open: server error retrieving url: code=403 message=”NcDDS Variable data type = long”/usr/local/bin/ncdump: <a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_flag_neg.nc:">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_flag_neg.nc:</a> <a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_flag_neg.nc:">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_flag_neg.nc:</a> NetCDF: Access failure</p>
-</div>
-<div class="admonition error">
-<p class="admonition-title">Error</p>
-<p>[Errno -77] NetCDF: Access failure: b’<a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_flag_neg.nc">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_flag_neg.nc</a>’</p>
-</div>
-</div>
-</div>
 </div>
 <div class="dropdown error admonition">
 <p class="admonition-title">UINT64</p>
-<div class="tabbed-set docutils">
-<input checked="checked" id="bdc89079-c69f-49e7-8fc3-f52b006064eb" name="d93213dd-471d-4cf3-860e-c9bad2496370" type="radio">
-</input><label class="tabbed-label" for="bdc89079-c69f-49e7-8fc3-f52b006064eb">
-+ numbers</label><div class="tabbed-content docutils">
-<p>original dataset:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_UINT64.nc
-netcdf test_NC_UINT64 {
-dimensions:
-	test = 5 ;
-variables:
-	uint64 test(test) ;
-		test:_FillValue = 3ULL ;
-		test:valid_range = 0ULL, 0ULL ;
-data:
-
- test = 0, 1, 2, _, 18446744073709551615 ;
-}
-</pre></div>
-</div>
-<p>data attribute structure via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT64.nc.das
-Error {
-    code = 403;
-    message = &quot;NcDDS Variable data type = long&quot;;
-};
-</pre></div>
-</div>
-<p>dataset as interpreted by netCDF via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT64.nc
-</pre></div>
-</div>
-<div class="admonition error">
-<p class="admonition-title">Error</p>
-<p>oc_open: server error retrieving url: code=403 message=”NcDDS Variable data type = long”/usr/local/bin/ncdump: <a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT64.nc:">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT64.nc:</a> <a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT64.nc:">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT64.nc:</a> NetCDF: Access failure</p>
-</div>
-<div class="admonition error">
-<p class="admonition-title">Error</p>
-<p>[Errno -77] NetCDF: Access failure: b’<a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT64.nc">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT64.nc</a>’</p>
-</div>
-</div>
-<input id="08410c91-b7c0-4ca5-a5b1-d7a97b28ebf9" name="d93213dd-471d-4cf3-860e-c9bad2496370" type="radio">
-</input><label class="tabbed-label" for="08410c91-b7c0-4ca5-a5b1-d7a97b28ebf9">
-+ flags</label><div class="tabbed-content docutils">
-<p>original dataset:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_UINT64_flag.nc
-netcdf test_NC_UINT64_flag {
-dimensions:
-	test = 5 ;
-variables:
-	uint64 test(test) ;
-		test:flag_values = 0ULL, 1ULL, 2ULL, 3ULL, 0ULL ;
-		test:flag_meanings = &quot;a b c d e&quot; ;
-data:
-
- test = 0, 1, 2, 3, 18446744073709551615 ;
-}
-</pre></div>
-</div>
-<p>data attribute structure via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT64_flag.nc.das
-Error {
-    code = 403;
-    message = &quot;NcDDS Variable data type = long&quot;;
-};
-</pre></div>
-</div>
-<p>dataset as interpreted by netCDF via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT64_flag.nc
-</pre></div>
-</div>
-<div class="admonition error">
-<p class="admonition-title">Error</p>
-<p>oc_open: server error retrieving url: code=403 message=”NcDDS Variable data type = long”/usr/local/bin/ncdump: <a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT64_flag.nc:">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT64_flag.nc:</a> <a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT64_flag.nc:">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT64_flag.nc:</a> NetCDF: Access failure</p>
-</div>
-<div class="admonition error">
-<p class="admonition-title">Error</p>
-<p>[Errno -77] NetCDF: Access failure: b’<a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT64_flag.nc">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT64_flag.nc</a>’</p>
-</div>
-</div>
-</div>
 </div>
 <div class="dropdown admonition">
 <p class="admonition-title">FLOAT</p>
-<div class="tabbed-set docutils">
-<input checked="checked" id="0760ba9d-2c25-44eb-8055-dfd8e9453b3b" name="14eeb055-5975-4665-a20c-b345f4870575" type="radio">
-</input><label class="tabbed-label" for="0760ba9d-2c25-44eb-8055-dfd8e9453b3b">
-+ numbers</label><div class="tabbed-content docutils">
-<p>original dataset:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_FLOAT.nc
-netcdf test_NC_FLOAT {
-dimensions:
-	test = 7 ;
-variables:
-	float test(test) ;
-		test:_FillValue = NaNf ;
-		test:valid_range = 0.f, Infinityf ;
-data:
-
- test = 0, 1, 2, 3, _, 3.402823e+38, Infinityf ;
-}
-</pre></div>
-</div>
-<p>data attribute structure via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_FLOAT.nc.das
-Attributes {
-    test {
-        Float32 _FillValue NaN;
-        Float32 valid_range 0.0, Infinity;
-    }
-}
-</pre></div>
-</div>
-<p>dataset as interpreted by netCDF via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_FLOAT.nc
-netcdf test_NC_FLOAT {
-dimensions:
-	test = 7 ;
-variables:
-	float test(test) ;
-		test:_FillValue = NaNf ;
-		test:valid_range = 0.f, Infinityf ;
-data:
-
- test = 0, 1, 2, 3, _, 3.402823e+38, Infinityf ;
-}
-</pre></div>
-</div>
-<p>✅</p>
-</div>
-<input id="2d53db36-fffc-4eb8-bb89-277ba446b467" name="14eeb055-5975-4665-a20c-b345f4870575" type="radio">
-</input><label class="tabbed-label" for="2d53db36-fffc-4eb8-bb89-277ba446b467">
-+/- numbers</label><div class="tabbed-content docutils">
-<p>original dataset:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_FLOAT_neg.nc
-netcdf test_NC_FLOAT_neg {
-dimensions:
-	test = 10 ;
-variables:
-	float test(test) ;
-		test:_FillValue = NaNf ;
-		test:valid_range = -Infinityf, Infinityf ;
-data:
-
- test = -Infinityf, -3.402823e+38, -1, 0, 1, 2, 3, _, 3.402823e+38, Infinityf ;
-}
-</pre></div>
-</div>
-<p>data attribute structure via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_FLOAT_neg.nc.das
-Attributes {
-    test {
-        Float32 _FillValue NaN;
-        Float32 valid_range -Infinity, Infinity;
-    }
-}
-</pre></div>
-</div>
-<p>dataset as interpreted by netCDF via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_FLOAT_neg.nc
-netcdf test_NC_FLOAT_neg {
-dimensions:
-	test = 10 ;
-variables:
-	float test(test) ;
-		test:_FillValue = NaNf ;
-		test:valid_range = -Infinityf, Infinityf ;
-data:
-
- test = -Infinityf, -3.402823e+38, -1, 0, 1, 2, 3, _, 3.402823e+38, Infinityf ;
-}
-</pre></div>
-</div>
-<p>✅</p>
-</div>
-</div>
 </div>
 <div class="dropdown admonition">
 <p class="admonition-title">DOUBLE</p>
-<div class="tabbed-set docutils">
-<input checked="checked" id="76720613-33ac-49fd-b035-0d91e98175b9" name="2fb77e7e-229f-4355-8c67-706239fa5d24" type="radio">
-</input><label class="tabbed-label" for="76720613-33ac-49fd-b035-0d91e98175b9">
-+ numbers</label><div class="tabbed-content docutils">
-<p>original dataset:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_DOUBLE.nc
-netcdf test_NC_DOUBLE {
-dimensions:
-	test = 7 ;
-variables:
-	double test(test) ;
-		test:_FillValue = NaN ;
-		test:valid_range = 0., Infinity ;
-data:
-
- test = 0, 1, 2, 3, _, 1.79769313486232e+308, Infinity ;
-}
-</pre></div>
 </div>
-<p>data attribute structure via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_DOUBLE.nc.das
-Attributes {
-    test {
-        Float64 _FillValue NaN;
-        Float64 valid_range 0.0, Infinity;
-    }
-}
-</pre></div>
-</div>
-<p>dataset as interpreted by netCDF via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_DOUBLE.nc
-netcdf test_NC_DOUBLE {
-dimensions:
-	test = 7 ;
-variables:
-	double test(test) ;
-		test:_FillValue = NaN ;
-		test:valid_range = 0., Infinity ;
-data:
-
- test = 0, 1, 2, 3, _, 1.79769313486232e+308, Infinity ;
-}
-</pre></div>
-</div>
-<p>✅</p>
-</div>
-<input id="0fa1770e-f277-4e30-aa6e-dc30b99a40e6" name="2fb77e7e-229f-4355-8c67-706239fa5d24" type="radio">
-</input><label class="tabbed-label" for="0fa1770e-f277-4e30-aa6e-dc30b99a40e6">
-+/- numbers</label><div class="tabbed-content docutils">
-<p>original dataset:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_DOUBLE_neg.nc
-netcdf test_NC_DOUBLE_neg {
-dimensions:
-	test = 10 ;
-variables:
-	double test(test) ;
-		test:_FillValue = NaN ;
-		test:valid_range = -Infinity, Infinity ;
-data:
-
- test = -Infinity, -1.79769313486232e+308, -1, 0, 1, 2, 3, _, 
-    1.79769313486232e+308, Infinity ;
-}
-</pre></div>
-</div>
-<p>data attribute structure via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_DOUBLE_neg.nc.das
-Attributes {
-    test {
-        Float64 _FillValue NaN;
-        Float64 valid_range -Infinity, Infinity;
-    }
-}
-</pre></div>
-</div>
-<p>dataset as interpreted by netCDF via OPeNDAP:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_DOUBLE_neg.nc
-netcdf test_NC_DOUBLE_neg {
-dimensions:
-	test = 10 ;
-variables:
-	double test(test) ;
-		test:_FillValue = NaN ;
-		test:valid_range = -Infinity, Infinity ;
-data:
-
- test = -Infinity, -1.79769313486232e+308, -1, 0, 1, 2, 3, _, 
-    1.79769313486232e+308, Infinity ;
-}
-</pre></div>
-</div>
-<p>✅</p>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="summary">
-<h3>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="summary">
+<h3>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h3>
 <p>The result of this experiment is underwhelming but shows a clear picture.
 A large set of data types can not be used reliably in a combination of netCDF and OPeNDAP.
 The failure modes however differ significantly between the various types:</p>
@@ -2103,10 +951,10 @@ The failure modes however differ significantly between the various types:</p>
 </ul>
 <p>As a <strong>consequence</strong>, the only numeric data types which should be used in any dataset are <code class="docutils literal notranslate"><span class="pre">SHORT</span></code>, <code class="docutils literal notranslate"><span class="pre">INT</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code> and <code class="docutils literal notranslate"><span class="pre">DOUBLE</span></code>.
 <code class="docutils literal notranslate"><span class="pre">STRING</span></code> and <code class="docutils literal notranslate"><span class="pre">CHAR</span></code> (when used as text) seem to be ok, but they have not been investigated in this setting yet.</p>
-</div>
-</div>
-<div class="section" id="did-we-learn-something">
-<h2>Did we learn something?<a class="headerlink" href="#did-we-learn-something" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="did-we-learn-something">
+<h2>Did we learn something?<a class="headerlink" href="#did-we-learn-something" title="Permalink to this headline">#</a></h2>
 <p>Well, it depends.
 In principle, these results are also present, but well hidden inside the <a class="reference external" href="https://www.unidata.ucar.edu/software/netcdf/documentation/NUG/index.html">NetCDF Users Guide</a>:
 The <a class="reference external" href="https://www.unidata.ucar.edu/software/netcdf/documentation/NUG/_best_practices.html">Best Practices</a> state:</p>
@@ -2129,8 +977,8 @@ The <a class="reference external" href="https://www.unidata.ucar.edu/software/ne
 <p>Thus, the take-home message of this article is not new, everything could have been found in the NetCDF Users Guide.
 However at least I was not fully aware of all of these implications and did only find the references into the Users Guide while preparing this article.
 I think if we want to provide datasets which are usable by everyone, the insights of this article are important to share.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -2154,9 +1002,11 @@ I think if we want to provide datasets which are usable by everyone, the insight
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="running_locally.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -2172,24 +1022,28 @@ I think if we want to provide datasets which are usable by everyone, the insight
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By EUREC4A community<br/>
+  
+      &copy; Copyright 2021.<br/>
+</p>
+        </footer>
+    </div>
     
-      By EUREC4A community<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

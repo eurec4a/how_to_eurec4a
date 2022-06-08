@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Dropsondes dataset JOANNE &#8212; How to EUREC4A</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,21 +20,17 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -40,12 +38,13 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -66,7 +65,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -75,9 +88,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -95,14 +109,15 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="intro.html">
-   Introduction
-  </a>
- </li>
-</ul>
-<ul class="current nav bd-sidenav">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="halo.html">
    HALO
@@ -371,115 +386,279 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        <a class="dropdown-buttons"
-            href="_sources/dropsondes.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/dropsondes.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/eurec4a/how_to_eurec4a"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/eurec4a/how_to_eurec4a/issues/new?title=Issue%20on%20page%20%2Fdropsondes.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/eurec4a/how_to_eurec4a/edit/master/how_to_eurec4a/dropsondes.md"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/eurec4a/how_to_eurec4a/master?urlpath=tree/how_to_eurec4a/dropsondes.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <button type="button" class="btn btn-secondary topbarbtn"
-            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
-                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/eurec4a/how_to_eurec4a/master?urlpath=tree/how_to_eurec4a/dropsondes.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/eurec4a/how_to_eurec4a/blob/master/how_to_eurec4a/dropsondes.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="initThebeSBT()"
+  class="headerbtn headerbtn-launch-thebe"
+  data-toggle="tooltip"
+data-placement="left"
+title="Launch Thebe"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="headerbtn__text-container">Live Code</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/eurec4a/how_to_eurec4a"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/eurec4a/how_to_eurec4a/issues/new?title=Issue%20on%20page%20%2Fdropsondes.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/eurec4a/how_to_eurec4a/edit/master/how_to_eurec4a/dropsondes.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/dropsondes.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="_sources/dropsondes.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#get-data">
    Get data
@@ -514,12 +693,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Dropsondes dataset JOANNE</h1>
@@ -570,17 +748,18 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="dropsondes-dataset-joanne">
-<h1>Dropsondes dataset JOANNE<a class="headerlink" href="#dropsondes-dataset-joanne" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="dropsondes-dataset-joanne">
+<h1>Dropsondes dataset JOANNE<a class="headerlink" href="#dropsondes-dataset-joanne" title="Permalink to this headline">#</a></h1>
 <p>The following script exemplifies the access and usage of dropsonde data measured
 during EUREC4A - ATOMIC.</p>
 <p>More information on the dataset can be found at <a class="reference external" href="https://github.com/Geet-George/JOANNE/tree/master/joanne/Level_3#level---3">https://github.com/Geet-George/JOANNE/tree/master/joanne/Level_3#level—3</a>.
 If you have questions or if you would like to use the data for a publication, please don’t hesitate to get in contact with the dataset authors as stated in the dataset attributes <code class="docutils literal notranslate"><span class="pre">contact</span></code> and <code class="docutils literal notranslate"><span class="pre">author</span></code>.</p>
-<div class="section" id="get-data">
-<h2>Get data<a class="headerlink" href="#get-data" title="Permalink to this headline">¶</a></h2>
+<section id="get-data">
+<h2>Get data<a class="headerlink" href="#get-data" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>To load the data we first load the EUREC4A meta data catalogue. More information on the catalog can be found <a class="reference external" href="https://github.com/eurec4a/eurec4a-intake#eurec4a-intake-catalogue">here</a>.</p></li>
 </ul>
@@ -997,7 +1176,7 @@ Attributes: (12/16)
     product_id:              Level-3
     project_id:              JOANNE
     reference:               George et al., JOANNE : Joint dropsonde Observat...
-    title:                   EUREC4A JOANNE Level-3</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-b0e8cdff-0e36-4673-9fa0-c9b74f569737' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-b0e8cdff-0e36-4673-9fa0-c9b74f569737' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>sonde_id</span>: 1068</li><li><span class='xr-has-index'>alt</span>: 1001</li><li><span>nv</span>: 2</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-f2f272bf-0626-48f9-97f1-410e50fdb3cd' class='xr-section-summary-in' type='checkbox'  checked><label for='section-f2f272bf-0626-48f9-97f1-410e50fdb3cd' class='xr-section-summary' >Coordinates: <span>(6)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>alt</span></div><div class='xr-var-dims'>(alt)</div><div class='xr-var-dtype'>int16</div><div class='xr-var-preview xr-preview'>0 10 20 30 ... 9970 9980 9990 10000</div><input id='attrs-23fefc18-32b8-42d7-8caa-50b7e72c540a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-23fefc18-32b8-42d7-8caa-50b7e72c540a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8abb6c8f-87d4-4026-85bf-c69e6d650d7a' class='xr-var-data-in' type='checkbox'><label for='data-8abb6c8f-87d4-4026-85bf-c69e6d650d7a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>axis :</span></dt><dd>Z</dd><dt><span>bounds :</span></dt><dd>alt_bnds</dd><dt><span>description :</span></dt><dd>height obtained by integrating upwards the atmospheric thickness estimated from the hypsometric equation</dd><dt><span>long_name :</span></dt><dd>geopotential height</dd><dt><span>positive :</span></dt><dd>up</dd><dt><span>standard_name :</span></dt><dd>geopotential_height</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><pre>array([    0,    10,    20, ...,  9980,  9990, 10000], dtype=int16)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>interpolated_time</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;</div><input id='attrs-672b2b54-ed77-45ae-92e9-11b78fa243ce' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-672b2b54-ed77-45ae-92e9-11b78fa243ce' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c70cea22-a905-430d-92e8-11cda79ec651' class='xr-var-data-in' type='checkbox'><label for='data-c70cea22-a905-430d-92e8-11cda79ec651' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>axis :</span></dt><dd>T</dd><dt><span>description :</span></dt><dd>value of time (original independent dimension) linearly interpolated to altitude grid</dd><dt><span>long_name :</span></dt><dd>interpolated time</dd><dt><span>standard_name :</span></dt><dd>time</dd></dl></div><div class='xr-var-data'><table>
+    title:                   EUREC4A JOANNE Level-3</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-334f8eb9-f6f8-4b81-a3c7-6c5f708c3254' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-334f8eb9-f6f8-4b81-a3c7-6c5f708c3254' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>sonde_id</span>: 1068</li><li><span class='xr-has-index'>alt</span>: 1001</li><li><span>nv</span>: 2</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-e84886b7-5e6b-4fb9-a0fa-09ee3445411e' class='xr-section-summary-in' type='checkbox'  checked><label for='section-e84886b7-5e6b-4fb9-a0fa-09ee3445411e' class='xr-section-summary' >Coordinates: <span>(6)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>alt</span></div><div class='xr-var-dims'>(alt)</div><div class='xr-var-dtype'>int16</div><div class='xr-var-preview xr-preview'>0 10 20 30 ... 9970 9980 9990 10000</div><input id='attrs-be0d0c81-bba3-43b2-8b74-638c7d878afa' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-be0d0c81-bba3-43b2-8b74-638c7d878afa' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-088b3cc5-c1a4-46c2-834d-b951be501bee' class='xr-var-data-in' type='checkbox'><label for='data-088b3cc5-c1a4-46c2-834d-b951be501bee' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>axis :</span></dt><dd>Z</dd><dt><span>bounds :</span></dt><dd>alt_bnds</dd><dt><span>description :</span></dt><dd>height obtained by integrating upwards the atmospheric thickness estimated from the hypsometric equation</dd><dt><span>long_name :</span></dt><dd>geopotential height</dd><dt><span>positive :</span></dt><dd>up</dd><dt><span>standard_name :</span></dt><dd>geopotential_height</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><pre>array([    0,    10,    20, ...,  9980,  9990, 10000], dtype=int16)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>interpolated_time</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;</div><input id='attrs-412a5ae3-ebab-4aaa-9c77-196fc3644db3' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-412a5ae3-ebab-4aaa-9c77-196fc3644db3' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-32f38d08-87c0-4156-ba70-d215e4ab4ac9' class='xr-var-data-in' type='checkbox'><label for='data-32f38d08-87c0-4156-ba70-d215e4ab4ac9' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>axis :</span></dt><dd>T</dd><dt><span>description :</span></dt><dd>value of time (original independent dimension) linearly interpolated to altitude grid</dd><dt><span>long_name :</span></dt><dd>interpolated time</dd><dt><span>standard_name :</span></dt><dd>time</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1058,7 +1237,7 @@ Attributes: (12/16)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lat</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;</div><input id='attrs-7e3f857c-b199-421a-8fb9-20c6b348aaea' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-7e3f857c-b199-421a-8fb9-20c6b348aaea' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c43967ad-6a67-4770-b233-eaba113f1b37' class='xr-var-data-in' type='checkbox'><label for='data-c43967ad-6a67-4770-b233-eaba113f1b37' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>axis :</span></dt><dd>Y</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degree_north</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lat</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;</div><input id='attrs-82af6b0a-dccf-45a7-8eaf-25b7db7c19d3' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-82af6b0a-dccf-45a7-8eaf-25b7db7c19d3' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d487c50b-df90-4a96-8a85-aba2353b7e02' class='xr-var-data-in' type='checkbox'><label for='data-d487c50b-df90-4a96-8a85-aba2353b7e02' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>axis :</span></dt><dd>Y</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degree_north</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1119,7 +1298,7 @@ Attributes: (12/16)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>launch_time</span></div><div class='xr-var-dims'>(sonde_id)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1068,), meta=np.ndarray&gt;</div><input id='attrs-13eddcb2-b688-46da-8aac-2c53950055b2' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-13eddcb2-b688-46da-8aac-2c53950055b2' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b8444d05-4bf8-4700-9cac-c8d12b41d007' class='xr-var-data-in' type='checkbox'><label for='data-b8444d05-4bf8-4700-9cac-c8d12b41d007' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>axis :</span></dt><dd>T</dd><dt><span>long_name :</span></dt><dd>time of dropsonde launch</dd><dt><span>standard_name :</span></dt><dd>time</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>launch_time</span></div><div class='xr-var-dims'>(sonde_id)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1068,), meta=np.ndarray&gt;</div><input id='attrs-a54e4b27-629f-421f-afc6-1a5b64de243b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-a54e4b27-629f-421f-afc6-1a5b64de243b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4ddde438-9de9-4b36-bc02-c27929fb786b' class='xr-var-data-in' type='checkbox'><label for='data-4ddde438-9de9-4b36-bc02-c27929fb786b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>axis :</span></dt><dd>T</dd><dt><span>long_name :</span></dt><dd>time of dropsonde launch</dd><dt><span>standard_name :</span></dt><dd>time</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1176,7 +1355,7 @@ Attributes: (12/16)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lon</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;</div><input id='attrs-3ef8cf4d-7b9a-4faa-9fda-96c1be0ab2b5' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-3ef8cf4d-7b9a-4faa-9fda-96c1be0ab2b5' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0845cfd5-bd71-449c-8a3b-e7a45888787c' class='xr-var-data-in' type='checkbox'><label for='data-0845cfd5-bd71-449c-8a3b-e7a45888787c' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>axis :</span></dt><dd>X</dd><dt><span>long_name :</span></dt><dd>longitude</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degree_east</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lon</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;</div><input id='attrs-42d1f3d9-7a1b-48e1-8a16-cc217a7cdf7e' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-42d1f3d9-7a1b-48e1-8a16-cc217a7cdf7e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-66ec8c9c-5e7c-4a7f-a612-4d4e4f283ab8' class='xr-var-data-in' type='checkbox'><label for='data-66ec8c9c-5e7c-4a7f-a612-4d4e4f283ab8' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>axis :</span></dt><dd>X</dd><dt><span>long_name :</span></dt><dd>longitude</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degree_east</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1237,8 +1416,8 @@ Attributes: (12/16)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>sonde_id</span></div><div class='xr-var-dims'>(sonde_id)</div><div class='xr-var-dtype'>object</div><div class='xr-var-preview xr-preview'>&#x27;HALO-0119_s02&#x27; ... &#x27;P3-0211_s43&#x27;</div><input id='attrs-d8bb844f-3a2b-43e8-ad7d-674d31ab5e63' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-d8bb844f-3a2b-43e8-ad7d-674d31ab5e63' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-40d03795-b40c-4acb-b680-6c1fc45f39be' class='xr-var-data-in' type='checkbox'><label for='data-40d03795-b40c-4acb-b680-6c1fc45f39be' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>cf_role :</span></dt><dd>trajectory_id</dd><dt><span>description :</span></dt><dd>unique sonde ID</dd><dt><span>long_name :</span></dt><dd>sonde identifier</dd><dt><span>units :</span></dt><dd></dd></dl></div><div class='xr-var-data'><pre>array([&#x27;HALO-0119_s02&#x27;, &#x27;HALO-0119_s03&#x27;, &#x27;HALO-0119_s04&#x27;, ..., &#x27;P3-0211_s41&#x27;,
-       &#x27;P3-0211_s42&#x27;, &#x27;P3-0211_s43&#x27;], dtype=object)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-28b7e386-95b3-4f00-838f-56620b822ee8' class='xr-section-summary-in' type='checkbox'  ><label for='section-28b7e386-95b3-4f00-838f-56620b822ee8' class='xr-section-summary' >Data variables: <span>(23)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>N_gps</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;</div><input id='attrs-f8cadee2-c9f8-42bf-9f62-6a16341d69d4' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-f8cadee2-c9f8-42bf-9f62-6a16341d69d4' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-edc3b578-a72b-4e64-96a4-e2e9f6c021b1' class='xr-var-data-in' type='checkbox'><label for='data-edc3b578-a72b-4e64-96a4-e2e9f6c021b1' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>number of observations used to derive level 3 GPS-data</dd><dt><span>standard_name :</span></dt><dd>number_of_observations</dd><dt><span>units :</span></dt><dd></dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>sonde_id</span></div><div class='xr-var-dims'>(sonde_id)</div><div class='xr-var-dtype'>object</div><div class='xr-var-preview xr-preview'>&#x27;HALO-0119_s02&#x27; ... &#x27;P3-0211_s43&#x27;</div><input id='attrs-258cdfd3-7945-4be5-949f-3210d24b671f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-258cdfd3-7945-4be5-949f-3210d24b671f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-186df602-efce-4ef1-87fc-ec1003224ea9' class='xr-var-data-in' type='checkbox'><label for='data-186df602-efce-4ef1-87fc-ec1003224ea9' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>cf_role :</span></dt><dd>trajectory_id</dd><dt><span>description :</span></dt><dd>unique sonde ID</dd><dt><span>long_name :</span></dt><dd>sonde identifier</dd><dt><span>units :</span></dt><dd></dd></dl></div><div class='xr-var-data'><pre>array([&#x27;HALO-0119_s02&#x27;, &#x27;HALO-0119_s03&#x27;, &#x27;HALO-0119_s04&#x27;, ..., &#x27;P3-0211_s41&#x27;,
+       &#x27;P3-0211_s42&#x27;, &#x27;P3-0211_s43&#x27;], dtype=object)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-e08d961e-8fb3-4561-b222-f09588bf0531' class='xr-section-summary-in' type='checkbox'  ><label for='section-e08d961e-8fb3-4561-b222-f09588bf0531' class='xr-section-summary' >Data variables: <span>(23)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>N_gps</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;</div><input id='attrs-debfad64-b496-4df4-89d6-99b93966e4b8' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-debfad64-b496-4df4-89d6-99b93966e4b8' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a8394dd1-3009-4b94-a38c-d7ed24f34ae2' class='xr-var-data-in' type='checkbox'><label for='data-a8394dd1-3009-4b94-a38c-d7ed24f34ae2' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>number of observations used to derive level 3 GPS-data</dd><dt><span>standard_name :</span></dt><dd>number_of_observations</dd><dt><span>units :</span></dt><dd></dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1299,7 +1478,7 @@ Attributes: (12/16)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>N_p</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;</div><input id='attrs-c05251b8-43d1-4417-a792-f1e92327054b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c05251b8-43d1-4417-a792-f1e92327054b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a4cb8e77-25e0-48d5-8487-b317af5f2b23' class='xr-var-data-in' type='checkbox'><label for='data-a4cb8e77-25e0-48d5-8487-b317af5f2b23' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>number of observations used to derive level 3 pressure data</dd><dt><span>standard_name :</span></dt><dd>number_of_observations</dd><dt><span>units :</span></dt><dd></dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>N_p</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;</div><input id='attrs-1b043156-2672-4199-9642-89561112e23a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-1b043156-2672-4199-9642-89561112e23a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-98d5c3d5-53e5-497c-be70-0bf06475c4f5' class='xr-var-data-in' type='checkbox'><label for='data-98d5c3d5-53e5-497c-be70-0bf06475c4f5' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>number of observations used to derive level 3 pressure data</dd><dt><span>standard_name :</span></dt><dd>number_of_observations</dd><dt><span>units :</span></dt><dd></dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1360,7 +1539,7 @@ Attributes: (12/16)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>N_rh</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;</div><input id='attrs-5d552ae0-e5b6-4c38-817a-00909bdaf4b0' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-5d552ae0-e5b6-4c38-817a-00909bdaf4b0' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-27f92172-6ee7-4f53-999f-4a1d4418ea21' class='xr-var-data-in' type='checkbox'><label for='data-27f92172-6ee7-4f53-999f-4a1d4418ea21' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>number of observations used to derive level 3 relative humidity data</dd><dt><span>standard_name :</span></dt><dd>number_of_observations</dd><dt><span>units :</span></dt><dd></dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>N_rh</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;</div><input id='attrs-1ba124bc-d1d6-47e2-828a-dee898a75d21' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-1ba124bc-d1d6-47e2-828a-dee898a75d21' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4e72cf56-ccaf-464a-80ce-85e24223ffc8' class='xr-var-data-in' type='checkbox'><label for='data-4e72cf56-ccaf-464a-80ce-85e24223ffc8' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>number of observations used to derive level 3 relative humidity data</dd><dt><span>standard_name :</span></dt><dd>number_of_observations</dd><dt><span>units :</span></dt><dd></dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1421,7 +1600,7 @@ Attributes: (12/16)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>N_ta</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;</div><input id='attrs-aef7c1fe-810f-4870-978e-755978265784' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-aef7c1fe-810f-4870-978e-755978265784' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-df9539da-9909-4c7b-b112-c580548c4dc9' class='xr-var-data-in' type='checkbox'><label for='data-df9539da-9909-4c7b-b112-c580548c4dc9' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>number of observations used to derive level 3 temperature data</dd><dt><span>standard_name :</span></dt><dd>number_of_observations</dd><dt><span>units :</span></dt><dd></dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>N_ta</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;</div><input id='attrs-b619378a-143f-4fee-a9a3-a5b50716b6c5' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-b619378a-143f-4fee-a9a3-a5b50716b6c5' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a894969d-682e-463e-b031-327c9b40aa25' class='xr-var-data-in' type='checkbox'><label for='data-a894969d-682e-463e-b031-327c9b40aa25' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>number of observations used to derive level 3 temperature data</dd><dt><span>standard_name :</span></dt><dd>number_of_observations</dd><dt><span>units :</span></dt><dd></dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1482,7 +1661,7 @@ Attributes: (12/16)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>alt_bnds</span></div><div class='xr-var-dims'>(alt, nv)</div><div class='xr-var-dtype'>int32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1001, 2), meta=np.ndarray&gt;</div><input id='attrs-8a2f5d57-5d23-4e8a-8a1d-2f32b2cce0ac' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-8a2f5d57-5d23-4e8a-8a1d-2f32b2cce0ac' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-3a821e60-85d5-4a6a-8977-25404c5bc1fc' class='xr-var-data-in' type='checkbox'><label for='data-3a821e60-85d5-4a6a-8977-25404c5bc1fc' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment :</span></dt><dd>(lower bound, upper bound]</dd><dt><span>description :</span></dt><dd>cell interval bounds for altitude</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>alt_bnds</span></div><div class='xr-var-dims'>(alt, nv)</div><div class='xr-var-dtype'>int32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1001, 2), meta=np.ndarray&gt;</div><input id='attrs-65ab302b-61aa-413c-9e2f-6a5a15570b85' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-65ab302b-61aa-413c-9e2f-6a5a15570b85' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-2ce1648f-e588-428f-abb9-3d462d642992' class='xr-var-data-in' type='checkbox'><label for='data-2ce1648f-e588-428f-abb9-3d462d642992' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment :</span></dt><dd>(lower bound, upper bound]</dd><dt><span>description :</span></dt><dd>cell interval bounds for altitude</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1539,7 +1718,7 @@ Attributes: (12/16)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>flight_altitude</span></div><div class='xr-var-dims'>(sonde_id)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1068,), meta=np.ndarray&gt;</div><input id='attrs-07e4e072-28b1-4c1c-8eb4-f09d14646a1f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-07e4e072-28b1-4c1c-8eb4-f09d14646a1f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-33c77563-9961-4f4a-b485-4be77bd1b851' class='xr-var-data-in' type='checkbox'><label for='data-33c77563-9961-4f4a-b485-4be77bd1b851' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>altitude of the aircraft when dropsonde was launched</dd><dt><span>positive :</span></dt><dd>up</dd><dt><span>standard_name :</span></dt><dd>altitude</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>flight_altitude</span></div><div class='xr-var-dims'>(sonde_id)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1068,), meta=np.ndarray&gt;</div><input id='attrs-f301d246-9aa8-43be-9022-8f7376b1bcf5' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-f301d246-9aa8-43be-9022-8f7376b1bcf5' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-9b1a9ebb-c534-49c2-b7f1-439388ed52db' class='xr-var-data-in' type='checkbox'><label for='data-9b1a9ebb-c534-49c2-b7f1-439388ed52db' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>altitude of the aircraft when dropsonde was launched</dd><dt><span>positive :</span></dt><dd>up</dd><dt><span>standard_name :</span></dt><dd>altitude</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1596,7 +1775,7 @@ Attributes: (12/16)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>flight_lat</span></div><div class='xr-var-dims'>(sonde_id)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1068,), meta=np.ndarray&gt;</div><input id='attrs-21afc77e-0277-4fd5-b06b-a565402a9ccc' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-21afc77e-0277-4fd5-b06b-a565402a9ccc' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b5faccee-7c98-4bd8-b7ff-d69ad25761bd' class='xr-var-data-in' type='checkbox'><label for='data-b5faccee-7c98-4bd8-b7ff-d69ad25761bd' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>north latitude of the aircraft when dropsonde was launched</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degree_north</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>flight_lat</span></div><div class='xr-var-dims'>(sonde_id)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1068,), meta=np.ndarray&gt;</div><input id='attrs-d7164c46-7f73-40da-9f03-8e37e09ff63c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-d7164c46-7f73-40da-9f03-8e37e09ff63c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1e26a723-560c-4d24-8287-28629e6c4c23' class='xr-var-data-in' type='checkbox'><label for='data-1e26a723-560c-4d24-8287-28629e6c4c23' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>north latitude of the aircraft when dropsonde was launched</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degree_north</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1653,7 +1832,7 @@ Attributes: (12/16)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>flight_lon</span></div><div class='xr-var-dims'>(sonde_id)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1068,), meta=np.ndarray&gt;</div><input id='attrs-bd49c975-6c36-4be4-8563-f1372e86546a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-bd49c975-6c36-4be4-8563-f1372e86546a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-89d95e5f-6558-4c5b-928c-5670a0b4ac99' class='xr-var-data-in' type='checkbox'><label for='data-89d95e5f-6558-4c5b-928c-5670a0b4ac99' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>east longitude of the aircraft when dropsonde was launched</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degree_east</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>flight_lon</span></div><div class='xr-var-dims'>(sonde_id)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1068,), meta=np.ndarray&gt;</div><input id='attrs-9893dd90-d139-4ed3-83a5-36facc07eaf4' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-9893dd90-d139-4ed3-83a5-36facc07eaf4' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b96f72b6-212b-44d5-8c6e-77b5f4c9d01a' class='xr-var-data-in' type='checkbox'><label for='data-b96f72b6-212b-44d5-8c6e-77b5f4c9d01a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>east longitude of the aircraft when dropsonde was launched</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degree_east</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1710,7 +1889,7 @@ Attributes: (12/16)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>low_height_flag</span></div><div class='xr-var-dims'>(sonde_id)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1068,), meta=np.ndarray&gt;</div><input id='attrs-73fa3097-a912-4abe-a6a7-a50823f8f243' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-73fa3097-a912-4abe-a6a7-a50823f8f243' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ee560797-9631-46b8-b8ae-eebf063bc6bf' class='xr-var-data-in' type='checkbox'><label for='data-ee560797-9631-46b8-b8ae-eebf063bc6bf' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>flag_meanings :</span></dt><dd>flight_height_at_or_above_4_km flight_height_below_4_km</dd><dt><span>flag_values :</span></dt><dd>[0, 1]</dd><dt><span>long_name :</span></dt><dd>flag if flight height &lt; 4 km when dropsonde was launched</dd><dt><span>units :</span></dt><dd></dd><dt><span>valid_range :</span></dt><dd>0, 1</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>low_height_flag</span></div><div class='xr-var-dims'>(sonde_id)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1068,), meta=np.ndarray&gt;</div><input id='attrs-5e2fa027-c526-417f-86d9-a57c9750896c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-5e2fa027-c526-417f-86d9-a57c9750896c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-84552c28-dd67-4a8f-b3a1-f36a3897f995' class='xr-var-data-in' type='checkbox'><label for='data-84552c28-dd67-4a8f-b3a1-f36a3897f995' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>flag_meanings :</span></dt><dd>flight_height_at_or_above_4_km flight_height_below_4_km</dd><dt><span>flag_values :</span></dt><dd>[0, 1]</dd><dt><span>long_name :</span></dt><dd>flag if flight height &lt; 4 km when dropsonde was launched</dd><dt><span>units :</span></dt><dd></dd><dt><span>valid_range :</span></dt><dd>0, 1</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1767,7 +1946,7 @@ Attributes: (12/16)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>m_gps</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(534, 501), meta=np.ndarray&gt;</div><input id='attrs-8d1eabc5-0f08-496d-ab24-5578f2c44bd3' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-8d1eabc5-0f08-496d-ab24-5578f2c44bd3' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-290a44b8-56af-416e-8724-0acc1d0994f9' class='xr-var-data-in' type='checkbox'><label for='data-290a44b8-56af-416e-8724-0acc1d0994f9' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>method used to derive Level-3 GPS-data</dd><dt><span>flag_meanings :</span></dt><dd>no_data interpolation averaging</dd><dt><span>flag_values :</span></dt><dd>[0, 1, 2]</dd><dt><span>long_name :</span></dt><dd>bin_method</dd><dt><span>units :</span></dt><dd></dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>m_gps</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(534, 501), meta=np.ndarray&gt;</div><input id='attrs-62aeebeb-85d0-40cf-82ef-54619bba538f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-62aeebeb-85d0-40cf-82ef-54619bba538f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-204a4986-bcf3-4f96-845d-094172f4d2bb' class='xr-var-data-in' type='checkbox'><label for='data-204a4986-bcf3-4f96-845d-094172f4d2bb' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>method used to derive Level-3 GPS-data</dd><dt><span>flag_meanings :</span></dt><dd>no_data interpolation averaging</dd><dt><span>flag_values :</span></dt><dd>[0, 1, 2]</dd><dt><span>long_name :</span></dt><dd>bin_method</dd><dt><span>units :</span></dt><dd></dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1826,7 +2005,7 @@ Attributes: (12/16)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>m_p</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(534, 501), meta=np.ndarray&gt;</div><input id='attrs-5274e08e-b5e1-462d-bd66-9e87858d793b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-5274e08e-b5e1-462d-bd66-9e87858d793b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a0af933a-2a2f-4a13-aba5-fd21919a818f' class='xr-var-data-in' type='checkbox'><label for='data-a0af933a-2a2f-4a13-aba5-fd21919a818f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>method used to derive Level-3 pressure data</dd><dt><span>flag_meanings :</span></dt><dd>no_data interpolation averaging</dd><dt><span>flag_values :</span></dt><dd>[0, 1, 2]</dd><dt><span>long_name :</span></dt><dd>bin_method</dd><dt><span>units :</span></dt><dd></dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>m_p</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(534, 501), meta=np.ndarray&gt;</div><input id='attrs-cc941feb-147b-4831-9fea-bab3c46bdf1e' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-cc941feb-147b-4831-9fea-bab3c46bdf1e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f59c6269-1150-4e3c-a2c4-3475b673abbb' class='xr-var-data-in' type='checkbox'><label for='data-f59c6269-1150-4e3c-a2c4-3475b673abbb' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>method used to derive Level-3 pressure data</dd><dt><span>flag_meanings :</span></dt><dd>no_data interpolation averaging</dd><dt><span>flag_values :</span></dt><dd>[0, 1, 2]</dd><dt><span>long_name :</span></dt><dd>bin_method</dd><dt><span>units :</span></dt><dd></dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1885,7 +2064,7 @@ Attributes: (12/16)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>m_rh</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(534, 501), meta=np.ndarray&gt;</div><input id='attrs-335df0b4-acf2-4ab4-b5eb-85b1d94a7b48' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-335df0b4-acf2-4ab4-b5eb-85b1d94a7b48' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d32876f1-348a-438b-ae10-a3ee0dc8d7ef' class='xr-var-data-in' type='checkbox'><label for='data-d32876f1-348a-438b-ae10-a3ee0dc8d7ef' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>method used to derive Level-3 relative humidity data</dd><dt><span>flag_meanings :</span></dt><dd>no_data interpolation averaging</dd><dt><span>flag_values :</span></dt><dd>[0, 1, 2]</dd><dt><span>long_name :</span></dt><dd>bin_method</dd><dt><span>units :</span></dt><dd></dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>m_rh</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(534, 501), meta=np.ndarray&gt;</div><input id='attrs-0db44408-349f-4340-acbf-bacdd1f35f84' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-0db44408-349f-4340-acbf-bacdd1f35f84' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-3790eba8-3297-40c3-8691-3256ef957a9b' class='xr-var-data-in' type='checkbox'><label for='data-3790eba8-3297-40c3-8691-3256ef957a9b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>method used to derive Level-3 relative humidity data</dd><dt><span>flag_meanings :</span></dt><dd>no_data interpolation averaging</dd><dt><span>flag_values :</span></dt><dd>[0, 1, 2]</dd><dt><span>long_name :</span></dt><dd>bin_method</dd><dt><span>units :</span></dt><dd></dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1944,7 +2123,7 @@ Attributes: (12/16)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>m_ta</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(534, 501), meta=np.ndarray&gt;</div><input id='attrs-ce4eab1a-63f8-401c-81d8-4617102dd4b7' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ce4eab1a-63f8-401c-81d8-4617102dd4b7' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-08fd93e1-4d0d-4c28-883f-b190e12b96da' class='xr-var-data-in' type='checkbox'><label for='data-08fd93e1-4d0d-4c28-883f-b190e12b96da' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>method used to derive Level-3 temperature data</dd><dt><span>flag_meanings :</span></dt><dd>no_data interpolation averaging</dd><dt><span>flag_values :</span></dt><dd>[0, 1, 2]</dd><dt><span>long_name :</span></dt><dd>bin_method</dd><dt><span>units :</span></dt><dd></dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>m_ta</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(534, 501), meta=np.ndarray&gt;</div><input id='attrs-3266f2ca-1f75-4841-9667-0333ae445842' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-3266f2ca-1f75-4841-9667-0333ae445842' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-96ae47fc-1278-454e-9ca9-2616b3733cce' class='xr-var-data-in' type='checkbox'><label for='data-96ae47fc-1278-454e-9ca9-2616b3733cce' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>method used to derive Level-3 temperature data</dd><dt><span>flag_meanings :</span></dt><dd>no_data interpolation averaging</dd><dt><span>flag_values :</span></dt><dd>[0, 1, 2]</dd><dt><span>long_name :</span></dt><dd>bin_method</dd><dt><span>units :</span></dt><dd></dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -2003,7 +2182,7 @@ Attributes: (12/16)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>p</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;</div><input id='attrs-8ad1e4b2-9385-4b8e-af39-de3de3f76293' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-8ad1e4b2-9385-4b8e-af39-de3de3f76293' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ee9f427d-27ad-454b-8fbf-edd12ae84df5' class='xr-var-data-in' type='checkbox'><label for='data-ee9f427d-27ad-454b-8fbf-edd12ae84df5' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>atmospheric pressure</dd><dt><span>standard_name :</span></dt><dd>air_pressure</dd><dt><span>units :</span></dt><dd>Pa</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>p</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;</div><input id='attrs-b7b13f44-4f33-4981-a15d-4f2770008728' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-b7b13f44-4f33-4981-a15d-4f2770008728' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-072d3337-643f-4096-b1d9-7b246fffe1fd' class='xr-var-data-in' type='checkbox'><label for='data-072d3337-643f-4096-b1d9-7b246fffe1fd' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>atmospheric pressure</dd><dt><span>standard_name :</span></dt><dd>air_pressure</dd><dt><span>units :</span></dt><dd>Pa</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -2064,7 +2243,7 @@ Attributes: (12/16)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>platform_id</span></div><div class='xr-var-dims'>(sonde_id)</div><div class='xr-var-dtype'>object</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1068,), meta=np.ndarray&gt;</div><input id='attrs-3bfaa2d0-11be-4039-a13c-ff0ad57438df' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-3bfaa2d0-11be-4039-a13c-ff0ad57438df' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-50f49a30-f5f1-4008-aae7-1c09b0142eb9' class='xr-var-data-in' type='checkbox'><label for='data-50f49a30-f5f1-4008-aae7-1c09b0142eb9' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>platform from which dropsonde was launched</dd><dt><span>standard_name :</span></dt><dd>platform_id</dd><dt><span>units :</span></dt><dd></dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>platform_id</span></div><div class='xr-var-dims'>(sonde_id)</div><div class='xr-var-dtype'>object</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1068,), meta=np.ndarray&gt;</div><input id='attrs-54b18050-b2ad-4bea-bdcd-80cc70a02911' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-54b18050-b2ad-4bea-bdcd-80cc70a02911' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-829053f0-54fd-49cf-887b-f0ce46c23b66' class='xr-var-data-in' type='checkbox'><label for='data-829053f0-54fd-49cf-887b-f0ce46c23b66' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>platform from which dropsonde was launched</dd><dt><span>standard_name :</span></dt><dd>platform_id</dd><dt><span>units :</span></dt><dd></dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -2121,7 +2300,7 @@ Attributes: (12/16)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>q</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;</div><input id='attrs-1275e29f-0292-4621-bc64-57797ede6e22' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-1275e29f-0292-4621-bc64-57797ede6e22' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-9bfcc33b-007b-4833-9531-2c9237f6f1c4' class='xr-var-data-in' type='checkbox'><label for='data-9bfcc33b-007b-4833-9531-2c9237f6f1c4' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>specific humidity</dd><dt><span>standard_name :</span></dt><dd>specific_humidity</dd><dt><span>units :</span></dt><dd>kg kg-1</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>q</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;</div><input id='attrs-304f3e69-9b4e-48aa-a271-e66fe80c3728' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-304f3e69-9b4e-48aa-a271-e66fe80c3728' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-61a4490d-5de0-4fd7-9852-61a199835120' class='xr-var-data-in' type='checkbox'><label for='data-61a4490d-5de0-4fd7-9852-61a199835120' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>specific humidity</dd><dt><span>standard_name :</span></dt><dd>specific_humidity</dd><dt><span>units :</span></dt><dd>kg kg-1</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -2182,7 +2361,7 @@ Attributes: (12/16)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>rh</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;</div><input id='attrs-cee8d45b-048a-40ae-9ea9-d0a42b43df32' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-cee8d45b-048a-40ae-9ea9-d0a42b43df32' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-3308ae59-6978-423a-ba14-11eaa61d86e6' class='xr-var-data-in' type='checkbox'><label for='data-3308ae59-6978-423a-ba14-11eaa61d86e6' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>relative humidity</dd><dt><span>standard_name :</span></dt><dd>relative_humidity</dd><dt><span>units :</span></dt><dd></dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>rh</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;</div><input id='attrs-6aac3878-5bdf-4706-978f-f8397957e2ab' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-6aac3878-5bdf-4706-978f-f8397957e2ab' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-60b11032-bc74-4bfb-a8bf-76a1fd85bd5b' class='xr-var-data-in' type='checkbox'><label for='data-60b11032-bc74-4bfb-a8bf-76a1fd85bd5b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>relative humidity</dd><dt><span>standard_name :</span></dt><dd>relative_humidity</dd><dt><span>units :</span></dt><dd></dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -2243,7 +2422,7 @@ Attributes: (12/16)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>ta</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;</div><input id='attrs-a923f810-52f5-4454-9cef-c7c261bcc57a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-a923f810-52f5-4454-9cef-c7c261bcc57a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-fbfa55e1-7514-40dc-a442-36d5b3054adf' class='xr-var-data-in' type='checkbox'><label for='data-fbfa55e1-7514-40dc-a442-36d5b3054adf' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>dry bulb temperature</dd><dt><span>standard_name :</span></dt><dd>air_temperature</dd><dt><span>units :</span></dt><dd>K</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>ta</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;</div><input id='attrs-16f87548-6e93-473b-8753-dd960f5ae8b5' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-16f87548-6e93-473b-8753-dd960f5ae8b5' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-639a9a16-de09-4401-a189-5dcc7f8959c1' class='xr-var-data-in' type='checkbox'><label for='data-639a9a16-de09-4401-a189-5dcc7f8959c1' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>dry bulb temperature</dd><dt><span>standard_name :</span></dt><dd>air_temperature</dd><dt><span>units :</span></dt><dd>K</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -2304,7 +2483,7 @@ Attributes: (12/16)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>theta</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;</div><input id='attrs-778e2eba-6f50-4b39-bd13-1d80a38ad2d9' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-778e2eba-6f50-4b39-bd13-1d80a38ad2d9' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-568319d1-eb0a-434b-97f3-d292ed92ae22' class='xr-var-data-in' type='checkbox'><label for='data-568319d1-eb0a-434b-97f3-d292ed92ae22' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>air potential temperature</dd><dt><span>standard_name :</span></dt><dd>air_potential_temperature</dd><dt><span>units :</span></dt><dd>K</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>theta</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;</div><input id='attrs-28446b3f-a29c-4e12-911c-1891448ce479' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-28446b3f-a29c-4e12-911c-1891448ce479' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a2ec73d8-f1cd-47e1-9685-00e050f23146' class='xr-var-data-in' type='checkbox'><label for='data-a2ec73d8-f1cd-47e1-9685-00e050f23146' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>air potential temperature</dd><dt><span>standard_name :</span></dt><dd>air_potential_temperature</dd><dt><span>units :</span></dt><dd>K</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -2365,7 +2544,7 @@ Attributes: (12/16)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>u</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;</div><input id='attrs-9b6fb70b-b4f0-4306-90e7-55104c29b799' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-9b6fb70b-b4f0-4306-90e7-55104c29b799' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d029af9d-fa44-4c71-b67e-18aa3abb1f4c' class='xr-var-data-in' type='checkbox'><label for='data-d029af9d-fa44-4c71-b67e-18aa3abb1f4c' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>u-component of the wind</dd><dt><span>standard_name :</span></dt><dd>eastward_wind</dd><dt><span>units :</span></dt><dd>m s-1</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>u</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;</div><input id='attrs-e6b32e4b-1af5-4fe0-8884-df288b6ecba5' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e6b32e4b-1af5-4fe0-8884-df288b6ecba5' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-431d36bc-ea12-45ec-93a8-2323c9afbb08' class='xr-var-data-in' type='checkbox'><label for='data-431d36bc-ea12-45ec-93a8-2323c9afbb08' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>u-component of the wind</dd><dt><span>standard_name :</span></dt><dd>eastward_wind</dd><dt><span>units :</span></dt><dd>m s-1</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -2426,7 +2605,7 @@ Attributes: (12/16)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>v</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;</div><input id='attrs-55913f8b-ac24-4482-a229-ab6910707051' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-55913f8b-ac24-4482-a229-ab6910707051' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0ad1808b-3889-49c1-ac9b-563ff932baba' class='xr-var-data-in' type='checkbox'><label for='data-0ad1808b-3889-49c1-ac9b-563ff932baba' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>v-component of the wind</dd><dt><span>standard_name :</span></dt><dd>northward_wind</dd><dt><span>units :</span></dt><dd>m s-1</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>v</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;</div><input id='attrs-63f91b31-319d-481d-9dfc-39e72781d2bf' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-63f91b31-319d-481d-9dfc-39e72781d2bf' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a14dc8b8-e030-4dd4-a4c9-54b27b9b5b53' class='xr-var-data-in' type='checkbox'><label for='data-a14dc8b8-e030-4dd4-a4c9-54b27b9b5b53' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>v-component of the wind</dd><dt><span>standard_name :</span></dt><dd>northward_wind</dd><dt><span>units :</span></dt><dd>m s-1</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -2487,7 +2666,7 @@ Attributes: (12/16)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>wdir</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;</div><input id='attrs-0816f33e-e7e7-4561-9477-05dc132bda26' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-0816f33e-e7e7-4561-9477-05dc132bda26' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-efda6833-d3eb-4963-b4e7-043569161893' class='xr-var-data-in' type='checkbox'><label for='data-efda6833-d3eb-4963-b4e7-043569161893' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>wind direction</dd><dt><span>standard_name :</span></dt><dd>wind_from_direction</dd><dt><span>units :</span></dt><dd>degree</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>wdir</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;</div><input id='attrs-839f94f2-b235-40d6-85d4-d65b8578a857' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-839f94f2-b235-40d6-85d4-d65b8578a857' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e7f25ac3-8a1b-433c-8c31-5a1bb41627fa' class='xr-var-data-in' type='checkbox'><label for='data-e7f25ac3-8a1b-433c-8c31-5a1bb41627fa' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>wind direction</dd><dt><span>standard_name :</span></dt><dd>wind_from_direction</dd><dt><span>units :</span></dt><dd>degree</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -2548,7 +2727,7 @@ Attributes: (12/16)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>wspd</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;</div><input id='attrs-f45a0003-eb49-4c1b-a7ad-deb3e01b676d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-f45a0003-eb49-4c1b-a7ad-deb3e01b676d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-21418a2a-c2ee-4836-aa24-f1aeadeb3d5e' class='xr-var-data-in' type='checkbox'><label for='data-21418a2a-c2ee-4836-aa24-f1aeadeb3d5e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>wind speed</dd><dt><span>standard_name :</span></dt><dd>wind_speed</dd><dt><span>units :</span></dt><dd>m s-1</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>wspd</span></div><div class='xr-var-dims'>(sonde_id, alt)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(267, 501), meta=np.ndarray&gt;</div><input id='attrs-c24351e8-fd80-476a-8080-99c338dbde0c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c24351e8-fd80-476a-8080-99c338dbde0c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-41021764-8202-4347-ba47-2fc1cdb27172' class='xr-var-data-in' type='checkbox'><label for='data-41021764-8202-4347-ba47-2fc1cdb27172' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>wind speed</dd><dt><span>standard_name :</span></dt><dd>wind_speed</dd><dt><span>units :</span></dt><dd>m s-1</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -2609,11 +2788,11 @@ Attributes: (12/16)
 </svg>
         </td>
     </tr>
-</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-8ebb9a78-f9e1-42f3-8c3e-cc44a3875473' class='xr-section-summary-in' type='checkbox'  ><label for='section-8ebb9a78-f9e1-42f3-8c3e-cc44a3875473' class='xr-section-summary' >Attributes: <span>(16)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>ASPEN_version :</span></dt><dd>BatchAspen v3.4.3</dd><dt><span>AVAPS_software_version :</span></dt><dd>Version 4.1.2</dd><dt><span>Conventions :</span></dt><dd>CF-1.8</dd><dt><span>JOANNE_version :</span></dt><dd>2.0.0</dd><dt><span>author :</span></dt><dd>Geet George</dd><dt><span>author_email :</span></dt><dd>geet.george@mpimet.mpg.de</dd><dt><span>campaign_id :</span></dt><dd>EUREC4A</dd><dt><span>created with :</span></dt><dd>run_joanne.py doi:10.5281/zenodo.5521192</dd><dt><span>creation_time :</span></dt><dd>2021-09-22 14:35:24.817595 UTC</dd><dt><span>doi :</span></dt><dd>10.25326/246</dd><dt><span>featureType :</span></dt><dd>trajectory</dd><dt><span>instrument_id :</span></dt><dd>Vaisala RD-41</dd><dt><span>product_id :</span></dt><dd>Level-3</dd><dt><span>project_id :</span></dt><dd>JOANNE</dd><dt><span>reference :</span></dt><dd>George et al., JOANNE : Joint dropsonde Observations of the Atmosphere in tropical North atlaNtic meso-scale Environments, ESSD, 2021</dd><dt><span>title :</span></dt><dd>EUREC4A JOANNE Level-3</dd></dl></div></li></ul></div></div></div></div>
+</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-b904148a-7894-4fd5-b5ff-d43a0101987b' class='xr-section-summary-in' type='checkbox'  ><label for='section-b904148a-7894-4fd5-b5ff-d43a0101987b' class='xr-section-summary' >Attributes: <span>(16)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>ASPEN_version :</span></dt><dd>BatchAspen v3.4.3</dd><dt><span>AVAPS_software_version :</span></dt><dd>Version 4.1.2</dd><dt><span>Conventions :</span></dt><dd>CF-1.8</dd><dt><span>JOANNE_version :</span></dt><dd>2.0.0</dd><dt><span>author :</span></dt><dd>Geet George</dd><dt><span>author_email :</span></dt><dd>geet.george@mpimet.mpg.de</dd><dt><span>campaign_id :</span></dt><dd>EUREC4A</dd><dt><span>created with :</span></dt><dd>run_joanne.py doi:10.5281/zenodo.5521192</dd><dt><span>creation_time :</span></dt><dd>2021-09-22 14:35:24.817595 UTC</dd><dt><span>doi :</span></dt><dd>10.25326/246</dd><dt><span>featureType :</span></dt><dd>trajectory</dd><dt><span>instrument_id :</span></dt><dd>Vaisala RD-41</dd><dt><span>product_id :</span></dt><dd>Level-3</dd><dt><span>project_id :</span></dt><dd>JOANNE</dd><dt><span>reference :</span></dt><dd>George et al., JOANNE : Joint dropsonde Observations of the Atmosphere in tropical North atlaNtic meso-scale Environments, ESSD, 2021</dd><dt><span>title :</span></dt><dd>EUREC4A JOANNE Level-3</dd></dl></div></li></ul></div></div></div></div>
 </div>
-</div>
-<div class="section" id="load-halo-flight-phase-information">
-<h2>Load HALO flight phase information<a class="headerlink" href="#load-halo-flight-phase-information" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="load-halo-flight-phase-information">
+<h2>Load HALO flight phase information<a class="headerlink" href="#load-halo-flight-phase-information" title="Permalink to this headline">#</a></h2>
 <p>All HALO flights were split up into flight phases or segments to allow for a precise selection in time and space of a circle or calibration pattern. For more information have a look at the respective <a class="reference external" href="https://github.com/eurec4a/flight-phase-separation#segmentation-of-flights-during-eurec4a">github repository</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2703,9 +2882,9 @@ Attributes: (12/16)
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="plots">
-<h2>Plots<a class="headerlink" href="#plots" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="plots">
+<h2>Plots<a class="headerlink" href="#plots" title="Permalink to this headline">#</a></h2>
 <p>You can get a list of available variables in the dataset from <code class="docutils literal notranslate"><span class="pre">ds.variables.keys()</span></code></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -2720,8 +2899,8 @@ Attributes: (12/16)
 </div>
 </div>
 </div>
-<div class="section" id="temperature-and-relative-humidity-as-stored-in-the-xarray-dataset">
-<h3>Temperature and relative humidity as stored in the xarray dataset<a class="headerlink" href="#temperature-and-relative-humidity-as-stored-in-the-xarray-dataset" title="Permalink to this headline">¶</a></h3>
+<section id="temperature-and-relative-humidity-as-stored-in-the-xarray-dataset">
+<h3>Temperature and relative humidity as stored in the xarray dataset<a class="headerlink" href="#temperature-and-relative-humidity-as-stored-in-the-xarray-dataset" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax0</span><span class="p">,</span> <span class="n">ax1</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
@@ -2735,9 +2914,9 @@ Attributes: (12/16)
 <img alt="_images/dropsondes_17_0.png" src="_images/dropsondes_17_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="temperature-and-relative-humidity-profiles">
-<h3>Temperature and relative humidity profiles.<a class="headerlink" href="#temperature-and-relative-humidity-profiles" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="temperature-and-relative-humidity-profiles">
+<h3>Temperature and relative humidity profiles.<a class="headerlink" href="#temperature-and-relative-humidity-profiles" title="Permalink to this headline">#</a></h3>
 <p>The temperature and humidity profiles are colored according to their launch time.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2781,9 +2960,9 @@ Attributes: (12/16)
 <img alt="_images/dropsondes_20_0.png" src="_images/dropsondes_20_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="wind-speed-variations-on-halo-circles-throughout-february-5">
-<h3>wind speed variations on HALO circles throughout February 5<a class="headerlink" href="#wind-speed-variations-on-halo-circles-throughout-february-5" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="wind-speed-variations-on-halo-circles-throughout-february-5">
+<h3>wind speed variations on HALO circles throughout February 5<a class="headerlink" href="#wind-speed-variations-on-halo-circles-throughout-february-5" title="Permalink to this headline">#</a></h3>
 <p>To have a look at the wind speed variations during the circles flown by HALO,
 we again select the relevant soundings:</p>
 <div class="cell docutils container">
@@ -2816,9 +2995,9 @@ smaller gaps in the plot are filled while larger gaps are indicated as missing v
 <img alt="_images/dropsondes_24_0.png" src="_images/dropsondes_24_0.png" />
 </div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -2842,9 +3021,11 @@ smaller gaps in the plot are filled while larger gaps are indicated as missing v
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="multi_platform_data.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -2860,24 +3041,28 @@ smaller gaps in the plot are filled while larger gaps are indicated as missing v
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By EUREC4A community<br/>
+  
+      &copy; Copyright 2021.<br/>
+</p>
+        </footer>
+    </div>
     
-      By EUREC4A community<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

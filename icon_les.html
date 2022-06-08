@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>ICON-LES &#8212; How to EUREC4A</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,21 +20,17 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -40,12 +38,13 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -68,7 +67,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -77,9 +90,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -97,14 +111,15 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="intro.html">
-   Introduction
-  </a>
- </li>
-</ul>
-<ul class="current nav bd-sidenav">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="halo.html">
    HALO
@@ -373,115 +388,279 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        <a class="dropdown-buttons"
-            href="_sources/icon_les.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/icon_les.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/eurec4a/how_to_eurec4a"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/eurec4a/how_to_eurec4a/issues/new?title=Issue%20on%20page%20%2Ficon_les.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/eurec4a/how_to_eurec4a/edit/master/how_to_eurec4a/icon_les.md"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/eurec4a/how_to_eurec4a/master?urlpath=tree/how_to_eurec4a/icon_les.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <button type="button" class="btn btn-secondary topbarbtn"
-            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
-                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/eurec4a/how_to_eurec4a/master?urlpath=tree/how_to_eurec4a/icon_les.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/eurec4a/how_to_eurec4a/blob/master/how_to_eurec4a/icon_les.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="initThebeSBT()"
+  class="headerbtn headerbtn-launch-thebe"
+  data-toggle="tooltip"
+data-placement="left"
+title="Launch Thebe"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="headerbtn__text-container">Live Code</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/eurec4a/how_to_eurec4a"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/eurec4a/how_to_eurec4a/issues/new?title=Issue%20on%20page%20%2Ficon_les.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/eurec4a/how_to_eurec4a/edit/master/how_to_eurec4a/icon_les.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/icon_les.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="_sources/icon_les.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#setup">
    Setup
@@ -543,12 +722,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>ICON-LES</h1>
@@ -626,44 +804,50 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="icon-les">
-<h1>ICON-LES<a class="headerlink" href="#icon-les" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="setup">
-<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="icon-les">
+<h1>ICON-LES<a class="headerlink" href="#icon-les" title="Permalink to this headline">#</a></h1>
+<section id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">#</a></h2>
 <p>These ICON Large-eddy simulations (LES) presented here consist of three different domains that have different spatial and temporal extends depending on their horizontal grid-spacing. <a class="reference internal" href="#icon-domains"><span class="std std-numref">Fig. 2</span></a> shows the extend of the different simulations.</p>
-<div class="figure align-center" id="icon-domains">
+<figure class="align-center" id="icon-domains">
 <a class="reference internal image-reference" href="_images/icon_les_domains.jpg"><img alt="ICON-LES domain overview" src="_images/icon_les_domains.jpg" style="width: 800px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Overview of simulation domains. The location of the Barbados Cloud Observatory (BCO) and the NTAS buoy are marked with a red star at the western and eastern part of the domain, respectively. For a sense of scale, the MODIS image of February 12 is shown with landmasses colored in green to brown depending on height. Satellite image source: NASA Worldview.</span><a class="headerlink" href="#icon-domains" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Overview of simulation domains. The location of the Barbados Cloud Observatory (BCO) and the NTAS buoy are marked with a red star at the western and eastern part of the domain, respectively. For a sense of scale, the MODIS image of February 12 is shown with landmasses colored in green to brown depending on height. Satellite image source: NASA Worldview.</span><a class="headerlink" href="#icon-domains" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p><a class="reference internal" href="#icon-domains"><span class="std std-numref">Fig. 2</span></a> illustrates further the extend of the ICON Storm-resolving simulation (SRM) that provides the boundary conditions for the ICON-624m run. ICON-312m and ICON-156m are both one-way nested in the respective coarser resolution run.</p>
-</div>
-<div class="section" id="availability-of-simulation-output">
-<h2>Availability of simulation output<a class="headerlink" href="#availability-of-simulation-output" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="availability-of-simulation-output">
+<h2>Availability of simulation output<a class="headerlink" href="#availability-of-simulation-output" title="Permalink to this headline">#</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Please note that this section is still under development and might change. Please revisit this page regularly for updates or changes.</p>
 </div>
 <p>The currently available ICON-LES output is shown in the following:</p>
 <div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/icon_les_4_0.png" src="_images/icon_les_4_0.png" />
 </div>
 </div>
-<div class="section" id="output-description">
-<h2>Output description<a class="headerlink" href="#output-description" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="output-description">
+<h2>Output description<a class="headerlink" href="#output-description" title="Permalink to this headline">#</a></h2>
 <p>There are two main experiments: <code class="docutils literal notranslate"><span class="pre">LES_CampaignDomain_control</span></code> and <code class="docutils literal notranslate"><span class="pre">LES_CampaignDomain_highCCN</span></code>. These experiments only distinguish themselves by the prescribed cloud condensation nuclei (CCN) concentration, respectively 1700 cm<span class="math notranslate nohighlight">\(^{-3}\)</span> and 130 cm<span class="math notranslate nohighlight">\(^{-3}\)</span>. <code class="docutils literal notranslate"><span class="pre">DOM01</span></code> refers to the 624m run, while <code class="docutils literal notranslate"><span class="pre">DOM02</span></code> refers to the 312m nest. As the variable names suggest, the <code class="docutils literal notranslate"><span class="pre">surface</span></code> entries contain the surface variables. <code class="docutils literal notranslate"><span class="pre">rttov</span></code> refers to forward simulated synthetic satellite images and meteogram output is available at different locations using the entry format <code class="docutils literal notranslate"><span class="pre">meteogram_&lt;location&gt;_&lt;domain&gt;</span></code>. The 2D and 3D radiation fields and fluxes are referenced with <code class="docutils literal notranslate"><span class="pre">radiation</span></code>.</p>
-</div>
-<div class="section" id="visualization">
-<h2>Visualization<a class="headerlink" href="#visualization" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="visualization">
+<h2>Visualization<a class="headerlink" href="#visualization" title="Permalink to this headline">#</a></h2>
 <p>The simulation output is mostly available on its natural, icosahedral grid but some output, like the rttov brightness temperatures, have been regridded onto a regular lat-lon grid. The following section shows how these different outputs can be visualized and explored.</p>
-<div class="section" id="regular-grid">
-<h3>Regular grid<a class="headerlink" href="#regular-grid" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="loading-modules">
-<h4>Loading modules<a class="headerlink" href="#loading-modules" title="Permalink to this headline">¶</a></h4>
+<section id="regular-grid">
+<h3>Regular grid<a class="headerlink" href="#regular-grid" title="Permalink to this headline">#</a></h3>
+<section id="loading-modules">
+<h4>Loading modules<a class="headerlink" href="#loading-modules" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">eurec4a</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">eurec4a</span>
 <span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -678,13 +862,13 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="selecting-output">
-<h4>Selecting output<a class="headerlink" href="#selecting-output" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="selecting-output">
+<h4>Selecting output<a class="headerlink" href="#selecting-output" title="Permalink to this headline">#</a></h4>
 <p>The simulation output is indexed in the EUREC<sup>4</sup>A Intake catalog and can be easily queried:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">=</span> <span class="n">eurec4a</span><span class="o">.</span><span class="n">get_intake_catalog</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">=</span> <span class="n">eurec4a</span><span class="o">.</span><span class="n">get_intake_catalog</span><span class="p">()</span>
 
 <span class="c1"># Lazy loading of selected output</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">cat</span><span class="o">.</span><span class="n">simulations</span><span class="o">.</span><span class="n">ICON</span><span class="o">.</span><span class="n">LES_CampaignDomain_control</span><span class="o">.</span><span class="n">rttov_DOM01</span><span class="o">.</span><span class="n">to_dask</span><span class="p">()</span>
@@ -694,13 +878,44 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;xarray.Dataset&gt;
+Dimensions:                                                   (lat: 760,
+                                                               lon: 1220,
+                                                               time: 5903)
+Coordinates:
+  * lat                                                       (lat) float64 7...
+  * lon                                                       (lon) float64 -...
+  * time                                                      (time) datetime64[ns] ...
+Data variables:
+    synsat_rttov_forward_model_1__abi_ir__goes_16__channel_1  (time, lat, lon) float32 dask.array&lt;chunksize=(12, 760, 1220), meta=np.ndarray&gt;
+    synsat_rttov_forward_model_1__abi_ir__goes_16__channel_2  (time, lat, lon) float32 dask.array&lt;chunksize=(12, 760, 1220), meta=np.ndarray&gt;
+    synsat_rttov_forward_model_1__abi_ir__goes_16__channel_3  (time, lat, lon) float32 dask.array&lt;chunksize=(12, 760, 1220), meta=np.ndarray&gt;
+    synsat_rttov_forward_model_1__abi_ir__goes_16__channel_4  (time, lat, lon) float32 dask.array&lt;chunksize=(12, 760, 1220), meta=np.ndarray&gt;
+    synsat_rttov_forward_model_1__abi_ir__goes_16__channel_5  (time, lat, lon) float32 dask.array&lt;chunksize=(12, 760, 1220), meta=np.ndarray&gt;
+    synsat_rttov_forward_model_1__abi_ir__goes_16__channel_6  (time, lat, lon) float32 dask.array&lt;chunksize=(12, 760, 1220), meta=np.ndarray&gt;
+    synsat_rttov_forward_model_1__abi_ir__goes_16__channel_7  (time, lat, lon) float32 dask.array&lt;chunksize=(12, 760, 1220), meta=np.ndarray&gt;
+Attributes:
+    CDI:                       Climate Data Interface version 1.9.10 (https:/...
+    CDO:                       Climate Data Operators version 1.9.10 (https:/...
+    Conventions:               CF-1.6
+    cdo_openmp_thread_number:  30
+    comment:                   Hauke Schulz (m300408) on l30466 (Linux 4.18.0...
+    history:                   Fri Apr 22 18:15:09 2022: cdo -r -P 30 -f nc4 ...
+    institution:               Max Planck Institute for Meteorology
+    references:                see MPIM/DWD publications
+    source:                    icon-nwp\tgit@gitlab.dkrz.de:icon/icon-nwp.git...
+    title:                     ICON simulation
+</pre></div>
 </div>
 </div>
-<div class="section" id="setting-the-scene">
-<h4>Setting the scene<a class="headerlink" href="#setting-the-scene" title="Permalink to this headline">¶</a></h4>
+</div>
+</section>
+<section id="setting-the-scene">
+<h4>Setting the scene<a class="headerlink" href="#setting-the-scene" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">central_longitude</span> <span class="o">=</span> <span class="o">-</span><span class="mf">53.54884554550185</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">central_longitude</span> <span class="o">=</span> <span class="o">-</span><span class="mf">53.54884554550185</span>
 <span class="n">central_latitude</span> <span class="o">=</span> <span class="mf">12.28815437976341</span>
 <span class="n">satellite_height</span> <span class="o">=</span> <span class="mf">8225469.943160511</span>
 
@@ -711,14 +926,14 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="projection-and-plotting">
-<h4>Projection and plotting<a class="headerlink" href="#projection-and-plotting" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="projection-and-plotting">
+<h4>Projection and plotting<a class="headerlink" href="#projection-and-plotting" title="Permalink to this headline">#</a></h4>
 <p>The regular grid data can also be plotted with a simple <code class="docutils literal notranslate"><span class="pre">da.plot()</span></code>, but more steps are involved for projections and some tweeks for faster plotting
 that come especially handy for the plotting of data on the icosahedral grid shown in the next section.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">projection</span> <span class="o">=</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">NearsidePerspective</span><span class="p">(</span><span class="n">central_longitude</span><span class="o">=</span><span class="n">central_longitude</span><span class="p">,</span> <span class="n">central_latitude</span><span class="o">=</span><span class="n">central_latitude</span><span class="p">,</span> <span class="n">satellite_height</span><span class="o">=</span><span class="n">satellite_height</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">projection</span> <span class="o">=</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">NearsidePerspective</span><span class="p">(</span><span class="n">central_longitude</span><span class="o">=</span><span class="n">central_longitude</span><span class="p">,</span> <span class="n">central_latitude</span><span class="o">=</span><span class="n">central_latitude</span><span class="p">,</span> <span class="n">satellite_height</span><span class="o">=</span><span class="n">satellite_height</span><span class="p">)</span>
 
 <span class="n">lats</span><span class="p">,</span> <span class="n">lons</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span><span class="n">data</span><span class="o">.</span><span class="n">lon</span><span class="p">)</span>
 <span class="n">coords</span> <span class="o">=</span> <span class="n">projection</span><span class="o">.</span><span class="n">transform_points</span><span class="p">(</span>
@@ -749,19 +964,37 @@ that come especially handy for the plotting of data on the icosahedral grid show
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/IPython/core/pylabtools.py:151: UserWarning: constrained_layout not applied because axes sizes collapsed to zero.  Try making figure larger or axes decorations smaller.
+  fig.canvas.print_figure(bytes_io, **kw)
+</pre></div>
+</div>
+<img alt="_images/icon_les_12_1.png" src="_images/icon_les_12_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="icosahedral-grid">
-<h3>Icosahedral grid<a class="headerlink" href="#icosahedral-grid" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="icosahedral-grid">
+<h3>Icosahedral grid<a class="headerlink" href="#icosahedral-grid" title="Permalink to this headline">#</a></h3>
 <p>For the visualization of the icosahedral grid, and interactive version exists that relies on <a class="reference external" href="https://gitlab.gwdg.de/tobi/gridlook">gridlook</a> and is shown below
 for the surface values of <em>LES_CampaignDomain_control</em> and <em>DOM01</em>. Try it out!</p>
 <div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html">
+<iframe
+    width="100%"
+    height="600px"
+    src="https://tobi.pages.gwdg.de/gridlook/#https://swift.dkrz.de/v1/dkrz_948e7d4bbfbb445fbff5315fc433e36a/EUREC4A_LES/json_eurec4a_sim_time.json"
+    frameborder="0"
+    allowfullscreen
+
+></iframe>
+</div></div>
 </div>
 <p>Static views can be exported within the app and plotted separatedly. Here is an example for the 2m temperature that build on top of the plotting routine of the regular grid.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lazy loading of output and grid</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lazy loading of output and grid</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">cat</span><span class="o">.</span><span class="n">simulations</span><span class="o">.</span><span class="n">ICON</span><span class="o">.</span><span class="n">LES_CampaignDomain_control</span><span class="o">.</span><span class="n">surface_DOM01</span><span class="o">.</span><span class="n">to_dask</span><span class="p">()</span>
 <span class="n">grid</span> <span class="o">=</span> <span class="n">cat</span><span class="o">.</span><span class="n">simulations</span><span class="o">.</span><span class="n">grids</span><span class="p">[</span><span class="n">data</span><span class="o">.</span><span class="n">uuidOfHGrid</span><span class="p">]</span><span class="o">.</span><span class="n">to_dask</span><span class="p">()</span>
 
@@ -806,16 +1039,23 @@ for the surface values of <em>LES_CampaignDomain_control</em> and <em>DOM01</em>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/IPython/core/pylabtools.py:151: UserWarning: constrained_layout not applied because axes sizes collapsed to zero.  Try making figure larger or axes decorations smaller.
+  fig.canvas.print_figure(bytes_io, **kw)
+</pre></div>
+</div>
+<img alt="_images/icon_les_16_1.png" src="_images/icon_les_16_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="questions-and-further-information">
-<h2>Questions and further information<a class="headerlink" href="#questions-and-further-information" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="questions-and-further-information">
+<h2>Questions and further information<a class="headerlink" href="#questions-and-further-information" title="Permalink to this headline">#</a></h2>
 <p>Questions and issues with this dataset should be raised at the <a class="reference external" href="https://gitlab.gwdg.de/hauke.schulz/EUREC4A-ICON">GITLAB-Repository</a> to encourage an open discussion and share experiences. The repository is also the place where further information about these simulations can be found.</p>
-</div>
+</section>
 <div class="toctree-wrapper compound">
 </div>
-</div>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -839,9 +1079,11 @@ for the surface values of <em>LES_CampaignDomain_control</em> and <em>DOM01</em>
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="simulations.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -857,24 +1099,28 @@ for the surface values of <em>LES_CampaignDomain_control</em> and <em>DOM01</em>
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By EUREC4A community<br/>
+  
+      &copy; Copyright 2021.<br/>
+</p>
+        </footer>
+    </div>
     
-      By EUREC4A community<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

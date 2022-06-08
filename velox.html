@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>VELOX &#8212; How to EUREC4A</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,21 +20,17 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -40,12 +38,13 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -66,7 +65,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -75,9 +88,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -95,14 +109,15 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="intro.html">
-   Introduction
-  </a>
- </li>
-</ul>
-<ul class="current nav bd-sidenav">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="halo.html">
    HALO
@@ -371,115 +386,279 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        <a class="dropdown-buttons"
-            href="_sources/velox.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/velox.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/eurec4a/how_to_eurec4a"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/eurec4a/how_to_eurec4a/issues/new?title=Issue%20on%20page%20%2Fvelox.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/eurec4a/how_to_eurec4a/edit/master/how_to_eurec4a/velox.md"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/eurec4a/how_to_eurec4a/master?urlpath=tree/how_to_eurec4a/velox.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <button type="button" class="btn btn-secondary topbarbtn"
-            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
-                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/eurec4a/how_to_eurec4a/master?urlpath=tree/how_to_eurec4a/velox.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/eurec4a/how_to_eurec4a/blob/master/how_to_eurec4a/velox.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="initThebeSBT()"
+  class="headerbtn headerbtn-launch-thebe"
+  data-toggle="tooltip"
+data-placement="left"
+title="Launch Thebe"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="headerbtn__text-container">Live Code</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/eurec4a/how_to_eurec4a"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/eurec4a/how_to_eurec4a/issues/new?title=Issue%20on%20page%20%2Fvelox.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/eurec4a/how_to_eurec4a/edit/master/how_to_eurec4a/velox.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/velox.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="_sources/velox.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#get-data">
    Get data
@@ -514,12 +693,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>VELOX</h1>
@@ -570,11 +748,12 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="velox">
-<h1>VELOX<a class="headerlink" href="#velox" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="velox">
+<h1>VELOX<a class="headerlink" href="#velox" title="Permalink to this headline">#</a></h1>
 <p>Video airbornE Longwave Observations within siX channels</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -596,8 +775,8 @@ const thebe_selector_output = ".output, .cell_output"
 <p class="admonition-title">Note</p>
 <p>No data available for the transfer flights (first and last) and the first local research flight.</p>
 </div>
-<div class="section" id="get-data">
-<h2>Get data<a class="headerlink" href="#get-data" title="Permalink to this headline">¶</a></h2>
+<section id="get-data">
+<h2>Get data<a class="headerlink" href="#get-data" title="Permalink to this headline">#</a></h2>
 <p>To load the data we first load the <a class="reference external" href="https://github.com/eurec4a/eurec4a-intake#eurec4a-intake-catalogue">EUREC4A intake catalog</a> and list the available datasets from VELOX.<br />
 Currently, there is a cloud mask product available.</p>
 <div class="cell docutils container">
@@ -999,7 +1178,7 @@ Attributes: (12/22)
     source:               Airborne imaging with the VELOX system
     title:                Two-dimensional cloud mask and cloud fraction with ...
     variable:             cloud_mask, CF_min, CF_max
-    version:              Version 3 from 2021-02-12</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-c3c499a3-2277-4963-b721-830f6091b0ba' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-c3c499a3-2277-4963-b721-830f6091b0ba' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 29894</li><li><span>y</span>: 512</li><li><span>x</span>: 640</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-ef9e6dac-4fe9-4f1b-9505-ea9409fcc829' class='xr-section-summary-in' type='checkbox'  checked><label for='section-ef9e6dac-4fe9-4f1b-9505-ea9409fcc829' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>alt</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(29894,), meta=np.ndarray&gt;</div><input id='attrs-4ec9162e-6a4a-4a73-9ef1-1f1fd6b69bd3' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-4ec9162e-6a4a-4a73-9ef1-1f1fd6b69bd3' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-12a3bf98-4aa1-4389-bbd8-0f9674b537b7' class='xr-var-data-in' type='checkbox'><label for='data-12a3bf98-4aa1-4389-bbd8-0f9674b537b7' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Platform altitude coordinate</dd><dt><span>long_name :</span></dt><dd>altitude</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><table>
+    version:              Version 3 from 2021-02-12</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-08750372-b2be-4095-905c-311265681c8c' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-08750372-b2be-4095-905c-311265681c8c' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 29894</li><li><span>y</span>: 512</li><li><span>x</span>: 640</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-49dcb35c-2d7e-4bcb-b478-63c648b1192e' class='xr-section-summary-in' type='checkbox'  checked><label for='section-49dcb35c-2d7e-4bcb-b478-63c648b1192e' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>alt</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(29894,), meta=np.ndarray&gt;</div><input id='attrs-fe152ff8-a07d-4ddb-94a4-84589cd496e1' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-fe152ff8-a07d-4ddb-94a4-84589cd496e1' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e48358ad-8ada-42a4-8252-279a7e5e0f06' class='xr-var-data-in' type='checkbox'><label for='data-e48358ad-8ada-42a4-8252-279a7e5e0f06' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Platform altitude coordinate</dd><dt><span>long_name :</span></dt><dd>altitude</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1056,7 +1235,7 @@ Attributes: (12/22)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lat</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(29894,), meta=np.ndarray&gt;</div><input id='attrs-7d5fc404-d1db-43fd-8d80-d71a54159452' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-7d5fc404-d1db-43fd-8d80-d71a54159452' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-35a907e9-a672-464a-8b4a-d42d63da079a' class='xr-var-data-in' type='checkbox'><label for='data-35a907e9-a672-464a-8b4a-d42d63da079a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Platform latitude coordinate</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lat</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(29894,), meta=np.ndarray&gt;</div><input id='attrs-f4c67f95-79be-49b8-81d1-02f430d55307' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-f4c67f95-79be-49b8-81d1-02f430d55307' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e2ace07d-ce23-487d-9926-18d6c503f8c9' class='xr-var-data-in' type='checkbox'><label for='data-e2ace07d-ce23-487d-9926-18d6c503f8c9' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Platform latitude coordinate</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1113,7 +1292,7 @@ Attributes: (12/22)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lon</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(29894,), meta=np.ndarray&gt;</div><input id='attrs-9252307e-cc10-46fe-9668-dedf0d29e09a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-9252307e-cc10-46fe-9668-dedf0d29e09a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-697eda12-843c-4aa4-85ab-726f2754ee34' class='xr-var-data-in' type='checkbox'><label for='data-697eda12-843c-4aa4-85ab-726f2754ee34' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Platform longitude coordinate</dd><dt><span>long_name :</span></dt><dd>longitude</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lon</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(29894,), meta=np.ndarray&gt;</div><input id='attrs-ace1f874-918d-473b-8ec8-2e2e4e9976b1' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ace1f874-918d-473b-8ec8-2e2e4e9976b1' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4d750590-1324-4de8-9b4d-c77ea4887dae' class='xr-var-data-in' type='checkbox'><label for='data-4d750590-1324-4de8-9b4d-c77ea4887dae' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Platform longitude coordinate</dd><dt><span>long_name :</span></dt><dd>longitude</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1170,10 +1349,10 @@ Attributes: (12/22)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2020-02-05T09:21:46 ... 2020-02-...</div><input id='attrs-656f3761-5dbd-413a-8631-2eb5625db6b1' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-656f3761-5dbd-413a-8631-2eb5625db6b1' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b1ef073d-8fde-409a-80e5-35fce1006c87' class='xr-var-data-in' type='checkbox'><label for='data-b1ef073d-8fde-409a-80e5-35fce1006c87' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>time</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;2020-02-05T09:21:46.000000000&#x27;, &#x27;2020-02-05T09:21:47.000000000&#x27;,
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2020-02-05T09:21:46 ... 2020-02-...</div><input id='attrs-77e1fa9c-18e8-4cbb-81ad-2ff9d2058591' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-77e1fa9c-18e8-4cbb-81ad-2ff9d2058591' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-7bbe9eac-03b5-4657-8f5b-7b595024b880' class='xr-var-data-in' type='checkbox'><label for='data-7bbe9eac-03b5-4657-8f5b-7b595024b880' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>time</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;2020-02-05T09:21:46.000000000&#x27;, &#x27;2020-02-05T09:21:47.000000000&#x27;,
        &#x27;2020-02-05T09:21:48.000000000&#x27;, ..., &#x27;2020-02-05T18:08:26.000000000&#x27;,
        &#x27;2020-02-05T18:08:27.000000000&#x27;, &#x27;2020-02-05T18:08:28.000000000&#x27;],
-      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-13a05bca-6716-4b6e-aecb-748055959ea4' class='xr-section-summary-in' type='checkbox'  checked><label for='section-13a05bca-6716-4b6e-aecb-748055959ea4' class='xr-section-summary' >Data variables: <span>(5)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>CF_max</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(29894,), meta=np.ndarray&gt;</div><input id='attrs-8968dcab-097f-47f8-a04a-cf4888f38f94' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-8968dcab-097f-47f8-a04a-cf4888f38f94' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-df4ed909-20d2-47a7-a5cc-2cf1cdcc4f96' class='xr-var-data-in' type='checkbox'><label for='data-df4ed909-20d2-47a7-a5cc-2cf1cdcc4f96' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Maximal possible cloud fraction derived from the ratio between the number of pixels classified with cloud mask values of &quot;1b&quot; and &quot;2b&quot; and the total number of usable pixels in the image.</dd><dt><span>long_name :</span></dt><dd>Maximal cloud fraction</dd></dl></div><div class='xr-var-data'><table>
+      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-4f2dc65f-9cf9-4489-84f7-f92e11259ebe' class='xr-section-summary-in' type='checkbox'  checked><label for='section-4f2dc65f-9cf9-4489-84f7-f92e11259ebe' class='xr-section-summary' >Data variables: <span>(5)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>CF_max</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(29894,), meta=np.ndarray&gt;</div><input id='attrs-5b1379f3-f913-4799-9787-62eaee821140' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-5b1379f3-f913-4799-9787-62eaee821140' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ee8d0fda-03f2-4241-8d32-dc7fe3759cda' class='xr-var-data-in' type='checkbox'><label for='data-ee8d0fda-03f2-4241-8d32-dc7fe3759cda' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Maximal possible cloud fraction derived from the ratio between the number of pixels classified with cloud mask values of &quot;1b&quot; and &quot;2b&quot; and the total number of usable pixels in the image.</dd><dt><span>long_name :</span></dt><dd>Maximal cloud fraction</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1230,7 +1409,7 @@ Attributes: (12/22)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>CF_min</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(29894,), meta=np.ndarray&gt;</div><input id='attrs-ab9bb84a-c23c-4459-9749-271d706ac120' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ab9bb84a-c23c-4459-9749-271d706ac120' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-eafb037a-0eb5-4a70-b055-ae7808895f1d' class='xr-var-data-in' type='checkbox'><label for='data-eafb037a-0eb5-4a70-b055-ae7808895f1d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Minimal possible cloud fraction derived from the ratio between the number of pixels classified with a cloud mask value of &quot;2b&quot; and the total number of usable pixels in the image.</dd><dt><span>long_name :</span></dt><dd>Minimal cloud fraction</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>CF_min</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(29894,), meta=np.ndarray&gt;</div><input id='attrs-3f84ca8f-9ca0-4e91-bb2e-979b4602a09a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-3f84ca8f-9ca0-4e91-bb2e-979b4602a09a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a0db32d4-b718-46b2-9607-ad298ec10bad' class='xr-var-data-in' type='checkbox'><label for='data-a0db32d4-b718-46b2-9607-ad298ec10bad' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Minimal possible cloud fraction derived from the ratio between the number of pixels classified with a cloud mask value of &quot;2b&quot; and the total number of usable pixels in the image.</dd><dt><span>long_name :</span></dt><dd>Minimal cloud fraction</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1287,7 +1466,7 @@ Attributes: (12/22)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>cloud_mask</span></div><div class='xr-var-dims'>(y, x, time)</div><div class='xr-var-dtype'>int8</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(32, 40, 3737), meta=np.ndarray&gt;</div><input id='attrs-564bb4d3-39a8-4daf-aecf-e31d32044833' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-564bb4d3-39a8-4daf-aecf-e31d32044833' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8003f841-b610-4fa1-ab98-3031616647bb' class='xr-var-data-in' type='checkbox'><label for='data-8003f841-b610-4fa1-ab98-3031616647bb' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Cloud mask derived by comparing the measured brightness temperature with the brightness temperature in a clear-sky assumption using the four thresholds of 0.5 K, 1.0 K, 1.5 K, and 2.0 K. If all thresholds are exceeded, the measurement is denoted as &quot;most_likely_cloudy&quot;, if only one of the thresholds is exceeded, the measurement is denoted as &quot;probably_cloudy&quot;. &quot;cloud_free&quot; is classified when no threshold is reached. &quot;unknown&quot; is classified when no estimation of the cloud mask was possible, e.g. due to condensation on the window.</dd><dt><span>flag_meanings :</span></dt><dd>unknown cloud_free probably_cloudy most_likely_cloudy</dd><dt><span>flag_values :</span></dt><dd>[-1, 0, 1, 2]</dd><dt><span>long_name :</span></dt><dd>cloud flag</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>cloud_mask</span></div><div class='xr-var-dims'>(y, x, time)</div><div class='xr-var-dtype'>int8</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(32, 40, 3737), meta=np.ndarray&gt;</div><input id='attrs-9ef84e7b-c81b-44b1-a1bc-53358fed3d3b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-9ef84e7b-c81b-44b1-a1bc-53358fed3d3b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-3391a656-cccf-460d-ae7c-9f0a3351b991' class='xr-var-data-in' type='checkbox'><label for='data-3391a656-cccf-460d-ae7c-9f0a3351b991' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Cloud mask derived by comparing the measured brightness temperature with the brightness temperature in a clear-sky assumption using the four thresholds of 0.5 K, 1.0 K, 1.5 K, and 2.0 K. If all thresholds are exceeded, the measurement is denoted as &quot;most_likely_cloudy&quot;, if only one of the thresholds is exceeded, the measurement is denoted as &quot;probably_cloudy&quot;. &quot;cloud_free&quot; is classified when no threshold is reached. &quot;unknown&quot; is classified when no estimation of the cloud mask was possible, e.g. due to condensation on the window.</dd><dt><span>flag_meanings :</span></dt><dd>unknown cloud_free probably_cloudy most_likely_cloudy</dd><dt><span>flag_values :</span></dt><dd>[-1, 0, 1, 2]</dd><dt><span>long_name :</span></dt><dd>cloud flag</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1441,7 +1620,7 @@ Attributes: (12/22)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>vaa</span></div><div class='xr-var-dims'>(y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(256, 320), meta=np.ndarray&gt;</div><input id='attrs-e2672d71-04a6-4dc5-b2ba-58095dd1559b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e2672d71-04a6-4dc5-b2ba-58095dd1559b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0f15e1e9-5f8a-4b62-91a5-f9a5c560d491' class='xr-var-data-in' type='checkbox'><label for='data-0f15e1e9-5f8a-4b62-91a5-f9a5c560d491' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Camera viewing azimuth angle of each spatial pixel, mathematic negative system with 0° into flight direction, clockwise.</dd><dt><span>long_name :</span></dt><dd>Viewing sensor azimuth angle</dd><dt><span>units :</span></dt><dd>degree</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>vaa</span></div><div class='xr-var-dims'>(y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(256, 320), meta=np.ndarray&gt;</div><input id='attrs-d78900ea-82d0-47eb-86b5-748e6aa2ad43' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-d78900ea-82d0-47eb-86b5-748e6aa2ad43' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-419ca9c8-aed0-40af-a465-fecd8a4a56fc' class='xr-var-data-in' type='checkbox'><label for='data-419ca9c8-aed0-40af-a465-fecd8a4a56fc' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Camera viewing azimuth angle of each spatial pixel, mathematic negative system with 0° into flight direction, clockwise.</dd><dt><span>long_name :</span></dt><dd>Viewing sensor azimuth angle</dd><dt><span>units :</span></dt><dd>degree</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1500,7 +1679,7 @@ Attributes: (12/22)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>vza</span></div><div class='xr-var-dims'>(y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(256, 320), meta=np.ndarray&gt;</div><input id='attrs-f6ba1698-56ec-42cd-b04c-d3e6e3aee243' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-f6ba1698-56ec-42cd-b04c-d3e6e3aee243' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0de17194-897e-499f-88b2-2004bb1ff7c3' class='xr-var-data-in' type='checkbox'><label for='data-0de17194-897e-499f-88b2-2004bb1ff7c3' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Angle between the line of sight and the viewing direction of each spatial pixel of the sensor.</dd><dt><span>long_name :</span></dt><dd>Viewing sensor zenith angle</dd><dt><span>units :</span></dt><dd>degree</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>vza</span></div><div class='xr-var-dims'>(y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(256, 320), meta=np.ndarray&gt;</div><input id='attrs-1998cc9f-6731-4ebe-8566-746fb7cb6280' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-1998cc9f-6731-4ebe-8566-746fb7cb6280' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-62c73519-4be8-49e9-8083-b86158908289' class='xr-var-data-in' type='checkbox'><label for='data-62c73519-4be8-49e9-8083-b86158908289' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Angle between the line of sight and the viewing direction of each spatial pixel of the sensor.</dd><dt><span>long_name :</span></dt><dd>Viewing sensor zenith angle</dd><dt><span>units :</span></dt><dd>degree</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1559,15 +1738,15 @@ Attributes: (12/22)
 </svg>
         </td>
     </tr>
-</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-8c883ee4-13e0-44b4-9eed-66b6f19c6412' class='xr-section-summary-in' type='checkbox'  ><label for='section-8c883ee4-13e0-44b4-9eed-66b6f19c6412' class='xr-section-summary' >Attributes: <span>(22)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>Conventions :</span></dt><dd>&quot;CF-1.8&quot;</dd><dt><span>author :</span></dt><dd>Michael Schäfer, André Ehrlich, Anna Luebke, Jakob Thoböll, Kevin Wolf, Manfred Wendisch</dd><dt><span>campaign :</span></dt><dd>EUREC4A</dd><dt><span>comment_1 :</span></dt><dd>The cloud mask is derived with 1 Hz temporal resolution from the broadband channel of VELOX by comparing the measured brightness temperature with simulations assuming cloud-free conditions.</dd><dt><span>comment_2 :</span></dt><dd>Four different thresholds (0.5 K, 1.0 K, 1.5 K, and 2.0 K) for the difference between measurements and simulations are applied.</dd><dt><span>comment_3 :</span></dt><dd>The final cloud mask logically combines the different thresholds for each spatial pixel and each time step.</dd><dt><span>comment_4 :</span></dt><dd>If all thresholds are exceeded, the measurement is denoted as &quot;most_likely_cloudy&quot;, if only one of the thresholds is exceeded, the measurement is denoted as &quot;probably_cloudy&quot;. &quot;cloud_free&quot; is classified when no threshold is reached. &quot;unknown&quot; is classified when no estimation of the cloud mask was possible, e.g. due to condensation on the window.</dd><dt><span>comment_5 :</span></dt><dd>Due to possible condensation at the instrument window during the ascent, some data in the beginning of the flight might be not usable. Such data points are classified as &quot;-1b, unknown&quot;.</dd><dt><span>comment_6 :</span></dt><dd>Flight direction is towards positive y-direction of the image</dd><dt><span>comment_7 :</span></dt><dd>Thermal infrared imager information: focal length: 15 mm, image size: 640 x 512 pixels, detector size: 9.60 mm x 7.68 mm, FOV: 35.49° x 28.71°</dd><dt><span>contact_1 :</span></dt><dd>Michael Schäfer, University Leipzig, michael.schaefer@uni-leipzig.de</dd><dt><span>contact_2 :</span></dt><dd>André Ehrlich, University Leipzig, a.ehrlich@uni-leipzig.de</dd><dt><span>created_on :</span></dt><dd>2021-02-12</dd><dt><span>history :</span></dt><dd>2021-02-06 flag_values, flag_meanings, and comments adapted to unified EUREC4A convention, 2021-02-12 vaa and vza included, descriptions updated, cloud_fraction as byte, alt lon lat source changed from SMART INS to BAHAMAS INS, minor changes</dd><dt><span>institution :</span></dt><dd>University of Leipzig, Leipzig Institute for Meteorology</dd><dt><span>instrument :</span></dt><dd>VELOX</dd><dt><span>platform :</span></dt><dd>HALO</dd><dt><span>research_flight_day :</span></dt><dd>20200205</dd><dt><span>source :</span></dt><dd>Airborne imaging with the VELOX system</dd><dt><span>title :</span></dt><dd>Two-dimensional cloud mask and cloud fraction with 1 Hz temporal resolution derived from VELOX during the EUREC4A field campaign.</dd><dt><span>variable :</span></dt><dd>cloud_mask, CF_min, CF_max</dd><dt><span>version :</span></dt><dd>Version 3 from 2021-02-12</dd></dl></div></li></ul></div></div></div></div>
+</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-7e6aaa7e-2eee-432d-ab11-6f367ac5df77' class='xr-section-summary-in' type='checkbox'  ><label for='section-7e6aaa7e-2eee-432d-ab11-6f367ac5df77' class='xr-section-summary' >Attributes: <span>(22)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>Conventions :</span></dt><dd>&quot;CF-1.8&quot;</dd><dt><span>author :</span></dt><dd>Michael Schäfer, André Ehrlich, Anna Luebke, Jakob Thoböll, Kevin Wolf, Manfred Wendisch</dd><dt><span>campaign :</span></dt><dd>EUREC4A</dd><dt><span>comment_1 :</span></dt><dd>The cloud mask is derived with 1 Hz temporal resolution from the broadband channel of VELOX by comparing the measured brightness temperature with simulations assuming cloud-free conditions.</dd><dt><span>comment_2 :</span></dt><dd>Four different thresholds (0.5 K, 1.0 K, 1.5 K, and 2.0 K) for the difference between measurements and simulations are applied.</dd><dt><span>comment_3 :</span></dt><dd>The final cloud mask logically combines the different thresholds for each spatial pixel and each time step.</dd><dt><span>comment_4 :</span></dt><dd>If all thresholds are exceeded, the measurement is denoted as &quot;most_likely_cloudy&quot;, if only one of the thresholds is exceeded, the measurement is denoted as &quot;probably_cloudy&quot;. &quot;cloud_free&quot; is classified when no threshold is reached. &quot;unknown&quot; is classified when no estimation of the cloud mask was possible, e.g. due to condensation on the window.</dd><dt><span>comment_5 :</span></dt><dd>Due to possible condensation at the instrument window during the ascent, some data in the beginning of the flight might be not usable. Such data points are classified as &quot;-1b, unknown&quot;.</dd><dt><span>comment_6 :</span></dt><dd>Flight direction is towards positive y-direction of the image</dd><dt><span>comment_7 :</span></dt><dd>Thermal infrared imager information: focal length: 15 mm, image size: 640 x 512 pixels, detector size: 9.60 mm x 7.68 mm, FOV: 35.49° x 28.71°</dd><dt><span>contact_1 :</span></dt><dd>Michael Schäfer, University Leipzig, michael.schaefer@uni-leipzig.de</dd><dt><span>contact_2 :</span></dt><dd>André Ehrlich, University Leipzig, a.ehrlich@uni-leipzig.de</dd><dt><span>created_on :</span></dt><dd>2021-02-12</dd><dt><span>history :</span></dt><dd>2021-02-06 flag_values, flag_meanings, and comments adapted to unified EUREC4A convention, 2021-02-12 vaa and vza included, descriptions updated, cloud_fraction as byte, alt lon lat source changed from SMART INS to BAHAMAS INS, minor changes</dd><dt><span>institution :</span></dt><dd>University of Leipzig, Leipzig Institute for Meteorology</dd><dt><span>instrument :</span></dt><dd>VELOX</dd><dt><span>platform :</span></dt><dd>HALO</dd><dt><span>research_flight_day :</span></dt><dd>20200205</dd><dt><span>source :</span></dt><dd>Airborne imaging with the VELOX system</dd><dt><span>title :</span></dt><dd>Two-dimensional cloud mask and cloud fraction with 1 Hz temporal resolution derived from VELOX during the EUREC4A field campaign.</dd><dt><span>variable :</span></dt><dd>cloud_mask, CF_min, CF_max</dd><dt><span>version :</span></dt><dd>Version 3 from 2021-02-12</dd></dl></div></li></ul></div></div></div></div>
 </div>
-</div>
-<div class="section" id="what-does-the-velox-image-look-like-at-a-specific-dropsonde-launch">
-<h2>What does the VELOX image look like at a specific dropsonde launch?<a class="headerlink" href="#what-does-the-velox-image-look-like-at-a-specific-dropsonde-launch" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="what-does-the-velox-image-look-like-at-a-specific-dropsonde-launch">
+<h2>What does the VELOX image look like at a specific dropsonde launch?<a class="headerlink" href="#what-does-the-velox-image-look-like-at-a-specific-dropsonde-launch" title="Permalink to this headline">#</a></h2>
 <p>We can use the <a class="reference external" href="https://github.com/eurec4a/flight-phase-separation#segmentation-of-flights-during-eurec4a">flight segmentation</a> information to select a dropsonde and further extract the corresponding VELOX image taken at the time of the dropsonde launch.<br />
 In particular, we select the first dropsonde with the quality flag <code class="docutils literal notranslate"><span class="pre">GOOD</span></code> from the second <code class="docutils literal notranslate"><span class="pre">circle</span></code> on February 5.</p>
-<div class="section" id="get-dropsonde-id">
-<h3>Get dropsonde ID<a class="headerlink" href="#get-dropsonde-id" title="Permalink to this headline">¶</a></h3>
+<section id="get-dropsonde-id">
+<h3>Get dropsonde ID<a class="headerlink" href="#get-dropsonde-id" title="Permalink to this headline">#</a></h3>
 <p>(0) we read the meta data and extract the segment IDs</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1628,9 +1807,9 @@ In particular, we select the first dropsonde with the quality flag <code class="
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="what-is-the-corresponding-launch-time-of-the-selected-sonde">
-<h3>What is the corresponding launch time of the selected sonde?<a class="headerlink" href="#what-is-the-corresponding-launch-time-of-the-selected-sonde" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="what-is-the-corresponding-launch-time-of-the-selected-sonde">
+<h3>What is the corresponding launch time of the selected sonde?<a class="headerlink" href="#what-is-the-corresponding-launch-time-of-the-selected-sonde" title="Permalink to this headline">#</a></h3>
 <p>So far, we only made use of the flight segmentation meta data. The launch time to a given sonde is stated in the <a class="reference external" href="https://github.com/Geet-George/JOANNE/tree/master/joanne/Level_3#level%E2%80%943">JOANNE</a> dataset (see also book chapter <a class="reference internal" href="dropsondes.html"><span class="doc">Dropsondes dataset JOANNE</span></a>).
 We use again the intake catalog to load the JOANNE dataset and extract the launch time to the selected dropsonde by it’s sonde ID.</p>
 <div class="cell docutils container">
@@ -1653,9 +1832,9 @@ We use again the intake catalog to load the JOANNE dataset and extract the launc
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="cloud-mask-plot">
-<h3>Cloud mask plot<a class="headerlink" href="#cloud-mask-plot" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="cloud-mask-plot">
+<h3>Cloud mask plot<a class="headerlink" href="#cloud-mask-plot" title="Permalink to this headline">#</a></h3>
 <p>Finally, we plot the VELOX image closest in time to the dropsonde launch.<br />
 The y-axis is in flight direction and the image consists of 640 pixel by 512 pixels. The corresponding pixel viewing sensor zenith and azimuth angles are given by the dataset variables <code class="docutils literal notranslate"><span class="pre">vza</span></code> and <code class="docutils literal notranslate"><span class="pre">vaa</span></code>.</p>
 <div class="cell docutils container">
@@ -1706,10 +1885,10 @@ Image maximum cloud fraction (most likely and probably cloudy) :0.09
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="cloud-fraction-time-series-from-the-second-circle-on-february-5">
-<h2>Cloud fraction time series from the second circle on February 5<a class="headerlink" href="#cloud-fraction-time-series-from-the-second-circle-on-february-5" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="cloud-fraction-time-series-from-the-second-circle-on-february-5">
+<h2>Cloud fraction time series from the second circle on February 5<a class="headerlink" href="#cloud-fraction-time-series-from-the-second-circle-on-february-5" title="Permalink to this headline">#</a></h2>
 <p>We also want to show a time series of cloud fraction and use the segment ID from the second circle to extract and save the segment information to the variable <code class="docutils literal notranslate"><span class="pre">seg</span></code>. We can later use the segments start and end times to select the data in time.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1739,8 +1918,8 @@ Image maximum cloud fraction (most likely and probably cloudy) :0.09
 <img alt="_images/velox_23_0.png" src="_images/velox_23_0.png" />
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1764,9 +1943,11 @@ Image maximum cloud fraction (most likely and probably cloudy) :0.09
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="smart.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1782,24 +1963,28 @@ Image maximum cloud fraction (most likely and probably cloudy) :0.09
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By EUREC4A community<br/>
+  
+      &copy; Copyright 2021.<br/>
+</p>
+        </footer>
+    </div>
     
-      By EUREC4A community<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

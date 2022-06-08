@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>SMART dataset &#8212; How to EUREC4A</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,21 +20,17 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -40,12 +38,13 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -66,7 +65,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -75,9 +88,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -95,14 +109,15 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="intro.html">
-   Introduction
-  </a>
- </li>
-</ul>
-<ul class="current nav bd-sidenav">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="halo.html">
    HALO
@@ -371,115 +386,279 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        <a class="dropdown-buttons"
-            href="_sources/smart.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/smart.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/eurec4a/how_to_eurec4a"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/eurec4a/how_to_eurec4a/issues/new?title=Issue%20on%20page%20%2Fsmart.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/eurec4a/how_to_eurec4a/edit/master/how_to_eurec4a/smart.md"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/eurec4a/how_to_eurec4a/master?urlpath=tree/how_to_eurec4a/smart.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <button type="button" class="btn btn-secondary topbarbtn"
-            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
-                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/eurec4a/how_to_eurec4a/master?urlpath=tree/how_to_eurec4a/smart.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/eurec4a/how_to_eurec4a/blob/master/how_to_eurec4a/smart.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="initThebeSBT()"
+  class="headerbtn headerbtn-launch-thebe"
+  data-toggle="tooltip"
+data-placement="left"
+title="Launch Thebe"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="headerbtn__text-container">Live Code</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/eurec4a/how_to_eurec4a"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/eurec4a/how_to_eurec4a/issues/new?title=Issue%20on%20page%20%2Fsmart.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/eurec4a/how_to_eurec4a/edit/master/how_to_eurec4a/smart.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/smart.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="_sources/smart.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#get-data">
    Get data
@@ -497,12 +676,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>SMART dataset</h1>
@@ -536,15 +714,16 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="smart-dataset">
-<h1>SMART dataset<a class="headerlink" href="#smart-dataset" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="smart-dataset">
+<h1>SMART dataset<a class="headerlink" href="#smart-dataset" title="Permalink to this headline">#</a></h1>
 <p>The following script exemplifies the access and usage of SMART data measured during EUREC4A. The Spectral Modular Airborne Radiation measurement sysTem (SMART) measures downward irradiances in the solar spectral range between 300 nm and 2200 nm.</p>
 <p>More information on the dataset can be found in <span id="id1">Stevens <em>et al.</em> (<a class="reference internal" href="references.html#id4" title="Bjorn Stevens, Felix Ament, Sandrine Bony, Susanne Crewell, Florian Ewald, Silke Gross, Akio Hansen, Lutz Hirsch, Marek Jacob, Tobias Kölling, Heike Konow, Bernhard Mayer, Manfred Wendisch, Martin Wirth, Kevin Wolf, Stephan Bakan, Matthias Bauer-Pfundstein, Matthias Brueck, Julien Delanoë, André Ehrlich, David Farrell, Marvin Forde, Felix Gödde, Hans Grob, Martin Hagen, Evelyn Jäkel, Friedhelm Jansen, Christian Klepp, Marcus Klingebiel, Mario Mech, Gerhard Peters, Markus Rapp, Allison A. Wing, and Tobias Zinner. A high-altitude long-range aircraft configured as a cloud observatory: the narval expeditions. Bull Amer. Met. Soc., 100(6):1061–1077, 2019. doi:10.1175/BAMS-D-18-0198.1.">2019</a>)</span> and <span id="id2">Wendisch <em>et al.</em> (<a class="reference internal" href="references.html#id5" title="Manfred Wendisch, Dörthe Müller, Dieter Schell, and Jost Heintzenberg. An airborne spectral albedometer with active horizontal stabilization. J. Atmos. Ocean Technol., 18(11):1856–1866, 2001. doi:10.1175/1520-0426(2001)018&lt;1856:AASAWA&gt;2.0.CO;2.">2001</a>)</span>. If you have questions or if you would like to use the data for a publication, please don’t hesitate to get in contact with the dataset authors as stated in the dataset attributes <code class="docutils literal notranslate"><span class="pre">contact</span></code> or <code class="docutils literal notranslate"><span class="pre">author</span></code>.</p>
-<div class="section" id="get-data">
-<h2>Get data<a class="headerlink" href="#get-data" title="Permalink to this headline">¶</a></h2>
+<section id="get-data">
+<h2>Get data<a class="headerlink" href="#get-data" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>To load the data we first load the EUREC4A meta data catalogue. More information on the catalog can be found <a class="reference external" href="https://github.com/eurec4a/eurec4a-intake#eurec4a-intake-catalogue">here</a>.</p></li>
 </ul>
@@ -957,10 +1136,10 @@ Attributes:
     Version:              Revision 3 from 2021/01/24
     campaign:             EUREC4A
     comment 1:            BAHAMAS data was processed by DLR, contact Andreas ...
-    platform:             HALO</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-e650cefe-4043-4346-bdb7-70daf78b1ac2' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-e650cefe-4043-4346-bdb7-70daf78b1ac2' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 32730</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-0c1871d5-4c5e-4f45-87cc-e08641096600' class='xr-section-summary-in' type='checkbox'  checked><label for='section-0c1871d5-4c5e-4f45-87cc-e08641096600' class='xr-section-summary' >Coordinates: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2020-02-05T09:15:53 ... 2020-02-...</div><input id='attrs-b6072c34-ff5a-402e-9ceb-bc76d29fd1a1' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-b6072c34-ff5a-402e-9ceb-bc76d29fd1a1' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-5a81fe5d-f163-4997-aae7-3a0e9b6b87a9' class='xr-var-data-in' type='checkbox'><label for='data-5a81fe5d-f163-4997-aae7-3a0e9b6b87a9' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>time</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;2020-02-05T09:15:53.000000000&#x27;, &#x27;2020-02-05T09:15:54.000000000&#x27;,
+    platform:             HALO</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-02ac202e-0875-4044-bd8e-18304d35a9fb' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-02ac202e-0875-4044-bd8e-18304d35a9fb' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 32730</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-6054a24b-f186-4dab-8970-bd076ed85566' class='xr-section-summary-in' type='checkbox'  checked><label for='section-6054a24b-f186-4dab-8970-bd076ed85566' class='xr-section-summary' >Coordinates: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2020-02-05T09:15:53 ... 2020-02-...</div><input id='attrs-af1be030-67ba-4212-8015-fde85e360ffd' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-af1be030-67ba-4212-8015-fde85e360ffd' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-feba206f-0ef1-4326-8499-bd1b35e642c2' class='xr-var-data-in' type='checkbox'><label for='data-feba206f-0ef1-4326-8499-bd1b35e642c2' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>time</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;2020-02-05T09:15:53.000000000&#x27;, &#x27;2020-02-05T09:15:54.000000000&#x27;,
        &#x27;2020-02-05T09:15:55.000000000&#x27;, ..., &#x27;2020-02-05T18:21:20.000000000&#x27;,
        &#x27;2020-02-05T18:21:21.000000000&#x27;, &#x27;2020-02-05T18:21:22.000000000&#x27;],
-      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-c09a1b25-aad4-4f99-bf72-5acad0bad20e' class='xr-section-summary-in' type='checkbox'  checked><label for='section-c09a1b25-aad4-4f99-bf72-5acad0bad20e' class='xr-section-summary' >Data variables: <span>(11)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>F_down_solar_wl_1238</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(32730,), meta=np.ndarray&gt;</div><input id='attrs-552fdd2a-f34f-4066-8002-7b2707c79b96' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-552fdd2a-f34f-4066-8002-7b2707c79b96' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ecbd4e3d-b25e-483d-b34e-0bd4cea050d5' class='xr-var-data-in' type='checkbox'><label for='data-ecbd4e3d-b25e-483d-b34e-0bd4cea050d5' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment :</span></dt><dd>Corrected for aircraft movement, averaged for wavelength band +-5 nm</dd><dt><span>long_name :</span></dt><dd>Spectral downward solar irradiance (1238 nm) (SMART)</dd><dt><span>units :</span></dt><dd>W m-2 nm-1</dd></dl></div><div class='xr-var-data'><table>
+      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-27f15bf7-a995-4601-9a47-7f4e1c1d5ff6' class='xr-section-summary-in' type='checkbox'  checked><label for='section-27f15bf7-a995-4601-9a47-7f4e1c1d5ff6' class='xr-section-summary' >Data variables: <span>(11)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>F_down_solar_wl_1238</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(32730,), meta=np.ndarray&gt;</div><input id='attrs-8e9a21ec-3b8b-4ae7-9a67-bdb5c40dd867' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-8e9a21ec-3b8b-4ae7-9a67-bdb5c40dd867' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-efb8498b-e4f7-4aa0-99e9-7c2b89735176' class='xr-var-data-in' type='checkbox'><label for='data-efb8498b-e4f7-4aa0-99e9-7c2b89735176' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment :</span></dt><dd>Corrected for aircraft movement, averaged for wavelength band +-5 nm</dd><dt><span>long_name :</span></dt><dd>Spectral downward solar irradiance (1238 nm) (SMART)</dd><dt><span>units :</span></dt><dd>W m-2 nm-1</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1017,7 +1196,7 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>F_down_solar_wl_1638</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(32730,), meta=np.ndarray&gt;</div><input id='attrs-8b3785a6-d7d5-4944-a9a8-8d6750d894cb' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-8b3785a6-d7d5-4944-a9a8-8d6750d894cb' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-05e9564e-e821-405c-acb8-9f3d2f558a58' class='xr-var-data-in' type='checkbox'><label for='data-05e9564e-e821-405c-acb8-9f3d2f558a58' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment :</span></dt><dd>Corrected for aircraft movement, averaged for wavelength band +-5 nm</dd><dt><span>long_name :</span></dt><dd>Spectral downward solar irradiance (1638 nm) (SMART)</dd><dt><span>units :</span></dt><dd>W m-2 nm-1</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>F_down_solar_wl_1638</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(32730,), meta=np.ndarray&gt;</div><input id='attrs-8b94c931-8a02-4ec2-9d94-5099032b21ff' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-8b94c931-8a02-4ec2-9d94-5099032b21ff' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-459bc682-a9a1-4c01-a3ee-4dcbdae09aa4' class='xr-var-data-in' type='checkbox'><label for='data-459bc682-a9a1-4c01-a3ee-4dcbdae09aa4' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment :</span></dt><dd>Corrected for aircraft movement, averaged for wavelength band +-5 nm</dd><dt><span>long_name :</span></dt><dd>Spectral downward solar irradiance (1638 nm) (SMART)</dd><dt><span>units :</span></dt><dd>W m-2 nm-1</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1074,7 +1253,7 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>F_down_solar_wl_422</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(32730,), meta=np.ndarray&gt;</div><input id='attrs-713a82c9-4b32-4140-91fe-c4c600301648' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-713a82c9-4b32-4140-91fe-c4c600301648' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-47f7050d-7514-415a-9329-a961e3150051' class='xr-var-data-in' type='checkbox'><label for='data-47f7050d-7514-415a-9329-a961e3150051' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment :</span></dt><dd>Corrected for aircraft movement, averaged for wavelength band +-5 nm</dd><dt><span>long_name :</span></dt><dd>Spectral downward solar irradiance (422 nm) (SMART)</dd><dt><span>units :</span></dt><dd>W m-2 nm-1</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>F_down_solar_wl_422</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(32730,), meta=np.ndarray&gt;</div><input id='attrs-5f5a450b-40d6-4569-bc40-f163a67a961f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-5f5a450b-40d6-4569-bc40-f163a67a961f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a1554e44-267e-4ee6-b017-7ec389cc2679' class='xr-var-data-in' type='checkbox'><label for='data-a1554e44-267e-4ee6-b017-7ec389cc2679' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment :</span></dt><dd>Corrected for aircraft movement, averaged for wavelength band +-5 nm</dd><dt><span>long_name :</span></dt><dd>Spectral downward solar irradiance (422 nm) (SMART)</dd><dt><span>units :</span></dt><dd>W m-2 nm-1</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1131,7 +1310,7 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>F_down_solar_wl_532</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(32730,), meta=np.ndarray&gt;</div><input id='attrs-0570b952-79c2-42e1-9092-2c46c81576cf' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-0570b952-79c2-42e1-9092-2c46c81576cf' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e8326e14-fb93-4f8c-ada0-3b11529d56d3' class='xr-var-data-in' type='checkbox'><label for='data-e8326e14-fb93-4f8c-ada0-3b11529d56d3' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment :</span></dt><dd>Corrected for aircraft movement, averaged for wavelength band +-5 nm</dd><dt><span>long_name :</span></dt><dd>Spectral downward solar irradiance (532 nm) (SMART)</dd><dt><span>units :</span></dt><dd>W m-2 nm-1</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>F_down_solar_wl_532</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(32730,), meta=np.ndarray&gt;</div><input id='attrs-12fa63cb-073d-4026-b5e8-2eb1b911eb13' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-12fa63cb-073d-4026-b5e8-2eb1b911eb13' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ea469405-520e-483a-bf80-525932fcf512' class='xr-var-data-in' type='checkbox'><label for='data-ea469405-520e-483a-bf80-525932fcf512' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment :</span></dt><dd>Corrected for aircraft movement, averaged for wavelength band +-5 nm</dd><dt><span>long_name :</span></dt><dd>Spectral downward solar irradiance (532 nm) (SMART)</dd><dt><span>units :</span></dt><dd>W m-2 nm-1</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1188,7 +1367,7 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>F_down_solar_wl_648</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(32730,), meta=np.ndarray&gt;</div><input id='attrs-218cd434-9adf-4c4e-b4d8-893331bb4eb7' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-218cd434-9adf-4c4e-b4d8-893331bb4eb7' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-6b038924-e685-4d31-8d72-655333926fcd' class='xr-var-data-in' type='checkbox'><label for='data-6b038924-e685-4d31-8d72-655333926fcd' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment :</span></dt><dd>Corrected for aircraft movement, averaged for wavelength band +-5 nm</dd><dt><span>long_name :</span></dt><dd>Spectral downward solar irradiance (648 nm) (SMART)</dd><dt><span>units :</span></dt><dd>W m-2 nm-1</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>F_down_solar_wl_648</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(32730,), meta=np.ndarray&gt;</div><input id='attrs-856fc273-b103-4be5-a9d4-741ce7c4d26d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-856fc273-b103-4be5-a9d4-741ce7c4d26d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-9414d865-ff87-4f80-8028-5024d7175946' class='xr-var-data-in' type='checkbox'><label for='data-9414d865-ff87-4f80-8028-5024d7175946' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment :</span></dt><dd>Corrected for aircraft movement, averaged for wavelength band +-5 nm</dd><dt><span>long_name :</span></dt><dd>Spectral downward solar irradiance (648 nm) (SMART)</dd><dt><span>units :</span></dt><dd>W m-2 nm-1</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1245,7 +1424,7 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>F_down_solar_wl_858</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(32730,), meta=np.ndarray&gt;</div><input id='attrs-aee65c5e-28c6-49b9-96b5-295586b2dad3' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-aee65c5e-28c6-49b9-96b5-295586b2dad3' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-cd604568-5818-4727-952e-18708ae486a7' class='xr-var-data-in' type='checkbox'><label for='data-cd604568-5818-4727-952e-18708ae486a7' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment :</span></dt><dd>Corrected for aircraft movement, averaged for wavelength band +-5 nm</dd><dt><span>long_name :</span></dt><dd>Spectral downward solar irradiance (858 nm) (SMART)</dd><dt><span>units :</span></dt><dd>W m-2 nm-1</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>F_down_solar_wl_858</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(32730,), meta=np.ndarray&gt;</div><input id='attrs-17f8122a-442e-4792-aedb-be4e607b31ab' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-17f8122a-442e-4792-aedb-be4e607b31ab' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-99f2f182-b5c8-46d7-a8e4-edfd2ee4e8fe' class='xr-var-data-in' type='checkbox'><label for='data-99f2f182-b5c8-46d7-a8e4-edfd2ee4e8fe' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment :</span></dt><dd>Corrected for aircraft movement, averaged for wavelength band +-5 nm</dd><dt><span>long_name :</span></dt><dd>Spectral downward solar irradiance (858 nm) (SMART)</dd><dt><span>units :</span></dt><dd>W m-2 nm-1</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1302,7 +1481,7 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>alt</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(32730,), meta=np.ndarray&gt;</div><input id='attrs-0d42a2e2-c797-43a1-81d8-5ae94ae997ba' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-0d42a2e2-c797-43a1-81d8-5ae94ae997ba' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-7def0232-0f05-4912-9a5a-03722606fcb3' class='xr-var-data-in' type='checkbox'><label for='data-7def0232-0f05-4912-9a5a-03722606fcb3' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>altitude (WGS84 Datum/Elliptical, BAHAMAS)</dd><dt><span>standard_name :</span></dt><dd>altitude</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>alt</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(32730,), meta=np.ndarray&gt;</div><input id='attrs-4a0566ad-85fc-443b-a38f-7d59d5e1a78e' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-4a0566ad-85fc-443b-a38f-7d59d5e1a78e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-09922d71-61d6-404e-b2ca-7e9ad0cf8e36' class='xr-var-data-in' type='checkbox'><label for='data-09922d71-61d6-404e-b2ca-7e9ad0cf8e36' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>altitude (WGS84 Datum/Elliptical, BAHAMAS)</dd><dt><span>standard_name :</span></dt><dd>altitude</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1359,7 +1538,7 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lat</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(32730,), meta=np.ndarray&gt;</div><input id='attrs-79c7b160-8b73-4225-a7f7-7019f1ab8af9' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-79c7b160-8b73-4225-a7f7-7019f1ab8af9' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-12ad0cbe-8648-4eb4-8dbe-2be58ca0a1fb' class='xr-var-data-in' type='checkbox'><label for='data-12ad0cbe-8648-4eb4-8dbe-2be58ca0a1fb' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>latitude (WGS84 Datum/Latitude, BAHAMAS)</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lat</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(32730,), meta=np.ndarray&gt;</div><input id='attrs-e87731ac-d99c-4d84-b078-142daeb3c0db' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e87731ac-d99c-4d84-b078-142daeb3c0db' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e5778648-9292-4ac2-b92b-32b5dad18656' class='xr-var-data-in' type='checkbox'><label for='data-e5778648-9292-4ac2-b92b-32b5dad18656' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>latitude (WGS84 Datum/Latitude, BAHAMAS)</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1416,7 +1595,7 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lon</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(32730,), meta=np.ndarray&gt;</div><input id='attrs-b2d4cca5-c069-4ffe-b152-bd4b28d62d9a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-b2d4cca5-c069-4ffe-b152-bd4b28d62d9a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-2520a89d-6baf-46c4-9d1c-d206c04c4d6e' class='xr-var-data-in' type='checkbox'><label for='data-2520a89d-6baf-46c4-9d1c-d206c04c4d6e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>longitude (WGS84 Datum/Longitude, BAHAMAS)</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degree_east</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lon</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(32730,), meta=np.ndarray&gt;</div><input id='attrs-edf4858d-afa9-4581-822f-1ae12d48e730' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-edf4858d-afa9-4581-822f-1ae12d48e730' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-7b2ee53f-d1e1-4108-840f-fb07e97490e9' class='xr-var-data-in' type='checkbox'><label for='data-7b2ee53f-d1e1-4108-840f-fb07e97490e9' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>longitude (WGS84 Datum/Longitude, BAHAMAS)</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degree_east</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1473,7 +1652,7 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>saa</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(32730,), meta=np.ndarray&gt;</div><input id='attrs-52e05986-d9e1-43ab-8e27-39b802dfb4a3' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-52e05986-d9e1-43ab-8e27-39b802dfb4a3' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b2a04a18-5cfc-4ba3-9b59-dcd10d4b57e7' class='xr-var-data-in' type='checkbox'><label for='data-b2a04a18-5cfc-4ba3-9b59-dcd10d4b57e7' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>solar azimuth angle</dd><dt><span>standard_name :</span></dt><dd>solar_azimuth_angle</dd><dt><span>units :</span></dt><dd>degree</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>saa</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(32730,), meta=np.ndarray&gt;</div><input id='attrs-595b0aab-c2f5-486b-b766-7d24ee50904c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-595b0aab-c2f5-486b-b766-7d24ee50904c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-7b7dbbcf-51e2-4fb5-9242-dadda7814c3e' class='xr-var-data-in' type='checkbox'><label for='data-7b7dbbcf-51e2-4fb5-9242-dadda7814c3e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>solar azimuth angle</dd><dt><span>standard_name :</span></dt><dd>solar_azimuth_angle</dd><dt><span>units :</span></dt><dd>degree</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1530,7 +1709,7 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>sza</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(32730,), meta=np.ndarray&gt;</div><input id='attrs-f2e1180b-700e-4739-82ff-74c8079ebc25' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-f2e1180b-700e-4739-82ff-74c8079ebc25' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-aff5f9b7-8fe3-4e33-b628-2641d3aebdf5' class='xr-var-data-in' type='checkbox'><label for='data-aff5f9b7-8fe3-4e33-b628-2641d3aebdf5' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>solar zenith angle</dd><dt><span>standard_name :</span></dt><dd>solar_zenith_angle</dd><dt><span>units :</span></dt><dd>degree</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>sza</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(32730,), meta=np.ndarray&gt;</div><input id='attrs-5e92abfe-964c-4a65-839f-3e4801f9b861' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-5e92abfe-964c-4a65-839f-3e4801f9b861' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0dd33b19-5e9f-4126-8fdb-20270086c190' class='xr-var-data-in' type='checkbox'><label for='data-0dd33b19-5e9f-4126-8fdb-20270086c190' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>solar zenith angle</dd><dt><span>standard_name :</span></dt><dd>solar_zenith_angle</dd><dt><span>units :</span></dt><dd>degree</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1587,7 +1766,7 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-6c6e4bd0-e51d-4358-b4fa-ff7ecbc2cb8e' class='xr-section-summary-in' type='checkbox'  checked><label for='section-6c6e4bd0-e51d-4358-b4fa-ff7ecbc2cb8e' class='xr-section-summary' >Attributes: <span>(7)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>Contact :</span></dt><dd>Andre Ehrlich, University Leipzig, a.ehrlich@uni-leipzig.de or Kevin Wolf, University Leipzig, kevin.wolf@uni-leipzig.de</dd><dt><span>Research_Flight_Day :</span></dt><dd>2020/20/05</dd><dt><span>Title :</span></dt><dd>Spectral downward irradiance measured by SMART during EUREC4A</dd><dt><span>Version :</span></dt><dd>Revision 3 from 2021/01/24</dd><dt><span>campaign :</span></dt><dd>EUREC4A</dd><dt><span>comment 1 :</span></dt><dd>BAHAMAS data was processed by DLR, contact Andreas Giez</dd><dt><span>platform :</span></dt><dd>HALO</dd></dl></div></li></ul></div></div></div></div>
+</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-89362a56-a731-4b71-b2ad-8ecc4bafbd8d' class='xr-section-summary-in' type='checkbox'  checked><label for='section-89362a56-a731-4b71-b2ad-8ecc4bafbd8d' class='xr-section-summary' >Attributes: <span>(7)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>Contact :</span></dt><dd>Andre Ehrlich, University Leipzig, a.ehrlich@uni-leipzig.de or Kevin Wolf, University Leipzig, kevin.wolf@uni-leipzig.de</dd><dt><span>Research_Flight_Day :</span></dt><dd>2020/20/05</dd><dt><span>Title :</span></dt><dd>Spectral downward irradiance measured by SMART during EUREC4A</dd><dt><span>Version :</span></dt><dd>Revision 3 from 2021/01/24</dd><dt><span>campaign :</span></dt><dd>EUREC4A</dd><dt><span>comment 1 :</span></dt><dd>BAHAMAS data was processed by DLR, contact Andreas Giez</dd><dt><span>platform :</span></dt><dd>HALO</dd></dl></div></li></ul></div></div></div></div>
 </div>
 <p>The available dataset includes irradiances for six selected wavelengths (422nm, 532nm, 648nm, 858nm, 1238nm, 1638nm). The full dataset is available on demand. Contact the dataset authors as stated in the dataset attributes <code class="docutils literal notranslate"><span class="pre">contact</span></code>.</p>
 <p>First Quickplot of whole flight (one wavelength)</p>
@@ -1605,9 +1784,9 @@ Attributes:
 <img alt="_images/smart_6_0.png" src="_images/smart_6_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="load-halo-flight-phase-information">
-<h2>Load HALO flight phase information<a class="headerlink" href="#load-halo-flight-phase-information" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="load-halo-flight-phase-information">
+<h2>Load HALO flight phase information<a class="headerlink" href="#load-halo-flight-phase-information" title="Permalink to this headline">#</a></h2>
 <p>All HALO flights were split up into flight phases or segments to allow for a precise selection in time and space of a circle or calibration pattern. For more information have a look at the respective <a class="reference external" href="https://github.com/eurec4a/halo-flight-phase-separation">github repository</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1637,9 +1816,9 @@ Attributes:
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="plots">
-<h2>Plots<a class="headerlink" href="#plots" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="plots">
+<h2>Plots<a class="headerlink" href="#plots" title="Permalink to this headline">#</a></h2>
 <p>We plot the spectral irradiances from different wavelengths measured with SMART during the selected flight segment.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1657,8 +1836,8 @@ Attributes:
 <img alt="_images/smart_15_0.png" src="_images/smart_15_0.png" />
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1682,9 +1861,11 @@ Attributes:
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="flight_tracks_leaflet.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1700,24 +1881,28 @@ Attributes:
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By EUREC4A community<br/>
+  
+      &copy; Copyright 2021.<br/>
+</p>
+        </footer>
+    </div>
     
-      By EUREC4A community<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

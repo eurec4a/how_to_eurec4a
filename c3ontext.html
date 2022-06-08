@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>How to put your measurements into the meso-scale context of cloud patterns &#8212; How to EUREC4A</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,21 +20,17 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -40,12 +38,13 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -66,7 +65,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -75,9 +88,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -95,14 +109,15 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="intro.html">
-   Introduction
-  </a>
- </li>
-</ul>
-<ul class="current nav bd-sidenav">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="halo.html">
    HALO
@@ -371,115 +386,279 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        <a class="dropdown-buttons"
-            href="_sources/c3ontext.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/c3ontext.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/eurec4a/how_to_eurec4a"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/eurec4a/how_to_eurec4a/issues/new?title=Issue%20on%20page%20%2Fc3ontext.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/eurec4a/how_to_eurec4a/edit/master/how_to_eurec4a/c3ontext.md"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/eurec4a/how_to_eurec4a/master?urlpath=tree/how_to_eurec4a/c3ontext.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <button type="button" class="btn btn-secondary topbarbtn"
-            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
-                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/eurec4a/how_to_eurec4a/master?urlpath=tree/how_to_eurec4a/c3ontext.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/eurec4a/how_to_eurec4a/blob/master/how_to_eurec4a/c3ontext.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="initThebeSBT()"
+  class="headerbtn headerbtn-launch-thebe"
+  data-toggle="tooltip"
+data-placement="left"
+title="Launch Thebe"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="headerbtn__text-container">Live Code</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/eurec4a/how_to_eurec4a"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/eurec4a/how_to_eurec4a/issues/new?title=Issue%20on%20page%20%2Fc3ontext.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/eurec4a/how_to_eurec4a/edit/master/how_to_eurec4a/c3ontext.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/c3ontext.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="_sources/c3ontext.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#accessing-the-data">
    Accessing the data
@@ -492,12 +671,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>How to put your measurements into the meso-scale context of cloud patterns</h1>
@@ -526,21 +704,24 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="how-to-put-your-measurements-into-the-meso-scale-context-of-cloud-patterns">
-<h1>How to put your measurements into the meso-scale context of cloud patterns<a class="headerlink" href="#how-to-put-your-measurements-into-the-meso-scale-context-of-cloud-patterns" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="how-to-put-your-measurements-into-the-meso-scale-context-of-cloud-patterns">
+<h1>How to put your measurements into the meso-scale context of cloud patterns<a class="headerlink" href="#how-to-put-your-measurements-into-the-meso-scale-context-of-cloud-patterns" title="Permalink to this headline">#</a></h1>
 <p>The meso-scale patterns of shallow convection as described by <span id="id1">Stevens <em>et al.</em> (<a class="reference internal" href="references.html#id3" title="B. Stevens, S. Bony, D. Farrell, F. Ament, A. Blyth, C. Fairall, J. Karstensen, P. K. Quinn, S. Speich, C. Acquistapace, F. Aemisegger, A. L. Albright, H. Bellenger, E. Bodenschatz, K.-A. Caesar, R. Chewitt-Lucas, G. de Boer, J. Delanoë, L. Denby, F. Ewald, B. Fildier, M. Forde, G. George, S. Gross, M. Hagen, A. Hausold, K. J. Heywood, L. Hirsch, M. Jacob, F. Jansen, S. Kinne, D. Klocke, T. Kölling, H. Konow, M. Lothon, W. Mohr, A. K. Naumann, L. Nuijens, L. Olivier, R. Pincus, M. Pöhlker, G. Reverdin, G. Roberts, S. Schnitt, H. Schulz, A. P. Siebesma, C. C. Stephan, P. Sullivan, L. Touzé-Peiffer, J. Vial, R. Vogel, P. Zuidema, N. Alexander, L. Alves, S. Arixi, H. Asmath, G. Bagheri, K. Baier, A. Bailey, D. Baranowski, A. Baron, S. Barrau, P. A. Barrett, F. Batier, A. Behrendt, A. Bendinger, F. Beucher, S. Bigorre, E. Blades, P. Blossey, O. Bock, S. Böing, P. Bosser, D. Bourras, P. Bouruet-Aubertot, K. Bower, P. Branellec, H. Branger, M. Brennek, A. Brewer, P.-E. Brilouet, B. Brügmann, S. A. Buehler, E. Burke, R. Burton, R. Calmer, J.-C. Canonici, X. Carton, G. Cato Jr., J. A. Charles, P. Chazette, Y. Chen, M. T. Chilinski, T. Choularton, P. Chuang, S. Clarke, H. Coe, C. Cornet, P. Coutris, F. Couvreux, S. Crewell, T. Cronin, Z. Cui, Y. Cuypers, A. Daley, G. M. Damerell, T. Dauhut, H. Deneke, J.-P. Desbios, S. Dörner, S. Donner, V. Douet, K. Drushka, M. Dütsch, A. Ehrlich, K. Emanuel, A. Emmanouilidis, J.-C. Etienne, S. Etienne-Leblanc, G. Faure, G. Feingold, L. Ferrero, A. Fix, C. Flamant, P. J. Flatau, G. R. Foltz, L. Forster, I. Furtuna, A. Gadian, J. Galewsky, M. Gallagher, P. Gallimore, C. Gaston, C. Gentemann, N. Geyskens, A. Giez, J. Gollop, I. Gouirand, C. Gourbeyre, D. de Graaf, G. E. de Groot, R. Grosz, J. Güttler, M. Gutleben, K. Hall, G. Harris, K. C. Helfer, D. Henze, C. Herbert, B. Holanda, A. Ibanez-Landeta, J. Intrieri, S. Iyer, F. Julien, H. Kalesse, J. Kazil, A. Kellman, A. T. Kidane, U. Kirchner, M. Klingebiel, M. Körner, L. A. Kremper, J. Kretzschmar, O. Krüger, W. Kumala, A. Kurz, P. L'Hégaret, M. Labaste, T. Lachlan-Cope, A. Laing, P. Landschützer, T. Lang, D. Lange, I. Lange, C. Laplace, G. Lavik, R. Laxenaire, C. Le Bihan, M. Leandro, N. Lefevre, M. Lena, D. Lenschow, Q. Li, G. Lloyd, S. Los, N. Losi, O. Lovell, C. Luneau, P. Makuch, S. Malinowski, G. Manta, E. Marinou, N. Marsden, S. Masson, N. Maury, B. Mayer, M. Mayers-Als, C. Mazel, W. McGeary, J. C. McWilliams, M. Mech, M. Mehlmann, A. N. Meroni, T. Mieslinger, A. Minikin, P. Minnett, G. Möller, Y. Morfa Avalos, C. Muller, I. Musat, A. Napoli, A. Neuberger, C. Noisel, D. Noone, F. Nordsiek, J. L. Nowak, L. Oswald, D. J. Parker, C. Peck, R. Person, M. Philippi, A. Plueddemann, C. Pöhlker, V. Pörtge, U. Pöschl, L. Pologne, M. Posyniak, M. Prange, E. Quiñones Meléndez, J. Radtke, K. Ramage, J. Reimann, L. Renault, K. Reus, A. Reyes, J. Ribbe, M. Ringel, M. Ritschel, C. B. Rocha, N. Rochetin, J. Röttenbacher, C. Rollo, H. Royer, P. Sadoulet, L. Saffin, S. Sandiford, I. Sandu, M. Schäfer, V. Schemann, I. Schirmacher, O. Schlenczek, J. Schmidt, M. Schröder, A. Schwarzenboeck, A. Sealy, C. J. Senff, I. Serikov, S. Shohan, E. Siddle, A. Smirnov, F. Späth, B. Spooner, M. K. Stolla, W. Szkółka, S. P. de Szoeke, S. Tarot, E. Tetoni, E. Thompson, J. Thomson, L. Tomassini, J. Totems, A. A. Ubele, L. Villiger, J. von Arx, T. Wagner, A. Walther, B. Webber, M. Wendisch, S. Whitehall, A. Wiltshire, A. A. Wing, M. Wirth, J. Wiskandt, K. Wolf, L. Worbes, E. Wright, V. Wulfmeyer, S. Young, C. Zhang, D. Zhang, F. Ziemen, T. Zinner, and M. Zöger. EUREC4A. Earth Syst. Sci. Data Discuss., 2021:1–78, January 2021. doi:10.5194/essd-2021-18.">2021</a>)</span>
 are a great way to learn more about the meso-scale variability in cloudiness in the
 trades. Four meso-scale cloud patterns have been identified to frequently reoccur.
 These four patterns that are shown in the figure below are named based on their
 visual impressions: Sugar, Gravel, Flowers and Fish.</p>
-<div class="figure align-center" id="id3">
+<figure class="align-center" id="id3">
 <a class="reference internal image-reference" href="_images/c3ontext_cloud_patterns.jpg"><img alt="Meso-scale cloud patterns" src="_images/c3ontext_cloud_patterns.jpg" style="width: 400px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Four meso-scale cloud patterns have been identified to be reoccuring in the trades. They are
-named based on their visual impressions: Sugar, Gravel, Flowers, Fish. Satellite image source: NASA Worldview.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Four meso-scale cloud patterns have been identified to be reoccuring in the trades. They are
+named based on their visual impressions: Sugar, Gravel, Flowers, Fish. Satellite image source: NASA Worldview.</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Both rule-based algorithms and deep neural networks have been developed to identify these
 patterns automatically to learn more about their characteristics and processes.
 For the time period of the EUREC<sup>4</sup>A campaign, a group of 50 participants
@@ -554,8 +735,8 @@ the track of the R/V Meteor. The measurements made onboard the research vessel l
 lidar can therefor be analysed and interpreted with respect to the four cloud patterns.</p>
 <p>More details on this dataset can be found in <span id="id2">Schulz (<a class="reference internal" href="references.html#id10" title="Hauke Schulz. C3ONTEXT: A Common Consensus on Convective OrgaNizaTion during the EUREC4A eXperimenT. Earth System Science Data, 14(3):1233–1256, 2022. doi:10.5194/essd-14-1233-2022.">2022</a>)</span> and
 in the <a class="reference external" href="https://github.com/observingClouds/EUREC4A_manualclassifications">C<sup>3</sup>ONTEXT GitHub-repository</a>.</p>
-<div class="section" id="accessing-the-data">
-<h2>Accessing the data<a class="headerlink" href="#accessing-the-data" title="Permalink to this headline">¶</a></h2>
+<section id="accessing-the-data">
+<h2>Accessing the data<a class="headerlink" href="#accessing-the-data" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -618,13 +799,13 @@ classification masks for all available workflows such that queries are rather si
 </tr>
 </tbody>
 </table>
-<div class="figure align-center">
+<figure class="align-center">
 <a class="reference internal image-reference" href="_images/c3ontext_process_levels.png"><img alt="Processing levels" src="_images/c3ontext_process_levels.png" style="width: 600px;" /></a>
+</figure>
 </div>
-</div>
-</div>
-<div class="section" id="contextualizing-your-data">
-<h2>Contextualizing your data<a class="headerlink" href="#contextualizing-your-data" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="contextualizing-your-data">
+<h2>Contextualizing your data<a class="headerlink" href="#contextualizing-your-data" title="Permalink to this headline">#</a></h2>
 <p>By providing time and location of interest, the dominant patterns can be retrieved. Here, we use the manual classifications
 that have been made based on infrared images. A benefit of these classifications is that they are covering the complete
 diurnal cycle. The classifications of the visible workflow miss the night-time meso-scale variability.</p>
@@ -1006,7 +1187,7 @@ Attributes:
     institute:       Max Planck Institut für Meteorologie, Germany
     python_version:  3.8.6 | packaged by conda-forge | (default, Nov 27 2020,...
     title:           EUREC4A: manual meso-scale cloud pattern classifications
-    version:         v0.4.0</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-711acfcb-09ad-4836-8c2c-d02cc98d3895' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-711acfcb-09ad-4836-8c2c-d02cc98d3895' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>date</span>: 47</li><li><span class='xr-has-index'>longitude</span>: 2200</li><li><span class='xr-has-index'>latitude</span>: 1500</li><li><span class='xr-has-index'>pattern</span>: 5</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-e9931650-4533-4044-82c1-b56bf68fc1e0' class='xr-section-summary-in' type='checkbox'  checked><label for='section-e9931650-4533-4044-82c1-b56bf68fc1e0' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>date</span></div><div class='xr-var-dims'>(date)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2020-01-07 ... 2020-02-22</div><input id='attrs-74e88c72-854a-4208-b16f-4679c25b008a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-74e88c72-854a-4208-b16f-4679c25b008a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d528eb3f-ed28-430b-95e2-24dbc7cae1cc' class='xr-var-data-in' type='checkbox'><label for='data-d528eb3f-ed28-430b-95e2-24dbc7cae1cc' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>time</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;2020-01-07T00:00:00.000000000&#x27;, &#x27;2020-01-08T00:00:00.000000000&#x27;,
+    version:         v0.4.0</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-04b469e8-7f3c-4e9e-9462-9b681828bd30' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-04b469e8-7f3c-4e9e-9462-9b681828bd30' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>date</span>: 47</li><li><span class='xr-has-index'>longitude</span>: 2200</li><li><span class='xr-has-index'>latitude</span>: 1500</li><li><span class='xr-has-index'>pattern</span>: 5</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-ffc7f39a-fb3f-4bc0-8c65-c2acab2993be' class='xr-section-summary-in' type='checkbox'  checked><label for='section-ffc7f39a-fb3f-4bc0-8c65-c2acab2993be' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>date</span></div><div class='xr-var-dims'>(date)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2020-01-07 ... 2020-02-22</div><input id='attrs-c929be11-2023-4986-99fb-584b4e7adf1d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c929be11-2023-4986-99fb-584b4e7adf1d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-da7cc6b2-4d85-48dd-b0c9-1f67feddd0bc' class='xr-var-data-in' type='checkbox'><label for='data-da7cc6b2-4d85-48dd-b0c9-1f67feddd0bc' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>time</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;2020-01-07T00:00:00.000000000&#x27;, &#x27;2020-01-08T00:00:00.000000000&#x27;,
        &#x27;2020-01-09T00:00:00.000000000&#x27;, &#x27;2020-01-10T00:00:00.000000000&#x27;,
        &#x27;2020-01-11T00:00:00.000000000&#x27;, &#x27;2020-01-12T00:00:00.000000000&#x27;,
        &#x27;2020-01-13T00:00:00.000000000&#x27;, &#x27;2020-01-14T00:00:00.000000000&#x27;,
@@ -1029,8 +1210,8 @@ Attributes:
        &#x27;2020-02-16T00:00:00.000000000&#x27;, &#x27;2020-02-17T00:00:00.000000000&#x27;,
        &#x27;2020-02-18T00:00:00.000000000&#x27;, &#x27;2020-02-19T00:00:00.000000000&#x27;,
        &#x27;2020-02-20T00:00:00.000000000&#x27;, &#x27;2020-02-21T00:00:00.000000000&#x27;,
-       &#x27;2020-02-22T00:00:00.000000000&#x27;], dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>latitude</span></div><div class='xr-var-dims'>(latitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>20.0 19.99 19.98 ... 5.02 5.01 5.0</div><input id='attrs-041349f6-e3be-4ddf-8245-cbcd6089a94d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-041349f6-e3be-4ddf-8245-cbcd6089a94d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-76fc21b0-1978-4909-a1bb-1cc45848530f' class='xr-var-data-in' type='checkbox'><label for='data-76fc21b0-1978-4909-a1bb-1cc45848530f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degree_north</dd></dl></div><div class='xr-var-data'><pre>array([20.      , 19.989994, 19.979986, ...,  5.020013,  5.010007,  5.      ])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>longitude</span></div><div class='xr-var-dims'>(longitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-62.0 -61.99 ... -40.01 -40.0</div><input id='attrs-44bf325b-e336-4698-bfba-b2867234c3d7' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-44bf325b-e336-4698-bfba-b2867234c3d7' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d5b7acdf-c377-4de7-bcfb-6a442daa1c93' class='xr-var-data-in' type='checkbox'><label for='data-d5b7acdf-c377-4de7-bcfb-6a442daa1c93' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degree_east</dd></dl></div><div class='xr-var-data'><pre>array([-62.      , -61.989994, -61.979992, ..., -40.020008, -40.010006,
-       -40.      ])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>pattern</span></div><div class='xr-var-dims'>(pattern)</div><div class='xr-var-dtype'>object</div><div class='xr-var-preview xr-preview'>&#x27;Sugar&#x27; ... &#x27;Unclassified&#x27;</div><input id='attrs-6f634cf5-6a05-4f50-9fc2-68c8316f371c' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-6f634cf5-6a05-4f50-9fc2-68c8316f371c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4e03590a-09a2-4c46-bb5e-14db318f4bba' class='xr-var-data-in' type='checkbox'><label for='data-4e03590a-09a2-4c46-bb5e-14db318f4bba' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;Sugar&#x27;, &#x27;Flowers&#x27;, &#x27;Fish&#x27;, &#x27;Gravel&#x27;, &#x27;Unclassified&#x27;], dtype=object)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-cb516d88-42a8-4d33-a646-e1b50f8a6f4c' class='xr-section-summary-in' type='checkbox'  checked><label for='section-cb516d88-42a8-4d33-a646-e1b50f8a6f4c' class='xr-section-summary' >Data variables: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>freq</span></div><div class='xr-var-dims'>(date, longitude, latitude, pattern)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 2200, 1500, 5), meta=np.ndarray&gt;</div><input id='attrs-177285cf-9be8-430c-ae24-f0817bc46883' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-177285cf-9be8-430c-ae24-f0817bc46883' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-da1658c3-dac7-4fdd-a3b5-f30f4443a576' class='xr-var-data-in' type='checkbox'><label for='data-da1658c3-dac7-4fdd-a3b5-f30f4443a576' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>daily classification frequency</dd></dl></div><div class='xr-var-data'><table>
+       &#x27;2020-02-22T00:00:00.000000000&#x27;], dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>latitude</span></div><div class='xr-var-dims'>(latitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>20.0 19.99 19.98 ... 5.02 5.01 5.0</div><input id='attrs-04030d54-b03c-4c76-ac05-f88ea4983da8' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-04030d54-b03c-4c76-ac05-f88ea4983da8' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ea10c680-d76e-4596-acb9-a2ce602d9fee' class='xr-var-data-in' type='checkbox'><label for='data-ea10c680-d76e-4596-acb9-a2ce602d9fee' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degree_north</dd></dl></div><div class='xr-var-data'><pre>array([20.      , 19.989994, 19.979986, ...,  5.020013,  5.010007,  5.      ])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>longitude</span></div><div class='xr-var-dims'>(longitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-62.0 -61.99 ... -40.01 -40.0</div><input id='attrs-c24c2949-2760-46de-805b-a595ec5b913b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c24c2949-2760-46de-805b-a595ec5b913b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-99a2a8e0-0e92-4836-a5ee-b01568c40c0d' class='xr-var-data-in' type='checkbox'><label for='data-99a2a8e0-0e92-4836-a5ee-b01568c40c0d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degree_east</dd></dl></div><div class='xr-var-data'><pre>array([-62.      , -61.989994, -61.979992, ..., -40.020008, -40.010006,
+       -40.      ])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>pattern</span></div><div class='xr-var-dims'>(pattern)</div><div class='xr-var-dtype'>object</div><div class='xr-var-preview xr-preview'>&#x27;Sugar&#x27; ... &#x27;Unclassified&#x27;</div><input id='attrs-ec80a9b1-eca7-4f8b-81d4-376582acc060' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-ec80a9b1-eca7-4f8b-81d4-376582acc060' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1c0a8b16-7fc8-47f1-b948-dcee68b4db76' class='xr-var-data-in' type='checkbox'><label for='data-1c0a8b16-7fc8-47f1-b948-dcee68b4db76' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;Sugar&#x27;, &#x27;Flowers&#x27;, &#x27;Fish&#x27;, &#x27;Gravel&#x27;, &#x27;Unclassified&#x27;], dtype=object)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-9f1b5634-7ec4-4820-9e9f-c490799e636c' class='xr-section-summary-in' type='checkbox'  checked><label for='section-9f1b5634-7ec4-4820-9e9f-c490799e636c' class='xr-section-summary' >Data variables: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>freq</span></div><div class='xr-var-dims'>(date, longitude, latitude, pattern)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 2200, 1500, 5), meta=np.ndarray&gt;</div><input id='attrs-0e9abc7e-2294-4763-b707-afb861b390cf' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-0e9abc7e-2294-4763-b707-afb861b390cf' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ffe7c88f-f6fa-4140-87df-d3c76a970d6d' class='xr-var-data-in' type='checkbox'><label for='data-ffe7c88f-f6fa-4140-87df-d3c76a970d6d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>daily classification frequency</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1157,7 +1338,7 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>nb_users</span></div><div class='xr-var-dims'>(date)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(47,), meta=np.ndarray&gt;</div><input id='attrs-915cb4de-a19d-4ba7-9778-c7be6d90ae40' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-915cb4de-a19d-4ba7-9778-c7be6d90ae40' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-becadc14-c68d-42a5-ac0c-eb4d0b9f3890' class='xr-var-data-in' type='checkbox'><label for='data-becadc14-c68d-42a5-ac0c-eb4d0b9f3890' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>number of users that saw this image/dataset</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>nb_users</span></div><div class='xr-var-dims'>(date)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(47,), meta=np.ndarray&gt;</div><input id='attrs-58f0cdad-52f1-4de7-94cb-ef011b4d002a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-58f0cdad-52f1-4de7-94cb-ef011b4d002a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4cbd4c79-08ed-4cab-95ea-e5932e86b96c' class='xr-var-data-in' type='checkbox'><label for='data-4cbd4c79-08ed-4cab-95ea-e5932e86b96c' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>number of users that saw this image/dataset</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1214,7 +1395,7 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-22d7dbfd-4175-449a-980c-5e08801d0efd' class='xr-section-summary-in' type='checkbox'  checked><label for='section-22d7dbfd-4175-449a-980c-5e08801d0efd' class='xr-section-summary' >Attributes: <span>(9)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>author :</span></dt><dd>Hauke Schulz (hauke.schulz@mpimet.mpg.de)</dd><dt><span>created_on :</span></dt><dd>2022-02-06 12:26 UTC</dd><dt><span>created_with :</span></dt><dd>create_level3.py with its last modification on Sun Feb  6 01:08:08 2022</dd><dt><span>description :</span></dt><dd>Level-3: daily classification frequency</dd><dt><span>doi :</span></dt><dd>10.5281/zenodo.5979718</dd><dt><span>institute :</span></dt><dd>Max Planck Institut für Meteorologie, Germany</dd><dt><span>python_version :</span></dt><dd>3.8.6 | packaged by conda-forge | (default, Nov 27 2020, 19:31:52) 
+</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-b9f6e541-eb7c-4ac6-b61e-78b1ceecab60' class='xr-section-summary-in' type='checkbox'  checked><label for='section-b9f6e541-eb7c-4ac6-b61e-78b1ceecab60' class='xr-section-summary' >Attributes: <span>(9)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>author :</span></dt><dd>Hauke Schulz (hauke.schulz@mpimet.mpg.de)</dd><dt><span>created_on :</span></dt><dd>2022-02-06 12:26 UTC</dd><dt><span>created_with :</span></dt><dd>create_level3.py with its last modification on Sun Feb  6 01:08:08 2022</dd><dt><span>description :</span></dt><dd>Level-3: daily classification frequency</dd><dt><span>doi :</span></dt><dd>10.5281/zenodo.5979718</dd><dt><span>institute :</span></dt><dd>Max Planck Institut für Meteorologie, Germany</dd><dt><span>python_version :</span></dt><dd>3.8.6 | packaged by conda-forge | (default, Nov 27 2020, 19:31:52) 
 [GCC 9.3.0]</dd><dt><span>title :</span></dt><dd>EUREC4A: manual meso-scale cloud pattern classifications</dd><dt><span>version :</span></dt><dd>v0.4.0</dd></dl></div></li></ul></div></div></div></div>
 </div>
 <p>To get the classifications along a trajectory, we can make further use of the platform tracks indexed in the EUREC<sup>4</sup>A
@@ -1281,8 +1462,8 @@ and will fail when the track crosses the 0 meridian.</p>
 <p>Participants could attribute a given location to different patterns, causing some overlap. This overlap
 is causing the stacked bar plots to exceed 100%.</p>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1306,9 +1487,11 @@ is causing the stacked bar plots to exceed 100%.</p>
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="auxiliary_datasets.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1324,24 +1507,28 @@ is causing the stacked bar plots to exceed 100%.</p>
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By EUREC4A community<br/>
+  
+      &copy; Copyright 2021.<br/>
+</p>
+        </footer>
+    </div>
     
-      By EUREC4A community<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

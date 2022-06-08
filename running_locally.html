@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>running How to EUREC4A locally &#8212; How to EUREC4A</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,21 +20,17 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -40,12 +38,13 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -66,7 +65,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -75,9 +88,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -95,14 +109,15 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="intro.html">
-   Introduction
-  </a>
- </li>
-</ul>
-<ul class="current nav bd-sidenav">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="halo.html">
    HALO
@@ -371,92 +386,197 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/running_locally.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/eurec4a/how_to_eurec4a"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/eurec4a/how_to_eurec4a/issues/new?title=Issue%20on%20page%20%2Frunning_locally.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/eurec4a/how_to_eurec4a/edit/master/how_to_eurec4a/running_locally.md"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/eurec4a/how_to_eurec4a"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/eurec4a/how_to_eurec4a/issues/new?title=Issue%20on%20page%20%2Frunning_locally.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/eurec4a/how_to_eurec4a/edit/master/how_to_eurec4a/running_locally.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/running_locally.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#quick-and-dirty">
    quick and dirty
@@ -508,12 +628,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>running How to EUREC4A locally</h1>
@@ -581,11 +700,12 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="running-how-to-eurec4a-locally">
-<h1>running How to EUREC4A locally<a class="headerlink" href="#running-how-to-eurec4a-locally" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="running-how-to-eurec4a-locally">
+<h1>running How to EUREC4A locally<a class="headerlink" href="#running-how-to-eurec4a-locally" title="Permalink to this headline">#</a></h1>
 <p>There are multiple options to run the Code examples from this book locally.
 In any case, it will involve the following steps:</p>
 <ul class="simple">
@@ -595,74 +715,19 @@ In any case, it will involve the following steps:</p>
 <li><p>run the code</p></li>
 </ul>
 <p>You can decide between the <a class="reference external" href="#quick-and-dirty">quick an dirty</a> method and the method <a class="reference external" href="#via-git">using <code class="docutils literal notranslate"><span class="pre">git</span></code></a>, which will also set you up to contribute to the book.</p>
-<div class="section" id="quick-and-dirty">
-<h2>quick and dirty<a class="headerlink" href="#quick-and-dirty" title="Permalink to this headline">¶</a></h2>
+<section id="quick-and-dirty">
+<h2>quick and dirty<a class="headerlink" href="#quick-and-dirty" title="Permalink to this headline">#</a></h2>
 <p>If you just like to run the code of a single notebook and don’t care to much about the details, the quickest option might be to download the chapter you are viewing as an ipython notebook (<code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>) via the download button (<i class="fas fa-download"></i>) on the top right of the page. If you don’t see the <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> option here, that’s because the source of the page can not be interpreted as a notebook and thus is not available for direct execution.</p>
 <p>If you would just run the downloaded code, the chance is high that some required libraries are not yet installed on your system. You can either do try and error to find out which libraries are required for the chapter you downloaded, or you can simply installed all requirements for the entire book by running the following command on your command line:</p>
-<div class="sphinx-bs container pb-4 docutils">
-<div class="row docutils">
-<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
-<div class="card w-100 shadow docutils">
-<div class="card-header docutils">
-<p class="card-text">Using pip</p>
-</div>
-<div class="card-body docutils">
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install jupyter
-pip install -r https://raw.githubusercontent.com/eurec4a/how_to_eurec4a/master/requirements.txt
-</pre></div>
-</div>
-</div>
-<div class="card-footer docutils">
-<p class="card-text">This won’t work with any notebooks that use <code class="docutils literal notranslate"><span class="pre">cartopy</span></code> to make maps,  <code class="docutils literal notranslate"><span class="pre">pip</span></code> does not manage
-their dependencies well.</p>
-</div>
-</div>
-</div>
-<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
-<div class="card w-100 shadow docutils">
-<div class="card-header docutils">
-<p class="card-text">Using conda</p>
-</div>
-<div class="card-body docutils">
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget https://raw.githubusercontent.com/eurec4a/how_to_eurec4a/master/requirements.txt
-conda create -f requirements.txt
-conda activate how_to_eurec4a
-</pre></div>
-</div>
-</div>
-<div class="card-footer docutils">
-<p class="card-text">This creates a conda environment called <code class="docutils literal notranslate"><span class="pre">how_to_eurec4a</span></code> which contains all dependencies including
-<code class="docutils literal notranslate"><span class="pre">cartopy</span></code></p>
-</div>
-</div>
-</div>
-</div>
-</div>
 <p>Afterwards, you can start a local notebook server (either <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">notebook</span></code> or <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">lab</span></code>) and run and modify the chapter locally.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Handling requirements in this project is not entirely straightforward, as the requirements strongly depend on which datasets are used. We use <a class="reference external" href="https://intake.readthedocs.io">intake catalogs</a> to describe how a dataset can be accessed which simplifies a lot of things. But as a consequence the set of required libraries is not only determined by the code in this repository, but also by the entries in the catalog.</p>
 </div>
-</div>
-<div class="section" id="via-git">
-<h2>via git<a class="headerlink" href="#via-git" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="via-git">
+<h2>via git<a class="headerlink" href="#via-git" title="Permalink to this headline">#</a></h2>
 <p>If you like to do it more properly, you can also clone the repository via git. Depending on if you have SSH public key authentication set up or not, you can do this via SSH or HTTPS:</p>
-<div class="tabbed-set docutils">
-<input checked="checked" id="6f5bc6a2-aed0-4c95-b6ad-4a2ae10d1bfe" name="5e025651-2e5e-497f-8fe9-ee1de0966e3c" type="radio">
-</input><label class="tabbed-label" for="6f5bc6a2-aed0-4c95-b6ad-4a2ae10d1bfe">
-SSH</label><div class="tabbed-content docutils">
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone git@github.com:eurec4a/how_to_eurec4a.git
-</pre></div>
-</div>
-</div>
-<input id="0e091c90-ad83-458f-bdb0-f36fbbf42bd3" name="5e025651-2e5e-497f-8fe9-ee1de0966e3c" type="radio">
-</input><label class="tabbed-label" for="0e091c90-ad83-458f-bdb0-f36fbbf42bd3">
-HTTPS</label><div class="tabbed-content docutils">
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/eurec4a/how_to_eurec4a
-</pre></div>
-</div>
-</div>
-</div>
 <p>This will create a local copy of the entire book repository in a newly created local folder <code class="docutils literal notranslate"><span class="pre">how_to_eurec4a</span></code>.
 Please change into this directory.</p>
 <div class="dropdown tip admonition">
@@ -677,44 +742,6 @@ Using virtualenv, you could create and activate an environment like:</p>
 <p>and the continue normally.</p>
 </div>
 <p>You’ll have to install the dependencies as above, but as you already have all the files on your machine, you can also install it directly via:</p>
-<div class="sphinx-bs container pb-4 docutils">
-<div class="row docutils">
-<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
-<div class="card w-100 shadow docutils">
-<div class="card-header docutils">
-<p class="card-text">Using pip</p>
-</div>
-<div class="card-body docutils">
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install jupyter
-pip install -r requirements.txt
-</pre></div>
-</div>
-</div>
-<div class="card-footer docutils">
-<p class="card-text">This won’t work with any notebooks that use <code class="docutils literal notranslate"><span class="pre">cartopy</span></code> to make maps,  <code class="docutils literal notranslate"><span class="pre">pip</span></code> does not manage
-their dependencies well.</p>
-</div>
-</div>
-</div>
-<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
-<div class="card w-100 shadow docutils">
-<div class="card-header docutils">
-<p class="card-text">Using conda</p>
-</div>
-<div class="card-body docutils">
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda create -f requirements.txt
-conda activate how_to_eurec4a
-</pre></div>
-</div>
-</div>
-<div class="card-footer docutils">
-<p class="card-text">This creates a conda environment called <code class="docutils literal notranslate"><span class="pre">how_to_eurec4a</span></code> which contains all dependencies including
-<code class="docutils literal notranslate"><span class="pre">cartopy</span></code></p>
-</div>
-</div>
-</div>
-</div>
-</div>
 <p>Depending on your needs, you can continue using <a class="reference external" href="#interactive">interactive notebooks</a> or <a class="reference external" href="#compile-the-book">compile the entire book</a>.</p>
 <div class="dropdown admonition">
 <p class="admonition-title">About MyST notebooks.</p>
@@ -726,57 +753,33 @@ In contrast to notebooks, these files <strong>do not</strong> contain generated 
 It is installed through the <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> and should register itself with <code class="docutils literal notranslate"><span class="pre">jupyter</span></code>, so that you can open the files as if they where <code class="docutils literal notranslate"><span class="pre">ipynb</span></code> files.
 If that does not work, please have a look at the <a class="reference external" href="https://jupytext.readthedocs.io/en/latest/install.html">installation instructions</a> of <code class="docutils literal notranslate"><span class="pre">jupytext</span></code>.</p>
 </div>
-<div class="section" id="interactive">
-<h3>interactive<a class="headerlink" href="#interactive" title="Permalink to this headline">¶</a></h3>
+<section id="interactive">
+<h3>interactive<a class="headerlink" href="#interactive" title="Permalink to this headline">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">jupyter</span></code> itself is not installed by the requirements file. If you’re using <code class="docutils literal notranslate"><span class="pre">pip</span></code> you might want to install it as well:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install jupyter
 </pre></div>
 </div>
 <p>Once everything is set up, you can either start your notebook server:</p>
-<div class="sphinx-bs container pb-4 docutils">
-<div class="row docutils">
-<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
-<div class="card w-100 shadow docutils">
-<div class="card-body docutils">
-<p class="card-text">… either using classical notebooks</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter notebook
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
-<div class="card w-100 shadow docutils">
-<div class="card-body docutils">
-<p class="card-text">… or using jupyter lab</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter lab
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="compile-the-book">
-<h3>compile the book<a class="headerlink" href="#compile-the-book" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="compile-the-book">
+<h3>compile the book<a class="headerlink" href="#compile-the-book" title="Permalink to this headline">#</a></h3>
 <p>You can also execute <code class="docutils literal notranslate"><span class="pre">jupyter-book</span></code> directly via:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jb build how_to_eurec4a
 </pre></div>
 </div>
 <p>which itself will run all code cells and output the results as HTML pages in a newly created folder.
 This variant is especially useful if you like to work directly on the MyST files (see note below) using a text editor and should be done every time before you submit new changes to the book.</p>
-</div>
-<div class="section" id="adding-new-articles">
-<h3>adding new articles<a class="headerlink" href="#adding-new-articles" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="adding-new-articles">
+<h3>adding new articles<a class="headerlink" href="#adding-new-articles" title="Permalink to this headline">#</a></h3>
 <p>Articles are generated from markdown files within the <code class="docutils literal notranslate"><span class="pre">how_to_eurec4a</span></code> folder of the git repository.
 The following instructions assume that you are working in that directory.</p>
-<div class="section" id="text-articles">
-<h4>text articles<a class="headerlink" href="#text-articles" title="Permalink to this headline">¶</a></h4>
+<section id="text-articles">
+<h4>text articles<a class="headerlink" href="#text-articles" title="Permalink to this headline">#</a></h4>
 <p>Text articles can be created by adding standard markdown files using your favourite text editor.</p>
-</div>
-<div class="section" id="executable-notebook">
-<h4>executable notebook<a class="headerlink" href="#executable-notebook" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="executable-notebook">
+<h4>executable notebook<a class="headerlink" href="#executable-notebook" title="Permalink to this headline">#</a></h4>
 <p>If you want to add a new notebook, you can either start out from an existing <strong>MyST</strong> Markdown file by copying and modifying it, or you can create a new one from the jupyter notebook menu using <code class="docutils literal notranslate"><span class="pre">File</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">Text</span> <span class="pre">Notebook</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">MyST</span> <span class="pre">Markdown</span></code>.
 If you already have an existing ipython notebook and want to convert it to <strong>MyST</strong>, you can do this by running</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupytext --to myst your_notebook.ipynb
@@ -784,23 +787,23 @@ If you already have an existing ipython notebook and want to convert it to <stro
 </div>
 <p>This will create a new markdown file named <code class="docutils literal notranslate"><span class="pre">your_notebook.md</span></code>.
 After conversion, the <code class="docutils literal notranslate"><span class="pre">ipynb</span></code> file is not needed anymore and it should not be committed into the repository.</p>
-</div>
-<div class="section" id="entry-in-the-table-of-contents">
-<h4>entry in the table of contents<a class="headerlink" href="#entry-in-the-table-of-contents" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="entry-in-the-table-of-contents">
+<h4>entry in the table of contents<a class="headerlink" href="#entry-in-the-table-of-contents" title="Permalink to this headline">#</a></h4>
 <p>After preparing your article or notebook, you’ll have to add it into the table of contents, such that it will actually show up in the compiled book.
 You can do this by modifying <code class="docutils literal notranslate"><span class="pre">_toc.yml</span></code>, where you can add the articles file name without suffix.</p>
-</div>
-</div>
-<div class="section" id="compile-to-pdf">
-<h3>compile to PDF<a class="headerlink" href="#compile-to-pdf" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="compile-to-pdf">
+<h3>compile to PDF<a class="headerlink" href="#compile-to-pdf" title="Permalink to this headline">#</a></h3>
 <p>If you’ve got a LaTeX environment available (e.g. TeXLive), you can also compile the book into a single PDF file.
 To do so, just run:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jb build how_to_eurec4a --builder pdflatex
 </pre></div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -824,9 +827,11 @@ To do so, just run:</p>
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="cloud_stat_tools.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -842,24 +847,28 @@ To do so, just run:</p>
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By EUREC4A community<br/>
+  
+      &copy; Copyright 2021.<br/>
+</p>
+        </footer>
+    </div>
     
-      By EUREC4A community<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>
