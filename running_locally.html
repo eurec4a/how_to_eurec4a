@@ -719,6 +719,43 @@ In any case, it will involve the following steps:</p>
 <h2>quick and dirty<a class="headerlink" href="#quick-and-dirty" title="Permalink to this headline">#</a></h2>
 <p>If you just like to run the code of a single notebook and don’t care to much about the details, the quickest option might be to download the chapter you are viewing as an ipython notebook (<code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>) via the download button (<i class="fas fa-download"></i>) on the top right of the page. If you don’t see the <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> option here, that’s because the source of the page can not be interpreted as a notebook and thus is not available for direct execution.</p>
 <p>If you would just run the downloaded code, the chance is high that some required libraries are not yet installed on your system. You can either do try and error to find out which libraries are required for the chapter you downloaded, or you can simply installed all requirements for the entire book by running the following command on your command line:</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Using pip</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install jupyter
+pip install -r https://raw.githubusercontent.com/eurec4a/how_to_eurec4a/master/requirements.txt
+</pre></div>
+</div>
+</div>
+<div class="sd-card-footer docutils">
+<p class="sd-card-text">This won’t work with any notebooks that use <code class="docutils literal notranslate"><span class="pre">cartopy</span></code> to make maps,  <code class="docutils literal notranslate"><span class="pre">pip</span></code> does not manage
+their dependencies well.</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Using conda</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget https://raw.githubusercontent.com/eurec4a/how_to_eurec4a/master/requirements.txt
+conda create -f requirements.txt
+conda activate how_to_eurec4a
+</pre></div>
+</div>
+</div>
+<div class="sd-card-footer docutils">
+<p class="sd-card-text">This creates a conda environment called <code class="docutils literal notranslate"><span class="pre">how_to_eurec4a</span></code> which contains all dependencies including
+<code class="docutils literal notranslate"><span class="pre">cartopy</span></code></p>
+</div>
+</div>
+</div>
+</div>
+</div>
 <p>Afterwards, you can start a local notebook server (either <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">notebook</span></code> or <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">lab</span></code>) and run and modify the chapter locally.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -728,8 +765,22 @@ In any case, it will involve the following steps:</p>
 <section id="via-git">
 <h2>via git<a class="headerlink" href="#via-git" title="Permalink to this headline">#</a></h2>
 <p>If you like to do it more properly, you can also clone the repository via git. Depending on if you have SSH public key authentication set up or not, you can do this via SSH or HTTPS:</p>
-<p>This will create a local copy of the entire book repository in a newly created local folder <code class="docutils literal notranslate"><span class="pre">how_to_eurec4a</span></code>.
-Please change into this directory.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="9d09c534-037a-412e-a751-031333c4569a" name="053e5d9d-b9b0-49b3-abb6-f8b00331f45b" type="radio">
+</input><label class="sd-tab-label" for="9d09c534-037a-412e-a751-031333c4569a">
+SSH</label><div class="sd-tab-content docutils">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone git@github.com:eurec4a/how_to_eurec4a.git
+</pre></div>
+</div>
+</div>
+<input id="8afcadef-99a1-41fa-81c8-7ee15ba82033" name="053e5d9d-b9b0-49b3-abb6-f8b00331f45b" type="radio">
+</input><label class="sd-tab-label" for="8afcadef-99a1-41fa-81c8-7ee15ba82033">
+HTTPS</label><div class="sd-tab-content docutils">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/eurec4a/how_to_eurec4a
+</pre></div>
+</div>
+</div>
+</div>
 <div class="dropdown tip admonition">
 <p class="admonition-title">Maybe use a virtual environment</p>
 <p>If you use pip you might want to use a virtual environment for the book if you like to keep the required libraries in a confined place, but it is entirely optional and up to your preferences.
@@ -742,6 +793,42 @@ Using virtualenv, you could create and activate an environment like:</p>
 <p>and the continue normally.</p>
 </div>
 <p>You’ll have to install the dependencies as above, but as you already have all the files on your machine, you can also install it directly via:</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Using pip</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install jupyter
+pip install -r requirements.txt
+</pre></div>
+</div>
+</div>
+<div class="sd-card-footer docutils">
+<p class="sd-card-text">This won’t work with any notebooks that use <code class="docutils literal notranslate"><span class="pre">cartopy</span></code> to make maps,  <code class="docutils literal notranslate"><span class="pre">pip</span></code> does not manage
+their dependencies well.</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Using conda</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda create -f requirements.txt
+conda activate how_to_eurec4a
+</pre></div>
+</div>
+</div>
+<div class="sd-card-footer docutils">
+<p class="sd-card-text">This creates a conda environment called <code class="docutils literal notranslate"><span class="pre">how_to_eurec4a</span></code> which contains all dependencies including
+<code class="docutils literal notranslate"><span class="pre">cartopy</span></code></p>
+</div>
+</div>
+</div>
+</div>
+</div>
 <p>Depending on your needs, you can continue using <a class="reference external" href="#interactive">interactive notebooks</a> or <a class="reference external" href="#compile-the-book">compile the entire book</a>.</p>
 <div class="dropdown admonition">
 <p class="admonition-title">About MyST notebooks.</p>
@@ -760,6 +847,30 @@ If that does not work, please have a look at the <a class="reference external" h
 </pre></div>
 </div>
 <p>Once everything is set up, you can either start your notebook server:</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<p class="sd-card-text">… either using classical notebooks</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter notebook
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<p class="sd-card-text">… or using jupyter lab</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter lab
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="compile-the-book">
 <h3>compile the book<a class="headerlink" href="#compile-the-book" title="Permalink to this headline">#</a></h3>

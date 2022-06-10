@@ -786,6 +786,27 @@ However, those models are also loosely tied to their backend storage formats and
 </aside>
 <p>In order to put the high level idea from above into a data structure which can be stored on disk, netCDF defines two low level data models where the <a class="reference external" href="https://www.unidata.ucar.edu/software/netcdf/docs/netcdf_data_model.html#classic_model">Classic</a> data model came first and the <a class="reference external" href="https://www.unidata.ucar.edu/software/netcdf/docs/netcdf_data_model.html#enhanced_model">Enhanced</a> data model evolved from it.
 Both models care about <em>variables</em>, <em>dimensions</em> and <em>attributes</em> as introduced above.</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<p class="sd-card-text">The <strong>classic</strong> model knows about <code class="docutils literal notranslate"><span class="pre">CHAR</span></code>, <code class="docutils literal notranslate"><span class="pre">BYTE</span></code>, <code class="docutils literal notranslate"><span class="pre">SHORT</span></code>, <code class="docutils literal notranslate"><span class="pre">INT</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code> and <code class="docutils literal notranslate"><span class="pre">DOUBLE</span></code> data types which are all <strong>signed</strong>.
+There may be at most one unlimited (i.e. resizeable) dimension per variable.</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<p class="sd-card-text">The <strong>enhanced</strong> model is based on the classic model and adds <code class="docutils literal notranslate"><span class="pre">INT64</span></code> and <code class="docutils literal notranslate"><span class="pre">STRING</span></code> to the mix as well as <strong>unsigned</strong> variants of all integral types.
+Further additions of the enhanced model are groups (which are like a dataset within a dataset) and user defined types.
+There may be any number of unlimited dimensions per variable.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
 <p>Those two data models are closely tied to the netCDF3 and netCDF4 storage formats.</p>
 <ul class="simple">
 <li><p>netCDF3 is based on the <em>classic</em> data model and defines a storage format which is custom to netCDF.</p></li>
@@ -909,33 +930,1286 @@ If any one of the sub cases failed, the data type is marked as erroneous.</p>
 <h3>Results<a class="headerlink" href="#results" title="Permalink to this headline">#</a></h3>
 <div class="dropdown error admonition">
 <p class="admonition-title">BYTE</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="1f3651d4-f357-42b6-b912-e5a4c3cb6a43" name="d697ce70-ed04-43b1-8b49-e796ef5d2f96" type="radio">
+</input><label class="sd-tab-label" for="1f3651d4-f357-42b6-b912-e5a4c3cb6a43">
++ numbers</label><div class="sd-tab-content docutils">
+<p>original dataset:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_BYTE.nc
+netcdf test_NC_BYTE {
+dimensions:
+	test = 5 ;
+variables:
+	byte test(test) ;
+		test:_FillValue = 3b ;
+		test:valid_range = 0b, 127b ;
+data:
+
+ test = 0, 1, 2, _, 127 ;
+}
+</pre></div>
+</div>
+<p>data attribute structure via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_BYTE.nc.das
+Attributes {
+    test {
+        String _Unsigned &quot;false&quot;;
+        Byte _FillValue 3;
+        Byte valid_range 0, 127;
+    }
+}
+</pre></div>
+</div>
+<p>dataset as interpreted by netCDF via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_BYTE.nc
+netcdf test_NC_BYTE {
+dimensions:
+	test = 5 ;
+variables:
+	byte test(test) ;
+		test:_Unsigned = &quot;false&quot; ;
+		test:_FillValue = 3b ;
+		test:valid_range = 0b, 127b ;
+data:
+
+ test = 0, 1, 2, _, 127 ;
+}
+</pre></div>
+</div>
+<p>✅</p>
+</div>
+<input id="c8045a2c-596a-40c2-b766-2b3b8827c8a0" name="d697ce70-ed04-43b1-8b49-e796ef5d2f96" type="radio">
+</input><label class="sd-tab-label" for="c8045a2c-596a-40c2-b766-2b3b8827c8a0">
++/- numbers</label><div class="sd-tab-content docutils">
+<p>original dataset:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_BYTE_neg.nc
+netcdf test_NC_BYTE_neg {
+dimensions:
+	test = 7 ;
+variables:
+	byte test(test) ;
+		test:_FillValue = 3b ;
+		test:valid_range = -128b, 127b ;
+data:
+
+ test = -128, -1, 0, 1, 2, _, 127 ;
+}
+</pre></div>
+</div>
+<p>data attribute structure via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_BYTE_neg.nc.das
+Attributes {
+    test {
+        String _Unsigned &quot;false&quot;;
+        Byte _FillValue 3;
+        Int16 valid_range -128, 127;
+    }
+}
+</pre></div>
+</div>
+<p>dataset as interpreted by netCDF via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_BYTE_neg.nc
+netcdf test_NC_BYTE_neg {
+dimensions:
+	test = 7 ;
+variables:
+	byte test(test) ;
+		test:_Unsigned = &quot;false&quot; ;
+		test:_FillValue = 3b ;
+		test:valid_range = -128s, 127s ;
+data:
+
+ test = -128, -1, 0, 1, 2, _, 127 ;
+}
+</pre></div>
+</div>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>data type of attribute <code class="docutils literal notranslate"><span class="pre">valid_range</span></code> of variable <code class="docutils literal notranslate"><span class="pre">test</span></code> differs</p>
+</div>
+</div>
+<input id="d4f52aa0-82a7-494a-a9da-89a7a9919396" name="d697ce70-ed04-43b1-8b49-e796ef5d2f96" type="radio">
+</input><label class="sd-tab-label" for="d4f52aa0-82a7-494a-a9da-89a7a9919396">
++ flags</label><div class="sd-tab-content docutils">
+<p>original dataset:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_BYTE_flag.nc
+netcdf test_NC_BYTE_flag {
+dimensions:
+	test = 5 ;
+variables:
+	byte test(test) ;
+		test:flag_values = 0b, 1b, 2b, 3b, 127b ;
+		test:flag_meanings = &quot;a b c d e&quot; ;
+data:
+
+ test = 0, 1, 2, 3, 127 ;
+}
+</pre></div>
+</div>
+<p>data attribute structure via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_BYTE_flag.nc.das
+Attributes {
+    test {
+        String _Unsigned &quot;false&quot;;
+        Byte flag_values 0, 1, 2, 3, 127;
+        String flag_meanings &quot;a b c d e&quot;;
+    }
+}
+</pre></div>
+</div>
+<p>dataset as interpreted by netCDF via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_BYTE_flag.nc
+netcdf test_NC_BYTE_flag {
+dimensions:
+	test = 5 ;
+variables:
+	byte test(test) ;
+		test:_Unsigned = &quot;false&quot; ;
+		test:flag_values = 0b, 1b, 2b, 3b, 127b ;
+		test:flag_meanings = &quot;a b c d e&quot; ;
+data:
+
+ test = 0, 1, 2, 3, 127 ;
+}
+</pre></div>
+</div>
+<p>✅</p>
+</div>
+<input id="614209d9-8cfb-4c18-a37e-7b0343143eca" name="d697ce70-ed04-43b1-8b49-e796ef5d2f96" type="radio">
+</input><label class="sd-tab-label" for="614209d9-8cfb-4c18-a37e-7b0343143eca">
++/- flags</label><div class="sd-tab-content docutils">
+<p>original dataset:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_BYTE_flag_neg.nc
+netcdf test_NC_BYTE_flag_neg {
+dimensions:
+	test = 7 ;
+variables:
+	byte test(test) ;
+		test:flag_values = -128b, -1b, 0b, 1b, 2b, 3b, 127b ;
+		test:flag_meanings = &quot;a b c d e f g&quot; ;
+data:
+
+ test = -128, -1, 0, 1, 2, 3, 127 ;
+}
+</pre></div>
+</div>
+<p>data attribute structure via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_BYTE_flag_neg.nc.das
+Attributes {
+    test {
+        String _Unsigned &quot;false&quot;;
+        Int16 flag_values -128, -1, 0, 1, 2, 3, 127;
+        String flag_meanings &quot;a b c d e f g&quot;;
+    }
+}
+</pre></div>
+</div>
+<p>dataset as interpreted by netCDF via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_BYTE_flag_neg.nc
+netcdf test_NC_BYTE_flag_neg {
+dimensions:
+	test = 7 ;
+variables:
+	byte test(test) ;
+		test:_Unsigned = &quot;false&quot; ;
+		test:flag_values = -128s, -1s, 0s, 1s, 2s, 3s, 127s ;
+		test:flag_meanings = &quot;a b c d e f g&quot; ;
+data:
+
+ test = -128, -1, 0, 1, 2, 3, 127 ;
+}
+</pre></div>
+</div>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>data type of attribute <code class="docutils literal notranslate"><span class="pre">flag_values</span></code> of variable <code class="docutils literal notranslate"><span class="pre">test</span></code> differs</p>
+</div>
+</div>
+</div>
 </div>
 <div class="dropdown error admonition">
 <p class="admonition-title">UBYTE</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="c603e4e9-45a8-434e-a8c6-6af477bb2ee7" name="5ac1eba4-d376-4658-bdb2-70f24cf2aba2" type="radio">
+</input><label class="sd-tab-label" for="c603e4e9-45a8-434e-a8c6-6af477bb2ee7">
++ numbers</label><div class="sd-tab-content docutils">
+<p>original dataset:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_UBYTE.nc
+netcdf test_NC_UBYTE {
+dimensions:
+	test = 5 ;
+variables:
+	ubyte test(test) ;
+		test:_FillValue = 3UB ;
+		test:valid_range = 0UB, 255UB ;
+data:
+
+ test = 0, 1, 2, _, 255 ;
+}
+</pre></div>
+</div>
+<p>data attribute structure via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UBYTE.nc.das
+Attributes {
+    test {
+        String _Unsigned &quot;true&quot;;
+        Byte _FillValue 3;
+        Int16 valid_range 0, -1;
+    }
+}
+</pre></div>
+</div>
+<p>dataset as interpreted by netCDF via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UBYTE.nc
+netcdf test_NC_UBYTE {
+dimensions:
+	test = 5 ;
+variables:
+	byte test(test) ;
+		test:_Unsigned = &quot;true&quot; ;
+		test:_FillValue = 3b ;
+		test:valid_range = 0s, -1s ;
+data:
+
+ test = 0, 1, 2, _, -1 ;
+}
+</pre></div>
+</div>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>values of variable <code class="docutils literal notranslate"><span class="pre">test</span></code> are not equal</p>
+</div>
+</div>
+<input id="4518c411-f8a7-475c-abf3-2b2bcb9c3489" name="5ac1eba4-d376-4658-bdb2-70f24cf2aba2" type="radio">
+</input><label class="sd-tab-label" for="4518c411-f8a7-475c-abf3-2b2bcb9c3489">
++ flags</label><div class="sd-tab-content docutils">
+<p>original dataset:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_UBYTE_flag.nc
+netcdf test_NC_UBYTE_flag {
+dimensions:
+	test = 5 ;
+variables:
+	ubyte test(test) ;
+		test:flag_values = 0UB, 1UB, 2UB, 3UB, 255UB ;
+		test:flag_meanings = &quot;a b c d e&quot; ;
+data:
+
+ test = 0, 1, 2, 3, 255 ;
+}
+</pre></div>
+</div>
+<p>data attribute structure via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UBYTE_flag.nc.das
+Attributes {
+    test {
+        String _Unsigned &quot;true&quot;;
+        Int16 flag_values 0, 1, 2, 3, -1;
+        String flag_meanings &quot;a b c d e&quot;;
+        Int16 _FillValue -1;
+    }
+}
+</pre></div>
+</div>
+<p>dataset as interpreted by netCDF via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UBYTE_flag.nc
+</pre></div>
+</div>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>/usr/local/bin/ncdump: <a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UBYTE_flag.nc:">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UBYTE_flag.nc:</a> <a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UBYTE_flag.nc:">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UBYTE_flag.nc:</a> NetCDF: Not a valid data type or _FillValue type mismatch</p>
+</div>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>[Errno -45] NetCDF: Not a valid data type or _FillValue type mismatch: b’<a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UBYTE_flag.nc">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UBYTE_flag.nc</a>’</p>
+</div>
+</div>
+</div>
 </div>
 <div class="dropdown admonition">
 <p class="admonition-title">SHORT</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="9e42ca48-011a-4bec-b4f2-49c8b0ebc6e1" name="1ec706ef-4f84-43bd-bfb8-126f6072013c" type="radio">
+</input><label class="sd-tab-label" for="9e42ca48-011a-4bec-b4f2-49c8b0ebc6e1">
++ numbers</label><div class="sd-tab-content docutils">
+<p>original dataset:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_SHORT.nc
+netcdf test_NC_SHORT {
+dimensions:
+	test = 5 ;
+variables:
+	short test(test) ;
+		test:_FillValue = 3s ;
+		test:valid_range = 0s, 32767s ;
+data:
+
+ test = 0, 1, 2, _, 32767 ;
+}
+</pre></div>
+</div>
+<p>data attribute structure via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_SHORT.nc.das
+Attributes {
+    test {
+        Int16 _FillValue 3;
+        Int16 valid_range 0, 32767;
+    }
+}
+</pre></div>
+</div>
+<p>dataset as interpreted by netCDF via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_SHORT.nc
+netcdf test_NC_SHORT {
+dimensions:
+	test = 5 ;
+variables:
+	short test(test) ;
+		test:_FillValue = 3s ;
+		test:valid_range = 0s, 32767s ;
+data:
+
+ test = 0, 1, 2, _, 32767 ;
+}
+</pre></div>
+</div>
+<p>✅</p>
+</div>
+<input id="9d8eca08-64b0-44b9-b3fc-41e9742decce" name="1ec706ef-4f84-43bd-bfb8-126f6072013c" type="radio">
+</input><label class="sd-tab-label" for="9d8eca08-64b0-44b9-b3fc-41e9742decce">
++/- numbers</label><div class="sd-tab-content docutils">
+<p>original dataset:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_SHORT_neg.nc
+netcdf test_NC_SHORT_neg {
+dimensions:
+	test = 7 ;
+variables:
+	short test(test) ;
+		test:_FillValue = 3s ;
+		test:valid_range = -32768s, 32767s ;
+data:
+
+ test = -32768, -1, 0, 1, 2, _, 32767 ;
+}
+</pre></div>
+</div>
+<p>data attribute structure via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_SHORT_neg.nc.das
+Attributes {
+    test {
+        Int16 _FillValue 3;
+        Int16 valid_range -32768, 32767;
+    }
+}
+</pre></div>
+</div>
+<p>dataset as interpreted by netCDF via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_SHORT_neg.nc
+netcdf test_NC_SHORT_neg {
+dimensions:
+	test = 7 ;
+variables:
+	short test(test) ;
+		test:_FillValue = 3s ;
+		test:valid_range = -32768s, 32767s ;
+data:
+
+ test = -32768, -1, 0, 1, 2, _, 32767 ;
+}
+</pre></div>
+</div>
+<p>✅</p>
+</div>
+<input id="16026624-a9c0-4ccb-9b9f-303aa855337d" name="1ec706ef-4f84-43bd-bfb8-126f6072013c" type="radio">
+</input><label class="sd-tab-label" for="16026624-a9c0-4ccb-9b9f-303aa855337d">
++ flags</label><div class="sd-tab-content docutils">
+<p>original dataset:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_SHORT_flag.nc
+netcdf test_NC_SHORT_flag {
+dimensions:
+	test = 5 ;
+variables:
+	short test(test) ;
+		test:flag_values = 0s, 1s, 2s, 3s, 32767s ;
+		test:flag_meanings = &quot;a b c d e&quot; ;
+data:
+
+ test = 0, 1, 2, 3, 32767 ;
+}
+</pre></div>
+</div>
+<p>data attribute structure via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_SHORT_flag.nc.das
+Attributes {
+    test {
+        Int16 flag_values 0, 1, 2, 3, 32767;
+        String flag_meanings &quot;a b c d e&quot;;
+    }
+}
+</pre></div>
+</div>
+<p>dataset as interpreted by netCDF via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_SHORT_flag.nc
+netcdf test_NC_SHORT_flag {
+dimensions:
+	test = 5 ;
+variables:
+	short test(test) ;
+		test:flag_values = 0s, 1s, 2s, 3s, 32767s ;
+		test:flag_meanings = &quot;a b c d e&quot; ;
+data:
+
+ test = 0, 1, 2, 3, 32767 ;
+}
+</pre></div>
+</div>
+<p>✅</p>
+</div>
+<input id="5b9bcb0e-0560-4da5-97ee-c7f2d605f3ad" name="1ec706ef-4f84-43bd-bfb8-126f6072013c" type="radio">
+</input><label class="sd-tab-label" for="5b9bcb0e-0560-4da5-97ee-c7f2d605f3ad">
++/- flags</label><div class="sd-tab-content docutils">
+<p>original dataset:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_SHORT_flag_neg.nc
+netcdf test_NC_SHORT_flag_neg {
+dimensions:
+	test = 7 ;
+variables:
+	short test(test) ;
+		test:flag_values = -32768s, -1s, 0s, 1s, 2s, 3s, 32767s ;
+		test:flag_meanings = &quot;a b c d e f g&quot; ;
+data:
+
+ test = -32768, -1, 0, 1, 2, 3, 32767 ;
+}
+</pre></div>
+</div>
+<p>data attribute structure via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_SHORT_flag_neg.nc.das
+Attributes {
+    test {
+        Int16 flag_values -32768, -1, 0, 1, 2, 3, 32767;
+        String flag_meanings &quot;a b c d e f g&quot;;
+    }
+}
+</pre></div>
+</div>
+<p>dataset as interpreted by netCDF via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_SHORT_flag_neg.nc
+netcdf test_NC_SHORT_flag_neg {
+dimensions:
+	test = 7 ;
+variables:
+	short test(test) ;
+		test:flag_values = -32768s, -1s, 0s, 1s, 2s, 3s, 32767s ;
+		test:flag_meanings = &quot;a b c d e f g&quot; ;
+data:
+
+ test = -32768, -1, 0, 1, 2, 3, 32767 ;
+}
+</pre></div>
+</div>
+<p>✅</p>
+</div>
+</div>
 </div>
 <div class="dropdown error admonition">
 <p class="admonition-title">USHORT</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="e283d30d-e32c-436a-ba6a-cf85adddacdc" name="b206a2b1-bcac-4674-93f8-bc935430d18b" type="radio">
+</input><label class="sd-tab-label" for="e283d30d-e32c-436a-ba6a-cf85adddacdc">
++ numbers</label><div class="sd-tab-content docutils">
+<p>original dataset:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_USHORT.nc
+netcdf test_NC_USHORT {
+dimensions:
+	test = 5 ;
+variables:
+	ushort test(test) ;
+		test:_FillValue = 3US ;
+		test:valid_range = 0US, 65535US ;
+data:
+
+ test = 0, 1, 2, _, 65535 ;
+}
+</pre></div>
+</div>
+<p>data attribute structure via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_USHORT.nc.das
+Attributes {
+    test {
+        Int16 _FillValue 3;
+        Int16 valid_range 0, -1;
+        String _Unsigned &quot;true&quot;;
+    }
+}
+</pre></div>
+</div>
+<p>dataset as interpreted by netCDF via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_USHORT.nc
+</pre></div>
+</div>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>/usr/local/bin/ncdump: <a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_USHORT.nc:">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_USHORT.nc:</a> <a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_USHORT.nc:">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_USHORT.nc:</a> NetCDF: Not a valid data type or _FillValue type mismatch</p>
+</div>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>[Errno -45] NetCDF: Not a valid data type or _FillValue type mismatch: b’<a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_USHORT.nc">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_USHORT.nc</a>’</p>
+</div>
+</div>
+<input id="5875231c-9198-4c97-80e0-8f82e0341ad4" name="b206a2b1-bcac-4674-93f8-bc935430d18b" type="radio">
+</input><label class="sd-tab-label" for="5875231c-9198-4c97-80e0-8f82e0341ad4">
++ flags</label><div class="sd-tab-content docutils">
+<p>original dataset:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_USHORT_flag.nc
+netcdf test_NC_USHORT_flag {
+dimensions:
+	test = 5 ;
+variables:
+	ushort test(test) ;
+		test:flag_values = 0US, 1US, 2US, 3US, 65535US ;
+		test:flag_meanings = &quot;a b c d e&quot; ;
+data:
+
+ test = 0, 1, 2, 3, _ ;
+}
+</pre></div>
+</div>
+<p>data attribute structure via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_USHORT_flag.nc.das
+Attributes {
+    test {
+        Int16 flag_values 0, 1, 2, 3, -1;
+        String flag_meanings &quot;a b c d e&quot;;
+        Int16 _FillValue -1;
+        String _Unsigned &quot;true&quot;;
+    }
+}
+</pre></div>
+</div>
+<p>dataset as interpreted by netCDF via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_USHORT_flag.nc
+</pre></div>
+</div>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>/usr/local/bin/ncdump: <a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_USHORT_flag.nc:">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_USHORT_flag.nc:</a> <a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_USHORT_flag.nc:">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_USHORT_flag.nc:</a> NetCDF: Not a valid data type or _FillValue type mismatch</p>
+</div>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>[Errno -45] NetCDF: Not a valid data type or _FillValue type mismatch: b’<a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_USHORT_flag.nc">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_USHORT_flag.nc</a>’</p>
+</div>
+</div>
+</div>
 </div>
 <div class="dropdown admonition">
 <p class="admonition-title">INT</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="ef72005e-437c-426b-9c18-4480ec95ebfd" name="b04ec274-e289-4d9c-8803-a17fce93888a" type="radio">
+</input><label class="sd-tab-label" for="ef72005e-437c-426b-9c18-4480ec95ebfd">
++ numbers</label><div class="sd-tab-content docutils">
+<p>original dataset:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_INT.nc
+netcdf test_NC_INT {
+dimensions:
+	test = 5 ;
+variables:
+	int test(test) ;
+		test:_FillValue = 3 ;
+		test:valid_range = 0, 2147483647 ;
+data:
+
+ test = 0, 1, 2, _, 2147483647 ;
+}
+</pre></div>
+</div>
+<p>data attribute structure via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT.nc.das
+Attributes {
+    test {
+        Int32 _FillValue 3;
+        Int32 valid_range 0, 2147483647;
+    }
+}
+</pre></div>
+</div>
+<p>dataset as interpreted by netCDF via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT.nc
+netcdf test_NC_INT {
+dimensions:
+	test = 5 ;
+variables:
+	int test(test) ;
+		test:_FillValue = 3 ;
+		test:valid_range = 0, 2147483647 ;
+data:
+
+ test = 0, 1, 2, _, 2147483647 ;
+}
+</pre></div>
+</div>
+<p>✅</p>
+</div>
+<input id="fc363b89-4b89-44bb-a595-2197d754f918" name="b04ec274-e289-4d9c-8803-a17fce93888a" type="radio">
+</input><label class="sd-tab-label" for="fc363b89-4b89-44bb-a595-2197d754f918">
++/- numbers</label><div class="sd-tab-content docutils">
+<p>original dataset:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_INT_neg.nc
+netcdf test_NC_INT_neg {
+dimensions:
+	test = 7 ;
+variables:
+	int test(test) ;
+		test:_FillValue = 3 ;
+		test:valid_range = -2147483648, 2147483647 ;
+data:
+
+ test = -2147483648, -1, 0, 1, 2, _, 2147483647 ;
+}
+</pre></div>
+</div>
+<p>data attribute structure via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT_neg.nc.das
+Attributes {
+    test {
+        Int32 _FillValue 3;
+        Int32 valid_range -2147483648, 2147483647;
+    }
+}
+</pre></div>
+</div>
+<p>dataset as interpreted by netCDF via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT_neg.nc
+netcdf test_NC_INT_neg {
+dimensions:
+	test = 7 ;
+variables:
+	int test(test) ;
+		test:_FillValue = 3 ;
+		test:valid_range = -2147483648, 2147483647 ;
+data:
+
+ test = -2147483648, -1, 0, 1, 2, _, 2147483647 ;
+}
+</pre></div>
+</div>
+<p>✅</p>
+</div>
+<input id="ad69709f-b2df-496e-9d7c-24683634e76b" name="b04ec274-e289-4d9c-8803-a17fce93888a" type="radio">
+</input><label class="sd-tab-label" for="ad69709f-b2df-496e-9d7c-24683634e76b">
++ flags</label><div class="sd-tab-content docutils">
+<p>original dataset:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_INT_flag.nc
+netcdf test_NC_INT_flag {
+dimensions:
+	test = 5 ;
+variables:
+	int test(test) ;
+		test:flag_values = 0, 1, 2, 3, 2147483647 ;
+		test:flag_meanings = &quot;a b c d e&quot; ;
+data:
+
+ test = 0, 1, 2, 3, 2147483647 ;
+}
+</pre></div>
+</div>
+<p>data attribute structure via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT_flag.nc.das
+Attributes {
+    test {
+        Int32 flag_values 0, 1, 2, 3, 2147483647;
+        String flag_meanings &quot;a b c d e&quot;;
+    }
+}
+</pre></div>
+</div>
+<p>dataset as interpreted by netCDF via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT_flag.nc
+netcdf test_NC_INT_flag {
+dimensions:
+	test = 5 ;
+variables:
+	int test(test) ;
+		test:flag_values = 0, 1, 2, 3, 2147483647 ;
+		test:flag_meanings = &quot;a b c d e&quot; ;
+data:
+
+ test = 0, 1, 2, 3, 2147483647 ;
+}
+</pre></div>
+</div>
+<p>✅</p>
+</div>
+<input id="1ade24a6-d917-40ef-9fd3-d9b515b539e1" name="b04ec274-e289-4d9c-8803-a17fce93888a" type="radio">
+</input><label class="sd-tab-label" for="1ade24a6-d917-40ef-9fd3-d9b515b539e1">
++/- flags</label><div class="sd-tab-content docutils">
+<p>original dataset:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_INT_flag_neg.nc
+netcdf test_NC_INT_flag_neg {
+dimensions:
+	test = 7 ;
+variables:
+	int test(test) ;
+		test:flag_values = -2147483648, -1, 0, 1, 2, 3, 2147483647 ;
+		test:flag_meanings = &quot;a b c d e f g&quot; ;
+data:
+
+ test = -2147483648, -1, 0, 1, 2, 3, 2147483647 ;
+}
+</pre></div>
+</div>
+<p>data attribute structure via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT_flag_neg.nc.das
+Attributes {
+    test {
+        Int32 flag_values -2147483648, -1, 0, 1, 2, 3, 2147483647;
+        String flag_meanings &quot;a b c d e f g&quot;;
+    }
+}
+</pre></div>
+</div>
+<p>dataset as interpreted by netCDF via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT_flag_neg.nc
+netcdf test_NC_INT_flag_neg {
+dimensions:
+	test = 7 ;
+variables:
+	int test(test) ;
+		test:flag_values = -2147483648, -1, 0, 1, 2, 3, 2147483647 ;
+		test:flag_meanings = &quot;a b c d e f g&quot; ;
+data:
+
+ test = -2147483648, -1, 0, 1, 2, 3, 2147483647 ;
+}
+</pre></div>
+</div>
+<p>✅</p>
+</div>
+</div>
 </div>
 <div class="dropdown error admonition">
 <p class="admonition-title">UINT</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="0d341fb9-5467-4398-9b37-540877a4bd96" name="a03c9e17-55bb-40c5-8ff9-835f0383e591" type="radio">
+</input><label class="sd-tab-label" for="0d341fb9-5467-4398-9b37-540877a4bd96">
++ numbers</label><div class="sd-tab-content docutils">
+<p>original dataset:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_UINT.nc
+netcdf test_NC_UINT {
+dimensions:
+	test = 5 ;
+variables:
+	uint test(test) ;
+		test:_FillValue = 3U ;
+		test:valid_range = 0U, 4294967295U ;
+data:
+
+ test = 0, 1, 2, _, 4294967295 ;
+}
+</pre></div>
+</div>
+<p>data attribute structure via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT.nc.das
+Attributes {
+    test {
+        Int32 _FillValue 3;
+        Int32 valid_range 0, -1;
+        String _Unsigned &quot;true&quot;;
+    }
+}
+</pre></div>
+</div>
+<p>dataset as interpreted by netCDF via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT.nc
+</pre></div>
+</div>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>/usr/local/bin/ncdump: <a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT.nc:">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT.nc:</a> <a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT.nc:">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT.nc:</a> NetCDF: Not a valid data type or _FillValue type mismatch</p>
+</div>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>[Errno -45] NetCDF: Not a valid data type or _FillValue type mismatch: b’<a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT.nc">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT.nc</a>’</p>
+</div>
+</div>
+<input id="c49f7326-7775-4496-9fc6-92a714d433eb" name="a03c9e17-55bb-40c5-8ff9-835f0383e591" type="radio">
+</input><label class="sd-tab-label" for="c49f7326-7775-4496-9fc6-92a714d433eb">
++ flags</label><div class="sd-tab-content docutils">
+<p>original dataset:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_UINT_flag.nc
+netcdf test_NC_UINT_flag {
+dimensions:
+	test = 5 ;
+variables:
+	uint test(test) ;
+		test:flag_values = 0U, 1U, 2U, 3U, 4294967295U ;
+		test:flag_meanings = &quot;a b c d e&quot; ;
+data:
+
+ test = 0, 1, 2, 3, _ ;
+}
+</pre></div>
+</div>
+<p>data attribute structure via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT_flag.nc.das
+Attributes {
+    test {
+        Int32 flag_values 0, 1, 2, 3, -1;
+        String flag_meanings &quot;a b c d e&quot;;
+        Int32 _FillValue -1;
+        String _Unsigned &quot;true&quot;;
+    }
+}
+</pre></div>
+</div>
+<p>dataset as interpreted by netCDF via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT_flag.nc
+</pre></div>
+</div>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>/usr/local/bin/ncdump: <a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT_flag.nc:">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT_flag.nc:</a> <a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT_flag.nc:">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT_flag.nc:</a> NetCDF: Not a valid data type or _FillValue type mismatch</p>
+</div>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>[Errno -45] NetCDF: Not a valid data type or _FillValue type mismatch: b’<a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT_flag.nc">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT_flag.nc</a>’</p>
+</div>
+</div>
+</div>
 </div>
 <div class="dropdown error admonition">
 <p class="admonition-title">INT64</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="d1b0e89c-2512-4ad5-9afa-eb7aa6bfc135" name="f8c74bcd-fab4-4ee3-9935-c90a195151c9" type="radio">
+</input><label class="sd-tab-label" for="d1b0e89c-2512-4ad5-9afa-eb7aa6bfc135">
++ numbers</label><div class="sd-tab-content docutils">
+<p>original dataset:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_INT64.nc
+netcdf test_NC_INT64 {
+dimensions:
+	test = 5 ;
+variables:
+	int64 test(test) ;
+		test:_FillValue = 3LL ;
+		test:valid_range = 0LL, 9223372036854775807LL ;
+data:
+
+ test = 0, 1, 2, _, 9223372036854775807 ;
+}
+</pre></div>
+</div>
+<p>data attribute structure via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64.nc.das
+Error {
+    code = 403;
+    message = &quot;NcDDS Variable data type = long&quot;;
+};
+</pre></div>
+</div>
+<p>dataset as interpreted by netCDF via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64.nc
+</pre></div>
+</div>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>oc_open: server error retrieving url: code=403 message=”NcDDS Variable data type = long”/usr/local/bin/ncdump: <a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64.nc:">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64.nc:</a> <a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64.nc:">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64.nc:</a> NetCDF: Access failure</p>
+</div>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>[Errno -77] NetCDF: Access failure: b’<a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64.nc">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64.nc</a>’</p>
+</div>
+</div>
+<input id="b3fd5544-0be2-4518-8232-d32617d55cc4" name="f8c74bcd-fab4-4ee3-9935-c90a195151c9" type="radio">
+</input><label class="sd-tab-label" for="b3fd5544-0be2-4518-8232-d32617d55cc4">
++/- numbers</label><div class="sd-tab-content docutils">
+<p>original dataset:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_INT64_neg.nc
+netcdf test_NC_INT64_neg {
+dimensions:
+	test = 7 ;
+variables:
+	int64 test(test) ;
+		test:_FillValue = 3LL ;
+		test:valid_range = -9223372036854775808LL, 9223372036854775807LL ;
+data:
+
+ test = -9223372036854775808, -1, 0, 1, 2, _, 9223372036854775807 ;
+}
+</pre></div>
+</div>
+<p>data attribute structure via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_neg.nc.das
+Error {
+    code = 403;
+    message = &quot;NcDDS Variable data type = long&quot;;
+};
+</pre></div>
+</div>
+<p>dataset as interpreted by netCDF via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_neg.nc
+</pre></div>
+</div>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>oc_open: server error retrieving url: code=403 message=”NcDDS Variable data type = long”/usr/local/bin/ncdump: <a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_neg.nc:">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_neg.nc:</a> <a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_neg.nc:">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_neg.nc:</a> NetCDF: Access failure</p>
+</div>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>[Errno -77] NetCDF: Access failure: b’<a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_neg.nc">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_neg.nc</a>’</p>
+</div>
+</div>
+<input id="aba53572-9c9e-4c82-8b05-b7aee78e3275" name="f8c74bcd-fab4-4ee3-9935-c90a195151c9" type="radio">
+</input><label class="sd-tab-label" for="aba53572-9c9e-4c82-8b05-b7aee78e3275">
++ flags</label><div class="sd-tab-content docutils">
+<p>original dataset:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_INT64_flag.nc
+netcdf test_NC_INT64_flag {
+dimensions:
+	test = 5 ;
+variables:
+	int64 test(test) ;
+		test:flag_values = 0LL, 1LL, 2LL, 3LL, 9223372036854775807LL ;
+		test:flag_meanings = &quot;a b c d e&quot; ;
+data:
+
+ test = 0, 1, 2, 3, 9223372036854775807 ;
+}
+</pre></div>
+</div>
+<p>data attribute structure via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_flag.nc.das
+Error {
+    code = 403;
+    message = &quot;NcDDS Variable data type = long&quot;;
+};
+</pre></div>
+</div>
+<p>dataset as interpreted by netCDF via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_flag.nc
+</pre></div>
+</div>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>oc_open: server error retrieving url: code=403 message=”NcDDS Variable data type = long”/usr/local/bin/ncdump: <a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_flag.nc:">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_flag.nc:</a> <a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_flag.nc:">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_flag.nc:</a> NetCDF: Access failure</p>
+</div>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>[Errno -77] NetCDF: Access failure: b’<a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_flag.nc">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_flag.nc</a>’</p>
+</div>
+</div>
+<input id="c8195142-0c9e-4e6c-82e7-9e22adef540f" name="f8c74bcd-fab4-4ee3-9935-c90a195151c9" type="radio">
+</input><label class="sd-tab-label" for="c8195142-0c9e-4e6c-82e7-9e22adef540f">
++/- flags</label><div class="sd-tab-content docutils">
+<p>original dataset:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_INT64_flag_neg.nc
+netcdf test_NC_INT64_flag_neg {
+dimensions:
+	test = 7 ;
+variables:
+	int64 test(test) ;
+		test:flag_values = -9223372036854775808LL, -1LL, 0LL, 1LL, 2LL, 3LL, 9223372036854775807LL ;
+		test:flag_meanings = &quot;a b c d e f g&quot; ;
+data:
+
+ test = -9223372036854775808, -1, 0, 1, 2, 3, 9223372036854775807 ;
+}
+</pre></div>
+</div>
+<p>data attribute structure via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_flag_neg.nc.das
+Error {
+    code = 403;
+    message = &quot;NcDDS Variable data type = long&quot;;
+};
+</pre></div>
+</div>
+<p>dataset as interpreted by netCDF via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_flag_neg.nc
+</pre></div>
+</div>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>oc_open: server error retrieving url: code=403 message=”NcDDS Variable data type = long”/usr/local/bin/ncdump: <a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_flag_neg.nc:">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_flag_neg.nc:</a> <a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_flag_neg.nc:">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_flag_neg.nc:</a> NetCDF: Access failure</p>
+</div>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>[Errno -77] NetCDF: Access failure: b’<a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_flag_neg.nc">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_flag_neg.nc</a>’</p>
+</div>
+</div>
+</div>
 </div>
 <div class="dropdown error admonition">
 <p class="admonition-title">UINT64</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="b34a811e-7c78-4fe7-87bc-3e5c60a84e96" name="54a8d000-4ba5-4b88-9ae1-0f786453b282" type="radio">
+</input><label class="sd-tab-label" for="b34a811e-7c78-4fe7-87bc-3e5c60a84e96">
++ numbers</label><div class="sd-tab-content docutils">
+<p>original dataset:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_UINT64.nc
+netcdf test_NC_UINT64 {
+dimensions:
+	test = 5 ;
+variables:
+	uint64 test(test) ;
+		test:_FillValue = 3ULL ;
+		test:valid_range = 0ULL, 0ULL ;
+data:
+
+ test = 0, 1, 2, _, 18446744073709551615 ;
+}
+</pre></div>
+</div>
+<p>data attribute structure via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT64.nc.das
+Error {
+    code = 403;
+    message = &quot;NcDDS Variable data type = long&quot;;
+};
+</pre></div>
+</div>
+<p>dataset as interpreted by netCDF via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT64.nc
+</pre></div>
+</div>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>oc_open: server error retrieving url: code=403 message=”NcDDS Variable data type = long”/usr/local/bin/ncdump: <a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT64.nc:">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT64.nc:</a> <a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT64.nc:">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT64.nc:</a> NetCDF: Access failure</p>
+</div>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>[Errno -77] NetCDF: Access failure: b’<a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT64.nc">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT64.nc</a>’</p>
+</div>
+</div>
+<input id="dcab0ae6-b7c5-45f6-8932-32674dc293a7" name="54a8d000-4ba5-4b88-9ae1-0f786453b282" type="radio">
+</input><label class="sd-tab-label" for="dcab0ae6-b7c5-45f6-8932-32674dc293a7">
++ flags</label><div class="sd-tab-content docutils">
+<p>original dataset:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_UINT64_flag.nc
+netcdf test_NC_UINT64_flag {
+dimensions:
+	test = 5 ;
+variables:
+	uint64 test(test) ;
+		test:flag_values = 0ULL, 1ULL, 2ULL, 3ULL, 0ULL ;
+		test:flag_meanings = &quot;a b c d e&quot; ;
+data:
+
+ test = 0, 1, 2, 3, 18446744073709551615 ;
+}
+</pre></div>
+</div>
+<p>data attribute structure via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT64_flag.nc.das
+Error {
+    code = 403;
+    message = &quot;NcDDS Variable data type = long&quot;;
+};
+</pre></div>
+</div>
+<p>dataset as interpreted by netCDF via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT64_flag.nc
+</pre></div>
+</div>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>oc_open: server error retrieving url: code=403 message=”NcDDS Variable data type = long”/usr/local/bin/ncdump: <a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT64_flag.nc:">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT64_flag.nc:</a> <a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT64_flag.nc:">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT64_flag.nc:</a> NetCDF: Access failure</p>
+</div>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>[Errno -77] NetCDF: Access failure: b’<a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT64_flag.nc">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT64_flag.nc</a>’</p>
+</div>
+</div>
+</div>
 </div>
 <div class="dropdown admonition">
 <p class="admonition-title">FLOAT</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="4c79a664-9351-4357-a327-a311fcf2478f" name="e3829cf0-ad3a-4f75-9ef3-7dbbb9aa51a6" type="radio">
+</input><label class="sd-tab-label" for="4c79a664-9351-4357-a327-a311fcf2478f">
++ numbers</label><div class="sd-tab-content docutils">
+<p>original dataset:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_FLOAT.nc
+netcdf test_NC_FLOAT {
+dimensions:
+	test = 7 ;
+variables:
+	float test(test) ;
+		test:_FillValue = NaNf ;
+		test:valid_range = 0.f, Infinityf ;
+data:
+
+ test = 0, 1, 2, 3, _, 3.402823e+38, Infinityf ;
+}
+</pre></div>
+</div>
+<p>data attribute structure via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_FLOAT.nc.das
+Attributes {
+    test {
+        Float32 _FillValue NaN;
+        Float32 valid_range 0.0, Infinity;
+    }
+}
+</pre></div>
+</div>
+<p>dataset as interpreted by netCDF via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_FLOAT.nc
+netcdf test_NC_FLOAT {
+dimensions:
+	test = 7 ;
+variables:
+	float test(test) ;
+		test:_FillValue = NaNf ;
+		test:valid_range = 0.f, Infinityf ;
+data:
+
+ test = 0, 1, 2, 3, _, 3.402823e+38, Infinityf ;
+}
+</pre></div>
+</div>
+<p>✅</p>
+</div>
+<input id="97aa9ecb-e44f-4bd8-9aad-09d66ff63636" name="e3829cf0-ad3a-4f75-9ef3-7dbbb9aa51a6" type="radio">
+</input><label class="sd-tab-label" for="97aa9ecb-e44f-4bd8-9aad-09d66ff63636">
++/- numbers</label><div class="sd-tab-content docutils">
+<p>original dataset:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_FLOAT_neg.nc
+netcdf test_NC_FLOAT_neg {
+dimensions:
+	test = 10 ;
+variables:
+	float test(test) ;
+		test:_FillValue = NaNf ;
+		test:valid_range = -Infinityf, Infinityf ;
+data:
+
+ test = -Infinityf, -3.402823e+38, -1, 0, 1, 2, 3, _, 3.402823e+38, Infinityf ;
+}
+</pre></div>
+</div>
+<p>data attribute structure via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_FLOAT_neg.nc.das
+Attributes {
+    test {
+        Float32 _FillValue NaN;
+        Float32 valid_range -Infinity, Infinity;
+    }
+}
+</pre></div>
+</div>
+<p>dataset as interpreted by netCDF via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_FLOAT_neg.nc
+netcdf test_NC_FLOAT_neg {
+dimensions:
+	test = 10 ;
+variables:
+	float test(test) ;
+		test:_FillValue = NaNf ;
+		test:valid_range = -Infinityf, Infinityf ;
+data:
+
+ test = -Infinityf, -3.402823e+38, -1, 0, 1, 2, 3, _, 3.402823e+38, Infinityf ;
+}
+</pre></div>
+</div>
+<p>✅</p>
+</div>
+</div>
 </div>
 <div class="dropdown admonition">
 <p class="admonition-title">DOUBLE</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="ceb47ac9-c897-4ddc-9f15-5cb0f5ae44af" name="dbd02c24-c896-4aff-9f01-ca83db3ceb30" type="radio">
+</input><label class="sd-tab-label" for="ceb47ac9-c897-4ddc-9f15-5cb0f5ae44af">
++ numbers</label><div class="sd-tab-content docutils">
+<p>original dataset:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_DOUBLE.nc
+netcdf test_NC_DOUBLE {
+dimensions:
+	test = 7 ;
+variables:
+	double test(test) ;
+		test:_FillValue = NaN ;
+		test:valid_range = 0., Infinity ;
+data:
+
+ test = 0, 1, 2, 3, _, 1.79769313486232e+308, Infinity ;
+}
+</pre></div>
+</div>
+<p>data attribute structure via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_DOUBLE.nc.das
+Attributes {
+    test {
+        Float64 _FillValue NaN;
+        Float64 valid_range 0.0, Infinity;
+    }
+}
+</pre></div>
+</div>
+<p>dataset as interpreted by netCDF via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_DOUBLE.nc
+netcdf test_NC_DOUBLE {
+dimensions:
+	test = 7 ;
+variables:
+	double test(test) ;
+		test:_FillValue = NaN ;
+		test:valid_range = 0., Infinity ;
+data:
+
+ test = 0, 1, 2, 3, _, 1.79769313486232e+308, Infinity ;
+}
+</pre></div>
+</div>
+<p>✅</p>
+</div>
+<input id="84b548fc-fb5b-4f09-9519-1debf036c656" name="dbd02c24-c896-4aff-9f01-ca83db3ceb30" type="radio">
+</input><label class="sd-tab-label" for="84b548fc-fb5b-4f09-9519-1debf036c656">
++/- numbers</label><div class="sd-tab-content docutils">
+<p>original dataset:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_DOUBLE_neg.nc
+netcdf test_NC_DOUBLE_neg {
+dimensions:
+	test = 10 ;
+variables:
+	double test(test) ;
+		test:_FillValue = NaN ;
+		test:valid_range = -Infinity, Infinity ;
+data:
+
+ test = -Infinity, -1.79769313486232e+308, -1, 0, 1, 2, 3, _, 
+    1.79769313486232e+308, Infinity ;
+}
+</pre></div>
+</div>
+<p>data attribute structure via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_DOUBLE_neg.nc.das
+Attributes {
+    test {
+        Float64 _FillValue NaN;
+        Float64 valid_range -Infinity, Infinity;
+    }
+}
+</pre></div>
+</div>
+<p>dataset as interpreted by netCDF via OPeNDAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_DOUBLE_neg.nc
+netcdf test_NC_DOUBLE_neg {
+dimensions:
+	test = 10 ;
+variables:
+	double test(test) ;
+		test:_FillValue = NaN ;
+		test:valid_range = -Infinity, Infinity ;
+data:
+
+ test = -Infinity, -1.79769313486232e+308, -1, 0, 1, 2, 3, _, 
+    1.79769313486232e+308, Infinity ;
+}
+</pre></div>
+</div>
+<p>✅</p>
+</div>
+</div>
 </div>
 </section>
 <section id="summary">
