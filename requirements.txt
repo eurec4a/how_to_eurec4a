@@ -1,4 +1,4 @@
-jupyter-book>0.11.0 # New toc structure
+jupyter-book>=0.13.0 # sphinx-design instead of sphinx-panel
 jupytext
 matplotlib
 numpy

@@ -13,9 +13,8 @@ You can decide between the [quick an dirty](#quick-and-dirty) method and the met
 If you just like to run the code of a single notebook and don't care to much about the details, the quickest option might be to download the chapter you are viewing as an ipython notebook (`.ipynb`) via the download button (<i class="fas fa-download"></i>) on the top right of the page. If you don't see the `.ipynb` option here, that's because the source of the page can not be interpreted as a notebook and thus is not available for direct execution.
 
 If you would just run the downloaded code, the chance is high that some required libraries are not yet installed on your system. You can either do try and error to find out which libraries are required for the chapter you downloaded, or you can simply installed all requirements for the entire book by running the following command on your command line:
-````{panels}
-Using pip
-^^^
+`````{grid} 2
+````{grid-item-card} Using pip
 ```bash
 pip install jupyter
 pip install -r https://raw.githubusercontent.com/eurec4a/how_to_eurec4a/master/requirements.txt
@@ -23,9 +22,8 @@ pip install -r https://raw.githubusercontent.com/eurec4a/how_to_eurec4a/master/r
 +++
 This won't work with any notebooks that use `cartopy` to make maps,  `pip` does not manage
 their dependencies well.
----
-Using conda
-^^^
+````
+````{grid-item-card} Using conda
 ```bash
 wget https://raw.githubusercontent.com/eurec4a/how_to_eurec4a/master/requirements.txt
 conda create -f requirements.txt
@@ -35,6 +33,7 @@ conda activate how_to_eurec4a
 This creates a conda environment called `how_to_eurec4a` which contains all dependencies including
 `cartopy`
 ````
+`````
 
 Afterwards, you can start a local notebook server (either `jupyter notebook` or `jupyter lab`) and run and modify the chapter locally.
 
@@ -46,21 +45,18 @@ Handling requirements in this project is not entirely straightforward, as the re
 
 If you like to do it more properly, you can also clone the repository via git. Depending on if you have SSH public key authentication set up or not, you can do this via SSH or HTTPS:
 
-````{tabbed} SSH
+`````{tab-set}
+````{tab-item} SSH
 ```bash
 git clone git@github.com:eurec4a/how_to_eurec4a.git
 ```
 ````
-
-````{tabbed} HTTPS
+````{tab-item} HTTPS
 ```bash
 git clone https://github.com/eurec4a/how_to_eurec4a
 ```
 ````
-
-This will create a local copy of the entire book repository in a newly created local folder `how_to_eurec4a`.
-Please change into this directory.
-
+`````
 ````{admonition} Maybe use a virtual environment
 :class: dropdown, tip
 If you use pip you might want to use a virtual environment for the book if you like to keep the required libraries in a confined place, but it is entirely optional and up to your preferences.
@@ -74,9 +70,8 @@ and the continue normally.
 ````
 You'll have to install the dependencies as above, but as you already have all the files on your machine, you can also install it directly via:
 
-````{panels}
-Using pip
-^^^
+`````{grid} 2
+````{grid-item-card} Using pip
 ```bash
 pip install jupyter
 pip install -r requirements.txt
@@ -84,9 +79,8 @@ pip install -r requirements.txt
 +++
 This won't work with any notebooks that use `cartopy` to make maps,  `pip` does not manage
 their dependencies well.
----
-Using conda
-^^^
+````
+````{grid-item-card} Using conda
 ```bash
 conda create -f requirements.txt
 conda activate how_to_eurec4a
@@ -95,6 +89,7 @@ conda activate how_to_eurec4a
 This creates a conda environment called `how_to_eurec4a` which contains all dependencies including
 `cartopy`
 ````
+`````
 
 Depending on your needs, you can continue using [interactive notebooks](#interactive) or [compile the entire book](#compile-the-book).
 
@@ -118,17 +113,20 @@ pip install jupyter
 ```
 
 Once everything is set up, you can either start your notebook server:
-````{panels}
+`````{grid} 2
+````{grid-item-card}
 ... either using classical notebooks
 ```bash
 jupyter notebook
 ```
----
+````
+````{grid-item-card}
 ... or using jupyter lab
 ```bash
 jupyter lab
 ```
 ````
+`````
 
 ### compile the book
 You can also execute `jupyter-book` directly via:
