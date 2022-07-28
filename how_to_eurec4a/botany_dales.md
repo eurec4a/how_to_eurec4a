@@ -50,8 +50,7 @@ import pandas as pd
 from pandas.plotting import register_matplotlib_converters
 register_matplotlib_converters()
 plt.style.use(["./mplstyle/book", "./mplstyle/wide"])
-#cat = eurec4a.get_intake_catalog()
-cat = open_catalog('https://raw.githubusercontent.com/fjansson/eurec4a-intake/botany/catalog.yml')
+cat = eurec4a.get_intake_catalog()
 ```
 
 +++ {"tags": []}
