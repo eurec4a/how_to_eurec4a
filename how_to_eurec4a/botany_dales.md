@@ -40,12 +40,8 @@ Currently, 2D output is available for ensemble members 1...40.
 
 
 ```{code-cell} ipython3
-import numpy as np
-import datetime as dt
-import dask
 import matplotlib.pyplot as plt
 import eurec4a
-from intake import open_catalog
 import pandas as pd
 from pandas.plotting import register_matplotlib_converters
 register_matplotlib_converters()
