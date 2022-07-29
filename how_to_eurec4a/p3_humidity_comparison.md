@@ -13,7 +13,7 @@ kernelspec:
 
 # Humidity comparison: Hygrometer and isotope analyzer
 
-During EUREC4A and ATOMIC the P3 made two _in situ_ measurements of humidity, one  
+During EUREC⁴A and ATOMIC the P3 made two _in situ_ measurements of humidity, one  
 with the normal chilled-mirror hygrometer, and one with a cavity ring down spectrometer.
 The spectrometer's main purpose was to measure isotopes of water vapor but it's
 good for the total humidty as well.

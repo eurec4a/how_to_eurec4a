@@ -5,8 +5,8 @@
 
 #######################################################################################
 # Book settings
-title                       : How to EUREC4A      # The title of the book. Will be placed in the left navbar.
-author                      : EUREC4A community   # The author of the book
+title                       : How to EUREC⁴A      # The title of the book. Will be placed in the left navbar.
+author                      : EUREC⁴A community   # The author of the book
 copyright                   : "2021"              # Copyright year to be placed in the footer
 logo                        : logo_pyeurec4a.png  # A path to the book logo
 repository:

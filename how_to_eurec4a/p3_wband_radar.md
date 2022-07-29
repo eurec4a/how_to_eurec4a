@@ -13,12 +13,12 @@ kernelspec:
 
 # W-band radar example
 
- During EUREC4A and ATOMIC NOAA deployed W-band (94 GHz) radars on both the P-3 aircraft
+ During EUREC⁴A and ATOMIC NOAA deployed W-band (94 GHz) radars on both the P-3 aircraft
  and the ship Ron Brown. The airborne radar was operated with 220 30-meter range gates
  with a dwell time of 0.5 seconds. The minimum detectable reflectivity of -36 dBZ at a range of
  1 km although accurate estimates of Doppler properties require about -30 dBZ at 1 km.
 
-The data are available through the EUREC4A intake catalog.
+The data are available through the EUREC⁴A intake catalog.
 
 ```{code-cell} ipython3
 import datetime

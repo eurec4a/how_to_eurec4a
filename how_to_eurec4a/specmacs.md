@@ -14,7 +14,7 @@ kernelspec:
 # specMACS cloudmask
 
 The following script exemplifies the access and usage of specMACS data measured 
-during EUREC4A.
+during EUREC⁴A.
 
 The specMACS sensor consists of hyperspectral image sensors as well as polarization resolving image sensors.
 The hyperspectral image sensors operate in the visible and near infrared (VNIR) and the short-wave infrared (SWIR) range.
@@ -26,7 +26,7 @@ Our plan is to analyze a section of the specMACS cloud mask dataset around the f
 +++
 
 ## Obtaining data
-In order to work with EUREC4A datasets, we'll use the `eurec4a` library to access the datasets and also use `numpy` and `xarray` as our common tools to handle datasets.
+In order to work with EUREC⁴A datasets, we'll use the `eurec4a` library to access the datasets and also use `numpy` and `xarray` as our common tools to handle datasets.
 
 ```{code-cell} ipython3
 import eurec4a

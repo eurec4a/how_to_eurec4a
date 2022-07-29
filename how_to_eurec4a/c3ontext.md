@@ -32,7 +32,7 @@ Both rule-based algorithms and deep neural networks have been developed to ident
 patterns automatically to learn more about their characteristics and processes.
 For the time period of the EUREC<sup>4</sup>A campaign, a group of 50 participants
 has identified these meso-scale patterns manually on satellite images. Their classifications build
-the *Common Consensus on Convective OrgaNizaTionduring the EUREC4A eXperimenT* dataset, short
+the *Common Consensus on Convective OrgaNizaTionduring the EUREC⁴A eXperimenT* dataset, short
 **C<sup>3</sup>ONTEXT**.
 
 As the acronym already suggests, the dataset is meant to provide the meso-scale *context* to additional

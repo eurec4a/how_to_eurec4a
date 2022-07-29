@@ -21,7 +21,7 @@ This is not only a bold statement, but is actually asked and discussed by the ne
 This chapter is not exactly about the same topic in the referenced issue, but still has similar roots.
 The relevant part for this discussion is that there is at least netCDF, the **data model** and netCDF, the **persistence format**.
 It is also recognized that there are multiple persistence formats (netCDF3, netCDF4/HDF5, zarr) for the same data model and there are translation layers such as OPeNDAP which can be used as a transport mechanism between the computer on which data is stored and the computer on which data is analyzed.
-We further look at the relevance of the netCDF data model and netCDF persistence format for the EUREC4A datasets.
+We further look at the relevance of the netCDF data model and netCDF persistence format for the EUREC⁴A datasets.
 
 ### The data model(s)
 There are actually a few different ideas of data models around, which share some general ideas.
@@ -43,7 +43,7 @@ It is useful to distinguish between _variables_ and _coordinates_ within the met
 In addition to the existence of _coordinates_, there are more pieces of valuable additional information (think of units, coordinate reference systems, author information etc...).
 Thus we usually want those extra bits to datasets and variables, which can be done by the use of _attributes_.
 
-It turns out that many datasets in the EUREC4A context can be represented very well in this model.
+It turns out that many datasets in the EUREC⁴A context can be represented very well in this model.
 I assume that in many cases when we talk about that a dataset being available in netCDF, what we really care about is that the dataset is organized along this general structure and thus can be accesses _as if it were netCDF_.
 
 ### The storage and transport formats
@@ -94,14 +94,14 @@ Thus, if a dataset should be accessed efficiently from a remote location, someth
 
 ````{margin}
 ```{note}
-Datacenters used by EUREC4A provide data via OPeNDAP include Aeris, NOAA PSL, NOAA NCEI, MPIM RAMADDA and the specMACS macsServer. The How to EUREC4A book makes use of this service to access the various datasets.
+Datacenters used by EUREC⁴A provide data via OPeNDAP include Aeris, NOAA PSL, NOAA NCEI, MPIM RAMADDA and the specMACS macsServer. The How to EUREC⁴A book makes use of this service to access the various datasets.
 ```
 ````
 
 [OPeNDAP](https://www.opendap.org) is a network protocol to access scientific data via network.
 In particular, it uses HTTP as a transport mechanism and defines a way to request subsets of a dataset which is formed along the data model as described above.
 OPeNDAP is thus the go-to method if an existing netCDF dataset should be made available remotely.
-In the context of EUREC4A, most datacenters provide access to uploaded datasets via OPeNDAP.
+In the context of EUREC⁴A, most datacenters provide access to uploaded datasets via OPeNDAP.
 
 OPeNDAP is specified in two versions, namely [version 2](https://www.opendap.org/pdf/ESE-RFC-004v1.2.pdf) and [version 4](https://www.opendap.org/pdf/dap_objects.pdf). 
 However, DAP4 is still a draft since 2004 and the only widely supported version of OPeNDAP is version 2.
