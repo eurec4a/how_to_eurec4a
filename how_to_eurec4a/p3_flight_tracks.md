@@ -129,7 +129,7 @@ def to_datetime(dt64):
     return datetime.datetime.utcfromtimestamp((dt64 - epoch) / second)
 ```
 
-Most platforms available from the EUREC4A `intake` catalog have a `tracks` element but
+Most platforms available from the EUREC⁴A `intake` catalog have a `tracks` element but
 we'll use the `flight-level` data instead. We're using `xr.concat()` with one `dask` array per day
 to avoid loading the whole dataset into memory at once.
 

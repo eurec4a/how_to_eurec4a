@@ -15,7 +15,7 @@ execution:
 
 # Cloud masks
 
-Different instruments, by virtue of their differing measurement principle and footprint, see clouds in different ways. To provide an overview of the cloud fields sampled by HALO during EUREC4A, a cloud mask is created for each cloud sensitive instrument.  
+Different instruments, by virtue of their differing measurement principle and footprint, see clouds in different ways. To provide an overview of the cloud fields sampled by HALO during EUREC⁴A, a cloud mask is created for each cloud sensitive instrument.  
 In the following, we compare the different cloud mask products for a case study on 5 February and further provide a statistical overview for the full campaign period.
 
 More information on the dataset can be found in Konow et al. (in preparation). If you have questions or if you would like to use the data for a publication, please don't hesitate to get in contact with the dataset authors as stated in the dataset attributes `contact` or `author`.
@@ -355,7 +355,7 @@ with plt.style.context("mplstyle/square"):
 
 ## Statistical comparison
 
-We will further compare cloud mask information from all HALO flights during EUREC4A on the basis of circle flight segments. Most of the time, the HALO aircraft sampled the airmass in circles east of Barbados. We use the meta data on flight segments, extract the information on start and end time of individual circles, and derive circle-average cloud cover.
+We will further compare cloud mask information from all HALO flights during EUREC⁴A on the basis of circle flight segments. Most of the time, the HALO aircraft sampled the airmass in circles east of Barbados. We use the meta data on flight segments, extract the information on start and end time of individual circles, and derive circle-average cloud cover.
 
 For the 2D imagers VELOX and speMACS we use the full swath. In the case study above we had selected the central measurements for a better comparison with the other instruments. However, in the following we investigate the broad statistics and therefore include as much information on the cloud field as we can get from the full footprints of each instrument.
 
