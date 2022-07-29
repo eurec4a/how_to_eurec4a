@@ -23,7 +23,7 @@ meta = eurec4a.get_meta()
 Markdown(meta["VELOX"]["description"])
 ```
 
-The PI during EUREC4A was Michael Schäfer (University Leipzig). 
+The PI during EUREC⁴A was Michael Schäfer (University Leipzig).
 
 If you have questions or if you would like to use the data for a publication, please don't hesitate to get in contact with the dataset authors as stated in the dataset attributes `contact` or `author`.
 
@@ -32,7 +32,7 @@ No data available for the transfer flights (first and last) and the first local 
 ```
 
 ## Get data
-To load the data we first load the [EUREC4A intake catalog](https://github.com/eurec4a/eurec4a-intake#eurec4a-intake-catalogue) and list the available datasets from VELOX.  
+To load the data we first load the [EUREC⁴A intake catalog](https://github.com/eurec4a/eurec4a-intake#eurec4a-intake-catalogue) and list the available datasets from VELOX.
 Currently, there is a cloud mask product available.
 
 ```{code-cell} ipython3

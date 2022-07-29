@@ -18,7 +18,7 @@ The HALO UNIFEID dataset is a combination of [HAMP](https://amt.copernicus.org/a
 More information on the dataset can be found at {cite:t}`Konow:2021`. If you have questions or if you would like to use the data for a publication, please don't hesitate to get in contact with the dataset authors as stated in the dataset attributes `contact` or `author`.
 
 ## Get data
-* To load the data we first load the EUREC4A meta data catalogue. More information on the catalog can be found [here](https://github.com/eurec4a/eurec4a-intake#eurec4a-intake-catalogue).
+* To load the data we first load the EUREC⁴A meta data catalogue. More information on the catalog can be found [here](https://github.com/eurec4a/eurec4a-intake#eurec4a-intake-catalogue).
 
 ```{code-cell} ipython3
 import eurec4a

@@ -13,7 +13,7 @@ kernelspec:
 
 # Ocean temperatures: AXBTs and SWIFT buoys
 
-During EUREC4A/ATOMIC the P-3 deployed 165 Airborne eXpendable BathyThermographs (AXBTs)
+During EUREC⁴A/ATOMIC the P-3 deployed 165 Airborne eXpendable BathyThermographs (AXBTs)
 to measure profiles of ocean temperature. (These are kind of the oceanic equivalent of
 dropsondes but they don't measure salinity.) Often these were dropped around
 other ocean temperature measurements - for example the autonomous

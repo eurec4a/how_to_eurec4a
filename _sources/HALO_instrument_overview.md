@@ -4,7 +4,7 @@ The instrumentation of the HALO aircraft is based on contributions from various 
 Each instrument is developed and operated by an individual group, which leads to a modern instrumentation suite and well trained operators, but also requires to contact a range of people when working with data from HALO's instruments.
 The purpose of this chapter is to introduce you to the individual contact points.
 
-During the EUREC4A field campaign, the HALO aircraft had been outfitted in an updated "Cloud Observatory" configuration, much like as described by {cite}`Stevens:2019`.
+During the EUREC⁴A field campaign, the HALO aircraft had been outfitted in an updated "Cloud Observatory" configuration, much like as described by {cite}`Stevens:2019`.
 As the aircraft is build to be flying at high altitudes, most of the instrumentation observes the atmosphere (and in particular clouds) from the nadir perspective.
 
 ```{figure} figures/HALO_details.png
@@ -12,7 +12,7 @@ As the aircraft is build to be flying at high altitudes, most of the instrumenta
 :width: 600px
 :align: center
 
-Instruments on HALO as configured for the EUREC4A campaign.
+Instruments on HALO as configured for the EUREC⁴A campaign.
 ```
 
 In particular, the instrumentation consists of broadband radiometers (**BACARDI**), basic instrumentation (**BAHAMAS**), a dropsonde launching system (**Dropsondes**), the active (radar) and passive microwave package (**HAMP**), irradiance spectrometers (**SMART**), a thermal imager (**VELOX**), an infrared radiometer (**VELOX-KT19**), a water vapor differential absorption lidar (**WALES**) and spectral and polarization resolving imagers (**specMACS**).

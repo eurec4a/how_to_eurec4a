@@ -1,12 +1,12 @@
 # NOAA P3 "Miss Piggy"
 
-During EUREC4A and ATOMIC the US agency NOAA operated a Lockheed WP-3D Orion research aircraft
+During EUREC⁴A and ATOMIC the US agency NOAA operated a Lockheed WP-3D Orion research aircraft
 from the island of Barbados during the period Jan 17 - Feb 11 2020. The aircraft,
 known formally as N43RF and informally as "Miss Piggy," is one of two such aircraft
 in NOAA's Hurricane Hunter fleet. (The other is known as "Kermit.")
 
 ATOMIC included a cruise by the NOAA ship Ronald H. Brown (RHB). Both the P-3 and the RHB
-primarily operated east of the EUREC4A area (i.e. east of 57E), nominally upwind,
+primarily operated east of the EUREC⁴A area (i.e. east of 57E), nominally upwind,
 within the "Tradewind Alley" extending eastwards from Barbados towards the
 Northwest Tropical Atlantic Station (NTAS) buoy near 15N, 51W.  Many of the eleven
 P-3 flights included excursions to the location of the RHB and sampling of

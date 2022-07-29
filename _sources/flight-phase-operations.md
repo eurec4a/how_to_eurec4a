@@ -86,7 +86,7 @@ segment_ids_by_kind = {kind: [segment["segment_id"]
 ```
 
 ## 5. Further random examples:
-* total number of all circles flown during EUREC4A / ATOMIC
+* total number of all circles flown during EUREC⁴A / ATOMIC
 
 ```{code-cell} ipython3
 len(segment_ids_by_kind["circle"])
