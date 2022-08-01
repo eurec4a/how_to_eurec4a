@@ -829,6 +829,9 @@ title="Print to PDF"
 </div>
 <p>The currently available ICON-LES output is shown in the following:</p>
 <div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/icon_les_4_0.png" src="_images/icon_les_4_0.png" />
+</div>
 </div>
 </section>
 <section id="output-description">
@@ -844,7 +847,7 @@ title="Print to PDF"
 <h4>Loading modules<a class="headerlink" href="#loading-modules" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">eurec4a</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">eurec4a</span>
 <span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -865,7 +868,7 @@ title="Print to PDF"
 <p>The simulation output is indexed in the EUREC<sup>4</sup>A Intake catalog and can be easily queried:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">=</span> <span class="n">eurec4a</span><span class="o">.</span><span class="n">get_intake_catalog</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">=</span> <span class="n">eurec4a</span><span class="o">.</span><span class="n">get_intake_catalog</span><span class="p">()</span>
 
 <span class="c1"># Lazy loading of selected output</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">cat</span><span class="o">.</span><span class="n">simulations</span><span class="o">.</span><span class="n">ICON</span><span class="o">.</span><span class="n">LES_CampaignDomain_control</span><span class="o">.</span><span class="n">rttov_DOM01</span><span class="o">.</span><span class="n">to_dask</span><span class="p">()</span>
@@ -875,13 +878,44 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;xarray.Dataset&gt;
+Dimensions:                                                   (lat: 760,
+                                                               lon: 1220,
+                                                               time: 5903)
+Coordinates:
+  * lat                                                       (lat) float64 7...
+  * lon                                                       (lon) float64 -...
+  * time                                                      (time) datetime64[ns] ...
+Data variables:
+    synsat_rttov_forward_model_1__abi_ir__goes_16__channel_1  (time, lat, lon) float32 dask.array&lt;chunksize=(12, 760, 1220), meta=np.ndarray&gt;
+    synsat_rttov_forward_model_1__abi_ir__goes_16__channel_2  (time, lat, lon) float32 dask.array&lt;chunksize=(12, 760, 1220), meta=np.ndarray&gt;
+    synsat_rttov_forward_model_1__abi_ir__goes_16__channel_3  (time, lat, lon) float32 dask.array&lt;chunksize=(12, 760, 1220), meta=np.ndarray&gt;
+    synsat_rttov_forward_model_1__abi_ir__goes_16__channel_4  (time, lat, lon) float32 dask.array&lt;chunksize=(12, 760, 1220), meta=np.ndarray&gt;
+    synsat_rttov_forward_model_1__abi_ir__goes_16__channel_5  (time, lat, lon) float32 dask.array&lt;chunksize=(12, 760, 1220), meta=np.ndarray&gt;
+    synsat_rttov_forward_model_1__abi_ir__goes_16__channel_6  (time, lat, lon) float32 dask.array&lt;chunksize=(12, 760, 1220), meta=np.ndarray&gt;
+    synsat_rttov_forward_model_1__abi_ir__goes_16__channel_7  (time, lat, lon) float32 dask.array&lt;chunksize=(12, 760, 1220), meta=np.ndarray&gt;
+Attributes:
+    CDI:                       Climate Data Interface version 1.9.10 (https:/...
+    CDO:                       Climate Data Operators version 1.9.10 (https:/...
+    Conventions:               CF-1.6
+    cdo_openmp_thread_number:  30
+    comment:                   Hauke Schulz (m300408) on l30466 (Linux 4.18.0...
+    history:                   Fri Apr 22 18:15:09 2022: cdo -r -P 30 -f nc4 ...
+    institution:               Max Planck Institute for Meteorology
+    references:                see MPIM/DWD publications
+    source:                    icon-nwp\tgit@gitlab.dkrz.de:icon/icon-nwp.git...
+    title:                     ICON simulation
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="setting-the-scene">
 <h4>Setting the scene<a class="headerlink" href="#setting-the-scene" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">central_longitude</span> <span class="o">=</span> <span class="o">-</span><span class="mf">53.54884554550185</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">central_longitude</span> <span class="o">=</span> <span class="o">-</span><span class="mf">53.54884554550185</span>
 <span class="n">central_latitude</span> <span class="o">=</span> <span class="mf">12.28815437976341</span>
 <span class="n">satellite_height</span> <span class="o">=</span> <span class="mf">8225469.943160511</span>
 
@@ -899,7 +933,7 @@ title="Print to PDF"
 that come especially handy for the plotting of data on the icosahedral grid shown in the next section.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">projection</span> <span class="o">=</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">NearsidePerspective</span><span class="p">(</span><span class="n">central_longitude</span><span class="o">=</span><span class="n">central_longitude</span><span class="p">,</span> <span class="n">central_latitude</span><span class="o">=</span><span class="n">central_latitude</span><span class="p">,</span> <span class="n">satellite_height</span><span class="o">=</span><span class="n">satellite_height</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">projection</span> <span class="o">=</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">NearsidePerspective</span><span class="p">(</span><span class="n">central_longitude</span><span class="o">=</span><span class="n">central_longitude</span><span class="p">,</span> <span class="n">central_latitude</span><span class="o">=</span><span class="n">central_latitude</span><span class="p">,</span> <span class="n">satellite_height</span><span class="o">=</span><span class="n">satellite_height</span><span class="p">)</span>
 
 <span class="n">lats</span><span class="p">,</span> <span class="n">lons</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span><span class="n">data</span><span class="o">.</span><span class="n">lon</span><span class="p">)</span>
 <span class="n">coords</span> <span class="o">=</span> <span class="n">projection</span><span class="o">.</span><span class="n">transform_points</span><span class="p">(</span>
@@ -930,6 +964,13 @@ that come especially handy for the plotting of data on the icosahedral grid show
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/IPython/core/pylabtools.py:151: UserWarning: constrained_layout not applied because axes sizes collapsed to zero.  Try making figure larger or axes decorations smaller.
+  fig.canvas.print_figure(bytes_io, **kw)
+</pre></div>
+</div>
+<img alt="_images/icon_les_12_1.png" src="_images/icon_les_12_1.png" />
+</div>
 </div>
 </section>
 </section>
@@ -938,11 +979,22 @@ that come especially handy for the plotting of data on the icosahedral grid show
 <p>For the visualization of the icosahedral grid, and interactive version exists that relies on <a class="reference external" href="https://gitlab.gwdg.de/tobi/gridlook">gridlook</a> and is shown below
 for the surface values of <em>LES_CampaignDomain_control</em> and <em>DOM01</em>. Try it out!</p>
 <div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html">
+<iframe
+    width="100%"
+    height="600px"
+    src="https://tobi.pages.gwdg.de/gridlook/#https://swift.dkrz.de/v1/dkrz_948e7d4bbfbb445fbff5315fc433e36a/EUREC4A_LES/json_eurec4a_sim_time.json"
+    frameborder="0"
+    allowfullscreen
+
+></iframe>
+</div></div>
 </div>
 <p>Static views can be exported within the app and plotted separatedly. Here is an example for the 2m temperature that build on top of the plotting routine of the regular grid.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lazy loading of output and grid</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lazy loading of output and grid</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">cat</span><span class="o">.</span><span class="n">simulations</span><span class="o">.</span><span class="n">ICON</span><span class="o">.</span><span class="n">LES_CampaignDomain_control</span><span class="o">.</span><span class="n">surface_DOM01</span><span class="o">.</span><span class="n">to_dask</span><span class="p">()</span>
 <span class="n">grid</span> <span class="o">=</span> <span class="n">cat</span><span class="o">.</span><span class="n">simulations</span><span class="o">.</span><span class="n">grids</span><span class="p">[</span><span class="n">data</span><span class="o">.</span><span class="n">uuidOfHGrid</span><span class="p">]</span><span class="o">.</span><span class="n">to_dask</span><span class="p">()</span>
 
@@ -986,6 +1038,13 @@ for the surface values of <em>LES_CampaignDomain_control</em> and <em>DOM01</em>
 <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">artist</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">da</span><span class="o">.</span><span class="n">long_name</span><span class="si">}</span><span class="s2"> / </span><span class="si">{</span><span class="n">da</span><span class="o">.</span><span class="n">units</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.8/site-packages/IPython/core/pylabtools.py:151: UserWarning: constrained_layout not applied because axes sizes collapsed to zero.  Try making figure larger or axes decorations smaller.
+  fig.canvas.print_figure(bytes_io, **kw)
+</pre></div>
+</div>
+<img alt="_images/icon_les_16_1.png" src="_images/icon_les_16_1.png" />
 </div>
 </div>
 </section>
