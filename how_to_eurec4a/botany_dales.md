@@ -60,7 +60,7 @@ Cloud Botany is a library of idealised large-eddy simulations forced by and init
 ## Availability of simulation output
 
 Cloud Botany contains simulations at a variety of grid resolutions and domain sizes, and each set of simulations comes with its own output. Most of this output is hosted and made available through [DKRZ's Swiftbrowser](https://docs.dkrz.de/doc/datastorage/swift/swiftbrowser.html), and can be accessed through the [`eurec4a-intake`](https://github.com/eurec4a/eurec4a-intake) catalog.
-
+An overview over what is currently available through this structure is listed under {doc}`simulations`, and is repeated below for convenience:
 ```{code-cell} ipython3
  # Hauke's branch of the intake catalog - not merged yet
  from intake import open_catalog
