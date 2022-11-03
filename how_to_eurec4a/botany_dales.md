@@ -57,7 +57,7 @@ Cloud Botany is a library of idealised large-eddy simulations forced by and init
   - cm/s
   - Amplitude of subsidence first mode
 * - `dudz`
-  - 0.0044
+  - -0.0044
   - 0.0044
   - 1/s
   - Wind shear
@@ -114,9 +114,10 @@ df_parameters = pd.DataFrame.from_records(parameters)[varied_parameters]
 df_parameters
 ```
 
-`parameters` contains the value of the variables in {numref}`botany-variables`, as they vary for each `member` of the ensemble. The ensemble may be thought of a hypercube in the six-dimensional space spanned by `[thls, u0, qt0, qt_lambda, thl_Gamma, wpamp]`. This allows interpreting the `location` column:
-- The hypercube `center` represents the middle of the range between the minimum and maximum value of each parameter
-- The hypercube `corner` are constructed by evaluating all parameter combinations at their minimum and maximum (giving $2^6 = 64$ simulations). The `location` column refers to locations the metaphorical hypercube spanned by the variables in {numref}`botany-variables`. For instance, a `corner` is a particular combination of variables at the extreme ends of their co-varied ranges, while the `center` sits in the middle of the cube.
+`parameters` contains the value of the variables in {numref}`botany-variables`, as they vary for each `member` of the ensemble. The ensemble may be thought of a hypercube in the six-dimensional space spanned by `[thls, u0, qt0, qt_lambda, thl_Gamma, wpamp]`. The `location` column indicates where any `member` fits in this space:
+- The hypercube `center` represents the middle of the range between the minimum and maximum value of each variable
+- The hypercube `corner`s are constructed by evaluating all parameter combinations at their minimum and maximum (resulting in the next $2^6 = 64$ simulations). 
+- Simulations belonging to a `sweep` have a single variable vary between its minimum and maximum, while keeping all other variables constant at their `center` value.
 
 +++
 
@@ -139,7 +140,7 @@ Briefly summmarised, the individual data sets contain:
 | `2D` | Vertically integrated and surface diagnostics | `[member, time, x, y]` | 5 min |
 | `3D` | Full field dumps of prognostic variables and liquid water specific humidity | `[member, time, x, y, z]` | 1 hour |
 | `cross_xy` | Extracted horizontal cross-sections of prognostic variables and liquid water specific humidity | `[member, time, x, y, z]` | 5 min |
-| `radiation` | Radiation model output at surface and top-of-atmosphere | `[member, time, x, y]` | 1 hour |
+| `radiation` | Radiation model output at surface and top of atmosphere | `[member, time, x, y]` | 1 hour |
 
 +++
 
@@ -197,7 +198,7 @@ plt.show()
 
 ### Variability of cloud fraction with surface wind
 
-One way to study how simulation output varies with the `parameters` is to add it to one's loaded `xarray.Dataset`:
+One way to study how simulation output varies with the `parameters` is to add a variable of interest to one's loaded `xarray.Dataset`:
 
 ```{code-cell} ipython3
 from cycler import cycler
