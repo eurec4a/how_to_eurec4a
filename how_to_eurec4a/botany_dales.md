@@ -63,7 +63,7 @@ Cloud Botany is a library of idealised large-eddy simulations forced by and init
   - Wind shear[^1]
 ```
 
-[^1]: Wind shear is only varied as a sweep over five simulations and is otherwise constant. As such, it is not to be regarded as part of the core variables that are varied in Cloud Botany.
+[^1]: Wind shear is only varied as a sweep over eight simulations and is otherwise constant. As such, it is not to be regarded as part of the core variables that are varied in Cloud Botany.
 
 ## Availability of simulation output
 
