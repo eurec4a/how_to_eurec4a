@@ -59,7 +59,19 @@ Cloud Botany is a library of idealised large-eddy simulations forced by and init
 ```
 ## Availability of simulation output
 
-Cloud Botany contains simulations at a variety of grid resolutions and domain sizes, and each set of simulations comes with its own output. Most of this output is hosted and made available through [DKRZ's Swiftbrowser](https://docs.dkrz.de/doc/datastorage/swift/swiftbrowser.html), and can be accessed through the [`eurec4a-intake`](https://github.com/eurec4a/eurec4a-intake) catalog. An overview over what is currently available through this structure is listed under {doc}`simulations`, and is repeated below for convenience:
+Cloud Botany contains simulations at a variety of grid resolutions and domain sizes, and each set of simulations comes with its own output. Most of this output is hosted and made available through [DKRZ's Swiftbrowser](https://docs.dkrz.de/doc/datastorage/swift/swiftbrowser.html), and can be accessed through the [`eurec4a-intake`](https://github.com/eurec4a/eurec4a-intake) catalog.
+
+```{code-cell} ipython3
+ # Hauke's branch of the intake catalog - not merged yet
+ from intake import open_catalog
+ url = "https://raw.githubusercontent.com/observingClouds/eurec4a-intake/botany/catalog.yml"
+ cat = open_catalog(url)
+
+ # Switch to version below once Botany is fully merged into the intake catalog
+ # import eurec4a
+ # cat = eurec4a.get_intake_catalog()
+
+ botany_cat = cat.simulations.DALES.botany
 
 ```{code-cell} ipython3
 # Hauke's branch of the intake catalog - not merged yet
