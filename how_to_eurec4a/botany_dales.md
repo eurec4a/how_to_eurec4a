@@ -95,7 +95,7 @@ tree(botany_cat)
 
 ## Output description
 
-A combination of grid resolution and domain size, e.g. `botany_cat.dx100.nx1535`, contains its own ensemble of cases. To look at the profiles governing the environmnet in which these cases are run, load their `parameters`:
+A combination of grid resolution and domain size, e.g. `botany_cat.dx100.nx1535`, contains its own ensemble of cases. To look at the profiles governing the environment in which these cases are run, load their `parameters`:
 
 ```{code-cell} ipython3
 import pandas as pd
