@@ -74,16 +74,7 @@ Cloud Botany contains simulations at a variety of grid resolutions and domain si
  botany_cat = cat.simulations.DALES.botany
 
 ```{code-cell} ipython3
-# Hauke's branch of the intake catalog - not merged yet
-from intake import open_catalog
-url = "https://raw.githubusercontent.com/observingClouds/eurec4a-intake/botany/catalog.yml"
-cat = open_catalog(url)
-
-# Switch to version below once Botany is fully merged into the intake catalog
-# import eurec4a
-# cat = eurec4a.get_intake_catalog()
-
-botany_cat = cat.simulations.DALES.botany
+:tags: [remove-input]
 
 def tree(cat, level=0):
     prefix = " " * (3*level)
