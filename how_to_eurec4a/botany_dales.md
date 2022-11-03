@@ -1,21 +1,22 @@
 ---
-jupytext:
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.14.1
-kernelspec:
-  display_name: Python 3 (ipykernel)
-  language: python
-  name: python3
+jupyter:
+  jupytext:
+    text_representation:
+      extension: .md
+      format_name: markdown
+      format_version: '1.3'
+      jupytext_version: 1.14.1
+  kernelspec:
+    display_name: Python 3 (ipykernel)
+    language: python
+    name: python3
 ---
 
 # Cloud Botany with DALES
 
 ## Setup
 
-Cloud Botany is a library of idealised large-eddy simulations forced by and initialised with combinations of simplified vertical profiles, parameterised by variables which span a range of conditions corresponding to the variability observed over the EUREC<sup>4</sup>A region and winter. The following table lists the varied parameters and their ranges:
+Cloud Botany is a library of idealised large-eddy simulations forced by and initialised with combinations of simplified vertical profiles. Each profile is parameterised by variables which aim to make the ensemble span a range of conditions corresponding to the variability observed over the EUREC<sup>4</sup>A region and winter. The following table lists these varied parameters and their ranges:
 
 ```{list-table} Variables governing Cloud Botany simulations
 :header-rows: 1
@@ -36,6 +37,11 @@ Cloud Botany is a library of idealised large-eddy simulations forced by and init
   - -15
   - m/s
   - surface wind
+* - `qt0`
+  - 0.0135
+  - 0.015
+  - kg/kg
+  - mixed-layer total specific humidity
 * - `qt_lambda`
   - 1200
   - 2500
@@ -60,22 +66,23 @@ Cloud Botany is a library of idealised large-eddy simulations forced by and init
 ## Availability of simulation output
 
 Cloud Botany contains simulations at a variety of grid resolutions and domain sizes, and each set of simulations comes with its own output. Most of this output is hosted and made available through [DKRZ's Swiftbrowser](https://docs.dkrz.de/doc/datastorage/swift/swiftbrowser.html), and can be accessed through the [`eurec4a-intake`](https://github.com/eurec4a/eurec4a-intake) catalog.
+
+```python
+# Hauke's branch of the intake catalog - not merged yet
+from intake import open_catalog
+url = "https://raw.githubusercontent.com/observingClouds/eurec4a-intake/botany/catalog.yml"
+cat = open_catalog(url)
+
+# Switch to version below once Botany is fully merged into the intake catalog
+# import eurec4a
+# cat = eurec4a.get_intake_catalog()
+
+botany_cat = cat.simulations.DALES.botany
+```
+
 An overview over what is currently available through this structure is listed under {doc}`simulations`, and is repeated below for convenience:
-```{code-cell} ipython3
- # Hauke's branch of the intake catalog - not merged yet
- from intake import open_catalog
- url = "https://raw.githubusercontent.com/observingClouds/eurec4a-intake/botany/catalog.yml"
- cat = open_catalog(url)
 
- # Switch to version below once Botany is fully merged into the intake catalog
- # import eurec4a
- # cat = eurec4a.get_intake_catalog()
-
- botany_cat = cat.simulations.DALES.botany
-
-```{code-cell} ipython3
-:tags: [remove-input]
-
+```python tags=["remove-input"]
 def tree(cat, level=0):
     prefix = " " * (3*level)
     try:
@@ -95,20 +102,26 @@ tree(botany_cat)
 
 ## Output description
 
-A combination of grid resolution and domain size, e.g. `botany_cat.dx100.nx1535`, contains its own ensemble of cases. To look at the profiles governing the environment in which these cases are run, load their `parameters`:
+### Parameters
+A combination of grid resolution and domain size, e.g. `botany_cat.dx100.nx1536`, contains its own ensemble of cases. To inspect and use the ensemble, start by loading its `parameters`:
 
-```{code-cell} ipython3
+```python
 import pandas as pd
-varied_parameters = ['member','thls', 'u0', 'qt_lambda', 'thl_Gamma', 'wpamp', 'dudz', 'location']
+varied_parameters = ['member','thls', 'u0', 'qt0', 'qt_lambda', 'thl_Gamma', 'wpamp', 'dudz', 'location']
 parameters = cat.simulations.DALES.botany.dx100m.nx1536.parameters.read()
-pd.DataFrame.from_records(parameters)[varied_parameters]
+df_parameters = pd.DataFrame.from_records(parameters)[varied_parameters]
+df_parameters
 ```
 
-The `location` column refers to locations the metaphorical hypercube spanned by the variables in {numref}`botany-variables`. For instance, a `corner` is a particular combination of variables at the extreme ends of their co-varied ranges, while the `center` sits in the middle of the cube.
+`parameters` contains the value of the variables in {numref}`botany-variables`, as they vary for each `member` of the ensemble. The ensemble may be thought of a hypercube in the six-dimensional space spanned by `[thls, u0, qt0, qt_lambda, thl_Gamma, wpamp]`. This allows interpreting the `location` column:
+- The hypercube `center` represents the middle of the range between the minimum and maximum value of each parameter
+- The hypercube `corner` are constructed by evaluating all parameter combinations at their minimum and maximum (giving $2^6 = 64$ simulations). The `location` column refers to locations the metaphorical hypercube spanned by the variables in {numref}`botany-variables`. For instance, a `corner` is a particular combination of variables at the extreme ends of their co-varied ranges, while the `center` sits in the middle of the cube.
 
-Each other lowest-level data set points to a `.zarr` object that can be loaded as `xarray.Dataset`s following the regular conventions, for example:
 
-```{code-cell} ipython3
+### Simulation output
+The actual output from the simulations is stored in the other data sets in the tree listing above. Such data sets can be loaded according to the following example:
+
+```python
 import xarray as xr
 
 ds_profiles = botany_cat.dx100m.nx1536['profiles'].to_dask()
@@ -126,13 +139,12 @@ Briefly summmarised, the individual data sets contain:
 | `cross_xy` | Extracted horizontal cross-sections of prognostic variables and liquid water specific humidity | `[member, time, x, y, z]` | 5 min |
 | `radiation` | Radiation model output at surface and top-of-atmosphere | `[member, time, x, y]` | 1 hour |
 
-+++
 
-## Visualisations
+## Examples and visualisations
 
-Thorough visualisations of indicative simulation output, in the form of simple overviews and movies for each simulation in the library, are separately hosted on [a personal server](http://143.178.154.95:3141/), though support for their access cannot be guaranteed. See below for two short examples of accessing and plotting data.
+Here are three short examples of accessing and plotting Botany output.
 
-```{code-cell} ipython3
+```python
 import matplotlib.pyplot as plt
 import numpy as np
 from pandas.plotting import register_matplotlib_converters
@@ -142,7 +154,7 @@ plt.style.use(["./mplstyle/book", "./mplstyle/wide"])
 
 ### An overview over the initial profiles of Botany
 
-```{code-cell} ipython3
+```python
 # Profiles of vertical velocity, from variations in first-mode amplitude
 def expsinw(z, ampwp, w0=0.0045, Hw=2500, Hwp=5300):
     '''
@@ -180,10 +192,32 @@ for i in range(axs.size):
 plt.show()
 ```
 
+### Variability of cloud fraction with surface wind
+
+One way to study how simulation output varies with the `parameters` is to add it to one's loaded `xarray.Dataset`:
+
+```python
+from cycler import cycler
+
+colors = plt.cm.cividis(np.linspace(0, 1, 7))
+custom_cycler = cycler(color=colors)
+
+fig = plt.figure()
+ax = plt.gca()
+ax.set_prop_cycle(custom_cycler)
+
+# Add u0 to the profiles output
+ds_u = ds_profiles.assign(df_parameters[['member','u0']].set_index('member').to_xarray())
+
+# Plot mean cloud fraction profiles grouped by surface wind over the last 100 time steps of all simulations
+ds_u[['cfrac','u0']].isel(time=slice(-100,-1)).sel(zt = slice(0,4000)).mean(dim='time').groupby('u0').mean()['cfrac'].plot.line(ax=ax, y='zt')
+plt.show()
+```
+
 ### Example visualisation of water vapour, clouds, rain and cold pools
 For the last time (60 hours after initialisation) for the "center" of the hypercube of simulations (member 1), we might visualise the vertically integrated total specific humidity (the total water path `twp`), the cloud-top height (`cldtop`), the rain-water path (`rwp`) and an indicator for the extent of cold pools (the local mixed-layer height, `hmix`), as follows:
 
-```{code-cell} ipython3
+```python
 cb_kw = {'fraction' : 0.05}
 
 ds_2D = botany_cat.dx100m.nx1536['2D'].to_dask().sel(member=1).isel(time=-1)
@@ -203,3 +237,7 @@ ds_2D['hmix'].plot(ax=axs[2],cmap='RdBu_r', vmin=50, vmax=1000, cbar_kwargs=cb_k
 
 plt.show()
 ```
+
+### Visualisations page
+
+In addition to the data sets described above, a more thorough set of visualisations indicative simulation output is available. This visualisation set contains simple overviews and movies for each simulation in the library. They can be quite useful for attaining a basic idea of what each simulation produced without having to load the data. These visualisations are hosted on [a personal server](http://143.178.154.95:3141/), so in contrast to the data hosted on DKRZ, we warn that its maintenance and availability may be patchy.
