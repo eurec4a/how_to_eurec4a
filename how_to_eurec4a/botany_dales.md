@@ -15,7 +15,7 @@ kernelspec:
 
 ## Setup
 
-Cloud Botany is a library of idealised large-eddy simulations forced by and initialised with combinations of simplified vertical profiles. Each profile is parameterised by variables which aim to make the ensemble span a range of conditions corresponding to the variability observed over the EUREC<sup>4</sup>A region and winter. The following table lists these varied parameters and their ranges:
+Cloud Botany is a library of idealised large-eddy simulations forced by and initialised with combinations of simplified vertical profiles. Each profile is parameterised by variables which aim to make the ensemble span a range of conditions corresponding to the variability observed over the EUREC<sup>4</sup>A region during the boreal winter of 2019/2020. The following table lists these varied parameters and their ranges:
 
 ```{list-table} Variables governing Cloud Botany simulations
 :header-rows: 1
@@ -60,8 +60,11 @@ Cloud Botany is a library of idealised large-eddy simulations forced by and init
   - -0.0044
   - 0.0044
   - 1/s
-  - Wind shear
+  - Wind shear[^1]
 ```
+
+[^1]: Wind shear is only varied as a sweep over five simulations and is otherwise constant. As such, it is not to be regarded as part of the core variables that are varied in Cloud Botany.
+
 ## Availability of simulation output
 
 Cloud Botany contains simulations at a variety of grid resolutions and domain sizes, and each set of simulations comes with its own output. Most of this output is hosted and made available through [DKRZ's Swiftbrowser](https://docs.dkrz.de/doc/datastorage/swift/swiftbrowser.html), and can be accessed through the [`eurec4a-intake`](https://github.com/eurec4a/eurec4a-intake) catalog.
