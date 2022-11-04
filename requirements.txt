@@ -1,6 +1,5 @@
 jupyter-book>=0.13.0 # sphinx-design instead of sphinx-panel
 jupytext
-matplotlib
 numpy
 xarray
 eurec4a>=0.0.4
