@@ -1026,6 +1026,11 @@ body.vscode-dark {
   grid-column: 4;
 }
 
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
 .xr-var-name,
 .xr-var-dims,
 .xr-var-dtype,
@@ -1047,14 +1052,16 @@ body.vscode-dark {
 }
 
 .xr-var-attrs,
-.xr-var-data {
+.xr-var-data,
+.xr-index-data {
   display: none;
   background-color: var(--xr-background-color) !important;
   padding-bottom: 5px !important;
 }
 
 .xr-var-attrs-in:checked ~ .xr-var-attrs,
-.xr-var-data-in:checked ~ .xr-var-data {
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
   display: block;
 }
 
@@ -1064,13 +1071,16 @@ body.vscode-dark {
 
 .xr-var-name span,
 .xr-var-data,
+.xr-index-name div,
+.xr-index-data,
 .xr-attrs {
   padding-left: 25px !important;
 }
 
 .xr-attrs,
 .xr-var-attrs,
-.xr-var-data {
+.xr-var-data,
+.xr-index-data {
   grid-column: 1 / -1;
 }
 
@@ -1108,7 +1118,8 @@ dl.xr-attrs {
 }
 
 .xr-icon-database,
-.xr-icon-file-text2 {
+.xr-icon-file-text2,
+.xr-no-icon {
   display: inline-block;
   vertical-align: middle;
   width: 1em;
@@ -1143,7 +1154,7 @@ Attributes: (12/24)
     start_datetime:        2020-02-05T09:34:00
     stop_datetime:         2020-02-05T16:18:01
     system:                WALES H2O-DIAL
-    title:                 WALES lidar cloud mask</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-50a32a74-1888-4356-a570-8deec07c49ef' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-50a32a74-1888-4356-a570-8deec07c49ef' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 121200</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-e8eea65a-4209-466c-97e2-28db865bf599' class='xr-section-summary-in' type='checkbox'  checked><label for='section-e8eea65a-4209-466c-97e2-28db865bf599' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>lat</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(60600,), meta=np.ndarray&gt;</div><input id='attrs-4e957613-080d-4063-94d9-f6252e3bb490' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-4e957613-080d-4063-94d9-f6252e3bb490' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-702211fb-6719-43e9-9f67-d3d9b9e574b9' class='xr-var-data-in' type='checkbox'><label for='data-702211fb-6719-43e9-9f67-d3d9b9e574b9' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Platform latitude coordinate</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd></dl></div><div class='xr-var-data'><table>
+    title:                 WALES lidar cloud mask</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-5e173fca-60d6-4b95-a856-940304972bde' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-5e173fca-60d6-4b95-a856-940304972bde' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 121200</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-f0553d42-ba33-4de0-85d4-83f962d2de1a' class='xr-section-summary-in' type='checkbox'  checked><label for='section-f0553d42-ba33-4de0-85d4-83f962d2de1a' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>lat</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(60600,), meta=np.ndarray&gt;</div><input id='attrs-8764aec0-e8b9-4702-b5af-4a7ce8486e7b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-8764aec0-e8b9-4702-b5af-4a7ce8486e7b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0b4a7a61-0652-487f-bd25-e48af015c7af' class='xr-var-data-in' type='checkbox'><label for='data-0b4a7a61-0652-487f-bd25-e48af015c7af' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Platform latitude coordinate</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1201,7 +1212,7 @@ Attributes: (12/24)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lon</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(60600,), meta=np.ndarray&gt;</div><input id='attrs-21da68b7-fba9-44c9-b031-11d9ebf55b59' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-21da68b7-fba9-44c9-b031-11d9ebf55b59' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-cd24297d-500e-41d6-b18b-2f62d7e9fe3d' class='xr-var-data-in' type='checkbox'><label for='data-cd24297d-500e-41d6-b18b-2f62d7e9fe3d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Platform longitude coordinate</dd><dt><span>long_name :</span></dt><dd>longitude</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lon</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(60600,), meta=np.ndarray&gt;</div><input id='attrs-81066314-7d25-4801-a3d0-a2667093b867' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-81066314-7d25-4801-a3d0-a2667093b867' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-eb47230f-3b6f-4a48-8b73-3df99633b81d' class='xr-var-data-in' type='checkbox'><label for='data-eb47230f-3b6f-4a48-8b73-3df99633b81d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Platform longitude coordinate</dd><dt><span>long_name :</span></dt><dd>longitude</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1259,10 +1270,10 @@ Attributes: (12/24)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2020-02-05T09:34:00.167000064 .....</div><input id='attrs-acb5e7ee-b88e-4b03-9f23-436a33d52442' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-acb5e7ee-b88e-4b03-9f23-436a33d52442' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-3e3c6bd7-c7f7-4606-9c07-8c09ef1b7ec2' class='xr-var-data-in' type='checkbox'><label for='data-3e3c6bd7-c7f7-4606-9c07-8c09ef1b7ec2' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Number of seconds on the UTC time scale since 1. Jan. 1970 00:00:00</dd><dt><span>long_name :</span></dt><dd>time</dd><dt><span>standard_name :</span></dt><dd>time</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;2020-02-05T09:34:00.167000064&#x27;, &#x27;2020-02-05T09:34:00.367000064&#x27;,
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2020-02-05T09:34:00.167000064 .....</div><input id='attrs-44b33df6-0b31-4c25-95a8-0c017b6ce548' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-44b33df6-0b31-4c25-95a8-0c017b6ce548' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-fcc3d94e-f6fe-42e6-87be-0b24cf2139f9' class='xr-var-data-in' type='checkbox'><label for='data-fcc3d94e-f6fe-42e6-87be-0b24cf2139f9' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Number of seconds on the UTC time scale since 1. Jan. 1970 00:00:00</dd><dt><span>long_name :</span></dt><dd>time</dd><dt><span>standard_name :</span></dt><dd>time</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;2020-02-05T09:34:00.167000064&#x27;, &#x27;2020-02-05T09:34:00.367000064&#x27;,
        &#x27;2020-02-05T09:34:00.566999808&#x27;, ..., &#x27;2020-02-05T16:18:01.161999872&#x27;,
        &#x27;2020-02-05T16:18:01.361999872&#x27;, &#x27;2020-02-05T16:18:01.562000128&#x27;],
-      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-9c1c2d84-ea46-4967-a20d-89b341b96b31' class='xr-section-summary-in' type='checkbox'  checked><label for='section-9c1c2d84-ea46-4967-a20d-89b341b96b31' class='xr-section-summary' >Data variables: <span>(6)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>cloud_mask</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(121200,), meta=np.ndarray&gt;</div><input id='attrs-e226f578-0424-4f17-ba21-0b84aae239ac' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e226f578-0424-4f17-ba21-0b84aae239ac' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-acb07974-7a11-424c-af00-d9f3790d6191' class='xr-var-data-in' type='checkbox'><label for='data-acb07974-7a11-424c-af00-d9f3790d6191' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Cloud mask inferred from step of lidar backscatter ratio at 532 nm to values bigger than 10</dd><dt><span>flag_meanings :</span></dt><dd>cloud_free probably_cloudy most_likely_cloudy</dd><dt><span>flag_values :</span></dt><dd>[0, 1, 2]</dd><dt><span>long_name :</span></dt><dd>cloud mask</dd><dt><span>units :</span></dt><dd></dd><dt><span>valid_range :</span></dt><dd>[0, 2]</dd></dl></div><div class='xr-var-data'><table>
+      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-a670453b-571c-46f4-8d17-8d794af97294' class='xr-section-summary-in' type='checkbox'  checked><label for='section-a670453b-571c-46f4-8d17-8d794af97294' class='xr-section-summary' >Data variables: <span>(6)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>cloud_mask</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(121200,), meta=np.ndarray&gt;</div><input id='attrs-78ace48e-7d55-4f70-a077-e9b1d2355b0d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-78ace48e-7d55-4f70-a077-e9b1d2355b0d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-bb4612d8-9af6-4f22-aa59-3e7f36b1e373' class='xr-var-data-in' type='checkbox'><label for='data-bb4612d8-9af6-4f22-aa59-3e7f36b1e373' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Cloud mask inferred from step of lidar backscatter ratio at 532 nm to values bigger than 10</dd><dt><span>flag_meanings :</span></dt><dd>cloud_free probably_cloudy most_likely_cloudy</dd><dt><span>flag_values :</span></dt><dd>[0, 1, 2]</dd><dt><span>long_name :</span></dt><dd>cloud mask</dd><dt><span>units :</span></dt><dd></dd><dt><span>valid_range :</span></dt><dd>[0, 2]</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1319,7 +1330,7 @@ Attributes: (12/24)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>cloud_ot</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(60600,), meta=np.ndarray&gt;</div><input id='attrs-cddf1f05-6880-4b97-9de4-38665f4ddf7d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-cddf1f05-6880-4b97-9de4-38665f4ddf7d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-bd25be3e-b972-4cf8-b2a5-65864402888a' class='xr-var-data-in' type='checkbox'><label for='data-bd25be3e-b972-4cf8-b2a5-65864402888a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Optical thickness δ of the cloud between the top and 200 m above ground derived from the HSRL backscatter channel at 532 nm. Values above 3 are rough estimates. Values are computationally limited to numbers below 12. </dd><dt><span>long_name :</span></dt><dd>cloud optical thickness</dd><dt><span>standard_name :</span></dt><dd>atmosphere_optical_thickness_due_to_cloud</dd><dt><span>units :</span></dt><dd></dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>cloud_ot</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(60600,), meta=np.ndarray&gt;</div><input id='attrs-7cd8aef4-fb15-4373-b2d2-96529c1de196' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-7cd8aef4-fb15-4373-b2d2-96529c1de196' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e462cda5-0eea-439c-80ab-f8b774294cc2' class='xr-var-data-in' type='checkbox'><label for='data-e462cda5-0eea-439c-80ab-f8b774294cc2' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Optical thickness δ of the cloud between the top and 200 m above ground derived from the HSRL backscatter channel at 532 nm. Values above 3 are rough estimates. Values are computationally limited to numbers below 12. </dd><dt><span>long_name :</span></dt><dd>cloud optical thickness</dd><dt><span>standard_name :</span></dt><dd>atmosphere_optical_thickness_due_to_cloud</dd><dt><span>units :</span></dt><dd></dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1377,7 +1388,7 @@ Attributes: (12/24)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>cloud_top</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(60600,), meta=np.ndarray&gt;</div><input id='attrs-7fd792c2-e450-4874-a7d0-e7a59d2902e8' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-7fd792c2-e450-4874-a7d0-e7a59d2902e8' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-3761b987-5b05-45fc-8fad-383fae64e36b' class='xr-var-data-in' type='checkbox'><label for='data-3761b987-5b05-45fc-8fad-383fae64e36b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Cloud top altitude above sea level inferred from step of lidar backscatter ratio at 532 nm to values bigger than 10</dd><dt><span>long_name :</span></dt><dd>cloud top</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>cloud_top</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(60600,), meta=np.ndarray&gt;</div><input id='attrs-4f48bbc1-ca83-493b-946d-192800f16574' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-4f48bbc1-ca83-493b-946d-192800f16574' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-93bdbc05-04d5-4e8d-be02-4bc221cdee3a' class='xr-var-data-in' type='checkbox'><label for='data-93bdbc05-04d5-4e8d-be02-4bc221cdee3a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Cloud top altitude above sea level inferred from step of lidar backscatter ratio at 532 nm to values bigger than 10</dd><dt><span>long_name :</span></dt><dd>cloud top</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1435,7 +1446,7 @@ Attributes: (12/24)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>pbl_top</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(60600,), meta=np.ndarray&gt;</div><input id='attrs-8caea605-2dfa-4994-bfc8-9242167c7990' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-8caea605-2dfa-4994-bfc8-9242167c7990' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d565ce65-c826-4dbf-aee1-35da3f82e50d' class='xr-var-data-in' type='checkbox'><label for='data-d565ce65-c826-4dbf-aee1-35da3f82e50d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Altitude of the top of the boundary layer above sea level.
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>pbl_top</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(60600,), meta=np.ndarray&gt;</div><input id='attrs-9dd45aed-3444-4883-a640-23c0e62e553b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-9dd45aed-3444-4883-a640-23c0e62e553b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-af9676b0-c3bd-4dc3-9e5d-778bcf96e181' class='xr-var-data-in' type='checkbox'><label for='data-af9676b0-c3bd-4dc3-9e5d-778bcf96e181' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Altitude of the top of the boundary layer above sea level.
 Inferred from the maximum correlation of the lidar backscatter ratio profile at 532 nm
 with a step function.
 This is experimental data and should be interpreted with care, especially in the
@@ -1499,7 +1510,7 @@ In the case of a cloud, no pbl top is given.
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>target_lat</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(30300,), meta=np.ndarray&gt;</div><input id='attrs-ae99b772-b39c-49d0-9658-bc0787ef5fe9' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ae99b772-b39c-49d0-9658-bc0787ef5fe9' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-23b15c06-5f58-4881-a2f7-79f2b4e0d6ac' class='xr-var-data-in' type='checkbox'><label for='data-23b15c06-5f58-4881-a2f7-79f2b4e0d6ac' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Latitude coordinate of the cloud top. Different from platform lat during curves.</dd><dt><span>long_name :</span></dt><dd>target_latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>target_lat</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(30300,), meta=np.ndarray&gt;</div><input id='attrs-750eeba5-879b-4350-b54a-c215a5310b13' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-750eeba5-879b-4350-b54a-c215a5310b13' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8aae2bf7-db92-46ba-9910-61fc6596fbb9' class='xr-var-data-in' type='checkbox'><label for='data-8aae2bf7-db92-46ba-9910-61fc6596fbb9' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Latitude coordinate of the cloud top. Different from platform lat during curves.</dd><dt><span>long_name :</span></dt><dd>target_latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1559,7 +1570,7 @@ In the case of a cloud, no pbl top is given.
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>target_lon</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(30300,), meta=np.ndarray&gt;</div><input id='attrs-85f516a7-46e8-46a3-9a5f-ebe10aa7837e' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-85f516a7-46e8-46a3-9a5f-ebe10aa7837e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ff1314e7-7f24-4213-b777-2fad4d125971' class='xr-var-data-in' type='checkbox'><label for='data-ff1314e7-7f24-4213-b777-2fad4d125971' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Longitude coordinate of the cloud top. Different from platform lon during curves.</dd><dt><span>long_name :</span></dt><dd>target_longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>target_lon</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(30300,), meta=np.ndarray&gt;</div><input id='attrs-517701d2-d59f-4ae4-9d16-47383720d77b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-517701d2-d59f-4ae4-9d16-47383720d77b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f9bc1a7b-10af-4fc5-9b31-af524ae05a8b' class='xr-var-data-in' type='checkbox'><label for='data-f9bc1a7b-10af-4fc5-9b31-af524ae05a8b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Longitude coordinate of the cloud top. Different from platform lon during curves.</dd><dt><span>long_name :</span></dt><dd>target_longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1619,7 +1630,28 @@ In the case of a cloud, no pbl top is given.
 </svg>
         </td>
     </tr>
-</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-68386a98-cc29-463d-8b6a-07bcb2a91201' class='xr-section-summary-in' type='checkbox'  ><label for='section-68386a98-cc29-463d-8b6a-07bcb2a91201' class='xr-section-summary' >Attributes: <span>(24)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>author :</span></dt><dd>Martin Wirth</dd><dt><span>comment :</span></dt><dd>Dataset for EUREC4A ESSD cloud mask paper. Version 2 with enhanced noise filter for optical thickness. Format is now classic netCDF and with signed short data type for flag variables and attributes to avoid problems with OPeNDAP</dd><dt><span>contact :</span></dt><dd>martin.wirth@dlr.de</dd><dt><span>convention :</span></dt><dd>CF-1.8</dd><dt><span>data_modified :</span></dt><dd>20210309</dd><dt><span>data_processing_date :</span></dt><dd>20210309</dd><dt><span>data_version :</span></dt><dd>2.1</dd><dt><span>featureType :</span></dt><dd>trajectory</dd><dt><span>history :</span></dt><dd>2021-03-09 17:02:35 Generated by generate_cloudmask.jl from EUREC4A_HALO_WALES_cloudtop_20200205a_V2.nc
+</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-56527944-9b36-4cff-b804-f994aa451c7f' class='xr-section-summary-in' type='checkbox'  ><label for='section-56527944-9b36-4cff-b804-f994aa451c7f' class='xr-section-summary' >Indexes: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>time</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-bf8da498-d7cb-41df-a026-bf41398fb803' class='xr-index-data-in' type='checkbox'/><label for='index-bf8da498-d7cb-41df-a026-bf41398fb803' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(DatetimeIndex([&#x27;2020-02-05 09:34:00.167000064&#x27;,
+               &#x27;2020-02-05 09:34:00.367000064&#x27;,
+               &#x27;2020-02-05 09:34:00.566999808&#x27;,
+               &#x27;2020-02-05 09:34:00.767000064&#x27;,
+               &#x27;2020-02-05 09:34:00.967000064&#x27;,
+               &#x27;2020-02-05 09:34:01.167000064&#x27;,
+               &#x27;2020-02-05 09:34:01.367000064&#x27;,
+               &#x27;2020-02-05 09:34:01.566999808&#x27;,
+               &#x27;2020-02-05 09:34:01.767000064&#x27;,
+               &#x27;2020-02-05 09:34:01.967000064&#x27;,
+               ...
+               &#x27;2020-02-05 16:17:59.762000128&#x27;,
+               &#x27;2020-02-05 16:17:59.961999872&#x27;,
+               &#x27;2020-02-05 16:18:00.161999872&#x27;,
+               &#x27;2020-02-05 16:18:00.361999872&#x27;,
+               &#x27;2020-02-05 16:18:00.562000128&#x27;,
+               &#x27;2020-02-05 16:18:00.762000128&#x27;,
+               &#x27;2020-02-05 16:18:00.961999872&#x27;,
+               &#x27;2020-02-05 16:18:01.161999872&#x27;,
+               &#x27;2020-02-05 16:18:01.361999872&#x27;,
+               &#x27;2020-02-05 16:18:01.562000128&#x27;],
+              dtype=&#x27;datetime64[ns]&#x27;, name=&#x27;time&#x27;, length=121200, freq=None))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-fb018035-d125-434d-9f51-f382879b837c' class='xr-section-summary-in' type='checkbox'  ><label for='section-fb018035-d125-434d-9f51-f382879b837c' class='xr-section-summary' >Attributes: <span>(24)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>author :</span></dt><dd>Martin Wirth</dd><dt><span>comment :</span></dt><dd>Dataset for EUREC4A ESSD cloud mask paper. Version 2 with enhanced noise filter for optical thickness. Format is now classic netCDF and with signed short data type for flag variables and attributes to avoid problems with OPeNDAP</dd><dt><span>contact :</span></dt><dd>martin.wirth@dlr.de</dd><dt><span>convention :</span></dt><dd>CF-1.8</dd><dt><span>data_modified :</span></dt><dd>20210309</dd><dt><span>data_processing_date :</span></dt><dd>20210309</dd><dt><span>data_version :</span></dt><dd>2.1</dd><dt><span>featureType :</span></dt><dd>trajectory</dd><dt><span>history :</span></dt><dd>2021-03-09 17:02:35 Generated by generate_cloudmask.jl from EUREC4A_HALO_WALES_cloudtop_20200205a_V2.nc
 2021-03-09 17:04:33 target positions added by add_target_position.jl</dd><dt><span>institution :</span></dt><dd>Deutsches Zentrum fuer Luft- und Raumfahrt, Institut fuer Physik der Atmosphaere, Oberpfaffenhofen, Muenchener Str. 20, 82234 Wessling, Germany</dd><dt><span>instrument :</span></dt><dd>WALES</dd><dt><span>location_name :</span></dt><dd>HALO</dd><dt><span>max_latitude :</span></dt><dd>       15.508407</dd><dt><span>max_longitude :</span></dt><dd>      -53.032715</dd><dt><span>min_latitude :</span></dt><dd>       12.300429</dd><dt><span>min_longitude :</span></dt><dd>      -58.743504</dd><dt><span>mission :</span></dt><dd>EUREC4A</dd><dt><span>ongoing_subset :</span></dt><dd>10</dd><dt><span>platform :</span></dt><dd>HALO</dd><dt><span>source :</span></dt><dd>airborne observation</dd><dt><span>start_datetime :</span></dt><dd>2020-02-05T09:34:00</dd><dt><span>stop_datetime :</span></dt><dd>2020-02-05T16:18:01</dd><dt><span>system :</span></dt><dd>WALES H2O-DIAL</dd><dt><span>title :</span></dt><dd>WALES lidar cloud mask</dd></dl></div></li></ul></div></div></div></div>
 </div>
 <p>We select 1min of flight <code class="docutils literal notranslate"><span class="pre">time</span></code>. You can freely change the times or put <code class="docutils literal notranslate"><span class="pre">None</span></code> instead of the slice start and/or end to get up to the full flight data.
@@ -1746,7 +1778,9 @@ are denoted by <code class="docutils literal notranslate"><span class="pre">min_
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Minimum cloud fraction on Feb 5: 40.23 %
 Total cloud fraction on Feb 5: 40.23 %
-Fraction of clouds with optical thickness greater than 3: 28.25 %
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fraction of clouds with optical thickness greater than 3: 28.25 %
 </pre></div>
 </div>
 </div>

@@ -879,7 +879,7 @@ In the following, we compare the different cloud mask products for a case study 
 <p>More information on the dataset can be found in Konow et al. (in preparation). If you have questions or if you would like to use the data for a publication, please don’t hesitate to get in contact with the dataset authors as stated in the dataset attributes <code class="docutils literal notranslate"><span class="pre">contact</span></code> or <code class="docutils literal notranslate"><span class="pre">author</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">eurec4a</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">eurec4a</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
 <span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
@@ -893,7 +893,7 @@ In the following, we compare the different cloud mask products for a case study 
 <p>We generally don’t support ignoring warnings, however, we do so in this notebook to suppress warnings originating from zero division. Unfortunately, we coudn’t find another way to handle the warnings. If you have an idea, please make a pull request and change it :)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -905,7 +905,7 @@ In the following, we compare the different cloud mask products for a case study 
 <p>In particular, we define a <strong>minimum cloud cover</strong> based on the cloud mask flag <code class="docutils literal notranslate"><span class="pre">most_likely_cloudy</span></code> and a <strong>maximum cloud cover</strong> combining the flags <code class="docutils literal notranslate"><span class="pre">most_likely_cloudy</span></code> and <code class="docutils literal notranslate"><span class="pre">probably_cloudy</span></code>. The cloud mask datasets slightly vary in their flag definition for cloud free conditions and their handling of unvalid measurements which is taken care of by the following functions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">_isvalid</span><span class="p">(</span><span class="n">da</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">_isvalid</span><span class="p">(</span><span class="n">da</span><span class="p">):</span>
     <span class="n">meanings</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">da</span><span class="o">.</span><span class="n">flag_meanings</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">),</span> <span class="n">da</span><span class="o">.</span><span class="n">flag_values</span><span class="p">))</span>
     <span class="k">return</span> <span class="o">~</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">da</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="s2">&quot;unknown&quot;</span> <span class="ow">in</span> <span class="n">meanings</span> <span class="ow">and</span> <span class="n">da</span><span class="o">==</span><span class="n">meanings</span><span class="p">[</span><span class="s2">&quot;unknown&quot;</span><span class="p">]))</span>
 
@@ -959,8 +959,21 @@ In the following, we compare the different cloud mask products for a case study 
 <p>We use the <a class="reference external" href="https://github.com/eurec4a/eurec4a-intake">eurec4a intake catalog</a> to access the data files.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">=</span> <span class="n">eurec4a</span><span class="o">.</span><span class="n">get_intake_catalog</span><span class="p">(</span><span class="n">use_ipfs</span><span class="o">=</span><span class="s2">&quot;QmahMN2wgPauHYkkiTGoG2TpPBmj3p5FoYJAq9uE9iXT9N&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">=</span> <span class="n">eurec4a</span><span class="o">.</span><span class="n">get_intake_catalog</span><span class="p">(</span><span class="n">use_ipfs</span><span class="o">=</span><span class="s2">&quot;QmahMN2wgPauHYkkiTGoG2TpPBmj3p5FoYJAq9uE9iXT9N&quot;</span><span class="p">)</span>
 <span class="nb">list</span><span class="p">(</span><span class="n">cat</span><span class="o">.</span><span class="n">HALO</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;BACARDI&#39;,
+ &#39;BAHAMAS&#39;,
+ &#39;KT19&#39;,
+ &#39;SMART&#39;,
+ &#39;UNIFIED&#39;,
+ &#39;VELOX&#39;,
+ &#39;WALES&#39;,
+ &#39;specMACS&#39;,
+ &#39;track&#39;]
 </pre></div>
 </div>
 </div>
@@ -968,7 +981,7 @@ In the following, we compare the different cloud mask products for a case study 
 <p>For each instrument, we extract the data from individual flights and concatenate them to campaign-spanning datasets for the cloud mask files.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat_cloudmask</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cat_cloudmask</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;WALES&quot;</span><span class="p">:</span> <span class="n">cat</span><span class="o">.</span><span class="n">HALO</span><span class="o">.</span><span class="n">WALES</span><span class="o">.</span><span class="n">cloudparameter</span><span class="p">,</span>
     <span class="s2">&quot;HAMP Radar&quot;</span><span class="p">:</span> <span class="n">cat</span><span class="o">.</span><span class="n">HALO</span><span class="o">.</span><span class="n">UNIFIED</span><span class="o">.</span><span class="n">HAMPradar_cloudmask</span><span class="p">,</span>
     <span class="s2">&quot;specMACS&quot;</span><span class="p">:</span> <span class="n">cat</span><span class="o">.</span><span class="n">HALO</span><span class="o">.</span><span class="n">specMACS</span><span class="o">.</span><span class="n">cloudmaskSWIR</span><span class="p">,</span>
@@ -982,7 +995,7 @@ In the following, we compare the different cloud mask products for a case study 
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">load_cloudmask_dataset</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">cat_cloudmask</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">load_cloudmask_dataset</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">cat_cloudmask</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
 </pre></div>
 </div>
 </div>
@@ -990,8 +1003,18 @@ In the following, we compare the different cloud mask products for a case study 
 <p>We have a look at the time periods spanned by the individual datasets: The datasets <code class="docutils literal notranslate"><span class="pre">HAMP</span> <span class="pre">Radar</span></code>, <code class="docutils literal notranslate"><span class="pre">HAMP</span> <span class="pre">Radiometer</span></code>, and <code class="docutils literal notranslate"><span class="pre">specMACS</span></code> include measurements from the transfer flights on 19 January to Barbados and on 18 February back over the Atlantic to Europe. The datasets <code class="docutils literal notranslate"><span class="pre">WALES</span></code>, <code class="docutils literal notranslate"><span class="pre">KT19</span></code>, and <code class="docutils literal notranslate"><span class="pre">VELOX</span></code> are limited to the 13 local research flights between 22 January and 15 February.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">v</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="si">}</span><span class="s2"> -  </span><span class="si">{</span><span class="n">v</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WALES: 2020-01-22T15:18:00.155000064 -  2020-02-15T23:30:02.176000000
+HAMP Radar: 2020-01-19T09:34:25.000004352 -  2020-02-18T18:55:30.999997440
+specMACS: 2020-01-19T09:29:00.063636992 -  2020-02-18T17:27:00.982214912
+HAMP Radiometer: 2020-01-19T09:34:25.000004352 -  2020-02-18T18:55:30.999997440
+KT19: 2020-01-22T14:57:36.041336059 -  2020-02-15T23:59:53.497467041
+VELOX: 2020-01-24T09:33:35.000000000 -  2020-02-15T23:25:18.000000000
 </pre></div>
 </div>
 </div>
@@ -1007,7 +1030,7 @@ In the following, we compare the different cloud mask products for a case study 
 <h4>Time interval<a class="headerlink" href="#time-interval" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="s2">&quot;2020-02-05T11:22:00&quot;</span><span class="p">,</span> <span class="s2">&quot;2020-02-05T11:27:00&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="s2">&quot;2020-02-05T11:22:00&quot;</span><span class="p">,</span> <span class="s2">&quot;2020-02-05T11:27:00&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1017,7 +1040,7 @@ In the following, we compare the different cloud mask products for a case study 
 <h4>HAMP radar reflectivities<a class="headerlink" href="#hamp-radar-reflectivities" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ds_radar</span> <span class="o">=</span> <span class="n">cat</span><span class="o">.</span><span class="n">HALO</span><span class="o">.</span><span class="n">UNIFIED</span><span class="o">.</span><span class="n">HAMPradar</span><span class="p">[</span><span class="s2">&quot;HALO-0205&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_dask</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds_radar</span> <span class="o">=</span> <span class="n">cat</span><span class="o">.</span><span class="n">HALO</span><span class="o">.</span><span class="n">UNIFIED</span><span class="o">.</span><span class="n">HAMPradar</span><span class="p">[</span><span class="s2">&quot;HALO-0205&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_dask</span><span class="p">()</span>
 <span class="n">da_radar</span> <span class="o">=</span> <span class="n">ds_radar</span><span class="o">.</span><span class="n">dBZ</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4000</span><span class="p">),</span> <span class="n">time</span><span class="o">=</span><span class="n">s</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1032,7 +1055,7 @@ height = height_above_sea_level[0] - range
 \end{equation}</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_height_coordinate_wales</span><span class="p">(</span><span class="n">ds</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_height_coordinate_wales</span><span class="p">(</span><span class="n">ds</span><span class="p">):</span>
     <span class="n">ds</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="s2">&quot;height&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">height_above_sea_level</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="o">-</span> <span class="n">ds</span><span class="o">.</span><span class="n">range</span>
     <span class="k">return</span> <span class="n">ds</span><span class="o">.</span><span class="n">swap_dims</span><span class="p">({</span><span class="s2">&quot;range&quot;</span><span class="p">:</span> <span class="s2">&quot;height&quot;</span><span class="p">})</span>
 </pre></div>
@@ -1041,7 +1064,7 @@ height = height_above_sea_level[0] - range
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ds_bsri</span> <span class="o">=</span> <span class="n">add_height_coordinate_wales</span><span class="p">(</span><span class="n">cat</span><span class="o">.</span><span class="n">HALO</span><span class="o">.</span><span class="n">WALES</span><span class="o">.</span><span class="n">bsri</span><span class="p">[</span><span class="s2">&quot;HALO-0205&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_dask</span><span class="p">())</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds_bsri</span> <span class="o">=</span> <span class="n">add_height_coordinate_wales</span><span class="p">(</span><span class="n">cat</span><span class="o">.</span><span class="n">HALO</span><span class="o">.</span><span class="n">WALES</span><span class="o">.</span><span class="n">bsri</span><span class="p">[</span><span class="s2">&quot;HALO-0205&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_dask</span><span class="p">())</span>
 <span class="n">da_bsri</span> <span class="o">=</span> <span class="n">ds_bsri</span><span class="o">.</span><span class="n">backscatter_ratio</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">4000</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">time</span><span class="o">=</span><span class="n">s</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1050,7 +1073,7 @@ height = height_above_sea_level[0] - range
 <p>From WALES we also include the cloud top height information</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">da_cth</span> <span class="o">=</span> <span class="n">cat</span><span class="o">.</span><span class="n">HALO</span><span class="o">.</span><span class="n">WALES</span><span class="o">.</span><span class="n">cloudparameter</span><span class="p">[</span><span class="s2">&quot;HALO-0205&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_dask</span><span class="p">()</span><span class="o">.</span><span class="n">cloud_top</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">s</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">da_cth</span> <span class="o">=</span> <span class="n">cat</span><span class="o">.</span><span class="n">HALO</span><span class="o">.</span><span class="n">WALES</span><span class="o">.</span><span class="n">cloudparameter</span><span class="p">[</span><span class="s2">&quot;HALO-0205&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_dask</span><span class="p">()</span><span class="o">.</span><span class="n">cloud_top</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">s</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1065,7 +1088,7 @@ height = height_above_sea_level[0] - range
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ds_swir</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_zarr</span><span class="p">(</span><span class="s2">&quot;ipfs://QmZUNCXKvKSeugVHFUsgzDnTrrPHomc5ikEhjoYH2hRq4N&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds_swir</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_zarr</span><span class="p">(</span><span class="s2">&quot;ipfs://QmZUNCXKvKSeugVHFUsgzDnTrrPHomc5ikEhjoYH2hRq4N&quot;</span><span class="p">)</span>
 <span class="n">da_swir</span> <span class="o">=</span> <span class="n">ds_swir</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">s</span><span class="p">)</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">radiation_wavelength</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">swir_radiance</span>
 </pre></div>
 </div>
@@ -1081,7 +1104,7 @@ height = height_above_sea_level[0] - range
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ds_bt</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_zarr</span><span class="p">(</span><span class="s2">&quot;ipfs://QmQEwkhhHdJkiThf4hnj9G3wgqVreBnWGrX2A5kT6CrtY7&quot;</span><span class="p">,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds_bt</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_zarr</span><span class="p">(</span><span class="s2">&quot;ipfs://QmQEwkhhHdJkiThf4hnj9G3wgqVreBnWGrX2A5kT6CrtY7&quot;</span><span class="p">,</span>
                      <span class="n">consolidated</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                     <span class="p">)</span><span class="o">.</span><span class="n">assign_coords</span><span class="p">(</span><span class="n">va</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">va</span><span class="p">)</span>
 </pre></div>
@@ -1100,16 +1123,21 @@ height = height_above_sea_level[0] - range
 <p>What is the angle of the 11 central pixel in accross track direction for VELOX?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xmid</span> <span class="o">=</span> <span class="n">ds_bt</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">size</span> <span class="o">//</span> <span class="mi">2</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xmid</span> <span class="o">=</span> <span class="n">ds_bt</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">size</span> <span class="o">//</span> <span class="mi">2</span>
 <span class="n">va_central</span> <span class="o">=</span> <span class="n">ds_bt</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="n">xmid</span> <span class="o">-</span> <span class="mi">5</span><span class="p">,</span> <span class="n">xmid</span> <span class="o">+</span> <span class="mi">6</span><span class="p">))</span><span class="o">.</span><span class="n">va</span>
 <span class="p">(</span><span class="n">va_central</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">va_central</span><span class="o">.</span><span class="n">min</span><span class="p">())</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array(0.57295305, dtype=float32)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">most_frequent_flag</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="n">dims</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">most_frequent_flag</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="n">dims</span><span class="p">):</span>
     <span class="n">flag_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">var</span><span class="o">.</span><span class="n">flag_values</span><span class="p">)</span>
     <span class="n">flags</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">flag_values</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;__internal__flags__&quot;</span><span class="p">))</span>
     <span class="n">flag_indices</span> <span class="o">=</span> <span class="p">(</span><span class="n">var</span> <span class="o">==</span> <span class="n">flags</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dims</span><span class="p">)</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="s2">&quot;__internal__flags__&quot;</span><span class="p">)</span>
@@ -1145,7 +1173,7 @@ height = height_above_sea_level[0] - range
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data0205</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">ensure_cfminmax</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="s2">&quot;HALO-0205&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_dask</span><span class="p">())</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">cat_cloudmask</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data0205</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">ensure_cfminmax</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="s2">&quot;HALO-0205&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_dask</span><span class="p">())</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">cat_cloudmask</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
 <span class="n">data_feb5</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">cloudmask_selectors</span><span class="p">[</span><span class="n">k</span><span class="p">](</span><span class="n">v</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">s</span><span class="p">))</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data0205</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
 </pre></div>
 </div>
@@ -1157,7 +1185,7 @@ height = height_above_sea_level[0] - range
 <h3>Plot<a class="headerlink" href="#plot" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">colors</span><span class="o">=</span><span class="p">{</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">colors</span><span class="o">=</span><span class="p">{</span>
     <span class="s2">&quot;WALES&quot;</span><span class="p">:</span> <span class="s2">&quot;darkgreen&quot;</span><span class="p">,</span>
     <span class="s2">&quot;HAMP Radar&quot;</span><span class="p">:</span> <span class="s2">&quot;navy&quot;</span><span class="p">,</span>
     <span class="s2">&quot;specMACS&quot;</span><span class="p">:</span> <span class="s2">&quot;darkred&quot;</span><span class="p">,</span>
@@ -1171,7 +1199,7 @@ height = height_above_sea_level[0] - range
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">([</span><span class="s2">&quot;./mplstyle/book&quot;</span><span class="p">])</span>
 </pre></div>
@@ -1180,7 +1208,7 @@ height = height_above_sea_level[0] - range
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="s2">&quot;mplstyle/square&quot;</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="s2">&quot;mplstyle/square&quot;</span><span class="p">):</span>
     <span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax0</span><span class="p">,</span> <span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span><span class="p">,</span> <span class="n">axLegend</span><span class="p">,</span> <span class="n">axL1</span><span class="p">,</span> <span class="n">axL2</span><span class="p">,</span> <span class="n">axL3</span><span class="p">,</span> <span class="n">axL4</span><span class="p">,</span> <span class="n">axL5</span><span class="p">,</span> <span class="n">axL6</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span>
         <span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;height_ratios&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span>
                                                            <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]}</span>
@@ -1271,6 +1299,9 @@ height = height_above_sea_level[0] - range
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/cloudmasks_35_0.png" src="_images/cloudmasks_35_0.png" />
+</div>
 </div>
 </section>
 </section>
@@ -1281,7 +1312,7 @@ height = height_above_sea_level[0] - range
 <p>The following statistics are based on the <strong>minimum cloud cover</strong> including the cloud mask flag <code class="docutils literal notranslate"><span class="pre">most_likely_cloudy</span></code> and <strong>maximum cloud cover</strong> with cloud mask flags <span class="math notranslate nohighlight">\(\in\)</span> {<code class="docutils literal notranslate"><span class="pre">most_likely_cloudy</span></code>, <code class="docutils literal notranslate"><span class="pre">probably_cloudy</span></code>}.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">midpoint</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">midpoint</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
 
 <span class="k">def</span> <span class="nf">cf_circles</span><span class="p">(</span><span class="n">ds</span><span class="p">):</span>
@@ -1303,7 +1334,7 @@ height = height_above_sea_level[0] - range
 <h3>Get meta data<a class="headerlink" href="#get-meta-data" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">meta</span> <span class="o">=</span> <span class="n">eurec4a</span><span class="o">.</span><span class="n">get_flight_segments</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">meta</span> <span class="o">=</span> <span class="n">eurec4a</span><span class="o">.</span><span class="n">get_flight_segments</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1311,7 +1342,7 @@ height = height_above_sea_level[0] - range
 <p>We extract all flight IDs of HALO’s research flights</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">flight_ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">flight_id</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flight_ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">flight_id</span>
               <span class="k">for</span> <span class="n">platform_id</span><span class="p">,</span> <span class="n">flights</span> <span class="ow">in</span> <span class="n">meta</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
               <span class="k">if</span> <span class="n">platform_id</span><span class="o">==</span><span class="s2">&quot;HALO&quot;</span>
               <span class="k">for</span> <span class="n">flight_id</span><span class="p">,</span> <span class="n">flight</span> <span class="ow">in</span> <span class="n">flights</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
@@ -1323,7 +1354,7 @@ height = height_above_sea_level[0] - range
 <p>Within each flight we further extract the circle segments</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">segments</span> <span class="o">=</span> <span class="p">{</span><span class="n">s</span><span class="p">[</span><span class="s2">&quot;segment_id&quot;</span><span class="p">]:</span> <span class="p">{</span><span class="o">**</span><span class="n">s</span><span class="p">,</span> <span class="s2">&quot;flight_id&quot;</span><span class="p">:</span> <span class="n">flight</span><span class="p">[</span><span class="s2">&quot;flight_id&quot;</span><span class="p">]}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">segments</span> <span class="o">=</span> <span class="p">{</span><span class="n">s</span><span class="p">[</span><span class="s2">&quot;segment_id&quot;</span><span class="p">]:</span> <span class="p">{</span><span class="o">**</span><span class="n">s</span><span class="p">,</span> <span class="s2">&quot;flight_id&quot;</span><span class="p">:</span> <span class="n">flight</span><span class="p">[</span><span class="s2">&quot;flight_id&quot;</span><span class="p">]}</span>
              <span class="k">for</span> <span class="n">platform_id</span><span class="p">,</span> <span class="n">flight_id</span> <span class="ow">in</span> <span class="n">meta</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
              <span class="k">if</span> <span class="n">platform_id</span><span class="o">==</span><span class="s2">&quot;HALO&quot;</span>
              <span class="k">for</span> <span class="n">flight</span> <span class="ow">in</span> <span class="n">flight_id</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
@@ -1334,6 +1365,11 @@ height = height_above_sea_level[0] - range
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>In total HALO flew 72 circles during EUREC4A
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="time-series-of-circle-cloud-cover">
@@ -1341,7 +1377,7 @@ height = height_above_sea_level[0] - range
 <p>Time series of circle-mean (minimum) cloud cover estimates. The markers visualize the research-flight average, while the lines span the range of all circle-mean cloud cover estimates within a respective flight.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">timedelta64</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;h&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">timedelta64</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;h&#39;</span><span class="p">)</span>
 
 <span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="s2">&quot;mplstyle/wide&quot;</span><span class="p">):</span>
     <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
@@ -1370,6 +1406,9 @@ height = height_above_sea_level[0] - range
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/cloudmasks_45_0.png" src="_images/cloudmasks_45_0.png" />
+</div>
 </div>
 </section>
 <section id="histogram-of-circle-mean-cloud-cover">
@@ -1377,7 +1416,7 @@ height = height_above_sea_level[0] - range
 <p>We first have a look at the distributions of circle-mean cloud cover based on the minimum (<code class="docutils literal notranslate"><span class="pre">most_likely_cloudy</span></code>) and the maximum estimates (<code class="docutils literal notranslate"><span class="pre">most_likely_cloudy</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">probably_cloudy</span></code>).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">binedges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">.2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">binedges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">.2</span><span class="p">)</span>
 <span class="n">binmids</span> <span class="o">=</span> <span class="p">(</span><span class="n">binedges</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">+</span> <span class="n">binedges</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span>
 </pre></div>
 </div>
@@ -1385,7 +1424,7 @@ height = height_above_sea_level[0] - range
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="s2">&quot;mplstyle/wide&quot;</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="s2">&quot;mplstyle/wide&quot;</span><span class="p">):</span>
     <span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax0</span><span class="p">,</span> <span class="n">ax1</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">width</span> <span class="o">=</span> <span class="mf">0.02</span>
@@ -1420,11 +1459,14 @@ height = height_above_sea_level[0] - range
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/cloudmasks_48_0.png" src="_images/cloudmasks_48_0.png" />
+</div>
 </div>
 <p>For a better comparison of minimum and maximum circle-mean cloud cover we merge the two above plots and show their difference in the following plot. In particular, we show the cumulative fraction of circle-mean cloud cover estimates. Depending on the instruments and some instrument downtimes, the available circle counts range from 64 to 72. The bins on the x-axis have a bin width of 0.2 respectively. The bars span the range defined by the minimum cloud cover based on cloud flag <code class="docutils literal notranslate"><span class="pre">most</span> <span class="pre">likely</span> <span class="pre">cloudy</span></code>and the maximum cloud cover based on cloud flags <code class="docutils literal notranslate"><span class="pre">most</span> <span class="pre">likely</span> <span class="pre">cloudy</span></code> and <code class="docutils literal notranslate"><span class="pre">probably</span> <span class="pre">cloudy</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="s2">&quot;mplstyle/wide&quot;</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="s2">&quot;mplstyle/wide&quot;</span><span class="p">):</span>
     <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
     <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">width</span> <span class="o">=</span> <span class="mf">0.02</span>
@@ -1465,6 +1507,9 @@ height = height_above_sea_level[0] - range
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/cloudmasks_50_0.png" src="_images/cloudmasks_50_0.png" />
+</div>
 </div>
 </section>
 <section id="a-small-interpretation-attempt">
@@ -1493,10 +1538,24 @@ height = height_above_sea_level[0] - range
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Instrument: min - max&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Instrument: min - max&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">v</span><span class="o">.</span><span class="n">CF_min</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">v</span><span class="o">.</span><span class="n">CF_max</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> &quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Instrument: min - max
+
+WALES: 0.34 - 0.34 
+HAMP Radar: 0.25 - 0.25 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>specMACS: 0.18 - 0.24 
+HAMP Radiometer: 0.17 - 0.25 
+KT19: 0.20 - 0.31 
+VELOX: 0.21 - 0.39 
 </pre></div>
 </div>
 </div>
@@ -1506,18 +1565,34 @@ height = height_above_sea_level[0] - range
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">localRF</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="s2">&quot;2020-01-22T00:00:00&quot;</span><span class="p">,</span> <span class="s2">&quot;2020-02-15T23:59:59&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">localRF</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="s2">&quot;2020-01-22T00:00:00&quot;</span><span class="p">,</span> <span class="s2">&quot;2020-02-15T23:59:59&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Instrument: min - max&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Instrument: min - max&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">v</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">localRF</span><span class="p">)</span><span class="o">.</span><span class="n">CF_min</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> - &quot;</span>
           <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">v</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">localRF</span><span class="p">)</span><span class="o">.</span><span class="n">CF_max</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> &quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Instrument: min - max
+
+WALES: 0.34 - 0.34 
+HAMP Radar: 0.21 - 0.22 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>specMACS: 0.16 - 0.22 
+HAMP Radiometer: 0.16 - 0.25 
+KT19: 0.20 - 0.31 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>VELOX: 0.21 - 0.39 
 </pre></div>
 </div>
 </div>

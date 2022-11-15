@@ -1023,6 +1023,11 @@ body.vscode-dark {
   grid-column: 4;
 }
 
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
 .xr-var-name,
 .xr-var-dims,
 .xr-var-dtype,
@@ -1044,14 +1049,16 @@ body.vscode-dark {
 }
 
 .xr-var-attrs,
-.xr-var-data {
+.xr-var-data,
+.xr-index-data {
   display: none;
   background-color: var(--xr-background-color) !important;
   padding-bottom: 5px !important;
 }
 
 .xr-var-attrs-in:checked ~ .xr-var-attrs,
-.xr-var-data-in:checked ~ .xr-var-data {
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
   display: block;
 }
 
@@ -1061,13 +1068,16 @@ body.vscode-dark {
 
 .xr-var-name span,
 .xr-var-data,
+.xr-index-name div,
+.xr-index-data,
 .xr-attrs {
   padding-left: 25px !important;
 }
 
 .xr-attrs,
 .xr-var-attrs,
-.xr-var-data {
+.xr-var-data,
+.xr-index-data {
   grid-column: 1 / -1;
 }
 
@@ -1105,7 +1115,8 @@ dl.xr-attrs {
 }
 
 .xr-icon-database,
-.xr-icon-file-text2 {
+.xr-icon-file-text2,
+.xr-no-icon {
   display: inline-block;
   vertical-align: middle;
   width: 1em;
@@ -1137,10 +1148,10 @@ Attributes:
     Version:              Revision 3 from 2021/01/24
     campaign:             EUREC4A
     comment 1:            BAHAMAS data was processed by DLR, contact Andreas ...
-    platform:             HALO</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-090e9fd5-efe6-43d8-b92e-b4ff687ae23c' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-090e9fd5-efe6-43d8-b92e-b4ff687ae23c' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 32730</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-b1288588-5718-49ea-9f2b-947d9e967e6a' class='xr-section-summary-in' type='checkbox'  checked><label for='section-b1288588-5718-49ea-9f2b-947d9e967e6a' class='xr-section-summary' >Coordinates: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2020-02-05T09:15:53 ... 2020-02-...</div><input id='attrs-7f02a1e1-117e-48b0-874b-af63e564ffba' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-7f02a1e1-117e-48b0-874b-af63e564ffba' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8e84e25a-3db3-4106-8980-54be179601c9' class='xr-var-data-in' type='checkbox'><label for='data-8e84e25a-3db3-4106-8980-54be179601c9' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>time</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;2020-02-05T09:15:53.000000000&#x27;, &#x27;2020-02-05T09:15:54.000000000&#x27;,
+    platform:             HALO</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-3907d05b-c2fc-4bb8-9928-360914044b12' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-3907d05b-c2fc-4bb8-9928-360914044b12' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 32730</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-8a33b07d-40f9-425c-a1b2-ee59fad180cf' class='xr-section-summary-in' type='checkbox'  checked><label for='section-8a33b07d-40f9-425c-a1b2-ee59fad180cf' class='xr-section-summary' >Coordinates: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2020-02-05T09:15:53 ... 2020-02-...</div><input id='attrs-ede42142-3e5a-43d1-9a5e-d357a2c2fe02' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ede42142-3e5a-43d1-9a5e-d357a2c2fe02' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f880f6a8-f2ae-40cb-854b-cb20ee9202aa' class='xr-var-data-in' type='checkbox'><label for='data-f880f6a8-f2ae-40cb-854b-cb20ee9202aa' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>time</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;2020-02-05T09:15:53.000000000&#x27;, &#x27;2020-02-05T09:15:54.000000000&#x27;,
        &#x27;2020-02-05T09:15:55.000000000&#x27;, ..., &#x27;2020-02-05T18:21:20.000000000&#x27;,
        &#x27;2020-02-05T18:21:21.000000000&#x27;, &#x27;2020-02-05T18:21:22.000000000&#x27;],
-      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-18e922b9-e73c-4a6c-9947-51772c99bd23' class='xr-section-summary-in' type='checkbox'  checked><label for='section-18e922b9-e73c-4a6c-9947-51772c99bd23' class='xr-section-summary' >Data variables: <span>(11)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>F_down_solar_wl_1238</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(32730,), meta=np.ndarray&gt;</div><input id='attrs-4ff43f2f-8d32-40c4-b707-37ef32ce64ca' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-4ff43f2f-8d32-40c4-b707-37ef32ce64ca' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-779aeb06-d694-4a2d-bd9c-ce49f38b54a9' class='xr-var-data-in' type='checkbox'><label for='data-779aeb06-d694-4a2d-bd9c-ce49f38b54a9' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment :</span></dt><dd>Corrected for aircraft movement, averaged for wavelength band +-5 nm</dd><dt><span>long_name :</span></dt><dd>Spectral downward solar irradiance (1238 nm) (SMART)</dd><dt><span>units :</span></dt><dd>W m-2 nm-1</dd></dl></div><div class='xr-var-data'><table>
+      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-a81a7379-e9dc-4c8d-b804-c567853fddf4' class='xr-section-summary-in' type='checkbox'  checked><label for='section-a81a7379-e9dc-4c8d-b804-c567853fddf4' class='xr-section-summary' >Data variables: <span>(11)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>F_down_solar_wl_1238</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(32730,), meta=np.ndarray&gt;</div><input id='attrs-ab8554b8-da3a-4a31-b639-fcefe5abe154' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ab8554b8-da3a-4a31-b639-fcefe5abe154' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8e0263fe-c896-4db5-95ab-7a7e44de539f' class='xr-var-data-in' type='checkbox'><label for='data-8e0263fe-c896-4db5-95ab-7a7e44de539f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment :</span></dt><dd>Corrected for aircraft movement, averaged for wavelength band +-5 nm</dd><dt><span>long_name :</span></dt><dd>Spectral downward solar irradiance (1238 nm) (SMART)</dd><dt><span>units :</span></dt><dd>W m-2 nm-1</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1197,7 +1208,7 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>F_down_solar_wl_1638</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(32730,), meta=np.ndarray&gt;</div><input id='attrs-2343902a-9317-4902-97f2-ef754328f600' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-2343902a-9317-4902-97f2-ef754328f600' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-63285874-1846-45bd-960b-b4216485f4ff' class='xr-var-data-in' type='checkbox'><label for='data-63285874-1846-45bd-960b-b4216485f4ff' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment :</span></dt><dd>Corrected for aircraft movement, averaged for wavelength band +-5 nm</dd><dt><span>long_name :</span></dt><dd>Spectral downward solar irradiance (1638 nm) (SMART)</dd><dt><span>units :</span></dt><dd>W m-2 nm-1</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>F_down_solar_wl_1638</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(32730,), meta=np.ndarray&gt;</div><input id='attrs-8ec7f8a9-fba9-4225-9bf8-260b79e19a54' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-8ec7f8a9-fba9-4225-9bf8-260b79e19a54' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-5d19e823-c3b5-4528-b46c-079ce0da0077' class='xr-var-data-in' type='checkbox'><label for='data-5d19e823-c3b5-4528-b46c-079ce0da0077' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment :</span></dt><dd>Corrected for aircraft movement, averaged for wavelength band +-5 nm</dd><dt><span>long_name :</span></dt><dd>Spectral downward solar irradiance (1638 nm) (SMART)</dd><dt><span>units :</span></dt><dd>W m-2 nm-1</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1254,7 +1265,7 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>F_down_solar_wl_422</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(32730,), meta=np.ndarray&gt;</div><input id='attrs-18d314b2-0436-4168-b920-702913866ad0' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-18d314b2-0436-4168-b920-702913866ad0' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-86362a77-81e0-46bf-a901-b64d5380b320' class='xr-var-data-in' type='checkbox'><label for='data-86362a77-81e0-46bf-a901-b64d5380b320' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment :</span></dt><dd>Corrected for aircraft movement, averaged for wavelength band +-5 nm</dd><dt><span>long_name :</span></dt><dd>Spectral downward solar irradiance (422 nm) (SMART)</dd><dt><span>units :</span></dt><dd>W m-2 nm-1</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>F_down_solar_wl_422</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(32730,), meta=np.ndarray&gt;</div><input id='attrs-44e29769-7f3e-41d2-a5e0-be254a6d6813' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-44e29769-7f3e-41d2-a5e0-be254a6d6813' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-914da718-c0b6-424b-b479-30574c4fcc4c' class='xr-var-data-in' type='checkbox'><label for='data-914da718-c0b6-424b-b479-30574c4fcc4c' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment :</span></dt><dd>Corrected for aircraft movement, averaged for wavelength band +-5 nm</dd><dt><span>long_name :</span></dt><dd>Spectral downward solar irradiance (422 nm) (SMART)</dd><dt><span>units :</span></dt><dd>W m-2 nm-1</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1311,7 +1322,7 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>F_down_solar_wl_532</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(32730,), meta=np.ndarray&gt;</div><input id='attrs-43a5dceb-c79b-4920-a189-8f8ee6646582' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-43a5dceb-c79b-4920-a189-8f8ee6646582' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-6b5748ef-d317-4380-a8f1-821c36e73d14' class='xr-var-data-in' type='checkbox'><label for='data-6b5748ef-d317-4380-a8f1-821c36e73d14' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment :</span></dt><dd>Corrected for aircraft movement, averaged for wavelength band +-5 nm</dd><dt><span>long_name :</span></dt><dd>Spectral downward solar irradiance (532 nm) (SMART)</dd><dt><span>units :</span></dt><dd>W m-2 nm-1</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>F_down_solar_wl_532</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(32730,), meta=np.ndarray&gt;</div><input id='attrs-f0e3a718-e29a-4b96-974b-72a2845b85d5' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-f0e3a718-e29a-4b96-974b-72a2845b85d5' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-bf4f43ce-61e3-4d75-8624-e2ebb5c955e4' class='xr-var-data-in' type='checkbox'><label for='data-bf4f43ce-61e3-4d75-8624-e2ebb5c955e4' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment :</span></dt><dd>Corrected for aircraft movement, averaged for wavelength band +-5 nm</dd><dt><span>long_name :</span></dt><dd>Spectral downward solar irradiance (532 nm) (SMART)</dd><dt><span>units :</span></dt><dd>W m-2 nm-1</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1368,7 +1379,7 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>F_down_solar_wl_648</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(32730,), meta=np.ndarray&gt;</div><input id='attrs-b3bfcb36-5889-4eee-9aba-37470529d6e4' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-b3bfcb36-5889-4eee-9aba-37470529d6e4' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-fd5a288c-614a-49bf-b9f7-ba528fd4c455' class='xr-var-data-in' type='checkbox'><label for='data-fd5a288c-614a-49bf-b9f7-ba528fd4c455' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment :</span></dt><dd>Corrected for aircraft movement, averaged for wavelength band +-5 nm</dd><dt><span>long_name :</span></dt><dd>Spectral downward solar irradiance (648 nm) (SMART)</dd><dt><span>units :</span></dt><dd>W m-2 nm-1</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>F_down_solar_wl_648</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(32730,), meta=np.ndarray&gt;</div><input id='attrs-c1a15328-87d6-4feb-956e-646bd116822b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c1a15328-87d6-4feb-956e-646bd116822b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-5919f132-494c-4131-98e3-85d15aa7ec90' class='xr-var-data-in' type='checkbox'><label for='data-5919f132-494c-4131-98e3-85d15aa7ec90' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment :</span></dt><dd>Corrected for aircraft movement, averaged for wavelength band +-5 nm</dd><dt><span>long_name :</span></dt><dd>Spectral downward solar irradiance (648 nm) (SMART)</dd><dt><span>units :</span></dt><dd>W m-2 nm-1</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1425,7 +1436,7 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>F_down_solar_wl_858</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(32730,), meta=np.ndarray&gt;</div><input id='attrs-1bae2684-4f03-466b-a094-a64d7616a68a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-1bae2684-4f03-466b-a094-a64d7616a68a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-9afd3aea-85ef-4c2c-bd69-69ec5397ee3a' class='xr-var-data-in' type='checkbox'><label for='data-9afd3aea-85ef-4c2c-bd69-69ec5397ee3a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment :</span></dt><dd>Corrected for aircraft movement, averaged for wavelength band +-5 nm</dd><dt><span>long_name :</span></dt><dd>Spectral downward solar irradiance (858 nm) (SMART)</dd><dt><span>units :</span></dt><dd>W m-2 nm-1</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>F_down_solar_wl_858</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(32730,), meta=np.ndarray&gt;</div><input id='attrs-3b5c4d6d-660a-4cd5-8a99-c69bb67ca856' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-3b5c4d6d-660a-4cd5-8a99-c69bb67ca856' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ef4eda4c-46d0-46c4-947c-8fb216e648d8' class='xr-var-data-in' type='checkbox'><label for='data-ef4eda4c-46d0-46c4-947c-8fb216e648d8' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment :</span></dt><dd>Corrected for aircraft movement, averaged for wavelength band +-5 nm</dd><dt><span>long_name :</span></dt><dd>Spectral downward solar irradiance (858 nm) (SMART)</dd><dt><span>units :</span></dt><dd>W m-2 nm-1</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1482,7 +1493,7 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>alt</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(32730,), meta=np.ndarray&gt;</div><input id='attrs-866b17e3-bf6e-412f-b6d9-9ca656490b56' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-866b17e3-bf6e-412f-b6d9-9ca656490b56' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ce1ce648-4e7f-43fa-9c1e-b3de51bd85ca' class='xr-var-data-in' type='checkbox'><label for='data-ce1ce648-4e7f-43fa-9c1e-b3de51bd85ca' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>altitude (WGS84 Datum/Elliptical, BAHAMAS)</dd><dt><span>standard_name :</span></dt><dd>altitude</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>alt</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(32730,), meta=np.ndarray&gt;</div><input id='attrs-e1fa13f4-ef59-4fb2-bd31-7c9e90efd5e2' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e1fa13f4-ef59-4fb2-bd31-7c9e90efd5e2' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-532977f1-f248-4452-a0ff-f6c0830ec318' class='xr-var-data-in' type='checkbox'><label for='data-532977f1-f248-4452-a0ff-f6c0830ec318' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>altitude (WGS84 Datum/Elliptical, BAHAMAS)</dd><dt><span>standard_name :</span></dt><dd>altitude</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1539,7 +1550,7 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lat</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(32730,), meta=np.ndarray&gt;</div><input id='attrs-55391850-c412-4b09-b2a9-5e3a30c5d646' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-55391850-c412-4b09-b2a9-5e3a30c5d646' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-263d9e45-b704-4919-878d-35125c6acc79' class='xr-var-data-in' type='checkbox'><label for='data-263d9e45-b704-4919-878d-35125c6acc79' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>latitude (WGS84 Datum/Latitude, BAHAMAS)</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lat</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(32730,), meta=np.ndarray&gt;</div><input id='attrs-47096ec7-de96-46b7-bdc9-737b5aaa95de' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-47096ec7-de96-46b7-bdc9-737b5aaa95de' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-2054fad6-e91b-4974-9687-c3edfe853b5a' class='xr-var-data-in' type='checkbox'><label for='data-2054fad6-e91b-4974-9687-c3edfe853b5a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>latitude (WGS84 Datum/Latitude, BAHAMAS)</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1596,7 +1607,7 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lon</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(32730,), meta=np.ndarray&gt;</div><input id='attrs-755a8154-591f-4635-873f-f72602da601c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-755a8154-591f-4635-873f-f72602da601c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-5d0f6a29-311b-41e6-89f7-3e3ad3afa290' class='xr-var-data-in' type='checkbox'><label for='data-5d0f6a29-311b-41e6-89f7-3e3ad3afa290' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>longitude (WGS84 Datum/Longitude, BAHAMAS)</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degree_east</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lon</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(32730,), meta=np.ndarray&gt;</div><input id='attrs-e330345a-a5ad-43e9-a4d4-3ad9f3b590dd' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e330345a-a5ad-43e9-a4d4-3ad9f3b590dd' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0c093cbe-9c29-4460-b1ac-b6497d46fa2b' class='xr-var-data-in' type='checkbox'><label for='data-0c093cbe-9c29-4460-b1ac-b6497d46fa2b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>longitude (WGS84 Datum/Longitude, BAHAMAS)</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degree_east</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1653,7 +1664,7 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>saa</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(32730,), meta=np.ndarray&gt;</div><input id='attrs-c472e4be-b6b4-49e1-ab8a-2a30c35fc505' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c472e4be-b6b4-49e1-ab8a-2a30c35fc505' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b51d239c-e89f-4de9-8470-74b48eeea3da' class='xr-var-data-in' type='checkbox'><label for='data-b51d239c-e89f-4de9-8470-74b48eeea3da' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>solar azimuth angle</dd><dt><span>standard_name :</span></dt><dd>solar_azimuth_angle</dd><dt><span>units :</span></dt><dd>degree</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>saa</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(32730,), meta=np.ndarray&gt;</div><input id='attrs-e8d68265-4746-4c5d-8241-633dc1bfa999' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e8d68265-4746-4c5d-8241-633dc1bfa999' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f0977786-5c09-4e99-878f-d6d293a76f41' class='xr-var-data-in' type='checkbox'><label for='data-f0977786-5c09-4e99-878f-d6d293a76f41' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>solar azimuth angle</dd><dt><span>standard_name :</span></dt><dd>solar_azimuth_angle</dd><dt><span>units :</span></dt><dd>degree</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1710,7 +1721,7 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>sza</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(32730,), meta=np.ndarray&gt;</div><input id='attrs-60c9b685-7561-44ce-a675-4ecd031df056' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-60c9b685-7561-44ce-a675-4ecd031df056' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-fa9d98de-b3d9-418e-a4b3-9a49f20566ea' class='xr-var-data-in' type='checkbox'><label for='data-fa9d98de-b3d9-418e-a4b3-9a49f20566ea' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>solar zenith angle</dd><dt><span>standard_name :</span></dt><dd>solar_zenith_angle</dd><dt><span>units :</span></dt><dd>degree</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>sza</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(32730,), meta=np.ndarray&gt;</div><input id='attrs-9562301f-3b92-4487-8f73-b287e700a642' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-9562301f-3b92-4487-8f73-b287e700a642' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-96e1fe04-777d-442b-a3a3-53f3a76fdadc' class='xr-var-data-in' type='checkbox'><label for='data-96e1fe04-777d-442b-a3a3-53f3a76fdadc' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>solar zenith angle</dd><dt><span>standard_name :</span></dt><dd>solar_zenith_angle</dd><dt><span>units :</span></dt><dd>degree</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1767,7 +1778,18 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-c2cc4786-b090-4861-a2e3-18a63cc1da16' class='xr-section-summary-in' type='checkbox'  checked><label for='section-c2cc4786-b090-4861-a2e3-18a63cc1da16' class='xr-section-summary' >Attributes: <span>(7)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>Contact :</span></dt><dd>Andre Ehrlich, University Leipzig, a.ehrlich@uni-leipzig.de or Kevin Wolf, University Leipzig, kevin.wolf@uni-leipzig.de</dd><dt><span>Research_Flight_Day :</span></dt><dd>2020/20/05</dd><dt><span>Title :</span></dt><dd>Spectral downward irradiance measured by SMART during EUREC4A</dd><dt><span>Version :</span></dt><dd>Revision 3 from 2021/01/24</dd><dt><span>campaign :</span></dt><dd>EUREC4A</dd><dt><span>comment 1 :</span></dt><dd>BAHAMAS data was processed by DLR, contact Andreas Giez</dd><dt><span>platform :</span></dt><dd>HALO</dd></dl></div></li></ul></div></div></div></div>
+</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-0fff5090-eea2-4231-8302-27086d4b79ea' class='xr-section-summary-in' type='checkbox'  ><label for='section-0fff5090-eea2-4231-8302-27086d4b79ea' class='xr-section-summary' >Indexes: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>time</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-9ea6caa8-dbdb-49d7-bcda-e633c0593ca5' class='xr-index-data-in' type='checkbox'/><label for='index-9ea6caa8-dbdb-49d7-bcda-e633c0593ca5' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(DatetimeIndex([&#x27;2020-02-05 09:15:53&#x27;, &#x27;2020-02-05 09:15:54&#x27;,
+               &#x27;2020-02-05 09:15:55&#x27;, &#x27;2020-02-05 09:15:56&#x27;,
+               &#x27;2020-02-05 09:15:57&#x27;, &#x27;2020-02-05 09:15:58&#x27;,
+               &#x27;2020-02-05 09:15:59&#x27;, &#x27;2020-02-05 09:16:00&#x27;,
+               &#x27;2020-02-05 09:16:01&#x27;, &#x27;2020-02-05 09:16:02&#x27;,
+               ...
+               &#x27;2020-02-05 18:21:13&#x27;, &#x27;2020-02-05 18:21:14&#x27;,
+               &#x27;2020-02-05 18:21:15&#x27;, &#x27;2020-02-05 18:21:16&#x27;,
+               &#x27;2020-02-05 18:21:17&#x27;, &#x27;2020-02-05 18:21:18&#x27;,
+               &#x27;2020-02-05 18:21:19&#x27;, &#x27;2020-02-05 18:21:20&#x27;,
+               &#x27;2020-02-05 18:21:21&#x27;, &#x27;2020-02-05 18:21:22&#x27;],
+              dtype=&#x27;datetime64[ns]&#x27;, name=&#x27;time&#x27;, length=32730, freq=None))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-8b02a49f-aa52-416b-a324-7bc78e744513' class='xr-section-summary-in' type='checkbox'  checked><label for='section-8b02a49f-aa52-416b-a324-7bc78e744513' class='xr-section-summary' >Attributes: <span>(7)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>Contact :</span></dt><dd>Andre Ehrlich, University Leipzig, a.ehrlich@uni-leipzig.de or Kevin Wolf, University Leipzig, kevin.wolf@uni-leipzig.de</dd><dt><span>Research_Flight_Day :</span></dt><dd>2020/20/05</dd><dt><span>Title :</span></dt><dd>Spectral downward irradiance measured by SMART during EUREC4A</dd><dt><span>Version :</span></dt><dd>Revision 3 from 2021/01/24</dd><dt><span>campaign :</span></dt><dd>EUREC4A</dd><dt><span>comment 1 :</span></dt><dd>BAHAMAS data was processed by DLR, contact Andreas Giez</dd><dt><span>platform :</span></dt><dd>HALO</dd></dl></div></li></ul></div></div></div></div>
 </div>
 <p>The available dataset includes irradiances for six selected wavelengths (422nm, 532nm, 648nm, 858nm, 1238nm, 1638nm). The full dataset is available on demand. Contact the dataset authors as stated in the dataset attributes <code class="docutils literal notranslate"><span class="pre">contact</span></code>.</p>
 <p>First Quickplot of whole flight (one wavelength)</p>
