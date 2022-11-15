@@ -3,6 +3,7 @@ dependencies:
   - python>=3.7
   - anaconda
   - cartopy
+  - matplotlib
   - pip
   - pip:
     - -r requirements.txt
