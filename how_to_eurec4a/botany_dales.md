@@ -70,15 +70,8 @@ Cloud Botany is a library of idealised large-eddy simulations forced by and init
 Cloud Botany contains simulations at a variety of grid resolutions and domain sizes, and each set of simulations comes with its own output. Most of this output is hosted and made available through [DKRZ's Swiftbrowser](https://docs.dkrz.de/doc/datastorage/swift/swiftbrowser.html), and can be accessed through the [`eurec4a-intake`](https://github.com/eurec4a/eurec4a-intake) catalog.
 
 ```{code-cell} ipython3
-# Hauke's branch of the intake catalog - not merged yet
-from intake import open_catalog
-url = "https://raw.githubusercontent.com/observingClouds/eurec4a-intake/botany/catalog.yml"
-cat = open_catalog(url)
-
-# Switch to version below once Botany is fully merged into the intake catalog
-# import eurec4a
-# cat = eurec4a.get_intake_catalog()
-
+import eurec4a
+cat = eurec4a.get_intake_catalog()
 botany_cat = cat.simulations.DALES.botany
 ```
 
@@ -107,7 +100,9 @@ tree(botany_cat)
 ## Output description
 
 ### Parameters
-A combination of grid resolution and domain size, e.g. `botany_cat.dx100.nx1536`, contains its own ensemble of cases. To inspect and use the ensemble, start by loading its `parameters`:
+A combination of grid resolution and domain size, e.g. `botany_cat.dx100.nx1536`, contains its own ensemble of cases. For now, only the combination `dx100` and `nx1536` can be accessed through the `eurec4a-intake` catalog, as this is the only configuration in which the full ensemble has been simulated. Other grid configurations might be added at a later stage.
+
+To inspect and use the ensemble, start by loading its `parameters`:
 
 ```{code-cell} ipython3
 import pandas as pd
@@ -206,12 +201,9 @@ One way to study how simulation output varies with the `parameters` is to add a 
 ```{code-cell} ipython3
 from cycler import cycler
 
-colors = plt.cm.cividis(np.linspace(0, 1, 7))
-custom_cycler = cycler(color=colors)
-
 fig = plt.figure()
 ax = plt.gca()
-ax.set_prop_cycle(custom_cycler)
+ax.set_prop_cycle(cycler(color=plt.cm.cividis(np.linspace(0, 1, 7))))
 
 # Add u0 to the profiles output
 ds_u = ds_profiles.assign(df_parameters[['member','u0']].set_index('member').to_xarray())
