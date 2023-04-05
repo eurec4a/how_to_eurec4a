@@ -16,7 +16,7 @@ kernelspec:
 The following script exemplifies the access and usage of dropsonde data measured 
 during EUREC⁴A - ATOMIC.  
 
-More information on the dataset can be found at https://github.com/Geet-George/JOANNE/tree/master/joanne/Level_3#level---3.
+More information on the dataset can be found in the [JOANNE publication](https://doi.org/10.5194/essd-13-5253-2021) describing the dataset.
 If you have questions or if you would like to use the data for a publication, please don't hesitate to get in contact with the dataset authors as stated in the dataset attributes `contact` and `author`.
 
 ## Get data
