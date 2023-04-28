@@ -82,6 +82,8 @@ def drop_datasets(datasets):
             continue
         elif ('synthetic_radar' in dataset) and ('BCO' not in dataset):
             continue
+        elif ('SRM' in dataset):
+            continue
         else:
             datasets_to_keep.append(dataset)
     return datasets_to_keep
