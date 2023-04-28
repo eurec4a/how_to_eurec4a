@@ -30,7 +30,8 @@ import numpy as np
 import datetime
 
 import matplotlib.pyplot as plt
-plt.style.use(["./mplstyle/book"])
+import pathlib
+plt.style.use(pathlib.Path("./mplstyle/book"))
 %matplotlib inline
 
 import eurec4a

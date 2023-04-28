@@ -102,7 +102,8 @@ fetching the data and displaying it might take a few seconds
 ```{code-cell} ipython3
 %matplotlib inline
 import matplotlib.pyplot as plt
-plt.style.use("./mplstyle/book")
+import pathlib
+plt.style.use(pathlib.Path("./mplstyle/book"))
 ```
 
 ### Temperature and relative humidity as stored in the xarray dataset

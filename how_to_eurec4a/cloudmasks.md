@@ -262,7 +262,8 @@ colors={
 ```{code-cell} ipython3
 %matplotlib inline
 import matplotlib.pyplot as plt
-plt.style.use(["./mplstyle/book"])
+import pathlib
+plt.style.use(pathlib.Path("./mplstyle/book"))
 ```
 
 ```{code-cell} ipython3

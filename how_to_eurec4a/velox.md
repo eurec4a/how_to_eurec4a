@@ -115,7 +115,8 @@ ds_sel = ds.cloud_mask.sel(time=sonde_dt, method="nearest")
 ```{code-cell} ipython3
 %matplotlib inline
 import matplotlib.pyplot as plt
-plt.style.use("./mplstyle/book")
+import pathlib
+plt.style.use(pathlib.Path("./mplstyle/book"))
 
 fig, ax = plt.subplots()
 

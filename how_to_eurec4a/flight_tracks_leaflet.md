@@ -37,7 +37,8 @@ Just to have a better visual impression, we can create a quick overview plot of 
 %matplotlib inline
 import numpy as np
 import matplotlib.pyplot as plt
-plt.style.use("./mplstyle/book")
+import pathlib
+plt.style.use(pathlib.Path("./mplstyle/book"))
 
 plt.plot(ds.lon, ds.lat)
 center_lat = float(ds.lat.mean())

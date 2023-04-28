@@ -36,7 +36,8 @@ import datetime
 # Related to plotting
 #
 import matplotlib.pyplot as plt
-plt.style.use(["./mplstyle/book"])
+import pathlib
+plt.style.use(pathlib.Path("./mplstyle/book"))
 %matplotlib inline
 ```
 
