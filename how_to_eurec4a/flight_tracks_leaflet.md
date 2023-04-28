@@ -136,7 +136,7 @@ pool = ThreadPool(20)
 
 def get_dataset(flight_id):
     ds = cat.HALO.BAHAMAS.PositionAttitude[flight_id].to_dask()
-    return flight_id, ds.load()
+    return flight_id, ds[['lat','lon']].load()
 
 full_tracks = dict(pool.map(get_dataset, cat.HALO.BAHAMAS.PositionAttitude))
 ```
