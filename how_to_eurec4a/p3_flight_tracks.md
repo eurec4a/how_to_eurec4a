@@ -174,7 +174,7 @@ fig = plt.figure(figsize = (8.3,5))
 ax = plt.axes()
 
 for d in flight_dates:
-    flight = nav_data.sel(time=slice(d, d + one_day))
+    flight = nav_data.sel(time=slice(d, d + one_day)).compute()
     flight = flight.where(flight.alt > 80, drop=True) # Proxy for take-off time
     plt.plot(flight.time - flight.time.min(), flight.alt/1000.,
              lw=2, alpha=0.5, c=color_of_day(d),

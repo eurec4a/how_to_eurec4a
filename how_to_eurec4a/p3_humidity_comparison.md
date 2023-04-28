@@ -44,7 +44,7 @@ pi = cat.P3.isotope_analyzer.water_vapor_1hz["P3-0119"].to_dask()
 rhs = xr.Dataset({"press" :fl["press"],
                   "alt"   :fl["alt"],
                   "rh_p3" :fl["RH"],
-                  "rh_iso":pi["rh_iso"]})
+                  "rh_iso":pi["rh_iso"]}).compute()
 rhs = rhs.where(rhs.alt > 80., drop = True)
 ```
 
