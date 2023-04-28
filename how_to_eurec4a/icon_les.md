@@ -117,6 +117,7 @@ for d, dataset in enumerate(datasets):
     axs[d].set(yticklabels=[])  # remove the tick labels
     axs[d].tick_params(left=False)  # remove the ticks
 axs[d].xaxis.set_major_formatter(xfmt)
+axs[d].set_xlim([dt.date(2020, 1, 1), dt.date(2020, 3, 1)])
 plt.tight_layout()
 ```
 
