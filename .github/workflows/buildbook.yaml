@@ -16,9 +16,9 @@ jobs:
       IPFSSPEC_GATEWAYS: "http://127.0.0.1:8080"
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}
     - name: Set up Python modules with conda
@@ -34,7 +34,7 @@ jobs:
         sudo apt-get install -y wget curl jq
         bash <(curl https://raw.githubusercontent.com/eurec4a/ipfs_tools/main/install_and_run_ipfs.sh) ${{ matrix.ipfs-version }}
     - name: setting up notebook execution cache
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: |
           how_to_eurec4a/_build/.jupyter_cache
