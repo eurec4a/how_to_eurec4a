@@ -80,7 +80,7 @@ Datasets should be added by following these steps:
    git add -p
    ```
    ```bash
-git commit -m "<Adding my_new_dataset>"
+   git commit -m "<Adding my_new_dataset>"
    ```
 
 4. Push branch to GitHub
