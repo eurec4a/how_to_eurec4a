@@ -1,6 +1,7 @@
 format: jb-book
 root: intro
 chapters:
+- file: howto
 - file: halo
   sections:
   - file: HALO_instrument_overview
