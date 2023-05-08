@@ -36,6 +36,7 @@ sphinx:
     apastyle: _ext/
     bracket_citation_style: _ext/
   config:
+    myst_heading_anchors : 3
     latex_logo: logo_pyeurec4a.png
     latex_elements:
       preamble: \usepackage{how_to_eurec4a}

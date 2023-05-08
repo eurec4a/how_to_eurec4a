@@ -102,7 +102,8 @@ fetching the data and displaying it might take a few seconds
 ```{code-cell} ipython3
 %matplotlib inline
 import matplotlib.pyplot as plt
-plt.style.use("./mplstyle/book")
+import pathlib
+plt.style.use(pathlib.Path("./mplstyle/book"))
 ```
 
 ### Temperature and relative humidity as stored in the xarray dataset
@@ -157,7 +158,7 @@ we again select the relevant soundings:
 
 ```{code-cell} ipython3
 mask_sondes_Feb05 = (ds.launch_time.astype("<M8[D]") == np.datetime64("2020-02-05")) & (ds.platform_id == "HALO")
-ds_sondes_Feb05 = ds.isel(sonde_id=mask_sondes_Feb05)
+ds_sondes_Feb05 = ds.isel(sonde_id=mask_sondes_Feb05.compute())
 ```
 
 We now want to show a time-altitude plot of the soundings. In order to show larger gaps between consecutive soundings,

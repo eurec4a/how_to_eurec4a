@@ -173,7 +173,8 @@ radar_y = radar_y - wgs_correction
 ```{code-cell} ipython3
 %matplotlib inline
 import matplotlib.pyplot as plt
-plt.style.use("./mplstyle/book")
+import pathlib
+plt.style.use(pathlib.Path("./mplstyle/book"))
 
 fig, (ax3, ax2, ax1, ax,) = plt.subplots(
     nrows=4, sharex=True,

@@ -10,6 +10,8 @@ kernelspec:
   display_name: Python 3
   language: python
   name: python3
+execution:
+  timeout: 120
 ---
 
 # interactive HALO tracks
@@ -37,7 +39,8 @@ Just to have a better visual impression, we can create a quick overview plot of 
 %matplotlib inline
 import numpy as np
 import matplotlib.pyplot as plt
-plt.style.use("./mplstyle/book")
+import pathlib
+plt.style.use(pathlib.Path("./mplstyle/book"))
 
 plt.plot(ds.lon, ds.lat)
 center_lat = float(ds.lat.mean())
@@ -130,14 +133,11 @@ display(testmap)
 Let's see if we can add all the flights and provide a layer switcher so that we can have a look at all flights individually. We'll start by loading and simplifying all out track data into a local dictionary. Requesting the datasets from the server is IO bound and thus can simply be accellerated using a ThreadPool:
 
 ```{code-cell} ipython3
-from multiprocessing.pool import ThreadPool
-pool = ThreadPool(20)
-
 def get_dataset(flight_id):
     ds = cat.HALO.BAHAMAS.PositionAttitude[flight_id].to_dask()
-    return flight_id, ds.load()
+    return ds[['lat','lon']].load()
 
-full_tracks = dict(pool.map(get_dataset, cat.HALO.BAHAMAS.PositionAttitude))
+full_tracks = {k: get_dataset(k) for k in cat.HALO.BAHAMAS.PositionAttitude}
 ```
 
 We still have to simplify the dataset, which is done here:

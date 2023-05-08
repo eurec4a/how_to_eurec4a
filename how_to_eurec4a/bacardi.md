@@ -52,8 +52,9 @@ We plot the upward and downward irradiances in two panels.
 
 ```{code-cell} ipython3
 %matplotlib inline
+import pathlib
 import matplotlib.pyplot as plt
-plt.style.use(["./mplstyle/book", "./mplstyle/wide"])
+plt.style.use([pathlib.Path("./mplstyle/book"), pathlib.Path("./mplstyle/wide")])
 ```
 
 ```{code-cell} ipython3

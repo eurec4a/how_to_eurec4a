@@ -1,6 +1,6 @@
 name: how_to_eurec4a
 dependencies:
-  - python>=3.7
+  - python>=3.9
   - anaconda
   - cartopy
   - matplotlib
