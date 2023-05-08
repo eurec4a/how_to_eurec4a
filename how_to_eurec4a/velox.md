@@ -92,7 +92,7 @@ first_dropsonde
 ```
 
 ### What is the corresponding launch time of the selected sonde?
-So far, we only made use of the flight segmentation meta data. The launch time to a given sonde is stated in the [JOANNE](https://github.com/Geet-George/JOANNE/tree/master/joanne/Level_3#level%E2%80%943) dataset (see also book chapter {doc}`dropsondes`). 
+So far, we only made use of the flight segmentation meta data. The launch time to a given sonde is stated in the [JOANNE](https://doi.org/10.5194/essd-13-5253-2021) dataset (see also book chapter {doc}`dropsondes`). 
 We use again the intake catalog to load the JOANNE dataset and extract the launch time to the selected dropsonde by it's sonde ID.
 
 ```{code-cell} ipython3
