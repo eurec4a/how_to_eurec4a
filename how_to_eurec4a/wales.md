@@ -70,7 +70,8 @@ cm_meanings
 %matplotlib inline
 import numpy as np
 import matplotlib.pyplot as plt
-plt.style.use("./mplstyle/book")
+import pathlib
+plt.style.use(pathlib.Path("./mplstyle/book"))
 
 fig, axes = plt.subplots(3, 1, sharex=True)
 ax1, ax2, ax3 = axes
