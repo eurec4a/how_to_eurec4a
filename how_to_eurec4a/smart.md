@@ -47,7 +47,8 @@ First Quickplot of whole flight (one wavelength)
 ```{code-cell} ipython3
 %matplotlib inline
 import matplotlib.pyplot as plt
-plt.style.use("./mplstyle/book")
+import pathlib
+plt.style.use(pathlib.Path("./mplstyle/book"))
 
 ds_smart.F_down_solar_wl_422.plot();
 ```

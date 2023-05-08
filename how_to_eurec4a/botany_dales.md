@@ -151,7 +151,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 from pandas.plotting import register_matplotlib_converters
 register_matplotlib_converters()
-plt.style.use(["./mplstyle/book", "./mplstyle/wide"])
+import pathlib
+plt.style.use([pathlib.Path("./mplstyle/book"), pathlib.Path("./mplstyle/wide")])
 ```
 
 ### An overview over the initial profiles of Botany

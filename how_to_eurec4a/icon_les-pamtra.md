@@ -31,7 +31,8 @@ import matplotlib.pyplot as plt
 from matplotlib import dates
 from pandas.plotting import register_matplotlib_converters
 register_matplotlib_converters()
-plt.style.use(["./mplstyle/book", "./mplstyle/wide"])
+import pathlib
+plt.style.use([pathlib.Path("./mplstyle/book"), pathlib.Path("./mplstyle/wide")])
 cat = eurec4a.get_intake_catalog()
 ```
 

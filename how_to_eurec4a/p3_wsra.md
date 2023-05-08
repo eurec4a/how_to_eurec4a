@@ -33,7 +33,8 @@ import xarray as xr
 import numpy as np
 
 import matplotlib.pyplot as plt
-plt.style.use(["./mplstyle/book"])
+import pathlib
+plt.style.use(pathlib.Path("./mplstyle/book"))
 import colorcet as cc
 %matplotlib inline
 

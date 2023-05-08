@@ -30,7 +30,8 @@ This chapter assumes that a cloud mask and possibly other cloud-related paramete
 import numpy as np
 import matplotlib.pylab as plt
 import matplotlib.ticker as ticker
-plt.style.use(["./mplstyle/book", "./mplstyle/wide"])
+import pathlib
+plt.style.use([pathlib.Path("./mplstyle/book"), pathlib.Path("./mplstyle/wide")])
 ```
 
 ## Cloud length
