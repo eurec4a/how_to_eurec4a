@@ -1,49 +1,60 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>WALES Lidar &#8212; How to EUREC⁴A</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -51,64 +62,94 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'wales';</script>
     <link rel="shortcut icon" href="_static/logo_pyeurec4a.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="HAMP comparison" href="hamp_comparison.html" />
     <link rel="prev" title="BACARDI dataset" href="bacardi.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="_static/logo_pyeurec4a.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">How to EUREC⁴A</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="_static/logo_pyeurec4a.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo_pyeurec4a.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -118,613 +159,376 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="halo.html">
-   HALO
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="HALO_instrument_overview.html">
-     Instrument Overview
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="specmacs.html">
-     specMACS cloudmask
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="unified.html">
-     HALO UNIFIED dataset
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="flight_tracks_leaflet.html">
-     interactive HALO tracks
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="smart.html">
-     SMART dataset
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="velox.html">
-     VELOX
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="bacardi.html">
-     BACARDI dataset
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     WALES Lidar
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="hamp_comparison.html">
-     HAMP comparison
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="cloudmasks.html">
-     Cloud masks
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="pthree.html">
-   NOAA P3 “Miss Piggy”
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="p3_flight_tracks.html">
-     Flight tracks
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="p3_humidity_comparison.html">
-     Humidity comparison: Hygrometer and isotope analyzer
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="p3_wband_radar.html">
-     W-band radar example
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="p3_AXBTs.html">
-     Ocean temperatures: AXBTs and SWIFT buoys
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="p3_wsra.html">
-     WSRA example: surface wave state
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="meteor.html">
-   Meteor
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="meteor_cloudradar.html">
-     Reading cloud radar data
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="merian.html">
-   Merian
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="merian_cloudradar.html">
-     Cloud radar data collected on MS Merian
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="bco.html">
-   BCO
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="bco_cloudradar.html">
-     Cloud radar data collected at the Barbados Cloud Observatory (BCO)
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="multi_platform_data.html">
-   Multi-platform datasets
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="dropsondes.html">
-     Dropsondes dataset JOANNE
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="simulations.html">
-   Simulations
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2 has-children">
-    <a class="reference internal" href="icon_les.html">
-     ICON-LES
-    </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-    <label for="toctree-checkbox-8">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="icon_les-pamtra.html">
-       Synthetic measurements
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="botany_dales.html">
-     Cloud Botany with DALES
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="auxiliary_datasets.html">
-   Auxiliary datasets
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-  <label for="toctree-checkbox-9">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="c3ontext.html">
-     How to put your measurements into the meso-scale context of cloud patterns
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="toolbox.html">
-   Toolbox
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="flight-phase-operations.html">
-     How to work with flight phase segmentation files
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="show_intake_catalog.html">
-     Show the intake catalog
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="cloud_stat_tools.html">
-     Cloud statistics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="running_locally.html">
-     running How to EUREC4A locally
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="netcdf_datatypes.html">
-     The issue with netCDF data types
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="data_on_ipfs.html">
-     Data on IPFS
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="references.html">
-   References
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="stats.html">
-   Script execution statistics
-  </a>
- </li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="halo.html">HALO</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="HALO_instrument_overview.html">Instrument Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="specmacs.html">specMACS cloudmask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unified.html">HALO UNIFIED dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flight_tracks_leaflet.html">interactive HALO tracks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="smart.html">SMART dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="velox.html">VELOX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bacardi.html">BACARDI dataset</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">WALES Lidar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hamp_comparison.html">HAMP comparison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloudmasks.html">Cloud masks</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pthree.html">NOAA P3 “Miss Piggy”</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="p3_flight_tracks.html">Flight tracks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p3_humidity_comparison.html">Humidity comparison: Hygrometer and isotope analyzer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p3_wband_radar.html">W-band radar example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p3_AXBTs.html">Ocean temperatures: AXBTs and SWIFT buoys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p3_wsra.html">WSRA example: surface wave state</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="meteor.html">Meteor</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="meteor_cloudradar.html">Reading cloud radar data</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="merian.html">Merian</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="merian_cloudradar.html">Cloud radar data collected on MS Merian</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="bco.html">BCO</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="bco_cloudradar.html">Cloud radar data collected at the Barbados Cloud Observatory (BCO)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="multi_platform_data.html">Multi-platform datasets</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="dropsondes.html">Dropsondes dataset JOANNE</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="simulations.html">Simulations</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="icon_les.html">ICON-LES</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="icon_les-pamtra.html">Synthetic measurements</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="botany_dales.html">Cloud Botany with DALES</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="auxiliary_datasets.html">Auxiliary datasets</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="c3ontext.html">How to put your measurements into the meso-scale context of cloud patterns</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="toolbox.html">Toolbox</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="flight-phase-operations.html">How to work with flight phase segmentation files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="show_intake_catalog.html">Show the intake catalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud_stat_tools.html">Cloud statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="running_locally.html">running How to EUREC4A locally</a></li>
+<li class="toctree-l2"><a class="reference internal" href="netcdf_datatypes.html">The issue with netCDF data types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_on_ipfs.html">Data on IPFS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stats.html">Script execution statistics</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
-          
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
 
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
 <div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
 
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
     </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/eurec4a/how_to_eurec4a/master?urlpath=tree/how_to_eurec4a/wales.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/eurec4a/how_to_eurec4a/master?urlpath=tree/how_to_eurec4a/wales.md" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   
     <img src="_static/images/logo_binder.svg">
   </span>
-<span class="headerbtn__text-container">Binder</span>
+<span class="btn__text-container">Binder</span>
 </a>
-
-      </li>
+</li>
       
-      <li>
-        <a href="https://colab.research.google.com/github/eurec4a/how_to_eurec4a/blob/master/how_to_eurec4a/wales.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Colab"
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/eurec4a/how_to_eurec4a/blob/master/how_to_eurec4a/wales.md" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   
     <img src="_static/images/logo_colab.png">
   </span>
-<span class="headerbtn__text-container">Colab</span>
+<span class="btn__text-container">Colab</span>
 </a>
-
-      </li>
+</li>
+      
+      
+      
       
       <li>
-        
 <button onclick="initThebeSBT()"
-  class="headerbtn headerbtn-launch-thebe"
-  data-toggle="tooltip"
-data-placement="left"
-title="Launch Thebe"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-play"></i>
   </span>
-<span class="headerbtn__text-container">Live Code</span>
+<span class="btn__text-container">Live Code</span>
 </button>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
 
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/eurec4a/how_to_eurec4a" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/eurec4a/how_to_eurec4a/edit/master/how_to_eurec4a/wales.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/eurec4a/how_to_eurec4a/issues/new?title=Issue%20on%20page%20%2Fwales.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/wales.ipynb" target="_blank"
+   class="btn btn-sm btn-download-notebook-button dropdown-item"
+   title="Download notebook file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="_sources/wales.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/eurec4a/how_to_eurec4a"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/eurec4a/how_to_eurec4a/issues/new?title=Issue%20on%20page%20%2Fwales.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/eurec4a/how_to_eurec4a/edit/master/how_to_eurec4a/wales.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Edit this page"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-pencil-alt"></i>
-  </span>
-<span class="headerbtn__text-container">suggest edit</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/wales.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download notebook file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-code"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="_sources/wales.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.md</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#get-data">
-   Get data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cloud-parameter">
-   Cloud parameter
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cloud-fraction">
-   Cloud fraction
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>WALES Lidar</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#get-data">
-   Get data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cloud-parameter">
-   Cloud parameter
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cloud-fraction">
-   Cloud fraction
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>WALES Lidar</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-data">Get data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cloud-parameter">Cloud parameter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cloud-fraction">Cloud fraction</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="wales-lidar">
-<h1>WALES Lidar<a class="headerlink" href="#wales-lidar" title="Permalink to this headline">#</a></h1>
+<h1>WALES Lidar<a class="headerlink" href="#wales-lidar" title="Permalink to this heading">#</a></h1>
 <p>The water vapour differential absorption lidar WALES.
 WALES operates at four wave-lengths near 935 nm to measure water-vapor mixing ratio profiles covering the whole atmosphere below the aircraft.
 The system also contains additional aerosol channels at 532 nm and 1064 nm with depolarization.  WALES uses a high-spectral resolution technique, which distinguishes molecular from particle backscatter.</p>
@@ -743,7 +547,7 @@ The system also contains additional aerosol channels at 532 nm and 1064 nm with 
 </div>
 </div>
 <section id="get-data">
-<h2>Get data<a class="headerlink" href="#get-data" title="Permalink to this headline">#</a></h2>
+<h2>Get data<a class="headerlink" href="#get-data" title="Permalink to this heading">#</a></h2>
 <p>To load the data we first load the EUREC4A meta data catalog and list the available datasets from WALES.</p>
 <p>More information on the catalog can be found <a class="reference external" href="https://github.com/eurec4a/eurec4a-intake#eurec4a-intake-catalogue">here</a>.</p>
 <div class="cell docutils container">
@@ -761,7 +565,7 @@ The system also contains additional aerosol channels at 532 nm and 1064 nm with 
 </div>
 </section>
 <section id="cloud-parameter">
-<h2>Cloud parameter<a class="headerlink" href="#cloud-parameter" title="Permalink to this headline">#</a></h2>
+<h2>Cloud parameter<a class="headerlink" href="#cloud-parameter" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds_cloud</span> <span class="o">=</span> <span class="n">cat</span><span class="o">.</span><span class="n">HALO</span><span class="o">.</span><span class="n">WALES</span><span class="o">.</span><span class="n">cloudparameter</span><span class="p">[</span><span class="s2">&quot;HALO-0205&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_dask</span><span class="p">()</span>
@@ -1159,7 +963,7 @@ Attributes: (12/24)
     start_datetime:        2020-02-05T09:34:00
     stop_datetime:         2020-02-05T16:18:01
     system:                WALES H2O-DIAL
-    title:                 WALES lidar cloud mask</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-5e173fca-60d6-4b95-a856-940304972bde' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-5e173fca-60d6-4b95-a856-940304972bde' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 121200</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-f0553d42-ba33-4de0-85d4-83f962d2de1a' class='xr-section-summary-in' type='checkbox'  checked><label for='section-f0553d42-ba33-4de0-85d4-83f962d2de1a' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>lat</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(60600,), meta=np.ndarray&gt;</div><input id='attrs-8764aec0-e8b9-4702-b5af-4a7ce8486e7b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-8764aec0-e8b9-4702-b5af-4a7ce8486e7b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0b4a7a61-0652-487f-bd25-e48af015c7af' class='xr-var-data-in' type='checkbox'><label for='data-0b4a7a61-0652-487f-bd25-e48af015c7af' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Platform latitude coordinate</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd></dl></div><div class='xr-var-data'><table>
+    title:                 WALES lidar cloud mask</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-442e2521-a26e-4c0a-92d2-753f44aa94a9' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-442e2521-a26e-4c0a-92d2-753f44aa94a9' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 121200</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-ba97e0b0-ee0e-4ab3-bd2a-2ce861fd9db8' class='xr-section-summary-in' type='checkbox'  checked><label for='section-ba97e0b0-ee0e-4ab3-bd2a-2ce861fd9db8' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>lat</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(60600,), meta=np.ndarray&gt;</div><input id='attrs-e692eb5f-6d01-4079-a9ac-b0af465f8309' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e692eb5f-6d01-4079-a9ac-b0af465f8309' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-85392403-9277-41f2-bee2-6a0f6006c4a3' class='xr-var-data-in' type='checkbox'><label for='data-85392403-9277-41f2-bee2-6a0f6006c4a3' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Platform latitude coordinate</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1171,13 +975,13 @@ Attributes: (12/24)
                     </tr>
                 </thead>
                 <tbody>
-
+                    
                     <tr>
                         <th> Bytes </th>
                         <td> 473.44 kiB </td>
                         <td> 236.72 kiB </td>
                     </tr>
-
+                    
                     <tr>
                         <th> Shape </th>
                         <td> (121200,) </td>
@@ -1217,7 +1021,7 @@ Attributes: (12/24)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lon</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(60600,), meta=np.ndarray&gt;</div><input id='attrs-81066314-7d25-4801-a3d0-a2667093b867' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-81066314-7d25-4801-a3d0-a2667093b867' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-eb47230f-3b6f-4a48-8b73-3df99633b81d' class='xr-var-data-in' type='checkbox'><label for='data-eb47230f-3b6f-4a48-8b73-3df99633b81d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Platform longitude coordinate</dd><dt><span>long_name :</span></dt><dd>longitude</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lon</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(60600,), meta=np.ndarray&gt;</div><input id='attrs-4038c25c-4aab-462e-930a-1dcaa733f689' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-4038c25c-4aab-462e-930a-1dcaa733f689' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d2244e04-5481-4cc4-a887-284cb222f853' class='xr-var-data-in' type='checkbox'><label for='data-d2244e04-5481-4cc4-a887-284cb222f853' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Platform longitude coordinate</dd><dt><span>long_name :</span></dt><dd>longitude</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1229,13 +1033,13 @@ Attributes: (12/24)
                     </tr>
                 </thead>
                 <tbody>
-
+                    
                     <tr>
                         <th> Bytes </th>
                         <td> 473.44 kiB </td>
                         <td> 236.72 kiB </td>
                     </tr>
-
+                    
                     <tr>
                         <th> Shape </th>
                         <td> (121200,) </td>
@@ -1275,10 +1079,10 @@ Attributes: (12/24)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2020-02-05T09:34:00.167000064 .....</div><input id='attrs-44b33df6-0b31-4c25-95a8-0c017b6ce548' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-44b33df6-0b31-4c25-95a8-0c017b6ce548' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-fcc3d94e-f6fe-42e6-87be-0b24cf2139f9' class='xr-var-data-in' type='checkbox'><label for='data-fcc3d94e-f6fe-42e6-87be-0b24cf2139f9' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Number of seconds on the UTC time scale since 1. Jan. 1970 00:00:00</dd><dt><span>long_name :</span></dt><dd>time</dd><dt><span>standard_name :</span></dt><dd>time</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;2020-02-05T09:34:00.167000064&#x27;, &#x27;2020-02-05T09:34:00.367000064&#x27;,
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2020-02-05T09:34:00.167000064 .....</div><input id='attrs-8f0129de-3397-479e-b68c-79330dfa5828' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-8f0129de-3397-479e-b68c-79330dfa5828' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-66995d90-fc7b-4f69-a3ac-bad7a2b2e1bb' class='xr-var-data-in' type='checkbox'><label for='data-66995d90-fc7b-4f69-a3ac-bad7a2b2e1bb' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Number of seconds on the UTC time scale since 1. Jan. 1970 00:00:00</dd><dt><span>long_name :</span></dt><dd>time</dd><dt><span>standard_name :</span></dt><dd>time</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;2020-02-05T09:34:00.167000064&#x27;, &#x27;2020-02-05T09:34:00.367000064&#x27;,
        &#x27;2020-02-05T09:34:00.566999808&#x27;, ..., &#x27;2020-02-05T16:18:01.161999872&#x27;,
        &#x27;2020-02-05T16:18:01.361999872&#x27;, &#x27;2020-02-05T16:18:01.562000128&#x27;],
-      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-a670453b-571c-46f4-8d17-8d794af97294' class='xr-section-summary-in' type='checkbox'  checked><label for='section-a670453b-571c-46f4-8d17-8d794af97294' class='xr-section-summary' >Data variables: <span>(6)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>cloud_mask</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(121200,), meta=np.ndarray&gt;</div><input id='attrs-78ace48e-7d55-4f70-a077-e9b1d2355b0d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-78ace48e-7d55-4f70-a077-e9b1d2355b0d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-bb4612d8-9af6-4f22-aa59-3e7f36b1e373' class='xr-var-data-in' type='checkbox'><label for='data-bb4612d8-9af6-4f22-aa59-3e7f36b1e373' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Cloud mask inferred from step of lidar backscatter ratio at 532 nm to values bigger than 10</dd><dt><span>flag_meanings :</span></dt><dd>cloud_free probably_cloudy most_likely_cloudy</dd><dt><span>flag_values :</span></dt><dd>[0, 1, 2]</dd><dt><span>long_name :</span></dt><dd>cloud mask</dd><dt><span>units :</span></dt><dd></dd><dt><span>valid_range :</span></dt><dd>[0, 2]</dd></dl></div><div class='xr-var-data'><table>
+      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-9cac3bc5-aeeb-451d-bc24-94cfe7df5864' class='xr-section-summary-in' type='checkbox'  checked><label for='section-9cac3bc5-aeeb-451d-bc24-94cfe7df5864' class='xr-section-summary' >Data variables: <span>(6)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>cloud_mask</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(121200,), meta=np.ndarray&gt;</div><input id='attrs-29db11e4-7683-41c9-ac35-2aee5f966551' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-29db11e4-7683-41c9-ac35-2aee5f966551' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-94a765ac-a2d8-4d72-9ed9-b1f37da7f0e3' class='xr-var-data-in' type='checkbox'><label for='data-94a765ac-a2d8-4d72-9ed9-b1f37da7f0e3' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Cloud mask inferred from step of lidar backscatter ratio at 532 nm to values bigger than 10</dd><dt><span>flag_meanings :</span></dt><dd>cloud_free probably_cloudy most_likely_cloudy</dd><dt><span>flag_values :</span></dt><dd>[0, 1, 2]</dd><dt><span>long_name :</span></dt><dd>cloud mask</dd><dt><span>units :</span></dt><dd></dd><dt><span>valid_range :</span></dt><dd>[0, 2]</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1290,13 +1094,13 @@ Attributes: (12/24)
                     </tr>
                 </thead>
                 <tbody>
-
+                    
                     <tr>
                         <th> Bytes </th>
                         <td> 473.44 kiB </td>
                         <td> 473.44 kiB </td>
                     </tr>
-
+                    
                     <tr>
                         <th> Shape </th>
                         <td> (121200,) </td>
@@ -1335,7 +1139,7 @@ Attributes: (12/24)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>cloud_ot</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(60600,), meta=np.ndarray&gt;</div><input id='attrs-7cd8aef4-fb15-4373-b2d2-96529c1de196' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-7cd8aef4-fb15-4373-b2d2-96529c1de196' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e462cda5-0eea-439c-80ab-f8b774294cc2' class='xr-var-data-in' type='checkbox'><label for='data-e462cda5-0eea-439c-80ab-f8b774294cc2' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Optical thickness δ of the cloud between the top and 200 m above ground derived from the HSRL backscatter channel at 532 nm. Values above 3 are rough estimates. Values are computationally limited to numbers below 12. </dd><dt><span>long_name :</span></dt><dd>cloud optical thickness</dd><dt><span>standard_name :</span></dt><dd>atmosphere_optical_thickness_due_to_cloud</dd><dt><span>units :</span></dt><dd></dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>cloud_ot</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(60600,), meta=np.ndarray&gt;</div><input id='attrs-bf2d2b3a-b092-4fb2-811d-a5cdc432729f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-bf2d2b3a-b092-4fb2-811d-a5cdc432729f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-78629287-312c-42fc-a9af-0c21bc9708b6' class='xr-var-data-in' type='checkbox'><label for='data-78629287-312c-42fc-a9af-0c21bc9708b6' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Optical thickness δ of the cloud between the top and 200 m above ground derived from the HSRL backscatter channel at 532 nm. Values above 3 are rough estimates. Values are computationally limited to numbers below 12. </dd><dt><span>long_name :</span></dt><dd>cloud optical thickness</dd><dt><span>standard_name :</span></dt><dd>atmosphere_optical_thickness_due_to_cloud</dd><dt><span>units :</span></dt><dd></dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1347,13 +1151,13 @@ Attributes: (12/24)
                     </tr>
                 </thead>
                 <tbody>
-
+                    
                     <tr>
                         <th> Bytes </th>
                         <td> 473.44 kiB </td>
                         <td> 236.72 kiB </td>
                     </tr>
-
+                    
                     <tr>
                         <th> Shape </th>
                         <td> (121200,) </td>
@@ -1393,7 +1197,7 @@ Attributes: (12/24)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>cloud_top</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(60600,), meta=np.ndarray&gt;</div><input id='attrs-4f48bbc1-ca83-493b-946d-192800f16574' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-4f48bbc1-ca83-493b-946d-192800f16574' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-93bdbc05-04d5-4e8d-be02-4bc221cdee3a' class='xr-var-data-in' type='checkbox'><label for='data-93bdbc05-04d5-4e8d-be02-4bc221cdee3a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Cloud top altitude above sea level inferred from step of lidar backscatter ratio at 532 nm to values bigger than 10</dd><dt><span>long_name :</span></dt><dd>cloud top</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>cloud_top</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(60600,), meta=np.ndarray&gt;</div><input id='attrs-ec6844a5-b9a9-469d-8eb2-057b2e7b53f8' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ec6844a5-b9a9-469d-8eb2-057b2e7b53f8' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c1e40e08-1801-4313-9af8-0241fda2727f' class='xr-var-data-in' type='checkbox'><label for='data-c1e40e08-1801-4313-9af8-0241fda2727f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Cloud top altitude above sea level inferred from step of lidar backscatter ratio at 532 nm to values bigger than 10</dd><dt><span>long_name :</span></dt><dd>cloud top</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1405,13 +1209,13 @@ Attributes: (12/24)
                     </tr>
                 </thead>
                 <tbody>
-
+                    
                     <tr>
                         <th> Bytes </th>
                         <td> 473.44 kiB </td>
                         <td> 236.72 kiB </td>
                     </tr>
-
+                    
                     <tr>
                         <th> Shape </th>
                         <td> (121200,) </td>
@@ -1451,7 +1255,7 @@ Attributes: (12/24)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>pbl_top</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(60600,), meta=np.ndarray&gt;</div><input id='attrs-9dd45aed-3444-4883-a640-23c0e62e553b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-9dd45aed-3444-4883-a640-23c0e62e553b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-af9676b0-c3bd-4dc3-9e5d-778bcf96e181' class='xr-var-data-in' type='checkbox'><label for='data-af9676b0-c3bd-4dc3-9e5d-778bcf96e181' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Altitude of the top of the boundary layer above sea level.
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>pbl_top</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(60600,), meta=np.ndarray&gt;</div><input id='attrs-bf620882-f1b0-4ac6-8563-887de4fb68d7' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-bf620882-f1b0-4ac6-8563-887de4fb68d7' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-55cf2d0e-771c-4a13-bca6-9d56668b3c2e' class='xr-var-data-in' type='checkbox'><label for='data-55cf2d0e-771c-4a13-bca6-9d56668b3c2e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Altitude of the top of the boundary layer above sea level.
 Inferred from the maximum correlation of the lidar backscatter ratio profile at 532 nm
 with a step function.
 This is experimental data and should be interpreted with care, especially in the
@@ -1469,13 +1273,13 @@ In the case of a cloud, no pbl top is given.
                     </tr>
                 </thead>
                 <tbody>
-
+                    
                     <tr>
                         <th> Bytes </th>
                         <td> 473.44 kiB </td>
                         <td> 236.72 kiB </td>
                     </tr>
-
+                    
                     <tr>
                         <th> Shape </th>
                         <td> (121200,) </td>
@@ -1515,7 +1319,7 @@ In the case of a cloud, no pbl top is given.
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>target_lat</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(30300,), meta=np.ndarray&gt;</div><input id='attrs-750eeba5-879b-4350-b54a-c215a5310b13' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-750eeba5-879b-4350-b54a-c215a5310b13' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8aae2bf7-db92-46ba-9910-61fc6596fbb9' class='xr-var-data-in' type='checkbox'><label for='data-8aae2bf7-db92-46ba-9910-61fc6596fbb9' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Latitude coordinate of the cloud top. Different from platform lat during curves.</dd><dt><span>long_name :</span></dt><dd>target_latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>target_lat</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(30300,), meta=np.ndarray&gt;</div><input id='attrs-57fdddfb-c146-4198-bb83-b590ab578a21' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-57fdddfb-c146-4198-bb83-b590ab578a21' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-41fea5a7-2a12-46ec-a81b-63c6626c6001' class='xr-var-data-in' type='checkbox'><label for='data-41fea5a7-2a12-46ec-a81b-63c6626c6001' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Latitude coordinate of the cloud top. Different from platform lat during curves.</dd><dt><span>long_name :</span></dt><dd>target_latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1527,13 +1331,13 @@ In the case of a cloud, no pbl top is given.
                     </tr>
                 </thead>
                 <tbody>
-
+                    
                     <tr>
                         <th> Bytes </th>
                         <td> 0.92 MiB </td>
                         <td> 236.72 kiB </td>
                     </tr>
-
+                    
                     <tr>
                         <th> Shape </th>
                         <td> (121200,) </td>
@@ -1575,7 +1379,7 @@ In the case of a cloud, no pbl top is given.
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>target_lon</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(30300,), meta=np.ndarray&gt;</div><input id='attrs-517701d2-d59f-4ae4-9d16-47383720d77b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-517701d2-d59f-4ae4-9d16-47383720d77b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f9bc1a7b-10af-4fc5-9b31-af524ae05a8b' class='xr-var-data-in' type='checkbox'><label for='data-f9bc1a7b-10af-4fc5-9b31-af524ae05a8b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Longitude coordinate of the cloud top. Different from platform lon during curves.</dd><dt><span>long_name :</span></dt><dd>target_longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>target_lon</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(30300,), meta=np.ndarray&gt;</div><input id='attrs-ad95f54f-e55e-4e89-8643-23c0c106f211' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ad95f54f-e55e-4e89-8643-23c0c106f211' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-97e4bac5-11a0-4fbe-9800-e982c5b6011c' class='xr-var-data-in' type='checkbox'><label for='data-97e4bac5-11a0-4fbe-9800-e982c5b6011c' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Longitude coordinate of the cloud top. Different from platform lon during curves.</dd><dt><span>long_name :</span></dt><dd>target_longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1587,13 +1391,13 @@ In the case of a cloud, no pbl top is given.
                     </tr>
                 </thead>
                 <tbody>
-
+                    
                     <tr>
                         <th> Bytes </th>
                         <td> 0.92 MiB </td>
                         <td> 236.72 kiB </td>
                     </tr>
-
+                    
                     <tr>
                         <th> Shape </th>
                         <td> (121200,) </td>
@@ -1635,7 +1439,7 @@ In the case of a cloud, no pbl top is given.
 </svg>
         </td>
     </tr>
-</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-56527944-9b36-4cff-b804-f994aa451c7f' class='xr-section-summary-in' type='checkbox'  ><label for='section-56527944-9b36-4cff-b804-f994aa451c7f' class='xr-section-summary' >Indexes: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>time</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-bf8da498-d7cb-41df-a026-bf41398fb803' class='xr-index-data-in' type='checkbox'/><label for='index-bf8da498-d7cb-41df-a026-bf41398fb803' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(DatetimeIndex([&#x27;2020-02-05 09:34:00.167000064&#x27;,
+</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-a948b5fe-614b-4771-b8cd-81bf57822771' class='xr-section-summary-in' type='checkbox'  ><label for='section-a948b5fe-614b-4771-b8cd-81bf57822771' class='xr-section-summary' >Indexes: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>time</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-ceb39ea4-be7a-4667-83f1-9a18050e4992' class='xr-index-data-in' type='checkbox'/><label for='index-ceb39ea4-be7a-4667-83f1-9a18050e4992' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(DatetimeIndex([&#x27;2020-02-05 09:34:00.167000064&#x27;,
                &#x27;2020-02-05 09:34:00.367000064&#x27;,
                &#x27;2020-02-05 09:34:00.566999808&#x27;,
                &#x27;2020-02-05 09:34:00.767000064&#x27;,
@@ -1656,7 +1460,7 @@ In the case of a cloud, no pbl top is given.
                &#x27;2020-02-05 16:18:01.161999872&#x27;,
                &#x27;2020-02-05 16:18:01.361999872&#x27;,
                &#x27;2020-02-05 16:18:01.562000128&#x27;],
-              dtype=&#x27;datetime64[ns]&#x27;, name=&#x27;time&#x27;, length=121200, freq=None))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-fb018035-d125-434d-9f51-f382879b837c' class='xr-section-summary-in' type='checkbox'  ><label for='section-fb018035-d125-434d-9f51-f382879b837c' class='xr-section-summary' >Attributes: <span>(24)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>author :</span></dt><dd>Martin Wirth</dd><dt><span>comment :</span></dt><dd>Dataset for EUREC4A ESSD cloud mask paper. Version 2 with enhanced noise filter for optical thickness. Format is now classic netCDF and with signed short data type for flag variables and attributes to avoid problems with OPeNDAP</dd><dt><span>contact :</span></dt><dd>martin.wirth@dlr.de</dd><dt><span>convention :</span></dt><dd>CF-1.8</dd><dt><span>data_modified :</span></dt><dd>20210309</dd><dt><span>data_processing_date :</span></dt><dd>20210309</dd><dt><span>data_version :</span></dt><dd>2.1</dd><dt><span>featureType :</span></dt><dd>trajectory</dd><dt><span>history :</span></dt><dd>2021-03-09 17:02:35 Generated by generate_cloudmask.jl from EUREC4A_HALO_WALES_cloudtop_20200205a_V2.nc
+              dtype=&#x27;datetime64[ns]&#x27;, name=&#x27;time&#x27;, length=121200, freq=None))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-060d3c3e-102e-478f-b0c9-b9368ce0d959' class='xr-section-summary-in' type='checkbox'  ><label for='section-060d3c3e-102e-478f-b0c9-b9368ce0d959' class='xr-section-summary' >Attributes: <span>(24)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>author :</span></dt><dd>Martin Wirth</dd><dt><span>comment :</span></dt><dd>Dataset for EUREC4A ESSD cloud mask paper. Version 2 with enhanced noise filter for optical thickness. Format is now classic netCDF and with signed short data type for flag variables and attributes to avoid problems with OPeNDAP</dd><dt><span>contact :</span></dt><dd>martin.wirth@dlr.de</dd><dt><span>convention :</span></dt><dd>CF-1.8</dd><dt><span>data_modified :</span></dt><dd>20210309</dd><dt><span>data_processing_date :</span></dt><dd>20210309</dd><dt><span>data_version :</span></dt><dd>2.1</dd><dt><span>featureType :</span></dt><dd>trajectory</dd><dt><span>history :</span></dt><dd>2021-03-09 17:02:35 Generated by generate_cloudmask.jl from EUREC4A_HALO_WALES_cloudtop_20200205a_V2.nc
 2021-03-09 17:04:33 target positions added by add_target_position.jl</dd><dt><span>institution :</span></dt><dd>Deutsches Zentrum fuer Luft- und Raumfahrt, Institut fuer Physik der Atmosphaere, Oberpfaffenhofen, Muenchener Str. 20, 82234 Wessling, Germany</dd><dt><span>instrument :</span></dt><dd>WALES</dd><dt><span>location_name :</span></dt><dd>HALO</dd><dt><span>max_latitude :</span></dt><dd>       15.508407</dd><dt><span>max_longitude :</span></dt><dd>      -53.032715</dd><dt><span>min_latitude :</span></dt><dd>       12.300429</dd><dt><span>min_longitude :</span></dt><dd>      -58.743504</dd><dt><span>mission :</span></dt><dd>EUREC4A</dd><dt><span>ongoing_subset :</span></dt><dd>10</dd><dt><span>platform :</span></dt><dd>HALO</dd><dt><span>source :</span></dt><dd>airborne observation</dd><dt><span>start_datetime :</span></dt><dd>2020-02-05T09:34:00</dd><dt><span>stop_datetime :</span></dt><dd>2020-02-05T16:18:01</dd><dt><span>system :</span></dt><dd>WALES H2O-DIAL</dd><dt><span>title :</span></dt><dd>WALES lidar cloud mask</dd></dl></div></li></ul></div></div></div></div>
 </div>
 <p>We select 1min of flight <code class="docutils literal notranslate"><span class="pre">time</span></code>. You can freely change the times or put <code class="docutils literal notranslate"><span class="pre">None</span></code> instead of the slice start and/or end to get up to the full flight data.
@@ -1692,7 +1496,8 @@ We explicitly <code class="docutils literal notranslate"><span class="pre">load(
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;./mplstyle/book&quot;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">pathlib</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;./mplstyle/book&quot;</span><span class="p">))</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span> <span class="o">=</span> <span class="n">axes</span>
@@ -1741,12 +1546,12 @@ We explicitly <code class="docutils literal notranslate"><span class="pre">load(
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/wales_10_0.png" src="_images/wales_10_0.png" />
+<img alt="_images/fbc723048be4cdc3f76bf84cd095ae78e9adb8b939bc482ee1c3ce304b44f9bb.png" src="_images/fbc723048be4cdc3f76bf84cd095ae78e9adb8b939bc482ee1c3ce304b44f9bb.png" />
 </div>
 </div>
 </section>
 <section id="cloud-fraction">
-<h2>Cloud fraction<a class="headerlink" href="#cloud-fraction" title="Permalink to this headline">#</a></h2>
+<h2>Cloud fraction<a class="headerlink" href="#cloud-fraction" title="Permalink to this heading">#</a></h2>
 <p>The cloud fraction can be estimated based on how often the instrument detected a cloud versus how often it measured anything.
 So, in order to compute the cloud fraction correctly, we must take care of missing values, in the original dataset.
 As Python has no commonly used way of carrying on a missing value through comparisions, we must keep track of it ourselves.</p>
@@ -1826,7 +1631,17 @@ Yet, this missing value story was a bit complicated, so let’s check if we woul
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/wales_16_0.png" src="_images/wales_16_0.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_5313/2137766595.py:6: FutureWarning: Following pandas, the `loffset` parameter to resample will be deprecated in a future version of xarray.  Switch to using time offset arithmetic.
+  averaged_cloud_fraction = min_cloud_binary_mask.resample(time=f&quot;{t}min&quot;, loffset=f&quot;{t/2}min&quot;).mean()
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_5313/2137766595.py:6: FutureWarning: Following pandas, the `loffset` parameter to resample will be deprecated in a future version of xarray.  Switch to using time offset arithmetic.
+  averaged_cloud_fraction = min_cloud_binary_mask.resample(time=f&quot;{t}min&quot;, loffset=f&quot;{t/2}min&quot;).mean()
+/tmp/ipykernel_5313/2137766595.py:6: FutureWarning: Following pandas, the `loffset` parameter to resample will be deprecated in a future version of xarray.  Switch to using time offset arithmetic.
+  averaged_cloud_fraction = min_cloud_binary_mask.resample(time=f&quot;{t}min&quot;, loffset=f&quot;{t/2}min&quot;).mean()
+</pre></div>
+</div>
+<img alt="_images/cef03507b33b74d3561b685596835c01dacad8298399b96e20038135d887d4b9.png" src="_images/cef03507b33b74d3561b685596835c01dacad8298399b96e20038135d887d4b9.png" />
 </div>
 </div>
 </section>
@@ -1844,7 +1659,7 @@ Yet, this missing value story was a bit complicated, so let’s check if we woul
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -1852,50 +1667,107 @@ Yet, this missing value story was a bit complicated, so let’s check if we woul
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="bacardi.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">BACARDI dataset</p>
-        </div>
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="bacardi.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">BACARDI dataset</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="hamp_comparison.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="hamp_comparison.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">HAMP comparison</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
-  
-    By EUREC⁴A community<br/>
-  
-      &copy; Copyright 2021.<br/>
-</p>
-        </footer>
-    </div>
-    
-</div>
-
-
       </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-data">Get data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cloud-parameter">Cloud parameter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cloud-fraction">Cloud fraction</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By EUREC⁴A community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2021.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

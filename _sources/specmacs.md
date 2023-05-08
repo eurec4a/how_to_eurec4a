@@ -96,8 +96,9 @@ After selecting our datasets, we want to see what's inside, so here are some fir
 
 ```{code-cell} ipython3
 %matplotlib inline
+import pathlib
 import matplotlib.pyplot as plt
-plt.style.use(["./mplstyle/book", "./mplstyle/wide"])
+plt.style.use([pathlib.Path("./mplstyle/book"), pathlib.Path("./mplstyle/wide")])
 ```
 
 First, we create a little helper to properly display a colorbar for categorical (in CF-Convention terms "flag") variables:

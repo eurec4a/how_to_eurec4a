@@ -1,49 +1,60 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>How to put your measurements into the meso-scale context of cloud patterns &#8212; How to EUREC⁴A</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -51,64 +62,94 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'c3ontext';</script>
     <link rel="shortcut icon" href="_static/logo_pyeurec4a.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Toolbox" href="toolbox.html" />
     <link rel="prev" title="Auxiliary datasets" href="auxiliary_datasets.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="_static/logo_pyeurec4a.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">How to EUREC⁴A</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="_static/logo_pyeurec4a.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo_pyeurec4a.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -118,603 +159,375 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="halo.html">
-   HALO
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="HALO_instrument_overview.html">
-     Instrument Overview
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="specmacs.html">
-     specMACS cloudmask
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="unified.html">
-     HALO UNIFIED dataset
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="flight_tracks_leaflet.html">
-     interactive HALO tracks
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="smart.html">
-     SMART dataset
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="velox.html">
-     VELOX
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="bacardi.html">
-     BACARDI dataset
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="wales.html">
-     WALES Lidar
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="hamp_comparison.html">
-     HAMP comparison
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="cloudmasks.html">
-     Cloud masks
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="pthree.html">
-   NOAA P3 “Miss Piggy”
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="p3_flight_tracks.html">
-     Flight tracks
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="p3_humidity_comparison.html">
-     Humidity comparison: Hygrometer and isotope analyzer
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="p3_wband_radar.html">
-     W-band radar example
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="p3_AXBTs.html">
-     Ocean temperatures: AXBTs and SWIFT buoys
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="p3_wsra.html">
-     WSRA example: surface wave state
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="meteor.html">
-   Meteor
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="meteor_cloudradar.html">
-     Reading cloud radar data
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="merian.html">
-   Merian
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="merian_cloudradar.html">
-     Cloud radar data collected on MS Merian
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="bco.html">
-   BCO
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="bco_cloudradar.html">
-     Cloud radar data collected at the Barbados Cloud Observatory (BCO)
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="multi_platform_data.html">
-   Multi-platform datasets
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="dropsondes.html">
-     Dropsondes dataset JOANNE
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="simulations.html">
-   Simulations
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2 has-children">
-    <a class="reference internal" href="icon_les.html">
-     ICON-LES
-    </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-    <label for="toctree-checkbox-8">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="icon_les-pamtra.html">
-       Synthetic measurements
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="botany_dales.html">
-     Cloud Botany with DALES
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="auxiliary_datasets.html">
-   Auxiliary datasets
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-  <label for="toctree-checkbox-9">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     How to put your measurements into the meso-scale context of cloud patterns
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="toolbox.html">
-   Toolbox
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="flight-phase-operations.html">
-     How to work with flight phase segmentation files
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="show_intake_catalog.html">
-     Show the intake catalog
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="cloud_stat_tools.html">
-     Cloud statistics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="running_locally.html">
-     running How to EUREC4A locally
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="netcdf_datatypes.html">
-     The issue with netCDF data types
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="data_on_ipfs.html">
-     Data on IPFS
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="references.html">
-   References
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="stats.html">
-   Script execution statistics
-  </a>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="halo.html">HALO</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="HALO_instrument_overview.html">Instrument Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="specmacs.html">specMACS cloudmask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unified.html">HALO UNIFIED dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flight_tracks_leaflet.html">interactive HALO tracks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="smart.html">SMART dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="velox.html">VELOX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bacardi.html">BACARDI dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wales.html">WALES Lidar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hamp_comparison.html">HAMP comparison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloudmasks.html">Cloud masks</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pthree.html">NOAA P3 “Miss Piggy”</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="p3_flight_tracks.html">Flight tracks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p3_humidity_comparison.html">Humidity comparison: Hygrometer and isotope analyzer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p3_wband_radar.html">W-band radar example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p3_AXBTs.html">Ocean temperatures: AXBTs and SWIFT buoys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p3_wsra.html">WSRA example: surface wave state</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="meteor.html">Meteor</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="meteor_cloudradar.html">Reading cloud radar data</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="merian.html">Merian</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="merian_cloudradar.html">Cloud radar data collected on MS Merian</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="bco.html">BCO</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="bco_cloudradar.html">Cloud radar data collected at the Barbados Cloud Observatory (BCO)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="multi_platform_data.html">Multi-platform datasets</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="dropsondes.html">Dropsondes dataset JOANNE</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="simulations.html">Simulations</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="icon_les.html">ICON-LES</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="icon_les-pamtra.html">Synthetic measurements</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="botany_dales.html">Cloud Botany with DALES</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="auxiliary_datasets.html">Auxiliary datasets</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">How to put your measurements into the meso-scale context of cloud patterns</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="toolbox.html">Toolbox</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="flight-phase-operations.html">How to work with flight phase segmentation files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="show_intake_catalog.html">Show the intake catalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud_stat_tools.html">Cloud statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="running_locally.html">running How to EUREC4A locally</a></li>
+<li class="toctree-l2"><a class="reference internal" href="netcdf_datatypes.html">The issue with netCDF data types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_on_ipfs.html">Data on IPFS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stats.html">Script execution statistics</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
-          
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
 
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
 <div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
 
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
     </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/eurec4a/how_to_eurec4a/master?urlpath=tree/how_to_eurec4a/c3ontext.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/eurec4a/how_to_eurec4a/master?urlpath=tree/how_to_eurec4a/c3ontext.md" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   
     <img src="_static/images/logo_binder.svg">
   </span>
-<span class="headerbtn__text-container">Binder</span>
+<span class="btn__text-container">Binder</span>
 </a>
-
-      </li>
+</li>
       
-      <li>
-        <a href="https://colab.research.google.com/github/eurec4a/how_to_eurec4a/blob/master/how_to_eurec4a/c3ontext.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Colab"
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/eurec4a/how_to_eurec4a/blob/master/how_to_eurec4a/c3ontext.md" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   
     <img src="_static/images/logo_colab.png">
   </span>
-<span class="headerbtn__text-container">Colab</span>
+<span class="btn__text-container">Colab</span>
 </a>
-
-      </li>
+</li>
+      
+      
+      
       
       <li>
-        
 <button onclick="initThebeSBT()"
-  class="headerbtn headerbtn-launch-thebe"
-  data-toggle="tooltip"
-data-placement="left"
-title="Launch Thebe"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-play"></i>
   </span>
-<span class="headerbtn__text-container">Live Code</span>
+<span class="btn__text-container">Live Code</span>
 </button>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
 
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/eurec4a/how_to_eurec4a" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/eurec4a/how_to_eurec4a/edit/master/how_to_eurec4a/c3ontext.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/eurec4a/how_to_eurec4a/issues/new?title=Issue%20on%20page%20%2Fc3ontext.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/c3ontext.ipynb" target="_blank"
+   class="btn btn-sm btn-download-notebook-button dropdown-item"
+   title="Download notebook file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="_sources/c3ontext.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/eurec4a/how_to_eurec4a"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/eurec4a/how_to_eurec4a/issues/new?title=Issue%20on%20page%20%2Fc3ontext.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/eurec4a/how_to_eurec4a/edit/master/how_to_eurec4a/c3ontext.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Edit this page"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-pencil-alt"></i>
-  </span>
-<span class="headerbtn__text-container">suggest edit</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/c3ontext.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download notebook file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-code"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="_sources/c3ontext.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.md</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#accessing-the-data">
-   Accessing the data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#contextualizing-your-data">
-   Contextualizing your data
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>How to put your measurements into the meso-scale context of cloud patterns</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#accessing-the-data">
-   Accessing the data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#contextualizing-your-data">
-   Contextualizing your data
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>How to put your measurements into the meso-scale context of cloud patterns</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-data">Accessing the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contextualizing-your-data">Contextualizing your data</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="how-to-put-your-measurements-into-the-meso-scale-context-of-cloud-patterns">
-<h1>How to put your measurements into the meso-scale context of cloud patterns<a class="headerlink" href="#how-to-put-your-measurements-into-the-meso-scale-context-of-cloud-patterns" title="Permalink to this headline">#</a></h1>
+<h1>How to put your measurements into the meso-scale context of cloud patterns<a class="headerlink" href="#how-to-put-your-measurements-into-the-meso-scale-context-of-cloud-patterns" title="Permalink to this heading">#</a></h1>
 <p>The meso-scale patterns of shallow convection as described by <span id="id1">Stevens <em>et al.</em> (<a class="reference internal" href="references.html#id3" title="B. Stevens, S. Bony, D. Farrell, F. Ament, A. Blyth, C. Fairall, J. Karstensen, P. K. Quinn, S. Speich, C. Acquistapace, F. Aemisegger, A. L. Albright, H. Bellenger, E. Bodenschatz, K.-A. Caesar, R. Chewitt-Lucas, G. de Boer, J. Delanoë, L. Denby, F. Ewald, B. Fildier, M. Forde, G. George, S. Gross, M. Hagen, A. Hausold, K. J. Heywood, L. Hirsch, M. Jacob, F. Jansen, S. Kinne, D. Klocke, T. Kölling, H. Konow, M. Lothon, W. Mohr, A. K. Naumann, L. Nuijens, L. Olivier, R. Pincus, M. Pöhlker, G. Reverdin, G. Roberts, S. Schnitt, H. Schulz, A. P. Siebesma, C. C. Stephan, P. Sullivan, L. Touzé-Peiffer, J. Vial, R. Vogel, P. Zuidema, N. Alexander, L. Alves, S. Arixi, H. Asmath, G. Bagheri, K. Baier, A. Bailey, D. Baranowski, A. Baron, S. Barrau, P. A. Barrett, F. Batier, A. Behrendt, A. Bendinger, F. Beucher, S. Bigorre, E. Blades, P. Blossey, O. Bock, S. Böing, P. Bosser, D. Bourras, P. Bouruet-Aubertot, K. Bower, P. Branellec, H. Branger, M. Brennek, A. Brewer, P.-E. Brilouet, B. Brügmann, S. A. Buehler, E. Burke, R. Burton, R. Calmer, J.-C. Canonici, X. Carton, G. Cato Jr., J. A. Charles, P. Chazette, Y. Chen, M. T. Chilinski, T. Choularton, P. Chuang, S. Clarke, H. Coe, C. Cornet, P. Coutris, F. Couvreux, S. Crewell, T. Cronin, Z. Cui, Y. Cuypers, A. Daley, G. M. Damerell, T. Dauhut, H. Deneke, J.-P. Desbios, S. Dörner, S. Donner, V. Douet, K. Drushka, M. Dütsch, A. Ehrlich, K. Emanuel, A. Emmanouilidis, J.-C. Etienne, S. Etienne-Leblanc, G. Faure, G. Feingold, L. Ferrero, A. Fix, C. Flamant, P. J. Flatau, G. R. Foltz, L. Forster, I. Furtuna, A. Gadian, J. Galewsky, M. Gallagher, P. Gallimore, C. Gaston, C. Gentemann, N. Geyskens, A. Giez, J. Gollop, I. Gouirand, C. Gourbeyre, D. de Graaf, G. E. de Groot, R. Grosz, J. Güttler, M. Gutleben, K. Hall, G. Harris, K. C. Helfer, D. Henze, C. Herbert, B. Holanda, A. Ibanez-Landeta, J. Intrieri, S. Iyer, F. Julien, H. Kalesse, J. Kazil, A. Kellman, A. T. Kidane, U. Kirchner, M. Klingebiel, M. Körner, L. A. Kremper, J. Kretzschmar, O. Krüger, W. Kumala, A. Kurz, P. L'Hégaret, M. Labaste, T. Lachlan-Cope, A. Laing, P. Landschützer, T. Lang, D. Lange, I. Lange, C. Laplace, G. Lavik, R. Laxenaire, C. Le Bihan, M. Leandro, N. Lefevre, M. Lena, D. Lenschow, Q. Li, G. Lloyd, S. Los, N. Losi, O. Lovell, C. Luneau, P. Makuch, S. Malinowski, G. Manta, E. Marinou, N. Marsden, S. Masson, N. Maury, B. Mayer, M. Mayers-Als, C. Mazel, W. McGeary, J. C. McWilliams, M. Mech, M. Mehlmann, A. N. Meroni, T. Mieslinger, A. Minikin, P. Minnett, G. Möller, Y. Morfa Avalos, C. Muller, I. Musat, A. Napoli, A. Neuberger, C. Noisel, D. Noone, F. Nordsiek, J. L. Nowak, L. Oswald, D. J. Parker, C. Peck, R. Person, M. Philippi, A. Plueddemann, C. Pöhlker, V. Pörtge, U. Pöschl, L. Pologne, M. Posyniak, M. Prange, E. Quiñones Meléndez, J. Radtke, K. Ramage, J. Reimann, L. Renault, K. Reus, A. Reyes, J. Ribbe, M. Ringel, M. Ritschel, C. B. Rocha, N. Rochetin, J. Röttenbacher, C. Rollo, H. Royer, P. Sadoulet, L. Saffin, S. Sandiford, I. Sandu, M. Schäfer, V. Schemann, I. Schirmacher, O. Schlenczek, J. Schmidt, M. Schröder, A. Schwarzenboeck, A. Sealy, C. J. Senff, I. Serikov, S. Shohan, E. Siddle, A. Smirnov, F. Späth, B. Spooner, M. K. Stolla, W. Szkółka, S. P. de Szoeke, S. Tarot, E. Tetoni, E. Thompson, J. Thomson, L. Tomassini, J. Totems, A. A. Ubele, L. Villiger, J. von Arx, T. Wagner, A. Walther, B. Webber, M. Wendisch, S. Whitehall, A. Wiltshire, A. A. Wing, M. Wirth, J. Wiskandt, K. Wolf, L. Worbes, E. Wright, V. Wulfmeyer, S. Young, C. Zhang, D. Zhang, F. Ziemen, T. Zinner, and M. Zöger. EUREC4A. Earth Syst. Sci. Data Discuss., 2021:1–78, January 2021. doi:10.5194/essd-2021-18.">2021</a>)</span>
 are a great way to learn more about the meso-scale variability in cloudiness in the
 trades. Four meso-scale cloud patterns have been identified to frequently reoccur.
@@ -741,7 +554,7 @@ lidar can therefor be analysed and interpreted with respect to the four cloud pa
 <p>More details on this dataset can be found in <span id="id2">Schulz (<a class="reference internal" href="references.html#id10" title="Hauke Schulz. C3ONTEXT: A Common Consensus on Convective OrgaNizaTion during the EUREC4A eXperimenT. Earth System Science Data, 14(3):1233–1256, 2022. doi:10.5194/essd-14-1233-2022.">2022</a>)</span> and
 in the <a class="reference external" href="https://github.com/observingClouds/EUREC4A_manualclassifications">C<sup>3</sup>ONTEXT GitHub-repository</a>.</p>
 <section id="accessing-the-data">
-<h2>Accessing the data<a class="headerlink" href="#accessing-the-data" title="Permalink to this headline">#</a></h2>
+<h2>Accessing the data<a class="headerlink" href="#accessing-the-data" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -752,7 +565,8 @@ in the <a class="reference external" href="https://github.com/observingClouds/EU
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">dates</span>
 <span class="kn">from</span> <span class="nn">pandas.plotting</span> <span class="kn">import</span> <span class="n">register_matplotlib_converters</span>
 <span class="n">register_matplotlib_converters</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">([</span><span class="s2">&quot;./mplstyle/book&quot;</span><span class="p">,</span> <span class="s2">&quot;./mplstyle/wide&quot;</span><span class="p">])</span>
+<span class="kn">import</span> <span class="nn">pathlib</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">([</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;./mplstyle/book&quot;</span><span class="p">),</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;./mplstyle/wide&quot;</span><span class="p">)])</span>
 
 <span class="n">cat</span> <span class="o">=</span> <span class="n">eurec4a</span><span class="o">.</span><span class="n">get_intake_catalog</span><span class="p">(</span><span class="n">use_ipfs</span><span class="o">=</span><span class="s2">&quot;QmahMN2wgPauHYkkiTGoG2TpPBmj3p5FoYJAq9uE9iXT9N&quot;</span><span class="p">)</span>
 </pre></div>
@@ -783,23 +597,23 @@ classification masks for all available workflows such that queries are rather si
 </div>
 <div class="admonition-overview-about-processing-levels admonition">
 <p class="admonition-title">Overview about processing levels</p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
-<tr class="row-odd"><th class="text-align:center head"><p>Level</p></th>
+<tr class="row-odd"><th class="head text-center"><p>Level</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:center"><p>0</p></td>
+<tr class="row-even"><td class="text-center"><p>0</p></td>
 <td><p>Raw dataset as CSV file. No geo-referenced data, just plain labels in pixel coordinates. Includes house-keeping files. Use this dataset for analyzing the technical aspects of labels, e.g. how long did it take a person to draw a particular label.</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p>1</p></td>
+<tr class="row-odd"><td class="text-center"><p>1</p></td>
 <td><p>Georeferenced dataset. Only base points of the labels are given, e.g. lat0, lon0, lat1, lon1. Use this dataset for developing your own ideas where no filled masks ( see next levels ) are needed.</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:center"><p>2</p></td>
+<tr class="row-even"><td class="text-center"><p>2</p></td>
 <td><p>Like level 1, but with labels being converted to masks. This dataset is easier to query if a particular position has been classified with a particular pattern or not.</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p>3</p></td>
+<tr class="row-odd"><td class="text-center"><p>3</p></td>
 <td><p>This processing level contains the information on how often a pattern has been classified at a specific point in time and space for each workflow (IR, VIS, ICON). To retrieve these frequencies, the level 2 data has been resampled to individual (<code class="docutils literal notranslate"><span class="pre">instant</span></code>) and daily (<code class="docutils literal notranslate"><span class="pre">daily</span></code>) composites. The <code class="docutils literal notranslate"><span class="pre">instant</span></code> dataset can be used for studies of the diurnal cycle or for analyses where the sub-daily temporal evolution is of importance. The <code class="docutils literal notranslate"><span class="pre">daily</span></code> composite give a good overview about the daily situation. It should be noted though that in case of the <code class="docutils literal notranslate"><span class="pre">daily</span></code> composite, overlapping labels of one pattern from one particular person are only counted once towards the frequency. If one person has classified for example Flowers several times a day at the same location, it is only counted once towards the frequency to reduce the bias towards the perception of a single participant.</p></td>
 </tr>
 </tbody>
@@ -810,7 +624,7 @@ classification masks for all available workflows such that queries are rather si
 </div>
 </section>
 <section id="contextualizing-your-data">
-<h2>Contextualizing your data<a class="headerlink" href="#contextualizing-your-data" title="Permalink to this headline">#</a></h2>
+<h2>Contextualizing your data<a class="headerlink" href="#contextualizing-your-data" title="Permalink to this heading">#</a></h2>
 <p>By providing time and location of interest, the dominant patterns can be retrieved. Here, we use the manual classifications
 that have been made based on infrared images. A benefit of these classifications is that they are covering the complete
 diurnal cycle. The classifications of the visible workflow miss the night-time meso-scale variability.</p>
@@ -1204,7 +1018,7 @@ Attributes:
     institute:       Max Planck Institut für Meteorologie, Germany
     python_version:  3.8.6 | packaged by conda-forge | (default, Nov 27 2020,...
     title:           EUREC4A: manual meso-scale cloud pattern classifications
-    version:         v0.4.0</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-e17ee82d-2171-4ca0-820e-26425f16f435' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-e17ee82d-2171-4ca0-820e-26425f16f435' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>date</span>: 47</li><li><span class='xr-has-index'>longitude</span>: 2200</li><li><span class='xr-has-index'>latitude</span>: 1500</li><li><span class='xr-has-index'>pattern</span>: 5</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-7c86bd29-3b67-452a-8eca-55f25b0e3646' class='xr-section-summary-in' type='checkbox'  checked><label for='section-7c86bd29-3b67-452a-8eca-55f25b0e3646' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>date</span></div><div class='xr-var-dims'>(date)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2020-01-07 ... 2020-02-22</div><input id='attrs-163a26ed-819b-49e1-9119-8cd4e20cbfe2' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-163a26ed-819b-49e1-9119-8cd4e20cbfe2' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-aad83d55-6c4e-486e-891d-dafb2e91e0e1' class='xr-var-data-in' type='checkbox'><label for='data-aad83d55-6c4e-486e-891d-dafb2e91e0e1' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>time</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;2020-01-07T00:00:00.000000000&#x27;, &#x27;2020-01-08T00:00:00.000000000&#x27;,
+    version:         v0.4.0</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-b18990ba-0b24-4b89-bd10-507d417f3a17' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-b18990ba-0b24-4b89-bd10-507d417f3a17' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>date</span>: 47</li><li><span class='xr-has-index'>longitude</span>: 2200</li><li><span class='xr-has-index'>latitude</span>: 1500</li><li><span class='xr-has-index'>pattern</span>: 5</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-820179b2-8f84-41f1-a590-ead397be0ee3' class='xr-section-summary-in' type='checkbox'  checked><label for='section-820179b2-8f84-41f1-a590-ead397be0ee3' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>date</span></div><div class='xr-var-dims'>(date)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2020-01-07 ... 2020-02-22</div><input id='attrs-92aad062-f73a-482d-84b9-ff0dc8a94af2' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-92aad062-f73a-482d-84b9-ff0dc8a94af2' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-10f0ce6e-cdc5-4f52-b969-d5c5f8f438f8' class='xr-var-data-in' type='checkbox'><label for='data-10f0ce6e-cdc5-4f52-b969-d5c5f8f438f8' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>time</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;2020-01-07T00:00:00.000000000&#x27;, &#x27;2020-01-08T00:00:00.000000000&#x27;,
        &#x27;2020-01-09T00:00:00.000000000&#x27;, &#x27;2020-01-10T00:00:00.000000000&#x27;,
        &#x27;2020-01-11T00:00:00.000000000&#x27;, &#x27;2020-01-12T00:00:00.000000000&#x27;,
        &#x27;2020-01-13T00:00:00.000000000&#x27;, &#x27;2020-01-14T00:00:00.000000000&#x27;,
@@ -1227,8 +1041,8 @@ Attributes:
        &#x27;2020-02-16T00:00:00.000000000&#x27;, &#x27;2020-02-17T00:00:00.000000000&#x27;,
        &#x27;2020-02-18T00:00:00.000000000&#x27;, &#x27;2020-02-19T00:00:00.000000000&#x27;,
        &#x27;2020-02-20T00:00:00.000000000&#x27;, &#x27;2020-02-21T00:00:00.000000000&#x27;,
-       &#x27;2020-02-22T00:00:00.000000000&#x27;], dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>latitude</span></div><div class='xr-var-dims'>(latitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>20.0 19.99 19.98 ... 5.02 5.01 5.0</div><input id='attrs-cfe832fd-05b3-46fc-a07f-12eb0bd08aa6' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-cfe832fd-05b3-46fc-a07f-12eb0bd08aa6' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c7d49baf-d0b8-419a-aa1a-e96ead31208b' class='xr-var-data-in' type='checkbox'><label for='data-c7d49baf-d0b8-419a-aa1a-e96ead31208b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degree_north</dd></dl></div><div class='xr-var-data'><pre>array([20.      , 19.989994, 19.979986, ...,  5.020013,  5.010007,  5.      ])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>longitude</span></div><div class='xr-var-dims'>(longitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-62.0 -61.99 ... -40.01 -40.0</div><input id='attrs-4799cb5d-310f-47fb-ab00-baee1656ac53' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-4799cb5d-310f-47fb-ab00-baee1656ac53' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-9934ee70-ca8e-46bc-9277-3479648bc401' class='xr-var-data-in' type='checkbox'><label for='data-9934ee70-ca8e-46bc-9277-3479648bc401' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degree_east</dd></dl></div><div class='xr-var-data'><pre>array([-62.      , -61.989994, -61.979992, ..., -40.020008, -40.010006,
-       -40.      ])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>pattern</span></div><div class='xr-var-dims'>(pattern)</div><div class='xr-var-dtype'>object</div><div class='xr-var-preview xr-preview'>&#x27;Sugar&#x27; ... &#x27;Unclassified&#x27;</div><input id='attrs-6fb280f8-364d-466f-8e16-2d77e27bc27b' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-6fb280f8-364d-466f-8e16-2d77e27bc27b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c16ab80a-ddaf-4ac5-b550-bb5d71901b58' class='xr-var-data-in' type='checkbox'><label for='data-c16ab80a-ddaf-4ac5-b550-bb5d71901b58' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;Sugar&#x27;, &#x27;Flowers&#x27;, &#x27;Fish&#x27;, &#x27;Gravel&#x27;, &#x27;Unclassified&#x27;], dtype=object)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-668bdc07-4fd5-46dd-ad81-c2f4c410ea45' class='xr-section-summary-in' type='checkbox'  checked><label for='section-668bdc07-4fd5-46dd-ad81-c2f4c410ea45' class='xr-section-summary' >Data variables: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>freq</span></div><div class='xr-var-dims'>(date, longitude, latitude, pattern)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 2200, 1500, 5), meta=np.ndarray&gt;</div><input id='attrs-7e945a7f-4d7d-4e7e-ae69-44d3388498f3' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-7e945a7f-4d7d-4e7e-ae69-44d3388498f3' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-3767a77c-5a08-43ad-8085-c5a747961ccb' class='xr-var-data-in' type='checkbox'><label for='data-3767a77c-5a08-43ad-8085-c5a747961ccb' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>daily classification frequency</dd></dl></div><div class='xr-var-data'><table>
+       &#x27;2020-02-22T00:00:00.000000000&#x27;], dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>latitude</span></div><div class='xr-var-dims'>(latitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>20.0 19.99 19.98 ... 5.02 5.01 5.0</div><input id='attrs-e3d154d9-d48f-46e5-8691-0457e8d9fd9e' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e3d154d9-d48f-46e5-8691-0457e8d9fd9e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b05ecf23-6652-4e60-97b5-87dc42fbf3ad' class='xr-var-data-in' type='checkbox'><label for='data-b05ecf23-6652-4e60-97b5-87dc42fbf3ad' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degree_north</dd></dl></div><div class='xr-var-data'><pre>array([20.      , 19.989994, 19.979986, ...,  5.020013,  5.010007,  5.      ])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>longitude</span></div><div class='xr-var-dims'>(longitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-62.0 -61.99 ... -40.01 -40.0</div><input id='attrs-fe76ee7e-3c92-4dbe-9a17-9909643ee917' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-fe76ee7e-3c92-4dbe-9a17-9909643ee917' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1acfec62-70e8-4cd9-881f-51ea3eb6a5a6' class='xr-var-data-in' type='checkbox'><label for='data-1acfec62-70e8-4cd9-881f-51ea3eb6a5a6' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degree_east</dd></dl></div><div class='xr-var-data'><pre>array([-62.      , -61.989994, -61.979992, ..., -40.020008, -40.010006,
+       -40.      ])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>pattern</span></div><div class='xr-var-dims'>(pattern)</div><div class='xr-var-dtype'>object</div><div class='xr-var-preview xr-preview'>&#x27;Sugar&#x27; ... &#x27;Unclassified&#x27;</div><input id='attrs-449de839-c2c8-46fd-902f-7c772f28f3fe' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-449de839-c2c8-46fd-902f-7c772f28f3fe' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-74edaa90-2fc1-4252-968a-fea0f651cc08' class='xr-var-data-in' type='checkbox'><label for='data-74edaa90-2fc1-4252-968a-fea0f651cc08' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;Sugar&#x27;, &#x27;Flowers&#x27;, &#x27;Fish&#x27;, &#x27;Gravel&#x27;, &#x27;Unclassified&#x27;], dtype=object)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-671ac1d6-e696-4c7a-ba2f-aa0a3b9adda3' class='xr-section-summary-in' type='checkbox'  checked><label for='section-671ac1d6-e696-4c7a-ba2f-aa0a3b9adda3' class='xr-section-summary' >Data variables: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>freq</span></div><div class='xr-var-dims'>(date, longitude, latitude, pattern)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 2200, 1500, 5), meta=np.ndarray&gt;</div><input id='attrs-30a30e21-d68b-4066-86e2-4afd28bc1480' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-30a30e21-d68b-4066-86e2-4afd28bc1480' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e0adab7f-d006-4d7e-8c84-638a3c91f854' class='xr-var-data-in' type='checkbox'><label for='data-e0adab7f-d006-4d7e-8c84-638a3c91f854' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>daily classification frequency</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1240,13 +1054,13 @@ Attributes:
                     </tr>
                 </thead>
                 <tbody>
-
+                    
                     <tr>
                         <th> Bytes </th>
                         <td> 5.78 GiB </td>
                         <td> 125.89 MiB </td>
                     </tr>
-
+                    
                     <tr>
                         <th> Shape </th>
                         <td> (47, 2200, 1500, 5) </td>
@@ -1355,7 +1169,7 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>nb_users</span></div><div class='xr-var-dims'>(date)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(47,), meta=np.ndarray&gt;</div><input id='attrs-901e8841-ebb2-4d34-ac2e-1e68228c5aee' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-901e8841-ebb2-4d34-ac2e-1e68228c5aee' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-42516e8d-3154-47b9-8120-3c9744240ee8' class='xr-var-data-in' type='checkbox'><label for='data-42516e8d-3154-47b9-8120-3c9744240ee8' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>number of users that saw this image/dataset</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>nb_users</span></div><div class='xr-var-dims'>(date)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(47,), meta=np.ndarray&gt;</div><input id='attrs-a649fca6-ba82-4c73-8c6d-9176f2515dce' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-a649fca6-ba82-4c73-8c6d-9176f2515dce' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-587728cf-ecd1-4c37-ba27-a310a51235cb' class='xr-var-data-in' type='checkbox'><label for='data-587728cf-ecd1-4c37-ba27-a310a51235cb' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>number of users that saw this image/dataset</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table>
@@ -1367,13 +1181,13 @@ Attributes:
                     </tr>
                 </thead>
                 <tbody>
-
+                    
                     <tr>
                         <th> Bytes </th>
                         <td> 376 B </td>
                         <td> 376 B </td>
                     </tr>
-
+                    
                     <tr>
                         <th> Shape </th>
                         <td> (47,) </td>
@@ -1412,7 +1226,7 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-b1619760-648e-47fe-bece-0d9e989067de' class='xr-section-summary-in' type='checkbox'  ><label for='section-b1619760-648e-47fe-bece-0d9e989067de' class='xr-section-summary' >Indexes: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>date</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-eaf0769b-33aa-471d-a389-001d35c112f1' class='xr-index-data-in' type='checkbox'/><label for='index-eaf0769b-33aa-471d-a389-001d35c112f1' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(DatetimeIndex([&#x27;2020-01-07&#x27;, &#x27;2020-01-08&#x27;, &#x27;2020-01-09&#x27;, &#x27;2020-01-10&#x27;,
+</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-45935d67-6772-4572-b4d4-22bb103ba9c8' class='xr-section-summary-in' type='checkbox'  ><label for='section-45935d67-6772-4572-b4d4-22bb103ba9c8' class='xr-section-summary' >Indexes: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>date</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-4a15c4c7-af48-4b08-a11a-9d6005c47dd9' class='xr-index-data-in' type='checkbox'/><label for='index-4a15c4c7-af48-4b08-a11a-9d6005c47dd9' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(DatetimeIndex([&#x27;2020-01-07&#x27;, &#x27;2020-01-08&#x27;, &#x27;2020-01-09&#x27;, &#x27;2020-01-10&#x27;,
                &#x27;2020-01-11&#x27;, &#x27;2020-01-12&#x27;, &#x27;2020-01-13&#x27;, &#x27;2020-01-14&#x27;,
                &#x27;2020-01-15&#x27;, &#x27;2020-01-16&#x27;, &#x27;2020-01-17&#x27;, &#x27;2020-01-18&#x27;,
                &#x27;2020-01-19&#x27;, &#x27;2020-01-20&#x27;, &#x27;2020-01-21&#x27;, &#x27;2020-01-22&#x27;,
@@ -1424,7 +1238,7 @@ Attributes:
                &#x27;2020-02-12&#x27;, &#x27;2020-02-13&#x27;, &#x27;2020-02-14&#x27;, &#x27;2020-02-15&#x27;,
                &#x27;2020-02-16&#x27;, &#x27;2020-02-17&#x27;, &#x27;2020-02-18&#x27;, &#x27;2020-02-19&#x27;,
                &#x27;2020-02-20&#x27;, &#x27;2020-02-21&#x27;, &#x27;2020-02-22&#x27;],
-              dtype=&#x27;datetime64[ns]&#x27;, name=&#x27;date&#x27;, freq=None))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>latitude</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-b467935f-ceb1-49eb-9e44-1e4021c133d5' class='xr-index-data-in' type='checkbox'/><label for='index-b467935f-ceb1-49eb-9e44-1e4021c133d5' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Float64Index([              20.0, 19.989994049072266,   19.9799861907959,
+              dtype=&#x27;datetime64[ns]&#x27;, name=&#x27;date&#x27;, freq=None))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>latitude</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-346ea290-b437-43a6-abdf-7cc85fc8ba9b' class='xr-index-data-in' type='checkbox'/><label for='index-346ea290-b437-43a6-abdf-7cc85fc8ba9b' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Float64Index([              20.0, 19.989994049072266,   19.9799861907959,
               19.969980239868164, 19.959972381591797, 19.949966430664062,
               19.939960479736328,  19.92995262145996, 19.919946670532227,
               19.909940719604492,
@@ -1433,7 +1247,7 @@ Attributes:
                 5.06003999710083, 5.0500335693359375,  5.040026664733887,
                5.030020236968994,  5.020013332366943,  5.010006904602051,
                              5.0],
-             dtype=&#x27;float64&#x27;, name=&#x27;latitude&#x27;, length=1500))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>longitude</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-5f6c7614-d33d-401c-9c0d-7cc2926f8814' class='xr-index-data-in' type='checkbox'/><label for='index-5f6c7614-d33d-401c-9c0d-7cc2926f8814' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Float64Index([              -62.0, -61.989994049072266,   -61.9799919128418,
+             dtype=&#x27;float64&#x27;, name=&#x27;latitude&#x27;, length=1500))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>longitude</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-2e47677b-d9f5-48cd-86c3-2393a3d02f73' class='xr-index-data-in' type='checkbox'/><label for='index-2e47677b-d9f5-48cd-86c3-2393a3d02f73' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Float64Index([              -62.0, -61.989994049072266,   -61.9799919128418,
                -61.96998596191406,  -61.95998001098633,  -61.94997787475586,
               -61.939971923828125, -61.929969787597656,  -61.91996383666992,
                -61.90995788574219,
@@ -1442,7 +1256,7 @@ Attributes:
               -40.060028076171875,  -40.05002212524414,  -40.04001998901367,
                -40.03001403808594,   -40.0200080871582, -40.010005950927734,
                             -40.0],
-             dtype=&#x27;float64&#x27;, name=&#x27;longitude&#x27;, length=2200))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>pattern</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-e5dcd901-2092-4537-a491-67320cdc02e9' class='xr-index-data-in' type='checkbox'/><label for='index-e5dcd901-2092-4537-a491-67320cdc02e9' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([&#x27;Sugar&#x27;, &#x27;Flowers&#x27;, &#x27;Fish&#x27;, &#x27;Gravel&#x27;, &#x27;Unclassified&#x27;], dtype=&#x27;object&#x27;, name=&#x27;pattern&#x27;))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-95bd6eb1-da35-4474-acb4-55e68a791053' class='xr-section-summary-in' type='checkbox'  checked><label for='section-95bd6eb1-da35-4474-acb4-55e68a791053' class='xr-section-summary' >Attributes: <span>(9)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>author :</span></dt><dd>Hauke Schulz (hauke.schulz@mpimet.mpg.de)</dd><dt><span>created_on :</span></dt><dd>2022-02-06 12:26 UTC</dd><dt><span>created_with :</span></dt><dd>create_level3.py with its last modification on Sun Feb  6 01:08:08 2022</dd><dt><span>description :</span></dt><dd>Level-3: daily classification frequency</dd><dt><span>doi :</span></dt><dd>10.5281/zenodo.5979718</dd><dt><span>institute :</span></dt><dd>Max Planck Institut für Meteorologie, Germany</dd><dt><span>python_version :</span></dt><dd>3.8.6 | packaged by conda-forge | (default, Nov 27 2020, 19:31:52) 
+             dtype=&#x27;float64&#x27;, name=&#x27;longitude&#x27;, length=2200))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>pattern</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-6beb2a46-74c1-4bb6-9505-fc9ee5f73e80' class='xr-index-data-in' type='checkbox'/><label for='index-6beb2a46-74c1-4bb6-9505-fc9ee5f73e80' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([&#x27;Sugar&#x27;, &#x27;Flowers&#x27;, &#x27;Fish&#x27;, &#x27;Gravel&#x27;, &#x27;Unclassified&#x27;], dtype=&#x27;object&#x27;, name=&#x27;pattern&#x27;))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-ee69692e-f222-4593-b4c4-2791e1f5ffb7' class='xr-section-summary-in' type='checkbox'  checked><label for='section-ee69692e-f222-4593-b4c4-2791e1f5ffb7' class='xr-section-summary' >Attributes: <span>(9)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>author :</span></dt><dd>Hauke Schulz (hauke.schulz@mpimet.mpg.de)</dd><dt><span>created_on :</span></dt><dd>2022-02-06 12:26 UTC</dd><dt><span>created_with :</span></dt><dd>create_level3.py with its last modification on Sun Feb  6 01:08:08 2022</dd><dt><span>description :</span></dt><dd>Level-3: daily classification frequency</dd><dt><span>doi :</span></dt><dd>10.5281/zenodo.5979718</dd><dt><span>institute :</span></dt><dd>Max Planck Institut für Meteorologie, Germany</dd><dt><span>python_version :</span></dt><dd>3.8.6 | packaged by conda-forge | (default, Nov 27 2020, 19:31:52) 
 [GCC 9.3.0]</dd><dt><span>title :</span></dt><dd>EUREC4A: manual meso-scale cloud pattern classifications</dd><dt><span>version :</span></dt><dd>v0.4.0</dd></dl></div></li></ul></div></div></div></div>
 </div>
 <p>To get the classifications along a trajectory, we can make further use of the platform tracks indexed in the EUREC<sup>4</sup>A
@@ -1500,7 +1314,7 @@ and will fail when the track crosses the 0 meridian.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c3ontext_11_0.png" src="_images/c3ontext_11_0.png" />
+<img alt="_images/4afee613ef0612cc015df1d5155973c3d3b95e3ce92f3e2aa60ff6008387b99e.png" src="_images/4afee613ef0612cc015df1d5155973c3d3b95e3ce92f3e2aa60ff6008387b99e.png" />
 </div>
 </div>
 <p>This figure shows how many participants agreed on a specific pattern on a given date at a given location.</p>
@@ -1524,7 +1338,7 @@ is causing the stacked bar plots to exceed 100%.</p>
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -1532,50 +1346,106 @@ is causing the stacked bar plots to exceed 100%.</p>
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="auxiliary_datasets.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Auxiliary datasets</p>
-        </div>
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="auxiliary_datasets.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Auxiliary datasets</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="toolbox.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="toolbox.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Toolbox</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
-  
-    By EUREC⁴A community<br/>
-  
-      &copy; Copyright 2021.<br/>
-</p>
-        </footer>
-    </div>
-    
-</div>
-
-
       </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-data">Accessing the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contextualizing-your-data">Contextualizing your data</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By EUREC⁴A community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2021.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

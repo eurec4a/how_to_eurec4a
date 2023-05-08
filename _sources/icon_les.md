@@ -9,6 +9,8 @@ kernelspec:
   display_name: Python 3
   language: python
   name: python3
+execute:
+  timeout: 600
 ---
 
 # ICON-LES
@@ -45,7 +47,8 @@ from zarr.errors import PathNotFoundError
 from matplotlib import dates
 from pandas.plotting import register_matplotlib_converters
 register_matplotlib_converters()
-plt.style.use(["./mplstyle/book", "./mplstyle/wide"])
+import pathlib
+plt.style.use([pathlib.Path("./mplstyle/book"), pathlib.Path("./mplstyle/wide")])
 cat = eurec4a.get_intake_catalog()
 ```
 
@@ -81,6 +84,8 @@ def drop_datasets(datasets):
             continue
         elif ('synthetic_radar' in dataset) and ('BCO' not in dataset):
             continue
+        elif ('SRM' in dataset):
+            continue
         else:
             datasets_to_keep.append(dataset)
     return datasets_to_keep
@@ -102,6 +107,8 @@ for d, dataset in enumerate(datasets):
     # Load dataset
     try:
         ds = icon_les_cat[dataset].to_dask()
+        dataset_len = len(ds.time)
+        ds = ds.isel(time=slice(0,dataset_len,dataset_len//1000+1))  # select max timesteps
         axs[d].vlines(ds.time.values, 0, 1)
     except (FileNotFoundError, PathNotFoundError):
         pass
@@ -110,6 +117,7 @@ for d, dataset in enumerate(datasets):
     axs[d].set(yticklabels=[])  # remove the tick labels
     axs[d].tick_params(left=False)  # remove the ticks
 axs[d].xaxis.set_major_formatter(xfmt)
+axs[d].set_xlim([dt.date(2020, 1, 1), dt.date(2020, 3, 1)])
 plt.tight_layout()
 ```
 

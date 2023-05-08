@@ -30,7 +30,8 @@ The python code below allows you to browse through the days avaiable
 ```{code-cell} ipython3
 from datetime import datetime
 import matplotlib.pyplot as plt
-plt.style.use(["./mplstyle/book", "./mplstyle/wide"])
+import pathlib
+plt.style.use([pathlib.Path("./mplstyle/book"), pathlib.Path("./mplstyle/wide")])
 import numpy as np
 import eurec4a
 cat = eurec4a.get_intake_catalog(use_ipfs="QmahMN2wgPauHYkkiTGoG2TpPBmj3p5FoYJAq9uE9iXT9N")

@@ -1,49 +1,60 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>The issue with netCDF data types &#8212; How to EUREC⁴A</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -51,64 +62,94 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'netcdf_datatypes';</script>
     <link rel="shortcut icon" href="_static/logo_pyeurec4a.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Data on IPFS" href="data_on_ipfs.html" />
     <link rel="prev" title="running How to EUREC4A locally" href="running_locally.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="_static/logo_pyeurec4a.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">How to EUREC⁴A</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="_static/logo_pyeurec4a.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo_pyeurec4a.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -118,623 +159,306 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="halo.html">
-   HALO
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="HALO_instrument_overview.html">
-     Instrument Overview
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="specmacs.html">
-     specMACS cloudmask
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="unified.html">
-     HALO UNIFIED dataset
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="flight_tracks_leaflet.html">
-     interactive HALO tracks
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="smart.html">
-     SMART dataset
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="velox.html">
-     VELOX
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="bacardi.html">
-     BACARDI dataset
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="wales.html">
-     WALES Lidar
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="hamp_comparison.html">
-     HAMP comparison
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="cloudmasks.html">
-     Cloud masks
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="pthree.html">
-   NOAA P3 “Miss Piggy”
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="p3_flight_tracks.html">
-     Flight tracks
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="p3_humidity_comparison.html">
-     Humidity comparison: Hygrometer and isotope analyzer
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="p3_wband_radar.html">
-     W-band radar example
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="p3_AXBTs.html">
-     Ocean temperatures: AXBTs and SWIFT buoys
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="p3_wsra.html">
-     WSRA example: surface wave state
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="meteor.html">
-   Meteor
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="meteor_cloudradar.html">
-     Reading cloud radar data
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="merian.html">
-   Merian
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="merian_cloudradar.html">
-     Cloud radar data collected on MS Merian
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="bco.html">
-   BCO
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="bco_cloudradar.html">
-     Cloud radar data collected at the Barbados Cloud Observatory (BCO)
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="multi_platform_data.html">
-   Multi-platform datasets
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="dropsondes.html">
-     Dropsondes dataset JOANNE
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="simulations.html">
-   Simulations
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2 has-children">
-    <a class="reference internal" href="icon_les.html">
-     ICON-LES
-    </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-    <label for="toctree-checkbox-8">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="icon_les-pamtra.html">
-       Synthetic measurements
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="botany_dales.html">
-     Cloud Botany with DALES
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="auxiliary_datasets.html">
-   Auxiliary datasets
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-  <label for="toctree-checkbox-9">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="c3ontext.html">
-     How to put your measurements into the meso-scale context of cloud patterns
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="toolbox.html">
-   Toolbox
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="flight-phase-operations.html">
-     How to work with flight phase segmentation files
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="show_intake_catalog.html">
-     Show the intake catalog
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="cloud_stat_tools.html">
-     Cloud statistics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="running_locally.html">
-     running How to EUREC4A locally
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     The issue with netCDF data types
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="data_on_ipfs.html">
-     Data on IPFS
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="references.html">
-   References
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="stats.html">
-   Script execution statistics
-  </a>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="halo.html">HALO</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="HALO_instrument_overview.html">Instrument Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="specmacs.html">specMACS cloudmask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unified.html">HALO UNIFIED dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flight_tracks_leaflet.html">interactive HALO tracks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="smart.html">SMART dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="velox.html">VELOX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bacardi.html">BACARDI dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wales.html">WALES Lidar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hamp_comparison.html">HAMP comparison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloudmasks.html">Cloud masks</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pthree.html">NOAA P3 “Miss Piggy”</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="p3_flight_tracks.html">Flight tracks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p3_humidity_comparison.html">Humidity comparison: Hygrometer and isotope analyzer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p3_wband_radar.html">W-band radar example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p3_AXBTs.html">Ocean temperatures: AXBTs and SWIFT buoys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p3_wsra.html">WSRA example: surface wave state</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="meteor.html">Meteor</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="meteor_cloudradar.html">Reading cloud radar data</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="merian.html">Merian</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="merian_cloudradar.html">Cloud radar data collected on MS Merian</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="bco.html">BCO</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="bco_cloudradar.html">Cloud radar data collected at the Barbados Cloud Observatory (BCO)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="multi_platform_data.html">Multi-platform datasets</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="dropsondes.html">Dropsondes dataset JOANNE</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="simulations.html">Simulations</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="icon_les.html">ICON-LES</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="icon_les-pamtra.html">Synthetic measurements</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="botany_dales.html">Cloud Botany with DALES</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="auxiliary_datasets.html">Auxiliary datasets</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="c3ontext.html">How to put your measurements into the meso-scale context of cloud patterns</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="toolbox.html">Toolbox</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="flight-phase-operations.html">How to work with flight phase segmentation files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="show_intake_catalog.html">Show the intake catalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud_stat_tools.html">Cloud statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="running_locally.html">running How to EUREC4A locally</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">The issue with netCDF data types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_on_ipfs.html">Data on IPFS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stats.html">Script execution statistics</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/eurec4a/how_to_eurec4a" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/eurec4a/how_to_eurec4a/edit/master/how_to_eurec4a/netcdf_datatypes.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/eurec4a/how_to_eurec4a/issues/new?title=Issue%20on%20page%20%2Fnetcdf_datatypes.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
 
 
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
 
 
 
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/netcdf_datatypes.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
   </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/eurec4a/how_to_eurec4a"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/eurec4a/how_to_eurec4a/issues/new?title=Issue%20on%20page%20%2Fnetcdf_datatypes.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/eurec4a/how_to_eurec4a/edit/master/how_to_eurec4a/netcdf_datatypes.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Edit this page"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-pencil-alt"></i>
-  </span>
-<span class="headerbtn__text-container">suggest edit</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/netcdf_datatypes.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.md</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-is-netcdf">
-   What is netCDF?
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-data-model-s">
-     The data model(s)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-storage-and-transport-formats">
-     The storage and transport formats
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#netcdf">
-       netCDF
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#opendap">
-       OPeNDAP
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#zarr">
-       zarr
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#why-should-we-care">
-   Why should we care?
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#an-experiment">
-   An experiment
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#results">
-     Results
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#summary">
-     Summary
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#did-we-learn-something">
-   Did we learn something?
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>The issue with netCDF data types</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-is-netcdf">
-   What is netCDF?
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-data-model-s">
-     The data model(s)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-storage-and-transport-formats">
-     The storage and transport formats
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#netcdf">
-       netCDF
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#opendap">
-       OPeNDAP
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#zarr">
-       zarr
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#why-should-we-care">
-   Why should we care?
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#an-experiment">
-   An experiment
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#results">
-     Results
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#summary">
-     Summary
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#did-we-learn-something">
-   Did we learn something?
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>The issue with netCDF data types</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-netcdf">What is netCDF?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-data-model-s">The data model(s)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-storage-and-transport-formats">The storage and transport formats</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#netcdf">netCDF</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#opendap">OPeNDAP</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#zarr">zarr</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-should-we-care">Why should we care?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#an-experiment">An experiment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#did-we-learn-something">Did we learn something?</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="the-issue-with-netcdf-data-types">
-<h1>The issue with netCDF data types<a class="headerlink" href="#the-issue-with-netcdf-data-types" title="Permalink to this headline">#</a></h1>
+<h1>The issue with netCDF data types<a class="headerlink" href="#the-issue-with-netcdf-data-types" title="Permalink to this heading">#</a></h1>
 <div class="tip admonition">
 <p class="admonition-title">TL; DR</p>
 <p>If you want to be on the safe side, use only <code class="docutils literal notranslate"><span class="pre">SHORT</span></code>, <code class="docutils literal notranslate"><span class="pre">INT</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code>, <code class="docutils literal notranslate"><span class="pre">DOUBLE</span></code>, <code class="docutils literal notranslate"><span class="pre">STRING</span></code> or array of <code class="docutils literal notranslate"><span class="pre">CHAR</span></code> as data types.
@@ -744,11 +468,11 @@ In particular, <strong>don’t</strong> use single byte integers, any unsigned i
 During this evolution, the basic data types representable within the netCDF data format have been expanded.
 Currently we are at netCDF version 4 with HDF5 as a storage backend, which offers a lot more flexibility compared to previous versions of netCDF including many more <a class="reference external" href="https://www.unidata.ucar.edu/software/netcdf/docs/data_type.html">data types</a>.
 One <strong>could</strong> assume that this is all fine and we can use these data types freely, but here we are unlucky and there is more to keep in mind.</p>
-<p>In order to paint the full picture, we’ll have to take a little detour and think about what <a class="reference external" href="#what-is-netcdf">netCDF actually is</a> or even more what we think (or probably should think) about when talking about netCDF.
-As we’ll see, this is not something which can be answered in a straight forward manner, so it is fair to ask <a class="reference external" href="#why-should-we-care">if we should care at all</a>.
-Finally we’ll have a look at <a class="reference external" href="#an-experiment">an experiment</a> which shows plenty of ways in which different data types may fail around netCDF and which types seem to be fine.</p>
+<p>In order to paint the full picture, we’ll have to take a little detour and think about what <a class="reference internal" href="#what-is-netcdf"><span class="std std-doc">netCDF actually is</span></a> or even more what we think (or probably should think) about when talking about netCDF.
+As we’ll see, this is not something which can be answered in a straight forward manner, so it is fair to ask <a class="reference internal" href="#why-should-we-care"><span class="std std-doc">if we should care at all</span></a>.
+Finally we’ll have a look at <a class="reference internal" href="#an-experiment"><span class="std std-doc">an experiment</span></a> which shows plenty of ways in which different data types may fail around netCDF and which types seem to be fine.</p>
 <section id="what-is-netcdf">
-<h2>What is netCDF?<a class="headerlink" href="#what-is-netcdf" title="Permalink to this headline">#</a></h2>
+<h2>What is netCDF?<a class="headerlink" href="#what-is-netcdf" title="Permalink to this heading">#</a></h2>
 <p>NetCDF is more than only the “netCDF4 on HDF5” storage format.
 This is not only a bold statement, but is actually asked and discussed by the netCDF developers (<a class="reference external" href="https://github.com/Unidata/netcdf-c/issues/1590">What is netCDF?</a>, Jan 2020).
 This chapter is not exactly about the same topic in the referenced issue, but still has similar roots.
@@ -756,7 +480,7 @@ The relevant part for this discussion is that there is at least netCDF, the <str
 It is also recognized that there are multiple persistence formats (netCDF3, netCDF4/HDF5, zarr) for the same data model and there are translation layers such as OPeNDAP which can be used as a transport mechanism between the computer on which data is stored and the computer on which data is analyzed.
 We further look at the relevance of the netCDF data model and netCDF persistence format for the EUREC⁴A datasets.</p>
 <section id="the-data-model-s">
-<h3>The data model(s)<a class="headerlink" href="#the-data-model-s" title="Permalink to this headline">#</a></h3>
+<h3>The data model(s)<a class="headerlink" href="#the-data-model-s" title="Permalink to this heading">#</a></h3>
 <p>There are actually a few different ideas of data models around, which share some general ideas.
 Maybe the most illustrative way to show this general idea is an extended version of <a class="reference external" href="http://xarray.pydata.org/">xarray</a>’s logo, but the underlying ideas are of course applicable independently of xarray or even Python.</p>
 <figure class="align-center" id="id1">
@@ -778,9 +502,9 @@ Thus we usually want those extra bits to datasets and variables, which can be do
 I assume that in many cases when we talk about that a dataset being available in netCDF, what we really care about is that the dataset is organized along this general structure and thus can be accesses <em>as if it were netCDF</em>.</p>
 </section>
 <section id="the-storage-and-transport-formats">
-<h3>The storage and transport formats<a class="headerlink" href="#the-storage-and-transport-formats" title="Permalink to this headline">#</a></h3>
+<h3>The storage and transport formats<a class="headerlink" href="#the-storage-and-transport-formats" title="Permalink to this heading">#</a></h3>
 <section id="netcdf">
-<h4>netCDF<a class="headerlink" href="#netcdf" title="Permalink to this headline">#</a></h4>
+<h4>netCDF<a class="headerlink" href="#netcdf" title="Permalink to this heading">#</a></h4>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <div class="admonition note">
@@ -836,7 +560,7 @@ do not currently do any sort of optimization or caching.</p>
 <p>Thus, if a dataset should be accessed efficiently from a remote location, something different must be added, which is what OPeNDAP is for.</p>
 </section>
 <section id="opendap">
-<h4>OPeNDAP<a class="headerlink" href="#opendap" title="Permalink to this headline">#</a></h4>
+<h4>OPeNDAP<a class="headerlink" href="#opendap" title="Permalink to this heading">#</a></h4>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <div class="admonition note">
@@ -853,14 +577,14 @@ However, DAP4 is still a draft since 2004 and the only widely supported version 
 <p>The data model of OPeNDAP v2 is slightly different from the data model in netCDF.
 Regarding data types, OPeNDAP v2 defines <code class="docutils literal notranslate"><span class="pre">Byte</span></code>, <code class="docutils literal notranslate"><span class="pre">Int16</span></code>, <code class="docutils literal notranslate"><span class="pre">UInt16</span></code>, <code class="docutils literal notranslate"><span class="pre">Int32</span></code>, <code class="docutils literal notranslate"><span class="pre">UInt32</span></code>, <code class="docutils literal notranslate"><span class="pre">Float32</span></code>, <code class="docutils literal notranslate"><span class="pre">Float64</span></code>, <code class="docutils literal notranslate"><span class="pre">String</span></code>, <code class="docutils literal notranslate"><span class="pre">URL</span></code>.</p>
 <p>As opposed to the <code class="docutils literal notranslate"><span class="pre">BYTE</span></code> in netCDF Classic, the <code class="docutils literal notranslate"><span class="pre">Byte</span></code> in OPeNDAP is <strong>unsigned</strong>.
-This makes byte types of netCDF Classic and OPeNDAP incompatible, but as noted in the <a class="reference external" href="#summary">summary</a>, there exists a hack which tries to circumvent that.
-One could assume that <code class="docutils literal notranslate"><span class="pre">UBYTE</span></code> of netCDF Enhanced would fit to this <code class="docutils literal notranslate"><span class="pre">Byte</span></code>, but there are issues as well which are confirmed in <a class="reference external" href="#an-experiment">the experiment</a>.</p>
+This makes byte types of netCDF Classic and OPeNDAP incompatible, but as noted in the <a class="reference internal" href="#summary"><span class="std std-doc">summary</span></a>, there exists a hack which tries to circumvent that.
+One could assume that <code class="docutils literal notranslate"><span class="pre">UBYTE</span></code> of netCDF Enhanced would fit to this <code class="docutils literal notranslate"><span class="pre">Byte</span></code>, but there are issues as well which are confirmed in <a class="reference internal" href="#an-experiment"><span class="std std-doc">the experiment</span></a>.</p>
 <p>Furthermore, there is no <code class="docutils literal notranslate"><span class="pre">CHAR</span></code>, so whenever a netCDF dataset containing text as a sequence of <code class="docutils literal notranslate"><span class="pre">CHAR</span></code> is encountered by an OPeNDAP server, this will be converted to an OPeNDAP <code class="docutils literal notranslate"><span class="pre">String</span></code>.
 A consequence of this is that <code class="docutils literal notranslate"><span class="pre">CHAR</span></code>s and <code class="docutils literal notranslate"><span class="pre">STRING</span></code>s can not be distinguished when transferred over OPeNDAP and thus may be converted into each other after one cycle through netCDF → OPeNDAP → netCDF.
 This behaviour is not (yet) studied in this text.</p>
 </section>
 <section id="zarr">
-<h4>zarr<a class="headerlink" href="#zarr" title="Permalink to this headline">#</a></h4>
+<h4>zarr<a class="headerlink" href="#zarr" title="Permalink to this heading">#</a></h4>
 <div class="caution admonition">
 <p class="admonition-title">to do</p>
 <p><a class="reference external" href="https://zarr.readthedocs.io/">zarr</a> should be discussed in this place.</p>
@@ -869,7 +593,7 @@ This behaviour is not (yet) studied in this text.</p>
 </section>
 </section>
 <section id="why-should-we-care">
-<h2>Why should we care?<a class="headerlink" href="#why-should-we-care" title="Permalink to this headline">#</a></h2>
+<h2>Why should we care?<a class="headerlink" href="#why-should-we-care" title="Permalink to this heading">#</a></h2>
 <p>Each of the formats has distinct advantages and disadvantages:</p>
 <ul class="simple">
 <li><p><strong>netCDF</strong> is a compact format, the whole dataset can be stored in a single file which can be transferred from one place to another and everything is contained. This is great for storing data and to send around smaller datasets, but retrieving only a subset of a dataset from a remote server is not possible. Libraries which can open netCDF files usually do not handle HTTP, so the dataset needs to be stored in a local directory to use it.</p></li>
@@ -884,7 +608,7 @@ This behaviour is not (yet) studied in this text.</p>
 </div>
 </aside>
 <p>So, depending on the use case, different formats are optimal and none of them supports everything:</p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>format</p></th>
 <th class="head"><p>for storage</p></th>
@@ -917,7 +641,7 @@ This behaviour is not (yet) studied in this text.</p>
 <p>Thus, if we want to have datasets which can be used locally as well as remotely (some might call it “in the cloud”), we should take care that our datasets are convertible between those formats so that we can adapt to the specific use case.</p>
 </section>
 <section id="an-experiment">
-<h2>An experiment<a class="headerlink" href="#an-experiment" title="Permalink to this headline">#</a></h2>
+<h2>An experiment<a class="headerlink" href="#an-experiment" title="Permalink to this heading">#</a></h2>
 <p>Currently, the main use case for the Aeris data server is to publish netCDF files and retrieve them back, either via direct download or via OPeNDAP.
 This experiment is designed to test under which circumstances data which has been created as netCDF can be retrieved correctly via OPeNDAP.
 In order to minimize additional problems due to the mix of incompatible libraries, all dataset decoding is done using the same netCDF-c library (independent of the access to the dataset, directly or via OPeNDAP).</p>
@@ -932,12 +656,12 @@ If any one of the sub cases failed, the data type is marked as erroneous.</p>
 <li><p>A little script checks if it detects any significant error between the original and the OPeNDAP dataset</p></li>
 </ul>
 <section id="results">
-<h3>Results<a class="headerlink" href="#results" title="Permalink to this headline">#</a></h3>
+<h3>Results<a class="headerlink" href="#results" title="Permalink to this heading">#</a></h3>
 <div class="dropdown error admonition">
 <p class="admonition-title">BYTE</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="b0e830fa-1287-442d-bfda-c84dbf548304" name="3ba8b4ee-65b1-4cf6-ad6a-ffe635cf33de" type="radio">
-</input><label class="sd-tab-label" for="b0e830fa-1287-442d-bfda-c84dbf548304">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-0">
 + numbers</label><div class="sd-tab-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_BYTE.nc
@@ -983,8 +707,8 @@ data:
 </div>
 <p>✅</p>
 </div>
-<input id="73b9fe1d-96c4-4568-962e-79d2b4700c5d" name="3ba8b4ee-65b1-4cf6-ad6a-ffe635cf33de" type="radio">
-</input><label class="sd-tab-label" for="73b9fe1d-96c4-4568-962e-79d2b4700c5d">
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-1">
 +/- numbers</label><div class="sd-tab-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_BYTE_neg.nc
@@ -1033,8 +757,8 @@ data:
 <p>data type of attribute <code class="docutils literal notranslate"><span class="pre">valid_range</span></code> of variable <code class="docutils literal notranslate"><span class="pre">test</span></code> differs</p>
 </div>
 </div>
-<input id="537aa04c-253c-42ee-a7b9-fa4991ac325c" name="3ba8b4ee-65b1-4cf6-ad6a-ffe635cf33de" type="radio">
-</input><label class="sd-tab-label" for="537aa04c-253c-42ee-a7b9-fa4991ac325c">
+<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-2">
 + flags</label><div class="sd-tab-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_BYTE_flag.nc
@@ -1080,8 +804,8 @@ data:
 </div>
 <p>✅</p>
 </div>
-<input id="d335271a-e113-434e-a27d-befaf7b0b951" name="3ba8b4ee-65b1-4cf6-ad6a-ffe635cf33de" type="radio">
-</input><label class="sd-tab-label" for="d335271a-e113-434e-a27d-befaf7b0b951">
+<input id="sd-tab-item-3" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-3">
 +/- flags</label><div class="sd-tab-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_BYTE_flag_neg.nc
@@ -1135,8 +859,8 @@ data:
 <div class="dropdown error admonition">
 <p class="admonition-title">UBYTE</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="feac3874-c4d9-417a-b8ca-891bc9e0bddc" name="c77cf52e-fb91-44cc-a7f6-55f9eb7f6fbe" type="radio">
-</input><label class="sd-tab-label" for="feac3874-c4d9-417a-b8ca-891bc9e0bddc">
+<input checked="checked" id="sd-tab-item-4" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-4">
 + numbers</label><div class="sd-tab-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_UBYTE.nc
@@ -1185,8 +909,8 @@ data:
 <p>values of variable <code class="docutils literal notranslate"><span class="pre">test</span></code> are not equal</p>
 </div>
 </div>
-<input id="423b56d5-e5eb-4616-971c-399d988445fd" name="c77cf52e-fb91-44cc-a7f6-55f9eb7f6fbe" type="radio">
-</input><label class="sd-tab-label" for="423b56d5-e5eb-4616-971c-399d988445fd">
+<input id="sd-tab-item-5" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-5">
 + flags</label><div class="sd-tab-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_UBYTE_flag.nc
@@ -1233,8 +957,8 @@ Attributes {
 <div class="dropdown admonition">
 <p class="admonition-title">SHORT</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="931df890-fa90-462b-808a-db2cce5d582c" name="80dd1703-17a1-4adc-b5c3-4cbff8437bbd" type="radio">
-</input><label class="sd-tab-label" for="931df890-fa90-462b-808a-db2cce5d582c">
+<input checked="checked" id="sd-tab-item-6" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-6">
 + numbers</label><div class="sd-tab-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_SHORT.nc
@@ -1278,8 +1002,8 @@ data:
 </div>
 <p>✅</p>
 </div>
-<input id="2935ff9a-62e8-468b-8b07-9ee4d7f9e8ac" name="80dd1703-17a1-4adc-b5c3-4cbff8437bbd" type="radio">
-</input><label class="sd-tab-label" for="2935ff9a-62e8-468b-8b07-9ee4d7f9e8ac">
+<input id="sd-tab-item-7" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-7">
 +/- numbers</label><div class="sd-tab-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_SHORT_neg.nc
@@ -1323,8 +1047,8 @@ data:
 </div>
 <p>✅</p>
 </div>
-<input id="659eeb14-3aee-47d4-acbf-96b06afe575e" name="80dd1703-17a1-4adc-b5c3-4cbff8437bbd" type="radio">
-</input><label class="sd-tab-label" for="659eeb14-3aee-47d4-acbf-96b06afe575e">
+<input id="sd-tab-item-8" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-8">
 + flags</label><div class="sd-tab-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_SHORT_flag.nc
@@ -1368,8 +1092,8 @@ data:
 </div>
 <p>✅</p>
 </div>
-<input id="7aa4096a-f23c-4abb-b482-1367d262e2d0" name="80dd1703-17a1-4adc-b5c3-4cbff8437bbd" type="radio">
-</input><label class="sd-tab-label" for="7aa4096a-f23c-4abb-b482-1367d262e2d0">
+<input id="sd-tab-item-9" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-9">
 +/- flags</label><div class="sd-tab-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_SHORT_flag_neg.nc
@@ -1418,8 +1142,8 @@ data:
 <div class="dropdown error admonition">
 <p class="admonition-title">USHORT</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="1a2405ab-fe17-4048-b513-c6deecfa5d6d" name="ecf0c510-fdd8-457a-90f8-7ecd662d40cd" type="radio">
-</input><label class="sd-tab-label" for="1a2405ab-fe17-4048-b513-c6deecfa5d6d">
+<input checked="checked" id="sd-tab-item-10" name="sd-tab-set-3" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-10">
 + numbers</label><div class="sd-tab-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_USHORT.nc
@@ -1460,8 +1184,8 @@ Attributes {
 <p>[Errno -45] NetCDF: Not a valid data type or _FillValue type mismatch: b’<a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_USHORT.nc">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_USHORT.nc</a>’</p>
 </div>
 </div>
-<input id="e8c5ef78-292f-4b18-b12b-fd933c9050a0" name="ecf0c510-fdd8-457a-90f8-7ecd662d40cd" type="radio">
-</input><label class="sd-tab-label" for="e8c5ef78-292f-4b18-b12b-fd933c9050a0">
+<input id="sd-tab-item-11" name="sd-tab-set-3" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-11">
 + flags</label><div class="sd-tab-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_USHORT_flag.nc
@@ -1508,8 +1232,8 @@ Attributes {
 <div class="dropdown admonition">
 <p class="admonition-title">INT</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="5f997bf8-b77c-4046-b3dc-f10fdcde00e3" name="b3eef230-f9e4-4356-9bcf-6eb6370c563f" type="radio">
-</input><label class="sd-tab-label" for="5f997bf8-b77c-4046-b3dc-f10fdcde00e3">
+<input checked="checked" id="sd-tab-item-12" name="sd-tab-set-4" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-12">
 + numbers</label><div class="sd-tab-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_INT.nc
@@ -1553,8 +1277,8 @@ data:
 </div>
 <p>✅</p>
 </div>
-<input id="536fc062-ac3d-48cc-9ef8-05177b306850" name="b3eef230-f9e4-4356-9bcf-6eb6370c563f" type="radio">
-</input><label class="sd-tab-label" for="536fc062-ac3d-48cc-9ef8-05177b306850">
+<input id="sd-tab-item-13" name="sd-tab-set-4" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-13">
 +/- numbers</label><div class="sd-tab-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_INT_neg.nc
@@ -1598,8 +1322,8 @@ data:
 </div>
 <p>✅</p>
 </div>
-<input id="a6745c88-48bc-4f7b-bc9d-6fa950cf36e7" name="b3eef230-f9e4-4356-9bcf-6eb6370c563f" type="radio">
-</input><label class="sd-tab-label" for="a6745c88-48bc-4f7b-bc9d-6fa950cf36e7">
+<input id="sd-tab-item-14" name="sd-tab-set-4" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-14">
 + flags</label><div class="sd-tab-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_INT_flag.nc
@@ -1643,8 +1367,8 @@ data:
 </div>
 <p>✅</p>
 </div>
-<input id="11359d5c-ba2b-4037-8c75-7bb218d28367" name="b3eef230-f9e4-4356-9bcf-6eb6370c563f" type="radio">
-</input><label class="sd-tab-label" for="11359d5c-ba2b-4037-8c75-7bb218d28367">
+<input id="sd-tab-item-15" name="sd-tab-set-4" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-15">
 +/- flags</label><div class="sd-tab-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_INT_flag_neg.nc
@@ -1693,8 +1417,8 @@ data:
 <div class="dropdown error admonition">
 <p class="admonition-title">UINT</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="f1105aac-9e07-46df-8256-ea8a9e3d96d9" name="98d332d4-2af6-433a-b89d-517ed66cf970" type="radio">
-</input><label class="sd-tab-label" for="f1105aac-9e07-46df-8256-ea8a9e3d96d9">
+<input checked="checked" id="sd-tab-item-16" name="sd-tab-set-5" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-16">
 + numbers</label><div class="sd-tab-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_UINT.nc
@@ -1735,8 +1459,8 @@ Attributes {
 <p>[Errno -45] NetCDF: Not a valid data type or _FillValue type mismatch: b’<a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT.nc">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT.nc</a>’</p>
 </div>
 </div>
-<input id="c1a9365f-2107-4a3d-8ee0-8148f50ef559" name="98d332d4-2af6-433a-b89d-517ed66cf970" type="radio">
-</input><label class="sd-tab-label" for="c1a9365f-2107-4a3d-8ee0-8148f50ef559">
+<input id="sd-tab-item-17" name="sd-tab-set-5" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-17">
 + flags</label><div class="sd-tab-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_UINT_flag.nc
@@ -1783,8 +1507,8 @@ Attributes {
 <div class="dropdown error admonition">
 <p class="admonition-title">INT64</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="7fb6e350-d895-4906-b217-a81de632359a" name="29153967-2497-4d5d-b094-7f992b093e0a" type="radio">
-</input><label class="sd-tab-label" for="7fb6e350-d895-4906-b217-a81de632359a">
+<input checked="checked" id="sd-tab-item-18" name="sd-tab-set-6" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-18">
 + numbers</label><div class="sd-tab-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_INT64.nc
@@ -1822,8 +1546,8 @@ Error {
 <p>[Errno -77] NetCDF: Access failure: b’<a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64.nc">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64.nc</a>’</p>
 </div>
 </div>
-<input id="41286a54-312b-4aef-a263-b8284cb0d404" name="29153967-2497-4d5d-b094-7f992b093e0a" type="radio">
-</input><label class="sd-tab-label" for="41286a54-312b-4aef-a263-b8284cb0d404">
+<input id="sd-tab-item-19" name="sd-tab-set-6" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-19">
 +/- numbers</label><div class="sd-tab-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_INT64_neg.nc
@@ -1861,8 +1585,8 @@ Error {
 <p>[Errno -77] NetCDF: Access failure: b’<a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_neg.nc">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_neg.nc</a>’</p>
 </div>
 </div>
-<input id="2f20c85f-1035-4b6d-a3c7-c894548c7197" name="29153967-2497-4d5d-b094-7f992b093e0a" type="radio">
-</input><label class="sd-tab-label" for="2f20c85f-1035-4b6d-a3c7-c894548c7197">
+<input id="sd-tab-item-20" name="sd-tab-set-6" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-20">
 + flags</label><div class="sd-tab-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_INT64_flag.nc
@@ -1900,8 +1624,8 @@ Error {
 <p>[Errno -77] NetCDF: Access failure: b’<a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_flag.nc">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_INT64_flag.nc</a>’</p>
 </div>
 </div>
-<input id="5549ffc8-b4c4-49ac-a4d1-b65b01620680" name="29153967-2497-4d5d-b094-7f992b093e0a" type="radio">
-</input><label class="sd-tab-label" for="5549ffc8-b4c4-49ac-a4d1-b65b01620680">
+<input id="sd-tab-item-21" name="sd-tab-set-6" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-21">
 +/- flags</label><div class="sd-tab-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_INT64_flag_neg.nc
@@ -1944,8 +1668,8 @@ Error {
 <div class="dropdown error admonition">
 <p class="admonition-title">UINT64</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="324a325c-dfcd-4685-a259-cc62293fa0be" name="aa01fa57-2cf6-427e-97e8-ccc7370b76b5" type="radio">
-</input><label class="sd-tab-label" for="324a325c-dfcd-4685-a259-cc62293fa0be">
+<input checked="checked" id="sd-tab-item-22" name="sd-tab-set-7" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-22">
 + numbers</label><div class="sd-tab-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_UINT64.nc
@@ -1983,8 +1707,8 @@ Error {
 <p>[Errno -77] NetCDF: Access failure: b’<a class="reference external" href="https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT64.nc">https://observations.ipsl.fr/thredds/dodsC/EUREC4A/PRODUCTS/testdata/netcdf_testfiles/test_NC_UINT64.nc</a>’</p>
 </div>
 </div>
-<input id="5edc1231-4735-4e83-95f7-21c68acfeb58" name="aa01fa57-2cf6-427e-97e8-ccc7370b76b5" type="radio">
-</input><label class="sd-tab-label" for="5edc1231-4735-4e83-95f7-21c68acfeb58">
+<input id="sd-tab-item-23" name="sd-tab-set-7" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-23">
 + flags</label><div class="sd-tab-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_UINT64_flag.nc
@@ -2027,8 +1751,8 @@ Error {
 <div class="dropdown admonition">
 <p class="admonition-title">FLOAT</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="6235fba4-97cf-4008-b894-f87d811a404f" name="d87e70b1-82c7-47c6-95cd-4f08969eed79" type="radio">
-</input><label class="sd-tab-label" for="6235fba4-97cf-4008-b894-f87d811a404f">
+<input checked="checked" id="sd-tab-item-24" name="sd-tab-set-8" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-24">
 + numbers</label><div class="sd-tab-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_FLOAT.nc
@@ -2072,8 +1796,8 @@ data:
 </div>
 <p>✅</p>
 </div>
-<input id="3fb64da7-6fc3-4600-ae03-05496070cd96" name="d87e70b1-82c7-47c6-95cd-4f08969eed79" type="radio">
-</input><label class="sd-tab-label" for="3fb64da7-6fc3-4600-ae03-05496070cd96">
+<input id="sd-tab-item-25" name="sd-tab-set-8" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-25">
 +/- numbers</label><div class="sd-tab-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_FLOAT_neg.nc
@@ -2122,8 +1846,8 @@ data:
 <div class="dropdown admonition">
 <p class="admonition-title">DOUBLE</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="d61b878c-896e-4f68-9508-7d9c113550b6" name="9d94c19d-f278-4630-8311-5c91eb4c860f" type="radio">
-</input><label class="sd-tab-label" for="d61b878c-896e-4f68-9508-7d9c113550b6">
+<input checked="checked" id="sd-tab-item-26" name="sd-tab-set-9" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-26">
 + numbers</label><div class="sd-tab-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_DOUBLE.nc
@@ -2167,8 +1891,8 @@ data:
 </div>
 <p>✅</p>
 </div>
-<input id="256f407e-ab8b-436f-887b-b11b4c3036ba" name="9d94c19d-f278-4630-8311-5c91eb4c860f" type="radio">
-</input><label class="sd-tab-label" for="256f407e-ab8b-436f-887b-b11b4c3036ba">
+<input id="sd-tab-item-27" name="sd-tab-set-9" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-27">
 +/- numbers</label><div class="sd-tab-content docutils">
 <p>original dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ncdump test_NC_DOUBLE_neg.nc
@@ -2218,7 +1942,7 @@ data:
 </div>
 </section>
 <section id="summary">
-<h3>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h3>
+<h3>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h3>
 <p>The result of this experiment is underwhelming but shows a clear picture.
 A large set of data types can not be used reliably in a combination of netCDF and OPeNDAP.
 The failure modes however differ significantly between the various types:</p>
@@ -2233,7 +1957,7 @@ The failure modes however differ significantly between the various types:</p>
 </section>
 </section>
 <section id="did-we-learn-something">
-<h2>Did we learn something?<a class="headerlink" href="#did-we-learn-something" title="Permalink to this headline">#</a></h2>
+<h2>Did we learn something?<a class="headerlink" href="#did-we-learn-something" title="Permalink to this heading">#</a></h2>
 <p>Well, it depends.
 In principle, these results are also present, but well hidden inside the <a class="reference external" href="https://www.unidata.ucar.edu/software/netcdf/documentation/NUG/index.html">NetCDF Users Guide</a>:
 The <a class="reference external" href="https://www.unidata.ucar.edu/software/netcdf/documentation/NUG/_best_practices.html">Best Practices</a> state:</p>
@@ -2271,7 +1995,7 @@ I think if we want to provide datasets which are usable by everyone, the insight
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -2279,50 +2003,121 @@ I think if we want to provide datasets which are usable by everyone, the insight
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="running_locally.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">running How to EUREC4A locally</p>
-        </div>
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="running_locally.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">running How to EUREC4A locally</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="data_on_ipfs.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="data_on_ipfs.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Data on IPFS</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
-  
-    By EUREC⁴A community<br/>
-  
-      &copy; Copyright 2021.<br/>
-</p>
-        </footer>
-    </div>
-    
-</div>
-
-
       </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-netcdf">What is netCDF?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-data-model-s">The data model(s)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-storage-and-transport-formats">The storage and transport formats</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#netcdf">netCDF</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#opendap">OPeNDAP</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#zarr">zarr</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-should-we-care">Why should we care?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#an-experiment">An experiment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#did-we-learn-something">Did we learn something?</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By EUREC⁴A community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2021.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

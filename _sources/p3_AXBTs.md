@@ -30,7 +30,8 @@ import numpy as np
 import datetime
 
 import matplotlib.pyplot as plt
-plt.style.use(["./mplstyle/book"])
+import pathlib
+plt.style.use(pathlib.Path("./mplstyle/book"))
 %matplotlib inline
 
 import eurec4a
@@ -181,8 +182,8 @@ axbt_1day   = axbts.sel(time=slice(d, d + one_day))
 # Swift data at mean of AXBT times
 swifts_1day = [s.sel(time = axbt_1day.time.mean(), method = "nearest") for s in swifts]
 
-axbt_1day.temperature.where(axbt_1day.depth < 150).plot.line(y="depth",
-                                                             add_legend=False, yincrease=False)
+axbt_1day.temperature.sel(depth=slice(None,150)).plot.line(y="depth",
+                                                           add_legend=False, yincrease=False)
 ax.set_xlabel("Sea water temperature (K)")
 ax.set_ylabel("Depth (m)")
 
@@ -196,9 +197,9 @@ axin.scatter([s.sea_water_temperature.values + 273.15 for s in swifts_1day],
              [0.5 if '0.5' in s.sea_water_temperature.long_name else 0.3 for s in swifts_1day],
              color="0.25",
              s = 1.5 * plt.rcParams['lines.markersize'] ** 2)
-axbt_1day.temperature.where(axbt_1day.depth < 3).plot.line(y="depth",
-                                                           add_legend=False,
-                                                           yincrease=False, ax = axin)
+axbt_1day.temperature.sel(depth=slice(None,3)).plot.line(y="depth",
+                                                         add_legend=False,
+                                                         yincrease=False, ax = axin)
 axin.set_xlabel("Sea water temperature (K)")
 axin.set_ylabel("Depth (m)")
 ax.indicate_inset_zoom(axin)

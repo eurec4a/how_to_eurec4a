@@ -78,15 +78,14 @@ def ensure_cfminmax(ds):
     ds.CF_max.load()
     return correct_VELOX(ds)
 
-from multiprocessing.pool import ThreadPool
 
 def load_cloudmask_dataset(cat_item):
     # load in parallel as this function is mainly limited by the network roundtrip time
-    p = ThreadPool(20)
-    return ensure_cfminmax(xr.concat(list(p.map(lambda v: v.get().to_dask().chunk(),
-                                                cat_item.values())),
-                                     dim="time",
-                                     data_vars="minimal"))
+    datasets = []
+    for v in cat_item.values():
+        datasets.append(v.to_dask().chunk())
+    print(cat_item)
+    return ensure_cfminmax(xr.concat(datasets, dim='time', data_vars='minimal'))
 ```
 
 ## Get data
@@ -262,7 +261,8 @@ colors={
 ```{code-cell} ipython3
 %matplotlib inline
 import matplotlib.pyplot as plt
-plt.style.use(["./mplstyle/book"])
+import pathlib
+plt.style.use(pathlib.Path("./mplstyle/book"))
 ```
 
 ```{code-cell} ipython3
@@ -364,7 +364,11 @@ For the 2D imagers VELOX and speMACS we use the full swath. In the case study ab
 
 The following statistics are based on the **minimum cloud cover** including the cloud mask flag `most_likely_cloudy` and **maximum cloud cover** with cloud mask flags $\in$ {`most_likely_cloudy`, `probably_cloudy`}.
 
-```{code-cell} ipython3
+```{warning}
+The following cells are not run interactively and continously tested. The following cells might fail. The data is provided/hosted in a format that does not allow to do the following computations in a timely manner that is acceptable for a continous integration job.
+```
+
+```python
 def midpoint(a, b):
     return a + (b - a) / 2
 
@@ -383,13 +387,13 @@ def cf_circles(ds):
 
 ### Get meta data
 
-```{code-cell} ipython3
+```python
 meta = eurec4a.get_flight_segments()
 ```
 
 We extract all flight IDs of HALO's research flights
 
-```{code-cell} ipython3
+```python
 flight_ids = [flight_id
               for platform_id, flights in meta.items()
               if platform_id=="HALO"
@@ -399,7 +403,7 @@ flight_ids = [flight_id
 
 Within each flight we further extract the circle segments
 
-```{code-cell} ipython3
+```python
 segments = {s["segment_id"]: {**s, "flight_id": flight["flight_id"]}
              for platform_id, flight_id in meta.items()
              if platform_id=="HALO"
@@ -410,10 +414,14 @@ segments = {s["segment_id"]: {**s, "flight_id": flight["flight_id"]}
 print(f"In total HALO flew {len(segments)} circles during EUREC4A")
 ```
 
+```
+In total HALO flew 72 circles during EUREC4A
+```
+
 ### Time series of circle cloud cover
 Time series of circle-mean (minimum) cloud cover estimates. The markers visualize the research-flight average, while the lines span the range of all circle-mean cloud cover estimates within a respective flight.
 
-```{code-cell} ipython3
+```python
 ts = np.timedelta64(2, 'h')
 
 with plt.style.context("mplstyle/wide"):
@@ -442,16 +450,18 @@ with plt.style.context("mplstyle/wide"):
     ax.set_xlabel("Date")
 ```
 
+![cloudmasks_45](./img/cloudmasks_45_0.png)
+
 ### Histogram of circle-mean cloud cover
 
 We first have a look at the distributions of circle-mean cloud cover based on the minimum (`most_likely_cloudy`) and the maximum estimates (`most_likely_cloudy` & `probably_cloudy`).
 
-```{code-cell} ipython3
+```python
 binedges = np.arange(0, 1.2, .2)
 binmids = (binedges[1:] + binedges[:-1]) / 2
 ```
 
-```{code-cell} ipython3
+```python
 with plt.style.context("mplstyle/wide"):
     fig, (ax0, ax1) = plt.subplots(1, 2, sharey=True)
     count = 0
@@ -486,9 +496,11 @@ with plt.style.context("mplstyle/wide"):
     ax1.text(-0.1, ax.get_ylim()[1], "(b)", verticalalignment='top')
 ```
 
+![cloudmasks_48](./img/cloudmasks_48_0.png)
+
 For a better comparison of minimum and maximum circle-mean cloud cover we merge the two above plots and show their difference in the following plot. In particular, we show the cumulative fraction of circle-mean cloud cover estimates. Depending on the instruments and some instrument downtimes, the available circle counts range from 64 to 72. The bins on the x-axis have a bin width of 0.2 respectively. The bars span the range defined by the minimum cloud cover based on cloud flag `most likely cloudy`and the maximum cloud cover based on cloud flags `most likely cloudy` and `probably cloudy`.
 
-```{code-cell} ipython3
+```python
 with plt.style.context("mplstyle/wide"):
     fig, ax = plt.subplots()
     count = 0
@@ -529,6 +541,8 @@ with plt.style.context("mplstyle/wide"):
     ax.legend(title="Instruments", bbox_to_anchor=(1,1), loc="upper left")
 ```
 
+![cloudmasks_50](./img/cloudmasks_50_0.png)
+
 ### A small interpretation attempt
 We highlight a few features that stick out in the above figures showing the cloud cover statistics.
 
@@ -549,23 +563,50 @@ Distributions:
 ## Camapign mean cloud cover
 * from all available data including the transfer flights
 
-```{code-cell} ipython3
+```python
 print("Instrument: min - max")
 print("")
 for k, v in data.items():
     print(f"{k}: {v.CF_min.mean().values:.2f} - {v.CF_max.mean().values:.2f} ")
 ```
 
+```
+Instrument: min - max
+
+WALES: 0.34 - 0.34
+HAMP Radar: 0.25 - 0.25
+```
+```
+specMACS: 0.18 - 0.24
+HAMP Radiometer: 0.17 - 0.25
+KT19: 0.20 - 0.31
+VELOX: 0.21 - 0.39
+```
+
 * only from local research flights
 
-```{code-cell} ipython3
+```python
 localRF = slice("2020-01-22T00:00:00", "2020-02-15T23:59:59")
 ```
 
-```{code-cell} ipython3
+```python
 print("Instrument: min - max")
 print("")
 for k, v in data.items():
     print(f"{k}: {v.sel(time=localRF).CF_min.mean().values:.2f} - "
           + f"{v.sel(time=localRF).CF_max.mean().values:.2f} ")
+```
+```
+Instrument: min - max
+
+WALES: 0.34 - 0.34
+HAMP Radar: 0.21 - 0.22
+```
+```
+specMACS: 0.16 - 0.22
+HAMP Radiometer: 0.16 - 0.25
+KT19: 0.20 - 0.31
+```
+```
+VELOX: 0.21 - 0.39
 ```

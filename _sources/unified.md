@@ -77,7 +77,8 @@ We plot reflectivity from the HAMP Radar, the flight altitude of HALO and bright
 %matplotlib inline
 import numpy as np
 import matplotlib.pyplot as plt
-plt.style.use("./mplstyle/book")
+import pathlib
+plt.style.use(pathlib.Path("./mplstyle/book"))
 
 fig, (ax1, ax2) = plt.subplots(2, 1, sharex=True, gridspec_kw={'height_ratios':(2, 1.2)})
 
