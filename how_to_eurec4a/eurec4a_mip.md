@@ -15,6 +15,10 @@ kernelspec:
 
 The EUREC⁴A-Model intercomparison project (EUREC⁴A-MIP) is an ongoing effort to test the ability of a variety of simulations to capture the observed variability of the trade-winds.
 
+```{note}
+This section and its subsections are still under development.
+```
+
 ## Setup
 ### Boundary conditions
 The boundary conditions and warming tendencies are provided on the DKRZ-SWIFT storage. The entire files can be accessed
