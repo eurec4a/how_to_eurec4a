@@ -21,7 +21,7 @@ assignees: ''
 
 **What is the current issue**
 
-<!-- A clear and concise description of what you want to happen. E.g., do you miss a particular description of the dataset? Have you heard about the existence of a dataset but couldn't find it anywhere? Do you want to access a dataset, but can't open it? -->
+<!-- A clear and concise description of what you want to happen. E.g., do you miss a particular description of the dataset? Have you heard or read about the existence of a dataset but couldn't find it anywhere? Do you want to access a dataset, but can't open it? -->
 
 **Do you know who might be responsible for the dataset?**
 
