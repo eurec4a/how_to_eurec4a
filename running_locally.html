@@ -480,8 +480,8 @@ In any case, it will involve the following steps:</p>
 <div class="sd-card-body docutils">
 <div class="sd-card-title sd-font-weight-bold docutils">
 Using pip</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install jupyter
-pip install -r https://raw.githubusercontent.com/eurec4a/how_to_eurec4a/master/requirements.txt
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>jupyter
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>https://raw.githubusercontent.com/eurec4a/how_to_eurec4a/master/requirements.txt
 </pre></div>
 </div>
 </div>
@@ -496,9 +496,9 @@ their dependencies well.</p>
 <div class="sd-card-body docutils">
 <div class="sd-card-title sd-font-weight-bold docutils">
 Using conda</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget https://raw.githubusercontent.com/eurec4a/how_to_eurec4a/master/requirements.txt
-conda create -f requirements.txt
-conda activate how_to_eurec4a
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span>https://raw.githubusercontent.com/eurec4a/how_to_eurec4a/master/requirements.txt
+conda<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>requirements.txt
+conda<span class="w"> </span>activate<span class="w"> </span>how_to_eurec4a
 </pre></div>
 </div>
 </div>
@@ -523,14 +523,14 @@ conda activate how_to_eurec4a
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-0">
 SSH</label><div class="sd-tab-content docutils">
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone git@github.com:eurec4a/how_to_eurec4a.git
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>git@github.com:eurec4a/how_to_eurec4a.git
 </pre></div>
 </div>
 </div>
 <input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-1">
 HTTPS</label><div class="sd-tab-content docutils">
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/eurec4a/how_to_eurec4a
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/eurec4a/how_to_eurec4a
 </pre></div>
 </div>
 </div>
@@ -540,8 +540,8 @@ HTTPS</label><div class="sd-tab-content docutils">
 <p>If you use pip you might want to use a virtual environment for the book if you like to keep the required libraries in a confined place, but it is entirely optional and up to your preferences.
 There are many options to do so and <a class="reference external" href="https://virtualenv.pypa.io/">virtualenv</a> is one of them.
 Using virtualenv, you could create and activate an environment like:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>virtualenv venv
-. venv/bin/activate
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>virtualenv<span class="w"> </span>venv
+.<span class="w"> </span>venv/bin/activate
 </pre></div>
 </div>
 <p>and the continue normally.</p>
@@ -554,8 +554,8 @@ Using virtualenv, you could create and activate an environment like:</p>
 <div class="sd-card-body docutils">
 <div class="sd-card-title sd-font-weight-bold docutils">
 Using pip</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install jupyter
-pip install -r requirements.txt
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>jupyter
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
 </pre></div>
 </div>
 </div>
@@ -570,8 +570,8 @@ their dependencies well.</p>
 <div class="sd-card-body docutils">
 <div class="sd-card-title sd-font-weight-bold docutils">
 Using conda</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda create -f requirements.txt
-conda activate how_to_eurec4a
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>requirements.txt
+conda<span class="w"> </span>activate<span class="w"> </span>how_to_eurec4a
 </pre></div>
 </div>
 </div>
@@ -597,7 +597,7 @@ If that does not work, please have a look at the <a class="reference external" h
 <section id="interactive">
 <h3>interactive<a class="headerlink" href="#interactive" title="Permalink to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">jupyter</span></code> itself is not installed by the requirements file. If you’re using <code class="docutils literal notranslate"><span class="pre">pip</span></code> you might want to install it as well:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install jupyter
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>jupyter
 </pre></div>
 </div>
 <p>Once everything is set up, you can either start your notebook server:</p>
@@ -607,7 +607,7 @@ If that does not work, please have a look at the <a class="reference external" h
 <div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
 <div class="sd-card-body docutils">
 <p class="sd-card-text">… either using classical notebooks</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter notebook
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter<span class="w"> </span>notebook
 </pre></div>
 </div>
 </div>
@@ -617,7 +617,7 @@ If that does not work, please have a look at the <a class="reference external" h
 <div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
 <div class="sd-card-body docutils">
 <p class="sd-card-text">… or using jupyter lab</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter lab
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter<span class="w"> </span>lab
 </pre></div>
 </div>
 </div>
@@ -629,7 +629,7 @@ If that does not work, please have a look at the <a class="reference external" h
 <section id="compile-the-book">
 <h3>compile the book<a class="headerlink" href="#compile-the-book" title="Permalink to this heading">#</a></h3>
 <p>You can also execute <code class="docutils literal notranslate"><span class="pre">jupyter-book</span></code> directly via:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jb build how_to_eurec4a
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jb<span class="w"> </span>build<span class="w"> </span>how_to_eurec4a
 </pre></div>
 </div>
 <p>which itself will run all code cells and output the results as HTML pages in a newly created folder.
@@ -647,7 +647,7 @@ The following instructions assume that you are working in that directory.</p>
 <h4>executable notebook<a class="headerlink" href="#executable-notebook" title="Permalink to this heading">#</a></h4>
 <p>If you want to add a new notebook, you can either start out from an existing <strong>MyST</strong> Markdown file by copying and modifying it, or you can create a new one from the jupyter notebook menu using <code class="docutils literal notranslate"><span class="pre">File</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">Text</span> <span class="pre">Notebook</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">MyST</span> <span class="pre">Markdown</span></code>.
 If you already have an existing ipython notebook and want to convert it to <strong>MyST</strong>, you can do this by running</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupytext --to myst your_notebook.ipynb
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupytext<span class="w"> </span>--to<span class="w"> </span>myst<span class="w"> </span>your_notebook.ipynb
 </pre></div>
 </div>
 <p>This will create a new markdown file named <code class="docutils literal notranslate"><span class="pre">your_notebook.md</span></code>.
@@ -663,7 +663,7 @@ You can do this by modifying <code class="docutils literal notranslate"><span cl
 <h3>compile to PDF<a class="headerlink" href="#compile-to-pdf" title="Permalink to this heading">#</a></h3>
 <p>If you’ve got a LaTeX environment available (e.g. TeXLive), you can also compile the book into a single PDF file.
 To do so, just run:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jb build how_to_eurec4a --builder pdflatex
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jb<span class="w"> </span>build<span class="w"> </span>how_to_eurec4a<span class="w"> </span>--builder<span class="w"> </span>pdflatex
 </pre></div>
 </div>
 </section>

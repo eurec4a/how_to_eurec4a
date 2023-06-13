@@ -868,7 +868,7 @@ This mode of operation will not only enable local caching, but also will request
 Let’s see how we can do this.</p>
 <p>If a local node is running on your machine, you can also add data to IPFS.
 E.g. if a folder containing a dataset in zarr format should be added, you can do so by running:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ipfs add -r -H --raw-leaves dataset.zarr
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ipfs<span class="w"> </span>add<span class="w"> </span>-r<span class="w"> </span>-H<span class="w"> </span>--raw-leaves<span class="w"> </span>dataset.zarr
 </pre></div>
 </div>
 <p>which will return a CID, which can subsequently be used to access the data, e.g. by opening it like:</p>
