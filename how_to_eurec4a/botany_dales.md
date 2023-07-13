@@ -4,7 +4,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.1
+    jupytext_version: 1.14.7
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
@@ -49,10 +49,10 @@ Cloud Botany is a library of idealised large-eddy simulations forced by and init
 * - `thl_Gamma`
   - 4.5
   - 5.5
-  - K/m
+  - K/km
   - lapse rate of `thl`
 * - `wpamp`
-  - -0.5
+  - -0.35
   - 0.18
   - cm/s
   - Amplitude of subsidence first mode
@@ -100,9 +100,9 @@ tree(botany_cat)
 ## Output description
 
 ### Parameters
-A combination of grid resolution and domain size, e.g. `botany_cat.dx100.nx1536`, contains its own ensemble of cases. For now, only the combination `dx100` and `nx1536` can be accessed through the `eurec4a-intake` catalog, as this is the only configuration in which the full ensemble has been simulated. Other grid configurations might be added at a later stage.
+A combination of grid resolution and domain size, e.g. `botany_cat.dx100.nx1536`, contains its own ensemble of cases. So far, two complete ensembles have been simulated, both at the grid spacing `dx100`: `nx96` (9.6 km domain size) and `nx1536` (153.6 km domain size). Both ensembles can be accessed through the `eurec4a-intake` catalog. Other grid configurations might be added at a later stage.
 
-To inspect and use the ensemble, start by loading its `parameters`:
+To inspect and use the `nx1536` ensemble, start by loading its `parameters`:
 
 ```{code-cell} ipython3
 import pandas as pd
@@ -141,6 +141,24 @@ Briefly summmarised, the individual data sets contain:
 | `radiation` | Radiation model output at surface and top of atmosphere | `[member, time, x, y]` | 1 hour |
 
 +++
+
+### `nx96` vs. `nx1536`
+
+The data sets stored for the `nx1536` and `nx96` ensembles are identical, except for the simulations' horizontal domain size, and their temporal coverage. With a few exceptions (simulation members 7, 15, 38, 39 and 47, which terminated prematurely), all simulations in the `nx1536` ensemble run for 2.5 days (60 hr). Since the `nx96` simulations are much smaller, they span a longer, 7-day, period:
+
+```{code-cell} ipython3
+import numpy as np
+
+# nx1536
+ds_timeseries_1536 = botany_cat.dx100m.nx1536['timeseries'].to_dask()
+
+# nx96
+ds_timeseries_96 = botany_cat.dx100m.nx96['timeseries'].to_dask()
+
+print('Simulation time (days)')
+print('nx1536:', (ds_timeseries_1536['time'].isel(time=[0,-1]).diff('time')/np.timedelta64(1, 'D')).values)
+print('nx96:', (ds_timeseries_96['time'].isel(time=[0,-1]).diff('time')/np.timedelta64(1, 'D')).values)
+```
 
 ## Examples and visualisations
 
@@ -240,4 +258,4 @@ plt.show()
 
 ### Visualisations page
 
-In addition to the data sets described above, a more thorough set of visualisations indicative simulation output is available. This visualisation set contains simple overviews and movies for each simulation in the library. They can be quite useful for attaining a basic idea of what each simulation produced without having to load the data. These visualisations are hosted on [a personal server](http://143.178.154.95:3141/), so in contrast to the data hosted on DKRZ, we warn that its maintenance and availability may be patchy.
+In addition to the data sets described above, a more thorough set of visualisations indicative simulation output is available. This visualisation set contains simple overviews and movies for each simulation in the library. They can be quite useful for attaining a basic idea of what each simulation produced without having to load the data. These visualisations are hosted on [a personal server](http://143.178.154.95:3141/). Since the maintenance and availability of this server may be patchy, they can also be downloaded from [Zenodo](https://zenodo.org/record/7692270).
