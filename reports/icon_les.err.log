@@ -1,0 +1,83 @@
+Traceback (most recent call last):
+  File "/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.9/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.9/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.9/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.9/asyncio/base_events.py", line 647, in run_until_complete
+    return future.result()
+  File "/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.9/site-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.9/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.9/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+fig_height = len(datasets) * 0.5
+fig, axs = plt.subplots(len(datasets), 1, figsize=(8, fig_height), sharex=True)
+fig.set_constrained_layout(False)
+xfmt = dates.DateFormatter('%d.%m')
+for d, dataset in enumerate(datasets):
+    # Load dataset
+    try:
+        ds = icon_les_cat[dataset].to_dask()
+        dataset_len = len(ds.time)
+        ds = ds.isel(time=slice(0,dataset_len,dataset_len//1000+1))  # select max timesteps
+        axs[d].vlines(ds.time.values, 0, 1)
+    except (FileNotFoundError, PathNotFoundError):
+        pass
+    axs[d].set_aspect(1.5)
+    axs[d].set_ylabel(dataset.replace(".","\n"), rotation=0, ha='right')
+    axs[d].set(yticklabels=[])  # remove the tick labels
+    axs[d].tick_params(left=False)  # remove the ticks
+axs[d].xaxis.set_major_formatter(xfmt)
+axs[d].set_xlim([dt.date(2020, 1, 1), dt.date(2020, 3, 1)])
+plt.tight_layout()
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mTypeError[0m                                 Traceback (most recent call last)
+Cell [0;32mIn[3], line 11[0m
+[1;32m      9[0m     dataset_len [38;5;241m=[39m [38;5;28mlen[39m(ds[38;5;241m.[39mtime)
+[1;32m     10[0m     ds [38;5;241m=[39m ds[38;5;241m.[39misel(time[38;5;241m=[39m[38;5;28mslice[39m([38;5;241m0[39m,dataset_len,dataset_len[38;5;241m/[39m[38;5;241m/[39m[38;5;241m1000[39m[38;5;241m+[39m[38;5;241m1[39m))  [38;5;66;03m# select max timesteps[39;00m
+[0;32m---> 11[0m     [43maxs[49m[43m[[49m[43md[49m[43m][49m[38;5;241;43m.[39;49m[43mvlines[49m[43m([49m[43mds[49m[38;5;241;43m.[39;49m[43mtime[49m[38;5;241;43m.[39;49m[43mvalues[49m[43m,[49m[43m [49m[38;5;241;43m0[39;49m[43m,[49m[43m [49m[38;5;241;43m1[39;49m[43m)[49m
+[1;32m     12[0m [38;5;28;01mexcept[39;00m ([38;5;167;01mFileNotFoundError[39;00m, PathNotFoundError):
+[1;32m     13[0m     [38;5;28;01mpass[39;00m
+
+File [0;32m/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.9/site-packages/matplotlib/__init__.py:1442[0m, in [0;36m_preprocess_data.<locals>.inner[0;34m(ax, data, *args, **kwargs)[0m
+[1;32m   1439[0m [38;5;129m@functools[39m[38;5;241m.[39mwraps(func)
+[1;32m   1440[0m [38;5;28;01mdef[39;00m [38;5;21minner[39m(ax, [38;5;241m*[39margs, data[38;5;241m=[39m[38;5;28;01mNone[39;00m, [38;5;241m*[39m[38;5;241m*[39mkwargs):
+[1;32m   1441[0m     [38;5;28;01mif[39;00m data [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+[0;32m-> 1442[0m         [38;5;28;01mreturn[39;00m [43mfunc[49m[43m([49m[43max[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;28;43mmap[39;49m[43m([49m[43msanitize_sequence[49m[43m,[49m[43m [49m[43margs[49m[43m)[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+[1;32m   1444[0m     bound [38;5;241m=[39m new_sig[38;5;241m.[39mbind(ax, [38;5;241m*[39margs, [38;5;241m*[39m[38;5;241m*[39mkwargs)
+[1;32m   1445[0m     auto_label [38;5;241m=[39m (bound[38;5;241m.[39marguments[38;5;241m.[39mget(label_namer)
+[1;32m   1446[0m                   [38;5;129;01mor[39;00m bound[38;5;241m.[39mkwargs[38;5;241m.[39mget(label_namer))
+
+File [0;32m/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.9/site-packages/matplotlib/axes/_axes.py:1169[0m, in [0;36mAxes.vlines[0;34m(self, x, ymin, ymax, colors, linestyles, label, **kwargs)[0m
+[1;32m   1166[0m ymax [38;5;241m=[39m np[38;5;241m.[39mravel(ymax)
+[1;32m   1168[0m masked_verts [38;5;241m=[39m np[38;5;241m.[39mma[38;5;241m.[39mempty(([38;5;28mlen[39m(x), [38;5;241m2[39m, [38;5;241m2[39m))
+[0;32m-> 1169[0m masked_verts[:, [38;5;241m0[39m, [38;5;241m0[39m] [38;5;241m=[39m x
+[1;32m   1170[0m masked_verts[:, [38;5;241m0[39m, [38;5;241m1[39m] [38;5;241m=[39m ymin
+[1;32m   1171[0m masked_verts[:, [38;5;241m1[39m, [38;5;241m0[39m] [38;5;241m=[39m x
+
+File [0;32m/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.9/contextlib.py:79[0m, in [0;36mContextDecorator.__call__.<locals>.inner[0;34m(*args, **kwds)[0m
+[1;32m     76[0m [38;5;129m@wraps[39m(func)
+[1;32m     77[0m [38;5;28;01mdef[39;00m [38;5;21minner[39m([38;5;241m*[39margs, [38;5;241m*[39m[38;5;241m*[39mkwds):
+[1;32m     78[0m     [38;5;28;01mwith[39;00m [38;5;28mself[39m[38;5;241m.[39m_recreate_cm():
+[0;32m---> 79[0m         [38;5;28;01mreturn[39;00m [43mfunc[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwds[49m[43m)[49m
+
+File [0;32m/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.9/site-packages/numpy/ma/core.py:3375[0m, in [0;36mMaskedArray.__setitem__[0;34m(self, indx, value)[0m
+[1;32m   3372[0m     mval [38;5;241m=[39m [38;5;28mtuple[39m([[38;5;28;01mFalse[39;00m] [38;5;241m*[39m [38;5;28mlen[39m(_dtype[38;5;241m.[39mnames))
+[1;32m   3373[0m [38;5;28;01mif[39;00m _mask [38;5;129;01mis[39;00m nomask:
+[1;32m   3374[0m     [38;5;66;03m# Set the data, then the mask[39;00m
+[0;32m-> 3375[0m     _data[indx] [38;5;241m=[39m dval
+[1;32m   3376[0m     [38;5;28;01mif[39;00m mval [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m nomask:
+[1;32m   3377[0m         _mask [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39m_mask [38;5;241m=[39m make_mask_none([38;5;28mself[39m[38;5;241m.[39mshape, _dtype)
+
+[0;31mTypeError[0m: float() argument must be a string or a number, not 'cftime._cftime.DatetimeProlepticGregorian'
+TypeError: float() argument must be a string or a number, not 'cftime._cftime.DatetimeProlepticGregorian'
+

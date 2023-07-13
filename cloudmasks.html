@@ -699,148 +699,6 @@ In the following, we compare the different cloud mask products for a case study 
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Intake catalog: cloudmask&gt;
 </pre></div>
 </div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">load_cloudmask_dataset</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">cat_cloudmask</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
-
-<span class="nn">Cell In[6], line 1,</span> in <span class="ni">&lt;dictcomp&gt;</span><span class="nt">(.0)</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">load_cloudmask_dataset</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">cat_cloudmask</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
-
-<span class="nn">Cell In[3], line 43,</span> in <span class="ni">load_cloudmask_dataset</span><span class="nt">(cat_item)</span>
-<span class="g g-Whitespace">     </span><span class="mi">41</span>     <span class="n">datasets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">to_dask</span><span class="p">()</span><span class="o">.</span><span class="n">chunk</span><span class="p">())</span>
-<span class="g g-Whitespace">     </span><span class="mi">42</span> <span class="nb">print</span><span class="p">(</span><span class="n">cat_item</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">43</span> <span class="k">return</span> <span class="n">ensure_cfminmax</span><span class="p">(</span><span class="n">xr</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">datasets</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">data_vars</span><span class="o">=</span><span class="s1">&#39;minimal&#39;</span><span class="p">))</span>
-
-<span class="nn">File /usr/share/miniconda/envs/how_to_eurec4a/lib/python3.9/site-packages/xarray/core/concat.py:251,</span> in <span class="ni">concat</span><span class="nt">(objs, dim, data_vars, coords, compat, positions, fill_value, join, combine_attrs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">239</span>     <span class="k">return</span> <span class="n">_dataarray_concat</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">240</span>         <span class="n">objs</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">241</span>         <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">248</span>         <span class="n">combine_attrs</span><span class="o">=</span><span class="n">combine_attrs</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">249</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">250</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">first_obj</span><span class="p">,</span> <span class="n">Dataset</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">251</span>     <span class="k">return</span> <span class="n">_dataset_concat</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">252</span>         <span class="n">objs</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">253</span>         <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">254</span>         <span class="n">data_vars</span><span class="o">=</span><span class="n">data_vars</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">255</span>         <span class="n">coords</span><span class="o">=</span><span class="n">coords</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">256</span>         <span class="n">compat</span><span class="o">=</span><span class="n">compat</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">257</span>         <span class="n">positions</span><span class="o">=</span><span class="n">positions</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">258</span>         <span class="n">fill_value</span><span class="o">=</span><span class="n">fill_value</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">259</span>         <span class="n">join</span><span class="o">=</span><span class="n">join</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">260</span>         <span class="n">combine_attrs</span><span class="o">=</span><span class="n">combine_attrs</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">261</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">262</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">263</span>     <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">264</span>         <span class="s2">&quot;can only concatenate xarray Dataset and DataArray &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">265</span>         <span class="sa">f</span><span class="s2">&quot;objects, got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">first_obj</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">266</span>     <span class="p">)</span>
-
-<span class="nn">File /usr/share/miniconda/envs/how_to_eurec4a/lib/python3.9/site-packages/xarray/core/concat.py:523,</span> in <span class="ni">_dataset_concat</span><span class="nt">(datasets, dim, data_vars, coords, compat, positions, fill_value, join, combine_attrs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">517</span> <span class="k">if</span> <span class="n">variables_to_merge</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">518</span>     <span class="n">grouped</span> <span class="o">=</span> <span class="p">{</span>
-<span class="g g-Whitespace">    </span><span class="mi">519</span>         <span class="n">k</span><span class="p">:</span> <span class="n">v</span>
-<span class="nn">    520         for k, v</span> in <span class="ni">collect_variables_and_indexes(list(datasets)).items</span><span class="nt">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">521</span>         <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">variables_to_merge</span>
-<span class="g g-Whitespace">    </span><span class="mi">522</span>     <span class="p">}</span>
-<span class="ne">--&gt; </span><span class="mi">523</span>     <span class="n">merged_vars</span><span class="p">,</span> <span class="n">merged_indexes</span> <span class="o">=</span> <span class="n">merge_collected</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">524</span>         <span class="n">grouped</span><span class="p">,</span> <span class="n">compat</span><span class="o">=</span><span class="n">compat</span><span class="p">,</span> <span class="n">equals</span><span class="o">=</span><span class="n">equals</span>
-<span class="g g-Whitespace">    </span><span class="mi">525</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">526</span>     <span class="n">result_vars</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">merged_vars</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">527</span>     <span class="n">result_indexes</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">merged_indexes</span><span class="p">)</span>
-
-<span class="nn">File /usr/share/miniconda/envs/how_to_eurec4a/lib/python3.9/site-packages/xarray/core/merge.py:291,</span> in <span class="ni">merge_collected</span><span class="nt">(grouped, prioritized, compat, combine_attrs, equals)</span>
-<span class="g g-Whitespace">    </span><span class="mi">289</span> <span class="n">variables</span> <span class="o">=</span> <span class="p">[</span><span class="n">variable</span> <span class="k">for</span> <span class="n">variable</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">elements_list</span><span class="p">]</span>
-<span class="g g-Whitespace">    </span><span class="mi">290</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">291</span>     <span class="n">merged_vars</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">unique_variable</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">292</span>         <span class="n">name</span><span class="p">,</span> <span class="n">variables</span><span class="p">,</span> <span class="n">compat</span><span class="p">,</span> <span class="n">equals</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">293</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">294</span> <span class="k">except</span> <span class="n">MergeError</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">295</span>     <span class="k">if</span> <span class="n">compat</span> <span class="o">!=</span> <span class="s2">&quot;minimal&quot;</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">296</span>         <span class="c1"># we need more than &quot;minimal&quot; compatibility (for which</span>
-<span class="g g-Whitespace">    </span><span class="mi">297</span>         <span class="c1"># we drop conflicting coordinates)</span>
-
-<span class="nn">File /usr/share/miniconda/envs/how_to_eurec4a/lib/python3.9/site-packages/xarray/core/merge.py:138,</span> in <span class="ni">unique_variable</span><span class="nt">(name, variables, compat, equals)</span>
-<span class="g g-Whitespace">    </span><span class="mi">134</span>         <span class="k">break</span>
-<span class="g g-Whitespace">    </span><span class="mi">136</span> <span class="k">if</span> <span class="n">equals</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">137</span>     <span class="c1"># now compare values with minimum number of computes</span>
-<span class="ne">--&gt; </span><span class="mi">138</span>     <span class="n">out</span> <span class="o">=</span> <span class="n">out</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">139</span>     <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">variables</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
-<span class="g g-Whitespace">    </span><span class="mi">140</span>         <span class="n">equals</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">compat</span><span class="p">)(</span><span class="n">var</span><span class="p">)</span>
-
-<span class="nn">File /usr/share/miniconda/envs/how_to_eurec4a/lib/python3.9/site-packages/xarray/core/variable.py:570,</span> in <span class="ni">Variable.compute</span><span class="nt">(self, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">552</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Manually trigger loading of this variable&#39;s data from disk or a</span>
-<span class="g g-Whitespace">    </span><span class="mi">553</span><span class="sd"> remote source into memory and return a new variable. The original is</span>
-<span class="g g-Whitespace">    </span><span class="mi">554</span><span class="sd"> left unaltered.</span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">    </span><span class="mi">567</span><span class="sd"> dask.array.compute</span>
-<span class="g g-Whitespace">    </span><span class="mi">568</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">569</span> <span class="n">new</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">570</span> <span class="k">return</span> <span class="n">new</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File /usr/share/miniconda/envs/how_to_eurec4a/lib/python3.9/site-packages/xarray/core/variable.py:543,</span> in <span class="ni">Variable.load</span><span class="nt">(self, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">541</span> <span class="k">if</span> <span class="n">is_chunked_array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">542</span>     <span class="n">chunkmanager</span> <span class="o">=</span> <span class="n">get_chunked_array_type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">543</span>     <span class="n">loaded_data</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span> <span class="o">=</span> <span class="n">chunkmanager</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">544</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">as_compatible_data</span><span class="p">(</span><span class="n">loaded_data</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">545</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">,</span> <span class="n">indexing</span><span class="o">.</span><span class="n">ExplicitlyIndexed</span><span class="p">):</span>
-
-<span class="nn">File /usr/share/miniconda/envs/how_to_eurec4a/lib/python3.9/site-packages/xarray/core/daskmanager.py:70,</span> in <span class="ni">DaskManager.compute</span><span class="nt">(self, *data, **kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">67</span> <span class="k">def</span> <span class="nf">compute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">data</span><span class="p">:</span> <span class="n">DaskArray</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="o">...</span><span class="p">]:</span>
-<span class="g g-Whitespace">     </span><span class="mi">68</span>     <span class="kn">from</span> <span class="nn">dask.array</span> <span class="kn">import</span> <span class="n">compute</span>
-<span class="ne">---&gt; </span><span class="mi">70</span>     <span class="k">return</span> <span class="n">compute</span><span class="p">(</span><span class="o">*</span><span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File /usr/share/miniconda/envs/how_to_eurec4a/lib/python3.9/site-packages/dask/base.py:595,</span> in <span class="ni">compute</span><span class="nt">(traverse, optimize_graph, scheduler, get, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">592</span>     <span class="n">keys</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">__dask_keys__</span><span class="p">())</span>
-<span class="g g-Whitespace">    </span><span class="mi">593</span>     <span class="n">postcomputes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">__dask_postcompute__</span><span class="p">())</span>
-<span class="ne">--&gt; </span><span class="mi">595</span> <span class="n">results</span> <span class="o">=</span> <span class="n">schedule</span><span class="p">(</span><span class="n">dsk</span><span class="p">,</span> <span class="n">keys</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="nn">    596 return repack([f(r, *a) for r, (f, a)</span> in <span class="ni">zip</span><span class="nt">(results, postcomputes)])</span>
-
-<span class="nn">File /usr/share/miniconda/envs/how_to_eurec4a/lib/python3.9/site-packages/dask/threaded.py:89,</span> in <span class="ni">get</span><span class="nt">(dsk, keys, cache, num_workers, pool, **kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">86</span>     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">pool</span><span class="p">,</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">pool</span><span class="o">.</span><span class="n">Pool</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">87</span>         <span class="n">pool</span> <span class="o">=</span> <span class="n">MultiprocessingPoolExecutor</span><span class="p">(</span><span class="n">pool</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">89</span> <span class="n">results</span> <span class="o">=</span> <span class="n">get_async</span><span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">90</span>     <span class="n">pool</span><span class="o">.</span><span class="n">submit</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">91</span>     <span class="n">pool</span><span class="o">.</span><span class="n">_max_workers</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">92</span>     <span class="n">dsk</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">93</span>     <span class="n">keys</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">94</span>     <span class="n">cache</span><span class="o">=</span><span class="n">cache</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">95</span>     <span class="n">get_id</span><span class="o">=</span><span class="n">_thread_get_id</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">96</span>     <span class="n">pack_exception</span><span class="o">=</span><span class="n">pack_exception</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">97</span>     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">98</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">100</span> <span class="c1"># Cleanup pools associated to dead threads</span>
-<span class="g g-Whitespace">    </span><span class="mi">101</span> <span class="k">with</span> <span class="n">pools_lock</span><span class="p">:</span>
-
-<span class="nn">File /usr/share/miniconda/envs/how_to_eurec4a/lib/python3.9/site-packages/dask/local.py:500,</span> in <span class="ni">get_async</span><span class="nt">(submit, num_workers, dsk, result, cache, get_id, rerun_exceptions_locally, pack_exception, raise_exception, callbacks, dumps, loads, chunksize, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">498</span> <span class="k">while</span> <span class="n">state</span><span class="p">[</span><span class="s2">&quot;waiting&quot;</span><span class="p">]</span> <span class="ow">or</span> <span class="n">state</span><span class="p">[</span><span class="s2">&quot;ready&quot;</span><span class="p">]</span> <span class="ow">or</span> <span class="n">state</span><span class="p">[</span><span class="s2">&quot;running&quot;</span><span class="p">]:</span>
-<span class="g g-Whitespace">    </span><span class="mi">499</span>     <span class="n">fire_tasks</span><span class="p">(</span><span class="n">chunksize</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">500</span>     <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">res_info</span><span class="p">,</span> <span class="n">failed</span> <span class="ow">in</span> <span class="n">queue_get</span><span class="p">(</span><span class="n">queue</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">():</span>
-<span class="g g-Whitespace">    </span><span class="mi">501</span>         <span class="k">if</span> <span class="n">failed</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">502</span>             <span class="n">exc</span><span class="p">,</span> <span class="n">tb</span> <span class="o">=</span> <span class="n">loads</span><span class="p">(</span><span class="n">res_info</span><span class="p">)</span>
-
-<span class="nn">File /usr/share/miniconda/envs/how_to_eurec4a/lib/python3.9/site-packages/dask/local.py:137,</span> in <span class="ni">queue_get</span><span class="nt">(q)</span>
-<span class="g g-Whitespace">    </span><span class="mi">136</span> <span class="k">def</span> <span class="nf">queue_get</span><span class="p">(</span><span class="n">q</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">137</span>     <span class="k">return</span> <span class="n">q</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-
-<span class="nn">File /usr/share/miniconda/envs/how_to_eurec4a/lib/python3.9/queue.py:171,</span> in <span class="ni">Queue.get</span><span class="nt">(self, block, timeout)</span>
-<span class="g g-Whitespace">    </span><span class="mi">169</span> <span class="k">elif</span> <span class="n">timeout</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">170</span>     <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qsize</span><span class="p">():</span>
-<span class="ne">--&gt; </span><span class="mi">171</span>         <span class="bp">self</span><span class="o">.</span><span class="n">not_empty</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">172</span> <span class="k">elif</span> <span class="n">timeout</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">173</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;&#39;timeout&#39; must be a non-negative number&quot;</span><span class="p">)</span>
-
-<span class="nn">File /usr/share/miniconda/envs/how_to_eurec4a/lib/python3.9/threading.py:312,</span> in <span class="ni">Condition.wait</span><span class="nt">(self, timeout)</span>
-<span class="g g-Whitespace">    </span><span class="mi">310</span> <span class="k">try</span><span class="p">:</span>    <span class="c1"># restore state no matter what (e.g., KeyboardInterrupt)</span>
-<span class="g g-Whitespace">    </span><span class="mi">311</span>     <span class="k">if</span> <span class="n">timeout</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">312</span>         <span class="n">waiter</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">313</span>         <span class="n">gotit</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="g g-Whitespace">    </span><span class="mi">314</span>     <span class="k">else</span><span class="p">:</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
-</pre></div>
-</div>
 </div>
 </div>
 <p>We have a look at the time periods spanned by the individual datasets: The datasets <code class="docutils literal notranslate"><span class="pre">HAMP</span> <span class="pre">Radar</span></code>, <code class="docutils literal notranslate"><span class="pre">HAMP</span> <span class="pre">Radiometer</span></code>, and <code class="docutils literal notranslate"><span class="pre">specMACS</span></code> include measurements from the transfer flights on 19 January to Barbados and on 18 February back over the Atlantic to Europe. The datasets <code class="docutils literal notranslate"><span class="pre">WALES</span></code>, <code class="docutils literal notranslate"><span class="pre">KT19</span></code>, and <code class="docutils literal notranslate"><span class="pre">VELOX</span></code> are limited to the 13 local research flights between 22 January and 15 February.</p>
@@ -848,6 +706,16 @@ In the following, we compare the different cloud mask products for a case study 
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">v</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="si">}</span><span class="s2"> -  </span><span class="si">{</span><span class="n">v</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WALES: 2020-01-22T15:18:00.155000064 -  2020-02-15T23:30:02.176000000
+HAMP Radar: 2020-01-19T09:34:25.000004352 -  2020-02-18T18:55:30.999997440
+specMACS: 2020-01-19T09:29:00.063636992 -  2020-02-18T17:27:00.982214912
+HAMP Radiometer: 2020-01-19T09:34:25.000004352 -  2020-02-18T18:55:30.999997440
+KT19: 2020-01-22T14:57:36.041336059 -  2020-02-15T23:59:53.497467041
+VELOX: 2020-01-24T09:33:35.000000000 -  2020-02-15T23:25:18.000000000
 </pre></div>
 </div>
 </div>
@@ -959,6 +827,11 @@ height = height_above_sea_level[0] - range
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xmid</span> <span class="o">=</span> <span class="n">ds_bt</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">size</span> <span class="o">//</span> <span class="mi">2</span>
 <span class="n">va_central</span> <span class="o">=</span> <span class="n">ds_bt</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="n">xmid</span> <span class="o">-</span> <span class="mi">5</span><span class="p">,</span> <span class="n">xmid</span> <span class="o">+</span> <span class="mi">6</span><span class="p">))</span><span class="o">.</span><span class="n">va</span>
 <span class="p">(</span><span class="n">va_central</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">va_central</span><span class="o">.</span><span class="n">min</span><span class="p">())</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array(0.57295305, dtype=float32)
 </pre></div>
 </div>
 </div>
@@ -1127,6 +1000,9 @@ height = height_above_sea_level[0] - range
         <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">label_pos_x</span><span class="p">,</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="p">,</span> <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/57b6f3a74ba750fa3151442bc08832a79f27e421b6c6a71c5bbcc50666e843c7.png" src="_images/57b6f3a74ba750fa3151442bc08832a79f27e421b6c6a71c5bbcc50666e843c7.png" />
 </div>
 </div>
 </section>
