@@ -13,6 +13,7 @@ chapters:
   - file: wales
   - file: hamp_comparison
   - file: cloudmasks
+  - file: specmacs_cloud_geometry
 - file: pthree
   sections:
   - file: p3_flight_tracks
