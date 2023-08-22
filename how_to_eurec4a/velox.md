@@ -15,13 +15,7 @@ kernelspec:
 
 Video airbornE Longwave Observations within siX channels
 
-```{code-cell} ipython3
-import eurec4a
-from IPython.display import Markdown
-
-meta = eurec4a.get_meta()
-Markdown(meta["VELOX"]["description"])
-```
+VELOX is a thermal infrared spectral imager (VELOX327k veL, 640 pixel by 512 pixels) with a synchronized filter wheel (at 100 Hz) covering six spectral channels in the thermal infrared wavelength range from 7.7 to 12.0 micrometer. The instrument measures the brightness temperature of upward radiance in a field-of-view of 35.49° by 28.71°.
 
 The PI during EUREC⁴A was Michael Schäfer (University Leipzig).
 
@@ -36,6 +30,7 @@ To load the data we first load the [EUREC⁴A intake catalog](https://github.com
 Currently, there is a cloud mask product available.
 
 ```{code-cell} ipython3
+import eurec4a
 cat = eurec4a.get_intake_catalog(use_ipfs="QmahMN2wgPauHYkkiTGoG2TpPBmj3p5FoYJAq9uE9iXT9N")
 list(cat.HALO.VELOX)
 ```
