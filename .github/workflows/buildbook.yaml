@@ -43,6 +43,13 @@ jobs:
       run: |
         conda info
         jupyter-book build -W -n --keep-going  how_to_eurec4a
+    - name: save execution cache
+      uses: actions/cache/save@v3
+      if: always()
+      with:
+        path: |
+          how_to_eurec4a/_build/.jupyter_cache
+        key: ${{ runner.os }}-${{ hashFiles('requirements.txt') }}-${{ matrix.ipfs-version }}-${{ matrix.python-version }}
     - name: Archive build artifacts
       if: always()
       uses: actions/upload-artifact@v3
