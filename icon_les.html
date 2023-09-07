@@ -568,57 +568,11 @@ document.write(`
 <p>The currently available ICON-LES output is shown in the following:</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.9/site-packages/xarray/coding/times.py:724: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_5019/2102951061.py:20: UserWarning: The figure layout has changed to tight
+  plt.tight_layout()
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.9/site-packages/xarray/core/indexing.py:557: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
-  array = array.get_duck_array()
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">11</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="n">dataset_len</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">time</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">dataset_len</span><span class="p">,</span><span class="n">dataset_len</span><span class="o">//</span><span class="mi">1000</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>  <span class="c1"># select max timesteps</span>
-<span class="ne">---&gt; </span><span class="mi">11</span>     <span class="n">axs</span><span class="p">[</span><span class="n">d</span><span class="p">]</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="k">except</span> <span class="p">(</span><span class="ne">FileNotFoundError</span><span class="p">,</span> <span class="n">PathNotFoundError</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span>     <span class="k">pass</span>
-
-<span class="nn">File /usr/share/miniconda/envs/how_to_eurec4a/lib/python3.9/site-packages/matplotlib/__init__.py:1442,</span> in <span class="ni">_preprocess_data.&lt;locals&gt;.inner</span><span class="nt">(ax, data, *args, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1439</span> <span class="nd">@functools</span><span class="o">.</span><span class="n">wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1440</span> <span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1441</span>     <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1442</span>         <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="n">sanitize_sequence</span><span class="p">,</span> <span class="n">args</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1444</span>     <span class="n">bound</span> <span class="o">=</span> <span class="n">new_sig</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1445</span>     <span class="n">auto_label</span> <span class="o">=</span> <span class="p">(</span><span class="n">bound</span><span class="o">.</span><span class="n">arguments</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">label_namer</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1446</span>                   <span class="ow">or</span> <span class="n">bound</span><span class="o">.</span><span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">label_namer</span><span class="p">))</span>
-
-<span class="nn">File /usr/share/miniconda/envs/how_to_eurec4a/lib/python3.9/site-packages/matplotlib/axes/_axes.py:1169,</span> in <span class="ni">Axes.vlines</span><span class="nt">(self, x, ymin, ymax, colors, linestyles, label, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1166</span> <span class="n">ymax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">ymax</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1168</span> <span class="n">masked_verts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-<span class="ne">-&gt; </span><span class="mi">1169</span> <span class="n">masked_verts</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span>
-<span class="g g-Whitespace">   </span><span class="mi">1170</span> <span class="n">masked_verts</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">ymin</span>
-<span class="g g-Whitespace">   </span><span class="mi">1171</span> <span class="n">masked_verts</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span>
-
-<span class="nn">File /usr/share/miniconda/envs/how_to_eurec4a/lib/python3.9/contextlib.py:79,</span> in <span class="ni">ContextDecorator.__call__.&lt;locals&gt;.inner</span><span class="nt">(*args, **kwds)</span>
-<span class="g g-Whitespace">     </span><span class="mi">76</span> <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">77</span> <span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">78</span>     <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_recreate_cm</span><span class="p">():</span>
-<span class="ne">---&gt; </span><span class="mi">79</span>         <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-
-<span class="nn">File /usr/share/miniconda/envs/how_to_eurec4a/lib/python3.9/site-packages/numpy/ma/core.py:3375,</span> in <span class="ni">MaskedArray.__setitem__</span><span class="nt">(self, indx, value)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3372</span>     <span class="n">mval</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">([</span><span class="kc">False</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">_dtype</span><span class="o">.</span><span class="n">names</span><span class="p">))</span>
-<span class="g g-Whitespace">   </span><span class="mi">3373</span> <span class="k">if</span> <span class="n">_mask</span> <span class="ow">is</span> <span class="n">nomask</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">3374</span>     <span class="c1"># Set the data, then the mask</span>
-<span class="ne">-&gt; </span><span class="mi">3375</span>     <span class="n">_data</span><span class="p">[</span><span class="n">indx</span><span class="p">]</span> <span class="o">=</span> <span class="n">dval</span>
-<span class="g g-Whitespace">   </span><span class="mi">3376</span>     <span class="k">if</span> <span class="n">mval</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">nomask</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">3377</span>         <span class="n">_mask</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mask</span> <span class="o">=</span> <span class="n">make_mask_none</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">_dtype</span><span class="p">)</span>
-
-<span class="ne">TypeError</span>: float() argument must be a string or a number, not &#39;cftime._cftime.DatetimeProlepticGregorian&#39;
-</pre></div>
-</div>
-<img alt="_images/fd1e39fd24b3a800647a384bdb10ab1c22c110c065f67449b93cb78197e634c9.png" src="_images/fd1e39fd24b3a800647a384bdb10ab1c22c110c065f67449b93cb78197e634c9.png" />
+<img alt="_images/e7b356fa738794c8e3f286245070a0db4155863ce1651ba14fa09548e3a33625.png" src="_images/e7b356fa738794c8e3f286245070a0db4155863ce1651ba14fa09548e3a33625.png" />
 </div>
 </div>
 </section>
@@ -663,6 +617,37 @@ document.write(`
 <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="n">variable</span> <span class="o">=</span> <span class="s2">&quot;synsat_rttov_forward_model_1__abi_ir__goes_16__channel_7&quot;</span>  <span class="c1">#choose one of the once below</span>
 <span class="n">da</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">variable</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s1">&#39;2020-02-08 12:00:00&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;xarray.Dataset&gt;
+Dimensions:                                                   (lat: 760,
+                                                               lon: 1220,
+                                                               time: 5903)
+Coordinates:
+  * lat                                                       (lat) float64 7...
+  * lon                                                       (lon) float64 -...
+  * time                                                      (time) datetime64[ns] ...
+Data variables:
+    synsat_rttov_forward_model_1__abi_ir__goes_16__channel_1  (time, lat, lon) float32 dask.array&lt;chunksize=(12, 760, 1220), meta=np.ndarray&gt;
+    synsat_rttov_forward_model_1__abi_ir__goes_16__channel_2  (time, lat, lon) float32 dask.array&lt;chunksize=(12, 760, 1220), meta=np.ndarray&gt;
+    synsat_rttov_forward_model_1__abi_ir__goes_16__channel_3  (time, lat, lon) float32 dask.array&lt;chunksize=(12, 760, 1220), meta=np.ndarray&gt;
+    synsat_rttov_forward_model_1__abi_ir__goes_16__channel_4  (time, lat, lon) float32 dask.array&lt;chunksize=(12, 760, 1220), meta=np.ndarray&gt;
+    synsat_rttov_forward_model_1__abi_ir__goes_16__channel_5  (time, lat, lon) float32 dask.array&lt;chunksize=(12, 760, 1220), meta=np.ndarray&gt;
+    synsat_rttov_forward_model_1__abi_ir__goes_16__channel_6  (time, lat, lon) float32 dask.array&lt;chunksize=(12, 760, 1220), meta=np.ndarray&gt;
+    synsat_rttov_forward_model_1__abi_ir__goes_16__channel_7  (time, lat, lon) float32 dask.array&lt;chunksize=(12, 760, 1220), meta=np.ndarray&gt;
+Attributes:
+    CDI:                       Climate Data Interface version 1.9.10 (https:/...
+    CDO:                       Climate Data Operators version 1.9.10 (https:/...
+    Conventions:               CF-1.6
+    cdo_openmp_thread_number:  30
+    comment:                   Hauke Schulz (m300408) on l30466 (Linux 4.18.0...
+    history:                   Fri Apr 22 18:15:09 2022: cdo -r -P 30 -f nc4 ...
+    institution:               Max Planck Institute for Meteorology
+    references:                see MPIM/DWD publications
+    source:                    icon-nwp\tgit@gitlab.dkrz.de:icon/icon-nwp.git...
+    title:                     ICON simulation
 </pre></div>
 </div>
 </div>
@@ -721,6 +706,13 @@ that come especially handy for the plotting of data on the icosahedral grid show
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/how_to_eurec4a/lib/python3.9/site-packages/cartopy/io/__init__.py:241: DownloadWarning: Downloading: https://naturalearth.s3.amazonaws.com/10m_physical/ne_10m_coastline.zip
+  warnings.warn(f&#39;Downloading: {url}&#39;, DownloadWarning)
+</pre></div>
+</div>
+<img alt="_images/1c3814dbedb1623b8124b04d808b3a1e4f22021936920f777ac00bdb850b7909.png" src="_images/1c3814dbedb1623b8124b04d808b3a1e4f22021936920f777ac00bdb850b7909.png" />
+</div>
 </div>
 </section>
 </section>
@@ -729,6 +721,17 @@ that come especially handy for the plotting of data on the icosahedral grid show
 <p>For the visualization of the icosahedral grid, and interactive version exists that relies on <a class="reference external" href="https://gitlab.gwdg.de/tobi/gridlook">gridlook</a> and is shown below
 for the surface values of <em>LES_CampaignDomain_control</em> and <em>DOM01</em>. Try it out!</p>
 <div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <iframe
+            width="100%"
+            height="600px"
+            src="https://tobi.pages.gwdg.de/gridlook/#https://swift.dkrz.de/v1/dkrz_948e7d4bbfbb445fbff5315fc433e36a/EUREC4A_LES/json_eurec4a_sim_time.json"
+            frameborder="0"
+            allowfullscreen
+            
+        ></iframe>
+        </div></div>
 </div>
 <p>Static views can be exported within the app and plotted separatedly. Here is an example for the 2m temperature that build on top of the plotting routine of the regular grid.</p>
 <div class="cell docutils container">
@@ -777,6 +780,9 @@ for the surface values of <em>LES_CampaignDomain_control</em> and <em>DOM01</em>
 <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">artist</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">da</span><span class="o">.</span><span class="n">long_name</span><span class="si">}</span><span class="s2"> / </span><span class="si">{</span><span class="n">da</span><span class="o">.</span><span class="n">units</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/a55839a50b12c8ae5d67a24c80041401a98014e671e8c4fd083ad1c0039ad107.png" src="_images/a55839a50b12c8ae5d67a24c80041401a98014e671e8c4fd083ad1c0039ad107.png" />
 </div>
 </div>
 </section>
