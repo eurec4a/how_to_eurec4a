@@ -38,10 +38,10 @@ jobs:
       with:
         path: |
           how_to_eurec4a/_build/.jupyter_cache
-        key: ${{ runner.os }}-${{ hashFiles('requirements.txt') }}-${{ matrix.python-version }}-${{ github.run_id }}-${{ github.run_attempt }}
+        key: ${{ runner.os }}-${{ hashFiles('environment.yml', 'requirements.txt') }}-${{ matrix.python-version }}-${{ github.run_id }}-${{ github.run_attempt }}
         restore-keys: |
-          ${{ runner.os }}-${{ hashFiles('requirements.txt') }}-${{ matrix.python-version }}-${{ github.run_id }}-
-          ${{ runner.os }}-${{ hashFiles('requirements.txt') }}-${{ matrix.python-version }}-
+          ${{ runner.os }}-${{ hashFiles('environment.yml', 'requirements.txt') }}-${{ matrix.python-version }}-${{ github.run_id }}-
+          ${{ runner.os }}-${{ hashFiles('environment.yml', 'requirements.txt') }}-${{ matrix.python-version }}-
     - name: build book
       run: |
         conda info
@@ -52,7 +52,7 @@ jobs:
       with:
         path: |
           how_to_eurec4a/_build/.jupyter_cache
-        key: ${{ runner.os }}-${{ hashFiles('requirements.txt') }}-${{ matrix.python-version }}-${{ github.run_id }}-${{ github.run_attempt }}
+        key: ${{ runner.os }}-${{ hashFiles('environment.yml', 'requirements.txt') }}-${{ matrix.python-version }}-${{ github.run_id }}-${{ github.run_attempt }}
     - name: Archive build artifacts
       if: always()
       uses: actions/upload-artifact@v3
