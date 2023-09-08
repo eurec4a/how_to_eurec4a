@@ -34,11 +34,14 @@ jobs:
         sudo apt-get install -y wget curl jq
         bash <(curl https://raw.githubusercontent.com/eurec4a/ipfs_tools/main/install_and_run_ipfs.sh) ${{ matrix.ipfs-version }}
     - name: setting up notebook execution cache
-      uses: actions/cache@v3
+      uses: actions/cache/restore@v3
       with:
         path: |
           how_to_eurec4a/_build/.jupyter_cache
-        key: ${{ runner.os }}-${{ hashFiles('requirements.txt') }}-${{ matrix.ipfs-version }}-${{ matrix.python-version }}
+        key: ${{ runner.os }}-${{ hashFiles('requirements.txt') }}-${{ matrix.python-version }}-${{ github.run_id }}-${{ github.run_attempt }}
+        restore-keys: |
+          ${{ runner.os }}-${{ hashFiles('requirements.txt') }}-${{ matrix.python-version }}-${{ github.run_id }}-
+          ${{ runner.os }}-${{ hashFiles('requirements.txt') }}-${{ matrix.python-version }}-
     - name: build book
       run: |
         conda info
@@ -49,7 +52,7 @@ jobs:
       with:
         path: |
           how_to_eurec4a/_build/.jupyter_cache
-        key: ${{ runner.os }}-${{ hashFiles('requirements.txt') }}-${{ matrix.ipfs-version }}-${{ matrix.python-version }}
+        key: ${{ runner.os }}-${{ hashFiles('requirements.txt') }}-${{ matrix.python-version }}-${{ github.run_id }}-${{ github.run_attempt }}
     - name: Archive build artifacts
       if: always()
       uses: actions/upload-artifact@v3
