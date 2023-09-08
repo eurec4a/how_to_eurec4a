@@ -77,9 +77,9 @@ jobs:
       if: always()
       uses: actions/upload-artifact@v3
       with:
-        name: build
+        name: html
         path: |
-          how_to_eurec4a/_build
+          how_to_eurec4a/_build/html
 
   publish:
     needs: build
@@ -89,8 +89,8 @@ jobs:
       - name: Download compiled book
         uses: actions/download-artifact@v3
         with:
-          name: build
-          path: _build
+          name: html
+          path: html
       - name: set CNAME
         run: |
           printf "howto.eurec4a.eu" > _build/html/CNAME
@@ -98,4 +98,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: _build/html
+          publish_dir: html
