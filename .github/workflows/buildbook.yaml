@@ -5,13 +5,13 @@ on: [push, pull_request]
 env:
   # Increase this value to reset cache
   CONDA_CACHE_NUMBER: 0
+  PYDEVD_DISABLE_FILE_VALIDATION: 1  # disable warnings that debugger might not work using frozen (i.e. faster-to-load) modules. We'd expect debugging to be done outside of CI, so here it's probably fine to hide it.
 
 jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.9]
         ipfs-version: [0.12.0]
     defaults:
       run:
@@ -21,15 +21,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v4
-      with:
-        python-version: ${{ matrix.python-version }}
     - name: initialize conda
       uses: conda-incubator/setup-miniconda@v2
       with:
         activate-environment: how_to_eurec4a
-        python-version: ${{ matrix.python-version }}
         auto-activate-base: false
         use-mamba: true
         miniforge-variant: Mambaforge
@@ -63,10 +58,10 @@ jobs:
       with:
         path: |
           how_to_eurec4a/_build/.jupyter_cache
-        key: notebooks-${{ runner.os }}-${{ hashFiles('environment.yml', 'requirements.txt') }}-${{ matrix.python-version }}-${{ github.run_id }}-${{ github.run_attempt }}
+        key: notebooks-${{ runner.os }}-${{ hashFiles('environment.yml', 'requirements.txt') }}-${{ github.run_id }}-${{ github.run_attempt }}
         restore-keys: |
-          notebooks-${{ runner.os }}-${{ hashFiles('environment.yml', 'requirements.txt') }}-${{ matrix.python-version }}-${{ github.run_id }}-
-          notebooks-${{ runner.os }}-${{ hashFiles('environment.yml', 'requirements.txt') }}-${{ matrix.python-version }}-
+          notebooks-${{ runner.os }}-${{ hashFiles('environment.yml', 'requirements.txt') }}-${{ github.run_id }}-
+          notebooks-${{ runner.os }}-${{ hashFiles('environment.yml', 'requirements.txt') }}-
     - name: build book
       run: |
         conda info
@@ -77,7 +72,7 @@ jobs:
       with:
         path: |
           how_to_eurec4a/_build/.jupyter_cache
-        key: notebooks-${{ runner.os }}-${{ hashFiles('environment.yml', 'requirements.txt') }}-${{ matrix.python-version }}-${{ github.run_id }}-${{ github.run_attempt }}
+        key: notebooks-${{ runner.os }}-${{ hashFiles('environment.yml', 'requirements.txt') }}-${{ github.run_id }}-${{ github.run_attempt }}
     - name: Archive build artifacts
       if: always()
       uses: actions/upload-artifact@v3
