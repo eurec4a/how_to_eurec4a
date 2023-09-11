@@ -2,12 +2,16 @@ name: buildbook
 
 on: [push, pull_request]
 
+env:
+  # Increase this value to reset cache
+  CONDA_CACHE_NUMBER: 0
+  PYDEVD_DISABLE_FILE_VALIDATION: 1  # disable warnings that debugger might not work using frozen (i.e. faster-to-load) modules. We'd expect debugging to be done outside of CI, so here it's probably fine to hide it.
+
 jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.9]
         ipfs-version: [0.12.0]
     defaults:
       run:
@@ -17,28 +21,47 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v4
-      with:
-        python-version: ${{ matrix.python-version }}
-    - name: Set up Python modules with conda
+    - name: initialize conda
       uses: conda-incubator/setup-miniconda@v2
       with:
         activate-environment: how_to_eurec4a
-        environment-file: environment.yml
-        python-version: ${{ matrix.python-version }}
         auto-activate-base: false
+        use-mamba: true
+        miniforge-variant: Mambaforge
+        miniforge-version: latest
+    - name: restore conda environment from cache
+      uses: actions/cache/restore@v3
+      with:
+        path: ${{ env.CONDA }}/envs
+        key:
+          conda-${{ runner.os }}--${{ runner.arch }}--${{ hashFiles('environment.yml', 'requirements.txt') }}-${{ env.CONDA_CACHE_NUMBER }}
+      id: conda_cache
+    - name: install conda environment
+      run:
+        mamba env update -n how_to_eurec4a -f environment.yml
+      if: steps.conda_cache.outputs.cache-hit != 'true'
+      id: install_conda_env
+    - name: upload conda environment to cache
+      uses: actions/cache/save@v3
+      if: steps.install_conda_env.outcome == 'success'
+      with:
+        path: ${{ env.CONDA }}/envs
+        key:
+          conda-${{ runner.os }}--${{ runner.arch }}--${{ hashFiles('environment.yml', 'requirements.txt') }}-${{ env.CONDA_CACHE_NUMBER }}
     - name: Install local ipfs node
       run: |
         sudo apt-get update
         sudo apt-get install -y wget curl jq
         bash <(curl https://raw.githubusercontent.com/eurec4a/ipfs_tools/main/install_and_run_ipfs.sh) ${{ matrix.ipfs-version }}
     - name: setting up notebook execution cache
-      uses: actions/cache@v3
+      uses: actions/cache/restore@v3
       with:
         path: |
           how_to_eurec4a/_build/.jupyter_cache
-        key: ${{ runner.os }}-${{ hashFiles('requirements.txt') }}-${{ matrix.ipfs-version }}-${{ matrix.python-version }}
+        key: notebooks-${{ runner.os }}-${{ hashFiles('environment.yml', 'requirements.txt') }}-${{ github.run_id }}-${{ github.run_attempt }}
+        restore-keys: |
+          notebooks-${{ runner.os }}-${{ hashFiles('environment.yml', 'requirements.txt') }}-${{ github.run_id }}-
+          notebooks-${{ runner.os }}-${{ hashFiles('environment.yml', 'requirements.txt') }}-
     - name: build book
       run: |
         conda info
@@ -49,14 +72,14 @@ jobs:
       with:
         path: |
           how_to_eurec4a/_build/.jupyter_cache
-        key: ${{ runner.os }}-${{ hashFiles('requirements.txt') }}-${{ matrix.ipfs-version }}-${{ matrix.python-version }}
+        key: notebooks-${{ runner.os }}-${{ hashFiles('environment.yml', 'requirements.txt') }}-${{ github.run_id }}-${{ github.run_attempt }}
     - name: Archive build artifacts
       if: always()
       uses: actions/upload-artifact@v3
       with:
-        name: build
+        name: html
         path: |
-          how_to_eurec4a/_build
+          how_to_eurec4a/_build/html
 
   publish:
     needs: build
@@ -66,8 +89,8 @@ jobs:
       - name: Download compiled book
         uses: actions/download-artifact@v3
         with:
-          name: build
-          path: _build
+          name: html
+          path: html
       - name: set CNAME
         run: |
           printf "howto.eurec4a.eu" > _build/html/CNAME
@@ -75,4 +98,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: _build/html
+          publish_dir: html
