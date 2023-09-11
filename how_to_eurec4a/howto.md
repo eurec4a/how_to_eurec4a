@@ -11,6 +11,7 @@ Datasets should be added by following these steps:
    ```bash
    git clone git@github.com:eurec4a/eurec4a-intake.git
    ```
+   You might be asked to [set up an SSH key for your GitHub account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent).
 2. Create a new branch
    ```bash
    git checkout -b <my_new_dataset>
