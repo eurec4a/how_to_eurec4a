@@ -60,7 +60,7 @@ Datasets should be added by following these steps:
          engine: netcdf4
    ```
 
-   In case your dataset has been published on AERIS, the THREDDS link to your dataset can be determined by finding your dataset at [https://observations.ipsl.fr/aeris/eurec4a-data/](https://observations.ipsl.fr/aeris/eurec4a-data/) and then replace in the link to the dataset `https://observations.ipsl.fr/aeris/eurec4a-data/` with `https://observations.ipsl.fr/thredds/dodsC/EUREC4A/`. You can check if the link is correct by opening it e.g. directly with `xarray.open_dataset()` or [Panoply](https://www.giss.nasa.gov/tools/panoply/) by opening a `Remote Dataset`. 
+   In case your dataset has been published on AERIS, the THREDDS link to your dataset can be determined by finding your dataset at [https://observations.ipsl.fr/aeris/eurec4a-data/](https://observations.ipsl.fr/aeris/eurec4a-data/). To retrieve the THREDDS link, replace `https://observations.ipsl.fr/aeris/eurec4a-data/` with `https://observations.ipsl.fr/thredds/dodsC/EUREC4A/`. You can check if the link is correct by opening it e.g. directly with `xarray.open_dataset()` or [Panoply](https://www.giss.nasa.gov/tools/panoply/) by opening a `Remote Dataset`. 
 
    A sub-catalog reference can be created with
    ```yaml
@@ -89,7 +89,7 @@ Datasets should be added by following these steps:
    ```
 
 5. Create pull request on GitHub
-   A pull request can be started on the GitHub webpage. After the pull request has been submitted, the review process will start. To accellerate the process, please make sure all tests for your pull request succeed. The status of the tests are shown at the bottom of your pull request.
+   A pull request can be started on the GitHub webpage. After the pull request has been submitted, the review process will start. To accelerate the process, please make sure all tests for your pull request succeed. The status of the tests are shown at the bottom of your pull request.
 
 ### via GitHub web interface 
 
