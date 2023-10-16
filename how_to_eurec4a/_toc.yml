@@ -2,6 +2,9 @@ format: jb-book
 root: intro
 chapters:
 - file: howto
+  sections:
+  - file: howto_cite_dataset
+  - file: howto_add_dataset
 - file: halo
   sections:
   - file: HALO_instrument_overview
