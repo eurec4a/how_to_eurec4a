@@ -41,6 +41,7 @@ chapters:
   - file: icon_les
     sections:
     - file: icon_les-pamtra
+    - file: icon_les-warming
   - file: botany_dales
 - file: auxiliary_datasets
   sections:
