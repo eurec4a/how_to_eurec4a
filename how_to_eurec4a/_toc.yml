@@ -42,6 +42,7 @@ chapters:
     sections:
     - file: icon_les-pamtra
     - file: icon_les-warming
+      title: Warming experiments
   - file: botany_dales
 - file: auxiliary_datasets
   sections:
