@@ -2,6 +2,7 @@ jupyter-book>=0.13.0 # sphinx-design instead of sphinx-panel
 jupytext
 numpy
 dask>=2023.2.0
+dask-expr
 eurec4a[data]
 pydap
 ipyleaflet
