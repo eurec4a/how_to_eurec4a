@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>The issue with netCDF data types &#8212; How to EUREC⁴A</title>
   
@@ -19,51 +18,48 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=53e8a599" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'netcdf_datatypes';</script>
-    <link rel="shortcut icon" href="_static/logo_pyeurec4a.png"/>
+    <link rel="icon" href="_static/logo_pyeurec4a.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Data on IPFS" href="data_on_ipfs.html" />
@@ -77,7 +73,15 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -112,11 +116,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -131,9 +138,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="intro.html">
+  
   
   
   
@@ -143,12 +152,23 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="_static/logo_pyeurec4a.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="_static/logo_pyeurec4a.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="_static/logo_pyeurec4a.png" class="logo__image only-light" alt="How to EUREC⁴A - Home"/>
+    <script>document.write(`<img src="_static/logo_pyeurec4a.png" class="logo__image only-dark" alt="How to EUREC⁴A - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -205,6 +225,7 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="icon_les.html">ICON-LES</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="icon_les-pamtra.html">Synthetic measurements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="icon_les-warming.html">Warming experiments</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="botany_dales.html">Cloud Botany with DALES</a></li>
@@ -395,20 +416,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -461,10 +484,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="the-issue-with-netcdf-data-types">
-<h1>The issue with netCDF data types<a class="headerlink" href="#the-issue-with-netcdf-data-types" title="Permalink to this heading">#</a></h1>
+<h1>The issue with netCDF data types<a class="headerlink" href="#the-issue-with-netcdf-data-types" title="Link to this heading">#</a></h1>
 <div class="tip admonition">
 <p class="admonition-title">TL; DR</p>
 <p>If you want to be on the safe side, use only <code class="docutils literal notranslate"><span class="pre">SHORT</span></code>, <code class="docutils literal notranslate"><span class="pre">INT</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code>, <code class="docutils literal notranslate"><span class="pre">DOUBLE</span></code>, <code class="docutils literal notranslate"><span class="pre">STRING</span></code> or array of <code class="docutils literal notranslate"><span class="pre">CHAR</span></code> as data types.
@@ -474,11 +497,11 @@ In particular, <strong>don’t</strong> use single byte integers, any unsigned i
 During this evolution, the basic data types representable within the netCDF data format have been expanded.
 Currently we are at netCDF version 4 with HDF5 as a storage backend, which offers a lot more flexibility compared to previous versions of netCDF including many more <a class="reference external" href="https://www.unidata.ucar.edu/software/netcdf/docs/data_type.html">data types</a>.
 One <strong>could</strong> assume that this is all fine and we can use these data types freely, but here we are unlucky and there is more to keep in mind.</p>
-<p>In order to paint the full picture, we’ll have to take a little detour and think about what <a class="reference internal" href="#what-is-netcdf"><span class="std std-doc">netCDF actually is</span></a> or even more what we think (or probably should think) about when talking about netCDF.
-As we’ll see, this is not something which can be answered in a straight forward manner, so it is fair to ask <a class="reference internal" href="#why-should-we-care"><span class="std std-doc">if we should care at all</span></a>.
-Finally we’ll have a look at <a class="reference internal" href="#an-experiment"><span class="std std-doc">an experiment</span></a> which shows plenty of ways in which different data types may fail around netCDF and which types seem to be fine.</p>
+<p>In order to paint the full picture, we’ll have to take a little detour and think about what <a class="reference internal" href="#what-is-netcdf">netCDF actually is</a> or even more what we think (or probably should think) about when talking about netCDF.
+As we’ll see, this is not something which can be answered in a straight forward manner, so it is fair to ask <a class="reference internal" href="#why-should-we-care">if we should care at all</a>.
+Finally we’ll have a look at <a class="reference internal" href="#an-experiment">an experiment</a> which shows plenty of ways in which different data types may fail around netCDF and which types seem to be fine.</p>
 <section id="what-is-netcdf">
-<h2>What is netCDF?<a class="headerlink" href="#what-is-netcdf" title="Permalink to this heading">#</a></h2>
+<h2>What is netCDF?<a class="headerlink" href="#what-is-netcdf" title="Link to this heading">#</a></h2>
 <p>NetCDF is more than only the “netCDF4 on HDF5” storage format.
 This is not only a bold statement, but is actually asked and discussed by the netCDF developers (<a class="reference external" href="https://github.com/Unidata/netcdf-c/issues/1590">What is netCDF?</a>, Jan 2020).
 This chapter is not exactly about the same topic in the referenced issue, but still has similar roots.
@@ -486,13 +509,13 @@ The relevant part for this discussion is that there is at least netCDF, the <str
 It is also recognized that there are multiple persistence formats (netCDF3, netCDF4/HDF5, zarr) for the same data model and there are translation layers such as OPeNDAP which can be used as a transport mechanism between the computer on which data is stored and the computer on which data is analyzed.
 We further look at the relevance of the netCDF data model and netCDF persistence format for the EUREC⁴A datasets.</p>
 <section id="the-data-model-s">
-<h3>The data model(s)<a class="headerlink" href="#the-data-model-s" title="Permalink to this heading">#</a></h3>
+<h3>The data model(s)<a class="headerlink" href="#the-data-model-s" title="Link to this heading">#</a></h3>
 <p>There are actually a few different ideas of data models around, which share some general ideas.
 Maybe the most illustrative way to show this general idea is an extended version of <a class="reference external" href="http://xarray.pydata.org/">xarray</a>’s logo, but the underlying ideas are of course applicable independently of xarray or even Python.</p>
 <figure class="align-center" id="id1">
 <a class="reference internal image-reference" href="_images/dataset-diagram.png"><img alt="dataset diagram" src="_images/dataset-diagram.png" style="width: 70%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Dataset diagram (From the <a class="reference external" href="http://xarray.pydata.org/en/stable/data-structures.html">xarray documentation</a>)</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Dataset diagram (From the <a class="reference external" href="http://xarray.pydata.org/en/stable/data-structures.html">xarray documentation</a>)</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>A dataset is a collection of <em>variables</em> and <em>dimensions</em>.
@@ -508,9 +531,9 @@ Thus we usually want those extra bits to datasets and variables, which can be do
 I assume that in many cases when we talk about that a dataset being available in netCDF, what we really care about is that the dataset is organized along this general structure and thus can be accesses <em>as if it were netCDF</em>.</p>
 </section>
 <section id="the-storage-and-transport-formats">
-<h3>The storage and transport formats<a class="headerlink" href="#the-storage-and-transport-formats" title="Permalink to this heading">#</a></h3>
+<h3>The storage and transport formats<a class="headerlink" href="#the-storage-and-transport-formats" title="Link to this heading">#</a></h3>
 <section id="netcdf">
-<h4>netCDF<a class="headerlink" href="#netcdf" title="Permalink to this heading">#</a></h4>
+<h4>netCDF<a class="headerlink" href="#netcdf" title="Link to this heading">#</a></h4>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <div class="admonition note">
@@ -566,7 +589,7 @@ do not currently do any sort of optimization or caching.</p>
 <p>Thus, if a dataset should be accessed efficiently from a remote location, something different must be added, which is what OPeNDAP is for.</p>
 </section>
 <section id="opendap">
-<h4>OPeNDAP<a class="headerlink" href="#opendap" title="Permalink to this heading">#</a></h4>
+<h4>OPeNDAP<a class="headerlink" href="#opendap" title="Link to this heading">#</a></h4>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <div class="admonition note">
@@ -583,14 +606,14 @@ However, DAP4 is still a draft since 2004 and the only widely supported version 
 <p>The data model of OPeNDAP v2 is slightly different from the data model in netCDF.
 Regarding data types, OPeNDAP v2 defines <code class="docutils literal notranslate"><span class="pre">Byte</span></code>, <code class="docutils literal notranslate"><span class="pre">Int16</span></code>, <code class="docutils literal notranslate"><span class="pre">UInt16</span></code>, <code class="docutils literal notranslate"><span class="pre">Int32</span></code>, <code class="docutils literal notranslate"><span class="pre">UInt32</span></code>, <code class="docutils literal notranslate"><span class="pre">Float32</span></code>, <code class="docutils literal notranslate"><span class="pre">Float64</span></code>, <code class="docutils literal notranslate"><span class="pre">String</span></code>, <code class="docutils literal notranslate"><span class="pre">URL</span></code>.</p>
 <p>As opposed to the <code class="docutils literal notranslate"><span class="pre">BYTE</span></code> in netCDF Classic, the <code class="docutils literal notranslate"><span class="pre">Byte</span></code> in OPeNDAP is <strong>unsigned</strong>.
-This makes byte types of netCDF Classic and OPeNDAP incompatible, but as noted in the <a class="reference internal" href="#summary"><span class="std std-doc">summary</span></a>, there exists a hack which tries to circumvent that.
-One could assume that <code class="docutils literal notranslate"><span class="pre">UBYTE</span></code> of netCDF Enhanced would fit to this <code class="docutils literal notranslate"><span class="pre">Byte</span></code>, but there are issues as well which are confirmed in <a class="reference internal" href="#an-experiment"><span class="std std-doc">the experiment</span></a>.</p>
+This makes byte types of netCDF Classic and OPeNDAP incompatible, but as noted in the <a class="reference internal" href="#summary">summary</a>, there exists a hack which tries to circumvent that.
+One could assume that <code class="docutils literal notranslate"><span class="pre">UBYTE</span></code> of netCDF Enhanced would fit to this <code class="docutils literal notranslate"><span class="pre">Byte</span></code>, but there are issues as well which are confirmed in <a class="reference internal" href="#an-experiment">the experiment</a>.</p>
 <p>Furthermore, there is no <code class="docutils literal notranslate"><span class="pre">CHAR</span></code>, so whenever a netCDF dataset containing text as a sequence of <code class="docutils literal notranslate"><span class="pre">CHAR</span></code> is encountered by an OPeNDAP server, this will be converted to an OPeNDAP <code class="docutils literal notranslate"><span class="pre">String</span></code>.
 A consequence of this is that <code class="docutils literal notranslate"><span class="pre">CHAR</span></code>s and <code class="docutils literal notranslate"><span class="pre">STRING</span></code>s can not be distinguished when transferred over OPeNDAP and thus may be converted into each other after one cycle through netCDF → OPeNDAP → netCDF.
 This behaviour is not (yet) studied in this text.</p>
 </section>
 <section id="zarr">
-<h4>zarr<a class="headerlink" href="#zarr" title="Permalink to this heading">#</a></h4>
+<h4>zarr<a class="headerlink" href="#zarr" title="Link to this heading">#</a></h4>
 <div class="caution admonition">
 <p class="admonition-title">to do</p>
 <p><a class="reference external" href="https://zarr.readthedocs.io/">zarr</a> should be discussed in this place.</p>
@@ -599,7 +622,7 @@ This behaviour is not (yet) studied in this text.</p>
 </section>
 </section>
 <section id="why-should-we-care">
-<h2>Why should we care?<a class="headerlink" href="#why-should-we-care" title="Permalink to this heading">#</a></h2>
+<h2>Why should we care?<a class="headerlink" href="#why-should-we-care" title="Link to this heading">#</a></h2>
 <p>Each of the formats has distinct advantages and disadvantages:</p>
 <ul class="simple">
 <li><p><strong>netCDF</strong> is a compact format, the whole dataset can be stored in a single file which can be transferred from one place to another and everything is contained. This is great for storing data and to send around smaller datasets, but retrieving only a subset of a dataset from a remote server is not possible. Libraries which can open netCDF files usually do not handle HTTP, so the dataset needs to be stored in a local directory to use it.</p></li>
@@ -647,7 +670,7 @@ This behaviour is not (yet) studied in this text.</p>
 <p>Thus, if we want to have datasets which can be used locally as well as remotely (some might call it “in the cloud”), we should take care that our datasets are convertible between those formats so that we can adapt to the specific use case.</p>
 </section>
 <section id="an-experiment">
-<h2>An experiment<a class="headerlink" href="#an-experiment" title="Permalink to this heading">#</a></h2>
+<h2>An experiment<a class="headerlink" href="#an-experiment" title="Link to this heading">#</a></h2>
 <p>Currently, the main use case for the Aeris data server is to publish netCDF files and retrieve them back, either via direct download or via OPeNDAP.
 This experiment is designed to test under which circumstances data which has been created as netCDF can be retrieved correctly via OPeNDAP.
 In order to minimize additional problems due to the mix of incompatible libraries, all dataset decoding is done using the same netCDF-c library (independent of the access to the dataset, directly or via OPeNDAP).</p>
@@ -662,7 +685,7 @@ If any one of the sub cases failed, the data type is marked as erroneous.</p>
 <li><p>A little script checks if it detects any significant error between the original and the OPeNDAP dataset</p></li>
 </ul>
 <section id="results">
-<h3>Results<a class="headerlink" href="#results" title="Permalink to this heading">#</a></h3>
+<h3>Results<a class="headerlink" href="#results" title="Link to this heading">#</a></h3>
 <div class="dropdown error admonition">
 <p class="admonition-title">BYTE</p>
 <div class="sd-tab-set docutils">
@@ -1948,7 +1971,7 @@ data:
 </div>
 </section>
 <section id="summary">
-<h3>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h3>
+<h3>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h3>
 <p>The result of this experiment is underwhelming but shows a clear picture.
 A large set of data types can not be used reliably in a combination of netCDF and OPeNDAP.
 The failure modes however differ significantly between the various types:</p>
@@ -1963,7 +1986,7 @@ The failure modes however differ significantly between the various types:</p>
 </section>
 </section>
 <section id="did-we-learn-something">
-<h2>Did we learn something?<a class="headerlink" href="#did-we-learn-something" title="Permalink to this heading">#</a></h2>
+<h2>Did we learn something?<a class="headerlink" href="#did-we-learn-something" title="Link to this heading">#</a></h2>
 <p>Well, it depends.
 In principle, these results are also present, but well hidden inside the <a class="reference external" href="https://www.unidata.ucar.edu/software/netcdf/documentation/NUG/index.html">NetCDF Users Guide</a>:
 The <a class="reference external" href="https://www.unidata.ucar.edu/software/netcdf/documentation/NUG/_best_practices.html">Best Practices</a> state:</p>
@@ -2014,11 +2037,10 @@ I think if we want to provide datasets which are usable by everyone, the insight
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="running_locally.html"
@@ -2038,10 +2060,7 @@ I think if we want to provide datasets which are usable by everyone, the insight
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -2049,6 +2068,7 @@ I think if we want to provide datasets which are usable by everyone, the insight
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -2094,6 +2114,7 @@ By EUREC⁴A community
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2021.
@@ -2120,8 +2141,8 @@ By EUREC⁴A community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

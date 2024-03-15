@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Reading cloud radar data &#8212; How to EUREC⁴A</title>
   
@@ -19,51 +18,48 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=53e8a599" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'meteor_cloudradar';</script>
-    <link rel="shortcut icon" href="_static/logo_pyeurec4a.png"/>
+    <link rel="icon" href="_static/logo_pyeurec4a.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Merian" href="merian.html" />
@@ -77,7 +73,15 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -112,11 +116,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -131,9 +138,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="intro.html">
+  
   
   
   
@@ -143,12 +152,23 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="_static/logo_pyeurec4a.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="_static/logo_pyeurec4a.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="_static/logo_pyeurec4a.png" class="logo__image only-light" alt="How to EUREC⁴A - Home"/>
+    <script>document.write(`<img src="_static/logo_pyeurec4a.png" class="logo__image only-dark" alt="How to EUREC⁴A - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -205,6 +225,7 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="icon_les.html">ICON-LES</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="icon_les-pamtra.html">Synthetic measurements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="icon_les-warming.html">Warming experiments</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="botany_dales.html">Cloud Botany with DALES</a></li>
@@ -479,20 +500,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -530,10 +553,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="reading-cloud-radar-data">
-<h1>Reading cloud radar data<a class="headerlink" href="#reading-cloud-radar-data" title="Permalink to this heading">#</a></h1>
+<h1>Reading cloud radar data<a class="headerlink" href="#reading-cloud-radar-data" title="Link to this heading">#</a></h1>
 <p>The high resolution data has about 500 MB per file, which when read in over a remote source can lead to long wait times.
 To reduce the wait times the data can be read in lazily using dask.
 Intake will this do this by default.
@@ -547,7 +570,7 @@ Let’s obtain the EUREC4A intake catalog:</p>
 </div>
 </div>
 <section id="available-products">
-<h2>Available products<a class="headerlink" href="#available-products" title="Permalink to this heading">#</a></h2>
+<h2>Available products<a class="headerlink" href="#available-products" title="Link to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">LIMRAD94</span></code> cloud radar offers multiple products which can be accessed using names and additional parameters.
 Let’s see which products and parameters are available for the cloud radar.
 For the parameters, we are also interested in their valid range:</p>
@@ -580,7 +603,7 @@ low_res (date): daily 30m 30s averaged radar reflectivity
 </div>
 </section>
 <section id="radar-reflectivity">
-<h2>Radar reflectivity<a class="headerlink" href="#radar-reflectivity" title="Permalink to this heading">#</a></h2>
+<h2>Radar reflectivity<a class="headerlink" href="#radar-reflectivity" title="Link to this heading">#</a></h2>
 <p>We’ll have a look at the <code class="docutils literal notranslate"><span class="pre">high_res</span></code> data in version 1.1. We’ll keep the default date for simplicity:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -590,6 +613,10 @@ low_res (date): daily 30m 30s averaged radar reflectivity
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda3/envs/how_to_eurec4a/lib/python3.12/site-packages/intake_xarray/base.py:21: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
+  &#39;dims&#39;: dict(self._ds.dims),
+</pre></div>
+</div>
 <div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
 <defs>
 <symbol id="icon-database" viewBox="0 0 32 32">
@@ -953,26 +980,26 @@ dl.xr-attrs {
   stroke: currentColor;
   fill: currentColor;
 }
-</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt;
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt; Size: 720MB
 Dimensions:                    (chirp: 3, time: 44447, range: 367)
 Coordinates:
-  * range                      (range) float32 313.0 335.4 ... 1.296e+04
-  * time                       (time) datetime64[ns] 2020-02-01T00:00:06.7000...
+  * range                      (range) float32 1kB 313.0 335.4 ... 1.296e+04
+  * time                       (time) datetime64[ns] 356kB 2020-02-01T00:00:0...
 Dimensions without coordinates: chirp
 Data variables: (12/23)
-    NumSpectraAveraged         (chirp) float32 dask.array&lt;chunksize=(3,), meta=np.ndarray&gt;
-    Numfft                     float32 ...
-    Nyquist_velocity           (chirp) float32 dask.array&lt;chunksize=(3,), meta=np.ndarray&gt;
-    Skew                       (time, range) float32 dask.array&lt;chunksize=(5556, 46), meta=np.ndarray&gt;
-    SurfRelHum                 (time) float32 dask.array&lt;chunksize=(44447,), meta=np.ndarray&gt;
-    Zh                         (time, range) float32 dask.array&lt;chunksize=(5556, 46), meta=np.ndarray&gt;
+    NumSpectraAveraged         (chirp) float32 12B dask.array&lt;chunksize=(3,), meta=np.ndarray&gt;
+    Numfft                     float32 4B ...
+    Nyquist_velocity           (chirp) float32 12B dask.array&lt;chunksize=(3,), meta=np.ndarray&gt;
+    Skew                       (time, range) float32 65MB dask.array&lt;chunksize=(5556, 46), meta=np.ndarray&gt;
+    SurfRelHum                 (time) float32 178kB dask.array&lt;chunksize=(44447,), meta=np.ndarray&gt;
+    Zh                         (time, range) float32 65MB dask.array&lt;chunksize=(5556, 46), meta=np.ndarray&gt;
     ...                         ...
-    range_offsets              (chirp) float64 dask.array&lt;chunksize=(3,), meta=np.ndarray&gt;
-    time_shift                 (time, chirp) float32 dask.array&lt;chunksize=(22224, 3), meta=np.ndarray&gt;
-    v                          (time, range) float32 dask.array&lt;chunksize=(5556, 46), meta=np.ndarray&gt;
-    v_no_rolling_mean_applied  (time, range) float32 dask.array&lt;chunksize=(5556, 46), meta=np.ndarray&gt;
-    v_uncor                    (time, range) float32 dask.array&lt;chunksize=(5556, 46), meta=np.ndarray&gt;
-    width                      (time, range) float32 dask.array&lt;chunksize=(5556, 46), meta=np.ndarray&gt;
+    range_offsets              (chirp) float64 24B dask.array&lt;chunksize=(3,), meta=np.ndarray&gt;
+    time_shift                 (time, chirp) float32 533kB dask.array&lt;chunksize=(22224, 3), meta=np.ndarray&gt;
+    v                          (time, range) float32 65MB dask.array&lt;chunksize=(5556, 46), meta=np.ndarray&gt;
+    v_no_rolling_mean_applied  (time, range) float32 65MB dask.array&lt;chunksize=(5556, 46), meta=np.ndarray&gt;
+    v_uncor                    (time, range) float32 65MB dask.array&lt;chunksize=(5556, 46), meta=np.ndarray&gt;
+    width                      (time, range) float32 65MB dask.array&lt;chunksize=(5556, 46), meta=np.ndarray&gt;
 Attributes: (12/20)
     Conventions:    CF-1.8
     _FillValue:     -999.0
@@ -986,11 +1013,11 @@ Attributes: (12/20)
     title:          LIMRAD94 (SLDR) Doppler Cloud Radar, calibrated file
     version:        Variable names and dimensions prepared for upload to Aeri...
     version_id:     v1.1
-    year:           2020</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-585b5ee7-9bb2-4b25-a99a-76aff80ea843' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-585b5ee7-9bb2-4b25-a99a-76aff80ea843' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span>chirp</span>: 3</li><li><span class='xr-has-index'>time</span>: 44447</li><li><span class='xr-has-index'>range</span>: 367</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-a8ed6459-a7be-4bf3-8af1-0ce78153b28c' class='xr-section-summary-in' type='checkbox'  checked><label for='section-a8ed6459-a7be-4bf3-8af1-0ce78153b28c' class='xr-section-summary' >Coordinates: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>range</span></div><div class='xr-var-dims'>(range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>313.0 335.4 ... 1.292e+04 1.296e+04</div><input id='attrs-aed4d6fa-0799-43b6-abe1-baac04b3cd9f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-aed4d6fa-0799-43b6-abe1-baac04b3cd9f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b64aa73f-4ce8-4eb6-aece-35b02f21db54' class='xr-var-data-in' type='checkbox'><label for='data-b64aa73f-4ce8-4eb6-aece-35b02f21db54' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Range from antenna to the centre of each range gate</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><pre>array([  313.0271 ,   335.3862 ,   357.74527, ..., 12878.56   , 12920.646  ,
-       12962.733  ], dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2020-02-01T00:00:06.700000047 .....</div><input id='attrs-2e0ce9ca-eb36-4a14-8085-b34b1c267698' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-2e0ce9ca-eb36-4a14-8085-b34b1c267698' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d280cb78-3fe9-4012-9225-a1cf067bb11e' class='xr-var-data-in' type='checkbox'><label for='data-d280cb78-3fe9-4012-9225-a1cf067bb11e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>seconds since 2020-01-01 00:00:00 UTC</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;2020-02-01T00:00:06.700000047&#x27;, &#x27;2020-02-01T00:00:08.570000171&#x27;,
+    year:           2020</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-bcaf4982-1dfa-43d2-8ef4-0444bb8c40c0' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-bcaf4982-1dfa-43d2-8ef4-0444bb8c40c0' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span>chirp</span>: 3</li><li><span class='xr-has-index'>time</span>: 44447</li><li><span class='xr-has-index'>range</span>: 367</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-2821d491-6ea8-45b9-aa30-67eeb5a9dd1f' class='xr-section-summary-in' type='checkbox'  checked><label for='section-2821d491-6ea8-45b9-aa30-67eeb5a9dd1f' class='xr-section-summary' >Coordinates: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>range</span></div><div class='xr-var-dims'>(range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>313.0 335.4 ... 1.292e+04 1.296e+04</div><input id='attrs-314710ef-1b3a-4dc4-a0a1-307ba867764b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-314710ef-1b3a-4dc4-a0a1-307ba867764b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-bc18270f-9188-4399-b161-b46b4c34e642' class='xr-var-data-in' type='checkbox'><label for='data-bc18270f-9188-4399-b161-b46b4c34e642' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Range from antenna to the centre of each range gate</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><pre>array([  313.0271 ,   335.3862 ,   357.74527, ..., 12878.56   , 12920.646  ,
+       12962.733  ], dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2020-02-01T00:00:06.700000047 .....</div><input id='attrs-3b084c3a-c34b-4852-b62b-925854b5508c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-3b084c3a-c34b-4852-b62b-925854b5508c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-45a53872-5079-43a0-b00e-129af8ad4f77' class='xr-var-data-in' type='checkbox'><label for='data-45a53872-5079-43a0-b00e-129af8ad4f77' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>seconds since 2020-01-01 00:00:00 UTC</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;2020-02-01T00:00:06.700000047&#x27;, &#x27;2020-02-01T00:00:08.570000171&#x27;,
        &#x27;2020-02-01T00:00:10.450000047&#x27;, ..., &#x27;2020-02-01T23:59:50.815000057&#x27;,
        &#x27;2020-02-01T23:59:52.684999943&#x27;, &#x27;2020-02-01T23:59:54.545000076&#x27;],
-      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-12babd19-69e6-40ed-8812-59029deabd62' class='xr-section-summary-in' type='checkbox'  ><label for='section-12babd19-69e6-40ed-8812-59029deabd62' class='xr-section-summary' >Data variables: <span>(23)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>NumSpectraAveraged</span></div><div class='xr-var-dims'>(chirp)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(3,), meta=np.ndarray&gt;</div><input id='attrs-6c6b24f6-1999-4f5e-b4d4-7ab9028be349' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-6c6b24f6-1999-4f5e-b4d4-7ab9028be349' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-fde6c386-f43f-4fe7-8f86-cd7b6382c253' class='xr-var-data-in' type='checkbox'><label for='data-fde6c386-f43f-4fe7-8f86-cd7b6382c253' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Number of spectral averages</dd><dt><span>units :</span></dt><dd>1</dd></dl></div><div class='xr-var-data'><table>
+      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-d328df38-49bb-4369-87f5-170aa02b8a72' class='xr-section-summary-in' type='checkbox'  ><label for='section-d328df38-49bb-4369-87f5-170aa02b8a72' class='xr-section-summary' >Data variables: <span>(23)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>NumSpectraAveraged</span></div><div class='xr-var-dims'>(chirp)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(3,), meta=np.ndarray&gt;</div><input id='attrs-ccfece72-159d-4785-aa3d-297bd2166498' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ccfece72-159d-4785-aa3d-297bd2166498' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-2ed5c8b3-fbff-4de9-9d15-9ee33f91f5c0' class='xr-var-data-in' type='checkbox'><label for='data-2ed5c8b3-fbff-4de9-9d15-9ee33f91f5c0' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Number of spectral averages</dd><dt><span>units :</span></dt><dd>1</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table style="border-collapse: collapse;">
@@ -1045,7 +1072,7 @@ Attributes: (12/20)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>Numfft</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-fc7e31e7-9066-4f75-87b9-87bf2c9c3088' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-fc7e31e7-9066-4f75-87b9-87bf2c9c3088' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-54dd0ed0-8e0e-46fb-bc69-b0fbe1fe7ea3' class='xr-var-data-in' type='checkbox'><label for='data-54dd0ed0-8e0e-46fb-bc69-b0fbe1fe7ea3' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Number of points in FFT</dd><dt><span>units :</span></dt><dd>1</dd></dl></div><div class='xr-var-data'><pre>[1 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>Nyquist_velocity</span></div><div class='xr-var-dims'>(chirp)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(3,), meta=np.ndarray&gt;</div><input id='attrs-ab5253ff-47d0-490a-be2f-bc6b950b85fd' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ab5253ff-47d0-490a-be2f-bc6b950b85fd' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-13b35534-e86b-4d7b-a3df-a71e58f4e226' class='xr-var-data-in' type='checkbox'><label for='data-13b35534-e86b-4d7b-a3df-a71e58f4e226' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Unambiguous Doppler velocity (+/-)</dd><dt><span>units :</span></dt><dd>m s-1</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>Numfft</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-ed540189-6c56-4848-a735-6a25dcbaf9cb' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ed540189-6c56-4848-a735-6a25dcbaf9cb' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-38a079d8-e692-4a2e-8676-30a2291cd0c6' class='xr-var-data-in' type='checkbox'><label for='data-38a079d8-e692-4a2e-8676-30a2291cd0c6' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Number of points in FFT</dd><dt><span>units :</span></dt><dd>1</dd></dl></div><div class='xr-var-data'><pre>[1 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>Nyquist_velocity</span></div><div class='xr-var-dims'>(chirp)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(3,), meta=np.ndarray&gt;</div><input id='attrs-3278edb6-25a6-40cb-a488-a613d764bcc6' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-3278edb6-25a6-40cb-a488-a613d764bcc6' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0886d6a2-ec80-40bc-ab01-537851a16639' class='xr-var-data-in' type='checkbox'><label for='data-0886d6a2-ec80-40bc-ab01-537851a16639' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Unambiguous Doppler velocity (+/-)</dd><dt><span>units :</span></dt><dd>m s-1</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table style="border-collapse: collapse;">
@@ -1100,7 +1127,7 @@ Attributes: (12/20)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>Skew</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(5556, 46), meta=np.ndarray&gt;</div><input id='attrs-bc9e171c-76d1-4fee-9c7e-99cca73cafee' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-bc9e171c-76d1-4fee-9c7e-99cca73cafee' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b5a16eb6-71cd-46b3-b126-e178fa9cb063' class='xr-var-data-in' type='checkbox'><label for='data-b5a16eb6-71cd-46b3-b126-e178fa9cb063' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Skewness</dd><dt><span>plot_range :</span></dt><dd>[-1, 1]</dd><dt><span>units :</span></dt><dd>1</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>Skew</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(5556, 46), meta=np.ndarray&gt;</div><input id='attrs-18abfdd6-6844-44c9-80aa-3793061137bd' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-18abfdd6-6844-44c9-80aa-3793061137bd' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0209fc5f-2662-4dae-b940-f702d5540c0a' class='xr-var-data-in' type='checkbox'><label for='data-0209fc5f-2662-4dae-b940-f702d5540c0a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Skewness</dd><dt><span>plot_range :</span></dt><dd>[-1, 1]</dd><dt><span>units :</span></dt><dd>1</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table style="border-collapse: collapse;">
@@ -1169,7 +1196,7 @@ Attributes: (12/20)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>SurfRelHum</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(44447,), meta=np.ndarray&gt;</div><input id='attrs-1831ca31-4f04-4363-b6b6-73402a655351' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-1831ca31-4f04-4363-b6b6-73402a655351' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8874551d-a16d-4164-9206-adbc756c5fb2' class='xr-var-data-in' type='checkbox'><label for='data-8874551d-a16d-4164-9206-adbc756c5fb2' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Relative humidity from weather station</dd><dt><span>units :</span></dt><dd>%</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>SurfRelHum</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(44447,), meta=np.ndarray&gt;</div><input id='attrs-4a0831ce-4c4e-4071-b765-32d7a3ee0724' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-4a0831ce-4c4e-4071-b765-32d7a3ee0724' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f3e6ce32-9321-40a4-816d-3cf35c817f60' class='xr-var-data-in' type='checkbox'><label for='data-f3e6ce32-9321-40a4-816d-3cf35c817f60' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Relative humidity from weather station</dd><dt><span>units :</span></dt><dd>%</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table style="border-collapse: collapse;">
@@ -1224,7 +1251,7 @@ Attributes: (12/20)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>Zh</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(5556, 46), meta=np.ndarray&gt;</div><input id='attrs-5aabed63-720d-41b8-86f7-09814d983b84' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-5aabed63-720d-41b8-86f7-09814d983b84' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-35142722-19df-4821-97a0-738c394b1518' class='xr-var-data-in' type='checkbox'><label for='data-35142722-19df-4821-97a0-738c394b1518' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment :</span></dt><dd>Calibrated reflectivity. Calibration convention: in the absence of attenuation, a cloud at 273 K containing one million 100-micron droplets per cubic metre will have a reflectivity of 0 dBZ at all frequencies.</dd><dt><span>long_name :</span></dt><dd>Radar reflectivity factor</dd><dt><span>plot_range :</span></dt><dd>[-60, 20]</dd><dt><span>plot_scale :</span></dt><dd>linear</dd><dt><span>units :</span></dt><dd>dBZ</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>Zh</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(5556, 46), meta=np.ndarray&gt;</div><input id='attrs-1dbdc430-ef66-49f4-ab0b-4d932f84fe1a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-1dbdc430-ef66-49f4-ab0b-4d932f84fe1a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0c7a71de-67f4-48c9-9173-0c653bed1371' class='xr-var-data-in' type='checkbox'><label for='data-0c7a71de-67f4-48c9-9173-0c653bed1371' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment :</span></dt><dd>Calibrated reflectivity. Calibration convention: in the absence of attenuation, a cloud at 273 K containing one million 100-micron droplets per cubic metre will have a reflectivity of 0 dBZ at all frequencies.</dd><dt><span>long_name :</span></dt><dd>Radar reflectivity factor</dd><dt><span>plot_range :</span></dt><dd>[-60, 20]</dd><dt><span>plot_scale :</span></dt><dd>linear</dd><dt><span>units :</span></dt><dd>dBZ</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table style="border-collapse: collapse;">
@@ -1293,7 +1320,7 @@ Attributes: (12/20)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>altitude</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-8e5c4789-df2d-4991-b49a-d881f2d4ed2b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-8e5c4789-df2d-4991-b49a-d881f2d4ed2b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-94230275-49f8-4d80-8598-cada05040b97' class='xr-var-data-in' type='checkbox'><label for='data-94230275-49f8-4d80-8598-cada05040b97' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Height of instrument above mean sea level</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><pre>[1 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>bt</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(44447,), meta=np.ndarray&gt;</div><input id='attrs-2ba58870-1765-465f-9af9-509720c0db59' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-2ba58870-1765-465f-9af9-509720c0db59' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-164c9573-b858-4db3-85f0-e35b59761af9' class='xr-var-data-in' type='checkbox'><label for='data-164c9573-b858-4db3-85f0-e35b59761af9' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Direct detection brightness temperature at 89 GHz</dd><dt><span>units :</span></dt><dd>K</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>altitude</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-9d9cf2f8-eff6-4f3b-8016-161cbaae15a1' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-9d9cf2f8-eff6-4f3b-8016-161cbaae15a1' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8b0285ab-a5d7-4e07-9c30-f39573070f55' class='xr-var-data-in' type='checkbox'><label for='data-8b0285ab-a5d7-4e07-9c30-f39573070f55' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Height of instrument above mean sea level</dd><dt><span>units :</span></dt><dd>m</dd></dl></div><div class='xr-var-data'><pre>[1 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>bt</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(44447,), meta=np.ndarray&gt;</div><input id='attrs-c71cd364-ed4b-48dc-ad14-4674238fbebe' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c71cd364-ed4b-48dc-ad14-4674238fbebe' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-fc52d5e5-aec5-4063-86b9-cc2149ecc403' class='xr-var-data-in' type='checkbox'><label for='data-fc52d5e5-aec5-4063-86b9-cc2149ecc403' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Direct detection brightness temperature at 89 GHz</dd><dt><span>units :</span></dt><dd>K</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table style="border-collapse: collapse;">
@@ -1348,7 +1375,7 @@ Attributes: (12/20)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>frequency</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-bba606b1-a871-450e-b353-3a6ea032d4a9' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-bba606b1-a871-450e-b353-3a6ea032d4a9' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-511f5c27-505c-4a6f-9fee-c5701f78a3c4' class='xr-var-data-in' type='checkbox'><label for='data-511f5c27-505c-4a6f-9fee-c5701f78a3c4' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Radar frequency</dd><dt><span>units :</span></dt><dd>GHz</dd></dl></div><div class='xr-var-data'><pre>[1 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>heave_cor</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(5556, 46), meta=np.ndarray&gt;</div><input id='attrs-e25d70f4-99c0-4fac-805d-56b9cc2f0f9f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e25d70f4-99c0-4fac-805d-56b9cc2f0f9f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-7243b958-7dac-4c85-ba97-8030f5970751' class='xr-var-data-in' type='checkbox'><label for='data-7243b958-7dac-4c85-ba97-8030f5970751' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment :</span></dt><dd>This is the velocity by which the original Doppler spectrum was corrected by. The heave rate is subtracted from the Doppler velocity, meaning the spectra is shifted to the left for positive heave rates and to the right for negative heave rates.</dd><dt><span>long_name :</span></dt><dd>Heave rate correction</dd><dt><span>plot_range :</span></dt><dd>[-7, 7]</dd><dt><span>plot_scale :</span></dt><dd>linear</dd><dt><span>unit_html :</span></dt><dd>m s&lt;sup&gt;-1&lt;/sup&gt;</dd><dt><span>units :</span></dt><dd>m s-1</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>frequency</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-3fc02e3b-7eaa-4b7c-b9c6-f1c6845210af' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-3fc02e3b-7eaa-4b7c-b9c6-f1c6845210af' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-421b36fd-f606-4dfa-8286-9ab920978794' class='xr-var-data-in' type='checkbox'><label for='data-421b36fd-f606-4dfa-8286-9ab920978794' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Radar frequency</dd><dt><span>units :</span></dt><dd>GHz</dd></dl></div><div class='xr-var-data'><pre>[1 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>heave_cor</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(5556, 46), meta=np.ndarray&gt;</div><input id='attrs-3b76f029-2677-42b4-ba38-f02108c47da7' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-3b76f029-2677-42b4-ba38-f02108c47da7' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-27eca9f9-806e-4d99-88f3-dcb22739d60c' class='xr-var-data-in' type='checkbox'><label for='data-27eca9f9-806e-4d99-88f3-dcb22739d60c' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment :</span></dt><dd>This is the velocity by which the original Doppler spectrum was corrected by. The heave rate is subtracted from the Doppler velocity, meaning the spectra is shifted to the left for positive heave rates and to the right for negative heave rates.</dd><dt><span>long_name :</span></dt><dd>Heave rate correction</dd><dt><span>plot_range :</span></dt><dd>[-7, 7]</dd><dt><span>plot_scale :</span></dt><dd>linear</dd><dt><span>unit_html :</span></dt><dd>m s&lt;sup&gt;-1&lt;/sup&gt;</dd><dt><span>units :</span></dt><dd>m s-1</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table style="border-collapse: collapse;">
@@ -1417,7 +1444,7 @@ Attributes: (12/20)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>heave_cor_bins</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(5556, 46), meta=np.ndarray&gt;</div><input id='attrs-fc24f7f7-26f6-4bda-9992-1864d91f845d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-fc24f7f7-26f6-4bda-9992-1864d91f845d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f255071a-fc48-4e7d-810a-8fba3e59c244' class='xr-var-data-in' type='checkbox'><label for='data-f255071a-fc48-4e7d-810a-8fba3e59c244' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment :</span></dt><dd>This is the number of bins by which the original Doppler spectrum was shifted by. Positive values shift the spectrum to the left, while negative values shift the spectrum to the right.</dd><dt><span>long_name :</span></dt><dd>Heave rate correction in Doppler spectra bins</dd><dt><span>plot_scale :</span></dt><dd>linear</dd><dt><span>units :</span></dt><dd>1</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>heave_cor_bins</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(5556, 46), meta=np.ndarray&gt;</div><input id='attrs-bc7dd2ca-f639-4ae6-8f58-4f1697c16b3e' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-bc7dd2ca-f639-4ae6-8f58-4f1697c16b3e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-3988980f-9751-441f-a019-d16bffc8b9a8' class='xr-var-data-in' type='checkbox'><label for='data-3988980f-9751-441f-a019-d16bffc8b9a8' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment :</span></dt><dd>This is the number of bins by which the original Doppler spectrum was shifted by. Positive values shift the spectrum to the left, while negative values shift the spectrum to the right.</dd><dt><span>long_name :</span></dt><dd>Heave rate correction in Doppler spectra bins</dd><dt><span>plot_scale :</span></dt><dd>linear</dd><dt><span>units :</span></dt><dd>1</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table style="border-collapse: collapse;">
@@ -1486,7 +1513,7 @@ Attributes: (12/20)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>kurt</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(5556, 46), meta=np.ndarray&gt;</div><input id='attrs-271bceea-ccbb-4952-af79-eab5b78705d7' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-271bceea-ccbb-4952-af79-eab5b78705d7' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-9b570e1c-af1f-4385-b651-e57b78fa5edb' class='xr-var-data-in' type='checkbox'><label for='data-9b570e1c-af1f-4385-b651-e57b78fa5edb' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Kurtosis</dd><dt><span>plot_range :</span></dt><dd>[0, 3]</dd><dt><span>units :</span></dt><dd>1</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>kurt</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(5556, 46), meta=np.ndarray&gt;</div><input id='attrs-b579eec6-4fe0-4a96-9e79-05fd2528678b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-b579eec6-4fe0-4a96-9e79-05fd2528678b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-17d14271-7f24-49cc-8f42-e3f924b8cf39' class='xr-var-data-in' type='checkbox'><label for='data-17d14271-7f24-49cc-8f42-e3f924b8cf39' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Kurtosis</dd><dt><span>plot_range :</span></dt><dd>[0, 3]</dd><dt><span>units :</span></dt><dd>1</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table style="border-collapse: collapse;">
@@ -1555,7 +1582,7 @@ Attributes: (12/20)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>latitude</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(44447,), meta=np.ndarray&gt;</div><input id='attrs-5c411ad4-fc85-435b-b51e-4c51e920e3ef' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-5c411ad4-fc85-435b-b51e-4c51e920e3ef' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4a1d9ab4-4e9f-460f-bc85-94e99e76941b' class='xr-var-data-in' type='checkbox'><label for='data-4a1d9ab4-4e9f-460f-bc85-94e99e76941b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>latitude</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(44447,), meta=np.ndarray&gt;</div><input id='attrs-46ae6825-ccc8-4cc4-bf42-5591af8e02e4' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-46ae6825-ccc8-4cc4-bf42-5591af8e02e4' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-36c7dddf-3fdf-4c66-8da3-663ee713a62d' class='xr-var-data-in' type='checkbox'><label for='data-36c7dddf-3fdf-4c66-8da3-663ee713a62d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table style="border-collapse: collapse;">
@@ -1610,7 +1637,7 @@ Attributes: (12/20)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>ldr</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(5556, 46), meta=np.ndarray&gt;</div><input id='attrs-29a36826-3850-4a16-bfc7-fcf1bd6e5d91' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-29a36826-3850-4a16-bfc7-fcf1bd6e5d91' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-243d005f-a8d7-42bd-8196-5e5072c4dea0' class='xr-var-data-in' type='checkbox'><label for='data-243d005f-a8d7-42bd-8196-5e5072c4dea0' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment :</span></dt><dd>This parameter is the ratio of cross-polar to co-polar reflectivity.</dd><dt><span>long_name :</span></dt><dd>Linear depolarisation ratio</dd><dt><span>plot_range :</span></dt><dd>[-30.0, 0.0]</dd><dt><span>units :</span></dt><dd>dB</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>ldr</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(5556, 46), meta=np.ndarray&gt;</div><input id='attrs-307b258b-d2fe-46bb-98c8-dfffd8e7e398' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-307b258b-d2fe-46bb-98c8-dfffd8e7e398' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-59fa056a-af69-488b-9533-6cc4c078fa71' class='xr-var-data-in' type='checkbox'><label for='data-59fa056a-af69-488b-9533-6cc4c078fa71' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment :</span></dt><dd>This parameter is the ratio of cross-polar to co-polar reflectivity.</dd><dt><span>long_name :</span></dt><dd>Linear depolarisation ratio</dd><dt><span>plot_range :</span></dt><dd>[-30.0, 0.0]</dd><dt><span>units :</span></dt><dd>dB</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table style="border-collapse: collapse;">
@@ -1679,7 +1706,7 @@ Attributes: (12/20)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>longitude</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(44447,), meta=np.ndarray&gt;</div><input id='attrs-667d85be-103d-4a71-98bc-a9d57d7f4eae' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-667d85be-103d-4a71-98bc-a9d57d7f4eae' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-926a955b-ef68-45ac-ab30-07ab11c20ba2' class='xr-var-data-in' type='checkbox'><label for='data-926a955b-ef68-45ac-ab30-07ab11c20ba2' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>longitude</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(44447,), meta=np.ndarray&gt;</div><input id='attrs-ee58289f-12b7-4d2d-8286-c47d97626243' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ee58289f-12b7-4d2d-8286-c47d97626243' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-95f5d02f-122c-40f3-a951-909a4f53c24f' class='xr-var-data-in' type='checkbox'><label for='data-95f5d02f-122c-40f3-a951-909a4f53c24f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table style="border-collapse: collapse;">
@@ -1734,7 +1761,7 @@ Attributes: (12/20)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lwp</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(44447,), meta=np.ndarray&gt;</div><input id='attrs-bf9ea36d-f896-44dd-9fe8-eb8e5465bc82' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-bf9ea36d-f896-44dd-9fe8-eb8e5465bc82' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8c40fb7a-201b-436e-b3a3-044a3e654aa2' class='xr-var-data-in' type='checkbox'><label for='data-8c40fb7a-201b-436e-b3a3-044a3e654aa2' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Liquid water path</dd><dt><span>units :</span></dt><dd>g m-2</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lwp</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(44447,), meta=np.ndarray&gt;</div><input id='attrs-92920974-bc98-46c7-83df-d6658881604c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-92920974-bc98-46c7-83df-d6658881604c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e171285d-5094-4f22-ba68-8a9502aa1464' class='xr-var-data-in' type='checkbox'><label for='data-e171285d-5094-4f22-ba68-8a9502aa1464' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Liquid water path</dd><dt><span>units :</span></dt><dd>g m-2</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table style="border-collapse: collapse;">
@@ -1789,7 +1816,7 @@ Attributes: (12/20)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>rain</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(44447,), meta=np.ndarray&gt;</div><input id='attrs-e3390ba9-bb0b-44b5-9ac1-a60a6e1d2339' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e3390ba9-bb0b-44b5-9ac1-a60a6e1d2339' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-171e2da7-cdda-451c-8b90-4acd94ebf781' class='xr-var-data-in' type='checkbox'><label for='data-171e2da7-cdda-451c-8b90-4acd94ebf781' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Rain rate from weather station</dd><dt><span>units :</span></dt><dd>mm h-1</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>rain</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(44447,), meta=np.ndarray&gt;</div><input id='attrs-9b331d07-e080-4385-8c54-ac3a308575a7' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-9b331d07-e080-4385-8c54-ac3a308575a7' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4bceb9f4-df16-4345-9a38-dfcba9f8753d' class='xr-var-data-in' type='checkbox'><label for='data-4bceb9f4-df16-4345-9a38-dfcba9f8753d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Rain rate from weather station</dd><dt><span>units :</span></dt><dd>mm h-1</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table style="border-collapse: collapse;">
@@ -1844,7 +1871,7 @@ Attributes: (12/20)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>range_offsets</span></div><div class='xr-var-dims'>(chirp)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(3,), meta=np.ndarray&gt;</div><input id='attrs-d9460589-4dba-4dc3-b11e-8a8081ea63d6' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-d9460589-4dba-4dc3-b11e-8a8081ea63d6' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4d7429f9-c68c-4011-bdfb-b712f47a6fb5' class='xr-var-data-in' type='checkbox'><label for='data-4d7429f9-c68c-4011-bdfb-b712f47a6fb5' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>chirp sequences start index array in altitude layer array</dd><dt><span>units :</span></dt><dd>1</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>range_offsets</span></div><div class='xr-var-dims'>(chirp)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(3,), meta=np.ndarray&gt;</div><input id='attrs-7b481433-5644-491a-a5fb-3883f7811607' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-7b481433-5644-491a-a5fb-3883f7811607' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c2ac2356-1296-4227-82e4-9fb87b73139f' class='xr-var-data-in' type='checkbox'><label for='data-c2ac2356-1296-4227-82e4-9fb87b73139f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>chirp sequences start index array in altitude layer array</dd><dt><span>units :</span></dt><dd>1</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table style="border-collapse: collapse;">
@@ -1899,7 +1926,7 @@ Attributes: (12/20)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>time_shift</span></div><div class='xr-var-dims'>(time, chirp)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(22224, 3), meta=np.ndarray&gt;</div><input id='attrs-68651864-d983-4143-94ee-bdd7826d69bc' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-68651864-d983-4143-94ee-bdd7826d69bc' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-293a599d-c96e-4879-8288-c6768468c15f' class='xr-var-data-in' type='checkbox'><label for='data-293a599d-c96e-4879-8288-c6768468c15f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Time shift between radar and ship calculated for each hour and chirp</dd><dt><span>units :</span></dt><dd>s</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>time_shift</span></div><div class='xr-var-dims'>(time, chirp)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(22224, 3), meta=np.ndarray&gt;</div><input id='attrs-2755adfd-a34c-422e-96cd-010ccc70e01c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-2755adfd-a34c-422e-96cd-010ccc70e01c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b48645c4-3d9d-4d07-912f-729dee25284e' class='xr-var-data-in' type='checkbox'><label for='data-b48645c4-3d9d-4d07-912f-729dee25284e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Time shift between radar and ship calculated for each hour and chirp</dd><dt><span>units :</span></dt><dd>s</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table style="border-collapse: collapse;">
@@ -1955,7 +1982,7 @@ Attributes: (12/20)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>v</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(5556, 46), meta=np.ndarray&gt;</div><input id='attrs-f3435e11-bf4e-4177-a229-6588ff0f0e30' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-f3435e11-bf4e-4177-a229-6588ff0f0e30' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-dd95915a-6190-48c1-89b2-84f0ca3996ee' class='xr-var-data-in' type='checkbox'><label for='data-dd95915a-6190-48c1-89b2-84f0ca3996ee' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment :</span></dt><dd>This parameter is the radial component of the velocity, with positive velocities are away from the radar (i.e. up) and negative velocities moving towards the radar (i.e. down). It was corrected for the ships heave motion. A rolling average over 3 time steps has been applied to it.</dd><dt><span>folding_velocity :</span></dt><dd>7.261648654937744</dd><dt><span>long_name :</span></dt><dd>Best estimate of averaged mean Doppler velocity</dd><dt><span>plot_range :</span></dt><dd>[-7, 7]</dd><dt><span>plot_scale :</span></dt><dd>linear</dd><dt><span>unit_html :</span></dt><dd>m s&lt;sup&gt;-1&lt;/sup&gt;</dd><dt><span>units :</span></dt><dd>m s-1</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>v</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(5556, 46), meta=np.ndarray&gt;</div><input id='attrs-3284b418-0c67-4c3b-bd75-6dc62af8c611' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-3284b418-0c67-4c3b-bd75-6dc62af8c611' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-435d0c4b-a246-4fd4-971b-27a0ab0b1a37' class='xr-var-data-in' type='checkbox'><label for='data-435d0c4b-a246-4fd4-971b-27a0ab0b1a37' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment :</span></dt><dd>This parameter is the radial component of the velocity, with positive velocities are away from the radar (i.e. up) and negative velocities moving towards the radar (i.e. down). It was corrected for the ships heave motion. A rolling average over 3 time steps has been applied to it.</dd><dt><span>folding_velocity :</span></dt><dd>7.261648654937744</dd><dt><span>long_name :</span></dt><dd>Best estimate of averaged mean Doppler velocity</dd><dt><span>plot_range :</span></dt><dd>[-7, 7]</dd><dt><span>plot_scale :</span></dt><dd>linear</dd><dt><span>unit_html :</span></dt><dd>m s&lt;sup&gt;-1&lt;/sup&gt;</dd><dt><span>units :</span></dt><dd>m s-1</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table style="border-collapse: collapse;">
@@ -2024,7 +2051,7 @@ Attributes: (12/20)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>v_no_rolling_mean_applied</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(5556, 46), meta=np.ndarray&gt;</div><input id='attrs-f78e74bc-3a92-4e48-a5de-95a497dfa2ff' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-f78e74bc-3a92-4e48-a5de-95a497dfa2ff' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f0572052-b42d-4e40-aed4-d55ed0edb71e' class='xr-var-data-in' type='checkbox'><label for='data-f0572052-b42d-4e40-aed4-d55ed0edb71e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment :</span></dt><dd>This parameter is the radial component of the velocity, with positive velocities are away from the radar (i.e. up) and negative velocities moving towards the radar (i.e. down). It was corrected for the ships heave motion but no rolling mean was applied.</dd><dt><span>folding_velocity :</span></dt><dd>7.261648654937744</dd><dt><span>long_name :</span></dt><dd>Heave corrected mean Doppler velocity</dd><dt><span>plot_range :</span></dt><dd>[-7, 7]</dd><dt><span>plot_scale :</span></dt><dd>linear</dd><dt><span>unit_html :</span></dt><dd>m s&lt;sup&gt;-1&lt;/sup&gt;</dd><dt><span>units :</span></dt><dd>m s-1</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>v_no_rolling_mean_applied</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(5556, 46), meta=np.ndarray&gt;</div><input id='attrs-17f900cf-9e2f-40a2-bb97-835ce1d667ef' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-17f900cf-9e2f-40a2-bb97-835ce1d667ef' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-cb1bcb7b-f08a-428a-9c7d-7a4bffb3b434' class='xr-var-data-in' type='checkbox'><label for='data-cb1bcb7b-f08a-428a-9c7d-7a4bffb3b434' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment :</span></dt><dd>This parameter is the radial component of the velocity, with positive velocities are away from the radar (i.e. up) and negative velocities moving towards the radar (i.e. down). It was corrected for the ships heave motion but no rolling mean was applied.</dd><dt><span>folding_velocity :</span></dt><dd>7.261648654937744</dd><dt><span>long_name :</span></dt><dd>Heave corrected mean Doppler velocity</dd><dt><span>plot_range :</span></dt><dd>[-7, 7]</dd><dt><span>plot_scale :</span></dt><dd>linear</dd><dt><span>unit_html :</span></dt><dd>m s&lt;sup&gt;-1&lt;/sup&gt;</dd><dt><span>units :</span></dt><dd>m s-1</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table style="border-collapse: collapse;">
@@ -2093,7 +2120,7 @@ Attributes: (12/20)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>v_uncor</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(5556, 46), meta=np.ndarray&gt;</div><input id='attrs-aef9dcfa-a89e-4f86-94e8-89fba8b2a296' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-aef9dcfa-a89e-4f86-94e8-89fba8b2a296' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-deb67bb6-07b8-4dc7-8f3d-739346d96b58' class='xr-var-data-in' type='checkbox'><label for='data-deb67bb6-07b8-4dc7-8f3d-739346d96b58' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment :</span></dt><dd>This parameter is the uncorrected radial component of the velocity, with positive velocities are away from the radar (i.e. up) and negative velocities moving towards the radar (i.e. down).</dd><dt><span>folding_velocity :</span></dt><dd>7.261648654937744</dd><dt><span>long_name :</span></dt><dd>Uncorrected Mean Doppler velocity</dd><dt><span>plot_range :</span></dt><dd>[-7.0, 7.0]</dd><dt><span>plot_scale :</span></dt><dd>linear</dd><dt><span>unit_html :</span></dt><dd>m s&lt;sup&gt;-1&lt;/sup&gt;</dd><dt><span>units :</span></dt><dd>m s-1</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>v_uncor</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(5556, 46), meta=np.ndarray&gt;</div><input id='attrs-c14d9bf6-cb1c-4ef9-bbae-e1603e440ec5' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c14d9bf6-cb1c-4ef9-bbae-e1603e440ec5' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-9179016f-9912-4df8-a5ec-7f07f5de543e' class='xr-var-data-in' type='checkbox'><label for='data-9179016f-9912-4df8-a5ec-7f07f5de543e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment :</span></dt><dd>This parameter is the uncorrected radial component of the velocity, with positive velocities are away from the radar (i.e. up) and negative velocities moving towards the radar (i.e. down).</dd><dt><span>folding_velocity :</span></dt><dd>7.261648654937744</dd><dt><span>long_name :</span></dt><dd>Uncorrected Mean Doppler velocity</dd><dt><span>plot_range :</span></dt><dd>[-7.0, 7.0]</dd><dt><span>plot_scale :</span></dt><dd>linear</dd><dt><span>unit_html :</span></dt><dd>m s&lt;sup&gt;-1&lt;/sup&gt;</dd><dt><span>units :</span></dt><dd>m s-1</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table style="border-collapse: collapse;">
@@ -2162,7 +2189,7 @@ Attributes: (12/20)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>width</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(5556, 46), meta=np.ndarray&gt;</div><input id='attrs-317f722d-fb2f-4f55-96a9-ac05bd1a342d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-317f722d-fb2f-4f55-96a9-ac05bd1a342d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c3fe7ba1-42d2-4f8d-a451-26b8c9817642' class='xr-var-data-in' type='checkbox'><label for='data-c3fe7ba1-42d2-4f8d-a451-26b8c9817642' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment :</span></dt><dd>This parameter is the standard deviation of the reflectivity-weighted velocities in the radar pulse volume.</dd><dt><span>long_name :</span></dt><dd>Spectral width</dd><dt><span>plot_range :</span></dt><dd>[0.01, 3.0]</dd><dt><span>plot_scale :</span></dt><dd>logarithmic</dd><dt><span>unit_html :</span></dt><dd>m s&lt;sup&gt;-1&lt;/sup&gt;</dd><dt><span>units :</span></dt><dd>m s-1</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>width</span></div><div class='xr-var-dims'>(time, range)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(5556, 46), meta=np.ndarray&gt;</div><input id='attrs-5cbfe169-cc3d-415a-88f2-562f5bd201c0' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-5cbfe169-cc3d-415a-88f2-562f5bd201c0' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b29d2c2f-5420-4de5-8a4e-fe4728af1a0c' class='xr-var-data-in' type='checkbox'><label for='data-b29d2c2f-5420-4de5-8a4e-fe4728af1a0c' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment :</span></dt><dd>This parameter is the standard deviation of the reflectivity-weighted velocities in the radar pulse volume.</dd><dt><span>long_name :</span></dt><dd>Spectral width</dd><dt><span>plot_range :</span></dt><dd>[0.01, 3.0]</dd><dt><span>plot_scale :</span></dt><dd>logarithmic</dd><dt><span>unit_html :</span></dt><dd>m s&lt;sup&gt;-1&lt;/sup&gt;</dd><dt><span>units :</span></dt><dd>m s-1</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table style="border-collapse: collapse;">
@@ -2231,7 +2258,7 @@ Attributes: (12/20)
 </svg>
         </td>
     </tr>
-</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-ccdc3489-ebd7-41f0-a49e-3196c277e122' class='xr-section-summary-in' type='checkbox'  ><label for='section-ccdc3489-ebd7-41f0-a49e-3196c277e122' class='xr-section-summary' >Indexes: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>range</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-0f809a05-d61d-4765-b811-75dfef0b7e33' class='xr-index-data-in' type='checkbox'/><label for='index-0f809a05-d61d-4765-b811-75dfef0b7e33' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([  313.027099609375,  335.3861999511719,  357.7452697753906,
+</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-5e9b1dc6-13fd-4d1d-8b6e-fda7dc54a9f9' class='xr-section-summary-in' type='checkbox'  ><label for='section-5e9b1dc6-13fd-4d1d-8b6e-fda7dc54a9f9' class='xr-section-summary' >Indexes: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>range</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-e3670e21-78a7-4155-b5f5-2e8ccf9d8b74' class='xr-index-data-in' type='checkbox'/><label for='index-e3670e21-78a7-4155-b5f5-2e8ccf9d8b74' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([  313.027099609375,  335.3861999511719,  357.7452697753906,
         380.1043395996094, 402.46343994140625,   424.822509765625,
        447.18157958984375,  469.5406799316406,  491.8997497558594,
         514.2588500976562,
@@ -2240,7 +2267,7 @@ Attributes: (12/20)
          12710.2119140625,    12752.298828125,   12794.3857421875,
            12836.47265625,   12878.5595703125,    12920.646484375,
          12962.7333984375],
-      dtype=&#x27;float32&#x27;, name=&#x27;range&#x27;, length=367))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>time</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-f6fb7f46-c457-46ab-974d-a3735371151a' class='xr-index-data-in' type='checkbox'/><label for='index-f6fb7f46-c457-46ab-974d-a3735371151a' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(DatetimeIndex([&#x27;2020-02-01 00:00:06.700000047&#x27;,
+      dtype=&#x27;float32&#x27;, name=&#x27;range&#x27;, length=367))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>time</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-cba137f1-cca1-44fc-ae62-77bc56acf591' class='xr-index-data-in' type='checkbox'/><label for='index-cba137f1-cca1-44fc-ae62-77bc56acf591' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(DatetimeIndex([&#x27;2020-02-01 00:00:06.700000047&#x27;,
                &#x27;2020-02-01 00:00:08.570000171&#x27;,
                &#x27;2020-02-01 00:00:10.450000047&#x27;,
                &#x27;2020-02-01 00:00:12.320000171&#x27;,
@@ -2261,7 +2288,7 @@ Attributes: (12/20)
                &#x27;2020-02-01 23:59:50.815000057&#x27;,
                &#x27;2020-02-01 23:59:52.684999943&#x27;,
                &#x27;2020-02-01 23:59:54.545000076&#x27;],
-              dtype=&#x27;datetime64[ns]&#x27;, name=&#x27;time&#x27;, length=44447, freq=None))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-cf5f89a8-7c89-41b1-b0ab-0413d98160b6' class='xr-section-summary-in' type='checkbox'  ><label for='section-cf5f89a8-7c89-41b1-b0ab-0413d98160b6' class='xr-section-summary' >Attributes: <span>(20)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>Conventions :</span></dt><dd>CF-1.8</dd><dt><span>_FillValue :</span></dt><dd>-999.0</dd><dt><span>calibrations :</span></dt><dd>remove Precip. ghost: False
+              dtype=&#x27;datetime64[ns]&#x27;, name=&#x27;time&#x27;, length=44447, freq=None))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-a145328b-dc77-4b39-9753-2c84830b4b02' class='xr-section-summary-in' type='checkbox'  ><label for='section-a145328b-dc77-4b39-9753-2c84830b4b02' class='xr-section-summary' >Attributes: <span>(20)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>Conventions :</span></dt><dd>CF-1.8</dd><dt><span>_FillValue :</span></dt><dd>-999.0</dd><dt><span>calibrations :</span></dt><dd>remove Precip. ghost: False
 , remove curtain ghost: True
 despeckle: True
 , number of standard deviations above noise: 6.0
@@ -2292,7 +2319,7 @@ An example which forces the data to load is plotting, in this case only the rada
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/883d86a76998fd84354fd33a16da1faa3d971a973ac74d29f08cd4359def9771.png" src="_images/883d86a76998fd84354fd33a16da1faa3d971a973ac74d29f08cd4359def9771.png" />
+<img alt="_images/59e725500fe81d75ad1888e281745e50c0b2b764119f34a15dc81c1f55ff2c39.png" src="_images/59e725500fe81d75ad1888e281745e50c0b2b764119f34a15dc81c1f55ff2c39.png" />
 </div>
 </div>
 </section>
@@ -2323,11 +2350,10 @@ An example which forces the data to load is plotting, in this case only the rada
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="meteor.html"
@@ -2347,10 +2373,7 @@ An example which forces the data to load is plotting, in this case only the rada
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -2358,6 +2381,7 @@ An example which forces the data to load is plotting, in this case only the rada
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -2388,6 +2412,7 @@ By EUREC⁴A community
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2021.
@@ -2414,8 +2439,8 @@ By EUREC⁴A community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>
