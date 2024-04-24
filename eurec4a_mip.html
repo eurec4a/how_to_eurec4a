@@ -43,7 +43,7 @@
   <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
     <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
@@ -586,17 +586,34 @@ document.write(`
   <span class="n">ds</span><span class="o">.</span><span class="n">to_netcdf</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;EUREC4A-MIP_boundaryConditions_</span><span class="si">{</span><span class="n">experiment</span><span class="si">}</span><span class="s2">.nc&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>In addition to the boundary conditions already applied to the ERA5 simulations, the monthly mean climate deltas are also available separately. They are computed from the CMIP6 output of the GFDL-CM4 model <span id="id1">(<a class="reference internal" href="references.html#id19" title="I. M. Held, H. Guo, A. Adcroft, J. P. Dunne, L. W. Horowitz, J. Krasting, E. Shevliakova, M. Winton, M. Zhao, M. Bushuk, A. T. Wittenberg, B. Wyman, B. Xiang, R. Zhang, W. Anderson, V. Balaji, L. Donner, K. Dunne, J. Durachta, P. P. G. Gauthier, P. Ginoux, J.-C. Golaz, S. M. Griffies, R. Hallberg, L. Harris, M. Harrison, W. Hurlin, J. John, P. Lin, S.-J. Lin, S. Malyshev, R. Menzel, P. C. D. Milly, Y. Ming, V. Naik, D. Paynter, F. Paulot, V. Ramaswamy, B. Reichl, T. Robinson, A. Rosati, C. Seman, L. G. Silvers, S. Underwood, and N. Zadeh. Structure and Performance of GFDL's CM4.0 Climate Model. Journal of Advances in Modeling Earth Systems, 11(11):3691–3727, 2019. doi:10.1029/2019MS001829.">Held <em>et al.</em>, 2019</a>)</span> as the difference between the AMIP with patterned 4K SST increase experiment (AMIP-future 4K) and the AMIP historical (AMIP) simulation. Variables available are temperature, relative humidity, surface pressure, horizontal wind and sea and land surface temperature. These monthly mean climate deltas are available as two products.</p>
+<ul>
+<li><p>at original GFDL-CM4 resolution</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">delta_gfdl</span> <span class="o">=</span> <span class="n">cat</span><span class="o">.</span><span class="n">simulations</span><span class="o">.</span><span class="n">EUREC4A_MIP</span><span class="o">.</span><span class="n">warming</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">boundary_conditions</span><span class="o">.</span><span class="n">deltas</span><span class="o">.</span><span class="n">GFDL_CM4</span><span class="o">.</span><span class="n">to_dask</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+<li><p>at ERA5 horizontal and vertical resolution (interpolated)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">delta_era5</span> <span class="o">=</span> <span class="n">cat</span><span class="o">.</span><span class="n">simulations</span><span class="o">.</span><span class="n">EUREC4A_MIP</span><span class="o">.</span><span class="n">warming</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">boundary_conditions</span><span class="o">.</span><span class="n">deltas</span><span class="o">.</span><span class="n">ERA5</span><span class="o">.</span><span class="n">to_dask</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+</ul>
 <p>Instructions on how to install the mandatory packages can be found at the <a class="reference external" href="https://github.com/eurec4a/eurec4a-intake#usage">EUREC⁴A Intake Catalog Repository</a></p>
 </li>
 <li><p>from the browser interface</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://swiftbrowser.dkrz.de/public/dkrz_0913c8f3-e7b6-4f94-9221-06880d4ccfea/CTRL_ERA5/">Boundary conditions Control</a></p></li>
 <li><p><a class="reference external" href="https://swiftbrowser.dkrz.de/public/dkrz_0913c8f3-e7b6-4f94-9221-06880d4ccfea/PGW+4K/">Boundary conditions Warming+4K</a></p></li>
+<li><p><a class="reference external" href="https://swiftbrowser.dkrz.de/public/dkrz_0913c8f3-e7b6-4f94-9221-06880d4ccfea/DELTAS_ORI/">Boundary conditions Warming+4K Deltas on GFDL-CM4 grid</a></p></li>
+<li><p><a class="reference external" href="https://swiftbrowser.dkrz.de/public/dkrz_0913c8f3-e7b6-4f94-9221-06880d4ccfea/DELTAS_INT/">Boundary conditions Warming+4K Deltas interpolated to ERA5 grid</a></p></li>
 </ul>
 </li>
 <li><p>or command line:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span>-r<span class="w"> </span>-H<span class="w"> </span>-N<span class="w"> </span>--cut-dirs<span class="o">=</span><span class="m">3</span><span class="w"> </span>--include-directories<span class="o">=</span><span class="s2">&quot;/v1/&quot;</span><span class="w"> </span><span class="s2">&quot;https://swiftbrowser.dkrz.de/public/dkrz_0913c8f3-e7b6-4f94-9221-06880d4ccfea/PGW+4K/?show_all&quot;</span>
 wget<span class="w"> </span>-r<span class="w"> </span>-H<span class="w"> </span>-N<span class="w"> </span>--cut-dirs<span class="o">=</span><span class="m">3</span><span class="w"> </span>--include-directories<span class="o">=</span><span class="s2">&quot;/v1/&quot;</span><span class="w"> </span><span class="s2">&quot;https://swiftbrowser.dkrz.de/public/dkrz_0913c8f3-e7b6-4f94-9221-06880d4ccfea/CTRL_ERA5/?show_all&quot;</span>
+wget<span class="w"> </span>-r<span class="w"> </span>-H<span class="w"> </span>-N<span class="w"> </span>--cut-dirs<span class="o">=</span><span class="m">3</span><span class="w"> </span>--include-directories<span class="o">=</span><span class="s2">&quot;/v1/&quot;</span><span class="w"> </span><span class="s2">&quot;https://swiftbrowser.dkrz.de/public/dkrz_0913c8f3-e7b6-4f94-9221-06880d4ccfea/DELTAS_ORI/?show_all&quot;</span>
+wget<span class="w"> </span>-r<span class="w"> </span>-H<span class="w"> </span>-N<span class="w"> </span>--cut-dirs<span class="o">=</span><span class="m">3</span><span class="w"> </span>--include-directories<span class="o">=</span><span class="s2">&quot;/v1/&quot;</span><span class="w"> </span><span class="s2">&quot;https://swiftbrowser.dkrz.de/public/dkrz_0913c8f3-e7b6-4f94-9221-06880d4ccfea/DELTAS_INT/?show_all&quot;</span>
 </pre></div>
 </div>
 </li>
