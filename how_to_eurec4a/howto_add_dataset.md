@@ -15,6 +15,7 @@ Datasets should be added by following these steps:
    git checkout -b <my_new_dataset>
    ```
 3. Add new catalog entry
+
    The catalog contains two types of entries:
    - references to sub-catalogs
    - references to a dataset
@@ -24,12 +25,13 @@ Datasets should be added by following these steps:
    cat.Meteor.surface_fluxes
    ```
    and is saved in the file [Meteor/main.yaml](https://github.com/eurec4a/eurec4a-intake/blob/master/Meteor/main.yaml).
+
    The radar dataset, which is more complex and contains several subsets is accessible via
    ```python
    cat.Meteor.LIMRAD94.low_res
    cat.Meteor.LIMRAD94.high_res
    ```
-   For the creation of the `LIMRAD94` subset, a sub-catalog reference has been created in [Meteor/main.yaml](https://github.com/eurec4a/eurec4a-intake/blob/master/Meteor/main.yaml). The final reference to the dataset is added in [Meteor/LIMRAD94.yaml](https://github.com/eurec4a/eurec4a-intake/blob/master/Meteor/LIMRAD94.yaml)
+   For the creation of the `LIMRAD94` radar subset, a sub-catalog reference has been created in [Meteor/main.yaml](https://github.com/eurec4a/eurec4a-intake/blob/master/Meteor/main.yaml). The final reference to the dataset is added in [Meteor/LIMRAD94.yaml](https://github.com/eurec4a/eurec4a-intake/blob/master/Meteor/LIMRAD94.yaml)
 
    Depending on the complexity of the dataset, an entry can be directly added to the `main.yaml` file of the respective platform/simulation 
    ```bash
@@ -44,10 +46,6 @@ Datasets should be added by following these steps:
 
    The reference has the following format:
    ```yaml
-   plugins:
-      source:
-       - module: intake_xarray
-
    sources:
      <dataset_name>:
        description: <short description of the dataset>
@@ -59,7 +57,7 @@ Datasets should be added by following these steps:
          engine: netcdf4
    ```
 
-   In case your dataset has been published on AERIS, the THREDDS link to your dataset can be determined by finding your dataset at [https://observations.ipsl.fr/aeris/eurec4a-data/](https://observations.ipsl.fr/aeris/eurec4a-data/). To retrieve the THREDDS link, replace `https://observations.ipsl.fr/aeris/eurec4a-data/` with `https://observations.ipsl.fr/thredds/dodsC/EUREC4A/`. You can check if the link is correct by opening it e.g. directly with `xarray.open_dataset()` or [Panoply](https://www.giss.nasa.gov/tools/panoply/) by opening a `Remote Dataset`. 
+   In case your dataset has been published on AERIS, the THREDDS link to your dataset can be determined by finding your dataset at [https://observations.ipsl.fr/aeris/eurec4a-data/](https://observations.ipsl.fr/aeris/eurec4a-data/). To retrieve the THREDDS link, replace `https://observations.ipsl.fr/aeris/eurec4a-data/` with `https://observations.ipsl.fr/thredds/dodsC/EUREC4A/`. You can check if the link is correct and the data correctly formatted by opening it e.g. directly with `xarray.open_dataset()` or [Panoply](https://www.giss.nasa.gov/tools/panoply/) by opening a `Remote Dataset`. 
 
    A sub-catalog reference can be created with
    ```yaml
@@ -100,10 +98,6 @@ Datasets should be added by following these steps:
 4. Edit <img width="49" alt="image" src="https://user-images.githubusercontent.com/43613877/235443256-59e952c2-4d28-41af-977d-2e20435bd6ec.png">
  `main.yaml` and add a reference to the dataset if it is simple and does not contain different subsets (e.g. resolutions, frequencies, sensors, dimensions):
    ```yaml
-   plugins:
-      source:
-       - module: intake_xarray
-
    sources:
      <dataset_name>:
        description: <short description of the dataset>
