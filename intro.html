@@ -492,7 +492,21 @@ The scripts typically contain at minimum how to get a specific dataset and some 
 </section>
 <section id="how-can-you-run-the-code">
 <h2>How can you run the code?<a class="headerlink" href="#how-can-you-run-the-code" title="Link to this heading">#</a></h2>
-<p>In the chapters you will find a rocket icon (<i class="fas fa-rocket"></i>) in the top bar to the right. It provides two interactive ways to run the code: <code class="docutils literal notranslate"><span class="pre">Binder</span></code> and <code class="docutils literal notranslate"><span class="pre">LiveCode</span></code>. In both cases a virtual environment is created for you in the background by a click on the respective link and you don’t have to take care of any requirements locally on your machine. Of course you can also run all the code locally as described in <a class="reference internal" href="running_locally.html"><span class="doc">running How to EUREC4A locally</span></a>.</p>
+<p>If you want to try out the code on your machine, you’ll need a few libraries to access the referenced data.
+The easiest way to set this up would be to install the <code class="docutils literal notranslate"><span class="pre">eurec4a</span></code> package with the <code class="docutils literal notranslate"><span class="pre">data</span></code> option, e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">eurec4a</span><span class="p">[</span><span class="n">data</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>afterwards, you should have everything installed to access the data. For some examples, you may have to install additional libraries for some specialized plotting methods.
+If you are looking for detailed instructions to set up the entire book project including all dependencies, please refer to <a class="reference internal" href="running_locally.html"><span class="doc">running How to EUREC4A locally</span></a>.</p>
+<div class="tip admonition">
+<p class="admonition-title">use of IPFS</p>
+<p>We use <a class="reference external" href="https://ipfs.tech">IPFS</a> to access data in a reliable way.
+In principle, this works with or without a local IPFS node (e.g. <a class="reference external" href="https://docs.ipfs.tech/install/ipfs-desktop/">Desktop</a> or <a class="reference external" href="https://docs.ipfs.tech/install/command-line/">CLI</a>).
+We recommend to <strong>run a local node</strong>: this will result in data access performance generally better than more classical ways of access (e.g. OPeNDAP, HTTP), whereas without a local node, access performance can be really poor.</p>
+<p>See <a class="reference internal" href="data_on_ipfs.html"><span class="doc">Data on IPFS</span></a> for details on this topic, and options to bypass IPFS.</p>
+</div>
+<p>If you want to give the chapters a really quick try and don’t want to set up anything yourself, you’ll find a rocket icon (<i class="fas fa-rocket"></i>) in the top bar to the right of each chapter. The icon provides two interactive ways to run the code: <code class="docutils literal notranslate"><span class="pre">Binder</span></code> and <code class="docutils literal notranslate"><span class="pre">LiveCode</span></code>. In both cases a virtual environment is created for you in the background by a click on the respective link and you don’t have to take care of any requirements locally on your machine.</p>
 <p>In principle, we anticipate to have at minimum one example script per instrument and we are very happy about contributions by you :)
 If you miss some information that could be valuable, feel free to check the link on <a class="reference external" href="https://github.com/eurec4a/how_to_eurec4a/blob/master/CONTRIBUTING.md">how to contribute</a> to this book and make a pull request or open an issue on github if you are short on time. Thanks!</p>
 </section>
