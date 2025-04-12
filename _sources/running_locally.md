@@ -25,8 +25,9 @@ their dependencies well.
 ````
 ````{grid-item-card} Using conda
 ```bash
+wget https://raw.githubusercontent.com/eurec4a/how_to_eurec4a/master/environment.yml
 wget https://raw.githubusercontent.com/eurec4a/how_to_eurec4a/master/requirements.txt
-conda create -f requirements.txt
+conda create -f environment.yml
 conda activate how_to_eurec4a
 ```
 +++
@@ -82,7 +83,7 @@ their dependencies well.
 ````
 ````{grid-item-card} Using conda
 ```bash
-conda create -f requirements.txt
+conda create -f environment.yml
 conda activate how_to_eurec4a
 ```
 +++
