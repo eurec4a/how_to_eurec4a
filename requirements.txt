@@ -12,4 +12,4 @@ datashader
 pybtex-apa-style
 xarray-datatree
 pandas
-git+https://github.com/intake/intake-xarray.git@master
+git+https://github.com/intake/intake-xarray.git@8dfcba8c50c6fa23d10af3c8a42ed7eee2c4cfee
