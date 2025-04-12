@@ -98,7 +98,7 @@ ax1.annotate('Overshooting',(45,700), fontsize="large")
 #
 ax2.scatter(rhs["rh_p3"],rhs["rh_iso"], s=3)
 # 1:1 line
-ax2.plot([0,102], [0,102], 'k-', color = 'black')
+ax2.plot([0,102], [0,102], color = 'black')
 ax2.set_xlim(0, 102)
 ax2.set_xlabel("Hygrometer relative humidity (%)")
 ax2.set_ylabel("Picarro relative humidity (%)")
