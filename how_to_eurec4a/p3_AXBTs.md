@@ -166,7 +166,7 @@ for d in swift_dates:
                    transform=ccrs.PlateCarree(), zorder=7, marker = "p")
 
 plt.legend(ncol=2,loc=(0.0,0.0),fontsize=12,framealpha=0.8,markerscale=1,
-           title="Flight date (MM-DD-2020)")
+           title="Flight date (MM-DD-2020)");
 ```
 
 On 19 Jan and 3 Feb the AXBTs bracket the SWIFTs; on 23 Jan the SWIFTs are at
@@ -203,5 +203,5 @@ axbt_1day.temperature.sel(depth=slice(None,3)).plot.line(y="depth",
                                                          yincrease=False, ax = axin)
 axin.set_xlabel("Sea water temperature (K)")
 axin.set_ylabel("Depth (m)")
-ax.indicate_inset_zoom(axin)
+ax.indicate_inset_zoom(axin);
 ```

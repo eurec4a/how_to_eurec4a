@@ -120,5 +120,5 @@ pts = ax2.scatter(wsra_example.longitude,wsra_example.latitude,
            cmap=cc.cm.bgy,
            alpha=0.5,
            transform=ccrs.PlateCarree(),zorder=7)
-fig.colorbar(pts, ax=ax2, shrink=0.75, aspect=10, label="Significant Wave Height (m)")
+fig.colorbar(pts, ax=ax2, shrink=0.75, aspect=10, label="Significant Wave Height (m)");
 ```
