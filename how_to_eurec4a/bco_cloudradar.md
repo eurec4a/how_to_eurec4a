@@ -92,7 +92,7 @@ axs[1].set_xlim(time_min, time_max)
 axs[0].set_ylim(0, 4500);
 axs[1].set_ylim(0, 4500);
 axs[0].set_ylabel('range / m')
-axs[1].set_ylabel('range / m')
+axs[1].set_ylabel('range / m');
 ```
 
 ### Retrieving cloud fraction profile

@@ -171,7 +171,8 @@ with plt.style.context("mplstyle/wide"):
 
     ax.set_prop_cycle(color=plt.get_cmap("magma")(np.linspace(0, 1, 4)))
     for ind, t in enumerate([1, 5, 10]):
-        averaged_cloud_fraction = min_cloud_binary_mask.resample(time=f"{t}min", loffset=f"{t/2}min").mean()
+        averaged_cloud_fraction = min_cloud_binary_mask.resample(time=f"{t}min").mean(dim='time')
+        averaged_cloud_fraction['time'] = averaged_cloud_fraction['time'] + np.timedelta64(int(t / 2), 'm')
         averaged_cloud_fraction.plot(lw=ind + 1, label=f"{t} min")
 
     ax.set_ylim(0, 1)
