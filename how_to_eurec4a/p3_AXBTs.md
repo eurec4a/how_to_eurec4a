@@ -132,7 +132,8 @@ one_day = np.timedelta64(1, "D")
 def to_datetime(dt64):
     epoch = np.datetime64("1970-01-01")
     second = np.timedelta64(1, "s")
-    return datetime.datetime.utcfromtimestamp((dt64 - epoch) / second)
+    timestamp = (dt64 - epoch) / second
+    return datetime.datetime.fromtimestamp(timestamp, datetime.UTC)
 ```
 
 Now we can make a map that shows where the AXBTs were deployed and where the SWIFTs
