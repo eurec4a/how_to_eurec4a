@@ -32,7 +32,6 @@ jobs:
         activate-environment: how_to_eurec4a
         miniforge-version: latest
         conda-remove-defaults: true
-        python-version: 3.11
         environment-file: environment.yml
     - name: Install local ipfs node
       run: |

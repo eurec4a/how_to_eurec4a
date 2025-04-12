@@ -3,7 +3,6 @@ dependencies:
   - python>=3.9
   - cartopy
   - matplotlib
-  - packaging
   - pip
   - pip:
     - -r requirements.txt
