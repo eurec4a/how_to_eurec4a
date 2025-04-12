@@ -28,6 +28,7 @@ jobs:
         auto-activate-base: false
         miniforge-variant: Miniforge3
         miniforge-version: latest
+        conda-remove-defaults: true
     - name: restore conda environment from cache
       uses: actions/cache/restore@v4
       with:
