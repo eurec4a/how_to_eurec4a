@@ -43,7 +43,6 @@ import datetime as dt
 import dask
 import matplotlib.pyplot as plt
 import eurec4a
-from zarr.errors import PathNotFoundError
 from matplotlib import dates
 from pandas.plotting import register_matplotlib_converters
 register_matplotlib_converters()
@@ -110,7 +109,7 @@ for d, dataset in enumerate(datasets):
         dataset_len = len(ds.time)
         ds = ds.isel(time=slice(0,dataset_len,dataset_len//1000+1))  # select max timesteps
         axs[d].vlines(ds.time.values, 0, 1)
-    except (FileNotFoundError, PathNotFoundError):
+    except FileNotFoundError:
         pass
     axs[d].set_aspect(1.5)
     axs[d].set_ylabel(dataset.replace(".","\n"), rotation=0, ha='right')
