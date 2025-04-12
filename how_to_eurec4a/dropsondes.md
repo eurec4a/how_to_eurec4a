@@ -122,7 +122,8 @@ The temperature and humidity profiles are colored according to their launch time
 def dt64_to_dt(dt64):
     epoch = np.datetime64('1970-01-01T00:00:00')
     second = np.timedelta64(1, 's')
-    return datetime.datetime.utcfromtimestamp(int((dt64 - epoch) / second))
+    timestamp = int((dt64 - epoch) / second)
+    return datetime.datetime.fromtimestamp(timestamp, datetime.UTC)
 ```
 
 ```{code-cell} ipython3
