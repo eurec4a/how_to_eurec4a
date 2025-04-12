@@ -25,29 +25,10 @@ jobs:
       uses: conda-incubator/setup-miniconda@v3
       with:
         activate-environment: how_to_eurec4a
-        auto-activate-base: false
-        miniforge-variant: Miniforge3
         miniforge-version: latest
         conda-remove-defaults: true
-    - name: restore conda environment from cache
-      uses: actions/cache/restore@v4
-      with:
-        path: ${{ env.CONDA }}/envs
-        key:
-          conda-${{ runner.os }}--${{ runner.arch }}--${{ hashFiles('environment.yml', 'requirements.txt') }}-${{ env.CONDA_CACHE_NUMBER }}
-      id: conda_cache
-    - name: install conda environment
-      run:
-        mamba env update -n how_to_eurec4a -f environment.yml
-      if: steps.conda_cache.outputs.cache-hit != 'true'
-      id: install_conda_env
-    - name: upload conda environment to cache
-      uses: actions/cache/save@v4
-      if: steps.install_conda_env.outcome == 'success'
-      with:
-        path: ${{ env.CONDA }}/envs
-        key:
-          conda-${{ runner.os }}--${{ runner.arch }}--${{ hashFiles('environment.yml', 'requirements.txt') }}-${{ env.CONDA_CACHE_NUMBER }}
+        python-version: 3.11
+        environment-file: environment.yml
     - name: Install local ipfs node
       run: |
         sudo apt-get update
