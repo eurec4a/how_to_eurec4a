@@ -144,7 +144,7 @@ These can be directly written to the DKRZ swift-storage during creation (1), aft
 	To upload the zarr file to swift, an access token needs to be generated first, with
 	
 	```
-	curl -I -X GET https://swift.dkrz.de/auth/v1.0 -H "x-auth-user: <GROUP>:<USERNAME>" -H "x-auth-key: <PASSWORD>" > ~./swiftenv
+	swift auth -A=https://swift.dkrz.de/auth/v1.0 -U <GROUP>:<USERNAME>" -K <PASSWORD>" > ~/.swiftenv
 	```
 
 	where group is `bm1349` for EUREC4A-MIP.
