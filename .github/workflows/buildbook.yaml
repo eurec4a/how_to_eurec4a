@@ -1,6 +1,12 @@
 name: buildbook
 
-on: [push, pull_request, workflow_dispatch]
+on:
+  push:
+    branches:
+      - master
+      - main
+  pull_request:
+  workflow_dispatch:
 
 env:
   # Increase this value to reset cache
@@ -20,41 +26,21 @@ jobs:
       IPFSSPEC_GATEWAYS: "http://127.0.0.1:8080"
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: initialize conda
-      uses: conda-incubator/setup-miniconda@v2
+      uses: conda-incubator/setup-miniconda@v3
       with:
         activate-environment: how_to_eurec4a
-        auto-activate-base: false
-        use-mamba: true
-        miniforge-variant: Mambaforge
         miniforge-version: latest
-    - name: restore conda environment from cache
-      uses: actions/cache/restore@v3
-      with:
-        path: ${{ env.CONDA }}/envs
-        key:
-          conda-${{ runner.os }}--${{ runner.arch }}--${{ hashFiles('environment.yml', 'requirements.txt') }}-${{ env.CONDA_CACHE_NUMBER }}
-      id: conda_cache
-    - name: install conda environment
-      run:
-        mamba env update -n how_to_eurec4a -f environment.yml
-      if: steps.conda_cache.outputs.cache-hit != 'true'
-      id: install_conda_env
-    - name: upload conda environment to cache
-      uses: actions/cache/save@v3
-      if: steps.install_conda_env.outcome == 'success'
-      with:
-        path: ${{ env.CONDA }}/envs
-        key:
-          conda-${{ runner.os }}--${{ runner.arch }}--${{ hashFiles('environment.yml', 'requirements.txt') }}-${{ env.CONDA_CACHE_NUMBER }}
+        conda-remove-defaults: true
+        environment-file: environment.yml
     - name: Install local ipfs node
       run: |
         sudo apt-get update
         sudo apt-get install -y wget curl jq
         bash <(curl https://raw.githubusercontent.com/eurec4a/ipfs_tools/main/install_and_run_ipfs.sh) ${{ matrix.ipfs-version }}
     - name: setting up notebook execution cache
-      uses: actions/cache/restore@v3
+      uses: actions/cache/restore@v4
       with:
         path: |
           how_to_eurec4a/_build/.jupyter_cache
@@ -67,7 +53,7 @@ jobs:
         conda info
         jupyter-book build -W -n --keep-going  how_to_eurec4a
     - name: save execution cache
-      uses: actions/cache/save@v3
+      uses: actions/cache/save@v4
       if: always()
       with:
         path: |
@@ -75,7 +61,7 @@ jobs:
         key: notebooks-${{ runner.os }}-${{ hashFiles('environment.yml', 'requirements.txt') }}-${{ github.run_id }}-${{ github.run_attempt }}
     - name: Archive build artifacts
       if: always()
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: html
         path: |
@@ -87,12 +73,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download compiled book
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: html
           path: html
       - name: Publish book on github pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: html
