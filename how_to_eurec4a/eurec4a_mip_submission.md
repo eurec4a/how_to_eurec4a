@@ -159,6 +159,7 @@ These can be directly written to the DKRZ swift-storage during creation (1), aft
 	setenv OS_AUTH_URL " "
 	setenv OS_USERNAME " "
 	setenv OS_PASSWORD " "
+ 	```
 
  	The `OS_AUTH_TOKEN` and `OS_STORAGE_URL` can also be directly requested with:
 	
@@ -188,7 +189,7 @@ These can be directly written to the DKRZ swift-storage during creation (1), aft
 	Please create a new container for each larger dataset (large meaning many files (>1000)). This makes it much easier to delete false datasets, because containers can be much more effeciently deleted on the object store than individual files.
 	```
 
-4. **Creating zarr files locally and transfer them to DKRZ’s filestore via ssh/ftp**
+3. **Creating zarr files locally and transfer them to DKRZ’s filestore via ssh/ftp**
 
 	To transfer zarr files via ftp or ssh, it is advisable to pack zarr files into larger quantities of several GB.
 	If a single tar would be too large and the content shall be distributed across several tar files, it is beneficial to create tar files that are closed in itself, i.e. the data is not split mid-record. This step is needed to allow opening tar-ed zarr files directly without the need of unpacking them.
