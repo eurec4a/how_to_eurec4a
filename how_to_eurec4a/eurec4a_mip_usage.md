@@ -57,7 +57,7 @@ def get_datasets(cat, datasets=None, path=""):
         desc = cat[child].describe()
         if desc["container"] == "catalog":
             if path != "":
-                reference = ".".join(path, child)
+                reference = ".".join([path, child])
             else:
                 reference = child
             datasets.extend(get_datasets(cat[child], path=reference))
