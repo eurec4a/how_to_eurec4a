@@ -72,6 +72,10 @@ datasets = get_datasets(eurec4amip_cat)
 ```{code-cell} ipython3
 :tags: [remove-input]
 
+import matplotlib.pyplot as plt
+import matplotlib.dates as dates
+import datetime as dt
+
 fig_height = len(datasets) * 0.5
 fig, axs = plt.subplots(len(datasets), 1, figsize=(8, fig_height), sharex=True)
 fig.set_constrained_layout(False)
