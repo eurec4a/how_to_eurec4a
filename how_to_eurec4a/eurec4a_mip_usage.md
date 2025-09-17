@@ -34,6 +34,7 @@ cat = open_catalog("https://raw.githubusercontent.com/eurec4a/eurec4a-intake/eur
 
 Simulations that are not yet merged to the main catalog can be viewed from their respective branches, e.g.
 ```{code-cell} ipython3
+from intake import open_catalog
 cat = open_catalog("https://raw.githubusercontent.com/eurec4a/eurec4a-intake/eurec4amip/add/obc/metoffice/catalog.yml")
 ```
 ## Browsing the catalog
