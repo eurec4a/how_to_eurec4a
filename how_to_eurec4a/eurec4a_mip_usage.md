@@ -54,15 +54,18 @@ def get_datasets(cat, datasets=None, path=""):
     if datasets is None:
         datasets = []
     for child in list(cat):
-        desc = cat[child].describe()
-        if desc["container"] == "catalog":
+        print( child )
+        desc = cat[child]._entry
+        print( desc )
+        if hasattr(desc, "container") and desc.container == "catalog":
+            print( f"Entering {child}..., path: {path}" )
             if path != "":
                 reference = ".".join([path, child])
             else:
                 reference = child
             datasets.extend(get_datasets(cat[child], path=reference))
         else:
-            datasets.extend([path + "." + desc["name"]])
+            datasets.extend([path + "." + desc.name])
     return datasets
 
 eurec4amip_cat = cat.simulations.EUREC4A_MIP
