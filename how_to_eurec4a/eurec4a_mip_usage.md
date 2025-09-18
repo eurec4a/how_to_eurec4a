@@ -38,11 +38,14 @@ from intake import open_catalog
 cat = open_catalog("https://raw.githubusercontent.com/eurec4a/eurec4a-intake/eurec4amip/add/obc/metoffice/catalog.yml")
 ```
 ## Browsing the catalog
-The catalog contains not only EUREC⁴A-MIP simulations, but also the observations of the EUREC⁴A field campaign. The catalog structure is hierarchical, so to list the EUREC⁴A-MIP simulations, the following command can be used:
+The catalog contains not only EUREC⁴A-MIP simulations, but also the observations of the EUREC⁴A field campaign. The catalog structure is hierarchical, so to list the EUREC⁴A-MIP simulations and setups, the following command can be used:
 
 ```python
 list(cat.simulations.EUREC4A_MIP)
 ```
+
+applied to on the entire hierarchy, this will list all available datasets:
+
 
 ```{code-cell} ipython3
 :tags: [remove-cell]
@@ -54,11 +57,8 @@ def get_datasets(cat, datasets=None, path=""):
     if datasets is None:
         datasets = []
     for child in list(cat):
-        print( child )
         desc = cat[child]._entry
-        print( desc )
         if hasattr(desc, "container") and desc.container == "catalog":
-            print( f"Entering {child}..., path: {path}" )
             if path != "":
                 reference = ".".join([path, child])
             else:
@@ -70,6 +70,10 @@ def get_datasets(cat, datasets=None, path=""):
 
 eurec4amip_cat = cat.simulations.EUREC4A_MIP
 datasets = get_datasets(eurec4amip_cat)
+filtered_datasets = [dataset for dataset in datasets if "setup" not in dataset]
+print(f"Found {len(filtered_datasets)} datasets:")
+for dataset in filtered_datasets:
+    print(f" - {dataset}")
 ```
 
 ```{code-cell} ipython3
@@ -79,11 +83,11 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as dates
 import datetime as dt
 
-fig_height = len(datasets) * 0.5
-fig, axs = plt.subplots(len(datasets), 1, figsize=(8, fig_height), sharex=True)
+fig_height = len(filtered_datasets) * 0.5
+fig, axs = plt.subplots(len(filtered_datasets), 1, figsize=(8, fig_height), sharex=True)
 fig.set_constrained_layout(False)
 xfmt = dates.DateFormatter('%d.%m')
-for d, dataset in enumerate(datasets):
+for d, dataset in enumerate(filtered_datasets):
     # Load dataset
     try:
         ds = eurec4amip_cat[dataset].to_dask()
