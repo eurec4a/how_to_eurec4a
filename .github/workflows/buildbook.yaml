@@ -52,7 +52,7 @@ jobs:
         conda info
         pip list
         pip install intake>=3.0.0
-        pip install xarray>2024.7.0
+        conda install xarray>2024.7.0
         pip list
         jupyter-book build -W -n --keep-going  how_to_eurec4a
     - name: save execution cache
