@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=53e8a599" />
@@ -575,10 +575,10 @@ document.write(`
 </a>
 </figure>
 <div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
@@ -628,10 +628,10 @@ C = \begin{cases}
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
@@ -647,7 +647,7 @@ C = \begin{cases}
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/fd86784a87fc33a2fd418c7fae1b4836f9d697768cc71ef5e23f1ab51a6caa64.png" src="_images/fd86784a87fc33a2fd418c7fae1b4836f9d697768cc71ef5e23f1ab51a6caa64.png" />
+<img alt="_images/8b167b501146dda9c42a91e2cdb3dea4ce25c5bdabf218942592249290000c31.png" src="_images/8b167b501146dda9c42a91e2cdb3dea4ce25c5bdabf218942592249290000c31.png" />
 </div>
 </div>
 <p>Based on this flag, it is possible to derive cloud edge locations <span class="math notranslate nohighlight">\(E\)</span> by shifting <span class="math notranslate nohighlight">\(C\)</span> by one and subtracting from itself:</p>
@@ -667,10 +667,10 @@ E = \begin{cases}
 <p>These two shifted subsets are best visualized by thinking of two shifts about half a pixel in opposite directions.
 Subtracting the two leads to the cloud edges:</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span><span class="p">,</span> <span class="n">ax4</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
@@ -703,7 +703,7 @@ Subtracting the two leads to the cloud edges:</p>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/c532ae9311dd734d9e272495ee64ce21314557844681e9272a3f2f081c7c2f22.png" src="_images/c532ae9311dd734d9e272495ee64ce21314557844681e9272a3f2f081c7c2f22.png" />
+<img alt="_images/e9fef6981a973d1df1bf36e97c22f944a6653364cb808249cbd11cb12e97fbc4.png" src="_images/e9fef6981a973d1df1bf36e97c22f944a6653364cb808249cbd11cb12e97fbc4.png" />
 </div>
 </div>
 <div class="admonition note">
@@ -712,10 +712,10 @@ Subtracting the two leads to the cloud edges:</p>
 </div>
 <p>If the method would be applied exactly as above, <span class="math notranslate nohighlight">\(E\)</span> would be one entry less than the number of pixels. In order to make the following method work properly, we need to extend the edge information to before and after the first and last pixel. We’ll set <span class="math notranslate nohighlight">\(E_0 = C_0\)</span> (we only start with a cloud if the first pixel is a cloudy one, but don’t end a cloud before the first pixel) and <span class="math notranslate nohighlight">\(E_N = -C_{N-1}\)</span> (we end a cloud if the last pixel is a cloudy one, but don’t start a cloud after the last pixel).</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
@@ -739,7 +739,7 @@ Subtracting the two leads to the cloud edges:</p>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/9e10663948860e8f2b62d97a890f158e0e6afde80b651d426b41ece65bfd1455.png" src="_images/9e10663948860e8f2b62d97a890f158e0e6afde80b651d426b41ece65bfd1455.png" />
+<img alt="_images/ad2b861f8c547dc8a73a72be01fea18b7adc71c813ba6ee52eb8a1ba74462986.png" src="_images/ad2b861f8c547dc8a73a72be01fea18b7adc71c813ba6ee52eb8a1ba74462986.png" />
 </div>
 </div>
 <p>Let’s also have a look at a graphical representation of what we have done so far:</p>
@@ -800,10 +800,10 @@ If we can then find a way to accumulate data into individual bins based on the <
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -830,7 +830,7 @@ If we can then find a way to accumulate data into individual bins based on the <
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/9cba8937c7a3b70543cb1adb3c832957f4ac8811f5fe79b20d1a1b2b0df1ecc2.png" src="_images/9cba8937c7a3b70543cb1adb3c832957f4ac8811f5fe79b20d1a1b2b0df1ecc2.png" />
+<img alt="_images/1fd17a18b6db22acc1aea69ef21762cfbe9604b7d07f3aab18cf5be05e5a6c81.png" src="_images/1fd17a18b6db22acc1aea69ef21762cfbe9604b7d07f3aab18cf5be05e5a6c81.png" />
 </div>
 </div>
 <p>Let’s have a look at the whole process idea in a graphical way:</p>
