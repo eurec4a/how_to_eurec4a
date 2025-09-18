@@ -73,10 +73,12 @@ def get_datasets(cat, datasets=None, path=""):
 eurec4amip_cat = cat.simulations.EUREC4A_MIP
 datasets = get_datasets(eurec4amip_cat)
 filtered_datasets = [dataset for dataset in datasets if "setup" not in dataset]
-print(f"Found {len(filtered_datasets)} datasets:")
-for dataset in filtered_datasets:
+print(f"Found {len(datasets)} datasets:")
+for dataset in datasets:
     print(f" - {dataset}")
 ```
+
+The simulation output covers currently the following time period:
 
 ```{code-cell} ipython3
 :tags: [remove-input]
