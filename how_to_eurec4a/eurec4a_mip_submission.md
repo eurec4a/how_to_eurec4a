@@ -141,21 +141,47 @@ These can be directly written to the DKRZ swift-storage during creation (1), aft
 		
 	The upload can be performed with [python-swiftclient](https://platform.swiftstack.com/docs/integration/python-swiftclient.html) which can be installed via `pip install python-swiftclient`.
 
-	To upload the zarr file to swift, an access token needs to be generated first, with
+	To upload the zarr file to swift, an access token needs to be generated first, with e.g. the [swift-token.py provided by DKRZ](https://docs.dkrz.de/_downloads/04e4e2e251f09c129ed9eab88b005fdd/swift-token.py):
+
+	```
+ 	python swift-token.py new
+    # Account: bm1349
+ 	# Username: <DKRZ-USERNAME>
+    # Password: <YOUR-DKRZ-PASSWORD>
+ 	```
+
+ 	This stores the token in ~/.swiftenv which should look like:
+
+	```
+ 	#token expires on: Wed 08. Oct 10:38:35 CEST 2025
+	setenv OS_AUTH_TOKEN dkrz_<TOKEN>
+	setenv OS_STORAGE_URL https://swift.dkrz.de/v1/dkrz_<STORAGEURL>
+	setenv OS_AUTH_URL " "
+	setenv OS_USERNAME " "
+	setenv OS_PASSWORD " "
+ 	```
+
+ 	The `OS_AUTH_TOKEN` and `OS_STORAGE_URL` can also be directly requested with:
 	
 	```
-	curl -I -X GET https://swift.dkrz.de/auth/v1.0 -H "x-auth-user: <GROUP>:<USERNAME>" -H "x-auth-key: <PASSWORD>" > ~./swiftenv
+	curl -I -X GET https://swift.dkrz.de/auth/v1.0 -H "x-auth-user: <GROUP>:<USERNAME>" -H 'x-auth-key: <PASSWORD>' > ~./swiftenv
 	```
 
-	where group is `bm1349` for EUREC4A-MIP.
+    or alternatively the swift client:
+
+    ```
+    swift auth -A=https://swift.dkrz.de/auth/v1.0 -U <GROUP>:<USERNAME>" -K <PASSWORD>" > ~/.swiftenv
+    ```
+
+	where group is `bm1349` for EUREC4A-MIP, instead of the `swift-token.py` helper script.
 		       
-	The token has to be activated with the following command each time a new terminal has been opened:
+	The token has to be activated with the following command each time a new terminal is opened:
 	
 	```
 	source ~/.swiftenv
 	```
 	
-	Please contact [Hauke Schulz](mailto:haschulz@uw.edu) if you don't have a DKRZ account and otherwise let him know about your username so that it can be added to the project.
+	Please contact [Hauke Schulz](mailto:has@dmi.dk) if you don't have a DKRZ account and otherwise let him know about your username so that it can be added to the project.
 		       
 	The upload itself is performed by
 	
