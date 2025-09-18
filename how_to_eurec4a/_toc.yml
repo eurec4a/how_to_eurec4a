@@ -42,6 +42,7 @@ chapters:
   - file: eurec4a_mip
     sections:
     - file: eurec4a_mip_submission
+    - file: eurec4a_mip_usage
   - file: icon_les
     sections:
     - file: icon_les-pamtra
