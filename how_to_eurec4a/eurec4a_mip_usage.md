@@ -50,7 +50,7 @@ applied to on the entire hierarchy, this will list all available datasets:
 
 
 ```{code-cell} ipython3
-:tags: [remove-cell]
+:tags: [remove-input]
 
 def get_datasets(cat, datasets=None, path=""):
     """
