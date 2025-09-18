@@ -78,7 +78,7 @@ for dataset in datasets:
     print(f" - {dataset}")
 ```
 
-<!-- The simulation output covers currently the following time period:
+The simulation output covers currently the following time period:
 
 ```{code-cell} ipython3
 :tags: [remove-input]
@@ -107,7 +107,7 @@ for d, dataset in enumerate(filtered_datasets):
 axs[d].xaxis.set_major_formatter(xfmt)
 axs[d].set_xlim([dt.date(2020, 1, 1), dt.date(2020, 3, 1)])
 plt.tight_layout()
-``` -->
+```
 
 ## Loading output from a specific simulation
 
