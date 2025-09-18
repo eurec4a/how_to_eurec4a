@@ -50,6 +50,9 @@ jobs:
     - name: build book
       run: |
         conda info
+        pip list
+        pip install intake>=3.0.0
+        pip list
         jupyter-book build -W -n --keep-going  how_to_eurec4a
     - name: save execution cache
       uses: actions/cache/save@v4
