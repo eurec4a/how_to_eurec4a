@@ -151,7 +151,7 @@ The 3D plots show the scene from different perspectives. It can be seen that the
 
 ## Project points to specMACS measurements
 
-We will start to project the points found from the stereographic reconstruction to pre-rendered specMACS [tile maps](https://en.wikipedia.org/wiki/Tiled_web_map) which can be found [here](https://macsserver.physik.uni-muenchen.de/campaigns/EUREC4A/maps/).
+We will start to project the points found from the stereographic reconstruction to pre-rendered specMACS [tile maps](https://en.wikipedia.org/wiki/Tiled_web_map) which can be found [here](https://www.meteorologie.lmu.de/~quicklooks/specMACS/EUREC4A/maps/).
 To make them available to `cartopy`, we need a little helper class `specMACSPTiles`, which mainly takes care of making unavailable tiles transparent (these are outside the viewing range of the instrument).
 
 ```{code-cell} ipython3
@@ -186,7 +186,7 @@ class specMACSPTiles(GoogleWTS):
 
     def _image_url(self, tile):
         x, y, z = tile
-        return f"https://macsserver.physik.uni-muenchen.de/campaigns/EUREC4A/maps/tiles/{self.flight_segment_id}/{z}/{x}/{y}.png"
+        return f"https://www.meteorologie.lmu.de/~quicklooks/specMACS/EUREC4A/maps/tiles/{self.flight_segment_id}/{z}/{x}/{y}.png"
 ```
 
 We can now get the tile map for our selected flight segment:
