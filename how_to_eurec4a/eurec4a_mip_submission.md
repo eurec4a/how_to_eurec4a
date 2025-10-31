@@ -42,18 +42,18 @@ A few things should be noted to create performant datasets:
 - **resonable chunks (depending on typical access pattern)**
   - the shape of the chunks i.e. how the data is split in time and space should allow for reasonable performance for all typical access patterns. To do so, the chunks should contain data along all directions, especially along space and time to enable both fast analysis of temporal timeseries at a single point in space as well as plotting the entire domain as once at a particular time.
 - **resonable chunk size (about 10MB)**
-    - the size of the individual chunks should be about 10MB. This is a good size to make requests over the internet efficient. Decisive is the size of the compressed chunks and not the size after decompression. 
-- **usage of `/` as `dimension_delimiter`**
-  - Zarr files following version spec 1 and 2 are generally containing one subfolder per variable that contain all chunks of that variable. To reduce the pressure on the filesystem, the `dimension_delimter="/"` creates more subfolders such that each folder indexes only a fraction of all files. 
+    - the size of the individual chunks should be about 10MB. This is a good size to make requests over the internet efficient. Decisive is the size of the compressed chunks and not the size after decompression.
+- **usage of `/` as `dimension_separator`** (for Zarr <= v2)
+  - Zarr files following version spec 1 and 2 are generally containing one subfolder per variable that contain all chunks of that variable. To reduce the pressure on the filesystem, the `dimension_separator="/"` creates more subfolders such that each folder indexes only a fraction of all files.  `/` is used by default in Zarr v3, and cannot be changed.
 
 - **merge output into reasonable pieces (concat along time dimension)**
-  
+
   Because the zarr-files are chunked and only those portions are loaded into memory that are actually needed at the time of calculation, huge datasets can be created without loosing performance. The user benefits from this approach because with a single load statement a lot of datasets are available. For the proposed output variables, this means, that for each category ("2D Surface and TOA", "2D Integrated Variables", "2D fields at specified levels", "3D fields") only one dataset (zarr-file) should be created.
   If the temporal or spatial resolution differs for some variables, these variables should be written to an additional dataset. It should be avoided to have two time/height coordinates per dataset (i.e. there should only be one time coordinate `time` and no `time2`)
-  
+
   A dataset should always contain all timesteps from the beginning of the simulation until its end.
 - **rename the variable names to the ones given in the specific documents ([LES](https://eurec4a.eu/fileadmin/user_upload/eurec4a/Simulations/EUREC4A_LEM_Model_Output.pdf), [SRM](https://eurec4a.eu/fileadmin/user_upload/eurec4a/Simulations/EUREC4A_SRM_Model_Output.pdf))**
-  
+
   Having consistent variable names across models significantly increases the user experience when analysing and comparing the output
   ```python
   ds = ds.rename({"model_var1":"eurec4amip_var1", "model_var2":"eurec4amip_var2"})
@@ -106,26 +106,29 @@ eraint_uvz.zarr/
 These can be directly written to the DKRZ swift-storage during creation (1), after creating the file locally (2) or transferred to the DKRZ’s file storage on traditional ways via ssh or ftp (3) from where they need to be uploaded via (2) to the SWIFT storage.
 
 1. **Writing directly to the swift-storage**
-	```python
-	import zarr
-	import xarray as xr
 
-	async def get_client(**kwargs):
-	 import aiohttp
-	 import aiohttp_retry
-	 retry_options = aiohttp_retry.ExponentialRetry(
-		 attempts=3,
-		 exceptions={OSError, aiohttp.ServerDisconnectedError})
-	 retry_client = aiohttp_retry.RetryClient(raise_for_status=False, retry_options=retry_options)
-	 return retry_client
-	 
-	ds = xr.tutorial.load_dataset("eraint_uvz")  # This is just an example dataset
-	store = zarr.storage.FSStore("output.zarr", get_client=get_client, dimension_separator="/")
-	ds.to_zarr(store)
-	```
+This approach requires a zarr version later than 3.1.3 due to a bug in how zarr accesses SWIFT storage (which has been fixed but not yet released as of October 2025).
 
-2. **Writing the zarr file locally and upload after creation**	
-	
+```python
+import zarr
+import xarray as xr
+
+async def get_client(**kwargs):
+    import aiohttp
+    import aiohttp_retry
+    retry_options = aiohttp_retry.ExponentialRetry(
+        attempts=3,
+	exceptions={OSError, aiohttp.ServerDisconnectedError})
+    retry_client = aiohttp_retry.RetryClient(raise_for_status=False, retry_options=retry_options)
+    return retry_client
+
+ds = xr.tutorial.load_dataset("eraint_uvz")  # This is just an example dataset
+store = zarr.storage.FSStore("output.zarr", get_client=get_client)
+ds.to_zarr(store)
+```
+
+2. **Writing the zarr file locally and upload after creation**
+
 	2.1 **Writing dataset to disk**
 
 	```python
@@ -133,12 +136,12 @@ These can be directly written to the DKRZ swift-storage during creation (1), aft
 	import xarray as xr
 
 	ds = xr.tutorial.load_dataset("eraint_uvz")  # This is just an example dataset
-	store = zarr.DirectoryStore("output.zarr", dimension_separator="/")
+	store = zarr.DirectoryStore("output.zarr")
 	ds.to_zarr(store)
 	```
-	
+
 	2.2 **Uploading file to the DKRZ SWIFT storage**
-		
+
 	The upload can be performed with [python-swiftclient](https://platform.swiftstack.com/docs/integration/python-swiftclient.html) which can be installed via `pip install python-swiftclient`.
 
 	To upload the zarr file to swift, an access token needs to be generated first, with e.g. the [swift-token.py provided by DKRZ](https://docs.dkrz.de/_downloads/04e4e2e251f09c129ed9eab88b005fdd/swift-token.py):
@@ -162,50 +165,146 @@ These can be directly written to the DKRZ swift-storage during creation (1), aft
  	```
 
  	The `OS_AUTH_TOKEN` and `OS_STORAGE_URL` can also be directly requested with:
-	
-	```
-	curl -I -X GET https://swift.dkrz.de/auth/v1.0 -H "x-auth-user: <GROUP>:<USERNAME>" -H 'x-auth-key: <PASSWORD>' > ~./swiftenv
-	```
 
-    or alternatively the swift client:
+	```
+	curl -I -X GET https://swift.dkrz.de/auth/v1.0 -H "x-auth-user: <GROUP>:<USERNAME>" -H 'x-auth-key: <PASSWORD>' > ~/.swiftenv
+	```
+    note that the `~/.swiftenv` file needs to be edited afterwards.
+    Alternatively the swift client can be used:
 
     ```
     swift auth -A=https://swift.dkrz.de/auth/v1.0 -U <GROUP>:<USERNAME>" -K <PASSWORD>" > ~/.swiftenv
     ```
 
 	where group is `bm1349` for EUREC4A-MIP, instead of the `swift-token.py` helper script.
-		       
+
 	The token has to be activated with the following command each time a new terminal is opened:
-	
+
 	```
 	source ~/.swiftenv
 	```
-	
+
 	Please contact [Hauke Schulz](mailto:has@dmi.dk) if you don't have a DKRZ account and otherwise let him know about your username so that it can be added to the project.
-		       
+
 	The upload itself is performed by
-	
+
 	```
 	swift upload -c <CONTAINER> <FILENAME>
 	```
-	
+
 	where `<CONTAINER>` should be set with a meaningful name describing the dataset `<FILENAME>`. Examples are `ICON_LES_control_312m`, `HARMONIE_SRM_warming_624m` or in general following the schema `<model>_<setup>_<experiment>_<resolution>`. The filename can follow the same principle and just add `_<subset>` e.g. `ICON_LES_control_312m_3D` or `HARMONIE_SRM_warming_624m_2D`. In general, the container and filenames are not of importance because the files will be referenced through the [EUREC4A intake catalog](https://github.com/eurec4a/eurec4a-intake) where they will get a meaningful name. Nevertheless, for users who want to download the datasets themselves a bit of structure is nice.
 
 	```{note}
-	Please create a new container for each larger dataset (large meaning many files (>1000)). This makes it much easier to delete false datasets, because containers can be much more effeciently deleted on the object store than individual files.
+	Please create a new container for each larger dataset (large meaning many files (>1000)). This makes it much easier to delete false datasets, because containers can be much more efficiently deleted on the object store than individual files.
 	```
 
 3. **Creating zarr files locally and transfer them to DKRZ’s filestore via ssh/ftp**
 
 	To transfer zarr files via ftp or ssh, it is advisable to pack zarr files into larger quantities of several GB.
 	If a single tar would be too large and the content shall be distributed across several tar files, it is beneficial to create tar files that are closed in itself, i.e. the data is not split mid-record. This step is needed to allow opening tar-ed zarr files directly without the need of unpacking them.
-	
+
 	- [Tool to split tar files at file boundaries](https://github.com/monoid/splitar)
 	- [Further information on how to access tared zarr files](https://github.com/observingClouds/tar_referencer)
-	
+
 	```{note}
 	Compression via zip/gzip is not needed and should be avoided. The data in the zarr files is already compressed and additional compression is not expected to reduce the data amount significantly.
 	```
+
+## Zarr example with chunking and compression
+
+A sample script for Zarr conversion showing how to set chunk sizes and turn on compression.
+Also attempts to control the memory usage of Dask. This script assumes Zarr version >= 3,
+and also writes the data in the Zarr 3 format.
+
+
+```python
+import xarray as xr
+import zarr
+import dask
+from dask.distributed import Client
+import numpy as np
+from numcodecs.zarr3 import Blosc
+import swiftspec
+
+# try to limit scratch disk usage                                                                                                   dask.config.set({'distributed.worker.memory.max-spill': 100*1024**3})
+
+# set limits on Dask RAM use - experimental
+client = Client(processes=False,n_workers=1,threads_per_worker=4,memory_limit=100*1024**3)
+
+filelist = ['input_file_1.nc', 'input_file_2.nc']
+
+ds = xr.open_mfdataset(file_list, chunks={'time':1,'xm':1024,'xt':1024,'ym':1024,'yt':1024})
+# chunks is a dictionary of chunk sizes. Should ideally be integer multiples of the
+# chunk sizes of the input data
+
+print('loading done')
+print(ds)
+print()
+
+
+# optionally rename variables.
+# mapping of variables - input name : output name                                                                                   variables = {
+    'twp' : 'prw',
+    'lwp' : 'clwvi',
+    'us' : 'u10m',
+    'vs' : 'v10m',
+    'Ts' : 't10m',
+    ...
+}
+
+print('renaming variables')
+ds = ds.rename(variables)
+print(ds)
+
+# In case dask did not obey the requested chunk sizes,
+# re-chunk manually here
+#ds = ds.chunk({'time' : time_chunk_size})
+
+
+# Set output chunk sizes
+# These chunk sizes should be integer fractions of the in-memory chunk sizes of ds
+# and be chosen for 1) suitable chunk size, ~10MB when compressed
+# and 2) performance when loading data with the expected access patterns
+output_chunks = {
+    'time' : 1,
+    'xt' : xs,
+    'xm' : xs,
+    'yt' : ys,
+    'ym' : ys,
+}
+# This example has xt,xm and yt,ym here because DALES has a staggered grid, where some variables use
+# the xt (cell center) coordinate and others use xm (cell border)
+
+# Create an encoding dictionary which sets options for every variable.
+# The chunk sizes are read from the output_chunks dictionary created above.
+# zstd is a compression algorithm, which is fast and compresses well.
+# The compression level is a trade-off between compression speed and
+# the final size, higher level takes longer but results in a smaller file.
+encoding = {name: {
+    'chunks' : [output_chunks[d] for d in var.dims],
+    'compressors' : [Blosc(cname='zstd', clevel=8)]
+} for name,var in ds.items() }
+
+# https with retry, from swiftspec docs.
+async def get_client(**kwargs):
+    import aiohttp
+    import aiohttp_retry
+    retry_options = aiohttp_retry.ExponentialRetry(
+            attempts=3,
+            exceptions={OSError, aiohttp.ServerDisconnectedError})
+    retry_client = aiohttp_retry.RetryClient(raise_for_status=False, retry_options=retry_options)
+    return retry_client
+
+# write directly to SWIFT
+#store_url='swift://swift.dkrz.de/dkrz_xxxxx/CONTAINER/zarrname.zarr'
+#ds.to_zarr(store_url, encoding=encoding, mode='w',
+#           zarr_format=3, storage_options={"get_client": get_client})
+
+# write to local disk:
+ds.to_zarr(zarr_dir, encoding=encoding, mode='w', zarr_format=3)
+
+```
+
 
 ## Indexing
 After the upload has been finished the output needs to be added to the [EUREC⁴A-Intake catalog](https://github.com/eurec4a/eurec4a-intake). Please open a Pull Request and follow the [contribution guidelines](https://github.com/eurec4a/eurec4a-intake/blob/master/CONTRIBUTING.md). The maintainers will help with this process if needed.
@@ -279,7 +378,7 @@ from datatree import map_over_subtree
 fig, ax = plt.subplots()
 
 @map_over_subtree
-def plot_temp(ds): 
+def plot_temp(ds):
     if ds:
         if 'u_10m' in ds.data_vars:
             ds['u_10m'].isel(time=slice(0,100)).mean('cell').plot(ax=ax)
@@ -289,7 +388,7 @@ _ = plot_temp(dt['warming'])
 
 ## Additional support
 
-In case the analysis tools are not written in Python or do not support zarr files yet, files can be downloaded and read with newer version of the netCDF library. This is however not recommended because it makes the analysis much more complicated and downloads potentially unnessary data. Nevertheless, an example is presented in the following. Here we make use of the new netCDF-c library that now not only supports HDF5 as an backend, but also Zarr. These so called NCZarr files can be created on-the-fly by the netCDF-c libary from a zarr file.
+In case the analysis tools are not written in Python or do not support zarr files yet, files can be downloaded and read with newer version of the netCDF library. This is however not recommended because it makes the analysis much more complicated and downloads potentially unnecessary data. Nevertheless, an example is presented in the following. Here we make use of the new netCDF-c library that now not only supports HDF5 as an backend, but also Zarr. These so called NCZarr files can be created on-the-fly by the netCDF-c libary from a zarr file.
 
 ### Download entire datasets
 ```bash
@@ -307,7 +406,7 @@ To preserve the coordinates and metadata, the objects containing this informatio
 ```bash
 # Download metadata
 wget -r -H -N --cut-dirs=5 --include-directories="/v1/" "https://swiftbrowser.dkrz.de/public/dkrz_948e7d4bbfbb445fbff5315fc433e36a/EUREC4A_LES/experiment_2/EUREC4A_ICON-LES_control_DOM03_surface_native.zarr/.zmetadata?show_all"
-# Download coordinates 
+# Download coordinates
 wget -r -H -N --cut-dirs=5 --include-directories="/v1/" "https://swiftbrowser.dkrz.de/public/dkrz_948e7d4bbfbb445fbff5315fc433e36a/EUREC4A_LES/experiment_2/EUREC4A_ICON-LES_control_DOM03_surface_native.zarr/time?show_all"
 ```
 
